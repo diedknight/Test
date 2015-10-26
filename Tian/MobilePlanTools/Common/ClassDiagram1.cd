@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Common.AppConfig" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAIAAAgEAAQBAAAABAAAAAIAAAAABAAAAAAABAg=</HashCode>
+      <FileName>AppConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.CrawlReportLog" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAkAAAAAAACAAAA=</HashCode>
+      <FileName>CrawlReportLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.FileLogWriter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAIAAAAAAAAAAAAAAEAAAAAAAAIAAA=</HashCode>
+      <FileName>FileLogWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Common.ImportCarrierLog" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAEAAAAAAACAAAA=</HashCode>
+      <FileName>ImportProviderLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.LogEventArgs" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LogEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.Data.LogInfo" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAEAAIAAAAAAIQAAAAEAAAAAAAAAIA=</HashCode>
+      <FileName>Data\LogInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.Data.MobilePhoneMoreInfo" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAAAAgAAAAAAAAAAIAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Data\MobilePhoneMoreInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.Data.MobilePlanInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAgQAQoAAgQAAAAAQAhAAAMBAAwAAAIAgAJAA=</HashCode>
+      <FileName>Data\MobilePlanInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Common.Data.MobilePhoneInfo" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEIAAAAACAAGAAAAAAAAAIAAAIAEAACAAAAAAAAACA=</HashCode>
+      <FileName>Data\MobilePlanInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.Data.MobilePlanMoreInfo" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Data\MobilePlanMoreInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Common.Data.ICrawlDataInfo&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQgAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ICrawlDataInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Common.Data.LogType" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\LogType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Common.GenerateLog" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommonLogic.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

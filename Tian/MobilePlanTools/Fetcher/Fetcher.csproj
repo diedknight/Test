@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6322C824-0963-4285-A60E-1B7C2ABE569F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fetcher</RootNamespace>
+    <AssemblyName>Fetcher</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>F:\dlls\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Winista.HTMLParserLite">
+      <HintPath>..\Import\bin\Debug\Winista.HTMLParserLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2DegreesFetcher.cs" />
+    <Compile Include="BaseFetcher.cs" />
+    <Compile Include="FetcherController.cs" />
+    <Compile Include="HtmlParser\Css\Compile\AbsCompile.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\ContainsAttrSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\ContainsPrefixAttrSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\ContainsWordAttrSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\EndsWithAttrSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\EqualAttrSelector .cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\HasAttrSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\NotEqualAttrSelector .cs" />
+    <Compile Include="HtmlParser\Css\Compile\Attr\StartsWithAttrSelector .cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\EqFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\EvenFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\FirstFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\GtFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\HeaderFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\LastFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\LtFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\NotFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\BasicFilter\OddFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Basic\AllSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Basic\ClassSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Basic\ElementSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Basic\IDSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\FirstChildFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\FirstOfTypeFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\LastChildFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\LastOfTypeFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\NthChildFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\NthLastChildFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\NthLastOfTypeFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\NthOfTypeFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\OnlyChildFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ChildFilter\OnlyOfTypeFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\CompileBuilder.cs" />
+    <Compile Include="HtmlParser\Css\Compile\CompileUtil.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ContentFilter\ContainsFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ContentFilter\EmptyFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ContentFilter\HasFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\ContentFilter\ParentFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Form\FormFilterSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Hierarchy\ChildSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Hierarchy\NextAdjacentSelector.cs" />
+    <Compile Include="HtmlParser\Css\Compile\Hierarchy\NextSiblingsSelector.cs" />
+    <Compile Include="HtmlParser\Css\CssSelector.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\ConstAnalyze.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\DelimiterAnalyze.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\IdAnalyze.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\IgnoreAnalyze.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\LexerBuilder.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\OperatorAnalyze.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\Token.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\TokenAnalyze.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\Word.cs" />
+    <Compile Include="HtmlParser\Css\Lexer\WordType.cs" />
+    <Compile Include="HtmlParser\Css\Reader\CodeReader.cs" />
+    <Compile Include="HtmlParser\Css\Reader\CssReader.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\AbsSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\AllElementSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\AttrSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\ClassSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\ElementSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\FilterSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\IdSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\NotValueFilterSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\RelationSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\SelectorFilterSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\SyntaxBuilder.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\SyntaxUtil.cs" />
+    <Compile Include="HtmlParser\Css\Syntax\ValueFilterSyntax.cs" />
+    <Compile Include="HtmlParser\Css\Tokens.cs" />
+    <Compile Include="HtmlParser\HtmlDocFactory.cs" />
+    <Compile Include="HtmlParser\HtmlDocument.cs" />
+    <Compile Include="HtmlParser\HtmlNode.cs" />
+    <Compile Include="HtmlParser\HtmlNodeList.cs" />
+    <Compile Include="HtmlParser\HtmlUtil.cs" />
+    <Compile Include="HtmlParser\IDomable.cs" />
+    <Compile Include="HtmlParser\Query\JQuery.cs" />
+    <Compile Include="HtmlParser\Query\JQueryExtend.cs" />
+    <Compile Include="HtmlParser\WinistaHtmlDocument.cs" />
+    <Compile Include="HtmlParser\WinistaHtmlNode.cs" />
+    <Compile Include="HtmlParser\WinistaHtmlNodeList.cs" />
+    <Compile Include="HtmlParser\WinistaTags\CustomTag.cs" />
+    <Compile Include="HtmlParser\WinistaTags\RegisterCustomTag.cs" />
+    <Compile Include="HtmlParser\WinistaUtil.cs" />
+    <Compile Include="IFetcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\ContentType.cs" />
+    <Compile Include="Request\FilePart.cs" />
+    <Compile Include="Request\HttpHelper.cs" />
+    <Compile Include="Request\IWebRequest.cs" />
+    <Compile Include="Request\NormalPart.cs" />
+    <Compile Include="Request\Part.cs" />
+    <Compile Include="Request\PartManage.cs" />
+    <Compile Include="Request\RESTful.cs" />
+    <Compile Include="Request\TextPart.cs" />
+    <Compile Include="Request\WebRequestFactory.cs" />
+    <Compile Include="Request\XbaiRequest.cs" />
+    <Compile Include="StringExtend.cs" />
+    <Compile Include="TelecomFetcher.cs" />
+    <Compile Include="VodafoneFetcher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{84F2BDA6-B99D-4009-B2D0-04FC2EA9A057}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
