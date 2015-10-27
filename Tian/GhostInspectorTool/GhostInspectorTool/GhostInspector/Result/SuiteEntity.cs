@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace GhostInspectorTool.GhostInspector.Result
 {
-    public class Test : IEntity
+    public class SuiteEntity : IEntity
     {
         public string _id { get; set; }
-        public string name { get; set; }
-        public string suite { get; set; }
-        public string organization { get; set; }
+        public string name { get; set; }   
     }
 }

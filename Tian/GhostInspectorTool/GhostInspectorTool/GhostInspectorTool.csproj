@@ -54,11 +54,16 @@
     <Compile Include="GhostInspector\Result\Organization.cs" />
     <Compile Include="GhostInspector\Result\ResultInfo.cs" />
     <Compile Include="GhostInspector\Result\Screenshot.cs" />
+    <Compile Include="GhostInspector\Result\SuiteEntity.cs" />
     <Compile Include="GhostInspector\Result\Suite\ExecuteResult.cs" />
     <Compile Include="GhostInspector\Result\Suite\ListResult.cs" />
-    <Compile Include="GhostInspector\Result\Test.cs" />
+    <Compile Include="GhostInspector\Result\TestEntity.cs" />
+    <Compile Include="GhostInspector\Result\Test\ExecuteResult.cs" />
+    <Compile Include="GhostInspector\Result\Test\ListResult.cs" />
     <Compile Include="GhostInspector\Suite\Execute.cs" />
     <Compile Include="GhostInspector\Suite\List.cs" />
+    <Compile Include="GhostInspector\Test\Execute.cs" />
+    <Compile Include="GhostInspector\Test\List.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\ContentType.cs" />
