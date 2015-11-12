@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AttributeCategoryComparison">
+  <DataContextMoniker Name="/AttributeCategoryComparisonDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b39aeb65-1701-4f15-95ed-84f25fcbf1ae" absoluteBounds="2.125, 3, 2, 3.0997033691406251">
+      <DataClassMoniker Name="/AttributeCategoryComparisonDataContext/AttributeCategoryComparison" />
+      <nestedChildShapes>
+        <elementListCompartment Id="68c5276e-deef-41ed-b6d5-a1ae49cd6da8" absoluteBounds="2.14, 3.46, 1.9700000000000002, 2.539703369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

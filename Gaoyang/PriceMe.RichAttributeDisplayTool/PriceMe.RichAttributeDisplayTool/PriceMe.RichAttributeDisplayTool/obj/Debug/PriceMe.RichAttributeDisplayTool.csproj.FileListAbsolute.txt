@@ -1,0 +1,6 @@
+D:\GY_work\GaoYangTools\Gaoyang\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\bin\Debug\PriceMe.RichAttributeDisplayTool.exe.config
+D:\GY_work\GaoYangTools\Gaoyang\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\bin\Debug\PriceMe.RichAttributeDisplayTool.exe
+D:\GY_work\GaoYangTools\Gaoyang\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\bin\Debug\PriceMe.RichAttributeDisplayTool.pdb
+D:\GY_work\GaoYangTools\Gaoyang\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\obj\Debug\PriceMe.RichAttributeDisplayTool.exe
+D:\GY_work\GaoYangTools\Gaoyang\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\obj\Debug\PriceMe.RichAttributeDisplayTool.pdb
+D:\GY_work\GaoYangTools\Gaoyang\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\PriceMe.RichAttributeDisplayTool\bin\Debug\AWSSDK.dll
