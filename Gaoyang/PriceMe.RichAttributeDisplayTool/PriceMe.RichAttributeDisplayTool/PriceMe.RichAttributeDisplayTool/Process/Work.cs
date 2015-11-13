@@ -24,6 +24,9 @@ namespace PriceMe.RichAttributeDisplayTool.Process
 
             var accList = new List<Prt.RichClass.AttributeCategoryComparisons>();
             var single = new Prt.DataProcessTool.LinqBllBase<Prt.DataProcessTool.AttributeCategoryComparison>();
+
+            var singleAll = single.Query(q => q.ID > 0);
+
             var updateRecord = new Dictionary<int, int>();
             var updateSucc = new Dictionary<int, int>();
             foreach (var item in Adt)
@@ -52,7 +55,7 @@ namespace PriceMe.RichAttributeDisplayTool.Process
                 //bottom30
                 var bottom30 = getRank(0.7);
 
-                var getSingle = single.Single(s => s.Aid == item.AttributeID);
+                var getSingle = singleAll.SingleOrDefault(s => s.Aid == item.AttributeID);
 
                 if (getSingle != null)
                 {
