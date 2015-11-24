@@ -9,7 +9,7 @@ namespace PriceMe.RichAttributeDisplayTool.RichClass
     class ProductValue:IClass
     {
         public int ProductID { get; set; }
-        public int AttributeValueID { get; set; }
         public double Value { get; set; }
+
     }
 }

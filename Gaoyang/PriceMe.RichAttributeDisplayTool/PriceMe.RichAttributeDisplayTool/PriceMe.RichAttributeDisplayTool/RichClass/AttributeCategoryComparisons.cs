@@ -10,6 +10,7 @@ namespace PriceMe.RichAttributeDisplayTool.RichClass
     {
         public int Aid { get; set; }
         public bool IsHigherBetter { get; set; }
+        public bool IsCompareAttribute { get; set; }
         public string Top10 { get; set; }
         public string Top20 { get; set; }
         public string Top30 { get; set; }
@@ -19,5 +20,6 @@ namespace PriceMe.RichAttributeDisplayTool.RichClass
         public string Bottom10 { get; set; }
         public DateTime? Createon { get; set; }
         public DateTime? Modifiedon { get; set; }
+       
     }
 }

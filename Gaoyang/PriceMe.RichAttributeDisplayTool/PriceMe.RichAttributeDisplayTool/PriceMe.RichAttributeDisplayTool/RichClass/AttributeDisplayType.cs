@@ -14,5 +14,6 @@ namespace PriceMe.RichAttributeDisplayTool.RichClass
         public bool IsComparison { get; set; }
         public string DisplayAdjectiveBetter { get; set; }
         public string DisplayAdjectiveWorse { get; set; }
+        public bool IsCompareAttribute { get; set; }
     }
 }

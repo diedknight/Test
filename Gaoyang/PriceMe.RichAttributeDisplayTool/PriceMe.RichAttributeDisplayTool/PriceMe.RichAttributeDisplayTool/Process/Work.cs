@@ -17,6 +17,7 @@ namespace PriceMe.RichAttributeDisplayTool.Process
 
         static List<Prt.RichClass.ProductValue> AttList = new List<RichClass.ProductValue>();
 
+
         public static void StartWork()
         {
 
@@ -32,7 +33,12 @@ namespace PriceMe.RichAttributeDisplayTool.Process
             foreach (var item in Adt)
             {
 
-                getProductTotalByAid(item.AttributeID);
+                if (!item.IsComparison) continue;
+
+                if (item.IsCompareAttribute) 
+                    getComProductTotalByAid(item.AttributeID);
+                else
+                    getProductTotalByAid(item.AttributeID);
 
                 //Top10
                 var top10 = getRank(0.1);
@@ -55,13 +61,14 @@ namespace PriceMe.RichAttributeDisplayTool.Process
                 //bottom30
                 var bottom30 = getRank(0.7);
 
-                var getSingle = singleAll.SingleOrDefault(s => s.Aid == item.AttributeID);
+                var getSingle = singleAll.SingleOrDefault(s => s.Aid == item.AttributeID&&s.IsCompareAttribute==item.IsCompareAttribute);
 
                 if (getSingle != null)
                 {
                     try
                     {
                         getSingle.Aid = item.AttributeID;
+                        getSingle.IsCompareAttribute = item.IsCompareAttribute;
                         getSingle.Average = average;
                         getSingle.Top10 = top10;
                         getSingle.Top20 = top20;
@@ -89,6 +96,7 @@ namespace PriceMe.RichAttributeDisplayTool.Process
                     var acc = new Prt.RichClass.AttributeCategoryComparisons();
 
                     acc.Aid = item.AttributeID;
+                    acc.IsCompareAttribute = item.IsCompareAttribute;
                     acc.Average = average;
                     acc.Top10 = top10;
                     acc.Top20 = top20;
@@ -112,7 +120,9 @@ namespace PriceMe.RichAttributeDisplayTool.Process
                 LogSucc(accList, updateRecord, updateSucc);
             else 
                 LogFailed(accList, updateRecord);
-            
+
+
+            Console.WriteLine("Exe Success.");
         }
 
         private static void LogFailed(List<RichClass.AttributeCategoryComparisons> accList, Dictionary<int, int> updateRecord)
@@ -180,9 +190,9 @@ namespace PriceMe.RichAttributeDisplayTool.Process
 
             var result = proCount - roundCount;
 
-            var top10 = AttList[result - 1].Value;
+            var rank = AttList[result - 1].Value;
 
-            return top10.ToString();
+            return rank.ToString();
         }
 
         /// <summary>
@@ -196,6 +206,7 @@ namespace PriceMe.RichAttributeDisplayTool.Process
 
             sql.Append(" ID,");
             sql.Append(" AttributeID,");
+            sql.Append(" IsCompareAttribute,");
             sql.Append(" TypeID,");
             sql.Append(" [IsComparison],");
             sql.Append(" [DisplayAdjectiveBetter],");
@@ -209,7 +220,7 @@ namespace PriceMe.RichAttributeDisplayTool.Process
             #endregion
         }
         /// <summary>
-        /// 获取分类下有Attribute的产品总数
+        /// 获取分类下有Attribute的产品总数(一般Attribute)
         /// </summary>
         /// <param name="aid"></param>
         private static void getProductTotalByAid(int aid)
@@ -221,7 +232,6 @@ namespace PriceMe.RichAttributeDisplayTool.Process
             sql.Append("select");
 
             sql.Append(" ProductID,");
-            sql.Append(" PD.AttributeValueID,");
             sql.Append(" Value");
 
             sql.Append(" from");
@@ -261,7 +271,38 @@ namespace PriceMe.RichAttributeDisplayTool.Process
             #endregion
 
             AttList = Prt.DataProcessTool.SqlHelper.sqlReader<Prt.RichClass.ProductValue>(sqlFormat.ToString()).OrderBy(o=>o.Value).ToList();
+        }
 
+        /// <summary>
+        /// 获取分类下有Attribute的产品总数(Compare Attribute)
+        /// </summary>
+        /// <param name="aid"></param>
+        private static void getComProductTotalByAid(int aid)
+        {
+
+            #region sql
+
+                var sql = new StringBuilder();
+                sql.Append("select CAM.ProductID,CompareValue as Value");
+                sql.Append(" from dbo.Store_Compare_Attribute_Map CAM inner join Store_Compare_Attributes CA");
+                sql.Append(" on CAM.CompareAttributeID=CA.CompareAttributeID");
+                sql.AppendFormat(" where CAM.CompareAttributeID={0}",aid);
+                sql.Append(" and CAM.ProductID in");
+                sql.Append(" (select ProductID");
+                sql.Append(" from CSK_Store_Product");
+                sql.Append(" where ProductStatus=1 and ProductID in");
+                sql.Append(" (select ProductID");
+                sql.Append(" from CSK_Store_RetailerProduct");
+                sql.Append(" where RetailerProductStatus=1 and IsDeleted=0 and");
+                sql.Append(" RetailerId in");
+                sql.Append(" (select RetailerId");
+                sql.Append(" from CSK_Store_Retailer");
+                sql.Append(" where RetailerStatus=1");
+                sql.Append(" )))");
+
+            #endregion
+
+                AttList = Prt.DataProcessTool.SqlHelper.sqlReader<Prt.RichClass.ProductValue>(sql.ToString()).OrderBy(o => o.Value).ToList();
         }
 
 
