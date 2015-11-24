@@ -78,7 +78,7 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
         /// <returns>返回受影响的行数</returns>
         public static string InsertToTables(List<AttributeCategoryComparisons> list) 
         {
-            string err_msg = "";
+            string err_msg = ""; 
 
             if (list.Count <= 0) return "error";
 
