@@ -84,6 +84,8 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
 		
 		private int _Aid;
 		
+		private bool _IsCompareAttribute;
+		
 		private bool _IsHigherBetter;
 		
 		private string _Top10;
@@ -112,6 +114,8 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
     partial void OnIDChanged();
     partial void OnAidChanging(int value);
     partial void OnAidChanged();
+    partial void OnIsCompareAttributeChanging(bool value);
+    partial void OnIsCompareAttributeChanged();
     partial void OnIsHigherBetterChanging(bool value);
     partial void OnIsHigherBetterChanged();
     partial void OnTop10Changing(string value);
@@ -175,6 +179,26 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
 					this._Aid = value;
 					this.SendPropertyChanged("Aid");
 					this.OnAidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsCompareAttribute", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public bool IsCompareAttribute
+		{
+			get
+			{
+				return this._IsCompareAttribute;
+			}
+			set
+			{
+				if ((this._IsCompareAttribute != value))
+				{
+					this.OnIsCompareAttributeChanging(value);
+					this.SendPropertyChanging();
+					this._IsCompareAttribute = value;
+					this.SendPropertyChanged("IsCompareAttribute");
+					this.OnIsCompareAttributeChanged();
 				}
 			}
 		}

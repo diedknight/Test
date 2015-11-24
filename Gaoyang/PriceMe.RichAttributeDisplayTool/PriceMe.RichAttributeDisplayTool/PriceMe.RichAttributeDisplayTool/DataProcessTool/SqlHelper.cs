@@ -51,14 +51,21 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
                             while (sdr.Read())
                             {
                                 T list = new T();
+                                bool error = false;
 
                                 list.GetPropertyInfoArray<T>().ToList().ForEach(f =>
                                 {
-                                    //if (!string.IsNullOrEmpty(sdr[f.Name].ToString()))
-                                    f.SetValue(list, Utility.ChangeType(sdr[f.Name],f.PropertyType),null);
+                                    var value=Utility.ChangeType(sdr[f.Name],f.PropertyType);
+                                    if (value.ToString().Contains("change-error")) {
+                                        error = true;
+                                        return;
+                                    } 
+                                       
+                                    f.SetValue(list, value, null);
                                 });
                                 
-                                commonlist.Add(list);
+                                if(!error)
+                                    commonlist.Add(list);
                             }
                             conn.Close();
                         }
@@ -85,6 +92,7 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
             var dt = new DataTable("AttributeCategoryComparison");
             dt.Columns.Add("Aid", typeof(Int32));
             dt.Columns.Add("IsHigherBetter", typeof(Boolean));
+            dt.Columns.Add("IsCompareAttribute", typeof(Boolean));
             dt.Columns.Add("Top10", typeof(String));
             dt.Columns.Add("Top20", typeof(String));
             dt.Columns.Add("Top30", typeof(String));
@@ -101,6 +109,7 @@ namespace PriceMe.RichAttributeDisplayTool.DataProcessTool
 
                 dr["Aid"] = r.Aid;
                 dr["IsHigherBetter"] = r.IsHigherBetter;
+                dr["IsCompareAttribute"] = r.IsCompareAttribute;
                 dr["Top10"] = r.Top10;
                 dr["Top20"] = r.Top20;
                 dr["Top30"] = r.Top30;

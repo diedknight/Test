@@ -4,6 +4,7 @@
     <Type Name="AttributeCategoryComparison">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" IsVersion="true" />
       <Column Name="Aid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCompareAttribute" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsHigherBetter" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Top10" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Top20" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
