@@ -89,7 +89,9 @@
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataProcessTool\AttributeCategoryComparison.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>AttributeCategoryComparison.designer.cs</LastGenOutput>
