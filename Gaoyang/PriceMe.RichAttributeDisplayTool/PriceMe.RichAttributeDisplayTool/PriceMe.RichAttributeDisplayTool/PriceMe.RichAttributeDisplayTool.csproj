@@ -71,6 +71,11 @@
     <Compile Include="DataProcessTool\Dynamic.cs" />
     <Compile Include="DataProcessTool\LinqBllBase.cs" />
     <Compile Include="LogFileController.cs" />
+    <Compile Include="Process\DataRank.cs" />
+    <Compile Include="Process\LogEventArgs.cs" />
+    <Compile Include="Process\LogTxt.cs" />
+    <Compile Include="Process\ProcessData.cs" />
+    <Compile Include="Process\RankEventArgs.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
