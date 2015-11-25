@@ -13,14 +13,14 @@ namespace PriceMe.RichAttributeDisplayTool
         public LogFileController() {
             if (!Directory.Exists(SiteMap))
                 Directory.CreateDirectory(SiteMap);
-            failed = new StreamWriter(SiteMap + "\\RichAttribute-Fail-" + DateTime.Now.ToString("yyyy-MM-dd") + ".xml");
+            failed = new StreamWriter(SiteMap + "\\RichAttribute-Fail-" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
         }
 
         public LogFileController(string succ)
         {
             if (!Directory.Exists(SiteMap))
                 Directory.CreateDirectory(SiteMap);
-            success = new StreamWriter(SiteMap + "\\RichAttribute-" + succ + "-" + DateTime.Now.ToString("yyyy-MM-dd") + ".xml");
+            success = new StreamWriter(SiteMap + "\\RichAttribute-" + succ + "-" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
         }
 
 
