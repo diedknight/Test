@@ -149,9 +149,10 @@ namespace MergeReportTool
             if (avgPrice > 0)
             {
                 decimal ratePrice = decimal.Round(Math.Abs(data.RetailerPrice - avgPrice) / avgPrice, 2);
+                decimal dataRate = decimal.Round((data.RetailerPrice - avgPrice) / avgPrice, 2);
                 if (ratePrice > PriceRateJudge && data.RetailerProductCondition != 4)
                 {
-                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, string.Empty, string.Empty, ratePrice.ToString(), string.Empty);
+                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty);
                     isError = true;
                 }
             }
@@ -171,45 +172,53 @@ namespace MergeReportTool
                     if (k.keywordType == 1)
                     {
                         #region keywordtype = 1
-                        string pvalue = string.Empty;
-                        string pkey = string.Empty;
+                        List<string> listPvalue = new List<string>();
+                        List<string> listPkey = new List<string>();
+
                         bool isCheck = false;
                         string[] temps = k.Keyword.Split(',');
                         foreach (string temp in temps)
                         {
-                            Regex reg = new Regex(@" (?<value>\d+)" + temp + " ", RegexOptions.IgnoreCase);
-                            if (string.IsNullOrEmpty(pkey))
+                            string pvalue = string.Empty;
+                            string pkey = string.Empty;
+
+                            string company = temp;
+                            int test = data.ProductName.LastIndexOf(temp);
+                            if (test != (data.ProductName.Length - temp.Length))
+                                company = temp + " ";
+
+                            Regex reg = new Regex(@" (?<value>\d+)" + company + @"| (?<value>\d+\.\d+)" + company + @"| (?<value>\d+) " + company + @"| (?<value>\d+\.\d+) " + company, RegexOptions.IgnoreCase);
+                            if (temp.ToLower() == "gb")
                             {
-                                Match ma = reg.Match(data.ProductName);
-                                if (ma.Success)
+                                Regex keyReg = new Regex(@" " + company + @"|" + company, RegexOptions.IgnoreCase);
+                                MatchCollection mas = keyReg.Matches(data.ProductName);
+                                if(mas.Count > 1)
+                                    reg = new Regex(@" (?<value>\d+)" + company + @"| (?<value>\d+\.\d+)" + company + @"| (?<value>\d+) " + company + @"| (?<value>\d+\.\d+) " + company + @"|(?<value>\d+\.\d+)" + company + @"|(?<value>\d+\.\d+) " + company + @"|(?<value>\d+)" + company + @"|(?<value>\d+) " + company, RegexOptions.IgnoreCase);
+                            }
+                            
+                            if (listPvalue.Count == 0)
+                            {
+                                MatchCollection mas = reg.Matches(data.ProductName);
+                                if (mas.Count > 0)
                                 {
-                                    pvalue = ma.Groups["value"].Value;
-                                    pkey = temp;
+                                    foreach (Match ma in mas)
+                                    {
+                                        pvalue = ma.Groups["value"].Value;
+                                        pkey = temp;
+                                        listPvalue.Add(pvalue);
+                                        listPkey.Add(pkey);
+                                    }
                                 }
                             }
-
+                            
                             if (!isCheck)
                             {
-                                Match ma = reg.Match(data.RetailerProductName);
-                                if (ma.Success)
-                                {
-                                    isCheck = true;
-                                }
-                            }
+                                string rpcompany = temp;
+                                test = data.RetailerProductName.LastIndexOf(temp);
+                                if (test != (data.RetailerProductName.Length - temp.Length))
+                                    rpcompany = temp + " ";
 
-                            if (string.IsNullOrEmpty(pkey))
-                            {
-                                reg = new Regex(@" (?<value>\d+) " + temp + " ", RegexOptions.IgnoreCase);
-                                Match ma = reg.Match(data.ProductName);
-                                if (ma.Success)
-                                {
-                                    pvalue = ma.Groups["value"].Value;
-                                    pkey = temp;
-                                }
-                            }
-
-                            if (!isCheck)
-                            {
+                                reg = new Regex(@" (?<value>\d+)" + rpcompany + @"| (?<value>\d+.\d+)" + rpcompany + @"| (?<value>\d+) " + rpcompany + @"| (?<value>\d+.\d+) " + rpcompany, RegexOptions.IgnoreCase);
                                 Match ma = reg.Match(data.RetailerProductName);
                                 if (ma.Success)
                                 {
@@ -218,64 +227,107 @@ namespace MergeReportTool
                             }
                         }
 
-                        if (isCheck && !string.IsNullOrEmpty(pkey) && !string.IsNullOrEmpty(pvalue))
+                        if (isCheck && listPvalue.Count > 0)
                         {
                             bool isTrue = false;
-                            foreach (string temp in temps)
+                            for (int i = 0; i < listPvalue.Count; i++)
                             {
-                                string key = " " + pvalue + temp + " ";
-                                string key1 = " " + pvalue + " " + temp + " ";
-                                if (pkey.ToLower() == "gb" && temp.ToLower() == "tb")
-                                {
-                                    int value = 0;
-                                    int.TryParse(pvalue, out value);
+                                string pvalue = listPvalue[i];
+                                string pkey = listPkey[i];
 
-                                    key = " " + (value / 1024) + temp + " ";
-                                    key1 = " " + (value / 1024) + " " + temp + " ";
+                                foreach (string temp in temps)
+                                {
+                                    string rpcompany = temp;
+                                    int test = data.RetailerProductName.LastIndexOf(temp);
+                                    if (test != (data.RetailerProductName.Length - temp.Length))
+                                        rpcompany = temp + " ";
+
+                                    string key = " " + pvalue + rpcompany;
+                                    string key1 = " " + pvalue + " " + rpcompany;
+                                    if (pkey.ToLower() == "gb" && temp.ToLower() == "tb")
+                                    {
+                                        int value = 0;
+                                        int.TryParse(pvalue, out value);
+
+                                        key = " " + (value / 1024) + rpcompany;
+                                        key1 = " " + (value / 1024) + " " + rpcompany;
+                                        if (data.RetailerProductName.ToLower().Contains(key.ToLower()))
+                                        {
+                                            isTrue = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            key = " " + (value / 1000) + rpcompany;
+                                            key1 = " " + (value / 1000) + " " + rpcompany;
+                                        }
+                                    }
+                                    else if (pkey.ToLower() == "tb" && temp.ToLower() == "gb")
+                                    {
+                                        int value = 0;
+                                        int.TryParse(pvalue, out value);
+
+                                        key = " " + (value * 1024) + rpcompany;
+                                        key1 = " " + (value * 1024) + " " + rpcompany;
+                                        if (data.RetailerProductName.ToLower().Contains(key.ToLower()))
+                                        {
+                                            isTrue = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            key = " " + (value * 1000) + rpcompany;
+                                            key1 = " " + (value * 1000) + " " + rpcompany;
+                                        }
+                                    }
+
                                     if (data.RetailerProductName.ToLower().Contains(key.ToLower()))
                                     {
                                         isTrue = true;
                                         break;
                                     }
-                                    else
-                                    {
-                                        key = " " + (value / 1000) + temp + " ";
-                                        key1 = " " + (value / 1000) + " " + temp + " ";
-                                    }
-                                }
-                                else if (pkey.ToLower() == "tb" && temp.ToLower() == "gb")
-                                {
-                                    int value = 0;
-                                    int.TryParse(pvalue, out value);
-
-                                    key = " " + (value * 1024) + temp + " ";
-                                    key1 = " " + (value * 1024) + " " + temp + " ";
-                                    if (data.RetailerProductName.ToLower().Contains(key.ToLower()))
+                                    else if (data.RetailerProductName.ToLower().Contains(key1.ToLower()))
                                     {
                                         isTrue = true;
                                         break;
                                     }
-                                    else
-                                    {
-                                        key = " " + (value * 1000) + temp + " ";
-                                        key1 = " " + (value * 1000) + " " + temp + " ";
-                                    }
-                                }
 
-                                if (data.RetailerProductName.ToLower().Contains(key.ToLower()))
-                                {
-                                    isTrue = true;
-                                    break;
-                                }
-                                else if(data.RetailerProductName.ToLower().Contains(key1.ToLower()))
-                                {
-                                    isTrue = true;
-                                    break;
+                                    if (temp.ToLower() == "gb" && listPvalue.Count == 1)
+                                    {
+                                        string value = string.Empty;
+                                        Regex reg = new Regex(@" (?<value>\d+)" + rpcompany + @"| (?<value>\d+) " + rpcompany, RegexOptions.IgnoreCase);
+                                        MatchCollection mas = reg.Matches(data.RetailerProductName);
+
+                                        if (mas.Count > 0)
+                                        {
+                                            bool isValue = true;
+                                            foreach (Match ma in mas)
+                                            {
+                                                value = ma.Groups["value"].Value;
+                                                int intvalue = 0;
+                                                int.TryParse(value, out intvalue);
+                                                if (intvalue > 16)
+                                                    isValue = false;
+                                            }
+                                            if (isValue)
+                                                isTrue = true;
+                                        }
+                                    }
                                 }
                             }
 
                             if (!isTrue)
                             {
+                                string pvalue = string.Empty;
+                                foreach (string p in listPvalue)
+                                {
+                                    pvalue += p + ",";
+                                }
+                                string pkey = string.Empty;
+                                foreach (string p in listPkey)
+                                {
+                                    pkey += p + ",";
+                                }
                                 isError = true;
                                 stringError = "type 1:" + pvalue + pkey;
                             }
@@ -285,28 +337,15 @@ namespace MergeReportTool
                     else if (k.keywordType == 2)
                     {
                         string pkey = string.Empty;
-                        string[] temps = k.Keyword.Split(',');
+                        string[] temps = k.Keyword.ToLower().Split(',');
                         foreach (string temp in temps)
                         {
-                            if (data.ProductName.Contains(" " + temp + " "))
-                            {
-                                pkey = temp;
-                                break;
-                            }
-                        }
-                        if (!string.IsNullOrEmpty(pkey) && !data.RetailerProductName.Contains(" " + pkey + " "))
-                        {
-                            isError = true;
-                            stringError = "type 2:" + pkey + "|" + data.RetailerProductName;
-                        }
-                    }
-                    else if (k.keywordType == 3)
-                    {
-                        string pkey = string.Empty;
-                        string[] temps = k.Keyword.Split(',');
-                        foreach (string temp in temps)
-                        {
-                            if (data.ProductName.Contains(" " + temp + " "))
+                            string company = temp;
+                            int test = data.ProductName.ToLower().LastIndexOf(temp);
+                            if (test != (data.ProductName.Length - temp.Length))
+                                company = temp + " ";
+
+                            if (data.ProductName.ToLower().Contains(" " + company))
                             {
                                 pkey = temp;
                                 break;
@@ -314,11 +353,46 @@ namespace MergeReportTool
                         }
                         if (!string.IsNullOrEmpty(pkey))
                         {
-                            string[] ntemps = k.Keyword.Replace(pkey, "").Split(',');
+                            string company = pkey.ToLower();
+                            int test = data.RetailerProductName.ToLower().LastIndexOf(pkey);
+                            if (test != (data.RetailerProductName.Length - pkey.Length))
+                                company = pkey.ToLower() + " ";
+                            if (!data.RetailerProductName.ToLower().Contains(" " + pkey))
+                            {
+                                isError = true;
+                                stringError = "type 2:" + pkey;
+                            }
+                        }
+                    }
+                    else if (k.keywordType == 3)
+                    {
+                        string pkey = string.Empty;
+                        string[] temps = k.Keyword.ToLower().Split(',');
+                        foreach (string temp in temps)
+                        {
+                            string company = temp;
+                            int test = data.ProductName.ToLower().LastIndexOf(temp);
+                            if (test != (data.ProductName.Length - temp.Length))
+                                company = temp + " ";
+
+                            if (data.ProductName.ToLower().Contains(" " + company))
+                            {
+                                pkey = temp;
+                                break;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(pkey))
+                        {
+                            string[] ntemps = k.Keyword.ToLower().Replace(pkey, "").Split(',');
                             foreach (string ntemp in ntemps)
                             {
                                 if (string.IsNullOrEmpty(ntemp)) continue;
-                                if (data.RetailerProductName.Contains(" " + ntemp + " "))
+
+                                string company = ntemp;
+                                int test = data.RetailerProductName.ToLower().LastIndexOf(ntemp);
+                                if (test != (data.RetailerProductName.ToLower().Length - ntemp.Length))
+                                    company = ntemp + " ";
+                                if (data.RetailerProductName.ToLower().Contains(" " + company))
                                 {
                                     isError = true;
                                     stringError = "type 3:" + pkey + "|" + ntemp;
@@ -333,7 +407,7 @@ namespace MergeReportTool
                 }
 
                 if (isError)
-                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, string.Empty, string.Empty, string.Empty, stringError);
+                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, string.Empty, stringError);
             }
 
             return isError;
@@ -412,18 +486,18 @@ namespace MergeReportTool
                             }
 
                             if (pkeyword != rpkeyword)
-                                InsertMergeErrorReport(data.RetailerProductId, data.ProductId, manuname, pkeyword + "|" + rpkeyword, string.Empty, string.Empty);
+                                InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, manuname, pkeyword + "|" + rpkeyword, string.Empty, string.Empty);
                         }
                     }
                 }
             }
-            catch (Exception ex) { Write("check productname error....... " + ex.Message + ex.StackTrace + DateTime.Now); }
+            catch (Exception ex) { Write("check productname error....... rpid:" + data.RetailerProductId + ex.Message + ex.StackTrace + DateTime.Now); }
         }
 
         private string[] SpecialCharacter(string productName)
         {
             foreach (string item in listSpecial)
-                productName = productName.Replace(item, " ");
+                productName = productName.Replace(item, "");
             string[] temp = productName.ToLower().Split(' ');
             if (temp.Length > 3 && temp[1] == "&")
             {
@@ -438,13 +512,15 @@ namespace MergeReportTool
                 return temp;
         }
 
-        private void InsertMergeErrorReport(int rpid, int pid, string SameBrand, string SameModel, string PriceRate, string keyword)
+        private void InsertMergeErrorReport(int rpid, int pid, int cid, string SameBrand, string SameModel, string PriceRate, string keyword)
         {
             Write("Insert merge error report......." + DateTime.Now);
             bool isUpdate = false;
-            string sql = "Select * From CSK_Store_MergeErrorReport Where PID = " + pid + " And RPID = " + rpid;
+            string sql = "Select Id, IsChecked, NextdisplayDate From CSK_Store_MergeErrorReport Where PID = " + pid + " And RPID = " + rpid;
             try
             {
+                bool isCheck = false;
+                DateTime nextdate = DateTime.Now;
                 StoredProcedure sp = new StoredProcedure("");
                 sp.Command.CommandSql = sql;
                 sp.Command.CommandTimeout = 0;
@@ -453,16 +529,23 @@ namespace MergeReportTool
                 while (dr.Read())
                 {
                     isUpdate = true;
+                    bool.TryParse(dr["IsChecked"].ToString(), out isCheck);
+                    DateTime.TryParse(dr["NextdisplayDate"].ToString(), out nextdate);
                 }
                 dr.Close();
 
                 sql = "Insert CSK_Store_MergeErrorReport values(" + pid + ", " + rpid + ", "
                     + "'" + SameBrand + "', '" + SameModel + "', '" + PriceRate + "', '" + keyword + "', 1, 0, 0, '', "
-                    + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                    + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', " + cid + ")";
                 if (isUpdate)
                 {
+                    string stringsql = string.Empty;
+                    if (isCheck && DateTime.Now > nextdate)
+                        stringsql = "IsError = 1, IsChecked = 0, IsBlack = 0, ";
+
                     sql = "Update CSK_Store_MergeErrorReport Set SameBrand = '" + SameBrand + "', SameModel = '" + SameModel + "', "
-                        + "PriceRate = '" + PriceRate + "', ModifiedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', "
+                        + "PriceRate = '" + PriceRate + "', "
+                        + "CreatedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', " + stringsql
                         + "Keyword = '" + keyword + "' Where PID = " + pid + " And RPID = " + rpid;
                 }
 
@@ -520,7 +603,7 @@ namespace MergeReportTool
             try
             {
                 Write("Get all retailerid......." + DateTime.Now);
-                string sql = "Select RetailerId From CSK_Store_Retailer Where RetailerStatus = 1 And RetailerCountry " + CountryId;
+                string sql = "Select RetailerId From CSK_Store_Retailer Where RetailerStatus = 1 And RetailerCountry = " + CountryId;
                 StoredProcedure sp = new StoredProcedure("");
                 sp.Command.CommandSql = sql;
                 sp.Command.CommandTimeout = 0;
