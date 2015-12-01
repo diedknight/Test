@@ -36,9 +36,9 @@ namespace CheckImagesTool
         public void Check()
         {
             Writer("Begin......" + DateTime.Now);
-            imagePathDriver = ConfigurationManager.AppSettings["CheckImagePathDriver"].ToString();
+            imagePathDriver = ConfigurationManager.AppSettings["CheckImagePathDriver"].ToString().ToLower();
             string imagePath = ConfigurationManager.AppSettings["CheckImagePath"].ToString();
-            largeImagePatch = ConfigurationManager.AppSettings["LargeImagePatch"].ToString();
+            largeImagePatch = ConfigurationManager.AppSettings["LargeImagePatch"].ToString().ToLower();
 
             targetPath = System.Configuration.ConfigurationManager.AppSettings["targetOriginalPath"];
             targetIP = System.Configuration.ConfigurationManager.AppSettings["targetIPAddress"];
@@ -108,67 +108,86 @@ namespace CheckImagesTool
 
         private void CheckDatabase(string path)
         {
-            string imagename = path.Substring(path.LastIndexOf('\\')).Replace("\\", "");
-            bool isCheck = false;
-            foreach (KeyValuePair<string, string> pair in dicTable)
+            try
             {
-                string sql = "select count(" + pair.Value + ") from " + pair.Key + " where " + pair.Value + " like '%" + imagename + "%'";
-                StoredProcedure sp = new StoredProcedure("");
-                sp.Command.CommandSql = sql;
-                sp.Command.CommandTimeout = 0;
-                sp.Command.CommandType = CommandType.Text;
-                IDataReader dr = sp.ExecuteReader();
-                while (dr.Read())
+                string imagename = path.Substring(path.LastIndexOf('\\')).Replace("\\", "");
+                bool isCheck = false;
+                foreach (KeyValuePair<string, string> pair in dicTable)
                 {
-                    int count = 0;
-                    int.TryParse(dr[0].ToString(), out count);
-                    if (count > 0)
-                        isCheck = true;
+                    string sql = "select count(" + pair.Value + ") from " + pair.Key + " where " + pair.Value + " like '%" + imagename + "%'";
+                    StoredProcedure sp = new StoredProcedure("");
+                    sp.Command.CommandSql = sql;
+                    sp.Command.CommandTimeout = 0;
+                    sp.Command.CommandType = CommandType.Text;
+                    IDataReader dr = sp.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        int count = 0;
+                        int.TryParse(dr[0].ToString(), out count);
+                        if (count > 0)
+                            isCheck = true;
+                    }
+                    dr.Close();
+
+                    if (isCheck)
+                        break;
                 }
-                dr.Close();
 
-                if (isCheck)
-                    break;
-            }
-
-            if (!isCheck)
-            {
-                Writer("iamge: " + path);
-                if (!isDebug)
+                if (!isCheck)
                 {
-                    string imagepath = path.Substring(0, path.LastIndexOf('\\'));
-                    DeleteImages(imagepath, imagename);
+                    Writer("iamge: " + path);
+                    if (!isDebug)
+                    {
+                        string imagepath = path.Substring(0, path.LastIndexOf('\\'));
+                        DeleteImages(imagepath.ToLower(), imagename);
+                    }
                 }
             }
+            catch (Exception ex) { Writer("error: " + ex.Message + ex.StackTrace); }
         }
 
         private void DeleteImages(string path, string fileName)
         {
-            CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath, userID, password, path, fileName);
-            File.Delete(path + "\\" + fileName);
-            string shortFileName = fileName.Substring(0, fileName.LastIndexOf('.'));
-            string ex = fileName.Substring(fileName.LastIndexOf('.'));
-
-            string sfileName = shortFileName + "_s" + ex;
-            CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath, userID, password, path, sfileName);
-            File.Delete(path + "\\" + sfileName);
-
-            string mfileName = shortFileName + "_m" + ex;
-            CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath, userID, password, path, mfileName);
-            File.Delete(path + "\\" + mfileName);
-
-            string msfileName = shortFileName + "_ms" + ex;
-            CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath, userID, password, path, msfileName);
-            File.Delete(path + "\\" + msfileName);
-
-            string lpath = path.Replace(imagePathDriver, largeImagePatch);
-            string lfileName = shortFileName + "_l" + ex;
-
-            if (File.Exists(lpath + "\\" + lfileName))
+            try
             {
-                CopyFile.NetWorkCopy.CopyFile(targetIP, targetLargePath, userID, password, path, lfileName);
-                File.Delete(lpath + "\\" + lfileName);
+                string simagepath = path.Replace(imagePathDriver, "");
+                CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath + "\\" + simagepath, userID, password, path + "\\" + fileName, fileName);
+                File.Delete(path + "\\" + fileName);
+                string shortFileName = fileName.Substring(0, fileName.LastIndexOf('.'));
+                string ex = fileName.Substring(fileName.LastIndexOf('.'));
+
+                string sfileName = shortFileName + "_s" + ex;
+                if (File.Exists(path + "\\" + sfileName))
+                {
+                    CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath + "\\" + simagepath, userID, password, path + "\\" + sfileName, sfileName);
+                    File.Delete(path + "\\" + sfileName);
+                }
+
+                string mfileName = shortFileName + "_m" + ex;
+                if (File.Exists(path + "\\" + mfileName))
+                {
+                    CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath + "\\" + simagepath, userID, password, path + "\\" + mfileName, mfileName);
+                    File.Delete(path + "\\" + mfileName);
+                }
+
+                string msfileName = shortFileName + "_ms" + ex;
+                if (File.Exists(path + "\\" + msfileName))
+                {
+                    CopyFile.NetWorkCopy.CopyFile(targetIP, targetPath + "\\" + simagepath, userID, password, path + "\\" + msfileName, msfileName);
+                    File.Delete(path + "\\" + msfileName);
+                }
+
+                string lpath = path.Replace(imagePathDriver, largeImagePatch);
+                string lfileName = shortFileName + "_l" + ex;
+
+                if (File.Exists(lpath + "\\" + lfileName))
+                {
+                    string limagepath = lpath.Replace(largeImagePatch, "");
+                    CopyFile.NetWorkCopy.CopyFile(targetIP, targetLargePath + "\\" + limagepath, userID, password, lpath + "\\" + lfileName, lfileName);
+                    File.Delete(lpath + "\\" + lfileName);
+                }
             }
+            catch (Exception ex) { Writer("error: " + ex.Message + ex.StackTrace); }
         }
 
         private void Writer(string info)
