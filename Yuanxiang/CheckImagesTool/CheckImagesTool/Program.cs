@@ -11,6 +11,8 @@ namespace CheckImagesTool
     {
         static void Main(string[] args)
         {
+            IndexController.Compare(@"\Images\ProductImages\StRetailer477\bg42655004610.jpg");
+
             string logpath = System.Configuration.ConfigurationManager.AppSettings["LogPath"];
             CreateDir(logpath);
             StreamWriter sw = new StreamWriter(logpath + "\\" + DateTime.Now.ToString("yyyyMMddHH") + ".txt");

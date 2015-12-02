@@ -19,6 +19,7 @@ namespace CheckImagesTool
             set { _sw = value; }
         }
 
+        private string imagePath;
         private string imagePathDriver;
         private string imagePathByKeyword;
         private string largeImagePatch;
@@ -32,12 +33,14 @@ namespace CheckImagesTool
         private DateTime imageCreateon;
         private Dictionary<string, string> dicTable;
         private bool isDebug;
+        private DBImageCache imageCache = null;
 
-        public void Check()
+        public CheckImages()
         {
-            Writer("Begin......" + DateTime.Now);
+            imageCache = DBImageCache.Instance;
+
             imagePathDriver = ConfigurationManager.AppSettings["CheckImagePathDriver"].ToString().ToLower();
-            string imagePath = ConfigurationManager.AppSettings["CheckImagePath"].ToString();
+            imagePath = ConfigurationManager.AppSettings["CheckImagePath"].ToString();
             largeImagePatch = ConfigurationManager.AppSettings["LargeImagePatch"].ToString().ToLower();
 
             targetPath = System.Configuration.ConfigurationManager.AppSettings["targetOriginalPath"];
@@ -59,15 +62,27 @@ namespace CheckImagesTool
 
                 string[] tbls = temp.Split(',');
                 if (!dicTable.ContainsKey(tbls[0]))
+                {
                     dicTable.Add(tbls[0], tbls[1]);
+                    imageCache.Add(tbls[0], tbls[1]);
+                }
             }
 
+            Writer("Init Cache...");
+            imageCache.Init();
+            Writer("Init Cache...End");
+        }
+
+        public void Check()
+        {
+            Writer("Begin......" + DateTime.Now);
+            
             string path = imagePathDriver + imagePath;
 
             DirectoryInfo info = new DirectoryInfo(path);
             FileSystemInfo[] infos = info.GetFileSystemInfos();
             foreach (FileSystemInfo fs in infos)
-            {
+            {                
                 if (Directory.Exists(fs.FullName))
                 {
                     if (string.IsNullOrEmpty(imagePathByKeyword) || fs.FullName.ToLower().Contains(imagePathByKeyword))
@@ -110,28 +125,32 @@ namespace CheckImagesTool
         {
             try
             {
-                string imagename = path.Substring(path.LastIndexOf('\\')).Replace("\\", "");
+                //string imagename = path.Substring(path.LastIndexOf('\\')).Replace("\\", "");
+                string imagename = Path.GetFileName(path);
                 bool isCheck = false;
-                foreach (KeyValuePair<string, string> pair in dicTable)
-                {
-                    string sql = "select count(" + pair.Value + ") from " + pair.Key + " where " + pair.Value + " like '%" + imagename + "%'";
-                    StoredProcedure sp = new StoredProcedure("");
-                    sp.Command.CommandSql = sql;
-                    sp.Command.CommandTimeout = 0;
-                    sp.Command.CommandType = CommandType.Text;
-                    IDataReader dr = sp.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        int count = 0;
-                        int.TryParse(dr[0].ToString(), out count);
-                        if (count > 0)
-                            isCheck = true;
-                    }
-                    dr.Close();
 
-                    if (isCheck)
-                        break;
-                }
+                isCheck = imageCache.Compare(imagename);
+
+                //foreach (KeyValuePair<string, string> pair in dicTable)
+                //{
+                //    string sql = "select count(" + pair.Value + ") from " + pair.Key + " where " + pair.Value + " like '%" + imagename + "%'";
+                //    StoredProcedure sp = new StoredProcedure("");
+                //    sp.Command.CommandSql = sql;
+                //    sp.Command.CommandTimeout = 0;
+                //    sp.Command.CommandType = CommandType.Text;
+                //    IDataReader dr = sp.ExecuteReader();
+                //    while (dr.Read())
+                //    {
+                //        int count = 0;
+                //        int.TryParse(dr[0].ToString(), out count);
+                //        if (count > 0)
+                //            isCheck = true;
+                //    }
+                //    dr.Close();
+
+                //    if (isCheck)
+                //        break;
+                //}
 
                 if (!isCheck)
                 {

@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Renci.SshNet">
-      <HintPath>..\PriceMeToolDLL\Renci.SshNet.dll</HintPath>
+      <HintPath>..\..\lib\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

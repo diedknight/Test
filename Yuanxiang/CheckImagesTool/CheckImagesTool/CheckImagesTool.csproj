@@ -32,8 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\lib\Lucene.Net.dll</HintPath>
+    </Reference>
     <Reference Include="SubSonic.Core">
-      <HintPath>..\..\..\..\Pam\PriceMePam3.5\PriceMePamDLL\SubSonic.Core.dll</HintPath>
+      <HintPath>..\..\lib\SubSonic.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -47,6 +50,8 @@
   <ItemGroup>
     <Compile Include="CheckImages.cs" />
     <Compile Include="DataController.cs" />
+    <Compile Include="DBImageCache.cs" />
+    <Compile Include="IndexController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
