@@ -67,10 +67,8 @@ namespace CheckImagesTool
                     imageCache.Add(tbls[0], tbls[1]);
                 }
             }
-
-            Writer("Init Cache...");
-            imageCache.Init();
-            Writer("Init Cache...End");
+            
+            imageCache.Init();            
         }
 
         public void Check()
