@@ -1,0 +1,9 @@
+D:\GY_work\PamUserAccount\bin\PamAccountGenerator.dll.config
+D:\GY_work\PamUserAccount\bin\PamAccountGenerator.dll
+D:\GY_work\PamUserAccount\bin\PamAccountGenerator.pdb
+D:\GY_work\PamUserAccount\bin\AWSSDK.dll
+D:\GY_work\PamUserAccount\bin\PriceMeDBA.dll
+D:\GY_work\PamUserAccount\bin\SubSonic.Core.dll
+D:\GY_work\PamUserAccount\obj\Release\PamAccountGenerator.dll
+D:\GY_work\PamUserAccount\obj\Release\PamAccountGenerator.pdb
+D:\GY_work\PamUserAccount\obj\Release\PamAccountGenerator.csprojResolveAssemblyReference.cache
