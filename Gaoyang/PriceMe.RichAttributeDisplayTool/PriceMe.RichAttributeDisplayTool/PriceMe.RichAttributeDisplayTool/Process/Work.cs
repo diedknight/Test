@@ -13,10 +13,6 @@ namespace PriceMe.RichAttributeDisplayTool.Process
             
         }
 
-        static List<Prt.RichClass.AttributeDisplayType> Adt=new List<RichClass.AttributeDisplayType>();
-
-        static List<Prt.RichClass.ProductValue> AttList = new List<RichClass.ProductValue>();
-
 
         public static void StartWork()
         {
