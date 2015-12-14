@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<product>
+  <product_id>630382</product_id>
+  <product_name>Canon EOS 1200D / Rebel T5</product_name>
+  <category_id>1</category_id>
+  <category_name>Digital cameras</category_name>
+  <your_product_ids>
+    <your_product_id>889319249</your_product_id>
+    <your_product_id>889319248</your_product_id>
+    <your_product_id>890515480</your_product_id>
+    <your_product_id>889265072</your_product_id>
+    <your_product_id>891009255</your_product_id>
+  </your_product_ids>
+  <scores>
+    <score type="freakscore">9.3</score>
+    <score type="expertscore">7.2</score>
+    <score type="userscore">9.1</score>
+    <score type="design">9.1</score>
+    <score type="value_for_money">9.5</score>
+    <score type="features">8.7</score>
+    <score type="ease_of_use">9.3</score>
+    <score type="performance">8.5</score>
+    <score type="sound_quality">9.3</score>
+    <score type="picture_quality">9.0</score>
+    <score type="overall_quality">9.4</score>
+    <score type="battery_performance">8.5</score>
+  </scores>
+  <images>
+    <image width="352" height="400">http://i.testfreaks.com/images/products/600x400/228/canon-eos-1200d.34410468.jpg</image>
+    <image width="448" height="399">http://i.testfreaks.com/images/products/600x400/170/canon-eos-1200d.34289834.jpg</image>
+    <image width="266" height="400">http://i.testfreaks.com/images/products/600x400/176/canon-eos-1200d.34289840.jpg</image>
+  </images>
+  <region language="en" country="us">
+    <testfreaks_summary>TestFreaks has 2036 reviews of Canon EOS 1200D / Rebel T5. Experts rate this product 7.2/10 and users 9.1/10.</testfreaks_summary>
+    <testfreaks_url>http://www.testfreaks.com/digitalcameras/canon-eos-1200d/</testfreaks_url>
+    <pros>
+      <pro>easy to use</pro>
+      <pro>good image quality</pro>
+      <pro>image stabilization</pro>
+      <pro>fast / accurate auto-focus</pro>
+      <pro>large screen</pro>
+    </pros>
+    <snippets>
+      <review type="pro">
+        <source_id>4</source_id>
+        <source_name>Camera Labs</source_name>
+        <source_logo width="110" height="18">http://i.testfreaks.com/images/sites/110x60/67/camera-labs.32824899.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=160866529&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=cameralabs.com&amp;track_origin_id=6&amp;track_product_id=630382&amp;track_review_id=160866529</url>
+        <title>Canon EOS T5 1200D</title>
+        <extract>The EOS Rebel T5, or 1200D as it's known outside of North America, is Canon's latest entry-level DSLR. Launched in February 2014 it replaces the three year old T3 / 1100D. Three years is a long time in this industry, during which time mirrorless cameras have really gone after the budget DSLR market.</extract>
+        <pros>Excellent image quality and noise performance, 1080p HD video with manual exposure, 3 inch 460k LCD screen, Creative Auto mode, Free interactive tutorials for your smartphone</pros>
+        <cons>Smallish optical viewfinder, No effects filters, No scene detect in Live View, No continuous AF for movies, No external microphone input</cons>
+        <score>8.1</score>
+        <date>2014-06-01</date>
+      </review>
+      <review type="pro">
+        <source_id>56428</source_id>
+        <source_name>What Digital Camera</source_name>
+        <source_logo width="109" height="27">http://i.testfreaks.com/images/sites/110x60/75/what-digital-camera.32818507.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=186947806&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=whatdigitalcamera.com&amp;track_origin_id=124&amp;track_product_id=630382&amp;track_review_id=186947806</url>
+        <title>Canon EOS 1200D (EOS Rebel T5) Review</title>
+        <extract>Canon EOS 1200D Review - The Canon EOS 1200D follows on from a long line of successful entry-level Canon DSLRs</extract>
+        <pros>Good, lightweight design; Great value for money; Performance at higher ISO settings; EOS companion app</pros>
+        <cons>Lacking Wi-fi as standard; Could benefit from more AF points</cons>
+        <score>8.9</score>
+        <date>2014-04-10</date>
+      </review>
+      <review type="pro">
+        <source_id>618</source_id>
+        <source_name>Digitaltrends</source_name>
+        <source_logo width="110" height="34">http://i.testfreaks.com/images/sites/110x60/8/digitaltrends.32817928.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=161615298&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=digitaltrends.com&amp;track_origin_id=222&amp;track_product_id=630382&amp;track_review_id=161615298</url>
+        <title>Canon EOS Rebel T5 Review</title>
+        <extract>[ Editors?Note: Although we tested a final unit, it isn抰 a production model. The camera on sale at stores may differ slightly from the images you see here, cosmetically, but is otherwise the same .] Canon抯 new entry-level DSLR, the EOS Rebel T5 ($550), is an upgrade from the now discontinued T3.</extract>
+        <pros>Good stills with classic Canon image style, Good for DSLR newbies on a budget, Decent 1080/30p videos</pros>
+        <cons>Noisy shutter mechanism, Even though new, seems like old technology, Doesn抰 handle high ISOs well, No Wi-Fi</cons>
+        <score>7.0</score>
+        <date>2014-03-14</date>
+      </review>
+      <review type="pro">
+        <source_id>689</source_id>
+        <source_name>Macworld</source_name>
+        <source_logo width="110" height="33">http://i.testfreaks.com/images/sites/110x60/220/macworld.32830428.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=181224623&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=macworld.com&amp;track_origin_id=391&amp;track_product_id=630382&amp;track_review_id=181224623</url>
+        <title>Canon EOS T5 review: Entry-level DSLR offers basics and value, but not much more</title>
+        <extract>A budget camera that gets you started with taking great pictures, but its interface and design are less appealing than those of the more capable Canon T5i.</extract>
+        <pros>Relatively low cost, Great image quality</pros>
+        <cons>Live View focus seems sluggish, Physical controls can be awkward to navigate</cons>
+        <score>6.0</score>
+        <date>2015-01-05</date>
+      </review>
+      <review type="pro">
+        <source_id>652</source_id>
+        <source_name>PC Magazine</source_name>
+        <source_logo width="46" height="60">http://i.testfreaks.com/images/sites/110x60/182/pc-magazine.32817846.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=159125332&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=pcmag.com&amp;track_origin_id=264&amp;track_product_id=630382&amp;track_review_id=159125332</url>
+        <title>Canon EOS Rebel T5</title>
+        <extract>The Canon EOS Rebel T5 ($549.99 with 18-55mm lens) is the latest entry-level D-SLR from Canon, and given the brand name, it's likely the one that first-time SLR buyers will gravitate toward.</extract>
+        <pros>Includes optically stabilized lens. Raw shooting support. Detailed images at high ISOs. 1080p video capture.</pros>
+        <cons>Fixed LCD. Pentamirror viewfinder. Slower autofocus. Burst shooting limited to 3fps. Small buffer when shooting Raw.</cons>
+        <score>6.0</score>
+        <date>2014-06-10</date>
+      </review>
+      <review type="pro">
+        <source_id>802</source_id>
+        <source_name>CNET</source_name>
+        <source_logo width="60" height="60">http://i.testfreaks.com/images/sites/110x60/237/cnet.33586669.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=185533192&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=cnet.com&amp;track_origin_id=711&amp;track_product_id=630382&amp;track_review_id=185533192</url>
+        <title>Canon EOS 1200D ( Body Only)</title>
+        <extract>While it's a perfectly fine camera when you're making the jump from a point-and-shoot, there are better choices than the Canon EOS Rebel T5.</extract>
+        <pros>While it doesn't stand out particularly, the Canon EOS Rebel T5 does produce nice photos typical of its price class, its performance isn't bad, and it has a comfortable design</pros>
+        <cons>The feature set is limited, even by entry-level standards</cons>
+        <score>6.0</score>
+        <date>2014-06-19</date>
+      </review>
+      <review type="pro">
+        <source_id>6</source_id>
+        <source_name>Steve's Digicams</source_name>
+        <source_logo width="110" height="29">http://i.testfreaks.com/images/sites/110x60/50/steve-s-digicams.32814386.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=182483476&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=steves-digicams.com&amp;track_origin_id=8&amp;track_product_id=630382&amp;track_review_id=182483476</url>
+        <extract>The Canon EOS T5 is a compact and affordable entry-level dSLR. Only featuring the basics of what a camera needs, it performs well where it counts, and is a simple camera to use; making it great for anyone that wants to explore photography. Read more in our Full Conclusion .</extract>
+        <pros>All shooting modes produce accurate exposures and overall pleasing images, Live View shooting allows for compact-like point-n-shoot capabilities, Good overall performance, Great overall image quality, Pop-up flash is always ready if you need it, Large 3.0-inch LCD is easy to see in most lighting...</pros>
+        <cons>Lacking the versatile and useful convenience features like WiFi, No continuous AF shooting videos, LCD does not tilt or swivel, Only 1 command dial on the camera body, No external audio input, No built-in Image Stabilization</cons>
+        <date>2014-08-06</date>
+      </review>
+      <review type="pro">
+        <source_id>56148</source_id>
+        <source_name>TopTenREVIEWS</source_name>
+        <source_logo width="76" height="60">http://i.testfreaks.com/images/sites/110x60/141/toptenreviews.33936013.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=179077994&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.toptenreviews.com&amp;track_origin_id=9568&amp;track_product_id=630382&amp;track_review_id=179077994</url>
+        <extract>When you buy a Canon, you're buying into an entire family of products, from lenses to flashes and other accessories. The Rebel T5 is an inexpensive way to begin shooting professional quality images with a Canon DSLR.</extract>
+        <pros>This camera is affordable</pros>
+        <cons>A lower quality sensor makes for average image quality</cons>
+        <date>2014-05-26</date>
+      </review>
+      <review type="pro">
+        <source_id>54466</source_id>
+        <source_name>The Digital Picture</source_name>
+        <source_logo width="110" height="28">http://i.testfreaks.com/images/sites/110x60/251/the-digital-picture.32823291.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=146731748&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=the-digital-picture.com&amp;track_origin_id=123&amp;track_product_id=630382&amp;track_review_id=146731748</url>
+        <title>Canon EOS Rebel T5 / 1200D</title>
+        <extract>The Canon EOS Rebel T5 / 1200D delivers 18 megapixels of professional grade image quality in a compact, lightweight, adequately-featured and easy-to-use body that wears a very affordable price tag.</extract>
+        <score>8.0</score>
+        <date>2014-02-19</date>
+      </review>
+      <review type="pro">
+        <source_id>60858</source_id>
+        <source_name>chip.com.my</source_name>
+        <url>http://www.testfreaks.com/click/out/?dest_id=183734196&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.chip.my&amp;track_origin_id=19956&amp;track_product_id=630382&amp;track_review_id=183734196</url>
+        <extract>We抳e seen quite a number of cameras of all shapes and sizes launched over the past few months, and this time around, Canon has been generous enough to send us a DSLR that is meant for photography newbies, or if you抮e just looking for an affordable camera for travel and casual use, in the form of...</extract>
+        <pros>Good camera for photography newbies</pros>
+        <cons>Obvious noise and discoloration at higher ISOs</cons>
+        <date>2015-01-16</date>
+      </review>
+      <review type="user">
+        <source_id>34773</source_id>
+        <source_name>B&amp;H Photo</source_name>
+        <source_logo width="88" height="60">http://i.testfreaks.com/images/sites/110x60/145/b-h-photo.32817553.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=189032582&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=bhphotovideo.com&amp;track_origin_id=1818&amp;track_product_id=630382&amp;track_review_id=189032582</url>
+        <title>EOS Rebel T5</title>
+        <extract>Frist yeou have to know I'm a Luddite! I lived by my Nikon F3 and prime lenes My first digital comera was a Canon Power Shot S3 IS. Pictures were ok, didn't match film. Broke down bought the Canon EOS Rebel T5 with the 18-55 and 75-300 lenes.</extract>
+        <pros>Easy To Use, Fast / Accurate Auto-Focus, Fast Shutter Speed, Flash Photos, Good Image Quality, Large Clear LCD, Quiet</pros>
+        <cons>None</cons>
+        <author>Far Far Don (Swedish)</author>
+        <score>10</score>
+        <date>2014-12-29</date>
+      </review>
+      <review type="user">
+        <source_id>58931</source_id>
+        <source_name>Costco</source_name>
+        <source_logo width="110" height="30">http://i.testfreaks.com/images/sites/110x60/185/costco.33725625.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=180735136&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.costco.com&amp;track_origin_id=17044&amp;track_product_id=630382&amp;track_review_id=180735136</url>
+        <title>Great Deal!</title>
+        <extract>Bought this camera during black Friday weekend and got the bundle for $449. Costco is a reputable company and it was the best deal around! I'm new to photography, and this camera had very good reviews from other sites and personal friends.</extract>
+        <pros>extra lens quality you can feel from the box nice storage bag extra costco concierge services 4 free can use dozens of canon lenses with same eos body</pros>
+        <cons>no audio jack</cons>
+        <author>1DEEE</author>
+        <score>10</score>
+        <date>2014-12-18</date>
+      </review>
+      <review type="user">
+        <source_id>58827</source_id>
+        <source_name>buydig.com</source_name>
+        <source_logo width="110" height="29">http://i.testfreaks.com/images/sites/110x60/175/review-buydig-com.33956271.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=182029246&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.buydig.com&amp;track_origin_id=16815&amp;track_product_id=630382&amp;track_review_id=182029246</url>
+        <title>Canon EOS Rebel Bundle</title>
+        <extract>Best Value for this camera. Ton of extra's for a little extra $. Bundle provided memory cards, extra lenses, tripod, camera case, and several other smaller extra's for what many were charging for just the camera. Gave you everything you needed to use this camera for one low price.</extract>
+        <pros>Best Value for this camera. Ton of extra's for a little extra $. Bundle provided memory cards, extra lenses, tripod, camera case, and several other smaller extra's for what many were charging for just the camera. Gave you everything you needed to use this camera for one low price.</pros>
+        <author>Mark</author>
+        <score>10</score>
+        <date>2014-12-28</date>
+      </review>
+      <review type="user">
+        <source_id>54533</source_id>
+        <source_name>Amazon</source_name>
+        <source_logo width="110" height="22">http://i.testfreaks.com/images/sites/110x60/232/amazon.32817384.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=191593211&amp;dest_type=Review&amp;track_action=01%3B06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=amazon.com&amp;track_origin_id=2771&amp;track_product_id=630382&amp;track_review_id=191593211&amp;track_sale_type=affiliate</url>
+        <title>Works great. A great camera for a beginner</title>
+        <extract>Works great. A great camera for a beginner. Only thing was I did not receive the circular filters to use with the camera that are listed in description of what you receive with the bundle.</extract>
+        <author>Anna Newman</author>
+        <score>10</score>
+        <date>2015-04-07</date>
+      </review>
+      <review type="user">
+        <source_id>58825</source_id>
+        <source_name>Staples</source_name>
+        <source_logo width="110" height="55">http://i.testfreaks.com/images/sites/110x60/39/staples.34451495.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=182284288&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.staples.com&amp;track_origin_id=16811&amp;track_product_id=630382&amp;track_review_id=182284288</url>
+        <title>Great</title>
+        <extract>This was a Christmas present for our daughter. She loves it. Easy to use and takes great quality pics. The lens works well. New lenses can be purchased.</extract>
+        <author>K&amp;amp;D</author>
+        <score>10</score>
+        <date>2014-12-26</date>
+      </review>
+      <review type="user">
+        <source_id>60312</source_id>
+        <source_name>Kalahari</source_name>
+        <source_logo width="110" height="29">http://i.testfreaks.com/images/sites/110x60/206/kalahari.34170830.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=186951418&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.kalahari.com&amp;track_origin_id=19052&amp;track_product_id=630382&amp;track_review_id=186951418</url>
+        <title>Nice price</title>
+        <extract>Great value for money, however, the "photobook voucher" expires in a month... Not sure how I can actually use it because I can't take 24 print-worth photos in that time. Also the voucher does not cover delivery (written in fine print on the voucher itself) Feel cheated because it's not in the...</extract>
+        <author>Jennifer</author>
+        <score>8.0</score>
+        <date>2014-06-09</date>
+      </review>
+      <review type="user">
+        <source_id>60431</source_id>
+        <source_name>rakuten</source_name>
+        <source_logo width="110" height="17">http://i.testfreaks.com/images/sites/110x60/188/rakuten.34204604.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=187149219&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.rakuten.com&amp;track_origin_id=19242&amp;track_product_id=630382&amp;track_review_id=187149219</url>
+        <title>Canon T5 (1200D)</title>
+        <extract>Camera works as expected. Would have liked to have gotten the T5i but was just slightly out of my price range with the lenses and Eye-Fi I wanted.</extract>
+        <author>DA</author>
+        <score>10</score>
+        <date>2014-06-07</date>
+      </review>
+      <review type="user">
+        <source_id>58829</source_id>
+        <source_name>DP Review</source_name>
+        <source_logo width="110" height="27">http://i.testfreaks.com/images/sites/110x60/239/dp-review.33575663.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=187845409&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=userreview.dpreview.com&amp;track_origin_id=16819&amp;track_product_id=630382&amp;track_review_id=187845409</url>
+        <extract>The first ever DSLR I've purchased in my life is Canon EOS 1200D . I've been using this now and it has been OUTSTANDING . It performs way beyond perfection. It's even better than Nikon's entry-level DSLRs.</extract>
+        <author>Farooq Abbas Saim</author>
+        <score>10</score>
+        <date>2015-03-08</date>
+      </review>
+      <review type="user">
+        <source_id>54539</source_id>
+        <source_name>Walmart</source_name>
+        <source_logo width="109" height="26">http://i.testfreaks.com/images/sites/110x60/245/walmart.34443253.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=184290084&amp;dest_type=Review&amp;track_action=01%3B06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.walmart.com&amp;track_origin_id=2777&amp;track_product_id=630382&amp;track_review_id=184290084&amp;track_sale_type=affiliate</url>
+        <extract>Item came with everything the package had listed. Fast service and the camera works great, now I will have to relearn how to take picture in non auto mode. Great price for the camera, beats everyone else price.</extract>
+        <author>gonefishen</author>
+        <score>10</score>
+        <date>2015-02-02</date>
+      </review>
+      <review type="user">
+        <source_id>58099</source_id>
+        <source_name>Fingerhut</source_name>
+        <source_logo width="110" height="22">http://i.testfreaks.com/images/sites/110x60/113/fingerhut.32833393.jpg</source_logo>
+        <url>http://www.testfreaks.com/click/out/?dest_id=181218136&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.fingerhut.com&amp;track_origin_id=15736&amp;track_product_id=630382&amp;track_review_id=181218136</url>
+        <extract>i used my camera for many plant, scenic and personal photos of family and friends. I have found this to be one of the best cameras i have ever used....you may want to invest in a larger zoom lense.</extract>
+        <author>eyore0261</author>
+        <score>10</score>
+        <date>2015-01-05</date>
+      </review>
+    </snippets>
+  </region>
+  <region language="en" country="gb">
+    <testfreaks_summary>TestFreaks has 2036 reviews of Canon EOS 1200D / Rebel T5. Experts rate this product 7.2/10 and users 9.1/10.</testfreaks_summary>
+    <testfreaks_url>http://www.testfreaks.co.uk/digital-cameras/canon-eos-1200d/</testfreaks_url>
+    <pros>
+      <pro>easy to use</pro>
+      <pro>good image quality</pro>
+      <pro>image stabilization</pro>
+      <pro>fast / accurate auto-focus</pro>
+      <pro>large screen</pro>
+    </pros>
+    <snippets>
+      <review type="pro">
+        <source_id>56198</source_id>
+        <source_name>Macworld UK</source_name>
+        <source_logo width="110" height="40">http://i.testfreaks.com/images/sites/110x60/56/macworld-uk.32822840.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=157988405&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=macworld.co.uk&amp;track_origin_id=10011&amp;track_product_id=630382&amp;track_review_id=157988405</url>
+        <title>Canon EOS 1200D review</title>
+        <extract>Canon抯 18 megapixel APS-C format sensor incorporating EOS 1200D is an imaginative update of its 12 megapixel 1100D predecessor. The obvious pitch is that first time DSLR owners will be able to achieve more professional results straight out of the box, and with more pixels to do it with, via a...</extract>
+        <pros>Affordable, well built, capable of professional looking results for a budget price, intuitive operation</pros>
+        <cons>Fixed LCD screen only, no built-in wireless connectivity, maximum capture speed is modest if you抮e attempting action shots</cons>
+        <score>8.0</score>
+        <date>2014-05-26</date>
+      </review>
+      <review type="pro">
+        <source_id>54565</source_id>
+        <source_name>T3</source_name>
+        <source_logo width="110" height="46">http://i.testfreaks.com/images/sites/110x60/25/t3.32818457.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=187586741&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=t3.com&amp;track_origin_id=3165&amp;track_product_id=630382&amp;track_review_id=187586741</url>
+        <title>Canon EOS 1200D review</title>
+        <extract>The Canon EOS 1200D looks like a great starter camera for those who are looking at investing in a DSLR for the first time, or even those that have only relied on their smartphone camera up until now.</extract>
+        <pros>Sturdy body, Large 18-megapixel sensor, Handy companion app, Sturdy body, Large 18-megapixel sensor, Handy companion app</pros>
+        <cons>Modest burst shooting speed, Non-tilting (fixed) LCD, No wireless connectivity, Modest burst shooting speed, Non-tilting (fixed) LCD, No wireless connectivity</cons>
+        <score>8.0</score>
+        <date>2014-05-21</date>
+      </review>
+      <review type="pro">
+        <source_id>54477</source_id>
+        <source_name>Pocket Lint</source_name>
+        <source_logo width="110" height="18">http://i.testfreaks.com/images/sites/110x60/96/pocket-lint.32824928.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=176313633&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.pocket-lint.co.uk&amp;track_origin_id=2519&amp;track_product_id=630382&amp;track_review_id=176313633</url>
+        <title>Canon EOS 1200D review</title>
+        <extract>The entry-level DSLR market has slowed in terms of product releases in recent years. Indeed it's taken three years for Canon to out the 1200D - that's Rebel T5 for our American friends - and while we don't mind waiting for the right kit to come along we do question whether the market has changed...</extract>
+        <pros>Decent viewfinder-based performance for entry-level product, impressive image quality throughout, huge range of EOS lenses available, competitive price</pros>
+        <cons>Live view is poor, JPEG processing is a little harsh, plasticky build, compact system cameras may undermine its existence, kit lens limitations</cons>
+        <score>8.0</score>
+        <date>2014-06-17</date>
+      </review>
+      <review type="pro">
+        <source_id>54966</source_id>
+        <source_name>TechRadar UK</source_name>
+        <source_logo width="103" height="60">http://i.testfreaks.com/images/sites/110x60/63/techradar-uk.32817471.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=186076912&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.techradar.com&amp;track_origin_id=4473&amp;track_product_id=630382&amp;track_review_id=186076912</url>
+        <title>Canon 1200D review</title>
+        <extract>Canon has once again produced a reliable camera capable of creating some beautiful images. If you're in the market for your first DSLR and you're fine with a no-frills purchase, then the 1200D is a great option.</extract>
+        <pros>Affordable, Textured coating, Optical viewfinder, If price is the key determining factor for your first DLSR purchase, then the 1200D is an extremely attractive proposition. For a good price, you get great image quality in a classic DSLR like package, along with the full support of the Canon range...</pros>
+        <cons>Slow focusing in Live View, No touchscreen, No Wi-Fi/NFC, The biggest problem with the 1200D is that it's just not that exciting. Having waited for three years for an upgrade to the 1100D , it would have been nice to see some more audacious specs, such as built-in Wi-Fi, or perhaps a higher...</cons>
+        <score>8.0</score>
+        <date>2014-04-03</date>
+      </review>
+      <review type="pro">
+        <source_id>605</source_id>
+        <source_name>Trusted Reviews</source_name>
+        <source_logo width="110" height="52">http://i.testfreaks.com/images/sites/110x60/106/trusted-reviews.33834858.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=154687980&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=trustedreviews.com&amp;track_origin_id=204&amp;track_product_id=630382&amp;track_review_id=154687980</url>
+        <title>Canon EOS 1200D</title>
+        <extract>While compact cameras continue to suffer in the wake of the ubiquitous smartphone, the DSLR market remains fairly strong. More and more novice photographers are flocking to DSLRs as a means of stepping up their game.</extract>
+        <pros>Competitive price, Excellent high ISO performance, Clever and useful EOS companion app, Easy to use</pros>
+        <cons>Autofocus struggles in live view, Few AF points, Slow burst mode, Low resolution LCD</cons>
+        <score>8.0</score>
+        <date>2014-04-17</date>
+      </review>
+      <review type="pro">
+        <source_id>58672</source_id>
+        <source_name>expertreviews.co.uk</source_name>
+        <source_logo width="110" height="42">http://i.testfreaks.com/images/sites/110x60/104/expertreviews-co-uk.33706088.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=177993289&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=expertreviews.co.uk&amp;track_origin_id=16540&amp;track_product_id=630382&amp;track_review_id=177993289</url>
+        <title>Canon EOS 1200D review</title>
+        <extract>Canon EOS cameras have an enviable reputation, but they're known more for high quality than low prices. As such, it's a bit of a surprise to find this latest model available for ?50 ?by far the lowest ever launch price for as EOS camera. It makes sense, though.</extract>
+        <score>6.0</score>
+        <date>2014-05-14</date>
+      </review>
+      <review type="pro">
+        <source_id>57772</source_id>
+        <source_name>Amateur Photographer</source_name>
+        <source_logo width="110" height="29">http://i.testfreaks.com/images/sites/110x60/135/amateur-photographer.32822919.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=155801784&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.amateurphotographer.co.uk&amp;track_origin_id=14859&amp;track_product_id=630382&amp;track_review_id=155801784</url>
+        <title>Canon EOS 1200D review</title>
+        <extract>When compared with the Canon EOS 100D, Nikon D3300 and Pentax K-5, the Canon EOS 1200D does not exactly overwhelm in terms of specification, and neither does it excel in any given area.</extract>
+        <score>8.2</score>
+        <date>2014-05-05</date>
+      </review>
+      <review type="pro">
+        <source_id>57453</source_id>
+        <source_name>Photo answers</source_name>
+        <source_logo width="110" height="59">http://i.testfreaks.com/images/sites/110x60/56/photo-answers.32832312.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=158449692&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.photoanswers.co.uk&amp;track_origin_id=13821&amp;track_product_id=630382&amp;track_review_id=158449692</url>
+        <extract>The 1200D is a superb option for photographers wishing to make the jump into the world of DSLR photography. The controls are simple and accessible, with a range of fully automatic shooting modes, and the EOS Companion app helps users get to know their camera.</extract>
+        <score>8.0</score>
+        <date>2014-06-03</date>
+      </review>
+      <review type="pro">
+        <source_id>54477</source_id>
+        <source_name>Pocket Lint</source_name>
+        <source_logo width="110" height="18">http://i.testfreaks.com/images/sites/110x60/96/pocket-lint.32824928.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=176318722&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.pocket-lint.co.uk&amp;track_origin_id=2519&amp;track_product_id=630382&amp;track_review_id=176318722</url>
+        <title>Canon EOS 1200D pictures and hands-on</title>
+        <extract>It's been a full three years since Canon last put out an entry-level DSLR camera, but in 2014 it's back in business with the EOS 1200D. The replacement for 2011's 1100D, the 1200D is all about the balance of price to performance.</extract>
+        <date>2014-02-12</date>
+      </review>
+      <review type="user">
+        <source_id>1297</source_id>
+        <source_name>Ciao</source_name>
+        <source_logo width="110" height="45">http://i.testfreaks.com/images/sites/110x60/76/ciao.34384460.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=185823483&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=ciao.co.uk&amp;track_origin_id=1376&amp;track_product_id=630382&amp;track_review_id=185823483</url>
+        <title>4 Years With It and Still Good So Far :)</title>
+        <extract>My mom gave it to me on my 16th birthday and after 4 years, it is still on good condition after many ups and downs. The color quality is exceptionally good, sometimes it really wows you! I love how it produce really nice quality and smooth color.</extract>
+        <pros>Duration, Color, Picture Quality</pros>
+        <cons>Weight, Size</cons>
+        <author>vince0293</author>
+        <score>6.0</score>
+        <date>2015-02-17</date>
+      </review>
+      <review type="user">
+        <source_id>58982</source_id>
+        <source_name>WEX</source_name>
+        <source_logo width="110" height="37">http://i.testfreaks.com/images/sites/110x60/62/wex.33757758.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=158595718&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.warehouseexpress.uk&amp;track_origin_id=17149&amp;track_product_id=630382&amp;track_review_id=158595718</url>
+        <title>good for beginners</title>
+        <extract>I'm a big Canon fan ans have 3 eos cameras, photo qaulity is the best way to describe the 1200d like all the EOS range it is great. For beginners the hwlp guid for your mobile is unique. The downside is the video recording is slow in auto and best used by switching the lens to manual.</extract>
+        <pros>Down Load The Help Guid, Durable, Good In Low Light, Great Features, Great Picture Quality, Lightweight, Simple Controls</pros>
+        <cons>Another Different Battery, Low-Quality Recordings</cons>
+        <author>Baloo</author>
+        <score>8.0</score>
+        <date>2014-05-22</date>
+      </review>
+      <review type="user">
+        <source_id>58981</source_id>
+        <source_name>Woolworths</source_name>
+        <source_logo width="110" height="11">http://i.testfreaks.com/images/sites/110x60/171/woolworths.33655979.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=173694578&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.woolworths.uk&amp;track_origin_id=17147&amp;track_product_id=630382&amp;track_review_id=173694578</url>
+        <title>Canon EOS 1200D 18 Megapixel Digital SLR Camera with 18-55mm DC Lens</title>
+        <extract>I bought this as a hobbie item and must say it lived up to my expectations. with no previous photographic experience i found it very easy to use. Picture quality great. now all i have to do is save up for some other lenses for it to feel like a real pro.</extract>
+        <pros>Great item, easy to use</pros>
+        <author>Charles</author>
+        <score>10</score>
+        <date>2014-10-17</date>
+      </review>
+      <review type="user">
+        <source_id>58982</source_id>
+        <source_name>WEX</source_name>
+        <source_logo width="110" height="37">http://i.testfreaks.com/images/sites/110x60/62/wex.33757758.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=166209126&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.warehouseexpress.uk&amp;track_origin_id=17149&amp;track_product_id=630382&amp;track_review_id=166209126</url>
+        <title>Affordable SLR photography</title>
+        <extract>I'm very happy with the 1200D. Easy enough to use almost in point-and-shoot mode, but with enough features to allow me to experiment/get creative with my camera.My only (minor) reservation is that like so many other manufacturers, Canon publish the full manual on a disc.</extract>
+        <pros>Great Features, Simple Controls</pros>
+        <author>kdm51</author>
+        <score>8.0</score>
+        <date>2014-08-08</date>
+      </review>
+      <review type="user">
+        <source_id>58182</source_id>
+        <source_name>Argos</source_name>
+        <source_logo width="90" height="60">http://i.testfreaks.com/images/sites/110x60/149/argos.33655957.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=186149229&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.argos.uk&amp;track_origin_id=15908&amp;track_product_id=630382&amp;track_review_id=186149229</url>
+        <title>Does not have self cleaning sensor!</title>
+        <extract>This is a good camera for beginners or for those who cannot afford the slightly expensive range cameras. However I must point out that this does not have a self cleaning sensor. When I tried changing lens, some dust/oil got onto the lens and was constantly showing a grey spot on all images.</extract>
+        <author>Patrick47</author>
+        <score>6.0</score>
+        <date>2015-02-12</date>
+      </review>
+      <review type="user">
+        <source_id>58182</source_id>
+        <source_name>Argos</source_name>
+        <source_logo width="90" height="60">http://i.testfreaks.com/images/sites/110x60/149/argos.33655957.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=178025420&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.argos.uk&amp;track_origin_id=15908&amp;track_product_id=630382&amp;track_review_id=178025420</url>
+        <title>CANON 1200D</title>
+        <extract>This is an excellent camera. I have a Sony A series and bought this as a second camera for my 12yr old daughter to use as she's now becoming interested in photography. After a couple of sessions I've now decided to have the CANON and let her use the SONY it's that good.</extract>
+        <author>Dave B</author>
+        <score>10</score>
+        <date>2014-11-30</date>
+      </review>
+      <review type="user">
+        <source_id>59015</source_id>
+        <source_name>johnlewis.com</source_name>
+        <source_logo width="110" height="25">http://i.testfreaks.com/images/sites/110x60/192/review-johnlewis-uk.33656000.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=190565947&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.johnlewis.uk&amp;track_origin_id=17154&amp;track_product_id=630382&amp;track_review_id=190565947</url>
+        <title>A present to myself!</title>
+        <extract>Bought this camera as had my old one for years. I had looked at reviews on different cameras and had made my mind up I wanted this one and really happy I did. Only used it a few times as have to get used to all the features it has.</extract>
+        <author>Annalice1</author>
+        <score>10</score>
+        <date>2015-03-24</date>
+      </review>
+      <review type="user">
+        <source_id>54535</source_id>
+        <source_name>Amazon</source_name>
+        <source_logo width="110" height="24">http://i.testfreaks.com/images/sites/110x60/234/amazon.32817386.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=191574269&amp;dest_type=Review&amp;track_action=01%3B06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=amazon.co.uk&amp;track_origin_id=2792&amp;track_product_id=630382&amp;track_review_id=191574269&amp;track_sale_type=affiliate</url>
+        <title>Fantastic, affordable DSLR.</title>
+        <extract>This was my first DSLR camera purchase and I'm having great fun with it. Already had it out on two occasions shooting local wildlife. For an amateur like myself, I'd definitely recommend this camera for a first timer.</extract>
+        <author>Sean B.</author>
+        <score>10</score>
+        <date>2015-03-14</date>
+      </review>
+      <review type="user">
+        <source_id>54535</source_id>
+        <source_name>Amazon</source_name>
+        <source_logo width="110" height="24">http://i.testfreaks.com/images/sites/110x60/234/amazon.32817386.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=189356130&amp;dest_type=Review&amp;track_action=01%3B06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=amazon.co.uk&amp;track_origin_id=2792&amp;track_product_id=630382&amp;track_review_id=189356130&amp;track_sale_type=affiliate</url>
+        <title>... cameras I have to say this camera is a joy to use</title>
+        <extract>As a complete novice to the world of SLR digital cameras I have to say this camera is a joy to use, after watching a few online tutorials on YouTube and the help of a friend I was getting to grasps with all the controls pretty quickly, there's still loads to learn but I know it'll be made all the...</extract>
+        <author>M. O. Brien ""mclovin""</author>
+        <score>10</score>
+        <date>2015-03-13</date>
+      </review>
+      <review type="user">
+        <source_id>58981</source_id>
+        <source_name>Woolworths</source_name>
+        <source_logo width="110" height="11">http://i.testfreaks.com/images/sites/110x60/171/woolworths.33655979.jpg</source_logo>
+        <url>http://www.testfreaks.co.uk/click/out/?dest_id=174402470&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.woolworths.uk&amp;track_origin_id=17147&amp;track_product_id=630382&amp;track_review_id=174402470</url>
+        <title>fantastic</title>
+        <extract>I recently purchased this camera , as i needed a good camera for my college course, it produces great sharp images and is very light and easy to hold. The lens that comes with it is brilliant for close-ups and would be perfect for a first timer. I would definitely recommend this camera!.</extract>
+        <author>Laura</author>
+        <score>10</score>
+        <date>2014-10-26</date>
+      </review>
+    </snippets>
+  </region>
+  <region language="en" country="ca">
+    <testfreaks_summary>TestFreaks has 2036 reviews of Canon EOS 1200D / Rebel T5. Experts rate this product 7.2/10 and users 9.1/10.</testfreaks_summary>
+    <testfreaks_url>http://www.testfreaks.ca/digital-cameras/canon-eos-1200d/</testfreaks_url>
+    <pros>
+      <pro>easy to use</pro>
+      <pro>good image quality</pro>
+      <pro>image stabilization</pro>
+      <pro>fast / accurate auto-focus</pro>
+      <pro>large screen</pro>
+    </pros>
+    <snippets>
+      <review type="user">
+        <source_id>59501</source_id>
+        <source_name>Amazon</source_name>
+        <source_logo width="109" height="25">http://i.testfreaks.com/images/sites/110x60/133/amazon.33763205.jpg</source_logo>
+        <url>http://www.testfreaks.ca/click/out/?dest_id=191646707&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=amazon.ca&amp;track_origin_id=17787&amp;track_product_id=630382&amp;track_review_id=191646707</url>
+        <title>Awesome product.</title>
+        <extract>Awesome camera, for a great price. Similar to the previous models, it offers both familiarity, and an upgrade. I purchased it for my office for the purpose of photographing vehicles, the building, and customers. It is great for all purposes.</extract>
+        <author>Samantha</author>
+        <score>10</score>
+        <date>2015-04-01</date>
+      </review>
+      <review type="user">
+        <source_id>59501</source_id>
+        <source_name>Amazon</source_name>
+        <source_logo width="109" height="25">http://i.testfreaks.com/images/sites/110x60/133/amazon.33763205.jpg</source_logo>
+        <url>http://www.testfreaks.ca/click/out/?dest_id=189070638&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=amazon.ca&amp;track_origin_id=17787&amp;track_product_id=630382&amp;track_review_id=189070638</url>
+        <title>Fantastic Camera for a beginner like me</title>
+        <extract>Fantastic Camera for a beginner like me. Lot's to learn, but from what I can see so far, it will take care of me and help me get fantastic shots of my friends and family (including animals)</extract>
+        <author>Amanda moffat</author>
+        <score>8.0</score>
+        <date>2015-03-13</date>
+      </review>
+      <review type="user">
+        <source_id>59501</source_id>
+        <source_name>Amazon</source_name>
+        <source_logo width="109" height="25">http://i.testfreaks.com/images/sites/110x60/133/amazon.33763205.jpg</source_logo>
+        <url>http://www.testfreaks.ca/click/out/?dest_id=183348852&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=amazon.ca&amp;track_origin_id=17787&amp;track_product_id=630382&amp;track_review_id=183348852</url>
+        <title>Great Camera</title>
+        <extract>Great camera. Bought for my husband. He loves it. Said there is a lot to learn about the many features. he is still studying the manual. What i like about it is that you can change all background to neutral and emphasize on the person's image.</extract>
+        <author>Aissata Gueye</author>
+        <score>10</score>
+        <date>2015-01-20</date>
+      </review>
+      <review type="user">
+        <source_id>59070</source_id>
+        <source_name>Henrys</source_name>
+        <source_logo width="110" height="29">http://i.testfreaks.com/images/sites/110x60/32/henrys.34352160.jpg</source_logo>
+        <url>http://www.testfreaks.ca/click/out/?dest_id=174693340&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.henrys.ca&amp;track_origin_id=17256&amp;track_product_id=630382&amp;track_review_id=174693340</url>
+        <title>Definitely Worth it!!!</title>
+        <extract>-Starting with the body specs,compared to its predecessor,the T5 carries major changes with an external mic jack another change the T5 carries is the bigger LCD screen of 3".</extract>
+        <author>Yvan</author>
+        <score>8.0</score>
+        <date>2014-10-25</date>
+      </review>
+      <review type="user">
+        <source_id>59070</source_id>
+        <source_name>Henrys</source_name>
+        <source_logo width="110" height="29">http://i.testfreaks.com/images/sites/110x60/32/henrys.34352160.jpg</source_logo>
+        <url>http://www.testfreaks.ca/click/out/?dest_id=183440472&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.henrys.ca&amp;track_origin_id=17256&amp;track_product_id=630382&amp;track_review_id=183440472</url>
+        <title>Great Camera</title>
+        <extract>This camera is a quality camera. It has all the fetures that I want or need in a camera.</extract>
+        <author>Andrea</author>
+        <score>10</score>
+        <date>2014-06-06</date>
+      </review>
+    </snippets>
+  </region>
+  <region language="en" country="au">
+    <testfreaks_url>http://www.testfreaks.com.au/digital-cameras/canon-eos-1200d/</testfreaks_url>
+    <pros>
+      <pro>easy to use</pro>
+      <pro>good image quality</pro>
+      <pro>image stabilization</pro>
+      <pro>fast / accurate auto-focus</pro>
+      <pro>large screen</pro>
+    </pros>
+    <snippets>
+      <review type="pro">
+        <source_id>58763</source_id>
+        <source_name>Good Gear Guide.au</source_name>
+        <source_logo width="93" height="60">http://i.testfreaks.com/images/sites/110x60/169/good-gear-guide-au.33034153.jpg</source_logo>
+        <url>http://www.testfreaks.com.au/click/out/?dest_id=166337518&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.goodgearguide.com.au&amp;track_origin_id=16698&amp;track_product_id=630382&amp;track_review_id=166337518</url>
+        <title>A simple model to get you started in the world of digital SLR photography</title>
+        <extract>Canon's EOS 1200D camera is designed to get you started in the world of digital SLR photography, and is a sensible step up if you haven't used such a camera before and want to upgrade from a compact or phone device.</extract>
+        <pros>Inexpensive entry point into the Canon digital SLR ecosystem, Good overall picture quality, Relatively simple controls</pros>
+        <cons>Focus performance of 18-55mm kit lens was slow and sometimes innacurate, SD card slot in battery compartment</cons>
+        <score>6.0</score>
+        <date>2014-08-26</date>
+      </review>
+      <review type="pro">
+        <source_id>570</source_id>
+        <source_name>PhotoReview</source_name>
+        <source_logo width="60" height="60">http://i.testfreaks.com/images/sites/110x60/110/photoreview.34367598.jpg</source_logo>
+        <url>http://www.testfreaks.com.au/click/out/?dest_id=190631591&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=photoreview.com.au&amp;track_origin_id=150&amp;track_product_id=630382&amp;track_review_id=190631591</url>
+        <title>Canon EOS 1200D</title>
+        <extract>Canon's EOS 1200D, which was announced in February, replaces the previous entry-level DSLR model, the EOS 1100D . Although it's a relatively modest upgrade in most respects, most potential purchasers will welcome the increase in sensor resolution and support for Full HD movie recording at 30, 25 or...</extract>
+        <score>8.8</score>
+        <date>2014-07-07</date>
+      </review>
+    </snippets>
+  </region>
+  <region language="en" country="nz">
+    <testfreaks_url>http://www.testfreaks.co.nz/digital-cameras/canon-eos-1200d/</testfreaks_url>
+    <pros>
+      <pro>easy to use</pro>
+      <pro>good image quality</pro>
+      <pro>image stabilization</pro>
+      <pro>fast / accurate auto-focus</pro>
+      <pro>large screen</pro>
+    </pros>
+    <snippets>
+      <review type="pro">
+        <source_id>55572</source_id>
+        <source_name>New Zealand PC World</source_name>
+        <source_logo width="110" height="37">http://i.testfreaks.com/images/sites/110x60/137/new-zealand-pc-world.33419401.jpg</source_logo>
+        <url>http://www.testfreaks.co.nz/click/out/?dest_id=166323882&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=pcworld.co.nz&amp;track_origin_id=7401&amp;track_product_id=630382&amp;track_review_id=166323882</url>
+        <title>Canon EOS 1200D</title>
+        <extract>The bottom line with the EOS 1200D is that it's not a digital SLR camera to go for if you are looking for anything more than a beginner's model.</extract>
+        <pros>Inexpensive entry point into the Canon digital SLR ecosystem, Good overall picture quality, Relatively simple controls</pros>
+        <cons>Focus performance of 18-55mm kit lens was slow and sometimes innacurate, SD card slot in battery compartment</cons>
+        <score>6.0</score>
+        <date>2014-08-18</date>
+      </review>
+    </snippets>
+  </region>
+  <region language="en" country="in">
+    <testfreaks_summary>TestFreaks has 2036 reviews of Canon EOS 1200D / Rebel T5. Experts rate this product 7.2/10 and users 9.1/10.</testfreaks_summary>
+    <testfreaks_url>http://www.testfreaks.co.in/digital-cameras/canon-eos-1200d/</testfreaks_url>
+    <pros>
+      <pro>easy to use</pro>
+      <pro>good image quality</pro>
+      <pro>image stabilization</pro>
+      <pro>fast / accurate auto-focus</pro>
+      <pro>large screen</pro>
+    </pros>
+    <snippets>
+      <review type="pro">
+        <source_id>60834</source_id>
+        <source_name>gizmodo.in</source_name>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=188477861&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.gizmodo.in&amp;track_origin_id=19933&amp;track_product_id=630382&amp;track_review_id=188477861</url>
+        <extract>Here we were thinking that we have used and reviewed the best of the lot. Then suddenly Canon hands us the 1200D entry level DSLR, built for the masses. We took the camera out for a spin along with it 18-55mm kit lens during the day and night. The experience just kept getting better.</extract>
+        <date>2014-07-25</date>
+      </review>
+      <review type="pro">
+        <source_id>60855</source_id>
+        <source_name>thetechy.com</source_name>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=182815618&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.thetechy.in&amp;track_origin_id=19951&amp;track_product_id=630382&amp;track_review_id=182815618</url>
+        <extract>The 1200D feels like more of an incremental upgrade from the 1100D than anything revolutionary, and while images are great, the camera itself isn抰 offering anything truly exciting.</extract>
+        <date>2014-05-28</date>
+      </review>
+      <review type="user">
+        <source_id>60472</source_id>
+        <source_name>Snapdeal</source_name>
+        <source_logo width="75" height="60">http://i.testfreaks.com/images/sites/110x60/193/snapdeal.34210497.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=191097379&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.snapdeal.in&amp;track_origin_id=19334&amp;track_product_id=630382&amp;track_review_id=191097379</url>
+        <title>VERY CHEAP IN PRICE BEST IN QUALITY</title>
+        <extract>I GOT THIS PRODUCT RS 10000 OFF FROM THE MRP THIS WAS GOOD I GOT IT DELIVERED IT WAS A NICE PRODUCT BUT YOU WILL NEVER GET THE CLASSES BECAUSE THEY ARE ALWAYS FULL AND ONCE IN A QUARTER OF YEAR AND YOU MAY HAVE TO MISS YOUR OFFICE FOR IT AS THE CAMERA IT WAS VERY NICE I HAVE USED IT IN MANY TRIPS BU...</extract>
+        <pros>Easy To Use, Fast / Accurate Auto-Focus, Fast Shutter Speed, Good Image Quality, Good Image Stabilization, High ISO Performance</pros>
+        <cons>Small LCD Screen</cons>
+        <author>MANAS</author>
+        <score>8.0</score>
+        <date>2015-01-27</date>
+      </review>
+      <review type="user">
+        <source_id>60472</source_id>
+        <source_name>Snapdeal</source_name>
+        <source_logo width="75" height="60">http://i.testfreaks.com/images/sites/110x60/193/snapdeal.34210497.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=191097382&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.snapdeal.in&amp;track_origin_id=19334&amp;track_product_id=630382&amp;track_review_id=191097382</url>
+        <title>ultimate deal</title>
+        <extract>I am a photography lover and was looking for a dslr camera for a long time, but due to it's higher costs I was not able to buy it. But thanks to you I have one in my bag. That too of a leading brand. The price was also unbelievable and got it very quickly after my order confirmation.</extract>
+        <pros>Easy To Use, Fast / Accurate Auto-Focus, Good Image Quality, Good Image Stabilization, High ISO Performance</pros>
+        <cons>Short Battery Life</cons>
+        <author>Bhakti</author>
+        <score>8.0</score>
+        <date>2015-01-26</date>
+      </review>
+      <review type="user">
+        <source_id>60472</source_id>
+        <source_name>Snapdeal</source_name>
+        <source_logo width="75" height="60">http://i.testfreaks.com/images/sites/110x60/193/snapdeal.34210497.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=184168144&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.snapdeal.in&amp;track_origin_id=19334&amp;track_product_id=630382&amp;track_review_id=184168144</url>
+        <title>perfect camera for the future photo prof</title>
+        <extract>Very good photo quality with few professional Mode positions.with plenty of the lens attachments avilable now this one will fit for all kind of professional photography with low budget</extract>
+        <pros>Easy To Use, Fast / Accurate Auto-Focus, Good Image Quality, Good Image Stabilization</pros>
+        <cons>Poor In Low Light</cons>
+        <author>ezhil valavan</author>
+        <score>10</score>
+        <date>2015-01-25</date>
+      </review>
+      <review type="user">
+        <source_id>59160</source_id>
+        <source_name>flipkart.com</source_name>
+        <source_logo width="110" height="42">http://i.testfreaks.com/images/sites/110x60/244/review-flipkart-in.33575668.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=191633741&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.flipkart.in&amp;track_origin_id=17358&amp;track_product_id=630382&amp;track_review_id=191633741</url>
+        <title>a very good product</title>
+        <extract>This is a very good product, Camera is very good for beginners, 18MP quality is good. 8GB memory card (30MBps) as free iteam with the product is good for camera to record HD videos.</extract>
+        <author>Manish Garg</author>
+        <score>10</score>
+        <date>2015-04-04</date>
+      </review>
+      <review type="user">
+        <source_id>59160</source_id>
+        <source_name>flipkart.com</source_name>
+        <source_logo width="110" height="42">http://i.testfreaks.com/images/sites/110x60/244/review-flipkart-in.33575668.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=189868574&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.flipkart.in&amp;track_origin_id=17358&amp;track_product_id=630382&amp;track_review_id=189868574</url>
+        <title>Worth Buying!</title>
+        <extract>I have been using this camera since, 5 months. Fast delivery from flipkart with good packing. A good option for all beginners. Simple camera interface, good quality pics. Lens is very effective and can go for this product without any worries. Happy clicking!</extract>
+        <author>Reshma A</author>
+        <score>10</score>
+        <date>2015-03-25</date>
+      </review>
+      <review type="user">
+        <source_id>59160</source_id>
+        <source_name>flipkart.com</source_name>
+        <source_logo width="110" height="42">http://i.testfreaks.com/images/sites/110x60/244/review-flipkart-in.33575668.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=189868572&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.flipkart.in&amp;track_origin_id=17358&amp;track_product_id=630382&amp;track_review_id=189868572</url>
+        <title>Does it have an audio/video output ???</title>
+        <extract>I am going to buy a DSLR. Does it have an audio/video output?? Please help me ................ .......................... . . . . . . . . . . . . . .. . . . . . . . . .. . . . ... . . . . . . .. .... ............. . . . . . .............. . . .. . . . . ............. . .......... . ......... . . . .</extract>
+        <author>Ajay</author>
+        <score>10</score>
+        <date>2015-03-25</date>
+      </review>
+      <review type="user">
+        <source_id>60673</source_id>
+        <source_name>Zopper</source_name>
+        <source_logo width="109" height="22">http://i.testfreaks.com/images/sites/110x60/188/zopper.34344124.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=177094997&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.zopper.com&amp;track_origin_id=19741&amp;track_product_id=630382&amp;track_review_id=177094997</url>
+        <title>Still Worthy Of Buying</title>
+        <extract>The Canon EOS 1200D is meant to be an entry-level DSLR, one that combines a sturdy frame and Canon抯 reputation for ease of use with some very respectable technology. The specifications of Canon EOS 1200D include a CMOS sensor with an optical resolution of 18 megapixels, a DIGIC 4 image processor, 9...</extract>
+        <author>Ankita Khonde</author>
+        <score>7.6</score>
+        <date>2014-05-15</date>
+      </review>
+      <review type="user">
+        <source_id>60673</source_id>
+        <source_name>Zopper</source_name>
+        <source_logo width="109" height="22">http://i.testfreaks.com/images/sites/110x60/188/zopper.34344124.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=169855193&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.zopper.com&amp;track_origin_id=19741&amp;track_product_id=630382&amp;track_review_id=169855193</url>
+        <title>Worth Buying</title>
+        <extract>Compared to most cameras today, the Canon EOS 1200D isn't the most premium or high grade. For this price, it isn't meant to be but it is still more expensive than your average camera especially with the EF-S 55-250 IS II lens bundled.</extract>
+        <author>Subir Biswas</author>
+        <score>8.4</score>
+        <date>2014-05-15</date>
+      </review>
+      <review type="user">
+        <source_id>60673</source_id>
+        <source_name>Zopper</source_name>
+        <source_logo width="109" height="22">http://i.testfreaks.com/images/sites/110x60/188/zopper.34344124.jpg</source_logo>
+        <url>http://www.testfreaks.co.in/click/out/?dest_id=177095001&amp;dest_type=Review&amp;track_action=06&amp;track_category_id=1&amp;track_click_source=review&amp;track_origin=review.zopper.com&amp;track_origin_id=19741&amp;track_product_id=630382&amp;track_review_id=177095001</url>
+        <title>A Bit Expensive</title>
+        <extract>Advanced point and shoot cameras have been stepping up to the terrain offered by DSLRs. Their price and ease of use is helping them compete with the likes of Canon and Nikon which are known for their high prices.</extract>
+        <author>Subir Biswas</author>
+        <score>7.8</score>
+        <date>2014-05-15</date>
+      </review>
+    </snippets>
+  </region>
+  <region language="en" country="za">
+    <testfreaks_summary>TestFreaks has 2036 reviews of Canon EOS 1200D / Rebel T5. Experts rate this product 7.2/10 and users 9.1/10.</testfreaks_summary>
+  </region>
+</product>
