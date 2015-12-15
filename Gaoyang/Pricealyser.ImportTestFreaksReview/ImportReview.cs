@@ -592,8 +592,11 @@ namespace Pricealyser.ImportTestFreaksReview
 
                                 er.Score = (double)sr.Score;
                                 decimal pricemeScore = 0m;
-                                if (er.Score > 0)
+                                if (er.Score >= 0&&er.Score<=1)
+                                    pricemeScore=1;
+                                else
                                     pricemeScore = decimal.Round((sr.Score / 2m), 1);
+
                                 er.PriceMeScore = (double)pricemeScore;
 
                                 if (!string.IsNullOrEmpty(sr.Date))
