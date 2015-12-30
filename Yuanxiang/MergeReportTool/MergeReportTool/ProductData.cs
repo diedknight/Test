@@ -11,6 +11,7 @@ namespace MergeReportTool
         public int RetailerProductId { get; set; }
         public string RetailerProductName { get; set; }
         public decimal RetailerPrice { get; set; }
+        public string PurchaseURL { get; set; }
         public int RetailerProductCondition { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }

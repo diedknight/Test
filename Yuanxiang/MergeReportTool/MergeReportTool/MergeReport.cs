@@ -29,6 +29,9 @@ namespace MergeReportTool
         private int CountryId;
         private decimal PriceRateJudge;
 
+        private bool isExist = false;
+        private bool isCheckError = false;
+
         public void Tools()
         {
             Write("Begin......" + DateTime.Now);
@@ -46,6 +49,17 @@ namespace MergeReportTool
                 int.TryParse(temp, out cid);
                 listCountry.Add(cid);
             }
+
+            GetAllMergeReportKeyword();
+            GetMergingOptionSettings();
+            GetSpecialCharacter();
+            GetNoModel();
+
+            decimal.TryParse(ConfigurationManager.AppSettings["PriceRateJudge"].ToString().Replace("%", ""), out PriceRateJudge);
+            PriceRateJudge = decimal.Round(PriceRateJudge / 100, 2);
+
+            if (stringcids == "0")
+                stringcids = GetAllCategorys();
 
             foreach (int countryid in listCountry)
             {
@@ -67,18 +81,6 @@ namespace MergeReportTool
                 }
                 Write("Get " + listRids.Count + " Retailers......" + DateTime.Now);
 
-                if (stringcids == "0")
-                    stringcids = GetAllCategorys();
-
-                decimal.TryParse(ConfigurationManager.AppSettings["PriceRateJudge"].ToString().Replace("%", ""), out PriceRateJudge);
-                PriceRateJudge = decimal.Round(PriceRateJudge / 100, 2);
-
-                GetAllMergeReportKeyword();
-                GetMergingOptionSettings();
-                GetSpecialCharacter();
-                GetNoModel();
-
-
                 foreach (int rid in listRids)
                 {
                     Write("Check " + rid + " product......." + DateTime.Now);
@@ -90,11 +92,18 @@ namespace MergeReportTool
                     Write("Get " + products.Count + " product by retailerid......." + DateTime.Now);
                     foreach (ProductData data in products)
                     {
-                        bool isError = CheckPrice(data);
-                        if (!isError)
-                            isError = CheckKeyword(data);
-                        if (!isError)
-                            CheckProductName(data);
+                        isExist = false;
+                        isCheckError = false;
+                        CheckMergeErrorReport(data.RetailerProductId, data.ProductId, data.ProductName, data.RetailerProductName, data.PurchaseURL);
+                        
+                        if (!isExist || isCheckError)
+                        {
+                            bool isError = CheckPrice(data);
+                            if (!isError)
+                                isError = CheckKeyword(data);
+                            if (!isError)
+                                CheckProductName(data);
+                        }
                     }
                 }
 
@@ -152,7 +161,7 @@ namespace MergeReportTool
                 decimal dataRate = decimal.Round((data.RetailerPrice - avgPrice) / avgPrice, 2);
                 if (ratePrice > PriceRateJudge && data.RetailerProductCondition != 4)
                 {
-                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty);
+                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty, data.ProductName, data.RetailerProductName, data.PurchaseURL);
                     isError = true;
                 }
             }
@@ -407,7 +416,7 @@ namespace MergeReportTool
                 }
 
                 if (isError)
-                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, string.Empty, stringError);
+                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, string.Empty, stringError, data.ProductName, data.RetailerProductName, data.PurchaseURL);
             }
 
             return isError;
@@ -486,7 +495,7 @@ namespace MergeReportTool
                             }
 
                             if (pkeyword != rpkeyword)
-                                InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, manuname, pkeyword + "|" + rpkeyword, string.Empty, string.Empty);
+                                InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, manuname, pkeyword + "|" + rpkeyword, string.Empty, string.Empty, data.ProductName, data.RetailerProductName, data.PurchaseURL);
                         }
                     }
                 }
@@ -512,44 +521,52 @@ namespace MergeReportTool
                 return temp;
         }
 
-        private void InsertMergeErrorReport(int rpid, int pid, int cid, string SameBrand, string SameModel, string PriceRate, string keyword)
+        private void CheckMergeErrorReport(int rpid, int pid, string pname, string rpname, string url)
+        {
+            string sql = "Select Id, PName, RPName, RPUrl From CSK_Store_MergeErrorReport Where PID = " + pid + " And RPID = " + rpid;
+            StoredProcedure sp = new StoredProcedure("");
+            sp.Command.CommandSql = sql;
+            sp.Command.CommandTimeout = 0;
+            sp.Command.CommandType = CommandType.Text;
+            IDataReader dr = sp.ExecuteReader();
+            while (dr.Read())
+            {
+                isExist = true;
+                string mpname = dr["PName"].ToString();
+                string mrpname = dr["RPName"].ToString();
+                string mrpurl = dr["RPUrl"].ToString();
+
+                if (string.IsNullOrEmpty(mpname) || mpname != pname || rpname != mrpname || url != mrpurl)
+                    isCheckError = true;
+
+            }
+            dr.Close();
+        }
+
+        private void InsertMergeErrorReport(int rpid, int pid, int cid, string SameBrand, string SameModel, string PriceRate, string keyword, string pname, string rpname, string url)
         {
             Write("Insert merge error report......." + DateTime.Now);
-            bool isUpdate = false;
-            string sql = "Select Id, IsChecked, NextdisplayDate From CSK_Store_MergeErrorReport Where PID = " + pid + " And RPID = " + rpid;
+            string sql = string.Empty;
             try
             {
-                bool isCheck = false;
-                DateTime nextdate = DateTime.Now;
-                StoredProcedure sp = new StoredProcedure("");
-                sp.Command.CommandSql = sql;
-                sp.Command.CommandTimeout = 0;
-                sp.Command.CommandType = CommandType.Text;
-                IDataReader dr = sp.ExecuteReader();
-                while (dr.Read())
+                if (isExist)
                 {
-                    isUpdate = true;
-                    bool.TryParse(dr["IsChecked"].ToString(), out isCheck);
-                    DateTime.TryParse(dr["NextdisplayDate"].ToString(), out nextdate);
-                }
-                dr.Close();
-
-                sql = "Insert CSK_Store_MergeErrorReport values(" + pid + ", " + rpid + ", "
-                    + "'" + SameBrand + "', '" + SameModel + "', '" + PriceRate + "', '" + keyword + "', 1, 0, 0, '', "
-                    + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', " + cid + ")";
-                if (isUpdate)
-                {
-                    string stringsql = string.Empty;
-                    if (isCheck && DateTime.Now > nextdate)
-                        stringsql = "IsError = 1, IsChecked = 0, IsBlack = 0, ";
-
                     sql = "Update CSK_Store_MergeErrorReport Set SameBrand = '" + SameBrand + "', SameModel = '" + SameModel + "', "
                         + "PriceRate = '" + PriceRate + "', "
-                        + "CreatedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', " + stringsql
+                        + "CreatedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', IsError = 1, IsChecked = 0, "
+                        + "PName = '" + pname + "', RPName = '" + rpname + "', RPUrl = '" + url + "', "
                         + "Keyword = '" + keyword + "' Where PID = " + pid + " And RPID = " + rpid;
                 }
+                else
+                {
+                    sql = "Insert CSK_Store_MergeErrorReport (PID, RPID, PName, RPName, RPUrl, SameBrand, SameModel, PriceRate, "
+                    + "keyword, IsError, IsChecked, CreatedOn, ModifiedOn, CID) values(" + pid + ", " + rpid + ", "
+                    + "'" + pname + "', '" + rpname + "', '" + url + "', "
+                    + "'" + SameBrand + "', '" + SameModel + "', '" + PriceRate + "', '" + keyword + "', 1, 0, "
+                    + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', " + cid + ")";
+                }
 
-                sp = new StoredProcedure("");
+                StoredProcedure sp = new StoredProcedure("");
                 sp.Command.CommandSql = sql;
                 sp.Command.CommandTimeout = 0;
                 sp.Command.CommandType = CommandType.Text;
@@ -562,7 +579,7 @@ namespace MergeReportTool
         {
             try
             {
-                string sql = "Select rp.RetailerProductId, rp.RetailerProductName, rp.RetailerPrice, rp.RetailerProductCondition, p.ProductId, "
+                string sql = "Select rp.RetailerProductId, rp.RetailerProductName, rp.RetailerPrice, rp.PurchaseURL, rp.RetailerProductCondition, p.ProductId, "
                             + "p.ProductName, p.ManufacturerID, p.CategoryID From CSK_Store_RetailerProduct rp inner join CSK_Store_Product p "
                             + "On rp.ProductId = p.ProductID Where rp.RetailerId = " + rid + " And rp.RetailerProductStatus = 1 And rp.IsDeleted = 0 "
                             + "And p.IsMerge = 1 And p.CategoryID in (" + stringcids + ")";
@@ -586,6 +603,7 @@ namespace MergeReportTool
                     product.RetailerProductId = rpid;
                     product.RetailerProductName = dr["RetailerProductName"].ToString();
                     product.RetailerPrice = price;
+                    product.PurchaseURL = dr["PurchaseURL"].ToString();
                     product.RetailerProductCondition = rcid;
                     product.ProductId = pid;
                     product.ProductName = dr["ProductName"].ToString();
