@@ -20,6 +20,9 @@ namespace MergeReportTool
             set { _sw = value; }
         }
 
+        private Dictionary<int, string> dicManu;
+        private Dictionary<int, List<decimal>> dicPrice;
+
         private List<int> listRids;
         private List<ReportKeywordData> listKeyword;
         private List<MergingOptionSettingData> listSetting;
@@ -50,6 +53,7 @@ namespace MergeReportTool
                 listCountry.Add(cid);
             }
 
+            GetAllManufacturer();
             GetAllMergeReportKeyword();
             GetMergingOptionSettings();
             GetSpecialCharacter();
@@ -65,6 +69,10 @@ namespace MergeReportTool
             {
                 CountryId = countryid;
                 Write("Get " + countryid + " Country......" + DateTime.Now);
+
+                Write("Get all retailerproduct price......" + DateTime.Now);
+                GetAllRetailerProductPrice(countryid);
+                Write("End get all retailerproduct price......" + DateTime.Now);
 
                 listRids = new List<int>();
                 if (stringrids == "0")
@@ -116,21 +124,8 @@ namespace MergeReportTool
         {
             bool isError = false;
             List<decimal> listPrice = new List<decimal>();
-            string sql = "Select RetailerPrice From CSK_Store_RetailerProduct rp inner join CSK_Store_Retailer r "
-                        + "On rp.RetailerId = r.RetailerId Where rp.ProductId = " + data.ProductId + " "
-                        + "And rp.RetailerProductStatus = 1 And IsDeleted = 0 And r.RetailerCountry = " + CountryId;
-            StoredProcedure sp = new StoredProcedure("");
-            sp.Command.CommandSql = sql;
-            sp.Command.CommandTimeout = 0;
-            sp.Command.CommandType = CommandType.Text;
-            IDataReader dr = sp.ExecuteReader();
-            while (dr.Read())
-            {
-                decimal price = 0m;
-                decimal.TryParse(dr["RetailerPrice"].ToString(), out price);
-                listPrice.Add(price);
-            }
-            dr.Close();
+            if (dicPrice.ContainsKey(data.ProductId))
+                listPrice = dicPrice[data.ProductId];
 
             decimal total = 0;
             int count = 0;
@@ -554,23 +549,45 @@ namespace MergeReportTool
                     sql = "Update CSK_Store_MergeErrorReport Set SameBrand = '" + SameBrand + "', SameModel = '" + SameModel + "', "
                         + "PriceRate = '" + PriceRate + "', "
                         + "CreatedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', IsError = 1, IsChecked = 0, "
-                        + "PName = '" + pname + "', RPName = '" + rpname + "', RPUrl = '" + url + "', "
+                        + "PName = @pname, RPName = @rpname, RPUrl = @url, "
                         + "Keyword = '" + keyword + "' Where PID = " + pid + " And RPID = " + rpid;
                 }
                 else
                 {
                     sql = "Insert CSK_Store_MergeErrorReport (PID, RPID, PName, RPName, RPUrl, SameBrand, SameModel, PriceRate, "
                     + "keyword, IsError, IsChecked, CreatedOn, ModifiedOn, CID) values(" + pid + ", " + rpid + ", "
-                    + "'" + pname + "', '" + rpname + "', '" + url + "', "
+                    + "@pname, @rpname, @url, "
                     + "'" + SameBrand + "', '" + SameModel + "', '" + PriceRate + "', '" + keyword + "', 1, 0, "
                     + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', " + cid + ")";
                 }
 
-                StoredProcedure sp = new StoredProcedure("");
-                sp.Command.CommandSql = sql;
-                sp.Command.CommandTimeout = 0;
-                sp.Command.CommandType = CommandType.Text;
-                sp.Execute();
+                string connString = System.Configuration.ConfigurationManager.ConnectionStrings["Pricealyser"].ConnectionString;
+                using (System.Data.SqlClient.SqlConnection sqlConn = new System.Data.SqlClient.SqlConnection(connString))
+                {
+                    using (System.Data.SqlClient.SqlCommand sqlCMD = new System.Data.SqlClient.SqlCommand(sql, sqlConn))
+                    {
+                        System.Data.SqlClient.SqlParameter rpnameP = new System.Data.SqlClient.SqlParameter();
+                        rpnameP.ParameterName = "@rpname";
+                        rpnameP.Value = rpname;
+                        rpnameP.DbType = DbType.String;
+                        sqlCMD.Parameters.Add(rpnameP);
+
+                        System.Data.SqlClient.SqlParameter pnameP = new System.Data.SqlClient.SqlParameter();
+                        pnameP.ParameterName = "@pname";
+                        pnameP.Value = pname;
+                        pnameP.DbType = DbType.String;
+                        sqlCMD.Parameters.Add(pnameP);
+
+                        System.Data.SqlClient.SqlParameter urlP = new System.Data.SqlClient.SqlParameter();
+                        urlP.ParameterName = "@url";
+                        urlP.Value = url;
+                        urlP.DbType = DbType.String;
+                        sqlCMD.Parameters.Add(urlP);
+
+                        sqlConn.Open();
+                        sqlCMD.ExecuteScalar();
+                    }
+                }
             }
             catch (Exception ex) { Write("Insert merge error report error.......  sql: " + sql + ex.Message + ex.StackTrace + DateTime.Now); }
         }
@@ -579,6 +596,7 @@ namespace MergeReportTool
         {
             try
             {
+                //8992	20	883201321
                 string sql = "Select rp.RetailerProductId, rp.RetailerProductName, rp.RetailerPrice, rp.PurchaseURL, rp.RetailerProductCondition, p.ProductId, "
                             + "p.ProductName, p.ManufacturerID, p.CategoryID From CSK_Store_RetailerProduct rp inner join CSK_Store_Product p "
                             + "On rp.ProductId = p.ProductID Where rp.RetailerId = " + rid + " And rp.RetailerProductStatus = 1 And rp.IsDeleted = 0 "
@@ -768,11 +786,12 @@ namespace MergeReportTool
             }
             dr.Close();
         }
+
         
-        private string GetManufacturer(int mid)
+        private void GetAllManufacturer()
         {
-            string manuname = string.Empty;
-            string sql = "select ManufacturerName from CSK_Store_Manufacturer where ManufacturerID = " + mid;
+            dicManu = new Dictionary<int, string>();
+            string sql = "select ManufacturerID, ManufacturerName from CSK_Store_Manufacturer";
             StoredProcedure sp = new StoredProcedure("");
             sp.Command.CommandSql = sql;
             sp.Command.CommandTimeout = 0;
@@ -780,11 +799,56 @@ namespace MergeReportTool
             IDataReader dr = sp.ExecuteReader();
             while (dr.Read())
             {
-                manuname = dr["ManufacturerName"].ToString();
+                int mid = 0;
+                int.TryParse(dr["ManufacturerID"].ToString(), out mid);
+                string manuname = dr["ManufacturerName"].ToString();
+                if (!dicManu.ContainsKey(mid))
+                    dicManu.Add(mid, manuname);
             }
             dr.Close();
+        }
+        
+        private string GetManufacturer(int mid)
+        {
+            string manuname = string.Empty;
+            if (dicManu.ContainsKey(mid))
+                return dicManu[mid];
 
             return manuname;
+        }
+
+        private void GetAllRetailerProductPrice(int countryid)
+        {
+            dicPrice = new Dictionary<int, List<decimal>>();
+            string sql = "Select ProductId, RetailerPrice From CSK_Store_RetailerProduct rp inner join CSK_Store_Retailer r "
+                        + "On rp.RetailerId = r.RetailerId Where "
+                        + "rp.RetailerProductStatus = 1 And IsDeleted = 0 And r.RetailerCountry = " + countryid;
+            StoredProcedure sp = new StoredProcedure("");
+            sp.Command.CommandSql = sql;
+            sp.Command.CommandTimeout = 0;
+            sp.Command.CommandType = CommandType.Text;
+            IDataReader dr = sp.ExecuteReader();
+            while (dr.Read())
+            {
+                int pid = 0;
+                int.TryParse(dr["ProductId"].ToString(), out pid);
+                decimal price = 0m;
+                decimal.TryParse(dr["RetailerPrice"].ToString(), out price);
+
+                if (dicPrice.ContainsKey(pid))
+                {
+                    List<decimal> listPrice = dicPrice[pid];
+                    listPrice.Add(price);
+                    dicPrice[pid] = listPrice;
+                }
+                else
+                {
+                    List<decimal> listPrice = new List<decimal>();
+                    listPrice.Add(price);
+                    dicPrice[pid] = listPrice;
+                }
+            }
+            dr.Close();
         }
 
         private void Write(string info)
