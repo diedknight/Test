@@ -33,7 +33,10 @@ namespace CheckImagesTool
         private DateTime imageCreateon;
         private Dictionary<string, string> dicTable;
         private bool isDebug;
+        private bool createIndex;
+        
         private DBImageCache imageCache = null;
+        
 
         public CheckImages()
         {
@@ -52,6 +55,7 @@ namespace CheckImagesTool
             imagePathByKeyword = ConfigurationManager.AppSettings["CheckImagePathByKeyword"].ToString().ToLower();
             DateTime.TryParse(ConfigurationManager.AppSettings["CreatedTimeOfImage"].ToString(), out imageCreateon);
             bool.TryParse(ConfigurationManager.AppSettings["debug"].ToString(), out isDebug);
+            bool.TryParse(ConfigurationManager.AppSettings["CreateIndex"].ToString(), out createIndex);
 
             string tableAndColumn = ConfigurationManager.AppSettings["TableAndColumn"].ToString();
             dicTable = new Dictionary<string, string>();
@@ -67,8 +71,11 @@ namespace CheckImagesTool
                     imageCache.Add(tbls[0], tbls[1]);
                 }
             }
-            
-            imageCache.Init();            
+
+            if (createIndex)
+            {
+                imageCache.Init();
+            }
         }
 
         public void Check()

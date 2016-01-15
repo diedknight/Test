@@ -10,7 +10,7 @@ namespace CheckImagesTool
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
             string logpath = System.Configuration.ConfigurationManager.AppSettings["LogPath"];
             CreateDir(logpath);
             StreamWriter sw = new StreamWriter(logpath + "\\" + DateTime.Now.ToString("yyyyMMddHH") + ".txt");
