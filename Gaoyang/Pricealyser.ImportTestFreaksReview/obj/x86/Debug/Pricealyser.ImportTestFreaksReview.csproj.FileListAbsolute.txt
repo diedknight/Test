@@ -22,3 +22,9 @@ C:\Users\yuanxiang\Desktop\Pricealyser.ImportTestFreaksReview\obj\x86\Debug\Pric
 C:\Users\yuanxiang\Desktop\Pricealyser.ImportTestFreaksReview\obj\x86\Debug\Pricealyser.ImportTestFreaksReview.pdb
 C:\Users\yuanxiang\Desktop\Pricealyser.ImportTestFreaksReview\bin\Debug\Pricealyser.ImportTestFreaksReview.exe
 C:\Users\yuanxiang\Desktop\Pricealyser.ImportTestFreaksReview\bin\Debug\Pricealyser.ImportTestFreaksReview.pdb
+D:\C#\MiniTools\Gaoyang\Pricealyser.ImportTestFreaksReview\bin\Debug\Pricealyser.ImportTestFreaksReview.exe.config
+D:\C#\MiniTools\Gaoyang\Pricealyser.ImportTestFreaksReview\obj\x86\Debug\Pricealyser.ImportTestFreaksReview.exe
+D:\C#\MiniTools\Gaoyang\Pricealyser.ImportTestFreaksReview\obj\x86\Debug\Pricealyser.ImportTestFreaksReview.pdb
+D:\C#\MiniTools\Gaoyang\Pricealyser.ImportTestFreaksReview\bin\Debug\Pricealyser.ImportTestFreaksReview.exe
+D:\C#\MiniTools\Gaoyang\Pricealyser.ImportTestFreaksReview\bin\Debug\Pricealyser.ImportTestFreaksReview.pdb
+D:\C#\MiniTools\Gaoyang\Pricealyser.ImportTestFreaksReview\obj\x86\Debug\Pricealyser.ImportTestFreaksReview.csprojResolveAssemblyReference.cache

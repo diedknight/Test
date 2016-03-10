@@ -101,7 +101,12 @@ namespace Pricealyser.ImportTestFreaksReview
             XmlDocument xmlDoc = new XmlDocument();
 
             try { xmlDoc.Load(feedFile); }
-            catch { xmlDoc.LoadXml(GetContent(feedFile)); }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                string xmlString = GetContent(feedFile);
+                xmlDoc.LoadXml(xmlString);
+            }
 
             XmlNodeList nodes = null;
 
@@ -112,89 +117,99 @@ namespace Pricealyser.ImportTestFreaksReview
 
         public static string GetContent(string feedFile)
         {
-            StreamReader sr = new StreamReader(feedFile);
-            string content = sr.ReadToEnd();
-
-            if (content.Contains("&"))
+            StringBuilder sb = new StringBuilder();
+            using (StreamReader sr = new StreamReader(feedFile))
             {
-                if (content.Contains("&quot;"))
+                string content = "";
+                int lineCount = 0;
+                while (null != (content = sr.ReadLine()))
                 {
-                    content = content.Replace("&quot;", "");
-                }
-                if (content.Contains("&Mac176;"))
-                {
-                    content = content.Replace("&Mac176;", "");
-                }
-                if (content.Contains("&reg;"))
-                {
-                    content = content.Replace("&reg;", "");
-                }
-                if (content.Contains("&rsquo;"))
-                {
-                    content = content.Replace("&rsquo;", "'");
-                }
-                if (content.Contains("&trade;"))
-                {
-                    content = content.Replace("&trade;", "");
-                }
-                if (content.Contains("&lsquo;"))
-                {
-                    content = content.Replace("&lsquo;", "");
-                }
-                if (content.Contains("&rdquo;"))
-                {
-                    content = content.Replace("&rdquo;", "");
-                }
-                if (content.Contains("&ndash;"))
-                {
-                    content = content.Replace("&ndash;", "-");
-                }
-                if (content.Contains("&nbsp;"))
-                {
-                    content = content.Replace("&nbsp;", " ");
-                }
-                if (content.Contains("&ldquo;"))
-                {
-                    content = content.Replace("&ldquo;", "");
-                }
-                if (content.Contains("&ldquo;"))
-                {
-                    content = content.Replace("&ldquo;", "'");
-                }
-                if (content.Contains("&rdquo;"))
-                {
-                    content = content.Replace("&rdquo;", "'");
-                }
-                if (content.Contains("&uuml;"))
-                {
-                    content = content.Replace("&uuml;", "u");
-                }
+                    if (content.Contains("&"))
+                    {
+                        if (content.Contains("&quot;"))
+                        {
+                            content = content.Replace("&quot;", "");
+                        }
+                        if (content.Contains("&Mac176;"))
+                        {
+                            content = content.Replace("&Mac176;", "");
+                        }
+                        if (content.Contains("&reg;"))
+                        {
+                            content = content.Replace("&reg;", "");
+                        }
+                        if (content.Contains("&rsquo;"))
+                        {
+                            content = content.Replace("&rsquo;", "'");
+                        }
+                        if (content.Contains("&trade;"))
+                        {
+                            content = content.Replace("&trade;", "");
+                        }
+                        if (content.Contains("&lsquo;"))
+                        {
+                            content = content.Replace("&lsquo;", "");
+                        }
+                        if (content.Contains("&rdquo;"))
+                        {
+                            content = content.Replace("&rdquo;", "");
+                        }
+                        if (content.Contains("&ndash;"))
+                        {
+                            content = content.Replace("&ndash;", "-");
+                        }
+                        if (content.Contains("&nbsp;"))
+                        {
+                            content = content.Replace("&nbsp;", " ");
+                        }
+                        if (content.Contains("&ldquo;"))
+                        {
+                            content = content.Replace("&ldquo;", "");
+                        }
+                        if (content.Contains("&ldquo;"))
+                        {
+                            content = content.Replace("&ldquo;", "'");
+                        }
+                        if (content.Contains("&rdquo;"))
+                        {
+                            content = content.Replace("&rdquo;", "'");
+                        }
+                        if (content.Contains("&uuml;"))
+                        {
+                            content = content.Replace("&uuml;", "u");
+                        }
 
-                if (content.Contains("&mdash;"))
-                {
-                    content = content.Replace("&mdash;", "-");
-                }
+                        if (content.Contains("&mdash;"))
+                        {
+                            content = content.Replace("&mdash;", "-");
+                        }
 
-                content = content.Replace("&", "&amp;");
+                        content = content.Replace("&", "&amp;");
 
-                if (content.Contains("&amp;amp;"))
-                {
-                    content = content.Replace("&amp;amp;", "&amp;");
-                }
+                        if (content.Contains("&amp;amp;"))
+                        {
+                            content = content.Replace("&amp;amp;", "&amp;");
+                        }
 
-                if (content.Contains("&amp;gt;"))
-                {
-                    content = content.Replace("&amp;gt;", "&gt;");
-                }
+                        if (content.Contains("&amp;gt;"))
+                        {
+                            content = content.Replace("&amp;gt;", "&gt;");
+                        }
+                    }
+                    if (content.Contains("?/title>"))
+                        content = content.Replace("?/title>", "</title>");
+                    if (content.Contains("?/extract>"))
+                        content = content.Replace("?/extract>", "</extract>");
+                    content = content.Replace("鈥檚", " ").Replace("庐", "").Replace("鈩?", "").Replace("鈩", "");
+                    content = content.Replace("鈥擟", " ").Replace("鈥?", " ");
+                    content = content.Replace("\a ", "").Replace(">\a", ">");
+                    sb.Append(content + Environment.NewLine);
+
+                    lineCount++;
+                }   
             }
-            if (content.Contains("?/title>"))
-                content = content.Replace("?/title>", "</title>");
-            if (content.Contains("?/extract>"))
-                content = content.Replace("?/extract>", "</extract>");
-            content = content.Replace("鈥檚", " ").Replace("庐", "").Replace("鈩?", "").Replace("鈩", "");
-            content = content.Replace("鈥擟", " ").Replace("鈥?", " ");
 
-            return content;
+            return sb.ToString();
         }
     }
 }
