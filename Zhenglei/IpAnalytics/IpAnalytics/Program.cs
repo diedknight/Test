@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IpAnalytics.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,21 @@ namespace IpAnalytics
 {
     class Program
     {
+        private static DateTime CurRunTime = DateTime.Now;
+
         static void Main(string[] args)
         {
             //string ipInfo = GetIPInfo("210.55.213.185"); //NZ
             //string ipInfo2 = GetIPInfo("58.6.0.22"); //AU
 
             Console.WriteLine("读取数据库...");
+
+            JobConfig.Load("ipAnalytics");
             List<string> ipList = GetIPs();
 
             AnalyticAndWriteLog(ipList);
+
+            JobConfig.SetValue("prevRunningTime", CurRunTime.ToString("yyyy-MM-dd HH:mm:ss"));
 
             //Console.WriteLine("分析IP地址...");
             //Dictionary<string, List<string>> ipDic = GetIPInfosDic(ipList);
@@ -53,10 +60,20 @@ namespace IpAnalytics
                     else
                     {
                         string[] infos = ipInfo.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        
                         if (!excludeInfos.Contains(infos[0]))
                         {
                             msg = infos[0] + "\t" + ip;
                             allIPs.Add(ip);
+
+                            PriceMeDBA.CSK_Store_IP_Blacklist blackIP = PriceMeDBA.CSK_Store_IP_Blacklist.SingleOrDefault(item => item.IPAddress == ip);
+                            if (blackIP == null)
+                            {
+                                blackIP = new PriceMeDBA.CSK_Store_IP_Blacklist();
+                                blackIP.IPAddress = ip;
+                                blackIP.CreatedOn = DateTime.Now;
+                                blackIP.Save();
+                            }
                         }
                     }
                     if (!string.IsNullOrEmpty(msg))
@@ -144,8 +161,11 @@ namespace IpAnalytics
                                     RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerCountry = {1}) 
                                     group by UserIP";
 
-            string sqlConnection = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate_Common"].ConnectionString;
-            string dateRange = System.Configuration.ConfigurationManager.AppSettings["DateRange"];
+            string sqlConnection = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString;
+            
+            //string dateRange = System.Configuration.ConfigurationManager.AppSettings["DateRange"];
+            string dateRange = "'" + JobConfig.GetValue("prevRunningTime") + "' and '" + CurRunTime.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+
             string countryID = System.Configuration.ConfigurationManager.AppSettings["CountryID"];
             string selectSql = string.Format(selectSqlFormat, dateRange, countryID);
 
