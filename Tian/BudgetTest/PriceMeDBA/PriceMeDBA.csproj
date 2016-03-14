@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A5ACFD04-8B70-4A08-A07D-13B35F9B6B63}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PriceMeDBA</RootNamespace>
+    <AssemblyName>PriceMeDBA</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SubSonic.Core, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PriceMeCrawlerTaskDLL\SubSonic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extend\CSK_Store_PPCMember.cs" />
+    <Compile Include="Extend\CSK_Store_Retailer.cs" />
+    <Compile Include="Extend\CSK_Store_RetailerProduct.cs" />
+    <Compile Include="Extend\PriceMe.cs" />
+    <Compile Include="Extend\ProductCategory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubSonic\ActiveRecord.cs">
+      <DependentUpon>ActiveRecord.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="SubSonic\Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubSonic\StoredProcedures.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoredProcedures.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubSonic\Structs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Structs.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SubSonic\ActiveRecord.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ActiveRecord.cs</LastGenOutput>
+    </None>
+    <None Include="SubSonic\Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Context.cs</LastGenOutput>
+    </None>
+    <None Include="SubSonic\Settings.ttinclude" />
+    <None Include="SubSonic\SQLServer.ttinclude" />
+    <None Include="SubSonic\StoredProcedures.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StoredProcedures.cs</LastGenOutput>
+    </None>
+    <None Include="SubSonic\Structs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Structs.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
