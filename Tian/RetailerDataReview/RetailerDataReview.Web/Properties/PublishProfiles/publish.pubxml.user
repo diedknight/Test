@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Publish\RetailerDataReviewWeb</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/PriceMeDBA.dll">
+      <publishTime>03/09/2016 09:53:12</publishTime>
+    </File>
+    <File Include="bin/PriceMeDBA.pdb">
+      <publishTime>03/09/2016 09:53:12</publishTime>
+    </File>
+    <File Include="bin/RetailerDataReview.Web.dll">
+      <publishTime>03/10/2016 10:12:18</publishTime>
+    </File>
+    <File Include="bin/RetailerDataReview.Web.pdb">
+      <publishTime>03/10/2016 10:12:18</publishTime>
+    </File>
+    <File Include="bin/SubSonic.Core.dll">
+      <publishTime>12/04/2013 11:19:32</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/08/2016 08:53:34</publishTime>
+    </File>
+    <File Include="Image/priceme.ico">
+      <publishTime>03/10/2016 10:10:51</publishTime>
+    </File>
+    <File Include="Image/pricemelogo150323.png">
+      <publishTime>03/10/2016 09:57:35</publishTime>
+    </File>
+    <File Include="Success.aspx">
+      <publishTime>03/10/2016 10:11:56</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/10/2016 11:21:35</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
