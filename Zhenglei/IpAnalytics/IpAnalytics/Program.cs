@@ -45,6 +45,8 @@ namespace IpAnalytics
             string logFile = DateTime.Now.ToString("yyyy-MM-dd_HH") + ".txt";
             string logFilePath = System.IO.Path.Combine(logPath, logFile);
 
+            int whiteCount = 0;
+
             using (LogWriter logWriter = new LogWriter(logFilePath))
             {
                 List<string> allIPs = new List<string>();
@@ -60,7 +62,7 @@ namespace IpAnalytics
                     else
                     {
                         string[] infos = ipInfo.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        
+
                         if (!excludeInfos.Contains(infos[0]))
                         {
                             msg = infos[0] + "\t" + ip;
@@ -75,6 +77,11 @@ namespace IpAnalytics
                                 blackIP.Save();
                             }
                         }
+                        else
+                        {
+                            PriceMeCrawlerTask.Common.Log.XbaiLog.WriteLog(System.IO.Path.Combine(logPath, string.Format("IPnumber-{0}", logFile)), ip + " " + infos[0]);
+                            whiteCount++;
+                        }
                     }
                     if (!string.IsNullOrEmpty(msg))
                     {
@@ -85,6 +92,8 @@ namespace IpAnalytics
 
                 logWriter.WriteLog("All IP : ");
                 logWriter.WriteLog(string.Join(",", allIPs));
+
+                PriceMeCrawlerTask.Common.Log.XbaiLog.WriteLog(System.IO.Path.Combine(logPath, string.Format("IPnumber-{0}", logFile)), "Sum: " + whiteCount);
             }
         }
 
@@ -156,10 +165,16 @@ namespace IpAnalytics
         {
             List<string> ipList = new List<string>();
 
-            string selectSqlFormat = @"select UserIP COLLATE DATABASE_DEFAULT as IP from CSK_Store_RetailerTracker where CreatedOn between {0} 
-                                    and UserIP not in (select IPAddress COLLATE DATABASE_DEFAULT as IP from CSK_Store_IP_Blacklist) and
-                                    RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerCountry = {1}) 
-                                    group by UserIP";
+            string selectSqlFormat = @"
+                                    
+                                    declare @temp TABLE (UserIP varchar(100))
+                                    insert @temp select distinct UserIP from CSK_Store_RetailerTracker where CreatedOn <{2}
+                                        
+                                    select UserIP COLLATE DATABASE_DEFAULT as IP from CSK_Store_RetailerTracker where CreatedOn between {0} 
+                                    and UserIP not in (select IPAddress COLLATE DATABASE_DEFAULT as IP from CSK_Store_IP_Blacklist) 
+                                    and UserIP not in (select UserIP from @temp) 
+                                    and RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerCountry = {1}) 
+                                    ";
 
             string sqlConnection = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString;
             
@@ -167,12 +182,14 @@ namespace IpAnalytics
             string dateRange = "'" + JobConfig.GetValue("prevRunningTime") + "' and '" + CurRunTime.ToString("yyyy-MM-dd HH:mm:ss") + "'";
 
             string countryID = System.Configuration.ConfigurationManager.AppSettings["CountryID"];
-            string selectSql = string.Format(selectSqlFormat, dateRange, countryID);
+            string selectSql = string.Format(selectSqlFormat, dateRange, countryID, "'" + JobConfig.GetValue("prevRunningTime") + "'");            
 
             using (System.Data.SqlClient.SqlConnection sqlCon = new System.Data.SqlClient.SqlConnection(sqlConnection))
             using (System.Data.SqlClient.SqlCommand sqlCmd = new System.Data.SqlClient.SqlCommand(selectSql, sqlCon))
             {
                 sqlCon.Open();
+
+                sqlCmd.CommandTimeout = 0;
 
                 using (System.Data.SqlClient.SqlDataReader sqlDR = sqlCmd.ExecuteReader())
                 {
@@ -223,7 +240,7 @@ namespace IpAnalytics
                 return null;
             }
             finally
-            {
+            {                
                 objWebReq = null;
             }
 
