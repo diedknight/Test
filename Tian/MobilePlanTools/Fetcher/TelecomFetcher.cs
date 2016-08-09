@@ -54,7 +54,9 @@ namespace Fetcher
 
                     var ConID = str_arr[1].Contains("24") ? 3 : 2;
                     var Url = (li.Children[3] as ATag).Link;
-                    var Plan = "$" + str_arr[2];
+
+                    var Plan = "";
+                    if (str_arr.Length > 2) Plan = "$" + str_arr[2];
 
                     var infos = new MobilePhoneInfo();
                     infos.ContractTypeID = ConID;
@@ -77,9 +79,15 @@ namespace Fetcher
             doc.find(".clearfix.device-carousel-card").each(item => {
                 var node = item.ToJQuery();
 
-                string min = node.find(".detail-table .right").eq(0).val().Replace("mins to any NZ phone", "").Replace("to any NZ/Aus phone", "");
-                string text = node.find(".detail-table .right").eq(1).val().Replace("to any NZ network", "").Replace("to any NZ/Aus network", "").Replace("texts","");
-                string dataMB = node.find(".detail-table .data").parent().text().Trim();
+                string min = node.find(".detail-table .right").eq(1).val().Replace("mins to any NZ phone", "").Replace("to any NZ/Aus phone", "").Replace("NZ only", "");
+                string text = node.find(".detail-table .right").eq(2).val().Replace("to any NZ network", "").Replace("to any NZ/Aus network", "").Replace("texts","");
+                string dataMB = node.find(".detail-table .first-cell .right").text().Trim();
+
+                dataMB = dataMB.Replace("<span class=\"data\"> + 500MB</span>", "");
+                dataMB = dataMB.Replace("<span class=\"data\"> + 250MB</span>", "");
+                dataMB = dataMB.Replace("<span class=\"data\">", "");
+                dataMB = dataMB.Replace("</span>", "");
+
                 if (dataMB == "")
                 {
                     dataMB = "0";
@@ -89,7 +97,18 @@ namespace Fetcher
                     if (dataMB.Contains("+"))
                     {
                         var strList = dataMB.Split('+');
-                        dataMB = Convert.ToInt32(Convert.ToDecimal(strList[0].Replace("GB", "").Trim()) * 1024 + Convert.ToDecimal(strList[1].Replace("MB", "").Trim())) + "MB";
+                        dataMB = (Convert.ToInt32(Convert.ToDecimal(strList[0].Replace("GB", "").Trim()) * 1024)).ToString();
+
+                        if (strList[1].Contains("GB^"))
+                        {
+                            dataMB = (Convert.ToInt32(dataMB) + Convert.ToInt32(Convert.ToDecimal(strList[1].Replace("GB^", "").Trim()) * 1024)).ToString();
+                        }
+                        else
+                        {
+                            dataMB = (Convert.ToInt32(dataMB) + Convert.ToDecimal(strList[1].Replace("MB", "").Trim())).ToString();
+                        }
+
+                        dataMB += "MB";
                     }
                 }
 
@@ -116,7 +135,8 @@ namespace Fetcher
                     }
 
                 }
-                info.Phones = PhoneList;
+                info.Phones = PhoneList;                
+
                 mobilePlanList.Add(info);
             });
 

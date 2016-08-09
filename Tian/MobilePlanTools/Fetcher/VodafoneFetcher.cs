@@ -40,7 +40,7 @@ namespace Fetcher
 
                 //获取手机套餐
                 var pager = GetParser("http://www.vodafone.co.nz/mobile-plans/other-on-account-plans/");
-                var plan_top_tag = pager.ExtractAllNodesThatMatch(new HasAttributeFilter("id", "1375766535535"));
+                var plan_top_tag = pager.ExtractAllNodesThatMatch(new HasAttributeFilter("id", "module2"));
                 var filter = new HasAttributeFilter("class", "plan-tbl__info");
                 var plan_obj = plan_top_tag[0].Children.ExtractAllNodesThatMatch(filter,true).ToNodeArray();
                 
@@ -60,7 +60,7 @@ namespace Fetcher
                     info.Minutes = int.Parse(talk);
                     info.MobilePlanName = PlanName.Replace("\t", "").Replace("\n", "");
                     info.MobilePlanURL = PlanUrl;
-                    info.Price = int.Parse(PlanPrice);
+                    info.Price = Convert.ToDecimal(PlanPrice);
                     info.Texts = -1;
                     info.plus = 0;
 
@@ -117,7 +117,10 @@ namespace Fetcher
                     var filter3=new OrFilter(filter1,filter2);
 
                     var str_obj = div.Children.ExtractAllNodesThatMatch(filter3, true);
+
+                    if (str_obj.Count == 0) continue;
                     if (str_obj[0].ToPlainTextString().Trim().Contains("Mobile only")) continue;
+
                     var Plan = "";
                     var ConID = 0;
                     if (str_obj[0].ToPlainTextString().Contains(","))
