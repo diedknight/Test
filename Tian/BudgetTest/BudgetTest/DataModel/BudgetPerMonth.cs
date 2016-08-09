@@ -28,6 +28,8 @@ namespace BudgetTest.DataModel
             DateTime currentMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             int days = currentMonth.AddMonths(1).AddDays(-1).Day;
 
+            //int days = DateTime.Now.Day;
+
             string sql = @"select T.retailerid,R.retailername,count(*)*fixedcpcrate cost,DailyCap*{0}-count(*)*fixedcpcrate balance,DailyCap*{0} budget from CSK_Store_RetailerTracker T inner join csk_store_retailer R on T.retailerid=R.retailerid inner join csk_store_ppcmember P on R.retailerid=P.retailerid where T.CreatedOn>'{1}'  and UserIP not in
                             (select ipaddress from CSK_Store_IP_Blacklist)   and ppcmembertypeid=2 and P.IsAutomatedInvoice=1 
                             group by T.retailerid,R.retailername,DailyCap*{0},fixedcpcrate

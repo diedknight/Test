@@ -21,7 +21,8 @@ namespace BudgetTest
 
             //if (!ConfigAppString.SendBudgetEmail) return;
 
-            int days = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1).Day;
+            int dayCount = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1).Day;
+            int curday = DateTime.Now.Day;
 
             budgetPerMonthList.ForEach(budgetPerMonth =>
             {
@@ -34,9 +35,17 @@ namespace BudgetTest
 
                 string html = Template.Load("MerchantEmail.html");
 
+                int oldBudget = Convert.ToInt32(budgetPerMonth.Budget / dayCount);
+                int increase = Convert.ToInt32(budgetPerMonth.Cost / curday) - oldBudget;
+
+                if (increase < 2) increase = 2;
+                else if (increase < oldBudget) increase = oldBudget;
+                else increase += oldBudget;
+
+
                 html = html.Replace("[first name]", memberShipInfo.FirstName);
-                html = html.Replace("[old-budget]", (budgetPerMonth.Budget / days).ToString("0.00"));
-                html = html.Replace("[new-budget]", (budgetPerMonth.Budget / days + Math.Abs(budgetPerMonth.Balance) / days).ToString("0.00"));
+                html = html.Replace("[old-budget]", oldBudget.ToString());
+                html = html.Replace("[new-budget]", (oldBudget + increase).ToString());
 
                 string emailStr = ConfigurationManager.AppSettings["Email"];
                 string wSAccessKey = ConfigurationManager.AppSettings["WSAccessKey"];
