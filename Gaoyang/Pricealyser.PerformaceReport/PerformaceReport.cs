@@ -29,6 +29,7 @@ namespace Pricealyser.PerformaceReport
         string listData;
         string imgUrl;
         string cycleString;
+        int totalRef = 0;
 
         public void Performace()
         {
@@ -38,9 +39,11 @@ namespace Pricealyser.PerformaceReport
             sw = new StreamWriter(logPath + DateTime.Today.ToString("yyyyMMdd") + ".txt");
             WriterLog("Begin......");
 
-            List<int> listRids = GetSendRetailer();
+            //List<int> listRids = GetSendRetailer();
+            //var rids = stringRids.Split(',').Select(s=>int.Parse(s)).ToList();
 
-            var rids = stringRids.Split(',').Select(s=>int.Parse(s)).ToList();
+            var rids = GetSendRetailer();
+
             foreach (int rid in rids)
             {
                 CSK_Store_Retailer retailer = CSK_Store_Retailer.SingleOrDefault(r => r.RetailerId == rid);
@@ -51,7 +54,9 @@ namespace Pricealyser.PerformaceReport
 
                 //Create Html Code
                 WriterLog("Create Html Code......");
-                string htmlString = CreateHtmlCode(retailer.RetailerContactName);
+                string htmlString = CreateHtmlCode(retailer.RetailerContactName, rid);
+
+                if (totalRef <= 10) continue;
 
                 //Send Email
                 WriterLog("Send Email......");
@@ -125,6 +130,7 @@ namespace Pricealyser.PerformaceReport
 
         private void GetData(int rid)
         {
+            totalRef = 0;
             listData = string.Empty;
             string strDate = string.Empty;
             string endDate = DateTime.Today.ToString("yyyy-MM-dd");
@@ -176,13 +182,15 @@ namespace Pricealyser.PerformaceReport
                             + "<div style=\"float:left;width:100px;\"><strong>" + count + "</strong>&nbsp; referrals&nbsp; -&nbsp;</div><div style=\"float:left;width:500px;\"><a href=\"" + url + "\" target=\"_blank\">" + name + "</a></div></div>";
                 listData += stringData;
                 sqlCount++;
+
+                totalRef += Convert.ToInt32(count);
             }
             dr.Close();
             productCount = sqlCount.ToString();
             //WriterLog(listData);
         }
 
-        private string CreateHtmlCode(string firstName)
+        private string CreateHtmlCode(string firstName, int rid)
         {
             string stencilPath = ConfigurationManager.AppSettings["StencilPath"];
             string htmlString = File.ReadAllText(stencilPath);
@@ -193,6 +201,7 @@ namespace Pricealyser.PerformaceReport
             htmlString = htmlString.Replace("[string_ProductContent]", listData);
             htmlString = htmlString.Replace("[string_ProductCount]", productCount);
             htmlString = htmlString.Replace("[string_Year]", DateTime.Today.Year.ToString());
+            htmlString = htmlString.Replace("[string_Rid]", rid.ToString());
             htmlString = htmlString.Replace("\r\n", "");
 
             return htmlString;
