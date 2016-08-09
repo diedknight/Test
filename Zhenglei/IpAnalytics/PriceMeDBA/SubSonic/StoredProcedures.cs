@@ -627,12 +627,20 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeProducts123",this.Provider);
             return sp;
         }
+        public StoredProcedure CSK_Store_12RMB_Product_MergeProducts2(){
+            StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeProducts2",this.Provider);
+            return sp;
+        }
         public StoredProcedure CSK_Store_12RMB_Product_MergeTempProducts(){
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeTempProducts",this.Provider);
             return sp;
         }
         public StoredProcedure CSK_Store_12RMB_Product_MergeTempProducts_ExIsmerge(){
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeTempProducts_ExIsmerge",this.Provider);
+            return sp;
+        }
+        public StoredProcedure CSK_Store_12RMB_Product_MergeTempProducts2(){
+            StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeTempProducts2",this.Provider);
             return sp;
         }
         public StoredProcedure CSK_Store_12RMB_Retailer_GetByProductId(){

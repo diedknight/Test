@@ -1,4 +1,6 @@
 ﻿using IpAnalytics.Config;
+using PriceMeCrawlerTask.Common.Log;
+using PriceMeDBA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,17 +54,19 @@ namespace IpAnalytics
                 List<string> allIPs = new List<string>();
                 foreach (string ip in ipList)
                 {
+                    
                     string ipInfo = GetIPInfo(ip);
+                    string[] infos = ipInfo.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                     string msg = null;
+                    
+
                     if (string.IsNullOrEmpty(ipInfo))
                     {
                         msg = "UnKown\t" + ip;
                         allIPs.Add(ip);
                     }
                     else
-                    {
-                        string[] infos = ipInfo.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
+                    {                        
                         if (!excludeInfos.Contains(infos[0]))
                         {
                             msg = infos[0] + "\t" + ip;
@@ -79,10 +83,17 @@ namespace IpAnalytics
                         }
                         else
                         {
-                            PriceMeCrawlerTask.Common.Log.XbaiLog.WriteLog(System.IO.Path.Combine(logPath, string.Format("IPnumber-{0}", logFile)), ip + " " + infos[0]);
-                            whiteCount++;
+
+                            CSK_Store_IP_Address ipAddrInfo = new CSK_Store_IP_Address();
+                            ipAddrInfo.IPAddress = ip;
+                            ipAddrInfo.IPInt = (int)IpToInt(ip);
+                            ipAddrInfo.Save();                            
                         }
                     }
+
+                    PriceMeCrawlerTask.Common.Log.XbaiLog.WriteLog(System.IO.Path.Combine(logPath, string.Format("IPnumber-{0}", logFile)), ip + " " + infos[0]);
+                    whiteCount++;
+
                     if (!string.IsNullOrEmpty(msg))
                     {
                         logWriter.WriteLog(msg);
@@ -163,16 +174,15 @@ namespace IpAnalytics
         /// <returns></returns>
         private static List<string> GetIPs()
         {
+            string logPath = System.Configuration.ConfigurationManager.AppSettings["LogPath"];
+            string logFile = DateTime.Now.ToString("yyyy-MM-dd_HH") + ".txt";
+
             List<string> ipList = new List<string>();
+            List<string> tempIpList = new List<string>();            
 
             string selectSqlFormat = @"
-                                    
-                                    declare @temp TABLE (UserIP varchar(100))
-                                    insert @temp select distinct UserIP from CSK_Store_RetailerTracker where CreatedOn <{2}
-                                        
-                                    select UserIP COLLATE DATABASE_DEFAULT as IP from CSK_Store_RetailerTracker where CreatedOn between {0} 
-                                    and UserIP not in (select IPAddress COLLATE DATABASE_DEFAULT as IP from CSK_Store_IP_Blacklist) 
-                                    and UserIP not in (select UserIP from @temp) 
+                                    select distinct UserIP COLLATE DATABASE_DEFAULT as IP from CSK_Store_RetailerTracker where CreatedOn between {0} 
+                                    and UserIP not in (select IPAddress COLLATE DATABASE_DEFAULT as IP from CSK_Store_IP_Blacklist)                                      
                                     and RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerCountry = {1}) 
                                     ";
 
@@ -182,7 +192,7 @@ namespace IpAnalytics
             string dateRange = "'" + JobConfig.GetValue("prevRunningTime") + "' and '" + CurRunTime.ToString("yyyy-MM-dd HH:mm:ss") + "'";
 
             string countryID = System.Configuration.ConfigurationManager.AppSettings["CountryID"];
-            string selectSql = string.Format(selectSqlFormat, dateRange, countryID, "'" + JobConfig.GetValue("prevRunningTime") + "'");            
+            string selectSql = string.Format(selectSqlFormat, dateRange, countryID);            
 
             using (System.Data.SqlClient.SqlConnection sqlCon = new System.Data.SqlClient.SqlConnection(sqlConnection))
             using (System.Data.SqlClient.SqlCommand sqlCmd = new System.Data.SqlClient.SqlCommand(selectSql, sqlCon))
@@ -204,7 +214,19 @@ namespace IpAnalytics
                 }
             }
 
-            return ipList;
+            ipList.ForEach(ipStr =>
+            {
+                int ipInt = (int)IpToInt(ipStr);
+                var ipInfo = CSK_Store_IP_Address.SingleOrDefault(item => item.IPInt == ipInt);
+
+                if (ipInfo == null) tempIpList.Add(ipStr);
+                else PriceMeCrawlerTask.Common.Log.XbaiLog.WriteLog(System.IO.Path.Combine(logPath, string.Format("nocheckip-{0}", logFile)), ipStr + " , int:" + ipInt);
+
+                //休息一下
+                System.Threading.Thread.Sleep(200);
+            });           
+
+            return tempIpList;
         }
 
         /// <summary>
@@ -246,5 +268,30 @@ namespace IpAnalytics
 
             return strReturn;
         }
+
+        private static long IpToInt(string ip)
+        {
+            string[] items = ip.Split('.');
+
+            if (items.Length != 4) return 0;
+
+            items[3] = "0";
+
+            return long.Parse(items[0]) << 24
+                    | long.Parse(items[1]) << 16
+                    | long.Parse(items[2]) << 8
+                    | long.Parse(items[3]);
+        }
+
+        private static string IntToIp(long ipInt)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append((ipInt >> 24) & 0xFF).Append(".");
+            sb.Append((ipInt >> 16) & 0xFF).Append(".");
+            sb.Append((ipInt >> 8) & 0xFF).Append(".");
+            sb.Append(ipInt & 0xFF);
+            return sb.ToString();
+        }
+
     }
 }

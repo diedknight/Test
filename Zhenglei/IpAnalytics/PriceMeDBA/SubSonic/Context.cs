@@ -131,12 +131,13 @@ namespace PriceMeDBA
         public Query<Dragon_MatchProduct> Dragon_MatchProducts { get; set; }
         public Query<CSK_Store_AttributeRetailerCrawlDatum> CSK_Store_AttributeRetailerCrawlData { get; set; }
         public Query<CategoryFooterMap> CategoryFooterMaps { get; set; }
-        public Query<UpcomingProduct> UpcomingProducts { get; set; }
+        public Query<RetailerDataReview> RetailerDataReviews { get; set; }
         public Query<CSK_Store_AttributeGroup> CSK_Store_AttributeGroups { get; set; }
         public Query<CSK_Store_AutomaticUnmergeProduct> CSK_Store_AutomaticUnmergeProducts { get; set; }
         public Query<CSK_Store_RetailerProduct_StockKeyword> CSK_Store_RetailerProduct_StockKeywords { get; set; }
         public Query<CSK_Store_NewOnlyImport> CSK_Store_NewOnlyImports { get; set; }
         public Query<ShortCutCategory_Map> ShortCutCategory_Maps { get; set; }
+        public Query<UpcomingProduct> UpcomingProducts { get; set; }
         public Query<CSK_Store_RelatedCategory_Map> CSK_Store_RelatedCategory_Maps { get; set; }
         public Query<InvalidKeyword> InvalidKeywords { get; set; }
         public Query<CSK_Store_DeleteProductID> CSK_Store_DeleteProductIDs { get; set; }
@@ -149,6 +150,7 @@ namespace PriceMeDBA
         public Query<CSK_Store_PPCStat> CSK_Store_PPCStats { get; set; }
         public Query<CSK_Store_ShoppingComBlackBrand> CSK_Store_ShoppingComBlackBrands { get; set; }
         public Query<CSK_Store_CategoryUnit> CSK_Store_CategoryUnits { get; set; }
+        public Query<CSK_Store_ProductIsMerged_Temp2> CSK_Store_ProductIsMerged_Temp2s { get; set; }
         public Query<CSK_Store_Category> CSK_Store_Categories { get; set; }
         public Query<CSK_Store_RetailerProduct_StockStatus> CSK_Store_RetailerProduct_StockStatuses { get; set; }
         public Query<CSK_Store_Product> CSK_Store_Products { get; set; }
@@ -161,13 +163,13 @@ namespace PriceMeDBA
         public Query<CSK_Store_ShoppingTracker> CSK_Store_ShoppingTrackers { get; set; }
         public Query<CSK_Store_Manufacturer_SimilarManufacturerName> CSK_Store_Manufacturer_SimilarManufacturerNames { get; set; }
         public Query<CSK_RetaileriContact_Map> CSK_RetaileriContact_Maps { get; set; }
-        public Query<RetailerDataReview> RetailerDataReviews { get; set; }
         public Query<CSK_Store_AutomaticReport_Daily> CSK_Store_AutomaticReport_Dailies { get; set; }
         public Query<CSK_Store_RetailerProductAlert> CSK_Store_RetailerProductAlerts { get; set; }
         public Query<CSK_Store_AutomaticMergingForRetailer> CSK_Store_AutomaticMergingForRetailers { get; set; }
         public Query<CSK_Store_NewProduct> CSK_Store_NewProducts { get; set; }
         public Query<MyLog> MyLogs { get; set; }
         public Query<CSK_Store_CrawlerPriority> CSK_Store_CrawlerPriorities { get; set; }
+        public Query<NotCrawlandImportChecked> NotCrawlandImportCheckeds { get; set; }
         public Query<CSk_Store_RenameProduct_Type> CSk_Store_RenameProduct_Types { get; set; }
         public Query<PCM> PCMS { get; set; }
         public Query<CSK_Store_Energy> CSK_Store_Energies { get; set; }
@@ -199,6 +201,7 @@ namespace PriceMeDBA
         public Query<CSK_Store_ManufacturerProduct> CSK_Store_ManufacturerProducts { get; set; }
         public Query<CSK_Store_Import_Map> CSK_Store_Import_Maps { get; set; }
         public Query<CSK_Store_RetailerRedirectClick> CSK_Store_RetailerRedirectClicks { get; set; }
+        public Query<CSK_Store_CategoryViewType> CSK_Store_CategoryViewTypes { get; set; }
         public Query<CSK_Store_NewsletterCtx> CSK_Store_NewsletterCtxes { get; set; }
         public Query<CSK_Store_PM_ProductDescription> CSK_Store_PM_ProductDescriptions { get; set; }
         public Query<CSK_Store_ExpertReviewAU> CSK_Store_ExpertReviewAUs { get; set; }
@@ -213,6 +216,7 @@ namespace PriceMeDBA
         public Query<CSK_Store_RetailerProductlibrary> CSK_Store_RetailerProductlibraries { get; set; }
         public Query<CSK_Store_ExceptionCollect> CSK_Store_ExceptionCollects { get; set; }
         public Query<CSK_Store_RetailerAddressType> CSK_Store_RetailerAddressTypes { get; set; }
+        public Query<CSK_Store_IP_Address> CSK_Store_IP_Addresses { get; set; }
         public Query<AttributeDisplayTypeValue> AttributeDisplayTypeValues { get; set; }
         public Query<CSK_Store_ExpertReviewFeatureScore> CSK_Store_ExpertReviewFeatureScores { get; set; }
         public Query<CSK_Store_TransactionType> CSK_Store_TransactionTypes { get; set; }
@@ -559,12 +563,13 @@ namespace PriceMeDBA
             Dragon_MatchProducts = new Query<Dragon_MatchProduct>(provider);
             CSK_Store_AttributeRetailerCrawlData = new Query<CSK_Store_AttributeRetailerCrawlDatum>(provider);
             CategoryFooterMaps = new Query<CategoryFooterMap>(provider);
-            UpcomingProducts = new Query<UpcomingProduct>(provider);
+            RetailerDataReviews = new Query<RetailerDataReview>(provider);
             CSK_Store_AttributeGroups = new Query<CSK_Store_AttributeGroup>(provider);
             CSK_Store_AutomaticUnmergeProducts = new Query<CSK_Store_AutomaticUnmergeProduct>(provider);
             CSK_Store_RetailerProduct_StockKeywords = new Query<CSK_Store_RetailerProduct_StockKeyword>(provider);
             CSK_Store_NewOnlyImports = new Query<CSK_Store_NewOnlyImport>(provider);
             ShortCutCategory_Maps = new Query<ShortCutCategory_Map>(provider);
+            UpcomingProducts = new Query<UpcomingProduct>(provider);
             CSK_Store_RelatedCategory_Maps = new Query<CSK_Store_RelatedCategory_Map>(provider);
             InvalidKeywords = new Query<InvalidKeyword>(provider);
             CSK_Store_DeleteProductIDs = new Query<CSK_Store_DeleteProductID>(provider);
@@ -577,6 +582,7 @@ namespace PriceMeDBA
             CSK_Store_PPCStats = new Query<CSK_Store_PPCStat>(provider);
             CSK_Store_ShoppingComBlackBrands = new Query<CSK_Store_ShoppingComBlackBrand>(provider);
             CSK_Store_CategoryUnits = new Query<CSK_Store_CategoryUnit>(provider);
+            CSK_Store_ProductIsMerged_Temp2s = new Query<CSK_Store_ProductIsMerged_Temp2>(provider);
             CSK_Store_Categories = new Query<CSK_Store_Category>(provider);
             CSK_Store_RetailerProduct_StockStatuses = new Query<CSK_Store_RetailerProduct_StockStatus>(provider);
             CSK_Store_Products = new Query<CSK_Store_Product>(provider);
@@ -589,13 +595,13 @@ namespace PriceMeDBA
             CSK_Store_ShoppingTrackers = new Query<CSK_Store_ShoppingTracker>(provider);
             CSK_Store_Manufacturer_SimilarManufacturerNames = new Query<CSK_Store_Manufacturer_SimilarManufacturerName>(provider);
             CSK_RetaileriContact_Maps = new Query<CSK_RetaileriContact_Map>(provider);
-            RetailerDataReviews = new Query<RetailerDataReview>(provider);
             CSK_Store_AutomaticReport_Dailies = new Query<CSK_Store_AutomaticReport_Daily>(provider);
             CSK_Store_RetailerProductAlerts = new Query<CSK_Store_RetailerProductAlert>(provider);
             CSK_Store_AutomaticMergingForRetailers = new Query<CSK_Store_AutomaticMergingForRetailer>(provider);
             CSK_Store_NewProducts = new Query<CSK_Store_NewProduct>(provider);
             MyLogs = new Query<MyLog>(provider);
             CSK_Store_CrawlerPriorities = new Query<CSK_Store_CrawlerPriority>(provider);
+            NotCrawlandImportCheckeds = new Query<NotCrawlandImportChecked>(provider);
             CSk_Store_RenameProduct_Types = new Query<CSk_Store_RenameProduct_Type>(provider);
             PCMS = new Query<PCM>(provider);
             CSK_Store_Energies = new Query<CSK_Store_Energy>(provider);
@@ -627,6 +633,7 @@ namespace PriceMeDBA
             CSK_Store_ManufacturerProducts = new Query<CSK_Store_ManufacturerProduct>(provider);
             CSK_Store_Import_Maps = new Query<CSK_Store_Import_Map>(provider);
             CSK_Store_RetailerRedirectClicks = new Query<CSK_Store_RetailerRedirectClick>(provider);
+            CSK_Store_CategoryViewTypes = new Query<CSK_Store_CategoryViewType>(provider);
             CSK_Store_NewsletterCtxes = new Query<CSK_Store_NewsletterCtx>(provider);
             CSK_Store_PM_ProductDescriptions = new Query<CSK_Store_PM_ProductDescription>(provider);
             CSK_Store_ExpertReviewAUs = new Query<CSK_Store_ExpertReviewAU>(provider);
@@ -641,6 +648,7 @@ namespace PriceMeDBA
             CSK_Store_RetailerProductlibraries = new Query<CSK_Store_RetailerProductlibrary>(provider);
             CSK_Store_ExceptionCollects = new Query<CSK_Store_ExceptionCollect>(provider);
             CSK_Store_RetailerAddressTypes = new Query<CSK_Store_RetailerAddressType>(provider);
+            CSK_Store_IP_Addresses = new Query<CSK_Store_IP_Address>(provider);
             AttributeDisplayTypeValues = new Query<AttributeDisplayTypeValue>(provider);
             CSK_Store_ExpertReviewFeatureScores = new Query<CSK_Store_ExpertReviewFeatureScore>(provider);
             CSK_Store_TransactionTypes = new Query<CSK_Store_TransactionType>(provider);
@@ -890,12 +898,13 @@ namespace PriceMeDBA
             	DataProvider.Schema.Tables.Add(new Dragon_MatchProductTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_AttributeRetailerCrawlDataTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CategoryFooterMapTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UpcomingProductTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new RetailerDataReviewTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_AttributeGroupTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_AutomaticUnmergeProductTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_RetailerProduct_StockKeywordTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_NewOnlyImportTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ShortCutCategory_MapTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new UpcomingProductTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_RelatedCategory_MapTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new InvalidKeywordsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_DeleteProductIDTable(DataProvider));
@@ -908,6 +917,7 @@ namespace PriceMeDBA
             	DataProvider.Schema.Tables.Add(new CSK_Store_PPCStatsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_ShoppingComBlackBrandsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_CategoryUnitTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new CSK_Store_ProductIsMerged_Temp2Table(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_CategoryTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_RetailerProduct_StockStatusTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_ProductTable(DataProvider));
@@ -920,13 +930,13 @@ namespace PriceMeDBA
             	DataProvider.Schema.Tables.Add(new CSK_Store_ShoppingTrackerTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_Manufacturer_SimilarManufacturerNameTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_RetaileriContact_MapTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new RetailerDataReviewTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_AutomaticReport_DailyTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_RetailerProductAlertTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_AutomaticMergingForRetailersTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_NewProductsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new MyLogTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_CrawlerPriorityTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new NotCrawlandImportCheckedTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSk_Store_RenameProduct_TypeTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new PCMTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_EnergyTable(DataProvider));
@@ -958,6 +968,7 @@ namespace PriceMeDBA
             	DataProvider.Schema.Tables.Add(new CSK_Store_ManufacturerProductTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_Import_MapTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_RetailerRedirectClickTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new CSK_Store_CategoryViewTypeTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_NewsletterCtxTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_PM_ProductDescriptionTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_ExpertReviewAUTable(DataProvider));
@@ -972,6 +983,7 @@ namespace PriceMeDBA
             	DataProvider.Schema.Tables.Add(new CSK_Store_RetailerProductlibraryTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_ExceptionCollectTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_RetailerAddressTypeTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new CSK_Store_IP_AddressTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new AttributeDisplayTypeValueTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_ExpertReviewFeatureScoreTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CSK_Store_TransactionTypeTable(DataProvider));

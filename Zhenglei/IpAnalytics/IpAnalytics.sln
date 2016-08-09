@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpAnalytics", "IpAnalytics\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceMeDBA", "PriceMeDBA\PriceMeDBA.csproj", "{A5ACFD04-8B70-4A08-A07D-13B35F9B6B63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportIP", "ImportIP\ImportIP.csproj", "{473329E1-5B39-4D17-B8A6-154D8ACAD312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A5ACFD04-8B70-4A08-A07D-13B35F9B6B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5ACFD04-8B70-4A08-A07D-13B35F9B6B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5ACFD04-8B70-4A08-A07D-13B35F9B6B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473329E1-5B39-4D17-B8A6-154D8ACAD312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473329E1-5B39-4D17-B8A6-154D8ACAD312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473329E1-5B39-4D17-B8A6-154D8ACAD312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473329E1-5B39-4D17-B8A6-154D8ACAD312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
