@@ -14,9 +14,10 @@ namespace MonitoringManufacturerProductLinks
         {
             List<UrlInfo> urlInfoList = new List<UrlInfo>();
 
+            Console.WriteLine("load url from db");
             TableInfo.GetInfos().ForEach(tableInfo =>
-            {                
-                string sql = string.Format("select distinct {0} from {1}", tableInfo.UrlColumn, tableInfo.TableName);
+            {
+                string sql = string.Format("select distinct {0} from {1} where {2}=1", tableInfo.UrlColumn, tableInfo.TableName, tableInfo.StatusColumn);
 
                 using (SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString))
                 {
@@ -40,6 +41,8 @@ namespace MonitoringManufacturerProductLinks
                     }
                 }
             });
+
+            Console.WriteLine("load end");
 
             PaymentToosCVS.Log.Log log = new PaymentToosCVS.Log.Log(DateTime.Now.ToString("yyyy-MM-dd"));
 

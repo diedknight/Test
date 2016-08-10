@@ -25,15 +25,19 @@ namespace MonitoringManufacturerProductLinks
         public bool VerifyUrl()
         {
             if (string.IsNullOrEmpty(this.Url)) return false;
-
+            
             string html = this.GetHttpContent(this.Url);
             if (Keywords.Exist(html))
             {
                 this.Status = "0";
+                Console.WriteLine("verify url:" + this.Url + " status:" + this.Status);
+
                 return false;
             }
 
             this.Status = "1";
+            Console.WriteLine("verify url:" + this.Url + " status:" + this.Status);
+
             return true;
         }
 
