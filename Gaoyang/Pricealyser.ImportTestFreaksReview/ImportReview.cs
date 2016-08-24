@@ -863,7 +863,7 @@ namespace Pricealyser.ImportTestFreaksReview
                         var s_id = f.Split('|')[1];
                         var sCount= srList.Where(s => s.SourceId == int.Parse(s_id)&&p_id==productId.ToString()).Count();
                         if (sCount <= 0) {
-                            string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + pid + " and SourceID=" + s_id + "";
+                            string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + p_id + " and SourceID=" + s_id + "";
                             var sp6 = new SubSonic.Schema.StoredProcedure("");
                             sp6.Command.CommandSql = sql6;
                             sp6.Command.CommandType = CommandType.Text;
