@@ -799,7 +799,8 @@ namespace Pricealyser.ImportTestFreaksReview
                                 pear.Save();
                                 #endregion
                             }
-                            else if (sr.SourceId == 1)  //TestFreaks 的评论要更新
+                            //else if (sr.SourceId == 1)  //TestFreaks 的评论要更新
+                            else if (sr.SourceId > 0)  //所有的评论要更新
                             {
                                 #region
                                 string title = ReplacementString(sr.Summary);
