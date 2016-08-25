@@ -36,6 +36,8 @@ namespace Pricealyser.ImportTestFreaksReview
         public  System.Data.SqlClient.SqlConnection sqlConn;
         List<string> ExistVideos;
         ExpertReviewCache expertCache;
+        List<string> feedreview;
+
         public void Import()
         {
 
@@ -62,7 +64,7 @@ namespace Pricealyser.ImportTestFreaksReview
 
             ExistVideos = new List<string>();// CSK_Store_ProductVideoSource.All().Select(v => v.SourceUrl).ToList();
 
-            Writer("Bind ReviewSource");
+            Writer("Bind ReviewSource... " + DateTime.Now);
             //BusinessController.GetProductReview();
 
             //打开数据库连接
@@ -71,43 +73,16 @@ namespace Pricealyser.ImportTestFreaksReview
 
             BindReviewSource();
 
-            string videoSql = "select SourceUrl from CSK_Store_ProductVideoSource";
-            using (System.Data.SqlClient.SqlCommand sqlCMD = new System.Data.SqlClient.SqlCommand())
-            {
-                sqlCMD.CommandText = videoSql;
-                sqlCMD.CommandTimeout = 0;
-                sqlCMD.CommandType = System.Data.CommandType.Text;
-                sqlCMD.Connection = sqlConn;
-
-                using (IDataReader dr = sqlCMD.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        ExistVideos.Add(dr["SourceUrl"].ToString());
-                    }
-                }
-            }
-
-             expertCache = new ExpertReviewCache();
-
-
+            expertCache = new ExpertReviewCache();
+            feedreview = new List<string>();
             //int index = 0;
             //int pageSize = (nodes.Count / 3);
             //int pageCount = (nodes.Count / pageSize) + 1;
+
+            Writer("Bind Import... " + DateTime.Now);
+
             for (int s = 0; s < 1; s++)//pageCount
             {
-                //if (s != 0)
-                //    nodes = LoadFeed.Load(feedFile);
-
-                //List<XmlNode> readNodes = new List<XmlNode>();
-                //for (int i = 0; i < pageSize; i++)
-                //{
-                //    if (index >= nodes.Count) break;
-                //    XmlNode xmlNode = nodes[index];
-                //    readNodes.Add(xmlNode);
-                //    index++;
-                //}
-                //nodes = null;
                 Writer("Get " + (s + 1) + " XmlNode count: " + nodes.Count);//readNodes
                 int reviews = 0; 
                 foreach (XmlNode node in nodes)//readNodes
@@ -120,6 +95,7 @@ namespace Pricealyser.ImportTestFreaksReview
 
                     try
                     {
+                        //Writer("Read xml... " + DateTime.Now);
                         foreach (XmlNode childNode in node.ChildNodes)
                         {
                             string nodeName = childNode.Name;
@@ -130,55 +106,37 @@ namespace Pricealyser.ImportTestFreaksReview
                                 case "your_product_ids": pidList = GetPriceMeProductId(childNode); break;
                                 case "scores": GetOtherScore(childNode, os); break;
                                 case "region": GetRegionReview(childNode, srList); break;
-                                case "videos": GetVideos(childNode, videoList); break;
+                                //case "videos": GetVideos(childNode, videoList); break;
                                 default: break;
                             }
                         }
                     }
                     catch (Exception ex) { Writer("Error: " + ex.Message + ex.StackTrace); }
                     reviews += srList.Count;
-                    SaveData(srList, os, pidList, videoList);
-                    #region 删除代码
-                    ////Test
-                    //foreach (int pid in pidList)
-                    //{
-                    //    count++;
-                    //    System.Console.WriteLine(count.ToString());
 
-                    //    if (!BusinessController.productList.Contains(pid))
-                    //    {
-                    //        bool isP = false;
-                    //        bool isProduct = ProductsIndexController.SearchController.SearchIsExistsProduct(pid);
-                    //        if (!isProduct)
-                    //        {
-                    //            int productid = pid;
-                    //            while (true)
-                    //            {
-                    //                System.Console.WriteLine(productid.ToString());
-                    //                CSK_Store_ProductIsMerged prm = ProductController.GetProductIdInProductIsMergedByProductId(productid);
-                    //                if (prm != null)
-                    //                {
-                    //                    productid = prm.ToProductID;
-                    //                    isProduct = ProductsIndexController.SearchController.SearchIsExistsProduct(productid);
-                    //                    if (isProduct)
-                    //                    {
-                    //                        isP = true;
-                    //                        break;
-                    //                    }
-                    //                }
-                    //                else
-                    //                    break;
-                    //            }
-                    //        }
-                    //        else
-                    //            isP = true;
-
-                    //        if (isP)
-                    //            Writer(pid.ToString());
-                    //    }
-                    //}
-                    #endregion
+                    //Writer("Save data... " + DateTime.Now);
+                    SaveData(srList, os, pidList);
+                    //SaveData(srList, os, pidList, videoList);
                 }
+
+                Writer("Update DisplayLinkStatus... " + DateTime.Now);
+                foreach (string key in expertCache.ExpertReviewList)
+                {
+                    if (!feedreview.Contains(key))
+                    {
+                        string[] temps = key.Split('|');
+                        string pid = temps[0];
+                        string sid = temps[1];
+
+                        string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + pid + " and SourceID=" + sid + "";
+                        var sp6 = new SubSonic.Schema.StoredProcedure("");
+                        sp6.Command.CommandSql = sql6;
+                        sp6.Command.CommandType = CommandType.Text;
+                        sp6.Command.CommandTimeout = 0;
+                        sp6.Execute();
+                    }
+                }
+
                 Writer("total reviewsourse count in file: " + reviews);
 
                 //计算比例，状态即将要变0的总数/数据库中状态为1的总数
@@ -213,6 +171,18 @@ namespace Pricealyser.ImportTestFreaksReview
                 
             }
 
+            Writer("Update ModifyOn sql... " + DateTime.Now);
+            string updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
+                                          + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'"
+                                          + " Where DisplayLinkStatus=1";
+
+            SubSonic.Schema.StoredProcedure spup = new SubSonic.Schema.StoredProcedure("");
+            spup.Command.CommandSql = updModifyOnSQL;
+            spup.Command.CommandType = CommandType.Text;
+            spup.Command.CommandTimeout = 0;
+            spup.Execute();
+
+            Writer("Exec sql... " + DateTime.Now);
             Console.WriteLine("==========The program execution is completed======== Time is" + DateTime.Now);
             string deleteNullReviewSql = @"delete dbo.CSK_Store_ExpertReviewAU 
                                         WHERE (Title IS NULL OR LEN(Title) = 0) 
@@ -228,40 +198,7 @@ namespace Pricealyser.ImportTestFreaksReview
             detsp.Command.CommandType = CommandType.Text;
             detsp.Command.CommandTimeout = 0;
             detsp.Execute();
-            #region 删除代码
-            //Writer("Get XmlNode count: " + nodes.Count);
-            //foreach (XmlNode node in nodes)
-            //{
-            //    List<SourceReview> srList = new List<SourceReview>();
-            //    OtherScore os = new OtherScore();
-            //    List<Video> videoList = new List<Video>();
-            //    int tfId = 0;
-            //    List<int> pidList = new List<int>();
 
-            //    try
-            //    {
-            //        foreach (XmlNode childNode in node.ChildNodes)
-            //        {
-            //            string nodeName = childNode.Name;
-            //            string data = GetContentData(childNode);
-            //            switch (nodeName)
-            //            {
-            //                case "product_id": tfId = int.Parse(data); break;
-            //                case "your_product_ids": pidList = GetPriceMeProductId(childNode); break;
-            //                case "scores": GetOtherScore(childNode, os); break;
-            //                case "region": GetRegionReview(childNode, srList); break;
-            //                case "videos": GetVideos(childNode, videoList); break;
-            //                default: break;
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex) { Writer("Error: " + ex.Message + ex.StackTrace); }
-
-            //    SaveData(srList, os, pidList, videoList);
-
-            //    Writer("Get productid: " + tfId);
-            //}
-            #endregion
             //关闭数据库连接
             sqlConn.Close();
 
@@ -405,7 +342,7 @@ namespace Pricealyser.ImportTestFreaksReview
                         case "source_name":
                             {
                                 sr.SourceName = data;
-                                Writer("read from file: (sr.SourceName = data =>" + sr.SourceName + "=" + data + ")");
+                                //Writer("read from file: (sr.SourceName = data =>" + sr.SourceName + "=" + data + ")");
                                 break;
                             }
                         case "source_logo": sr.SourceLogo = data; break;
@@ -463,10 +400,9 @@ namespace Pricealyser.ImportTestFreaksReview
             return contentData;
         }
 
-        private void SaveData(List<SourceReview> srList, OtherScore os, List<int> pidList, List<Video> videoList)
+        //private void SaveData(List<SourceReview> srList, OtherScore os, List<int> pidList, List<Video> videoList)
+        private void SaveData(List<SourceReview> srList, OtherScore os, List<int> pidList)
         {
-
-
             foreach (int pid in pidList)
             {
                 try
@@ -474,47 +410,11 @@ namespace Pricealyser.ImportTestFreaksReview
                     count++;
                     System.Console.WriteLine(count);
                     int productId = pid;
-                    #region 无用代码
-                    //bool isP = false;
-                    //bool isProduct = ProductsIndexController.SearchController.SearchIsExistsProduct(productId);
-                    //if (!isProduct)
-                    //{
-                    //    int i = 0;
-                    //    while (true)
-                    //    {
-                    //        i++;
-                    //        if (i > 3) break;
-
-                    //        System.Console.WriteLine(productId.ToString());
-                    //        CSK_Store_ProductIsMerged prm = ProductController.GetProductIdInProductIsMergedByProductId(productId);
-                    //        if (prm != null)
-                    //        {
-                    //            productId = prm.ToProductID;
-                    //            isProduct = ProductsIndexController.SearchController.SearchIsExistsProduct(productId);
-                    //            if (isProduct)
-                    //            {
-                    //                isP = true;
-                    //                break;
-                    //            }
-                    //        }
-                    //        else
-                    //            break;
-                    //    }
-                    //}
-                    //else
-                    //    isP = true;
-
-                    //if (!isP)
-                    //{
-                    //    Writer("Can not find productId: " + productId + DateTime.Now);
-                    //    continue;
-                    //}
-
-                    #endregion
                     productCount++;
 
                     if (!expertCache.FeatureScoreList.Contains(productId))
                     {
+                        //Writer("Save Feature Score... " + DateTime.Now);
                         expertCache.FeatureScoreList.Add(productId);
                         try
                         {
@@ -535,7 +435,7 @@ namespace Pricealyser.ImportTestFreaksReview
                         catch (Exception ex) { Writer("Add " + productId + " FeatureScore Error: " + ex.Message + ex.StackTrace); }
                     }
 
-                    List<string> needUpdateModifyOn = new List<string>();//<productId|sid>
+                    //List<string> needUpdateModifyOn = new List<string>();//<productId|sid>
 
                     foreach (SourceReview sr in srList)
                     {
@@ -550,8 +450,32 @@ namespace Pricealyser.ImportTestFreaksReview
                             string key = productId + "|" + sid;
                             string keyUp = key + "|" + urls;
 
-                            if (!expertCache.ExpertReviewList.Contains(key))//如果匹配不到执行添加操作
+                            //feed里面的评论保存到cache
+                            if (!feedreview.Contains(key))
+                                feedreview.Add(key);
+
+                            if (expertCache.DisExpertReviewList.Contains(key))
                             {
+                                //Writer("update DisplayLinkStatus... " + DateTime.Now);
+                                //更新状态DisplayLinkStatus=0
+                                string updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
+                                          + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DisplayLinkStatus=1,ReviewURL='" + urls + "'"
+                                          + " Where ";
+                                updModifyOnSQL += "(ProductID = " + productId + " And SourceID = " + sid + ")";
+
+                                string sql = updModifyOnSQL;
+                                SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
+                                sp.Command.CommandSql = sql;
+                                sp.Command.CommandType = CommandType.Text;
+                                sp.Command.CommandTimeout = 0;
+                                sp.Execute();
+                            }
+                            else if (!expertCache.ExpertReviewList.Contains(key))//如果匹配不到执行添加操作
+                            {
+                                if (sr.Author.Length > 50)
+                                    continue;
+
+                                //Writer("add new review... " + DateTime.Now);
                                 #region
                                 expertCache.ExpertReviewList.Add(key);
                                 CSK_Store_ExpertReviewAU er = new CSK_Store_ExpertReviewAU();
@@ -802,6 +726,7 @@ namespace Pricealyser.ImportTestFreaksReview
                             //else if (sr.SourceId == 1)  //TestFreaks 的评论要更新
                             else if (sr.SourceId > 0)  //所有的评论要更新
                             {
+                                //Writer("update TestFreaks..." + DateTime.Now);
                                 #region
                                 string title = ReplacementString(sr.Summary);
                                 if (title.Length > 500)
@@ -850,123 +775,82 @@ namespace Pricealyser.ImportTestFreaksReview
                             else
                             {
                                 //此处代表匹配到
-
-                                if (!needUpdateModifyOn.Contains(keyUp))
-                                    needUpdateModifyOn.Add(keyUp);
+                                //统一更新ModifyOn
+                                //if (!needUpdateModifyOn.Contains(keyUp))
+                                //    needUpdateModifyOn.Add(keyUp);
                             }
                         }
                         catch (Exception ex) { Writer("Save Error: " + ex.Message + ex.StackTrace + "\n ReviewURL:" + sr.Url + " \n ReviewBy:" + sr.Author); }
                     }
+                    
+                    //Writer("delete... " + DateTime.Now);
+                    ////删除无效评论（即数据库有，Feed里面没有）
+                    //expertCache.ExpertReviewList.ForEach(f => {
+                    //    var p_id = f.Split('|')[0];
+                    //    var s_id = f.Split('|')[1];
+                    //    var sCount= srList.Where(s => s.SourceId == int.Parse(s_id)&&p_id==productId.ToString()).Count();
+                    //    if (sCount <= 0) {
+                    //        string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + pid + " and SourceID=" + s_id + "";
+                    //        var sp6 = new SubSonic.Schema.StoredProcedure("");
+                    //        sp6.Command.CommandSql = sql6;
+                    //        sp6.Command.CommandType = CommandType.Text;
+                    //        sp6.Command.CommandTimeout = 0;
+                    //        sp6.Execute();
+                    //    }
+
                     //删除无效评论（即数据库有，Feed里面没有）
-                    expertCache.ExpertReviewList.ForEach(f => {
-                        var p_id = f.Split('|')[0];
-                        var s_id = f.Split('|')[1];
-                        var sCount= srList.Where(s => s.SourceId == int.Parse(s_id)&&p_id==productId.ToString()).Count();
-                        if (sCount <= 0) {
-                            string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + p_id + " and SourceID=" + s_id + "";
-                            var sp6 = new SubSonic.Schema.StoredProcedure("");
-                            sp6.Command.CommandSql = sql6;
-                            sp6.Command.CommandType = CommandType.Text;
-                            sp6.Command.CommandTimeout = 0;
-                            sp6.Execute();
-                        }
+                    //expertCache.ExpertReviewList.ForEach(f => {
+                    //    var p_id = f.Split('|')[0];
+                    //    var s_id = f.Split('|')[1];
+                    //    var sCount= srList.Where(s => s.SourceId == int.Parse(s_id)&&p_id==productId.ToString()).Count();
+                    //    if (sCount <= 0) {
+                    //        string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + p_id + " and SourceID=" + s_id + "";
+                    //        var sp6 = new SubSonic.Schema.StoredProcedure("");
+                    //        sp6.Command.CommandSql = sql6;
+                    //        sp6.Command.CommandType = CommandType.Text;
+                    //        sp6.Command.CommandTimeout = 0;
+                    //        sp6.Execute();
+                    //    }
 
-                    });
+                    //});
 
-                    //update modifyon
-                    //string updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
-                    //                       + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DisplayLinkStatus=1"
-                    //                       + " Where ";//ProductID = " + productId + " And SourceID = " + "sid";
-                    for (int i = 0; i < needUpdateModifyOn.Count; i++)
-                    {
-                        string[] temp = needUpdateModifyOn[i].Split('|');
-                        string proid = temp[0];
-                        string sid = temp[1];
-                        string furl = temp[2];
-                        string updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
-                                          + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DisplayLinkStatus=1,ReviewURL='" + furl + "'"
-                                          + " Where ";
-                        updModifyOnSQL += "(ProductID = " + productId + " And SourceID = " + sid + ")";
+                    #region video
+                    //foreach (Video video in videoList)
+                    //{
+                    //    if (ExistVideos.Contains(video.Url)) continue;
+                    //    try
+                    //    {
+                    //        CSK_Store_ProductVideoSource videoSource = new CSK_Store_ProductVideoSource();
+                    //        videoSource.SourceUrl = video.Url;
+                    //        videoSource.Type = video.Url.Substring(0, video.Url.IndexOf(".com")).Replace("http://www.", "");
+                    //        videoSource.CreatedBy = "Dawn";
+                    //        videoSource.CreatedOn = DateTime.Now;
+                    //        videoSource.Save();
+                    //        ExistVideos.Add(video.Url);
+                    //        //http://www.youtube.com/watch?v=J5tBKpdsEZI
 
-                        string sql = updModifyOnSQL;
-                        SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
-                        sp.Command.CommandSql = sql;
-                        sp.Command.CommandType = CommandType.Text;
-                        sp.Command.CommandTimeout = 0;
-                        sp.Execute();
-                        #region 老代码
+                    //        CSK_Store_ProductVideo productVideo = new CSK_Store_ProductVideo();
+                    //        productVideo.ProductID = productId;
+                    //        productVideo.VideoSourceID = videoSource.ID;
+                    //        productVideo.Thumbnail = video.Thumbnail;
+                    //        if (videoSource.Type == "youtube")
+                    //        {
+                    //            if (videoSource.SourceUrl.Contains("watch?"))
+                    //                productVideo.Url = videoSource.SourceUrl.Replace("watch?v=", "embed/");
+                    //        }
+                    //        productVideo.CreatedBy = "Dawn";
+                    //        productVideo.CreatedOn = DateTime.Now;
 
-                        //if (needUpdateModifyOn.Count == 1)
-                        //{
-                        //    updModifyOnSQL += "(ProductID = " + productId + " And SourceID = " + sid + ")";
-
-                        //    string sql = updModifyOnSQL;
-                        //    SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
-                        //    sp.Command.CommandSql = sql;
-                        //    sp.Command.CommandType = CommandType.Text;
-                        //    sp.Command.CommandTimeout = 0;
-                        //    sp.Execute();
-                        //    continue;
-                        //}
-                        //if ((i % 50 == 0 || i == needUpdateModifyOn.Count - 1) && i != 0)
-                        //{
-                        //    updModifyOnSQL += "(ProductID = " + productId + " And SourceID = " + sid + ")";
-
-                        //    string sql = updModifyOnSQL;
-                        //    SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
-                        //    sp.Command.CommandSql = sql;
-                        //    sp.Command.CommandType = CommandType.Text;
-                        //    sp.Command.CommandTimeout = 0;
-                        //    sp.Execute();
-                        //    updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
-                        //                          + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DisplayLinkStatus=1"
-                        //                          + " Where ";
-                        //}
-                        //else
-                        //{
-                        //    updModifyOnSQL += "(ProductID = " + productId + " And SourceID = " + sid + ") or ";
-                        //}
-
-                        #endregion
-                    }
+                    //        productVideo.Save();
 
 
-
-                    foreach (Video video in videoList)
-                    {
-                        if (ExistVideos.Contains(video.Url)) continue;
-                        try
-                        {
-                            CSK_Store_ProductVideoSource videoSource = new CSK_Store_ProductVideoSource();
-                            videoSource.SourceUrl = video.Url;
-                            videoSource.Type = video.Url.Substring(0, video.Url.IndexOf(".com")).Replace("http://www.", "");
-                            videoSource.CreatedBy = "Dawn";
-                            videoSource.CreatedOn = DateTime.Now;
-                            videoSource.Save();
-                            ExistVideos.Add(video.Url);
-                            //http://www.youtube.com/watch?v=J5tBKpdsEZI
-
-                            CSK_Store_ProductVideo productVideo = new CSK_Store_ProductVideo();
-                            productVideo.ProductID = productId;
-                            productVideo.VideoSourceID = videoSource.ID;
-                            productVideo.Thumbnail = video.Thumbnail;
-                            if (videoSource.Type == "youtube")
-                            {
-                                if (videoSource.SourceUrl.Contains("watch?"))
-                                    productVideo.Url = videoSource.SourceUrl.Replace("watch?v=", "embed/");
-                            }
-                            productVideo.CreatedBy = "Dawn";
-                            productVideo.CreatedOn = DateTime.Now;
-
-                            productVideo.Save();
-
-
-                        }
-                        catch (Exception ex)
-                        {
-                            Writer("Add " + productId + " ProductVideo Error: " + ex.Message + ex.StackTrace);
-                        }
-                    }
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        Writer("Add " + productId + " ProductVideo Error: " + ex.Message + ex.StackTrace);
+                    //    }
+                    //}
+                    #endregion
                 }
                 catch (Exception e)
                 {

@@ -14,6 +14,7 @@ namespace Pricealyser.ImportTestFreaksReview
          {
              LoadFeatureScoreCache();
              LoadExpertReviewCache();
+             LoadDisExpertReviewCache();
          }
 
          List<int> _FeatureScoreList;
@@ -24,13 +25,22 @@ namespace Pricealyser.ImportTestFreaksReview
             set { this._FeatureScoreList = value; }
         }
 
+        List<string> _DisExpertReviewList;
+
+        public List<string> DisExpertReviewList
+        {
+            get { return this._DisExpertReviewList; }
+            set { this._DisExpertReviewList = value; }
+        }
+
         List<string> _ExpertReviewList;
 
-        public  List<string> ExpertReviewList
+        public List<string> ExpertReviewList
         {
             get { return this._ExpertReviewList; }
             set { this._ExpertReviewList = value; }
         }
+
          string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString;
 
        
@@ -77,7 +87,7 @@ namespace Pricealyser.ImportTestFreaksReview
         public  void LoadExpertReviewCache()
         {
             _ExpertReviewList = new List<string>();
-            string sql = "Select ProductID, SourceID From CSK_Store_ExpertReviewAU";
+            string sql = "Select ProductID, SourceID From CSK_Store_ExpertReviewAU Where DisplayLinkStatus = 1";
             using (System.Data.SqlClient.SqlConnection sqlConn = new System.Data.SqlClient.SqlConnection(connectionString))
             {
                 sqlConn.Open();
@@ -118,6 +128,37 @@ namespace Pricealyser.ImportTestFreaksReview
             //        _ExpertReviewList.Add(key);
             //}
             //dr.Close();
+        }
+
+        public void LoadDisExpertReviewCache()
+        {
+            _DisExpertReviewList = new List<string>();
+            string sql = "Select ProductID, SourceID From CSK_Store_ExpertReviewAU Where DisplayLinkStatus = 0";
+            using (System.Data.SqlClient.SqlConnection sqlConn = new System.Data.SqlClient.SqlConnection(connectionString))
+            {
+                sqlConn.Open();
+                using (System.Data.SqlClient.SqlCommand sqlCMD = new System.Data.SqlClient.SqlCommand())
+                {
+                    sqlCMD.CommandText = sql;
+                    sqlCMD.CommandTimeout = 0;
+                    sqlCMD.CommandType = System.Data.CommandType.Text;
+                    sqlCMD.Connection = sqlConn;
+
+                    using (IDataReader dr = sqlCMD.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            string pid = dr["ProductID"].ToString();
+                            string sid = dr["SourceID"].ToString();
+                            //string revUrl = dr["ReviewURL"].ToString();+ "|" + revUrl
+                            string key = pid + "|" + sid;
+                            if (!_DisExpertReviewList.Contains(key))
+                                _DisExpertReviewList.Add(key);
+                        }
+                    }
+                }
+                sqlConn.Close();
+            }
         }
     }
 }
