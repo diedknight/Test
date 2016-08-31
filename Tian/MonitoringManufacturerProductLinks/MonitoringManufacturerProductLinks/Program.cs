@@ -12,6 +12,13 @@ namespace MonitoringManufacturerProductLinks
     {
         static void Main(string[] args)
         {
+
+            //UrlInfo urlInfo1 = new UrlInfo();
+            //urlInfo1.Url = "http://www.123.com.my/";
+
+            //urlInfo1.VerifyUrl();
+
+
             List<UrlInfo> urlInfoList = new List<UrlInfo>();
 
             Console.WriteLine("load url from db");
@@ -49,7 +56,7 @@ namespace MonitoringManufacturerProductLinks
             urlInfoList.ForEach(urlInfo => {
                 if (!urlInfo.VerifyUrl())
                 {
-                    log.Add(urlInfo.Url);
+                    log.Add(urlInfo.Url + "\tword:" + urlInfo.Word);
                     urlInfo.Save();
                 }
             });

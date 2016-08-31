@@ -15,6 +15,8 @@ namespace MonitoringManufacturerProductLinks
         public string Status { get; set; }
         public string Id { get; set; }
 
+        public string Word { get; set; }
+
         public UrlInfo()
         {
             this.Url = "";
@@ -25,18 +27,20 @@ namespace MonitoringManufacturerProductLinks
         public bool VerifyUrl()
         {
             if (string.IsNullOrEmpty(this.Url)) return false;
-            
+
             string html = this.GetHttpContent(this.Url);
-            if (Keywords.Exist(html))
+            this.Word = Keywords.Find(html);
+
+            if (!string.IsNullOrEmpty(this.Word))
             {
                 this.Status = "0";
-                Console.WriteLine("verify url:" + this.Url + " status:" + this.Status);
+                Console.WriteLine("verify url:" + this.Url + " status:" + this.Status + " word:" + this.Word);
 
                 return false;
             }
 
             this.Status = "1";
-            Console.WriteLine("verify url:" + this.Url + " status:" + this.Status);
+            Console.WriteLine("verify url:" + this.Url + " status:" + this.Status + " word:" + this.Word);
 
             return true;
         }
@@ -48,7 +52,7 @@ namespace MonitoringManufacturerProductLinks
             string tempUrl = this.Url.Replace("'", "''");
             if (this.Status == "0")
             {
-                string sql = string.Format("Update {0} set {1}=0 where {2}='{3}'", this.TableInfo.TableName, this.TableInfo.StatusColumn, this.TableInfo.UrlColumn, tempUrl);
+                string sql = string.Format("Update {0} set {1}=0 , ModifiedOn=getdate() , ModifiedBy='MonitoringManufactureUrl' where {2}='{3}'", this.TableInfo.TableName, this.TableInfo.StatusColumn, this.TableInfo.UrlColumn, tempUrl);
 
                 using (SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString))
                 {

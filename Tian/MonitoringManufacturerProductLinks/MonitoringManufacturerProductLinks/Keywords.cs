@@ -15,10 +15,26 @@ namespace MonitoringManufacturerProductLinks
             _words = System.Configuration.ConfigurationManager.AppSettings["Keywords"].ToString().Split(';').ToList();
         }
 
+        public static string Find(string str)
+        {
+            string result = "";
+            str = str.ToLower().Trim();
+
+            _words.ForEach(item =>
+            {
+                if (string.IsNullOrEmpty(item)) return;
+                if (!string.IsNullOrEmpty(result)) return;
+
+                if (str.Contains(item.ToLower().Trim())) result = item;
+            });
+
+            return result;
+        }
+
         public static bool Exist(string str)
         {
             bool result = false;
-            str = str.ToLower();
+            str = str.ToLower().Trim();
             
             _words.ForEach(item =>
             {
