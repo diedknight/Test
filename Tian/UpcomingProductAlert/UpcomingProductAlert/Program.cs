@@ -17,9 +17,11 @@ namespace UpcomingProductAlert
         static void Main(string[] args)
         {
             UpcomingProductAlter.GetAll().ForEach(alert =>
-            {
+            {                
                 var product = Product.Get(alert.UpcomingProductID, alert.CountryID);
                 if (product == null) return;
+
+                Console.WriteLine("alertId:" + alert.UpcomingProductAlterID);
 
                 var countryDetail = CountryDetail.GetCountryDetail(alert.CountryID);
                 var content = CSK_Content.Get();
@@ -46,11 +48,13 @@ namespace UpcomingProductAlert
                 email.AddReplyAddress(content.ReplyTo);
 
                 if (!string.IsNullOrEmpty(content.CC)) content.CC.Split(';').ToList().ForEach(cc => email.AddCCAddress(cc));
-                if (!string.IsNullOrEmpty(content.CC)) content.BCC.Split(';').ToList().ForEach(bcc => email.AddBCCAddress(bcc));
+                if (!string.IsNullOrEmpty(content.BCC)) content.BCC.Split(';').ToList().ForEach(bcc => email.AddBCCAddress(bcc));
 
                 try
                 {
                     email.Send();
+                    alert.UpdateStatus(true);
+
                     var log = new EmailLog(countryDetail.CountryId);
                     log.WriteLine(alert.UpcomingProductID.ToString(), alert.email);
                 }
@@ -61,7 +65,7 @@ namespace UpcomingProductAlert
                     log.WriteLine(ex.Message);
                     log.WriteLine(ex.StackTrace);
                     log.WriteLine();                    
-                }
+                }                
             });
         }
 
