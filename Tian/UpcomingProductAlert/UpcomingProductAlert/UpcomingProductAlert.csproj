@@ -50,6 +50,7 @@
     <Compile Include="DB\Product.cs" />
     <Compile Include="DB\SqlMapper.cs" />
     <Compile Include="DB\UpcomingProductAlter.cs" />
+    <Compile Include="EmailTemplate\Template.cs" />
     <Compile Include="Email\AWSEmail.cs" />
     <Compile Include="Email\IEmail.cs" />
     <Compile Include="Log\EmailLog.cs" />
@@ -61,6 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EmailTemplate\template.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -32,18 +32,20 @@ namespace UpcomingProductAlert.DB
             {
                 var info = con.Query<CSK_Content>(sql, new { PageID = "Upcoming product alert" }).SingleOrDefault();
 
-                string html = "";
-                html+="<!DOCTYPE html>";
-                html+="<html xmlns=\"http://www.w3.org/1999/xhtml\">";
-                html+="<head>";
-                html+="<title></title>";
-                html+="</head>";
-                html+="<body>";
-                html += info.Ctx;
-                html+="</body>";
-                html+="</html>";
+                //string html = "";
+                //html+="<!DOCTYPE html>";
+                //html+="<html xmlns=\"http://www.w3.org/1999/xhtml\">";
+                //html+="<head>";
+                //html+="<title></title>";
+                //html+="</head>";
+                //html+="<body>";
+                //html += info.Ctx;
+                //html+="</body>";
+                //html+="</html>";
 
-                info.Ctx = html;
+                //info.Ctx = html;
+
+                info.Ctx = Channelyser.Job.EmailTemplate.Template.Load("template.html");
 
                 return info;
             }            
