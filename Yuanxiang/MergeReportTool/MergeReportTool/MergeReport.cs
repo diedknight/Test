@@ -100,17 +100,28 @@ namespace MergeReportTool
                     Write("Get " + products.Count + " product by retailerid......." + DateTime.Now);
                     foreach (ProductData data in products)
                     {
+                        //Write("Get " + data.ProductId + "  " + data.RetailerProductId);
                         isExist = false;
                         isCheckError = false;
                         CheckMergeErrorReport(data.RetailerProductId, data.ProductId, data.ProductName, data.RetailerProductName, data.PurchaseURL);
-                        
+
                         if (!isExist || isCheckError)
                         {
+                            //Write("check...");
                             bool isError = CheckPrice(data);
                             if (!isError)
                                 isError = CheckKeyword(data);
                             if (!isError)
                                 CheckProductName(data);
+
+                            if (isError && !isError)
+                                UpdateMergeErrorReport(data.ProductId, data.RetailerProductId, data.ProductName, data.RetailerProductName, data.PurchaseURL);
+                        }
+
+                        if (isExist && !isCheckError)
+                        {
+                            //Write("update...");
+                            UpdateMergeErrorReport(data.ProductId, data.RetailerProductId);
                         }
                     }
                 }
@@ -154,10 +165,41 @@ namespace MergeReportTool
             {
                 decimal ratePrice = decimal.Round(Math.Abs(data.RetailerPrice - avgPrice) / avgPrice, 2);
                 decimal dataRate = decimal.Round((data.RetailerPrice - avgPrice) / avgPrice, 2);
-                if (ratePrice > PriceRateJudge && data.RetailerProductCondition != 4)
+
+                if (listPrice.Count == 2)
                 {
-                    InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty, data.ProductName, data.RetailerProductName, data.PurchaseURL);
-                    isError = true;
+                    if (ratePrice > PriceRateJudge && data.RetailerProductCondition != 4)
+                    {
+                        InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty, data.ProductName, data.RetailerProductName, data.PurchaseURL);
+                        isError = true;
+                    }
+                }
+                else
+                {
+                    if ((ratePrice + 0.5m) > PriceRateJudge && data.RetailerProductCondition != 4)
+                    {
+                        InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty, data.ProductName, data.RetailerProductName, data.PurchaseURL);
+                        isError = true;
+                    }
+                    else if (ratePrice > PriceRateJudge && data.RetailerProductCondition != 4)
+                    {
+                        //其他所有价格都不超过百分比才记录到数据库
+                        bool isall = true;
+                        foreach (decimal price in listPrice)
+                        {
+                            decimal otherRatePrice = decimal.Round(Math.Abs(price - avgPrice) / avgPrice, 2);
+                            if (otherRatePrice > PriceRateJudge)
+                            {
+                                isall = false;
+                                break;
+                            }
+                        }
+                        if (isall)
+                        {
+                            InsertMergeErrorReport(data.RetailerProductId, data.ProductId, data.CategoryID, string.Empty, string.Empty, dataRate.ToString(), string.Empty, data.ProductName, data.RetailerProductName, data.PurchaseURL);
+                            isError = true;
+                        }
+                    }
                 }
             }
 
@@ -536,6 +578,52 @@ namespace MergeReportTool
 
             }
             dr.Close();
+        }
+
+        private void UpdateMergeErrorReport(int pid, int rpid)
+        {
+            string sql = "Update CSK_Store_MergeErrorReport set CreatedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' Where PID = " + pid + " And RPID = " + rpid;
+            StoredProcedure sp = new StoredProcedure("");
+            sp.Command.CommandSql = sql;
+            sp.Command.CommandTimeout = 0;
+            sp.Command.CommandType = CommandType.Text;
+            sp.Execute();
+        }
+
+        private void UpdateMergeErrorReport(int pid, int rpid, string pname, string rpname, string url)
+        {
+            string sql = "Update CSK_Store_MergeErrorReport Set "
+                        + "CreatedOn = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', IsError = 0, IsChecked = 1, "
+                        + "PName = @pname, RPName = @rpname, RPUrl = @url, "
+                        + "Where PID = " + pid + " And RPID = " + rpid;
+
+            string connString = System.Configuration.ConfigurationManager.ConnectionStrings["Pricealyser"].ConnectionString;
+            using (System.Data.SqlClient.SqlConnection sqlConn = new System.Data.SqlClient.SqlConnection(connString))
+            {
+                using (System.Data.SqlClient.SqlCommand sqlCMD = new System.Data.SqlClient.SqlCommand(sql, sqlConn))
+                {
+                    System.Data.SqlClient.SqlParameter rpnameP = new System.Data.SqlClient.SqlParameter();
+                    rpnameP.ParameterName = "@rpname";
+                    rpnameP.Value = rpname;
+                    rpnameP.DbType = DbType.String;
+                    sqlCMD.Parameters.Add(rpnameP);
+
+                    System.Data.SqlClient.SqlParameter pnameP = new System.Data.SqlClient.SqlParameter();
+                    pnameP.ParameterName = "@pname";
+                    pnameP.Value = pname;
+                    pnameP.DbType = DbType.String;
+                    sqlCMD.Parameters.Add(pnameP);
+
+                    System.Data.SqlClient.SqlParameter urlP = new System.Data.SqlClient.SqlParameter();
+                    urlP.ParameterName = "@url";
+                    urlP.Value = url;
+                    urlP.DbType = DbType.String;
+                    sqlCMD.Parameters.Add(urlP);
+
+                    sqlConn.Open();
+                    sqlCMD.ExecuteScalar();
+                }
+            }
         }
 
         private void InsertMergeErrorReport(int rpid, int pid, int cid, string SameBrand, string SameModel, string PriceRate, string keyword, string pname, string rpname, string url)
