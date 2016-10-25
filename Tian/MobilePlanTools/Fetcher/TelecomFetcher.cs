@@ -267,11 +267,11 @@ namespace Fetcher
                 {
                     if (p.PhoneName.Contains("]") || p.PhoneName.Contains("["))
                     {
-                        var plan_name = p.PhoneName.Substring(p.PhoneName.IndexOf('[') + 1, p.PhoneName.LastIndexOf(']') - 1);
-                        plan_name = plan_name.Replace("OpenTerm", "").Replace("Plus", "").Replace("Value Pack", "").Trim();
+                        var machname = p.PhoneName.Substring(p.PhoneName.IndexOf('[') + 1, p.PhoneName.LastIndexOf(']') - 1);
+                        string plan_name = machname.Replace("OpenTerm", "").Replace("Plus", "").Replace("Value Pack", "").Trim();
                         if (info.MobilePlanName == plan_name)
                         {
-                            p.PhoneName = p.PhoneName.Replace("[" + plan_name + "]", "");
+                            p.PhoneName = p.PhoneName.Replace("[" + machname + "]", "");
                             PhoneList.Add(pInfos[pInfos.IndexOf(p)]);
                         }
                     }
