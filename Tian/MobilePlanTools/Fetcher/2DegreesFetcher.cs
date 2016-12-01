@@ -87,7 +87,7 @@ namespace Fetcher
                         info.UpfrontPrice = phone.Value.upfrontAmount.ToDecimal();
                         info.phoneURL = productUrl + phone.Key;
                         info.PhoneName = phone.Value.name;
-                        info.phoneURL = new Uri(new Uri(rootUrl), phone.Value.image).ToString();
+                        info.PhoneImage = new Uri(new Uri(rootUrl), phone.Value.image).ToString();
 
                         item.Phones.Add(info);                        
                     });
