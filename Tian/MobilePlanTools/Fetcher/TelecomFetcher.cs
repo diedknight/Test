@@ -238,7 +238,10 @@ namespace Fetcher
                     if (dataMB.Contains("+"))
                     {
                         var strList = dataMB.Split('+');
-                        dataMB = (Convert.ToInt32(Convert.ToDecimal(strList[0].Replace("GB", "").Trim()) * 1024)).ToString();
+                        if (strList[0].Contains("GB"))
+                            dataMB = (Convert.ToInt32(Convert.ToDecimal(strList[0].Replace("GB", "").Trim()) * 1024)).ToString();
+                        else
+                            dataMB = (Convert.ToInt32(Convert.ToDecimal(strList[0].Replace("MB", "").Trim()))).ToString();
 
                         if (strList[1].Contains("GB^"))
                         {
@@ -246,7 +249,7 @@ namespace Fetcher
                         }
                         else
                         {
-                            dataMB = (Convert.ToInt32(dataMB) + Convert.ToDecimal(strList[1].Replace("MB", "").Trim())).ToString();
+                            dataMB = (Convert.ToInt32(dataMB) + Convert.ToDecimal(strList[1].Replace("MB", "").Replace("Bonus", "").Trim())).ToString();
                         }
 
                         dataMB += "MB";
