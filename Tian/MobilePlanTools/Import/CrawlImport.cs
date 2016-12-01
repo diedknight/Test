@@ -131,7 +131,7 @@ namespace Import
                                     map.CreatedBy = "Import";
                                     map.CreatedOn = DateTime.Now;
                                 }
-
+                                
                                 map.Status = true;
                                 if (!string.IsNullOrEmpty(ph.phoneURL))
                                     map.PlanPhoneUrl = ph.phoneURL;
@@ -139,7 +139,10 @@ namespace Import
                                 map.ModifiedBy = "import";
                                 map.ModifiedOn = DateTime.Now;
                                 if (map.Id > 0)
+                                {
+                                    map.CreatedBy = ph.PhoneName;
                                     updMaps.Add(map);
+                                }
                                 else newMaps.Add(map);
 
                                 if(AppConfig.IsUpdate) map.Save();
@@ -216,11 +219,12 @@ namespace Import
             plog.WriteLine("update Maps:\t" + updMaps.Count);
             if (updMaps.Count > 0)
             {
-                plog.WriteLine("PlanID\tPhoneID\tContractType\tUpfrontPrice\tPlanPhoneUrl");
+                plog.WriteLine("PlanID\tPhoneID\tContractType\tUpfrontPrice\tPlanPhoneUrl\tPlanPhoneName");
                 foreach (var map in updMaps)
                 {
-                    var str = string.Format("{0}\t{1}\t{2}\t\t{3}\t{4}",
-                        map.MobilePlanId, map.MobilePhoneId, map.ContractTypeId, map.UpfrontPrice, map.PlanPhoneUrl);
+
+                    var str = string.Format("{0}\t{1}\t{2}\t\t{3}\t{4}\t{5}",
+                        map.MobilePlanId, map.MobilePhoneId, map.ContractTypeId, map.UpfrontPrice, map.PlanPhoneUrl, map.CreatedBy);
 
                     plog.WriteLine(str);
                 }
