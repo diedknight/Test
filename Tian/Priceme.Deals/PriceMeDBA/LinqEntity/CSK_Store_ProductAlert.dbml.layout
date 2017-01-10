@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CSK_Store_ProductAlert">
+  <DataContextMoniker Name="/CSK_Store_ProductAlertDataContext" />
+  <nestedChildShapes>
+    <classShape Id="28df03e8-1e32-48ae-bac6-c3e7fae103ec" absoluteBounds="3.375, 3, 2, 4.0548018391927076">
+      <DataClassMoniker Name="/CSK_Store_ProductAlertDataContext/CSK_Store_ProductAlert" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bbf8ab3f-9172-4b98-a76d-db99a697d088" absoluteBounds="3.39, 3.46, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

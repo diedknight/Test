@@ -1,0 +1,2333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Blog_URL" xml:space="preserve">
+    <value>http://blog.priceme.com</value>
+  </data>
+  <data name="Brandbuilding" xml:space="preserve">
+    <value>หุ้นส่วนพันธมิตรร้านค้าของเราแสดง โลโก้ บริษัทของพวกเขา ในแต่ละรายชื่อสินค้า พร้อมระบุข้อได้เปรียบของสินค้า หุ้นส่วนพันธมิตรสามารถแสดงสโลแกน ถัดจากรูปโลโก้ และยังสามารถโปรโมท ลักษณะของเวบไซด์ตัวเอง ในส่วนโฆษณาของ PriceMe ได้อีกด้วย  การเชื่อมโยง แบรนด์ และสินค้าของคุณ ด้วยหมายเลขไอดีซื้อของที่เชื่อถือได้ จะเป็นตัวขับเคลื่อนให้ PriceMe เป็นช่องทางที่สร้างความเชื่อถือ น่าจดจำ และเพิ่มความมั่นใจให้ลูกค้า กรุณา ติดต่อสอบถามรายละเอียด ทั้งหมดที่เกี่ยวกับ ผลประโยชน์ที่ หุ้นส่วนพันธมิตรของ ร้านค้าสามารถได้รับ</value>
+  </data>
+  <data name="BuyingGuides" xml:space="preserve">
+    <value>คู่มือแนะนำหารซื้อของเรานำเสนอโดย {0} - ซึ่งเป็นแหล่งรวมข้อมูลที่เป็นกลาง ชั้นนำ</value>
+  </data>
+  <data name="CapitalReviews" xml:space="preserve">
+    <value>รีวิว</value>
+  </data>
+  <data name="ClassName_categorySitemapTd" xml:space="preserve">
+    <value>categorySitemapTdTH</value>
+  </data>
+  <data name="ClassName_CompareImage" xml:space="preserve">
+    <value>THCompareImage</value>
+  </data>
+  <data name="ClassName_SingUpImg" xml:space="preserve">
+    <value>SingUpImgTH</value>
+  </data>
+  <data name="CompanyInfo" xml:space="preserve">
+    <value>"PriceMe เป็น บริษัท ที่เจริญเติบโตที่เป็นนวัตกรรมใหม่ที่ตั้งอยู่ในกรุงจาการ์ตา. บริษัท ฯ จะให้ข้อมูลการช้อปปิ้งออนไลน์เช่นราคาสินค้าและเปรียบเทียบความคิดเห็นเช่นกัน 
+
+เป็นค่าอื่น ๆ เพิ่มบริการให้กับผู้ซื้อสินค้าในประเทศอินโดนีเซีย เป้าหมายของ บริษัท คือการช่วยให้ผู้ซื้อสินค้าที่มีข้อมูลที่เขาหรือเธอต้องการที่จะหา 
+
+สินค้าที่เหมาะสมจากร้านค้าที่เชื่อถือได้ในราคาที่ต่ำสุด กรุณา &lt;a&gt; ติดต่อเรา &lt;/ a&gt; เพื่อสอบถามข้อมูลใด ๆ เกี่ยวกับ บริษัท และธุรกิจของ บริษัท . "</value>
+  </data>
+  <data name="CompetitionAveragePosition" xml:space="preserve">
+    <value>ค่าเฉลี่ยสินค้าของคุณในหมวดสินค้าของวันนี้ ค่านี้จะช่วยให้คุณมีไอเดียคร่าวๆเกี่ยวกับ การเปรียบเทียบราคากับคู่แข่ง ค่าเฉลี่ยจะคำนวณจากสินค้าทั้งหมดจากอย่างน้อยสี่ร้านค้า</value>
+  </data>
+  <data name="CompetitionDeatiledPositioning" xml:space="preserve">
+    <value>รายละเอียดตำแหน่งของสินค้าของคุณในหมวดสินค้าของวันนี้ กราฟแสดงส่วนแบ่งของสินค้าในสี่ส่วนของราคา (ถูกติดอันดับมากสุด 25%  , 25-50% ในไตรมาสที่สองและอื่น ๆ ) ตำแหน่งขึ้นอยู่กับการเปรียบเทียบสินค้าที่มีอย่างน้อยสี่ร้านค้า</value>
+  </data>
+  <data name="CompetitionLowestPrice" xml:space="preserve">
+    <value>จำนวนของสินค้าของคุณในหมวด ที่มีราคาต่ำสุดใน PriceMe ของวันนี้ คลิกที่ลิงค์เพื่อดูข้อมูลสินค้าและรายละเอียดส่วนต่างของราคาเพิ่มเติม</value>
+  </data>
+  <data name="CompetitionMostExpensive" xml:space="preserve">
+    <value>จำนวนสินค้าของคุณในหมวดหม ู่ที่มีราคาสูงสุดใน PriceMe วันนี้ คลิกที่ลิงค์เพื่อดูข้อมูลสินค้าและรายละเอียดส่วนต่างของราคาเพิ่มเติม</value>
+  </data>
+  <data name="CompetitionPositioningTopProductsInCategory" xml:space="preserve">
+    <value>แสดงการจัดอันดับ สินค้าที่ฉันค้นหากบ่อยที่สุดในระยะ 30 วันที่ผ่านมา เฉพาะสินค้าที่มีขายอย่างน้อยในสี่ร้านค้าที่ได้รับการพิจารณา ฉันควรจะวางตำแหน่งสินค้าของฉันแตกต่างไหม โดยเฉพาะอย่างยิ่งสำหรับสินค้าที่ได้รับความนิยมมากที่สุดติดอันดับ?</value>
+  </data>
+  <data name="CompetitionShareClickInCategory" xml:space="preserve">
+    <value>ส่วนแบ่งจากยอดคลิกของฉันในช่วง 30 วันที่ผ่านมา ในหมวดสินค้าที่เลือก ตัวอย่างเช่น 10% แสดงให้เห็นว่า ร้านของฉันดึงดูด 10% ของการคลิกทั้งหมดที่อยู่ในหมวดสินค้า ฉันสามารถวางตำแหน่งสินค้าของฉันแตกต่างกันไปเพื่อที่จะดึงดูดได้มากขึ้น</value>
+  </data>
+  <data name="CompetitionTopProductByClicks" xml:space="preserve">
+    <value>การจัดอันดับ 5 สินค้าติดอันดับของฉันจากยอดการคลิกวันนี้ ตัวอย่างเช่น 2 ใน 8 แสดงให้เห็นว่าสินค้าของฉันถูกเป็นอันดับที่สองจากทั้งหมด 8 ร้านค้า การจัดอันดับจะขึ้นอยู่กับราคาและจะพิจารณาราคาต่อหนึ่งร้านค้า สินค้าของฉันมีตำแหน่งติดอับดับต้นๆได้ยังไง?</value>
+  </data>
+  <data name="ControlPanel_ProductDisplayed" xml:space="preserve">
+    <value>จำนวนของสินค้าที่อยู่ในหมวดสินค้าในปัจจุบันที่แสดงบนเว็บไซต์ในวันนี้ หมายเหตุ: นี่คือจำนวนรวมถึงสินค้าทั้งหมดสำหรับร้านค้าทั้งหมด</value>
+  </data>
+  <data name="ControlPanel_Top5ProByClicks" xml:space="preserve">
+    <value>5 สินค้าที่ฉันเข้าชมมากที่สุด ขึ้นอยู่กับการคลิกเมื่อเดือนที่แล้ว จำนวนคลิกที่จะแสดงในวงเล็บ</value>
+  </data>
+  <data name="ControlPanel_Top5useripsbyclick" xml:space="preserve">
+    <value>5 อันดับแรกที่อยู่บนพื้นฐานของการคลิกที่เมื่อเดือนที่แล้ว จะมีจดจำที่อยู่ IP ที่เกิดขึ้นจริงเพื่อระบุความเป็นส่วนตัว แต่อาจจะไม่แสดง ใช้IP ที่เฉพาะเจาะจง จะดีกว่าแบบสุ่ม?</value>
+  </data>
+  <data name="ControlPanel_TotalProducts" xml:space="preserve">
+    <value>จำนวนรายการสินค้าบน PriceMe มีการนับและอัพเดตรายวัน</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>ประเทศไทย</value>
+  </data>
+  <data name="Default_HotSearch_Title" xml:space="preserve">
+    <value>การค้นหายอดนิยม</value>
+  </data>
+  <data name="Default_MostPopularCategories_Title" xml:space="preserve">
+    <value>หมวดสินค้ายอดนิยม</value>
+  </data>
+  <data name="Default_MostPopuler_Help" xml:space="preserve">
+    <value>สินค้าที่ได้รับความนิยมมากที่สุดแสดงที่นี่เป็นสินค้าที่เข้าชมบ่อยที่สุดใน PriceMe ในช่วง30 วันที่ผ่าน</value>
+  </data>
+  <data name="Default_NewExpertReview_Tilte" xml:space="preserve">
+    <value>รีวิวล่าสุดจากผู้เชี่ยวชาญ</value>
+  </data>
+  <data name="Default_NewProducts_Help" xml:space="preserve">
+    <value>สินค้าจะ ่แสดงตัวที่ี่เพิ่มเข้ามาใหม่ครั้งแรก บน PriceMe และเพิ่มสินค้าเก่าที่มีอยู่แล้ว</value>
+  </data>
+  <data name="Default_PopulerSearch_Help" xml:space="preserve">
+    <value>สินค้าที่นิยมมากที่สุดในการค้นหา PriceMe ในช่วง 20 วันที่ผ่านมา ผู้ใช้สามารถเปรียบเทียบราคาจากผลการค้นหาที่เกี่ยวข้อง</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>รายละเอียด</value>
+  </data>
+  <data name="DomainName" xml:space="preserve">
+    <value>priceme.com</value>
+  </data>
+  <data name="FindOnPriceMe" xml:space="preserve">
+    <value>PriceMe รวบรวมและเปรียบเทียบราคา หลากหลายของหมวดสินค้า. สินค้าส่วนใหญ่เป็นสินค้าที่ผู้ซื้อสินค้า (ทีวี, กล้อง, เครื่องใช้ในบ้าน ฯลฯ ) แต่เรายังมีการขายการบริการเช่น บริการอินเตอร์เนตบรอดแบนด์. โปรดดูแผนที่เวบไซด์ของเรา &lt;a&gt; แผนที่เวบไซด์ &lt;/ a&gt; ภาพรวมหมวดสินค้าสินค้าของ PriceMe  PriceMeขณะนี้ กำลังขยายสินค้าดังนั้นถ้าคุณไม่สามารถหาสินค้าที่คุณสนใจในขณะนี ้เป็นไปได้ว่าคุณสามารถหาเจอในไม่ช้า กรุณา &lt;a&gt; ติดต่อเรา &lt;/ a&gt; เพื่อแนะนำหมวดสินค้าสินค้าที่คุณคิดว่าจะเป็นประโยชน์ให้กับผู้ซื้อสินค้าคนไทย</value>
+  </data>
+  <data name="Global_HomePageName" xml:space="preserve">
+    <value>บ้าน</value>
+  </data>
+  <data name="Global_HomePageUrl" xml:space="preserve">
+    <value>http://www.priceme.com</value>
+  </data>
+  <data name="Global_SearchButtonImageUrl" xml:space="preserve">
+    <value>http://images.pricemestatic.com/images/css/search.png</value>
+  </data>
+  <data name="GoogleMapUrl" xml:space="preserve">
+    <value>https://www.google.co.th/</value>
+  </data>
+  <data name="GTSInfo" xml:space="preserve">
+    <value>ราคาทั้งหมดที่แสดงในสกุลเงิน thailandn ค่าธรรมเนียมการแสดงภายใต้ฐานราคารวมค่าจัดส่งและ / หรือค่าบริการบัตรเครดิต ค่าจัดส่งประมาณการสำหรับการส่งมอบจาการ์ตา พื้นฐาน, ร้านค้าไม่จ่ายไม่อาจมีการเชื่อมโยงสินค้าที่แสดง</value>
+  </data>
+  <data name="HomePageUrl_sOut" xml:space="preserve">
+    <value>.th.th</value>
+  </data>
+  <data name="HomePageUrl_sOutR" xml:space="preserve">
+    <value>.th</value>
+  </data>
+  <data name="HowToUse" xml:space="preserve">
+    <value>PriceMe ช่วยให้ผู้ซื้อสินค้าเช่นตัวคุณเองที่จะเป็นอิสระเปรียบเทียบราคาคิดเห็นต่อสินค้าและข้อมูลจำเพาะสำหรับสินค้ามากมายจากร้านค้าชั้นนำของไทย หลังจากนั้นเพียงไม่กี่นาทีของการท่องเว็บไซต์ของเราคุณมีอยู่แล้วในตำแหน่งที่ดีที่จะทำให้ข้อมูลประกอบการตัดสินใจเกี่ยวกับการซื้อ สิ่งที่เป็นคุณกำลังมองหาคุณได้อย่างรวดเร็วสามารถทำงานได้ออกรุ่นที่ดีที่สุดตรงตามความต้องการของคุณที่มีความพร้อมใช้งานและในราคาที่ต่ำสุดจากร้านค้าที่เชื่อถือได้ ไม่ว่าคุณต้องการที่จะซื้อหรือออฟไลน์ PriceMe จะชี้ให้คุณจัดการที่ดีที่สุด เป็นส่วนหนึ่งของการตัดสินใจเป็นข้อมูลที่ให้ไว้โดยชุมชน PriceMe ของผู้ใช้ออนไลน์ รีวิวเกี่ยวกับสินค้าและร้านค้าที่คุณมีความสนใจในการเพิ่มประสิทธิภาพการตัดสินใจซื้อ.</value>
+  </data>
+  <data name="ImageWebsite" xml:space="preserve">
+    <value>http://images.pricemestatic.com</value>
+  </data>
+  <data name="ImageWebsite2" xml:space="preserve">
+    <value>http://images2.pricemestatic.com</value>
+  </data>
+  <data name="ImageWebsite3" xml:space="preserve">
+    <value>http://images.pricemestatic.com</value>
+  </data>
+  <data name="InformationOnPriceMe" xml:space="preserve">
+    <value>แน่นอน ว่าเรามักจะแสดงรายการราคาต่ำสุดก่อนโดยการปราศจากอคติใด ๆ ความคิดเห็นที่ถูกเขียนโดยผู้ซื้อสินค้าหรือโดยผู้เชี่ยวชาญที่เป็นอิสระและข้อมูลสินค้าที่รวบรวมจากแหล่งข้อมูลที่เป็นอิสระ PriceMe ไม่มีส่วนเกี่ยวข้อง และไม่ขึ้นอยู่กับผู้ผลิต ร้านค้าหรือองค์กรอื่น ๆ สำหรับข้อมูลที่ให้ไว้ในเว็บไซต์ เราไม่ได้จ่ายเงินให้ร้านค้าและผู้โฆษณาให้มาเป็นลูกค้า แต่ตามหลัก เราไม่ได้ประนีประนอมตามจุดประสงค์ของเรา วัตถุประสงค์ PriceMe คือการเป็นแหล่งข้อมูลที่เป็นอิสระให้ข้อมูลการซื้อสินค้าออนไลน์แก่คนไทย</value>
+  </data>
+  <data name="LocationCity" xml:space="preserve">
+    <value>Bangkok</value>
+  </data>
+  <data name="LocationLat" xml:space="preserve">
+    <value>13.752725</value>
+  </data>
+  <data name="LocationLng" xml:space="preserve">
+    <value>100.496063</value>
+  </data>
+  <data name="MobilePlansURL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Mobile_URL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Module_CatalogShoppingInformation_Title" xml:space="preserve">
+    <value>{0} ข้อมูล ช้อปปิ้งออนไลน์</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_OtherTitle" xml:space="preserve">
+    <value>{0} หมวดสินค้าอื่น ๆ</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_SeeMore" xml:space="preserve">
+    <value>เพิ่มเติม {0}</value>
+  </data>
+  <data name="Module_CatalogSiteMap_Title" xml:space="preserve">
+    <value>{0} หมวดสินค้าที่นิยมมากที่สุด</value>
+  </data>
+  <data name="Module_CompareBaske_EmptyInfo" xml:space="preserve">
+    <value>รายการการเปรียบเทียบของคุณว่างเปล่า</value>
+  </data>
+  <data name="Module_CompareBaske_Title" xml:space="preserve">
+    <value>รายการเปรียบเทียบ</value>
+  </data>
+  <data name="Module_FooterBuyingGuides_Content" xml:space="preserve">
+    <value>สิ่งที่คุณต้องรู้เมื่อซื้อ {0}</value>
+  </data>
+  <data name="Module_InfoATagText" xml:space="preserve">
+    <value>ข้อมูล</value>
+  </data>
+  <data name="Module_MostPopularProduct_Tilte" xml:space="preserve">
+    <value>นิยมมากที่สุด</value>
+  </data>
+  <data name="Module_MyHistory_Title" xml:space="preserve">
+    <value>ประวัติของฉัน</value>
+  </data>
+  <data name="Module_MyRecentlySearch_Tilte" xml:space="preserve">
+    <value>การค้นหาล่าสุด</value>
+  </data>
+  <data name="Module_MyRecentlyViewed_Tilte" xml:space="preserve">
+    <value>เมื่อเร็วๆ นี้ ดู</value>
+  </data>
+  <data name="Module_MyWishlist_EmptyInfo" xml:space="preserve">
+    <value>รายการต้องการของคุณว่างเปล่า</value>
+  </data>
+  <data name="Module_MyWishlist_Title" xml:space="preserve">
+    <value>รายการสินค้าที่ต้องการของฉัน</value>
+  </data>
+  <data name="Module_NewsletterSignUp_Content" xml:space="preserve">
+    <value>ลงทะเบียนและรับข้อเสนอรายสัปดาห์</value>
+  </data>
+  <data name="Module_NewsletterSignUp_Title" xml:space="preserve">
+    <value>จดหมายข่าว</value>
+  </data>
+  <data name="Module_News_Title" xml:space="preserve">
+    <value>ข่าว</value>
+  </data>
+  <data name="Module_PopularBrands_Tilte" xml:space="preserve">
+    <value>แบรนด์ที่เป็นที่นิยม</value>
+  </data>
+  <data name="Module_StatusBar_ProductsCompared" xml:space="preserve">
+    <value>ผลิตภัณฑ์:</value>
+  </data>
+  <data name="Module_StatusBar_PricesReviews" xml:space="preserve">
+    <value>ความคิดเห็นต่อสินค้า:</value>
+  </data>
+  <data name="Module_StatusBar_RetailersOnline" xml:space="preserve">
+    <value>ร้านค้าปลีกออนไลน์:</value>
+  </data>
+  <data name="MoreCountries" xml:space="preserve">
+    <value>&lt;option value="http://www.priceme.co.nz"&gt;ประเทศอื่น ๆ 
+&lt;/option&gt;&lt;option value="http://www.priceme.com.au"&gt;PriceMe ออสเตรเลีย&lt;/option&gt;&lt;option value="http://www.priceme.com.hk"&gt;PriceMe ฮ่องกง&lt;/option&gt;&lt;option value="http://www.priceme.com.sg"&gt;PriceMe สิงคโปร์&lt;/option&gt;&lt;option value="http://www.priceme.com.my"&gt;PriceMe ประเทศมาเลเซีย&lt;/option&gt;&lt;option value="http://www.priceme.co.id"&gt;PriceMe ประเทศอินโดนีเซีย&lt;/option&gt;</value>
+  </data>
+  <data name="Newsletterhighlights" xml:space="preserve">
+    <value>"&lt;li&gt;การออกสินค้าใหม่ &lt;/ li&gt; 
+          &lt;li&gt; สินค้ายอดนิยมในประเทศไทย &lt;/ li&gt; 
+           &lt;li&gt;  ความคิดเห็นต่อสินค้า &lt;/ li&gt; 
+            &lt;li&gt;ข้อเสนอพ่อค้า&lt;/ li&gt;"</value>
+  </data>
+  <data name="PriceAlertReducedForEach" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="PriceCurrency" xml:space="preserve">
+    <value>THB</value>
+  </data>
+  <data name="PriceMeNewsletter" xml:space="preserve">
+    <value>จดหมายข่าว</value>
+  </data>
+  <data name="PriceMeSocial" xml:space="preserve">
+    <value>&lt;a class="bg2 foot_Facebook" target="_blank" href="https://www.facebook.com/pages/PriceMe-Thailand/157090487766629"&gt;&lt;/a&gt;&lt;a class="bg2 foot_Twitter" target="_blank" href="https://twitter.com/PriceMeTH"&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="ProductReview" xml:space="preserve">
+    <value>รีวิวสินค้า</value>
+  </data>
+  <data name="Product_ComparePrices" xml:space="preserve">
+    <value>เปรียบเทียบราคา</value>
+  </data>
+  <data name="Product_Compare_DeliveryDetails" xml:space="preserve">
+    <value>รายละเอียดการจัดส่งสินค้า</value>
+  </data>
+  <data name="Product_Compare_MoreInfo" xml:space="preserve">
+    <value>ข้อมูลเพิ่มเติม</value>
+  </data>
+  <data name="Product_Description" xml:space="preserve">
+    <value>รายละเอียด</value>
+  </data>
+  <data name="Product_ExpertReviews" xml:space="preserve">
+    <value>ความคิดเห็นต่อสินค้า</value>
+  </data>
+  <data name="Product_Featured" xml:space="preserve">
+    <value>ที่โดดเด่น</value>
+  </data>
+  <data name="Product_FeaturedContent" xml:space="preserve">
+    <value>สินค้าที่โดดเด่นจะถูกเลือกขึ้นอยู่กับความเกี่ยวข้องคะแนนร้านค้าราคาและความนิยม สินค้าอื่น ๆ ทั้งหมดจะถูกจัดเรียงตามราคา</value>
+  </data>
+  <data name="Product_FeaturedProduct" xml:space="preserve">
+    <value>คุณลักษณะของสินค้า</value>
+  </data>
+  <data name="Product_FooterProductDescription_Listed" xml:space="preserve">
+    <value>ลิสรายการบน PriceMe ตั้งแต่</value>
+  </data>
+  <data name="Product_Header_Compare" xml:space="preserve">
+    <value>{0} ราคา{1} จาก {2} ผู้ขาย{3}</value>
+  </data>
+  <data name="Product_Header_PriceCount" xml:space="preserve">
+    <value>ราคา {0} ทั้งหมด</value>
+  </data>
+  <data name="Product_Header_PriceOne" xml:space="preserve">
+    <value>1 ข้อเสนอ สำหรับ 1 ผู้ขาย</value>
+  </data>
+  <data name="Product_Locations" xml:space="preserve">
+    <value>ร้านค้าท้องถิ่น</value>
+  </data>
+  <data name="Product_Maps" xml:space="preserve">
+    <value>แผนที่</value>
+  </data>
+  <data name="Product_MostPopuler_Help" xml:space="preserve">
+    <value>สินค้าที่นิยมที่สุด แสดงไว้ที่นี่ คือ สินค้าที่มีคนเข้าชมบ่อย {0} บน PriceMe ในตลอดระยะเวลากว่า 30 วันที่ผ่านมา.</value>
+  </data>
+  <data name="Product_NoProduct" xml:space="preserve">
+    <value>ขณะนี้ไม่มีผู้ขายบน PriceMe ที่ขายสินค้าตัวนี้ กรุณาดู&lt;a href="{0}"&gt;สินค้าที่เกี่ยวข้อง&lt;/a&gt;</value>
+  </data>
+  <data name="Product_PriceCompare_Fees" xml:space="preserve">
+    <value>ค่าธรรมเนียม</value>
+  </data>
+  <data name="Product_PriceCompare_FeesSee" xml:space="preserve">
+    <value>+ ค่าธรรมเนียม</value>
+  </data>
+  <data name="Product_PriceCompare_NoFees" xml:space="preserve">
+    <value>ไม่มีค่าธรรมเนียม</value>
+  </data>
+  <data name="Product_PriceHistory" xml:space="preserve">
+    <value>ประวัติราคา</value>
+  </data>
+  <data name="Product_ProductDescription" xml:space="preserve">
+    <value>คำอธิบายสินค้า</value>
+  </data>
+  <data name="Product_RatingControl_ExpertReview" xml:space="preserve">
+    <value>รีวิวจากผู้เชี่ยวชาญ</value>
+  </data>
+  <data name="Product_RatingControl_Rating" xml:space="preserve">
+    <value>คะแนนประเมิน</value>
+  </data>
+  <data name="Product_RatingControl_UserReview" xml:space="preserve">
+    <value>รีวิวจากผู้ใช้</value>
+  </data>
+  <data name="Product_RatingControl_WriteReview" xml:space="preserve">
+    <value>เขียนรีวิว</value>
+  </data>
+  <data name="Product_RightMostPopular_More" xml:space="preserve">
+    <value>ดู ที่เป็นที่นิยมกว่า</value>
+  </data>
+  <data name="Product_RightMostPopular_MostPopular" xml:space="preserve">
+    <value>นิยมมากที่สุด{0}</value>
+  </data>
+  <data name="Product_SimilarLinks_Checkup" xml:space="preserve">
+    <value>ดูได้ 3 สินค้าและทำการเปรียบเทียบกับ</value>
+  </data>
+  <data name="Product_SimilarLinks_PriceRange" xml:space="preserve">
+    <value>ลำดับราคา</value>
+  </data>
+  <data name="Product_SimilarLinks_Related" xml:space="preserve">
+    <value>เกี่ยวข้อง</value>
+  </data>
+  <data name="Product_SimilarLinks_Similar" xml:space="preserve">
+    <value>ใกล้เคียง</value>
+  </data>
+  <data name="Product_Title" xml:space="preserve">
+    <value>เปรียบเทียบราคาบน PriceMe</value>
+  </data>
+  <data name="Product_TopDisplay_Alert" xml:space="preserve">
+    <value>ตั้งการแจ้งเตือนราคา</value>
+  </data>
+  <data name="Product_TopDisplay_FromRetailer" xml:space="preserve">
+    <value>จาก{0}ผู้ขาย</value>
+  </data>
+  <data name="Product_UserReviews" xml:space="preserve">
+    <value>รีวิวจากผู้ใช้</value>
+  </data>
+  <data name="Product_What" xml:space="preserve">
+    <value>นี่ คืออะไร</value>
+  </data>
+  <data name="RatingControl_AddRating" xml:space="preserve">
+    <value>เพิ่มคะแนนประเมินของคุณ</value>
+  </data>
+  <data name="RatingControl_CurrentRating" xml:space="preserve">
+    <value>คะแนนประเมินปัจจุบัน</value>
+  </data>
+  <data name="RatingControl_Excellent" xml:space="preserve">
+    <value>ดีเยี่ยม</value>
+  </data>
+  <data name="RatingControl_FooterReview_Bought" xml:space="preserve">
+    <value>กรุณาแจ้งว่าอะไรที่คุณซื้อ</value>
+  </data>
+  <data name="RatingControl_FooterReview_Rating" xml:space="preserve">
+    <value>กรุณาอธิบาย ผลประเมินของคุณ</value>
+  </data>
+  <data name="RatingControl_Good" xml:space="preserve">
+    <value>ดี</value>
+  </data>
+  <data name="RatingControl_ListDate" xml:space="preserve">
+    <value>วันที่ลิสรายการ</value>
+  </data>
+  <data name="RatingControl_OK" xml:space="preserve">
+    <value>ตกลง</value>
+  </data>
+  <data name="RatingControl_Poor" xml:space="preserve">
+    <value>แย่</value>
+  </data>
+  <data name="RatingControl_Verypoor" xml:space="preserve">
+    <value>แย่มาก</value>
+  </data>
+  <data name="RetailerCenter" xml:space="preserve">
+    <value>ลิสรายการสินค้าของคุณตอนนี้ อยู่บนเวบไซด์เปรียบเทียบสินค้าออนไลน์ที่โตไวที่สุดในประเทศไทย เริ่มลิสรายการสินค้าของคุณได้ง่ายๆ!</value>
+  </data>
+  <data name="RetailerFAQsWhatIsPriceMe" xml:space="preserve">
+    <value>PriceMe เวบเปรียบเทียบซื้อสินค้าออนไลน์ในไทยที่เติบโตอย่างรวดเร็ว เป้าหมายของเราคือ "การช้อปปิ้งอย่างชาญฉลาด" สำหรับคนไทย  นั่นคือการหาสินค้าที่เหมาะสมจากร้านค้าที่เชื่อถือได้ในราคาที่ถูกที่สุดเท่าที่จะทำเป็นไปได้</value>
+  </data>
+  <data name="RetailerInfo" xml:space="preserve">
+    <value>ข้อมูลร้านค้า</value>
+  </data>
+  <data name="RetailerInformation" xml:space="preserve">
+    <value>ข้อมูลผู้ขาย</value>
+  </data>
+  <data name="RetailerInfo_Description" xml:space="preserve">
+    <value>ลักษณะ</value>
+  </data>
+  <data name="RetailerInfo_General" xml:space="preserve">
+    <value>ทั่วไป</value>
+  </data>
+  <data name="RetailerInfo_HomePage" xml:space="preserve">
+    <value>บ้าน</value>
+  </data>
+  <data name="RetailerInfo_ReportRetailer" xml:space="preserve">
+    <value>รายงานการค้าปลีก</value>
+  </data>
+  <data name="RetailerInfo_ReviewsRatings" xml:space="preserve">
+    <value>ความคิดเห็นและคะแนน</value>
+  </data>
+  <data name="RetailerInfo_StoreCategories" xml:space="preserve">
+    <value>ร้านค้าหมวดสินค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo" xml:space="preserve">
+    <value>เก็บข้อมูล</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Address" xml:space="preserve">
+    <value>ที่อยู่</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardInfo" xml:space="preserve">
+    <value>ข้อมูลบัตรเครดิต</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardNot" xml:space="preserve">
+    <value>บัตรเครดิตไม่ได้รับการสนับสนุน</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_DeliveryInfo" xml:space="preserve">
+    <value>ข้อมูลการจัดส่ง</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Friday" xml:space="preserve">
+    <value>วันศุกร์</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_FullCompanyName" xml:space="preserve">
+    <value>ชื่อเต็มของบริษัท</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_GSTNumber" xml:space="preserve">
+    <value>VAT Number</value>
+    <comment>ตัวเลข GST</comment>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Monday" xml:space="preserve">
+    <value>วันจันทร์</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_MoreInfo" xml:space="preserve">
+    <value>ข้อมูลเพิ่มเติมของ สินค้านำเข้า จากลูกค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NoCreditCard" xml:space="preserve">
+    <value>ไม่มีค่าบริการบัตรเครดิต</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NumberEmployees" xml:space="preserve">
+    <value>จำนวนพนักงาน</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_OpeningHours" xml:space="preserve">
+    <value>เวลาที่เปิดดำเนินการ</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ParallelImported" xml:space="preserve">
+    <value>สินค้านำเข้า</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_PaymentMethods" xml:space="preserve">
+    <value>วิธีการจ่ายเงิน</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_RegistrationNumber" xml:space="preserve">
+    <value>เลขลงทะเบียน</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ReturnPolicy" xml:space="preserve">
+    <value>นโยบายการคืนสินค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Saturday" xml:space="preserve">
+    <value>วันเสาร์</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_SeeWebsite" xml:space="preserve">
+    <value>ดูเวบไซด์  สินค้าที่เห็นเป็น สินค้านำเข้า โดยจะมีการระบุแบบนี้</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_StoreType" xml:space="preserve">
+    <value>ชนิดร้านค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Sunday" xml:space="preserve">
+    <value>วันอาทิตย์</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Thursday" xml:space="preserve">
+    <value>วันพฤหัสบดี</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_TradingName" xml:space="preserve">
+    <value>ชื่อการค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Tuesday" xml:space="preserve">
+    <value>วันอังคาร</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Wednesday" xml:space="preserve">
+    <value>วันพุธ</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_YearEstablished" xml:space="preserve">
+    <value>ปีที่ก่อตั้ง</value>
+  </data>
+  <data name="RetailerInfo_StoreLocation" xml:space="preserve">
+    <value>ตำแหน่งร้านค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreProducts" xml:space="preserve">
+    <value>สินค้าของร้านค้า</value>
+  </data>
+  <data name="RetailerInfo_StoreReviews" xml:space="preserve">
+    <value>รีวิว ร้านค้า</value>
+  </data>
+  <data name="RetailerInfo_WhyUs" xml:space="preserve">
+    <value>ทำไมถึงต้องเป็นเรา</value>
+  </data>
+  <data name="RetailerListOnPriceMe" xml:space="preserve">
+    <value>PriceMe ในปัจจุบันได้ลิสรายชื่อร้านค้าปลีกไทยที่บริการให้สั่งซื้อของออนไลน์ ได้ เช่นมีเว็บไซต์ที่คุณสามารถซื้อ และมีชื่อเสียงด้านสินค้าที่มีราคาย่อมเยาว์ รายชื่อร้านค้าปลีกที่ถูกลิสในเวบเรา จะถูกลิสให้โดยไม่เกี่ยงว่า ร้านจะจ่ายเงินให้เวบหรือจ่ายเงินให้ลูกค้าเขียนรีวิวเกี่ยวกับร้านหรือไม่ ร้านค้าปลีกที่ได้รับแจ้งข้อร้องเรียนหรือไม่ทำตามเงื่อนไขของเวบ ที่กำหนดไว้โดยกระทรวงกิจการผู้บริโภค ทางเวบจะแจ้งเพิกถอนรายชื่อออกไป.</value>
+  </data>
+  <data name="RetailerList_AvrRating" xml:space="preserve">
+    <value>คะแนนประเมินโดยเฉลี่ย</value>
+  </data>
+  <data name="RetailerList_RetailerStoreInfoList" xml:space="preserve">
+    <value>รายชื่อ ข้อมูลร้านค้าของผู้ขาย</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_CreditCard" xml:space="preserve">
+    <value>บัตรเครดิต</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Delivery" xml:space="preserve">
+    <value>การจัดส่งสินค้า</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Freeshipping" xml:space="preserve">
+    <value>ฟรีค่าจัดส่ง</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Nofee" xml:space="preserve">
+    <value>ไม่มีค่าใช้จ่าย</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Notsupported" xml:space="preserve">
+    <value>ไม่ได้รับการสนับสนุน</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Only" xml:space="preserve">
+    <value>เท่านั้น</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Providedby" xml:space="preserve">
+    <value>ที่ให้บริการโดย</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_SKU" xml:space="preserve">
+    <value>หน่วยที่เล็กที่สุดในการจัดเก็บสินค้า.</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_UIC" xml:space="preserve">
+    <value>โครงการศึกษาและออกแบบรถไฟความเร็วสูง</value>
+  </data>
+  <data name="RetailersList" xml:space="preserve">
+    <value>ยินดีต้อนรับเข้าสู่รายชื่อผู้ค้าปลีกของ PriceMe - ที่ตั้งร้านค้าชั้นนำของไทย</value>
+  </data>
+  <data name="RetailerStoreInfoList" xml:space="preserve">
+    <value>Retailer Store Info List</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>วิจารณ์</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>วิจารณ์</value>
+  </data>
+  <data name="SearchPanel" xml:space="preserve">
+    <value>จำนวนทั้งหมดของการคลิกและค่าใช้จ่ายที่เกี่ยวข้องเป็นระยะเวลาที่เลือกและหมวดสินค้า (ถ้ามีการเลือกหมวดสินค้า) ค่าใช้จ่ายจะขึ้นอยู่กับอัตรา PPC สำหรับหมวดสินค้า โปรดดูที่ส่วนการชำระเงินสำหรับยอดเงินปัจจุบันในบัญชีของคุณ</value>
+  </data>
+  <data name="ShareWishListEmailBody" xml:space="preserve">
+    <value>ฉันแค่อยากจะแบ่งปันรายการสินค้าที่ต้องการของฉันกับทุกสิ่งที่เย็นที่ฉันชอบที่จะเป็นเจ้าของ * คำใบ้คำใบ้ * &lt;br /&gt; &lt;br /&gt; ฉันค้นหาและพบว่าสินค้าเหล่านี้และร้านค้าใน PriceMe กรุณาตรวจสอบออก</value>
+  </data>
+  <data name="ShoppingInformation" xml:space="preserve">
+    <value>ข้อมูลการใช้จ่าย</value>
+  </data>
+  <data name="StatusBarText" xml:space="preserve">
+    <value>ช้อปปิ้งออนไลน์ในไทย</value>
+  </data>
+  <data name="String_DefaultCategoryDescription" xml:space="preserve">
+    <value>เปรียบเทียบ {0} ราคา อ่านรีวิวบน  PriceMe, และซื้อ {0} จาก{1} และ อื่นๆ</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>สมัครสมาชิก</value>
+  </data>
+  <data name="TextString_404PageContent" xml:space="preserve">
+    <value>"&lt;p&gt;เราได้หมายเหตุข้อผิดพลาดนี้ และ มันจะถูกรีวิวจากทีมงานเทคนิคของเรา&lt;/p&gt;
+    &lt;ul id=""reasons""&gt;
+     &lt;li&gt;หากคุณพิมพ์ที่อยู่ด้วยตัวเอง กรุณายืนยันว่า สะกดถูกต้อง&lt;/li&gt;
+     &lt;li&gt;หากคุณคลิกลิ้งค์จากรายการบันทึกลิ้งค์ที่ชอบของคุณ, ลิ้งค์อาจจะเก่า ไม่ใช่อันล่าสุด&lt;/li&gt;
+     &lt;li&gt;หรือไม่อย่างนั้น เราอาจประสบปัญหาบนระบบเซิฟเวอร์ เราจะทำการแก้ไขโดยเร็ว โดยที่คุณไม่ต้องทำอะไรไปมากกว่านี้.&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;br /&gt;
+    &lt;p&gt;หากคุณยังเจอปัญหาอีก กรุณา &lt;a href=""/About/contactUs.aspx""&gt;ติดต่อเรา&lt;/a&gt; เพื่อขอความช่วยเหลือ&lt;/p&gt;"</value>
+  </data>
+  <data name="TextString_404PageH1" xml:space="preserve">
+    <value>ขออภัย ไม่พบหน้านี้</value>
+  </data>
+  <data name="TextString_About" xml:space="preserve">
+    <value>เกี่ยวกับ</value>
+  </data>
+  <data name="TextString_AboutMe" xml:space="preserve">
+    <value>ข้อความ เกี่ยวกับที่ฉัน</value>
+  </data>
+  <data name="TextString_AboutUs" xml:space="preserve">
+    <value>เกี่ยวกับเรา</value>
+  </data>
+  <data name="TextString_AbuseList" xml:space="preserve">
+    <value>เพิ่มการค้นหาในเบราว์เซอร์ของคุณ</value>
+  </data>
+  <data name="TextString_Account" xml:space="preserve">
+    <value>บัญชี</value>
+  </data>
+  <data name="TextString_AddNewList" xml:space="preserve">
+    <value>เพิ่มรายการใหม่</value>
+  </data>
+  <data name="TextString_Addsearch" xml:space="preserve">
+    <value>เพิ่มการค้นหาในเบราว์เซอร์ของคุณ</value>
+  </data>
+  <data name="TextString_AddToMyCompareList" xml:space="preserve">
+    <value>อยากได้</value>
+  </data>
+  <data name="TextString_AddYourReview" xml:space="preserve">
+    <value>ใส่บทวิจารณ์ของคุณ</value>
+  </data>
+  <data name="TextString_AdvancedFeatures" xml:space="preserve">
+    <value>คุณสมบัติ ก้าวหน้า</value>
+  </data>
+  <data name="TextString_AlertDelete" xml:space="preserve">
+    <value>โปรดยืนยันว่าคุณต้องการแจ้งลบราคานี้ !</value>
+  </data>
+  <data name="TextString_AlertPrice" xml:space="preserve">
+    <value>แจ้งเตือนราคา</value>
+  </data>
+  <data name="TextString_AllBrands" xml:space="preserve">
+    <value>แบรนด์ทั้งหทด</value>
+  </data>
+  <data name="TextString_AllReviews" xml:space="preserve">
+    <value>รีวิวทั้งหมด</value>
+  </data>
+  <data name="TextString_AlreadyRegister" xml:space="preserve">
+    <value>เป็นสมาชิก PriceMe  แล้ว?</value>
+  </data>
+  <data name="TextString_AskToRegister" xml:space="preserve">
+    <value>การเผยแพร่ความคิดเห็นใน PriceMe ที่เราอยากจะถามคุณเพื่อลงทะเบียนก่อน เราไม่อนุญาติให้รีวิวแบบไม่เปิดเผยชื่อเพื่อหลีกเลี่ยงการละเมิด</value>
+  </data>
+  <data name="TextString_Author" xml:space="preserve">
+    <value>ผู้แต่ง</value>
+  </data>
+  <data name="TextString_BasePrice" xml:space="preserve">
+    <value>ราคาพื้นฐาน</value>
+  </data>
+  <data name="TextString_BestPrice" xml:space="preserve">
+    <value>ราคาที่ดีที่สุด</value>
+  </data>
+  <data name="TextString_Brand" xml:space="preserve">
+    <value>แบรนด์</value>
+  </data>
+  <data name="TextString_BrandDescription" xml:space="preserve">
+    <value>ค้นหา {0} สินค้าออนไลน์และซื้อจากร้านค้าออนไลน์ที่ดีที่สุด 
+  ใน {1}.</value>
+  </data>
+  <data name="TextString_Brands" xml:space="preserve">
+    <value>แบรนด์</value>
+  </data>
+  <data name="TextString_BrandTitle" xml:space="preserve">
+    <value>{0} {1} - ซื้อที่ราคาถูกราคา</value>
+    <comment>Beli {0} Produk-produk Murah | Bandingkan {1} harga di PriceMe</comment>
+  </data>
+  <data name="TextString_BrowseAll" xml:space="preserve">
+    <value>เรียกดูทั้งหมด ......</value>
+  </data>
+  <data name="TextString_BrowseAllCategories" xml:space="preserve">
+    <value>เรียกดูทุกหมวดสินค้า</value>
+  </data>
+  <data name="TextString_BuyGuideTitle" xml:space="preserve">
+    <value>คำแนะนำสำหรับการช้อปปิ้งอย่างชาญฉลาด</value>
+  </data>
+  <data name="TextString_BuyingGuide" xml:space="preserve">
+    <value>คำแนะนำการซื้อ</value>
+  </data>
+  <data name="TextString_BuyingGuides" xml:space="preserve">
+    <value>คำแนะนำการซื้อ</value>
+  </data>
+  <data name="TextString_CatalogSelection" xml:space="preserve">
+    <value>เลือก:</value>
+  </data>
+  <data name="TextString_CatalogSortby" xml:space="preserve">
+    <value>จัดเรียงตาม:</value>
+  </data>
+  <data name="TextString_CatalogView" xml:space="preserve">
+    <value>ดูโดย:</value>
+  </data>
+  <data name="TextString_Categories" xml:space="preserve">
+    <value>หมวดสินค้า</value>
+  </data>
+  <data name="TextString_Category" xml:space="preserve">
+    <value>หมวดสินค้า</value>
+  </data>
+  <data name="TextString_CatelogDesc" xml:space="preserve">
+    <value>เปรียบเทียบ {0} ราคาและอ่านความคิดเห็นที่ PriceMe. ซื้อ {1} จากร้านค้าออนไลน์ที่ดีที่สุดใน。</value>
+  </data>
+  <data name="TextString_CatelogKeyword" xml:space="preserve">
+    <value>เปรียบเทียบ {0} ราคา,{1}ความคิดเห็น {2} รีวิว,ซื้อ,ราคา,ช้อปปิ้ง</value>
+  </data>
+  <data name="TextString_ChangeEmail" xml:space="preserve">
+    <value>เปลี่ยนอีเมล</value>
+  </data>
+  <data name="TextString_ChannelPartners" xml:space="preserve">
+    <value>ช่องทาง หุ้นส่วนพันธมิตร</value>
+  </data>
+  <data name="TextString_CharLong" xml:space="preserve">
+    <value>{0} ความยาวของคำ</value>
+  </data>
+  <data name="TextString_Checkout" xml:space="preserve">
+    <value>ตรวจสอบ {0} ใน PriceMe</value>
+  </data>
+  <data name="TextString_Clearlist" xml:space="preserve">
+    <value>ยกเลิกรายการ</value>
+  </data>
+  <data name="TextString_ComingSoon" xml:space="preserve">
+    <value>เร็วๆนี้...</value>
+  </data>
+  <data name="TextString_Community" xml:space="preserve">
+    <value>ชุมชน</value>
+  </data>
+  <data name="TextString_CommunityForum" xml:space="preserve">
+    <value>เว็บบอร์ดชุมชน PriceMe</value>
+  </data>
+  <data name="TextString_CompanyInfo" xml:space="preserve">
+    <value>ข้อมูลบริษัท</value>
+  </data>
+  <data name="TextString_Compare" xml:space="preserve">
+    <value>เปรียบเทียบ</value>
+  </data>
+  <data name="TextString_CompareButtonDescription" xml:space="preserve">
+    <value>เชคได้มากสุด 4 ตัวเลือกสินค้าของคุณ และ คลิกปุ่มเปรียบเทียบ</value>
+  </data>
+  <data name="TextString_Comparelist" xml:space="preserve">
+    <value>รายการเปรียบเทียบ</value>
+  </data>
+  <data name="TextString_comparepricesFrom" xml:space="preserve">
+    <value>จาก</value>
+  </data>
+  <data name="TextString_CompareProducts" xml:space="preserve">
+    <value>เปรียบเทียบสินค้า</value>
+  </data>
+  <data name="TextString_CompareTitle" xml:space="preserve">
+    <value>เปรียบเทียบสินค้าและความคิดเห็นเกี่ยวกับ PriceMe</value>
+  </data>
+  <data name="TextString_Cons" xml:space="preserve">
+    <value>ข้อเสีย:</value>
+  </data>
+  <data name="TextString_Contact" xml:space="preserve">
+    <value>การติดต่อ</value>
+  </data>
+  <data name="TextString_ContactUs" xml:space="preserve">
+    <value>ติดต่อเรา</value>
+  </data>
+  <data name="TextString_ContactUsError1" xml:space="preserve">
+    <value>กรุณาใส่ชื่อเต็มของคุณ</value>
+  </data>
+  <data name="TextString_ContactUsError2" xml:space="preserve">
+    <value>กรุณาใส่อีเมลของคุณ</value>
+  </data>
+  <data name="TextString_ContactUsError3" xml:space="preserve">
+    <value>กรุณาใส่ข้อความ</value>
+  </data>
+  <data name="TextString_ContactUsMessage" xml:space="preserve">
+    <value>ข้อความ:</value>
+  </data>
+  <data name="TextString_ContactUsMSG1" xml:space="preserve">
+    <value>ไม่ชัดเจน? คลิกเพื่อดูภาพ Captcha เพื่่อจะได้รับอันใหม่! ไม่สนใจกรณี</value>
+  </data>
+  <data name="TextString_ContactUsMSG2" xml:space="preserve">
+    <value>ไม่ชัดเจน? คลิกเพื่อรับใหม่!</value>
+  </data>
+  <data name="TextString_ContactUsSuccess" xml:space="preserve">
+    <value>ติดต่อเราสำเร็จแล้ว</value>
+  </data>
+  <data name="TextString_ContactUsSuccess_Text1" xml:space="preserve">
+    <value>"ขอบคุณที่ติดต่อเรา
+                                                &lt;br /&gt;เราได้รับข้อความของคุณแล้ว และ จะตอบกลับคุณโดยเร็วที่สุด."</value>
+  </data>
+  <data name="TextString_ContactUsTopic" xml:space="preserve">
+    <value>หัวข้อ:</value>
+  </data>
+  <data name="TextString_ContactUsYourEmail" xml:space="preserve">
+    <value>อีเมลของคุณ:</value>
+  </data>
+  <data name="TextString_ContactUsYourFullName" xml:space="preserve">
+    <value>ชื่อของคุณ:</value>
+  </data>
+  <data name="TextString_ContactUs_Text1" xml:space="preserve">
+    <value>กรุณาติดต่อเราโดยการกรอกแบบฟอร์มข้างล่าง หากคุณมีข้อสงสัยเกี่ยวกับ เวบไซด์ PriceMe หรือ ต้องการ โฆษณากับเรา</value>
+  </data>
+  <data name="TextString_ContactUs_Text2" xml:space="preserve">
+    <value>"โปรดทราบ: 
+                     &lt;br /&gt; 
+                     - หากท่านต้องการข้อมูลเพิ่มเติมเกี่ยวกับสินค้าที่เฉพาะเจาะจงโปรดคลิกที่รายการ 
+                     คุณมีความสนใจในและติดต่อร้านค้าที่ขายสินค้านั้นโดยตรง 
+                     &lt;br /&gt; 
+                     - PriceMe ไม่ได้ขายสินค้าใด ๆ ที่ปรากฏบนเว็บไซต์ ร้านค้าที่มีความเป็นอิสระ 
+                     ของ PriceMe ทำ"</value>
+  </data>
+  <data name="TextString_Continue" xml:space="preserve">
+    <value>ทำต่อ</value>
+  </data>
+  <data name="TextString_Copyright" xml:space="preserve">
+    <value>Copyright &amp;copy; PriceMe {0}</value>
+  </data>
+  <data name="TextString_CopyToList" xml:space="preserve">
+    <value>คัดลอกไปที่รายการ</value>
+  </data>
+  <data name="TextString_CountInStock" xml:space="preserve">
+    <value>ในสต็อก</value>
+  </data>
+  <data name="TextString_CreditCard" xml:space="preserve">
+    <value>บัตรเครดิต</value>
+  </data>
+  <data name="TextString_Culture" xml:space="preserve">
+    <value>th-TH</value>
+  </data>
+  <data name="TextString_DealsAndOffers" xml:space="preserve">
+    <value>{0} ข้อเสนอและข้อเสนอ - ร้านออนไลน์ในราคาฉัน</value>
+  </data>
+  <data name="TextString_Delete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="TextString_DeleteAll" xml:space="preserve">
+    <value>ลบทั้งหมด</value>
+  </data>
+  <data name="TextString_Delivery" xml:space="preserve">
+    <value>จัดส่ง&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_DeliveryTime" xml:space="preserve">
+    <value>เวลาจัดส่ง</value>
+  </data>
+  <data name="TextString_Edit" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="TextString_EditReview" xml:space="preserve">
+    <value>ตรวจทานการแก้ไข</value>
+  </data>
+  <data name="TextString_EmailAddress" xml:space="preserve">
+    <value>อีเมล</value>
+  </data>
+  <data name="TextString_EmailATagTitle" xml:space="preserve">
+    <value>คลิกเพื่อแบ่งปันหน้านี้ทางอีเมล</value>
+  </data>
+  <data name="TextString_EmailFriendTitle" xml:space="preserve">
+    <value>{0} Compare prices and reviews on Price Me</value>
+  </data>
+  <data name="TextString_EmptyListStr" xml:space="preserve">
+    <value>รายชื่อของท่านยังไม่มี กรุณาเพิ่มสินค้าให้กับรายการของคุณโดยคลิกที่ลิงค์ "เพิ่มไปยังรายการที่บันทึกไว้ของฉัน"</value>
+  </data>
+  <data name="TextString_Error500" xml:space="preserve">
+    <value>"ผิดพลาด: ข้อผิดพลาดภายในเซิร์ฟเวอร์ 
+
+ข้อผิดพลาดเกิดขึ้นในเว็บไซต์ 
+
+ข้อผิดพลาดนี้ได้รับการรายงานโดยอัตโนมัติเพื่อให้พนักงาน PriceMe 
+
+กรุณาคลิกกลับเพื่อกลับไปยังหน้าก่อนหน้าหรือกลับไปยังหน้าบ้าน "</value>
+  </data>
+  <data name="TextString_ExcludeRetailer" xml:space="preserve">
+    <value>แยกร้านค้าปลีกออก :</value>
+  </data>
+  <data name="TextString_ExpertReviewDesc" xml:space="preserve">
+    <value>อ่าน {0} ความคิดเห็นผู้เชี่ยวชาญและการให้คะแนน. หาข้อดี ข้อเสียของสินค้า จากความคิดเห็นผู้เชี่ยวชาญ PriceMe และทำการซื้อของอย่างชาญฉลาด "</value>
+  </data>
+  <data name="TextString_ExpertReviewKeyword" xml:space="preserve">
+    <value>{0},{1} รีวิว,รีวิวจากผู้เชี่ยวชาญ, ตรวจสอบ,จัดอันดับ,{2}{3} รีวิว</value>
+  </data>
+  <data name="TextString_ExpertReviews" xml:space="preserve">
+    <value>รีวิวผู้เชี่ยวชาญ</value>
+  </data>
+  <data name="TextString_ExpertReviewTitle" xml:space="preserve">
+    <value>{0} รีวิวผู้เชี่ยวชาญ - อ่านรีวิวและสั่งซื้อของออนไลน์อย่างชาญฉลาด</value>
+  </data>
+  <data name="TextString_Facebook" xml:space="preserve">
+    <value>คลิก Like เรา - ชนะ</value>
+  </data>
+  <data name="TextString_FacebookATagTitle" xml:space="preserve">
+    <value>คลิกเพื่อแบ่งปันหน้านี้ทางเฟสบุค</value>
+  </data>
+  <data name="TextString_FAQDesc" xml:space="preserve">
+    <value>คำถามที่พบบ่อยสำหรับร้านค้าปลีกที่ถูกลิสรายชื่อใน PriceMe</value>
+  </data>
+  <data name="TextString_FAQKweword" xml:space="preserve">
+    <value>คำถามที่พบบ่อย,ร้านค้าปลีก,ร้านค้า,รายชื่อ, PriceMe</value>
+  </data>
+  <data name="TextString_FAQs" xml:space="preserve">
+    <value>คำถามพบบ่อย</value>
+  </data>
+  <data name="TextString_FirstName" xml:space="preserve">
+    <value>ชื่อจริง</value>
+  </data>
+  <data name="TextString_FooterOnline" xml:space="preserve">
+    <value>เปรียบเทียบราคาและร้านค้าออนไลน์{0}</value>
+  </data>
+  <data name="TextString_ForgotPsd" xml:space="preserve">
+    <value>ลืมรหัสเข้าระบบ?</value>
+  </data>
+  <data name="TextString_FreeShipping" xml:space="preserve">
+    <value>ฟรี</value>
+  </data>
+  <data name="TextString_FREE_shipping" xml:space="preserve">
+    <value>ฟรี</value>
+  </data>
+  <data name="TextString_From" xml:space="preserve">
+    <value>จาก</value>
+  </data>
+  <data name="TextString_Gallery" xml:space="preserve">
+    <value>แฟ้มภาพ</value>
+  </data>
+  <data name="TextString_GetAccount" xml:space="preserve">
+    <value>ได้รับบัญชีผู้ใช้</value>
+  </data>
+  <data name="TextString_GetDirections" xml:space="preserve">
+    <value>ขอเส้นทาง</value>
+  </data>
+  <data name="TextString_Guides" xml:space="preserve">
+    <value>แนะนำ</value>
+  </data>
+  <data name="TextString_Height" xml:space="preserve">
+    <value>ความสูง</value>
+  </data>
+  <data name="TextString_Help" xml:space="preserve">
+    <value>ช่วยเหลือ</value>
+  </data>
+  <data name="TextString_HelpDesc" xml:space="preserve">
+    <value>ทำไมถึงใช้ PriceMe เพื่อการช้อปปิ้งออนไลน์และค้นหาสินค้า 
+เพื่อเปรียบเทียบราคา</value>
+  </data>
+  <data name="TextString_Helpkeyword" xml:space="preserve">
+    <value>ข้อเสนอ,ค้นหา, ซื้อ, ออนไลน์, ช้อปปิ้ง</value>
+  </data>
+  <data name="TextString_HighestRating" xml:space="preserve">
+    <value>ประเมินสูงสุด</value>
+  </data>
+  <data name="TextString_HowThisWorks" xml:space="preserve">
+    <value>สิ่งนี้ทำงานยังไง</value>
+  </data>
+  <data name="TextString_HowToUsePriceMe" xml:space="preserve">
+    <value>ใช้ PriceMe ยังไง</value>
+  </data>
+  <data name="TextString_InCorrectEmailFormat" xml:space="preserve">
+    <value>รูปแบบอีเมล์ไม่ถูกต้อง</value>
+  </data>
+  <data name="TextString_InStock" xml:space="preserve">
+    <value>ในสต็อค</value>
+  </data>
+  <data name="TextString_JoinNowAlt" xml:space="preserve">
+    <value>ลิสรายการสินค้าของคุณบนเวบไซด์เปรียบเทียบสินค้าออนไลน์ ที่ดีที่สุดของไทย</value>
+  </data>
+  <data name="TextString_JoinNowTitle" xml:space="preserve">
+    <value>เข้าร่วมเว็บไซต์ช้อปปิ้งชั้นนำของประเทศไทย</value>
+  </data>
+  <data name="TextString_JoinPriceMe" xml:space="preserve">
+    <value>ลงทะเบียน</value>
+  </data>
+  <data name="TextString_Latest" xml:space="preserve">
+    <value>ล่าสุด {0}</value>
+  </data>
+  <data name="TextString_Length" xml:space="preserve">
+    <value>ความยาว</value>
+  </data>
+  <data name="TextString_Less" xml:space="preserve">
+    <value>น้อยลง</value>
+  </data>
+  <data name="TextString_LessFilters" xml:space="preserve">
+    <value>ใส่คำกรองการค้นหาน้อยลง</value>
+  </data>
+  <data name="TextString_LikeUs" xml:space="preserve">
+    <value>คลิก Like เรา</value>
+  </data>
+  <data name="TextString_List" xml:space="preserve">
+    <value>รายการ</value>
+  </data>
+  <data name="TextString_LocationInFor" xml:space="preserve">
+    <value>สถานที่ใน {0}สำหรับ {1}</value>
+  </data>
+  <data name="TextString_LogIn" xml:space="preserve">
+    <value>เข้าระบบ</value>
+  </data>
+  <data name="TextString_LoginHere" xml:space="preserve">
+    <value>เข้าสู่ระบบที่นี่</value>
+  </data>
+  <data name="TextString_LogOut" xml:space="preserve">
+    <value>ออกระบบ</value>
+  </data>
+  <data name="TextString_LowestPrice" xml:space="preserve">
+    <value>ราคาที่ตำ่ที่สุด</value>
+  </data>
+  <data name="TextString_LowestRating" xml:space="preserve">
+    <value>ประเมินต่ำสุด</value>
+  </data>
+  <data name="TextString_Managelist" xml:space="preserve">
+    <value>จัดการ รายการ</value>
+  </data>
+  <data name="TextString_Manu_BrowseAll" xml:space="preserve">
+    <value>เรียกดูทั้งหมด ......</value>
+  </data>
+  <data name="TextString_Map" xml:space="preserve">
+    <value>แผนที่</value>
+  </data>
+  <data name="TextString_Maps" xml:space="preserve">
+    <value>แผนที่</value>
+  </data>
+  <data name="TextString_MediaCenter" xml:space="preserve">
+    <value>ศูนย์กลางสื่อ</value>
+  </data>
+  <data name="TextString_MediaCentre" xml:space="preserve">
+    <value>ศูนย์กลางสื่อ</value>
+  </data>
+  <data name="TextString_MemberDetails" xml:space="preserve">
+    <value>{0} รายละเอียดสมาชิก</value>
+  </data>
+  <data name="TextString_Mobile" xml:space="preserve">
+    <value>โทรศัพท์มือถือ</value>
+  </data>
+  <data name="TextString_More" xml:space="preserve">
+    <value>เพิ่มเติม</value>
+  </data>
+  <data name="TextString_MoreCountries" xml:space="preserve">
+    <value>ประเทศอื่น ๆ</value>
+  </data>
+  <data name="TextString_MoreDetails" xml:space="preserve">
+    <value>รายละเอียดเพิ่มเติม</value>
+  </data>
+  <data name="TextString_MostPopText" xml:space="preserve">
+    <value>สินค้าที่นิยมที่สุด แสดงไว้ที่นี่ คือ สินค้าที่มีคนเข้าชมบ่อย {0} บน PriceMe ในตลอดระยะเวลากว่า 15 วันที่ผ่านมา.</value>
+  </data>
+  <data name="TextString_MostPopuCategories" xml:space="preserve">
+    <value>หมวดสินค้าที่นิยมมากที่สุด</value>
+  </data>
+  <data name="TextString_MostPopularDesc" xml:space="preserve">
+    <value>ได้รับความนิยมมากที่สุด {0} ใน{1} การช้อปปิ้งออนไลน์,ข้อคิดเห็นและการเปรียบเทียบราคา.</value>
+  </data>
+  <data name="TextString_MostPopularMetaKey" xml:space="preserve">
+    <value>ที่นิยม {0}, ช้อปปิ้ง,ออนไลน์,ราคา,เปรียบเทียบ</value>
+  </data>
+  <data name="TextString_MostPopularTitle" xml:space="preserve">
+    <value>นิยมมากที่สุด {0} ซื้อและร้านค้าออนไลน์บน PriceMe</value>
+  </data>
+  <data name="TextString_MyAccount" xml:space="preserve">
+    <value>บัญชีของฉัน</value>
+  </data>
+  <data name="TextString_MyComparisonList" xml:space="preserve">
+    <value>รายการเปรียบเทียบของฉัน</value>
+  </data>
+  <data name="TextString_MySavedListStr" xml:space="preserve">
+    <value>คุณสามารถจัดการและจัดระเบียบรายการของคุณที่นี่. นอกจากนี้คุณยังสามารถเปรียบเทียบสินค้าได้โดยการเลือกอันที่คุณมีความสนใจในและคลิก" เปรียบเทียบ ". นอกจากนี้ยังเป็นไปได้ที่จะลบสินค้าจากรายการ. ตรวจสอบข้อมูลเพิ่มเติม 
+  &lt;a href="/MyHistoryInfo.aspx" rel=""nofollow"&gt; 
+ข้อมูล &lt;/a&gt; เกี่ยวกับรายการที่บันทึกไว้ของฉัน .</value>
+  </data>
+  <data name="TextString_Narrowby" xml:space="preserve">
+    <value>ย่อ</value>
+  </data>
+  <data name="TextString_NarrowByCate" xml:space="preserve">
+    <value>ทำให้หมวดสินค้าแคบลง</value>
+  </data>
+  <data name="TextString_NeedBGinfo" xml:space="preserve">
+    <value>ต้องการข้อมูลเพิ่มเติม {0}ก่อนตัดสินใจซื้อออนไลน์? สามารถหาข้อมูลได้จากคู่มือการซื้อ</value>
+  </data>
+  <data name="TextString_NewestRating" xml:space="preserve">
+    <value>ประเมินล่าสุด</value>
+  </data>
+  <data name="TextString_Newquestion" xml:space="preserve">
+    <value>คำถามใหม่</value>
+  </data>
+  <data name="TextString_Newquestionfor" xml:space="preserve">
+    <value>คำถามใหม่</value>
+  </data>
+  <data name="TextString_NewquestionforL" xml:space="preserve">
+    <value>คำถามใหม่</value>
+  </data>
+  <data name="TextString_NewsArticles" xml:space="preserve">
+    <value>บทความใหม่</value>
+  </data>
+  <data name="TextString_NewsLcomplete" xml:space="preserve">
+    <value>ลงทะเบียนรับจดหมายข่าว PriceMe สำเร็จแล้ว</value>
+  </data>
+  <data name="TextString_NewsLettCQ1" xml:space="preserve">
+    <value>How often do I receive the newsletter?&lt;br /&gt;The newsletter is sent out on Tuesday each week.</value>
+  </data>
+  <data name="TextString_NewsLettCQ2" xml:space="preserve">
+    <value>คุณต้องการอะไรจากฉัน&lt;br /&gt;เราต้องการแค่อีเมลของคุณ ณ.ตอนนี้ คุณแค่ทำตามที่แนะนำและยืนยันอีเมลเพื่อให้การลงทะเบียนสมบูรณ์</value>
+  </data>
+  <data name="TextString_Newsletter" xml:space="preserve">
+    <value>จดหมายข่าว</value>
+  </data>
+  <data name="TextString_NewsletterDesc" xml:space="preserve">
+    <value>ช้อปปิ้ง,จดหมายข่าว,ออนไลน์, ข่าว, สมัคร</value>
+  </data>
+  <data name="TextString_Newsletterkeyword" xml:space="preserve">
+    <value>ช้อปปิ้ง,จดหมายข่าว,ออนไลน์, ข่าว, สมัคร</value>
+  </data>
+  <data name="TextString_NewsletterOptions" xml:space="preserve">
+    <value>PriceMe ตัวเลือกจดหมายข่าว</value>
+  </data>
+  <data name="TextString_NextPrice" xml:space="preserve">
+    <value>ราคาถัดไป</value>
+  </data>
+  <data name="TextString_Nofee" xml:space="preserve">
+    <value>ไม่มีค่าใช้จ่าย</value>
+  </data>
+  <data name="TextString_NoMap" xml:space="preserve">
+    <value>ไม่มีรายชื่อผู้ขายบน  PriceMe  ในการขายสินค้านี้</value>
+  </data>
+  <data name="TextString_None" xml:space="preserve">
+    <value>ไม่มี</value>
+  </data>
+  <data name="TextString_NoRating" xml:space="preserve">
+    <value>ไม่มีคะแนน</value>
+  </data>
+  <data name="TextString_NoReview" xml:space="preserve">
+    <value>ไม่มีรีวิว</value>
+  </data>
+  <data name="TextString_NoSearchResult" xml:space="preserve">
+    <value>ไม่มผลลัพธ์จากการค้นหา "{0}"</value>
+  </data>
+  <data name="TextString_NotClear" xml:space="preserve">
+    <value>ไม่ชัดเจน? คลิกเพื่อดูภาพ Captcha เพื่่อจะได้รับอันใหม่! ไม่สนใจกรณี</value>
+  </data>
+  <data name="TextString_NotFoundTitle" xml:space="preserve">
+    <value>{0} ผลลัพธ์ - เปรียบเทียบราคาใน PriceMe</value>
+  </data>
+  <data name="TextString_NotRegistered" xml:space="preserve">
+    <value>ยังไม่ลงทะเบียน</value>
+  </data>
+  <data name="TextString_NoUserReview" xml:space="preserve">
+    <value>ไม่มีความคิดเห็นผู้ใช้. เป็นคนแรกที่แสดงความคิดเห็นสำหรับ &lt;a href=""{0}""&gt;{1}&lt;/a&gt;.&lt;br /&gt;</value>
+  </data>
+  <data name="TextString_NumOfRP" xml:space="preserve">
+    <value>จำนวนของผู้ขาย {0}.</value>
+  </data>
+  <data name="TextString_Off" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="TextString_OldestRating" xml:space="preserve">
+    <value>ประเมินเก่าสุด</value>
+  </data>
+  <data name="TextString_OnPriceMe" xml:space="preserve">
+    <value>บน PriceMe</value>
+  </data>
+  <data name="TextString_OR" xml:space="preserve">
+    <value>หรือ</value>
+  </data>
+  <data name="TextString_Other" xml:space="preserve">
+    <value>อื่นๆ</value>
+  </data>
+  <data name="TextString_Others" xml:space="preserve">
+    <value>อื่นๆ</value>
+  </data>
+  <data name="TextString_OutOfRating" xml:space="preserve">
+    <value>ได้{0} จาก 5 คะแนน</value>
+  </data>
+  <data name="TextString_OutofStock" xml:space="preserve">
+    <value>สินค้าไม่มีในสต็อค</value>
+  </data>
+  <data name="TextString_PageNext" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
+  <data name="TextString_PageNotfound" xml:space="preserve">
+    <value>ไม่พบหน้านี้</value>
+  </data>
+  <data name="TextString_PageNumber" xml:space="preserve">
+    <value>จำนวนหน้าทั้งหมด :</value>
+  </data>
+  <data name="TextString_PagePrev" xml:space="preserve">
+    <value>ก่อนหน้า</value>
+  </data>
+  <data name="TextString_Password" xml:space="preserve">
+    <value>รหัสเข้าระบบ</value>
+  </data>
+  <data name="TextString_PhoneSupport" xml:space="preserve">
+    <value>บริการทางโทรศัพท์</value>
+  </data>
+  <data name="TextString_PhysicalSpecs" xml:space="preserve">
+    <value>สเปค สินค้า</value>
+  </data>
+  <data name="TextString_PleaseLogIn" xml:space="preserve">
+    <value>กรุณาเข้าระบบ</value>
+  </data>
+  <data name="TextString_PopularBrands" xml:space="preserve">
+    <value>แบรนด์ที่เป็นที่นิยม</value>
+  </data>
+  <data name="TextString_PopularBrandsSiteMap" xml:space="preserve">
+    <value>แบรนด์ที่เป็นที่นิยม ในแผนที่ไซด์</value>
+  </data>
+  <data name="TextString_Popularity" xml:space="preserve">
+    <value>ความนิยม</value>
+  </data>
+  <data name="TextString_popularStores" xml:space="preserve">
+    <value>ร้านค้าที่เป็นที่นิยม</value>
+  </data>
+  <data name="TextString_PreNewsletterDesc" xml:space="preserve">
+    <value>เก็บจดหมายข่าว PriceMe - ข้อมูลช้อปปิ้งออนไลน์ และข่าว</value>
+  </data>
+  <data name="TextString_PreNewsletterk" xml:space="preserve">
+    <value>จดหมายข่าวออนไลน์, ช้อปปิ้ง, ข่าว, PriceMe</value>
+  </data>
+  <data name="TextString_PReviewSubmitted" xml:space="preserve">
+    <value>"&lt;div&gt; &lt;h5&gt; บทรีวิวของคุณ {0} ได้ทำการส่งแล้ว &lt;/ h5&gt; &lt;/ div&gt; 
+                         &lt;div&gt; 
+                             ขอขอบคุณสำหรับการรีวิวสินค้านี้ ความคิดเห็นของคุณจะออนไลน์ในไม่ช้า 
+                         &lt;/ div&gt;"</value>
+  </data>
+  <data name="TextString_PreviousNewsletters" xml:space="preserve">
+    <value>จดหมายข่าวก่อนหน้านี้</value>
+  </data>
+  <data name="TextString_Price" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="TextString_PriceCount" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="TextString_PriceHistory" xml:space="preserve">
+    <value>ประวัติราคาของ {0}.</value>
+  </data>
+  <data name="TextString_PriceMeBlog" xml:space="preserve">
+    <value>บล็อค</value>
+  </data>
+  <data name="TextString_PriceMeCommunity" xml:space="preserve">
+    <value>สังคม PriceMe</value>
+  </data>
+  <data name="TextString_PriceMeLogoATagTitle" xml:space="preserve">
+    <value>ซื้อสินค้าออนไลน์ &amp; เปรียบเทียบราคา</value>
+  </data>
+  <data name="TextString_PriceMeLogoTitle" xml:space="preserve">
+    <value>PriceMe - เปรียบเทียบราคาและซื้อสินค้าออนไลน์</value>
+  </data>
+  <data name="TextString_PricemeNotifyprice" xml:space="preserve">
+    <value>PriceMe จะแจ้งให้ทราบเมื่อราคาสำหรับ {0} ลดลงต่ำกว่า {1} {2}</value>
+  </data>
+  <data name="TextString_PriceRedured" xml:space="preserve">
+    <value>ราคาที่ลดลง</value>
+  </data>
+  <data name="TextString_PriceReduredBelow" xml:space="preserve">
+    <value>ราคาลดได้ ดังข้างล่าง</value>
+  </data>
+  <data name="TextString_PriceReduredInStock" xml:space="preserve">
+    <value>ราคาที่ลดลง และสินค้าในสต็อก</value>
+  </data>
+  <data name="TextString_PricesAndReviews" xml:space="preserve">
+    <value>ราคา &amp; รีวิว</value>
+  </data>
+  <data name="TextString_PriceSymbol" xml:space="preserve">
+    <value>฿</value>
+  </data>
+  <data name="TextString_PrintATagTitle" xml:space="preserve">
+    <value>คลิกเพื่อพิมพ์หน้านี้</value>
+  </data>
+  <data name="TextString_PrivacyPolicy" xml:space="preserve">
+    <value>นโยบายส่วนตัว</value>
+  </data>
+  <data name="TextString_ProDescTitle" xml:space="preserve">
+    <value>{0} รายละเอียดสินค้า คุณสมบัติ และคำอธิบาย</value>
+  </data>
+  <data name="TextString_Product" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="TextString_ProductAlertfor" xml:space="preserve">
+    <value>แจ้งเตือนสำหรับสินค้า</value>
+  </data>
+  <data name="TextString_ProductAlertSucces" xml:space="preserve">
+    <value>การแจ้งเตือนสินค้าที่ประสบความสำเร็จ</value>
+  </data>
+  <data name="TextString_ProductComparison" xml:space="preserve">
+    <value>การเปรียบเทียบสินค้า</value>
+  </data>
+  <data name="TextString_ProductComparisonSbs" xml:space="preserve">
+    <value>การเปรียบเทียบสินค้า</value>
+  </data>
+  <data name="TextString_ProductDesc" xml:space="preserve">
+    <value>เปรียบเทียบ {0} ราคาและอ่านความคิดเห็น เพื่อหาราคา ที่ดีที่สุด{1} {2}!</value>
+  </data>
+  <data name="TextString_ProductDescDesc" xml:space="preserve">
+    <value>{0} สเปคและรายละเอียดของสินค้า อ่าน {1} คำแนะนำและคู่มือ</value>
+  </data>
+  <data name="TextString_ProductDescKeyword" xml:space="preserve">
+    <value>{0} สเปค,รายละเอียด, คู่มือ,คำอธิบาย,คู่มือ,สินค้า</value>
+  </data>
+  <data name="TextString_ProductKeyword" xml:space="preserve">
+    <value>{0} ราคา,ซื้อ,รีวิว,เปรียบเทียบ</value>
+  </data>
+  <data name="TextString_ProductName" xml:space="preserve">
+    <value>หัวเรื่อง</value>
+  </data>
+  <data name="TextString_ProductNotFound" xml:space="preserve">
+    <value>ขออภัยสินค้าที่คุณกำลังมองหาไม่มีอยู่หรือได้ถูกย้าย &lt;br /&gt; กรุณาตรวจสอบสินค้าที่คล้ายคลึงกันด้านล่างหรือพยายามที่จะค้นหาสินค้า</value>
+  </data>
+  <data name="TextString_ProductReview" xml:space="preserve">
+    <value>ความคิดเห็นต่อสินค้า</value>
+  </data>
+  <data name="TextString_ProductReviewDesc" xml:space="preserve">
+    <value>อ่าน {0} คิดเห็นของผู้ใช้.ค้นหา {1}{2}ความคิดเห็นของผู้ใช้และการให้คะแนน!</value>
+  </data>
+  <data name="TextString_ProductReviewKeyword" xml:space="preserve">
+    <value>{0},{1} , รีวิว , รีวิว , คะแนน</value>
+  </data>
+  <data name="TextString_ProductReviewTitle" xml:space="preserve">
+    <value>&lt;strong&gt; ชื่อ &lt;/ strong&gt; - กรุณาใส่หัวเรื่องสั้นๆ เพื่อสรุปบทวิจารณ์ของคุณ &lt;br /&gt;</value>
+  </data>
+  <data name="TextString_Products" xml:space="preserve">
+    <value>ผลิตภัณฑ์</value>
+  </data>
+  <data name="TextString_ProductsPurchased" xml:space="preserve">
+    <value>สินค้าที่จัดซื้อ</value>
+  </data>
+  <data name="TextString_ProReviewFor" xml:space="preserve">
+    <value>ตรวจสอบสินค้าสำหรับ {0}</value>
+  </data>
+  <data name="TextString_QuestionFor" xml:space="preserve">
+    <value>คำถามสำหรับ</value>
+  </data>
+  <data name="TextString_Quick" xml:space="preserve">
+    <value>รวดเร็ว</value>
+  </data>
+  <data name="TextString_ReviewRating" xml:space="preserve">
+    <value>คะแนนประเมิน</value>
+  </data>
+  <data name="TextString_ReadBG" xml:space="preserve">
+    <value>อ่าน {0} คำแนะนำซื้อ</value>
+  </data>
+  <data name="TextString_ReadFullReview" xml:space="preserve">
+    <value>อ่านความคิดเห็นเต็มรูปแบบที่ {0}</value>
+  </data>
+  <data name="TextString_RecentlyViewed" xml:space="preserve">
+    <value>เมื่อเร็วๆนี้ดู</value>
+  </data>
+  <data name="TextString_RegisterRemind" xml:space="preserve">
+    <value>คุณและบทวิจารณ์ของคุณจะแสดงภายใต้ชื่อบน PriceMe  ด้วย4- ความยาว 18 ตัวอักษร ที่สามารถเป็นตัวหนังสือ ตัวเลข ขีดเส้นใต้ จุด และไม่มีช่องว่าง</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful" xml:space="preserve">
+    <value>ลงทะเบียนสำเร็จแล้ว</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful_Text1" xml:space="preserve">
+    <value>ขอบคุณที่ลงทะเบียนกับเรา PriceMe ได้ส่งอีเมลยืนยันไปให้ โดยมีเนื้อหา</value>
+  </data>
+  <data name="TextString_RelatedBuyingGuide" xml:space="preserve">
+    <value>คู่มือที่เกี่ยวข้องกับการซื้อ</value>
+  </data>
+  <data name="TextString_RelatedCategories" xml:space="preserve">
+    <value>หมวดสินค้าที่เกี่ยวข้อง</value>
+  </data>
+  <data name="TextString_RememberMe" xml:space="preserve">
+    <value>จดจำฉัน</value>
+  </data>
+  <data name="TextString_Removeall" xml:space="preserve">
+    <value>ลบรายการทั้งหมด</value>
+  </data>
+  <data name="TextString_Report" xml:space="preserve">
+    <value>รายงาน</value>
+  </data>
+  <data name="TextString_ReportATagTitle" xml:space="preserve">
+    <value>คลิกที่นี่เพื่อรายงานข้อผิดพลาดหรือให้ข้อเสนอแนะ</value>
+  </data>
+  <data name="TextString_ReportCommit" xml:space="preserve">
+    <value>รายงานกระทำ</value>
+  </data>
+  <data name="TextString_ReportProduct" xml:space="preserve">
+    <value>รายงานการละเมิดในเว็บบอร์ด ของ PriceMe</value>
+  </data>
+  <data name="TextString_ReportTitle" xml:space="preserve">
+    <value>รายงานการละเมิดในเว็บบอร์ด ของ PriceMe</value>
+  </data>
+  <data name="TextString_Report_location" xml:space="preserve">
+    <value>รายงานสถานที่</value>
+  </data>
+  <data name="TextString_Report_LocationL" xml:space="preserve">
+    <value>รายงานสถานที่</value>
+  </data>
+  <data name="TextString_Retailer" xml:space="preserve">
+    <value>ผู้ขาย</value>
+  </data>
+  <data name="TextString_RetailerAndAdv" xml:space="preserve">
+    <value>ผู้ขาย</value>
+  </data>
+  <data name="TextString_RetailerCentre" xml:space="preserve">
+    <value>ศูนย์กลางผู้ขาย</value>
+  </data>
+  <data name="TextString_RetailerDesc" xml:space="preserve">
+    <value>ร้านจาก {0} และหาข้อเสนอที่ดีที่สุดออนไลน์ เปรียบเทียบราคา , อ่านรีวิวและซื้อจากร้านค้าออนไลน์ที่ดีที่สุดของไทย</value>
+  </data>
+  <data name="TextString_RetailerfullReview" xml:space="preserve">
+    <value>รีวิวร้านค้าปลีก แบบเต็ม--- {0}</value>
+  </data>
+  <data name="TextString_RetailerList" xml:space="preserve">
+    <value>รายชื่อผู้ขาย</value>
+  </data>
+  <data name="TextString_RetailerListDesc" xml:space="preserve">
+    <value>เปรียบเทียบราคาและอ่านความคิดเห็นของร้านค้าปลีกจากร้านค้าที่ดีที่สุดในไืทย โดยซื้อของออนไลน์และค้นหาข้อเสนอที่ดีที่สุด</value>
+  </data>
+  <data name="TextString_RetailerLogicTitle" xml:space="preserve">
+    <value>รายชื่อร้านค้า - หาที่ดีที่สุดร้านค้าท้องถิ่นออนไลน์และข้อมูลเกี่ยวกับ PriceMe</value>
+  </data>
+  <data name="TextString_RetailerMap" xml:space="preserve">
+    <value>ด้านล่างจะแสดงให้คุณที่จะหาร้านค้านี้ แสดง PriceMe ซื้อสถานที่สำหรับทั้งร้านค้าทางกายภาพและร้านค้าออนไลน์ที่มีการรับของ</value>
+  </data>
+  <data name="TextString_RetailerName" xml:space="preserve">
+    <value>ชื่อร้านค้า</value>
+  </data>
+  <data name="TextString_RetailerNumber" xml:space="preserve">
+    <value>ตัวเลขของผู้ขาย</value>
+  </data>
+  <data name="TextString_RetailerProductDesc" xml:space="preserve">
+    <value>เปรียบเทียบ {0} ราคา. ค้นหาราคาที่ดีที่สุด {1}{2} จาก {3}!</value>
+  </data>
+  <data name="TextString_RetailerProductKeyword" xml:space="preserve">
+    <value>{0},ราคา,ซื้อ,รีวิว,เปรียบเทียบ,{1}</value>
+  </data>
+  <data name="TextString_RetailerProductView" xml:space="preserve">
+    <value>ดูข้อเสนออื่นๆ</value>
+  </data>
+  <data name="TextString_RetailerReviews" xml:space="preserve">
+    <value>รีวิวร้านค้า</value>
+  </data>
+  <data name="TextString_Retailers" xml:space="preserve">
+    <value>ผู้ขาย</value>
+  </data>
+  <data name="TextString_RetailerSignUp" xml:space="preserve">
+    <value>ผู้ขาย ลงทะเบียน</value>
+  </data>
+  <data name="TextString_RetypeReview" xml:space="preserve">
+    <value>กรุณาพิมพ์คำวิจารณ์</value>
+  </data>
+  <data name="TextString_RetypeTitle" xml:space="preserve">
+    <value>กรุณาพิมพ์หัวเรื่อง!</value>
+  </data>
+  <data name="TextString_Review" xml:space="preserve">
+    <value>วิจารณ์</value>
+  </data>
+  <data name="TextString_ReviewDate" xml:space="preserve">
+    <value>วันที่ รีวิว</value>
+  </data>
+  <data name="TextString_Reviews" xml:space="preserve">
+    <value>วิจารณ์</value>
+  </data>
+  <data name="TextString_ReviewsTitle" xml:space="preserve">
+    <value>รีวิวสินค้า - ผู้ใช้และผู้เชี่ยวชาญเกี่ยวกับการรีวิว PriceMe</value>
+  </data>
+  <data name="TextString_ReviewSuccessful" xml:space="preserve">
+    <value>ตรวจสอบที่ประสบความสำเร็จ</value>
+  </data>
+  <data name="TextString_ReviewSuccessful_Text" xml:space="preserve">
+    <value>ของคุณที่แบ่งปัน ประสบการณ์ และ รีวิวสินค้าตัวนี้</value>
+  </data>
+  <data name="TextString_ReviewSystem" xml:space="preserve">
+    <value>ระบบรีวิว</value>
+  </data>
+  <data name="TextString_ReviewType" xml:space="preserve">
+    <value>ประเภทรีวิว</value>
+  </data>
+  <data name="TextString_RInformation" xml:space="preserve">
+    <value>{0} ข้อมูล</value>
+  </data>
+  <data name="TextString_RPAlertSuccessful" xml:space="preserve">
+    <value>การแจ้งเตือนสินค้าจากร้านค้าสำเร็จแล้ว</value>
+  </data>
+  <data name="TextString_RPListTitle" xml:space="preserve">
+    <value>ข้อเสนอสินค้าติดอันดับจาก {0}</value>
+  </data>
+  <data name="TextString_RProductAlertfor" xml:space="preserve">
+    <value>การแจ้งเตือนสินค้าจากร้านค้าสำหรับ</value>
+  </data>
+  <data name="TextString_Search" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="TextString_SearchButtonAlter" xml:space="preserve">
+    <value>ค้นหาสินค้าจากร้านค้าออนไลน์</value>
+  </data>
+  <data name="TextString_SearchNoResultTitle" xml:space="preserve">
+    <value>ไม่พบผลการค้นหา</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_1" xml:space="preserve">
+    <value>ตรวจสอบการสะกดของการค้นหาของคุณ</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_2" xml:space="preserve">
+    <value>ลองใช้มากขึ้นและคำค้นหาที่แตกต่างกัน</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_3" xml:space="preserve">
+    <value>ลองใช้คำค้นหาทั้วไป (เช่น กล้องพานาโซนิค แทนคำว่า พานาโซนิค FT-2 Kit Stabiliser)</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_4" xml:space="preserve">
+    <value>อีกทางเลือกคือ ค้นหาจาก หมวดสินค้า หรือ แบรนด์ สินค้าที่ต้องการ</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTips" xml:space="preserve">
+    <value>คำแนะนำการค้นหา:</value>
+  </data>
+  <data name="TextString_SearchResultsFor" xml:space="preserve">
+    <value>ผลการค้นหาสำหรับ</value>
+  </data>
+  <data name="TextString_Searchwithin" xml:space="preserve">
+    <value>ค้นหาภายใน</value>
+  </data>
+  <data name="TextString_SeeAll" xml:space="preserve">
+    <value>ดูทั้งหมด</value>
+  </data>
+  <data name="TextString_SeeAllBrands" xml:space="preserve">
+    <value>ดูทุกแบรนด์</value>
+  </data>
+  <data name="TextString_SeeAllCategories" xml:space="preserve">
+    <value>ดูทุกหมวดสินค้า</value>
+  </data>
+  <data name="TextString_Seemore" xml:space="preserve">
+    <value>ดูรายละเอียดเพิ่มเติม</value>
+  </data>
+  <data name="TextString_Seemorep" xml:space="preserve">
+    <value>ดู ที่เป็นที่นิยมกว่า</value>
+  </data>
+  <data name="TextString_SeemoreR" xml:space="preserve">
+    <value>ดูร้านค้าที่เพิ่มขึ้น ...</value>
+  </data>
+  <data name="TextString_SeemoreStores" xml:space="preserve">
+    <value>ดูร้านค้าเพิ่มเติม</value>
+  </data>
+  <data name="TextString_SeeProductAt" xml:space="preserve">
+    <value>ดูสินค้าที่</value>
+  </data>
+  <data name="TextString_Sendmailwhen" xml:space="preserve">
+    <value>ส่งอีเมลเมื่อ:</value>
+  </data>
+  <data name="TextString_SetYourPrice" xml:space="preserve">
+    <value>ตั้งค่าการแจ้งเตือนสินค้าที่ต่ำกว่า.&lt;br /&gt;ราคาต่ำสุดของวันนี้:</value>
+  </data>
+  <data name="TextString_Shipping" xml:space="preserve">
+    <value>การจัดส่ง</value>
+  </data>
+  <data name="TextString_ShowMoreFilters" xml:space="preserve">
+    <value>กรองการค้นเพิ่ม</value>
+  </data>
+  <data name="TextString_SignUpFind" xml:space="preserve">
+    <value>สมัคร และเริ่มค้นหาดีลดีที่สุด</value>
+  </data>
+  <data name="TextString_SignUpNewsLtt" xml:space="preserve">
+    <value>สมัครลงทะเบียนเพื่อรับจดหมายข่าวรายสัปดาห์ PriceMe และเริ่มต้น 
+รับข้อเสนอล่าสุดในกล่องจดหมายของคุณได้ทุกวันอังคาร!</value>
+  </data>
+  <data name="TextString_SignUpSuccessful" xml:space="preserve">
+    <value>ลงทะเบียนที่ประสบความสำเร็จ</value>
+  </data>
+  <data name="TextString_SignUpSuccessInfo" xml:space="preserve">
+    <value>ขอบคุณที่เราได้เข้าสู่ระบบของคุณขึ้นขอ!&lt;br /&gt;สิ่งสำคัญ: คุณจำเป็นต้องตอบกลับอีเมลที่เราจะส่งให้เสร็จสิ้นขั้นตอนการสมัครกรุณาตรวจสอบกล่องจดหมายของคุณในไม่ช้าและยืนยันว่าคุณต้องการที่จะได้รับจดหมายข่าว PriceMe</value>
+  </data>
+  <data name="TextString_SimilarProFor" xml:space="preserve">
+    <value>สินค้าที่คล้ายกันสำหรับ {0}</value>
+  </data>
+  <data name="TextString_SiteMap" xml:space="preserve">
+    <value>แผนที่ไซด์</value>
+  </data>
+  <data name="TextString_Social" xml:space="preserve">
+    <value>สังคม</value>
+  </data>
+  <data name="TextString_star" xml:space="preserve">
+    <value>ดาว</value>
+  </data>
+  <data name="TextString_Stock" xml:space="preserve">
+    <value>สต็อค</value>
+  </data>
+  <data name="TextString_Store" xml:space="preserve">
+    <value>ร้านค้า</value>
+  </data>
+  <data name="TextString_Stores" xml:space="preserve">
+    <value>ร้านค้า</value>
+  </data>
+  <data name="TextString_SubmitReport" xml:space="preserve">
+    <value>ส่งรายงาน</value>
+  </data>
+  <data name="TextString_Subscribe" xml:space="preserve">
+    <value>สมัครรับข้อเสนอรายสัปดาห์  &lt;a href="Newsletter.aspx"&gt; จดหมายข่าว &lt;/ a&gt;</value>
+  </data>
+  <data name="TextString_Summary" xml:space="preserve">
+    <value>ย่อ</value>
+  </data>
+  <data name="TextString_surcharge" xml:space="preserve">
+    <value>คิดค่าบริการ</value>
+  </data>
+  <data name="TextString_SurveyTitle" xml:space="preserve">
+    <value>สำรวจ - ช่วยเราพัฒนา PriceMe</value>
+  </data>
+  <data name="TextString_TAndC" xml:space="preserve">
+    <value>ข้อกำหนดและเงื่อนไข</value>
+  </data>
+  <data name="TextString_TAndCstr" xml:space="preserve">
+    <value>PriceMe  เกลียดการสแปมพอๆกับคุณ เราจึงไม่มีการขายหรือส่งต่อข้อมูลอีเมลของคุณให้ใครๆ เรามีระบบให้คุณยกเลิกการรับเมลด้วยวิธีง่ายๆ เชคข้อมูลเพิ่มเติมที่ นโยบายส่วนตัวของเรา</value>
+  </data>
+  <data name="TextString_TermsofService" xml:space="preserve">
+    <value>เงื่อนไขการใช้บริการ</value>
+  </data>
+  <data name="TextString_ThankReview" xml:space="preserve">
+    <value>ขอบคุณสำหรับความคิดเห็นของคุณ กรุณาลงทะเบียนใน PriceMe เพื่อเผยแพร่
+
+ใช้งานง่ายและบริการฟรี</value>
+  </data>
+  <data name="TextString_ThanksTakingTime" xml:space="preserve">
+    <value>ขอบคุณที่สละเวลาเพื่อให้เราทราบว่ามีปัญหาในเว็บไซต์ของเรา</value>
+  </data>
+  <data name="TextString_ThankYouTitle" xml:space="preserve">
+    <value>จดหมายข่าว PriceMe ขอขอบคุณ</value>
+  </data>
+  <data name="TextString_ThenForEach" xml:space="preserve">
+    <value>แล้วสำหรับแต่ละ</value>
+  </data>
+  <data name="TextString_Tools" xml:space="preserve">
+    <value>เครื่องมือ</value>
+  </data>
+  <data name="TextString_TopBrands" xml:space="preserve">
+    <value>แบรนด์</value>
+  </data>
+  <data name="TextString_TopRetailers" xml:space="preserve">
+    <value>ผู้ค้าปลีกชั้นนำของ</value>
+  </data>
+  <data name="TextString_Total" xml:space="preserve">
+    <value>รวมทั้งหมด&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_TouchVersion" xml:space="preserve">
+    <value>รุ่นสัมผัส</value>
+  </data>
+  <data name="TextString_TwitterATagTitle" xml:space="preserve">
+    <value>คลิกที่นี่เพื่อแบ่งปันหน้านี้บนทวิตเตอร์</value>
+  </data>
+  <data name="TextString_Unknown" xml:space="preserve">
+    <value>ไม่ทราบ</value>
+  </data>
+  <data name="TextString_UntitledPage" xml:space="preserve">
+    <value>เพจรวม</value>
+  </data>
+  <data name="TextString_UploadPicture" xml:space="preserve">
+    <value>อัพโหลดรูปภาพ</value>
+  </data>
+  <data name="TextString_URShortTitle" xml:space="preserve">
+    <value>&lt;strong&gt;ชื่อเรื่อง&lt;/strong&gt; - หัวเรื่องสั้นๆที่สรุปการตรวจสอบ&lt;br /&gt;</value>
+  </data>
+  <data name="TextString_UserName" xml:space="preserve">
+    <value>ชื่อยูสเซอร์เนม</value>
+  </data>
+  <data name="TextString_Variation" xml:space="preserve">
+    <value>การเปลี่ยนแปลง</value>
+  </data>
+  <data name="TextString_Variations" xml:space="preserve">
+    <value>การเปลี่ยนแปลง</value>
+  </data>
+  <data name="TextString_Verdict" xml:space="preserve">
+    <value>คำตัดสิน</value>
+  </data>
+  <data name="TextString_View" xml:space="preserve">
+    <value>ดู</value>
+  </data>
+  <data name="TextString_ViewAll" xml:space="preserve">
+    <value>ดูทั้งหมด</value>
+  </data>
+  <data name="TextString_ViewSnapshot" xml:space="preserve">
+    <value>ดูภาพรวม</value>
+  </data>
+  <data name="TextString_VisitShop" xml:space="preserve">
+    <value>เยี่ยมชมร้านค้า</value>
+  </data>
+  <data name="TextString_WalkinStore" xml:space="preserve">
+    <value>ร้านค้าที่สามารถเดินเข้าไปซื้อ</value>
+  </data>
+  <data name="TextString_Weight" xml:space="preserve">
+    <value>น้ำหนัก</value>
+  </data>
+  <data name="TextString_WelcomeContent" xml:space="preserve">
+    <value>"ขอบคุณสำหรับการเยี่ยมชม PriceMe เวบค้นหาสินค้าที่เต็มไปด้วยความสนุกและง่าย และจะช่วยให้คุณประหยัดเวลาและเงินเพียงแค่ใส่สินค้าหรือร้านค้าที่คุณกำลังมองหาและคลิกผ่านไปยังเว็บไซต์ของพวกเขาโดยใช้ปุ่มเยี่ยมชมร้านที่จะซื้อได้โดยตรงจาก ร้านค้าที่ 
+
+เราให้บริการในราคาที่ อัพเดตนาทต่อนาที  หรืออ้างอิงความคิดเห็นต่อสินค้าและการให้คะแนนโดยผู้ใช้เกี่ยวกับสินค้าและร้านค้าเพื่อช่วยให้ประกอบการตัดสินใจของลูกค้าท่านอื่น PriceMe โพสต์ความคิดเห็นของคุณและให้คะแนนตามประสบการณ์ของคุณกับสินค้าใด ๆ ของร้านค้าบนเว็บไซต์ 
+
+คุณไม่จำเป็นต้องอยู่หน้าคอมพิวเตอร์ของคุณเพื่อหาข้อมูลเกี่ยวกับการช้อปปิ้ง PriceMe ลอง โหลด app iPhone ของเราเพื่อได้รับข้อมูลจากเว็บไซต์ของเราส่งตรงไปยังโทรศัพท์มือถือของคุณในขณะที่คุณกำลังเดินทางหรือเดินอยู่ในร้านค้า
+
+อย่าลืม - ให้ PriceMe เป็นจุดหมายแรกของคุณก่อนที่จะตัดสินใจช้อปปิ้งเพื่อประหยัดเงินได้ส่วนหนึ่ง! 
+
+ขอให้ช้อปปิ้งอย่างมีความสุข จากทีมงาน PriceMe 
+
+ป.ล. ได้รับข้อเสนอที่ร้อนแรงที่สุดของเราจากร้านค้าทั่วไทยในกล่องจดหมายของคุณ เพียงแค่กรอกแบบฟอร์มการสมัครสมาชิกจดหมายข่าวฟรีไปทางขวาและเริ่มต้นการประหยัดวันนี้!"</value>
+  </data>
+  <data name="TextString_WelcomePriceme" xml:space="preserve">
+    <value>ยินดีต้อนรับสู่ PriceMe</value>
+  </data>
+  <data name="TextString_WhenPriceBelow" xml:space="preserve">
+    <value>เมื่อราคาด้านล่าง</value>
+  </data>
+  <data name="TextString_WhyPriceMe" xml:space="preserve">
+    <value>ทำไมต้องใช้ PriceMe?</value>
+  </data>
+  <data name="TextString_WhyPriceMeContent" xml:space="preserve">
+    <value>"&lt;h1&gt; ค้นหาข้อเสนอที่ดี และ มองเห็นสิ่งที่ คนอื่นพูด ! &lt;/ h1&gt;
+  &lt;br /&gt;
+&lt;p&gt;สวัสดี ผู้ซื้อ &lt; / p&gt;
+&lt;p&gt; สิ่งที่คุณ กำลัง ช้อปปิ้ง สำหรับ เว็บ - กล้อง , โทรศัพท์มือถือ จอ LCD หรือเพียงแค่ การตรวจสอบออก สินค้าใหม่ ล่าสุด - PriceMe ช่วยให้คุณสามารถ เปรียบเทียบและ วิจัยสินค้า อย่างรวดเร็วและง่ายดาย &lt;/ p&gt; .
+&lt;p&gt; เรา มีการเลือก ที่ใหญ่ที่สุด และครอบคลุมมากที่สุด ของประเทศไทย ของ ร้านค้าออนไลน์ ในสถานที่ หนึ่ง ร้านค้า เหล่านี้ มีรวมกัน กว่า 300,000 สินค้า ที่สามารถซื้อ ออนไลน์!
+ขอให้เรา แสดงให้คุณเห็น วิธีการที่คุณ สามารถ เลือกซื้อ อย่างชาญฉลาด ด้วย PriceMe ! &lt;/ p&gt;
+
+&lt;H2&gt; เรียกดู สินค้า . &lt;/ H2 &gt;
+&lt;P&gt; ตรวจสอบ ออกหมวดสินค้าสินค้า ที่แตกต่างกัน ของเรา . &lt;/ p&gt;
+&lt;H2&gt; ค้นหาสินค้าที่ . &lt;/ H2 &gt;
+&lt;p&gt; ค้นหา สิ่งที่คุณต้องการ . &lt;/ p&gt;
+
+&lt;H2&gt; เปรียบเทียบราคา และสินค้า . &lt;/ H2 &gt;
+&lt;p&gt; รับจัดการ ที่ดีที่สุดโดย การเปรียบเทียบราคา และสินค้า . &lt;/ p&gt;
+
+&lt;H2&gt; อ่านบทวิจารณ์ . &lt;/ H2 &gt;
+เด ตรวจสอบสิ่งที่ ผู้ซื้อ เพื่อน ของคุณ และผู้เชี่ยวชาญด้านการคิด เกี่ยวกับสินค้า ก่อนที่จะซื้อ . &lt;/ p&gt;
+
+&lt;h2&gt; รับ แนะนำ . &lt;/ h2&gt;
+เด ปรึกษา แนะนำการ ซื้อของเรา และให้ความรู้ ของตัวเอง - . ร้านค้า อย่างชาญฉลาด &lt;/ p&gt;
+
+&lt;h2&gt; ซื้อ จากร้านค้า ที่มีชื่อเสียง . &lt;/ h2&gt;
+&lt;p&gt;ขั้นตอนสุดท้าย : คลิกผ่าน และซื้อ จากร้านค้า ชั้นนำ ของ ID - รวดเร็ว
+"</value>
+  </data>
+  <data name="TextString_Width" xml:space="preserve">
+    <value>ความกว้าง</value>
+  </data>
+  <data name="TextString_YourAccount" xml:space="preserve">
+    <value>บัญชีของคุณ</value>
+  </data>
+  <data name="TextString_YourDetails" xml:space="preserve">
+    <value>รายละเอียดของคุณ</value>
+  </data>
+  <data name="TextString_YourEmail" xml:space="preserve">
+    <value>อีเมล์ของคุณ</value>
+  </data>
+  <data name="TextString_YourEmailOp" xml:space="preserve">
+    <value>อีเมลของคุณ (ตัวเลือก,ถ้าคุณจำเป็นต้องติดตาม):</value>
+  </data>
+  <data name="TrafficPriceMe" xml:space="preserve">
+    <value>คุณสามารถตรวจสอบจำนวนผู้เข้าชมโดยใช้ PAM ทีมผู้บริหารที่มี PriceMe ปีของการประสบในการแสวงหาการจราจรแม้ว่าความร่วมมือกับเว็บไซต์ที่สำคัญค่าใช้จ่ายและการค้นหาธรรมชาติและผ่านสินค้าใหม่ ดังนั้นคาดว่าระดับการจราจรที่จะเพิ่มขึ้นเดือนที่ผ่านมาที่เราให้การส่งเสริมเว็บไซต์และการแสวงหาการจราจรที่มีคุณภาพสูง นอกจากนี้ยังเปรียบเทียบการจับจ่ายยังเป็นที่ดึงดูดการลากในผู้ซื้อสินค้าไทยมากขึ้นและมีแนวโน้มที่จะใช้หมวดสินค้าของบริการช้อปปิ้งนี้ในอนาคตอันใกล้</value>
+  </data>
+  <data name="VisitShop" xml:space="preserve">
+    <value>เยี่ยมชมร้านค้า</value>
+  </data>
+  <data name="WhatIsPriceMe" xml:space="preserve">
+    <value>PriceMe เวบเปรียบเทียบซื้อสินค้าออนไลน์ในไทยที่เติบโตอย่างรวดเร็ว เป้าหมายของเราคือ "การช้อปปิ้งอย่างชาญฉลาด" สำหรับคนไทย  นั่นคือการหาสินค้าที่เหมาะสมจากร้านค้าที่เชื่อถือได้ในราคาที่ถูกที่สุดเท่าที่จะทำเป็นไปได้</value>
+  </data>
+  <data name="TextString_AddReview" xml:space="preserve">
+    <value>เพิ่มรีวิว</value>
+  </data>
+  <data name="TextString_HasBeenAdded" xml:space="preserve">
+    <value>แอดรายการแล้ว</value>
+  </data>
+  <data name="RatingControl_NO" xml:space="preserve">
+    <value>ไม</value>
+  </data>
+  <data name="TextString_Images" xml:space="preserve">
+    <value>ภาพ</value>
+  </data>
+  <data name="TextString_NoHistory" xml:space="preserve">
+    <value>ขออภัย,ไม่มีประวัติ</value>
+  </data>
+  <data name="TextString_NoReviewAvailable" xml:space="preserve">
+    <value>ไม่มีความคิดเห็นสามารถใช้ได้</value>
+  </data>
+  <data name="TextString_score" xml:space="preserve">
+    <value>คะแนน</value>
+  </data>
+  <data name="TextString_SetAlertFor" xml:space="preserve">
+    <value>เราจะส่งอีเมล์คุณเมื่อราคาลดลงใน {0}</value>
+  </data>
+  <data name="TextString_veryGood" xml:space="preserve">
+    <value>ดีมาก</value>
+  </data>
+  <data name="TextString_Videos" xml:space="preserve">
+    <value>วีิดีโอ</value>
+  </data>
+  <data name="TextString_AboutPriceMe" xml:space="preserve">
+    <value>เกี่ยวกับ PriceMe</value>
+  </data>
+  <data name="TextString_CurrentRetailers" xml:space="preserve">
+    <value>ร้านค้าปลีกปัจจุบัน</value>
+  </data>
+  <data name="TextString_ListProducts" xml:space="preserve">
+    <value>รายการสินค้า</value>
+  </data>
+  <data name="TextString_PleaseSelect" xml:space="preserve">
+    <value>กรุณาเลือก ...</value>
+  </data>
+  <data name="TextString_RetailerCertification" xml:space="preserve">
+    <value>ร้านค้าปลีกรับรอง</value>
+  </data>
+  <data name="TextString_RetailerKit" xml:space="preserve">
+    <value>คู่มือผู้ขาย</value>
+  </data>
+  <data name="TextString_SignUp" xml:space="preserve">
+    <value>สมัครใช้งาน</value>
+  </data>
+  <data name="TextString_SignUpCon" xml:space="preserve">
+    <value>มันง่ายที่จะเข้าร่วม PriceMe. กรุณาให้ข้อมูลร้านค้าของคุณด้านล่างและลงทะเบียน</value>
+  </data>
+  <data name="TextString_ContactName" xml:space="preserve">
+    <value>ชื่อผู้ติดต่อ:</value>
+  </data>
+  <data name="TextString_Features" xml:space="preserve">
+    <value>คุณสมบัติ</value>
+  </data>
+  <data name="TextString_ToCollapse" xml:space="preserve">
+    <value>ตัวเลือก(คลิกเพื่อย่อ)</value>
+  </data>
+  <data name="TextString_ToExpand" xml:space="preserve">
+    <value>ตัวเลือก(คลิกเพื่อขยาย)</value>
+  </data>
+  <data name="TextString_WebSiteURL" xml:space="preserve">
+    <value>URL เว็บไซต์:</value>
+  </data>
+  <data name="TextString_ReviewsInformation" xml:space="preserve">
+    <value>รีวิวข้อมูล</value>
+  </data>
+  <data name="TextString_Infoabout" xml:space="preserve">
+    <value>ข้อมูลเกี่ยวกับ {0}</value>
+  </data>
+  <data name="TextString_ListYourProds" xml:space="preserve">
+    <value>&lt;h1&gt;รายการสินค้าของคุณ&lt;/h1&gt; 
+                    &lt;br /&gt;
+หลังจากที่ร้านค้าปลีกได้ลงทะเบียนโดยการติดต่อเรา ข้อมูสินค้าสามารถ                                                         ถูกส่งโดยใช้ฟีดข้อมูล ด้วยรูปแบบที่เวบรองรับคือ รูปแบบ CSV และ XML
+                    อีกทางเลือกหนึ่ง, PriceMe ยังสามารถรวบรวมข้อมูลเว็บไซต์ของคุณได้ โดยคิดค่าบริการเพียงเล็กน้อย ในกรณีที่คุณต้องการตัวเลือกนี้ &lt;br /&gt;&lt;br /&gt;
+                    เมื่อคุณสร้างฟีดและได้รับ URL จากเราที่แสดงให้เห็นว่าร้านคุณจะอยู่ที่ไหน
+                   บน PriceMeที่สามารถเริ่มต้นการสแกนฟีดของคุณ ระบบจะอ่านข้อมูลในฟีดของคุณและ 
+                    PriceMe จะอัพโหลด และแสดงแผนที่สินค้าของคุณ ต่อประเภทสินค้าที่เกี่ยวเนื่องบนเว็บไซต์ 
+                    เราสแกนฟีดของคุณทุกวัน และอัพเดทการเปลี่ยนแปลงใด ๆ ที่คุณอาจจะทำ</value>
+  </data>
+  <data name="TextString_NeedHelp" xml:space="preserve">
+    <value>ต้องการความช่วยเหลือและคำแนะนำในการค้นหาสิ่งถูกใจ {0}?</value>
+  </data>
+  <data name="TextString_PriceMeMobile" xml:space="preserve">
+    <value>PriceMe มือถือ</value>
+  </data>
+  <data name="TextString_Seelatest" xml:space="preserve">
+    <value>เห็นล่าสุด</value>
+  </data>
+  <data name="TextString_Targetprice" xml:space="preserve">
+    <value>ราคาเป้าหมาย</value>
+  </data>
+  <data name="TextString_FAQContent" xml:space="preserve">
+    <value>"1. &lt;strong&gt;การเพิ่มทราฟฟิกของเป้าหมาย&lt;/strong&gt; - หนึ่งในความท้าทายที่ใหญ่ที่สุดในอีคอมเมิร์ซคือการนำพายอดขายที่มีคุณภาพ ผู้บริโภคคลิกผ่าน พันธมิตรร้านค้าปลีกของ PriceMe และเข้ามายังเว็บไซต์ โดยที่พวกเค้ารู้เป็นอย่างดี ทราบข้อมูลและพร้อมที่จะซื้อ ไม่ใช่เพียงการเข้ามาดู.
+    &lt;br /&gt;
+2. &lt;strong&gt;เพิ่มอัตราส่วนการซื้อและผลตอบแทนการลงทุน&lt;/strong&gt; - PriceMe มีอัตราการเพิ่มยอดสูง มากกว่าช่องทางการตลาดออนไลน์อื่น เนื่องจาก มีกลุ่มเป้าหมายของผู้ซื้อที่ได้รับข้อมูลผู้บริโภค ข้อมูลช้อปปิ้งที่ได้รับการแนะนำมาก่อนแล้วจากเว็บไซต์ของพันธมิตร:&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o เต็มรูปแบบของตัวเลือกราคา - ดังนั้นผู้ใช้มีความมั่นใจได้ ว่าพวกเขาจะเห็นราคาเต็มรูปแบบ.&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o ข้อกำหนดของสินค้าพร้อมรายละเอียดและตารางการเปรียบเทียบ - สำหรับผู้ซื้อเพื่อประเมินทางเลือกของพวกเขา.&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o ผู้ใช้งานสามารถใช้ฟังก์ชั่นการกรองที่ง่ายต่อการใช้ - ดังนั้นผู้ใช้สามารถค้นหาสิ่งที่พวกเขาต้องการ.&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o รีวิวจากผู้ใช้   - นำพาลูกค้าที่สนใจ และ มั่นใจ พร้อมจะเลือกสินค้าของพวกเขา&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o คู่มือสอนผู้ซื้ออย่างละเอียด -- สอนเพื่อให้ความรู้และแจ้งผู้บริโภค &lt;br /&gt;
+&amp;nbsp;&amp;nbsp; มียอดอัตราส่วนการซื้อสูงกว่า หมายถึงยอดขายเพิ่มขึ้นด้วยต้นทุนที่ต่ำและทำให้ผลตอบแทนการลงทุนที่สูงขึ้น&lt;br /&gt;
+3. &lt;strong&gt;การสร้างแบรนด์&lt;/strong&gt; - หุ้นส่วนพันธมิตรร้านค้าของเราแสดง โลโก้ บริษัทของพวกเขา ในแต่ละรายชื่อสินค้า พร้อมระบุข้อได้เปรียบของสินค้า หุ้นส่วนพันธมิตรสามารถแสดงสโลแกน ถัดจากรูปโลโก้ และยังสามารถโปรโมท ลักษณะของเวบไซด์ตัวเอง ในส่วนโฆษณาของ PriceMe ได้อีกด้วย  การเชื่อมโยง แบรนด์ และสินค้าของคุณ ด้วยหมายเลขไอดีซื้อของที่เชื่อถือได้ จะเป็นตัวขับเคลื่อนให้ PriceMe เป็นช่องทางที่สร้างความเชื่อถือ น่าจดจำ และเพิ่มความมั่นใจให้ลูกค้า กรุณา ติดต่อสอบถามรายละเอียด ทั้งหมดที่เกี่ยวกับ ผลประโยชน์ที่ หุ้นส่วนพันธมิตรของ ร้านค้าสามารถได้รับ&lt;br /&gt;
+4. &lt;strong&gt;การรายงานที่ดีขึ้น&lt;/strong&gt; - ฉันใช้บัญชีการจัดการราคา ระบบ (PAM) , ผู้ค้าปลีกสามารถเพิ่มความเข้าใจในภูมิทัศน์การแข่งขันและเข้าใจประสิทธิภาพของแคมเปญของตน โดยมีบทสรุป, หมวดหมู่,ระดับสินค้าได้. การวิเคราะห์องค์ประกอบ การรณรงค์เช่น: คลิก, แบ่งปันทราฟฟิก, การวางตำแหน่งและค่าใช้จ่ายทั้งหมด ให้ความช่วยเหลือในการทำความเข้าใจวิธีการที่คุณสามารถนำไปสู่การผลักดันยอดขายผ่าน PriceMe. 
+&lt;div class=""BigTitle""&gt;&lt;b&gt;
+    &lt;br /&gt;
+    &lt;a name=""what""&gt;อะไรหมายถึง PPC?&lt;/a&gt;&lt;br /&gt;
+&lt;/b&gt;&lt;/div&gt;
+PPC ย่อมาจาก Pay Per Click และมีการจ่ายเงินสำหรับรูปแบบการทำงานคล้ายกับ Google Adwords. PPC ก็หมายความว่าคุณกำลังเรียกเก็บค่าบริการขนาดเล็กเฉพาะเมื่อผู้ใช้ PriceMe คลิกผ่านเว็บไซต์ของคุณ.&lt;br /&gt;
+&lt;div class=""BigTitle""&gt;
+    &lt;br /&gt;
+    &lt;a name=""Howmuch""&gt;&lt;b&gt;โปรแกรมเสียค่าใช้จ่ายเท่าไหร่&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+ไม่มีการคิดค่าธรรมเนียมจากการลิสรายการสินค้า และไม่มีค่าคอมมิชชันการขาย .
+ระบบ การจ่ายค่าตอบแทนมาจากการปฏิบัติงาน ทำให้แน่ใจว่าคู่ค้าของผู้ค้าปลีก จะจ่ายเงินแค่ PPC ต่อแต่ละการเยี่ยมชม. PPC (ต้นทุนต่อคลิก) เป็น การกำหนดยอดล่วงหน้า ที่ร้านค้าจะจ่ายต่อหมวดพื้นฐาน สำหรับ แต่ละเป้าหมายที่จะนำการขายที่ได้จาก PriceMe.
+ไม่มีขั้นต่ำจ่ายรายเดือน, และคุณจ่ายเฉพาะยอดที่เป็นเป้าหมายที่ขาย(การคลิก) ใช่ !ดังนั้น ทำไม ไม่ลองใช้โปรแกรมและเริ่มต้นการขับรถที่มีคุณภาพนำไปสู่เว็บไซต์ของคุณโดยตรง?
+&lt;div class=""BigTitle""&gt;
+    &lt;br /&gt;
+    &lt;a name=""Howtra""&gt;&lt;b&gt;PriceMe จะสร้างทราฟฟิกให้ กับฉันเท่าไหร่&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+คุณสามารถตรวจสอบจำนวนผู้เข้าชมโดยใช้ PAM ทีมผู้บริหารที่มี PriceMe ปีของการประสบในการแสวงหาการจราจรแม้ว่าความร่วมมือกับเว็บไซต์ที่สำคัญค่าใช้จ่ายและการค้นหาธรรมชาติและผ่านสินค้าใหม่ ดังนั้นคาดว่าระดับการจราจรที่จะเพิ่มขึ้นเดือนที่ผ่านมาที่เราให้การส่งเสริมเว็บไซต์และการแสวงหาการจราจรที่มีคุณภาพสูง นอกจากนี้ยังเปรียบเทียบการจับจ่ายยังเป็นที่ดึงดูดการลากในผู้ซื้อสินค้าไทยมากขึ้นและมีแนวโน้มที่จะใช้หมวดสินค้าของบริการช้อปปิ้งนี้ในอนาคตอันใกล้
+
+&lt;div class=""BigTitle""&gt;
+    &lt;br /&gt;
+    &lt;a name=""Howprod""&gt;&lt;b&gt;ฉันจะส่งสินค้าของฉัน PriceMe อย่างไร?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+หลังจากที่ร้านค้าปลีกได้ลงนามผ่านการติดต่อกับเรา, ข้อมูลสินค้าสามารถส่งโดยใช้ฟีดข้อมูลได้สองรูปแบบคือ CSV และ XML  PriceMe ยังสามารถรวบรวมข้อมูลเว็บไซต์ของคุณได้ โดยคิดค่าบริการเพียงเล็กน้อย ในกรณีที่คุณต้องการตัวเลือกนี้ กรุณาติดต่อเราสำหรับข้อมูลเพิ่มเติม
+&lt;div class=""BigTitle""&gt;
+    &lt;br /&gt;
+    &lt;a name=""Howjoin""&gt;&lt;b&gt;ฉันจะเข้าร่วมได้อย่างไร?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+กรุณาติดต่อเราหากคุณสนใจที่จะมาเป็น พันธมิตรร้านค้า PriceMe &lt;br /&gt;"</value>
+  </data>
+  <data name="TextString_FAQContent2" xml:space="preserve">
+    <value>"&lt;div style=""padding-bottom:5px; ""&gt;&lt;h1&gt;คำถามที่ถามบ่อย&lt;/h1&gt;&lt;/div&gt;
+&lt;a href=""#whatis""&gt;อะไรคือ PriceMe?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#benefits""&gt;โปรแกรม PPC ใดที่เสนอผลประโยชน์ให้ผู้เข้าร่วม?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#what""&gt; PPC หมายถึงอะไร ??&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howmuch""&gt;โปรแกรมเสียค่าใช้จ่ายเท่าไหร่&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howtra""&gt;มียอดเข้าชมเท่าไหร่จาก PriceMe สร้างสำหรับฉัน่?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howprod""&gt;ฉันจะส่งสินค้าของฉันไปยัง PriceMeอย่างไร?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howjoin""&gt;ฉันจะเข้าร่วมได้อย่างไร&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class=""BigTitle""&gt;&lt;a name=""whatis""&gt;&lt;b&gt;อะไรคือ PriceMe ?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+"</value>
+  </data>
+  <data name="TextString_WeeklyDeals" xml:space="preserve">
+    <value>ข้อเสนอรายสัปดาห์</value>
+  </data>
+  <data name="Module_HotProduct_Tilte" xml:space="preserve">
+    <value>นิยมมากที่สุด</value>
+  </data>
+  <data name="BuyguideDesc" xml:space="preserve">
+    <value>เรียนรู้การซื้อของและช้อปปิ้งอย่างชาญฉลาด ด้วยการอ่านคู่มือการซื้อ</value>
+  </data>
+  <data name="BuyguideDesc2" xml:space="preserve">
+    <value>{0} คู่มือการซื้อ เรียนรู้ว่าควรเริ่มซื้อยังไง {1} และช้อปอย่างชาญฉลาด ด้วยการอ่านคู่มือของเรา</value>
+  </data>
+  <data name="BuyguideDescription" xml:space="preserve">
+    <value>ต้องการคำแนะนำการซื้อสิ่งที่ดีที่สุด {0}? คู่มื่อการซื้อของเรา ได้รวบรวม {1} - แหล่งข้อมูลการเรียนรู้ชั้นนำ โดยไม่มีข้อมูลโน้มเอียงไปยังข้อมูลสินค้านั้นๆ</value>
+  </data>
+  <data name="BuyguideKeywords" xml:space="preserve">
+    <value>คู่มือการซื้อ, แนะนำ, สินค้า, ซื้อ, ผู้บริโภค, การช้อปปิ้ง</value>
+  </data>
+  <data name="BuyguideKeywords2" xml:space="preserve">
+    <value>{0} คู่มือการซื้อ, {1} คำแนะนำ, สินค้า, ซื้อ, ผู้บริโภค</value>
+  </data>
+  <data name="NoVideosAvailable" xml:space="preserve">
+    <value>ไม่มีวีดีโอ</value>
+  </data>
+  <data name="Product_Specifications" xml:space="preserve">
+    <value>ข้อกำหนดของสินค้า</value>
+  </data>
+  <data name="TextString_Added" xml:space="preserve">
+    <value>เพิ่ม</value>
+  </data>
+  <data name="TextString_BackToResultPage" xml:space="preserve">
+    <value>กลับไปยัง หน้าผลลัพท์</value>
+  </data>
+  <data name="TextString_BackToSW" xml:space="preserve">
+    <value>กลับไปยัง หน้าที่มีวิจิท(widget)มากกว่า</value>
+  </data>
+  <data name="TextString_CanotFindWedget" xml:space="preserve">
+    <value>&lt;div&gt;ไม่พบ วิจิท(widget) ที่คุณต้องการ? กรุณา &lt;a href="About/ContactUs.aspx"&gt;แจ้งให้เราทราบ&lt;/a&gt; แล้วเราจะสร้างให้คุณ.&lt;/div&gt;</value>
+  </data>
+  <data name="TextString_CompareProAndReview" xml:space="preserve">
+    <value>เปรียบเทียบสินค้า และ รีวิว</value>
+  </data>
+  <data name="TextString_CurrentPrice" xml:space="preserve">
+    <value>ราคาปัจจุบัน</value>
+  </data>
+  <data name="TextString_Manufacturer" xml:space="preserve">
+    <value>โรงงานผู้ผลิต</value>
+  </data>
+  <data name="TextString_MessageNotSent" xml:space="preserve">
+    <value>ข้อความไม่ถูกส่ง กรุณาเลือกหัวข้อ</value>
+  </data>
+  <data name="TextString_MostPopulatProducts" xml:space="preserve">
+    <value>สินค้า {0} ที่นิยมที่สุด</value>
+  </data>
+  <data name="TextString_Optional" xml:space="preserve">
+    <value>ตัวเลือก</value>
+  </data>
+  <data name="TextString_PleaseEnter" xml:space="preserve">
+    <value>กรุณากด enter {0}</value>
+  </data>
+  <data name="TextString_PreviousNewsletterCont" xml:space="preserve">
+    <value>&lt;h1&gt;จดหมายข่าวก่อนหน้า&lt;/h1&gt;
+                 &lt;br /&gt;
+                เชคจดหมายข่าว PriceMe ข้างล่าง - มีข้อมูลน่าสนใจมากมายสำหรับคุณลูกค้า กรุณา &lt;a href="Newsletter.aspx"&gt;ลงทะเบียน&lt;/a&gt; เพื่อรับจดหมายข่าวฉบับอื่นๆ และให้ส่งยังไปอินบอกซ์อีเมลของคุณโดยตรง</value>
+  </data>
+  <data name="TextString_PWDN" xml:space="preserve">
+    <value>จดหมายข่าว PriceMe ข้อเสนอประจำสัปดาห์</value>
+  </data>
+  <data name="TextString_remove" xml:space="preserve">
+    <value>เอาออก</value>
+  </data>
+  <data name="TextString_ShoppingHome" xml:space="preserve">
+    <value>หน้าหลักช้อปปิ้ง</value>
+  </data>
+  <data name="TextString_TopicHeader" xml:space="preserve">
+    <value>คำถาม, ฟอรั่ม, รีวิว</value>
+  </data>
+  <data name="TextString_WhatFeatures" xml:space="preserve">
+    <value>3. คุณลักษณะพิเศษ หรือฟังก์ชั่นอะไร ที่คุณต้องการเสนอให้เรามีในเวบไซด์ ในเดือนที่จะถึงนี้?</value>
+  </data>
+  <data name="TextString_Widgets" xml:space="preserve">
+    <value>วิจิท(widget)</value>
+  </data>
+  <data name="TextString_YourDetailsCon" xml:space="preserve">
+    <value>&lt;h2&gt;รายละเอียดของคุณ&lt;/h2&gt;คุณต้องกรอกชื่อของคุณ และ อีเมล ข้างใต้เพื่อเข้าร่วมในการจับฉลาก</value>
+  </data>
+  <data name="TextString_BackToTop" xml:space="preserve">
+    <value>กลับไปด้านบน</value>
+  </data>
+  <data name="TextString_First" xml:space="preserve">
+    <value>ที่หนึ่ง</value>
+  </data>
+  <data name="TextString_Last" xml:space="preserve">
+    <value>ที่สุดท้าย</value>
+  </data>
+  <data name="TextString_Popular" xml:space="preserve">
+    <value>ที่นิยม</value>
+  </data>
+  <data name="TextString_TermsAndConditions" xml:space="preserve">
+    <value>เงื่อนไขและกติกา</value>
+  </data>
+  <data name="TextString_SpottedProMap" xml:space="preserve">
+    <value>พบว่าสถานที่ไม่ถูกต้อง? แจ้งเรื่อง ที่นี่</value>
+  </data>
+  <data name="TextString_Pros" xml:space="preserve">
+    <value>ข้อดี:</value>
+  </data>
+  <data name="Footer_ContactInfo" xml:space="preserve">
+    <value>&lt;p class="regular-bold"&gt; การค้นหา, เปรียบเทียบ และซื้อของออนไลน์จากร้านค้าออนไลน์ที่ดีที่สุดของประเทศไทย. &lt;/ p&gt;</value>
+  </data>
+  <data name="ProductMapDesc" xml:space="preserve">
+    <value>สถานที่ร้าน &amp; แผนที่ สำหรับ {0} ใน {1}</value>
+  </data>
+  <data name="ProductMapKeywords" xml:space="preserve">
+    <value>ร้านค้า, แผนที่, สถานที่, ร้าน, {0}</value>
+  </data>
+  <data name="ProductMapPageTitle" xml:space="preserve">
+    <value>สถานที่ร้าน สำหรับ {0}ใน {1}</value>
+  </data>
+  <data name="ReportLocationTitle" xml:space="preserve">
+    <value>แจ้งเรื่องสถานที่ตั้ง ให้เราทราบ - PriceMe </value>
+  </data>
+  <data name="SearchBar_Placeholder_Text" xml:space="preserve">
+    <value>ค้นหาสินค้า &amp; หมวดหมู่</value>
+  </data>
+  <data name="TextString_Addtolist" xml:space="preserve">
+    <value>เพิ่มในรายการ </value>
+  </data>
+  <data name="TextString_ConnectWithUS" xml:space="preserve">
+    <value>เชื่อมต่อกับเรา </value>
+  </data>
+  <data name="TextString_EmailFails" xml:space="preserve">
+    <value>ขออภัย การส่งอีเมลล้มเหลว โปรดลองอีกครั้งในภายหลัง หรือ ส่งอีเมล์แจ้งไปที่ info@priceme.com</value>
+  </data>
+  <data name="TextString_HelpAndSupport" xml:space="preserve">
+    <value>ช่วยเหลือและสนับสนุน </value>
+  </data>
+  <data name="TextString_NoRetailerMap" xml:space="preserve">
+    <value>ไม่มีแผนที่ร้านค้าปลีก</value>
+  </data>
+  <data name="TextString_Poweredby" xml:space="preserve">
+    <value>ขับเคลื่อนโดย </value>
+  </data>
+  <data name="TextString_PriceAlerts" xml:space="preserve">
+    <value>แจ้งเตือนเรื่องราคา</value>
+  </data>
+  <data name="TextString_PriceGreater" xml:space="preserve">
+    <value>ราคาต้องมีค่ามากกว่าศูนย์  0</value>
+  </data>
+  <data name="TextString_PriceLower" xml:space="preserve">
+    <value>ต้องต่ำกว่าราคาปัจจุบัน</value>
+  </data>
+  <data name="TextString_PriceTrend" xml:space="preserve">
+    <value>เทรนด์ราคา </value>
+  </data>
+  <data name="TextString_Sign_Up" xml:space="preserve">
+    <value>ลงทะเบียน </value>
+  </data>
+  <data name="TextString_ThankSignUp" xml:space="preserve">
+    <value>ขอบคุณสำหรับการลงทะเบียน </value>
+  </data>
+  <data name="TextString_ThankSignUpCtx" xml:space="preserve">
+    <value>กรุณาตรวจสอบอีเมล์ของคุณและยืนยันที่อยู่อีเมลของคุณ </value>
+  </data>
+  <data name="TrackRootUrl" xml:space="preserve">
+    <value>http://track.priceme.com</value>
+  </data>
+  <data name="TextString_Female" xml:space="preserve">
+    <value>หญิง</value>
+  </data>
+  <data name="TextString_Male" xml:space="preserve">
+    <value>เพศชาย</value>
+  </data>
+  <data name="TextString_Send" xml:space="preserve">
+    <value>ส่ง</value>
+  </data>
+  <data name="TextString_Share" xml:space="preserve">
+    <value>แบ่งปัน</value>
+  </data>
+  <data name="TextString_AboutMeText" xml:space="preserve">
+    <value>ข้อความ เกี่ยวกับที่ฉัน</value>
+  </data>
+  <data name="TextString_AboutMe_Info" xml:space="preserve">
+    <value>กรุณาเขียนคำอธิบายสั้น ๆ ของตัวเอง เพื่อสร้างความี่น่าสนใจแก่สมาชิกคนอื่น ๆ (30-40 คำ) คำอธิบายจะปรากฏบนรายละเอียดสมาชิกของคุณ กรุณาเขียนข้อความของคุณในช่องด้านล่างและคลิกที่ "อัปเดต"</value>
+  </data>
+  <data name="TextString_Departments" xml:space="preserve">
+    <value>แผนกสินค้า</value>
+  </data>
+  <data name="TextString_Formats" xml:space="preserve">
+    <value>รูปแบบ</value>
+  </data>
+  <data name="TextString_ImageFile" xml:space="preserve">
+    <value>ไฟล์ภาพ</value>
+  </data>
+  <data name="TextString_MaxFileSize" xml:space="preserve">
+    <value>ขนาดไฟล์สูงสุด</value>
+  </data>
+  <data name="TextString_MemberSince" xml:space="preserve">
+    <value>เป็นสมาชิกตั้งแต</value>
+  </data>
+  <data name="TextString_PriceMeLists" xml:space="preserve">
+    <value>รายการ PriceMe</value>
+  </data>
+  <data name="TextString_UploadPhoto" xml:space="preserve">
+    <value>อัพโหลดภาพ</value>
+  </data>
+  <data name="TextString_UploadPicture_TextInfo" xml:space="preserve">
+    <value>เขียนประวัติของคุณบน PriceMe ให้น่าสนใจ และ ดึงดูดกว่าเดิม โดยการอัปโหลดรูปภาพของคุณเอง รูปภาพที่ใช้จะต้องเป็นรูปของตัวคุณเอง และเป็นภาพถ่ายล่าสุด</value>
+  </data>
+  <data name="TextString_UploadPicture_TextInfo2" xml:space="preserve">
+    <value>ข้อมูลสำคัญในการอัปโหลดภาพ</value>
+  </data>
+  <data name="TextString_BackToSettings" xml:space="preserve">
+    <value>กลับไปที่การตั้งค่า</value>
+  </data>
+  <data name="TextString_ChangeEmailAddress" xml:space="preserve">
+    <value>เปลี่ยนที่อยู่อีเมล</value>
+  </data>
+  <data name="TextString_CreateAboutMeText" xml:space="preserve">
+    <value>สร้าง "เกี่ยวกับฉัน" ข้อความ</value>
+  </data>
+  <data name="TextString_MemberProfile" xml:space="preserve">
+    <value>รายละเอียดสมาชิก</value>
+  </data>
+  <data name="TextString_SaveChange" xml:space="preserve">
+    <value>บันทึกการเปลี่ยนแปลง</value>
+  </data>
+  <data name="TextString_PersonalDetails_Info" xml:space="preserve">
+    <value>ส่วนตัว, ไม่ได้แสดงออนไลน</value>
+  </data>
+  <data name="TextString_ProductReviews" xml:space="preserve">
+    <value>วิจารณ์</value>
+  </data>
+  <data name="TextString_Address" xml:space="preserve">
+    <value>ที่อยู</value>
+  </data>
+  <data name="TextString_ClickToViewMore" xml:space="preserve">
+    <value>คลิกดูรายละเอียด</value>
+  </data>
+  <data name="TextString_FeedURL" xml:space="preserve">
+    <value>URL ของฟีด</value>
+  </data>
+  <data name="TextString_Filter" xml:space="preserve">
+    <value>กรอง</value>
+  </data>
+  <data name="TextString_JobFunction" xml:space="preserve">
+    <value>ฟังก์ชั่นการทำงาน</value>
+  </data>
+  <data name="TextString_LastName" xml:space="preserve">
+    <value>นามสกุล</value>
+  </data>
+  <data name="TextString_MoreFeatures" xml:space="preserve">
+    <value>คุณสมบัติอื่น ๆ</value>
+  </data>
+  <data name="TextString_MyAlert" xml:space="preserve">
+    <value>การแจ้งเตือนของฉัน</value>
+  </data>
+  <data name="TextString_MyLists" xml:space="preserve">
+    <value>รายการของฉัน</value>
+  </data>
+  <data name="TextString_MyReviews" xml:space="preserve">
+    <value>ความคิดเห็นของฉัน</value>
+  </data>
+  <data name="TextString_PersonalDetails" xml:space="preserve">
+    <value>รายละเอียดส่วนตัว</value>
+  </data>
+  <data name="TextString_RetailerSignUpSuccessful" xml:space="preserve">
+    <value>ลงทะเบียนเป็นร้านค้ากับเราสำเร็จแล้ว</value>
+  </data>
+  <data name="TextString_RetailerSignUp_Info" xml:space="preserve">
+    <value>ขอบคุณสำหรับการลงทะเบียนเพื่อเข้าร่วมโปรแกรมเป็นหนึ่งในร้านค้าปลีกของเรา เราจะรีบติดต่อคุณโดยเร็วที่สุด</value>
+  </data>
+  <data name="TextString_SetAlert" xml:space="preserve">
+    <value>จัดการแจ้งเตือน</value>
+  </data>
+  <data name="TextString_Sex" xml:space="preserve">
+    <value>เพศ</value>
+  </data>
+  <data name="TextString_ShippingUnknown" xml:space="preserve">
+    <value>ไม่รู้จัก ที่จัดส่ง</value>
+  </data>
+  <data name="TextString_Suburb" xml:space="preserve">
+    <value>ชานเมือง</value>
+  </data>
+  <data name="TextString_ThanksForRetailerSignUp_Info" xml:space="preserve">
+    <value>ตัวเลือก หารายละเอียดไฟล์ฟีดท&lt;a href="/feed-file-example.txt" target="_blank"&gt;ี่นี่&lt;/a&gt;</value>
+  </data>
+  <data name="TextString_ThanksForSigningUp" xml:space="preserve">
+    <value>ขอขอบคุณสำหรับการลงทะเบียน</value>
+  </data>
+  <data name="TextString_ThanksForSigningUp_Info" xml:space="preserve">
+    <value>ทีมงานของเราจะติดต่อคุณโดยเร็ว กรุณาใส่ข้อมูลข้างล่าง เพื่อทำให้เราลงรายการให้ได้เร็วขึ้น</value>
+  </data>
+  <data name="TextString_UpdatePersonalDetails" xml:space="preserve">
+    <value>อัปเดตรายละเอียดส่วนตัว</value>
+  </data>
+  <data name="TextString_Apply" xml:space="preserve">
+    <value>ใช</value>
+  </data>
+  <data name="TextString_See_XX_MoreReviews" xml:space="preserve">
+    <value>ดู {0} ความคิดเห็นเพิ่มเติม</value>
+  </data>
+  <data name="TextString_Information" xml:space="preserve">
+    <value>ข้อมูล</value>
+  </data>
+  <data name="TextString_PopularBrandFinds" xml:space="preserve">
+    <value>ค้นหาแบรนด์ยอดนิยมที่มีอยู่ใน{0}</value>
+  </data>
+  <data name="TextString_DownloadPriceMeApps" xml:space="preserve">
+    <value>ดาวน์โหลด PriceMe ปพลิเคชัน</value>
+  </data>
+  <data name="ShortCountryName" xml:space="preserve">
+    <value>TH</value>
+  </data>
+  <data name="TextString_SB_PriceHighToLow" xml:space="preserve">
+    <value>ราคาสูง -&gt; ต่ำ</value>
+  </data>
+  <data name="TextString_SB_PriceLowToHigh" xml:space="preserve">
+    <value>ราคาต่ำ -&gt; สูง</value>
+  </data>
+  <data name="TextString_CheckToCompareProduct" xml:space="preserve">
+    <value>เชคเพื่อเปรียบเทียบสินค้า</value>
+  </data>
+  <data name="TextString_CompareFeatures" xml:space="preserve">
+    <value>เปรียบเทียบสินค้า</value>
+  </data>
+  <data name="TextString_MerchantPortal" xml:space="preserve">
+    <value>พอร์ทัลร้านค้า</value>
+  </data>
+  <data name="TextString_MerchantLogin" xml:space="preserve">
+    <value>ร้านค้าเข้าระบบ</value>
+  </data>
+  <data name="TextString_Availability" xml:space="preserve">
+    <value>มีอยู่</value>
+  </data>
+  <data name="TextString_AvgRating" xml:space="preserve">
+    <value>การประเมินเฉลี่ย</value>
+  </data>
+  <data name="TextString_NumberPrices" xml:space="preserve">
+    <value>จำนวนที่มีขาย</value>
+  </data>
+  <data name="TextString_SearchProducts" xml:space="preserve">
+    <value>ค้นหาสินค้าเพื่อเพิ่มรายการเปรียบเทียบ</value>
+  </data>
+  <data name="TextString_ShowDifferences" xml:space="preserve">
+    <value>แสดงข้อแตกต่าง</value>
+  </data>
+  <data name="TextString_Newest" xml:space="preserve">
+    <value>ใหม่ล่าสุด</value>
+  </data>
+  <data name="TextString_ProductNameAZ" xml:space="preserve">
+    <value>ชื่อ A -&gt; Z</value>
+  </data>
+</root>

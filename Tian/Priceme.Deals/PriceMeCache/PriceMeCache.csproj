@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{495480AB-D585-4D6C-B752-C0E51F279E12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PriceMeCache</RootNamespace>
+    <AssemblyName>PriceMeCache</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SubSonic.Core">
+      <HintPath>..\DLL\SubSonic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeDisplayTypeValue.cs" />
+    <Compile Include="AttributeCategoryComparison.cs" />
+    <Compile Include="AttributeDisplayType.cs" />
+    <Compile Include="AttributeGroup.cs" />
+    <Compile Include="AttributeGroupList.cs" />
+    <Compile Include="AttributeTitleCache.cs" />
+    <Compile Include="AttributeValueCache.cs" />
+    <Compile Include="AttributeValueRangeCache.cs" />
+    <Compile Include="BuyingGuide.cs" />
+    <Compile Include="CategoryAttributeTitleMapCache.cs" />
+    <Compile Include="CategoryBugingGuideMap.cs" />
+    <Compile Include="CategoryCache.cs" />
+    <Compile Include="ExpertAverageRating.cs" />
+    <Compile Include="ExpertReview.cs" />
+    <Compile Include="ExpertReviewSource.cs" />
+    <Compile Include="FeaturedTabCache.cs" />
+    <Compile Include="GLatLngCache.cs" />
+    <Compile Include="GovernmentBadgeCache.cs" />
+    <Compile Include="MobilePlanInfo.cs" />
+    <Compile Include="MostPopularCategories.cs" />
+    <Compile Include="MostPopularProduct.cs" />
+    <Compile Include="MostPopularProductCollection.cs" />
+    <Compile Include="NewExpertReview.cs" />
+    <Compile Include="ProductCategory.cs" />
+    <Compile Include="ProductDescAndAttr.cs" />
+    <Compile Include="ProductVideo.cs" />
+    <Compile Include="ProductVotesSum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatedCategoryCache.cs" />
+    <Compile Include="RetailerCache.cs" />
+    <Compile Include="RetailerOperatingHours.cs" />
+    <Compile Include="RetailerPaymentCache.cs" />
+    <Compile Include="RetailerProductCondition.cs" />
+    <Compile Include="RetailerReviewCache.cs" />
+    <Compile Include="ReviewAverage.cs" />
+    <Compile Include="TreepodiaVideo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PriceMeDBA\PriceMeDBA.csproj">
+      <Project>{a5acfd04-8b70-4a08-a07d-13b35f9b6b63}</Project>
+      <Name>PriceMeDBA</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

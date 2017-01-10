@@ -1,0 +1,19 @@
+﻿@mixin MultiMedia($attr,$val,$max_width) {
+    @media screen and (max-width:#{$max_width}) {
+        #{$attr}: #{$val};
+    }
+}
+
+
+
+
+.aba {
+
+    @include MultiMedia(border,solid 1px red,1000px);
+    @include MultiMedia(border,solid 1px red,1000px);
+    @include MultiMedia(border,solid 1px green,800px);
+    /*@media screen and (max-width:1000px) {
+        display: block;
+    }*/
+    display: none;
+}

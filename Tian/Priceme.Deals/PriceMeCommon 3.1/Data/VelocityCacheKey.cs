@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace PriceMeCommon.Data
+{
+    public enum VelocityCacheKey
+    {
+        Non = 0,
+        CategoryProductCount,
+        CategoryProductClickCount,
+        CategoryByName,
+        CategoryDictionary,
+        NextLevelActiveCategories,
+        MostPopularCategories,
+        MostPopularProductByCategoryID,
+        RelatedCategorys,
+        AttributeValueDictionary,
+        AttributeTitleDictionary,
+        AttributeValueTitleDictionary,
+        AttributeValueCacheList,
+        AttributeTitleCacheList,
+        AttributeValueRangeCacheList,
+        CategoryAttributeTilteMapList,
+        AttributeTitlesValuesCollection,
+        AttributeTitleCategoryDictionary,
+        CategoryAttributeTitleMapDictionary,
+        AllExpertReviews,
+        ExpertReviewProductID,
+        ProductVotesSumNZ,
+        ProductVotesSumAU,
+        CategoryBugingGuideMap,
+        CategoryBGMapList,
+        RelatedManufacturerCategories,
+        StatusBarInfo,
+        ReviewAverages,
+        ExpertReviewSource,
+        AllPopularParentCategoriesOrderByName,
+        AllActiveRootCategoriesOrderByName,
+        AlatestSources,
+        NewExpertReview,
+        ReviewCatgory,
+        RetailerClicks,
+        AllUserReviews,
+        RetailerListOrderByName,
+        AllGlatLngs,
+        RetailerOperatingHours,
+        AllCategoryAttributeGroup,
+        RetailerReviewList,
+        TopNRetailerTrackProducts,
+        AllManufacturer,
+        AllManufacturerLetter,
+        ManufacturerRelatedCategoryClicks,
+        FeaturedProducts,
+        CategoryAttributeTitleDictionary,
+        EnergyImgs,
+        HiddenBrandsCategoryID,
+        TreepodiaVideos,
+    }
+}

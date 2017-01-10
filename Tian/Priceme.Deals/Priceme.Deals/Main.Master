@@ -1,0 +1,258 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Priceme.Deals.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css" />
+    <link href="http://images.pricemestatic.com/pricemeico.ico" rel="shortcut icon" />
+    <link href="http://deals.priceme.co.nz" rel="canonical" />
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>    
+    
+
+    <link href="css/main.min.css?v=1.1" rel="stylesheet" />
+    <script src="js/Common.js?v=1"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header id="header" class="header">
+            <nav class="container nav">
+                <div class="logo">
+                    <a href="http://www.priceme.co.nz" title="Online Shopping & Price Comparison">
+                        <img itemprop="logo" alt="PriceMe - Compare prices and buy online" src="http://images.pricemestatic.com/Images/PriceMeNewDesign/priceme_nn.png" />
+                    </a>
+                </div>
+
+                <div class="search">
+                    <div class="new-searchbar input-group search_bar">
+                        <input id="mainSearchText" type="text" class="form-control search-textbox" placeholder="Search &amp; compare products" />
+                        <span class="input-group-btn">
+                            <button id="mainSearchBtn" type="button" class="btn btn-info search-btn" title="Search for products from online shops"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+
+                <%--<div class="login">
+                    <ul class="nav navbar-nav navbar-left overflowHidden">
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span>Login</a>
+                        </li>
+                    </ul>
+                </div>--%>
+            </nav>
+        </header>
+
+
+        <div id="new-breadcrumb-div">
+            <div class="container">
+                <div itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                    <ul id="new-breadcrumb">
+                        <li id="brandcrumb-home" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                                Departments 
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://www.priceme.co.nz/Appliances/c-365.aspx">Appliances</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Automotive/c-441.aspx">Automotive</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Cameras/c-189.aspx">Cameras</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Clothing-Fashion/c-1188.aspx">Clothing &amp; Fashion</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Computers/c-6.aspx">Computers</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Games-Consoles/c-190.aspx">Games &amp; Consoles</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Health-Beauty/c-1284.aspx">Health &amp; Beauty</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Home-Garden/c-578.aspx">Home &amp; Garden</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Kids-Family/c-616.aspx">Kids &amp; Family</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/money/">Money & Plans</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Office-Products/c-1389.aspx">Office Products</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Phones/c-355.aspx">Phones</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Sound-Vision/c-1.aspx">Sound &amp; Vision</a></li>
+
+                                <li><a href="http://www.priceme.co.nz/Sports-Outdoors/c-716.aspx">Sports &amp; Outdoors</a></li>
+                            </ul>
+                        </li>
+                        <%--<li class="sub-brandcrumb" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a itemprop="item" href="/Phones/c-355.aspx"><span itemprop="name">Phones</span></a>
+                            <meta itemprop="position" content="1">
+                        </li>--%>
+                        <li class="last-brandcrumb"><span>Deals</span></li>
+                        <%--<li id="favcatalog" class="sub-favourite iconGrayIm">
+                            <i id="spancatalog" class="glyphicon glyphicon-heart-empty" style="font-size: 16px; top: 2px;"></i>Favourite
+                        </li>--%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+        <div style="text-align:center;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Product Horisontal 1 Responsive -->
+            <ins class="adsbygoogle"
+                style="display: block"
+                data-ad-client="ca-pub-6992217816861590"
+                data-ad-slot="1309905276"
+                data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div id="newFootNavDiv">
+            <div id="NewsletterDiv">
+                <div class="container input-group">
+                    <div class="widthDiv">
+                        <input class="form-control" type="email" id="iContact_fields_email_footer" placeholder="WEEKLY DEALS : Your Email" name="fields_email" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-info">Subscribe</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="col-xs-12 col-md-4">
+                    <div class="contact-info">
+                        <div class="footer-logo">
+                            <img alt="logo" src="http://images.pricemestatic.com/Images/PriceMeNewDesign/priceme_nn.png?ver=20130103" width="250" height="70">
+                        </div>
+
+                        <p class="regular-bold">Find, compare and buy online from NZ's best online shops.</p>
+
+                        <p class="regular-bold2">
+                            PO Box 37761, Parnell, Auckland 1052, New Zealand
+                        </p>
+
+                        <div class="social-icons">
+                            <h3>Connect with us</h3>
+                            <ul>
+                                <li class="footerItem">
+                                    <div class="footSocial" style="width: 100%;">
+                                        <a class="bg2 foot_Facebook" target="_blank" href="http://www.facebook.com/PriceMeNZ"></a>
+                                        <a class="bg2 foot_Twitter" target="_blank" href="https://twitter.com/PriceMe"></a>
+                                        <%--<a href="https://plus.google.com/+priceme" rel="publisher" class="bg2 foot_GooglePlus" target="_blank"></a>--%>
+                                        <a class="bg2 foot_Feed" target="_blank" href="http://blog.priceme.co.nz/index.php/feed/"></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="footerCol col-sm-4">
+
+                        <b class="footerTitle">Popular<span class="glyphicon glyphicon-chevron-right"></span></b>
+                        <ul>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/Mobile-Phones/c-11.aspx">Mobile Phones</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/Tablets/c-2151.aspx">Tablets</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/Digital-Cameras/c-2.aspx">Digital Cameras</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/Appliances/c-365.aspx">Appliances</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/Computers/c-6.aspx">Computers</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/Sound-Vision/c-1.aspx">Sound &amp; Vision</a></li>
+
+                        </ul>
+
+                    </div>
+                    <div class="footerCol col-sm-4">
+                        <b class="footerTitle">Help &amp; Support<span class="glyphicon glyphicon-chevron-right"></span></b>
+                        <ul>
+                            <li class="footerItem">
+                                <span class="glyphicon glyphicon-lock" style="color: rgb(173, 173, 173);"></span><a href="https://merchant.priceme.com">&nbsp;Retailer Login</a>
+                            </li>
+
+                            <li class="footerItem">
+                                <a href="http://www.priceme.co.nz/RetailerCenter/RetailerSignUp.aspx">Retailer Sign up</a>
+                            </li>
+
+                            <li class="footerItem">
+                                <a href="http://www.priceme.co.nz/PopularBrandsSiteMap.aspx">Brands</a>
+                            </li>
+                            <li class="footerItem">
+                                <a href="http://www.priceme.co.nz/RetailerList.aspx">Stores</a>
+                            </li>
+
+
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/iphone-signup.aspx">iPhone and Android App</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="footerCol col-sm-4">
+                        <b class="footerTitle">Company Info<span class="glyphicon glyphicon-chevron-right"></span></b>
+                        <ul>
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/About/AboutUs.aspx">About</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/About/contactUs.aspx" rel="nofollow">Contact Us</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/consumer">Consumer News</a></li>
+
+                            <li class="footerItem"><a href="http://blog.priceme.co.nz">Blog</a></li>
+
+                            <li class="footerItem" style="display: none;"><a href="http://forum.priceme.co.nz/">Forum</a></li>
+
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/About/TermsOfService.aspx" rel="nofollow">Terms &amp; Conditions</a></li>
+                            <li class="footerItem"><a href="http://www.priceme.co.nz/About/PrivacyPolicy.aspx" rel="nofollow">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright-div">
+                <div class="container">
+                    <label>Copyright © PriceMe 2016</label>
+
+                    <div class="backToTopSpan">
+                        <a href="#header">Back to top <span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+    <script> (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-1779958-8', 'auto'); ga('send', 'pageview');
+    </script>
+
+    <script type="text/javascript">
+        (function () {
+            $("#mainSearchBtn").on("click", function () {
+                var str = $("#mainSearchText").val();
+                document.location.href = "http://www.priceme.co.nz/search.aspx?q=" + str;
+            });
+        })();
+    </script>
+</body>
+</html>
