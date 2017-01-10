@@ -25,9 +25,15 @@ namespace UpcomingProductAlert
 
                 var countryDetail = CountryDetail.GetCountryDetail(alert.CountryID);
                 var content = CSK_Content.Get();
-
+                
                 string url = PriceMeUrl.GetProductUrl(countryDetail, product.ProductId, product.ProductName);
-                string aTag = "<a href=\"" + url + "\">View Product</a>";
+                string aTag = "<table class=\"button Budget-button\" style=\"border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 200px; overflow: hidden; padding: 0;\">"
+                + "<tr style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\">"
+                + "<td style=\"word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #ffffff; font-family: 'Helvetica Neue', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; display: block; width: auto !important; border-radius: 4px; background: #48A4CF; margin: 0; padding: 13px 0 12px;\" align=\"center\" bgcolor=\"#48A4CF\" valign=\"top\">"
+                + "<a href=\"" + url + "\" style=\"color: #ffffff; text-decoration: none; font-weight: bold; font-family: Helvetica, Arial, sans-serif; font-size: 15px;\">View Product</a>"
+                + "</td>"
+                + "</tr>"
+                + "</table>";
 
                 content.TitleReplace("[product_name]", product.ProductName);
                 content.CtxReplace("[product_name]", product.ProductName);
