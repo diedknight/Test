@@ -84,10 +84,8 @@ namespace FisherPaykelTool.Model
                 rangs.ForEach(range => {
                     decimal price = 0m;
 
-                    if (_isancient)
-                        price = cache.GetPrice(item.RetailerProductId, range.End);
-                    else
-                        price = cache.GetPrice(item.RetailerProductId, range.Start, range.End);
+                    price = cache.GetPrice(item.RetailerProductId, range.Start, range.End);
+                    if (_isancient && price == 0m) price = cache.GetPrice(item.RetailerProductId, range.End);                        
 
                     //当前价格替换空白
                     if (_isReplace && price <= 0)
@@ -164,7 +162,15 @@ namespace FisherPaykelTool.Model
 
             public decimal GetPrice(int rpId, DateTime end)
             {
-                return GetPrice(rpId, DateTime.MinValue, end);
+                if (!this._index.ContainsKey(rpId)) return 0m;
+
+                List<CacheData> tempList = new List<CacheData>();
+                this._index[rpId].ForEach(index => { tempList.Add(this._list[index]); });
+
+                var data = tempList.LastOrDefault(item => item.CreatedOn < end);
+                if (data == null) return 0m;
+
+                return data.NewPrice;
             }
 
             public decimal GetPrice(int rpId, DateTime start, DateTime end)
@@ -218,16 +224,20 @@ namespace FisherPaykelTool.Model
             private List<PerPrice> _priceList = new List<PerPrice>();
 
             public AvePriceCollection(List<CacheData> list)
-            {                
+            {
+                if (list == null || list.Count == 0) return;
+
                 List<CacheData> tempList = new List<CacheData>();
                 list.ForEach(item => tempList.Add(item));
 
                 DateTime firstTime = Convert.ToDateTime(list[0].CreatedOn.ToString("yyyy-MM-dd"));
                 DateTime lastTime = Convert.ToDateTime(list[list.Count - 1].CreatedOn.ToString("yyyy-MM-dd"));
+                DateTime nowTime = DateTime.Now;
+
                 int daySpan = (lastTime - firstTime).Days;
-                
-                for (int i = 0; i < daySpan; i++)
-                {                    
+
+                for (int i = 0; i <= daySpan; i++)
+                {
                     if (tempList.Count == 0)
                     {
                         var prevPrice = this._priceList[this._priceList.Count - 1].Price;
@@ -245,7 +255,8 @@ namespace FisherPaykelTool.Model
                         pointDay = Convert.ToDateTime(tempList[0].CreatedOn.ToString("yyyy-MM-dd"));
                     }
 
-                    if ((pointDay - perDay).Days == 0) this._priceList.Add(new PerPrice(tempList[0].NewPrice, perDay));
+                    if ((pointDay - perDay).Days == 0)
+                        this._priceList.Add(new PerPrice(tempList[0].NewPrice, perDay));
                     if ((pointDay - perDay).Days > 0)
                     {
                         var prevPrice = this._priceList[this._priceList.Count - 1].Price;
@@ -254,10 +265,19 @@ namespace FisherPaykelTool.Model
                     }
                 }
 
+                daySpan = (nowTime - this._priceList.Last().Date).Days;
+                for (int i = 0; i < daySpan; i++)
+                {
+                    var prevPrice = this._priceList.Last().Price;
+                    var prevDate = this._priceList.Last().Date;
+
+                    this._priceList.Add(new PerPrice(prevPrice, prevDate.AddDays(1)));
+                } 
+
             }
 
             public decimal GetAvePrice(DateTime start, DateTime end)
-            {
+            {                
                 var list = this._priceList.Where(item => item.Date >= start && item.Date <= end).ToList();
                 if (list.Count == 0) return 0m;
 
