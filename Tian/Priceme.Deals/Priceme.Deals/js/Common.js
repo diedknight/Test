@@ -16,3 +16,10 @@
         error: function () { callback_func("0"); }
     });
 }
+
+
+function onImgError(source) {
+    source.src = "//images.pricemestatic.com/images/no_image_available.gif";
+    source.onerror = "";
+    return true;
+}

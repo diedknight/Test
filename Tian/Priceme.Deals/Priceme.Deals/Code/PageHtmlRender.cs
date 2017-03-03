@@ -58,6 +58,9 @@ namespace Priceme.Deals.Code
             {
                 firstNode = "";
                 prevNode = "";
+
+                pageNodes = "";
+
                 nextNode = "";
                 lastNode = "";
             }

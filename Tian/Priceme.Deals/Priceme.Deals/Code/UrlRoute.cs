@@ -1,4 +1,7 @@
-﻿using PriceMe;
+﻿//#undef NoDebug
+#define NoDebug
+
+using PriceMe;
 using PriceMeCommon;
 using System;
 using System.Collections.Generic;
@@ -13,6 +16,7 @@ namespace Priceme.Deals.Code
 
         static UrlRoute()
         {
+#if (NoDebug)
             CategoryController.CategoryOrderByName.ForEach(item =>
             {
                 string name = UrlController.FilterInvalidNameChar(item.CategoryName.ToLower());
@@ -22,6 +26,7 @@ namespace Priceme.Deals.Code
                     categoryCache.Add(name, item.CategoryID);
                 }
             });
+#endif
         }
 
 
@@ -35,6 +40,23 @@ namespace Priceme.Deals.Code
             if (uri.ToString().ToLower().Contains("ajaxpage.aspx")) return uri.AbsolutePath;
             if (uri.ToString().ToLower().Contains("default.aspx")) return uri.AbsolutePath;
             if (uri.AbsolutePath.Replace("/", "") == "") return uri.AbsolutePath;
+
+            if (uri.ToString().ToLower().Contains("voucher"))
+            {
+                if (!uri.ToString().ToLower().Contains(".aspx")) uri = new Uri(uri.ToString().ToLower().Replace("voucher", "voucher.aspx"));
+
+                if (uri.ToString().ToLower().Contains("voucher.aspx")) return uri.AbsolutePath;
+            }
+
+            if (uri.ToString().ToLower().Contains("recommend"))
+            {
+                if (!uri.ToString().ToLower().Contains(".aspx")) uri = new Uri(uri.ToString().ToLower().Replace("voucher", "recommend.aspx"));
+
+                if (uri.ToString().ToLower().Contains("recommend.aspx")) return uri.AbsolutePath;
+            }
+
+
+            if (uri.ToString().ToLower().Contains("tracker.aspx")) return uri.AbsolutePath;
 
             string keyword = HttpUtility.UrlDecode(uri.AbsolutePath).Replace("/", "").ToLower();
 
@@ -68,25 +90,19 @@ namespace Priceme.Deals.Code
 
         public static string Encode(Uri uri)
         {
-            //var queryString = new UrlParam(uri);
-            //int s_cid = queryString.GetParam("s_cid", 0);
-            //string path = "/";
+            if (uri.ToString().ToLower().Contains("voucher.aspx"))
+            {
+                uri = new Uri(uri.ToString().ToLower().Replace(".aspx", ""));
+                return uri.ToString();
+            }
 
-            //if (s_cid != 0)
-            //{
-            //    queryString.RemoveParam("s_cid");
-            //    var cate = CategoryController.GetCategoryByCategoryID(s_cid);
-            //    if (cate.IsSiteMap == true || cate.IsSiteMapDetail == true)
-            //    {
-            //        path += UrlController.FilterInvalidNameChar(cate.CategoryName);
-            //    }
-            //    else
-            //    {
-            //        path += "cid=" + cate.CategoryID;
-            //    }
-            //}
+            if (uri.ToString().ToLower().Contains("recommend.aspx"))
+            {
+                uri = new Uri(uri.ToString().ToLower().Replace(".aspx", ""));
+                return uri.ToString();
+            }
 
-            //return uri.GetBaseUrl() + path + queryString.GetUrlParams();
+            if (uri.ToString().ToLower().Contains("tracker.aspx")) return uri.ToString();
 
             var queryString = new UrlParam(uri);
             string[] cids = queryString.GetParam("cid").Split(',');

@@ -85,7 +85,7 @@ table td, table th {
 }
 
 .bg1, .bg2 {
-    background: url(http://images.pricemestatic.com/Images/PriceMeNewDesign/PriceMe_bgnew_151104.png) no-repeat;
+    background: url(https://images.pricemestatic.com/Images/PriceMeNewDesign/PriceMe_bgnew_151104.png) no-repeat;
 }
 
 .foot_Facebook {
@@ -198,6 +198,7 @@ table td, table th {
 
             @include MultiMedia(width,430px,1200px);
             @include MultiMedia(width,310px,1007px);
+            @include MultiMedia(width,250px,700px);
         }
 
         .login {
@@ -557,6 +558,59 @@ table td, table th {
             color: #fff;
         }
     }
+}
+
+
+.nav-tabs li.active a, .nav-tabs li.active a:focus {
+    background-color: #3498db !important;
+}
+
+.nav-tabs li.active a, .nav-tabs li.active a:focus {
+    color: #fff !important;
+    border: none !important;
+}
+
+.nav-tabs li.active a {
+    margin-left: 0 !important;
+    font-size: 19px;
+    line-height: 30px;
+    /*padding: 16px 53px;*/
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.nav-tabs li a {
+    border: none;
+    color: #3d3d3d;
+    background-color: #f9f9f9;
+    font-size: 15px;
+    line-height: 13px;
+    padding: 18px 25px;
+    margin: 0 5px;
+    text-transform: capitalize;
+    text-align:center;
+}
+
+.nav-tabs > li > a {
+    margin-right: 5px;
+    line-height: 1.428571429;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.btnVisitShop {
+    color: white;
+    background-color: #3498db;
+    width: 88px;
+    display: block;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.btnVisitShop:hover {
+    color: white;
+    background-color: #4aa3df;
 }
 
 .container {

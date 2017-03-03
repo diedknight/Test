@@ -23,7 +23,10 @@ namespace Priceme.Deals
         //protected string s_cidText = "";
 
         protected void Page_Load(object sender, EventArgs e)
-        {                        
+        {
+            ((Main)this.Master).Breadcrumb = "Deals";
+
+
             this.cids = this.GetQuery("cid", ',').Select(item => Convert.ToInt32(item.Trim())).ToList();
             //this.s_cid = this.GetQuery("s_cid", 0);
 
@@ -41,9 +44,13 @@ namespace Priceme.Deals
             //List<int> tempCIds = new List<int>();
             //tempCIds.AddRange(this.cids);
             //tempCIds.Add(this.s_cid);
+
             var result = Product.GetProducts(this.GetQuery("pg", 1), 50, this.GetQuery("sb", "Sale"), this.GetRecentCIdsFromCookie(), cids.ToArray());
 
             this.productList = result.Products;
+
+            Utility.FixProductCatalogList(this.productList, "");
+
             this.productList.ForEach(item =>
             {
                 item.ProductUrl = "http://www.priceme.co.nz" + UrlController.GetProductUrl(item.ProductID, item.ProductName);
@@ -53,9 +60,11 @@ namespace Priceme.Deals
                     item.BestPPCLogoPath = Resources.Resource.ImageWebsite + item.BestPPCLogoPath;
                 }
 
+                item.BestPPCLogoPath = item.BestPPCLogoPath.Replace("http:", "https:");
+                
+                item.DefaultImage = this.FixImgUrl(item.DefaultImage);
             });
-            Utility.FixProductCatalogList(this.productList, "");
-
+            
             //pagination
             var pagination = this.CreatePagination(50);
             pagination.Init(result.Amount);
@@ -191,6 +200,27 @@ namespace Priceme.Deals
             }
 
             return list;
+        }
+
+        private string FixImgUrl(string url)
+        {
+            if (url.ToLower().Contains("://s3."))
+            {
+                url = url.Replace(Resources.Resource.ImageWebsite, "");
+                if (url.FirstOrDefault() == '/')
+                {
+                    url = url.Substring(1);
+                }
+            }
+
+            url = url.Replace("http:", "https:");
+
+            var c = new string[1] { "https://" };
+            var b = url.Split(c, StringSplitOptions.RemoveEmptyEntries);
+
+            url = "https://" + (b.Length == 1 ? b[0] : b[1]);
+
+            return url;
         }
 
         public class Category

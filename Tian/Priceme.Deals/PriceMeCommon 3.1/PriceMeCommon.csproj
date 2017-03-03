@@ -61,6 +61,10 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Priceme.Infrastructure.DB.Dapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Priceme.Infrastructure.DB.Dapper.1.0.0\lib\Priceme.Infrastructure.DB.Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SubSonic.Core">
       <HintPath>..\lib\SubSonic.Core.dll</HintPath>
     </Reference>
@@ -177,6 +181,8 @@
     <Compile Include="Data\StoreUserLocation.cs" />
     <Compile Include="Data\TradeMeSeller.cs" />
     <Compile Include="Data\VelocityCacheKey.cs" />
+    <Compile Include="Data\DealsVoucher.cs" />
+    <Compile Include="Data\VoucherCategory.cs" />
     <Compile Include="DBTableInfo\ManufacturerInfo.cs" />
     <Compile Include="Deal\Product.cs" />
     <Compile Include="DesEncrypt.cs" />
@@ -212,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

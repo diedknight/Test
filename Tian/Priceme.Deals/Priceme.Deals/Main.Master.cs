@@ -9,6 +9,7 @@ namespace Priceme.Deals
 {
     public partial class Main : System.Web.UI.MasterPage
     {
+        public string Breadcrumb = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 

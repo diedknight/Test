@@ -1,16 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Priceme.Deals.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="css/default.min.css?v=1" rel="stylesheet" />
+    <link href="css/default.min.css?v=1.1.1" rel="stylesheet" />
+
+    <link href="//deals.priceme.co.nz" rel="canonical" />
+
     <title>Deals - Latest Price Drops in NZ</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="default_page">
         <div class="ctcTitleTd page-header">
             <h1 class="productInfo">Deals - VIP Deals & Insiders Hidden Price Drops</h1>
             <div class="categoryDec">
                 Find the best deals in New Zealand with PriceMe Deals. We track price changes in the market and collate the best deals and discount for you based on this information. Missing a deal? Let us know!
-            </div>            
+            </div>
+        </div>
+
+        <div class="tab-holder">
+            <ul class="nav nav-tabs simple">
+                <li class="active"><a style="width:140px;">Deals</a></li>
+                <li class=""><a style="width:140px; top:6px;" href="voucher" onclick="javascript:document.location=this.href">Vouchers</a></li>
+            </ul>
         </div>
 
         <span class="glyphicon glyphicon-filter"></span>
@@ -50,6 +61,7 @@
                 <%{ %>
                 <div class="product-grid-item">
                     <div class="sale_info"><span><%=Convert.ToInt32(Math.Abs(productList[i].Sale*100)) %>% Off</span></div>
+
                     <a href="<%=productList[i].ProductUrl %>">
                         <img src="<%=productList[i].DefaultImage %>" alt="<%=productList[i].ProductName %>" title="<%=productList[i].ProductName %>" onerror="onImgError(this)" />
                     </a>
@@ -162,11 +174,6 @@
 
         })();
 
-        function onImgError(source) {
-            source.src = "http://images.pricemestatic.com/images/no_image_available.gif";
-            source.onerror = "";
-            return true;
-        }
     </script>
 
 </asp:Content>

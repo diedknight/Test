@@ -1,4 +1,7 @@
-﻿using Priceme.Deals.Code;
+﻿//#undef NoDebug
+#define NoDebug
+
+using Priceme.Deals.Code;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +15,7 @@ namespace Priceme.Deals
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+#if (NoDebug)
             PriceMeCommon.CategoryController.Load();
             PriceMeCommon.RetailerController.Load();
 
@@ -22,11 +26,14 @@ namespace Priceme.Deals
                 PriceMeCommon.CategoryController.Load();
                 PriceMeCommon.RetailerController.Load();
             };
+#endif
         }
 
         protected void Application_BeginRequest(Object sender, EventArgs e)
         {
+#if (NoDebug)
             HttpContext.Current.RewritePath(UrlRoute.Decode(this.Request.Url));
+#endif
         }
 
     }
