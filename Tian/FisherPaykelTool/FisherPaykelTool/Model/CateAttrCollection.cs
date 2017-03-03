@@ -1,9 +1,11 @@
 ﻿using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace FisherPaykelTool.Model
 {
@@ -24,6 +26,24 @@ namespace FisherPaykelTool.Model
         public List<int> GetCateIds()
         {
             return this._cateAttrList.Select(item => item.CategoryId).ToList();
+        }
+
+        public List<int> GetOtherCateIds()
+        {
+            List<int> list = new List<int>();
+
+            string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["Priceme"].ConnectionString;
+            string sql = "select CategoryID from CSK_Store_Category where CategoryID not in @CIds and categoryid in (select CategoryID from CSK_Store_Product where ManufacturerID in @MIds) and IsAccessories = 0 and IsActive = 1";
+
+            List<int> mIds = System.Configuration.ConfigurationManager.AppSettings["ManufacturerIds"].Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
+            List<int> cIds = this.GetCateIds();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                list = con.Query<int>(sql, new { CIds = cIds, MIds = mIds }).ToList();
+            }
+
+            return list;
         }
 
         private static CateAttrCollection _collection = null;

@@ -13,12 +13,13 @@ namespace FisherPaykelTool.Model
         private static bool _isancient = GetAppConfig("isancient", false);
         private static bool _isReplace = GetAppConfig("isreplace", false);
 
-        public List<decimal> NewPrices { get; set; }
-        public decimal AvePrice { get; set; }
+        public List<decimal> HistoryPrices { get; set; }
+        public List<decimal> AvgPrices { get; set; }
 
         public ProductAd(Product p)
-        {            
-            this.NewPrices = new List<decimal>();
+        {
+            this.HistoryPrices = new List<decimal>();
+            this.AvgPrices = new List<decimal>();
 
             this.Brand = p.Brand;
             this.CategoryId = p.CategoryId;
@@ -47,45 +48,23 @@ namespace FisherPaykelTool.Model
             this.RetailerProductId = p.RetailerProductId;
         }
 
-        public static new List<ProductAd> Get()
+        public static new List<ProductAd> Get(int type = 0)
         {
-            var list = Product.Get().Select(item => new ProductAd(item)).ToList();
+            var list = Product.Get(type).Select(item => new ProductAd(item)).ToList();
 
             var dateRange = new DateRange();
             var rangs = dateRange.GetRange();
 
-            var cache = new Cache(list);
+            var cache = new Cache(list);            
 
-            //string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["EDW"].ConnectionString;
-
-            //string sql = "select top 1 NewPrice from CSK_Store_RetailerProductHistory where RPID = @RPID and CreatedOn >= @Start and CreatedOn <= @End";
-            //if(_isancient) sql = "select top 1 NewPrice from CSK_Store_RetailerProductHistory where RPID = @RPID and CreatedOn <= @End";
-
-            //list.ForEach(item => {
-            //    rangs.ForEach(range => {
-            //        using (SqlConnection con = new SqlConnection(conStr))
-            //        {
-            //            var value = con.Query<decimal>(sql, new { RPID = item.RetailerProductId, Start = range.Start, End = range.End }).SingleOrDefault();
-
-            //            //var value = con.Query<decimal>(sql, new { RPID = item.RetailerProductId, End = range.End }).SingleOrDefault();
-
-            //            //当前价格替换空白
-            //            if (_isReplace && value <= 0)
-            //            {
-            //                value = item.RetailerPrice;
-            //            }
-
-            //            item.NewPrices.Add(value);
-            //        }
-            //    });
-            //});
-
-            list.ForEach(item => {
-                rangs.ForEach(range => {
+            list.ForEach(item =>
+            {
+                rangs.ForEach(range =>
+                {
                     decimal price = 0m;
 
-                    price = cache.GetPrice(item.RetailerProductId, range.Start, range.End);
-                    if (_isancient && price == 0m) price = cache.GetPrice(item.RetailerProductId, range.End);                        
+                    price = cache.GetLowestPrice(item.RetailerProductId, range.Start, range.End);
+                    if (_isancient && price == 0m) price = cache.GetLowestPrice(item.RetailerProductId, range.End);
 
                     //当前价格替换空白
                     if (_isReplace && price <= 0)
@@ -93,11 +72,23 @@ namespace FisherPaykelTool.Model
                         price = item.RetailerPrice;
                     }
 
-                    item.NewPrices.Add(price);
+                    item.HistoryPrices.Add(price);
+
+                    //avgprice
+                    decimal avgPrice = 0m;
+                    avgPrice = cache.GetAvePrice(item.RetailerProductId, range.Start, range.End);
+
+                    //当前价格替换空白
+                    if (_isReplace && avgPrice <= 0)
+                    {
+                        avgPrice = item.RetailerPrice;
+                    }
+
+                    item.AvgPrices.Add(avgPrice);
                 });
 
-                item.AvePrice = cache.GetAvePrice(item.RetailerProductId, dateRange.Start, dateRange.End);
-                if (item.AvePrice == 0) item.AvePrice = item.RetailerPrice;
+                //item.AvePrice = cache.GetAvePrice(item.RetailerProductId, dateRange.Start, dateRange.End);
+                //if (item.AvePrice == 0) item.AvePrice = item.RetailerPrice;
             });
 
             return list;
@@ -142,7 +133,7 @@ namespace FisherPaykelTool.Model
 
                 using (SqlConnection con = new SqlConnection(conStr))
                 {
-                    this._list = con.Query<CacheData>(sql, new { RIds = ridList }, null, true, 300).ToList();
+                    this._list = con.Query<CacheData>(sql, new { RIds = ridList }, null, true, 3000).ToList();
                 }
 
                 for (int i = 0; i < this._list.Count; i++)
@@ -159,7 +150,7 @@ namespace FisherPaykelTool.Model
                     }
                 }
             }
-
+            
             public decimal GetPrice(int rpId, DateTime end)
             {
                 if (!this._index.ContainsKey(rpId)) return 0m;
@@ -184,6 +175,23 @@ namespace FisherPaykelTool.Model
                 if (data == null) return 0m;
 
                 return data.NewPrice;
+            }
+
+            public decimal GetLowestPrice(int rpId, DateTime start, DateTime end)
+            {
+                if (!this._index.ContainsKey(rpId)) return 0m;
+
+                List<CacheData> tempList = new List<CacheData>();
+                this._index[rpId].ForEach(index => { tempList.Add(this._list[index]); });
+
+                AvePriceCollection apc = new AvePriceCollection(tempList);
+
+                return apc.GetLowestPrice(start, end);
+            }
+
+            public decimal GetLowestPrice(int rpId, DateTime end)
+            {
+                return this.GetLowestPrice(rpId, DateTime.MinValue, end);
             }
 
             public decimal GetAvePrice(int rpId, DateTime start, DateTime end)
@@ -272,17 +280,42 @@ namespace FisherPaykelTool.Model
                     var prevDate = this._priceList.Last().Date;
 
                     this._priceList.Add(new PerPrice(prevPrice, prevDate.AddDays(1)));
-                } 
+                }
 
             }
 
             public decimal GetAvePrice(DateTime start, DateTime end)
-            {                
+            {
                 var list = this._priceList.Where(item => item.Date >= start && item.Date <= end).ToList();
                 if (list.Count == 0) return 0m;
 
                 return list.Average(item => item.Price);
             }
+
+            public decimal GetLowestPrice(DateTime start, DateTime end)
+            {
+                var price = 0m;
+
+                var list = this._priceList.Where(item => item.Date >= start && item.Date <= end).ToList();
+                if (list.Count == 0) return price;
+
+                price = list[0].Price;
+                list.ForEach(item =>
+                {
+                    if (item.Price <= 0) return;
+                    if (item.Price >= price) return;
+
+                    price = item.Price;
+                });
+
+                return price;
+            }
+
+            public decimal GetLowestPrice(DateTime end)
+            {
+                return this.GetLowestPrice(DateTime.MinValue, end);
+            }
+
         }
 
     }

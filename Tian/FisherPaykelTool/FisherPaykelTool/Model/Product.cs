@@ -47,7 +47,7 @@ namespace FisherPaykelTool.Model
 
 
 
-        public static List<Product> Get()
+        public static List<Product> Get(int type = 0)
         {
             List<Product> list = new List<Product>();
 
@@ -70,23 +70,32 @@ namespace FisherPaykelTool.Model
                         + "	and CategoryID in @CIds"
                         + "	and ManufacturerID in @MIds"
                         + " ) TT"
-                        + " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3"
+                        + " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3 and R.RetailerId in @RIds"
+                        //+ " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3"
                         + " order by CategoryId,ProductName";
 
             var cateCollection = CateAttrCollection.Load();
 
             List<int> mIds = System.Configuration.ConfigurationManager.AppSettings["ManufacturerIds"].Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
-            List<int> cIds = cateCollection.GetCateIds();
+            List<int> rIds = System.Configuration.ConfigurationManager.AppSettings["RID"].Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
+            List<int> cIds = new List<int>();
+            
+            switch (type)
+            {
+                case 0: cIds = cateCollection.GetCateIds(); break;
+                case 1: cIds = cateCollection.GetOtherCateIds(); break;
+            }
 
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                list = con.Query<Product>(sql, new { CIds = cIds, MIds = mIds }).ToList();                         
+                list = con.Query<Product>(sql, new { CIds = cIds, MIds = mIds, RIds = rIds }, null, true, 3000).ToList();
             }
 
             //group
             Dictionary<string, decimal> dic = new Dictionary<string, decimal>();
 
-            list.ForEach(item => {                
+            list.ForEach(item =>
+            {
                 //number
                 string numKey = "num_" + item.ProductId;
                 if (dic.ContainsKey(numKey)) dic[numKey] = dic[numKey] + 1;
@@ -98,10 +107,10 @@ namespace FisherPaykelTool.Model
                     dic[priceKey] = dic[priceKey] > item.RetailerPrice ? item.RetailerPrice : dic[priceKey];    //get min price
                 else
                     dic.Add(priceKey, item.RetailerPrice);
-
             });
 
-            list.ForEach(item => {
+            list.ForEach(item =>
+            {
                 if (!string.IsNullOrEmpty(item.Brand)) item.ModelNo = item.ProductName.Replace(item.Brand, "").Trim();
 
                 string numKey = "num_" + item.ProductId;
@@ -130,7 +139,7 @@ namespace FisherPaykelTool.Model
                 item.Energy_Water_RatingName = string.Join(" | ", ewrAttrList.Select(a => a.Name));
 
             });
-            
+
             return list;
         }
     }

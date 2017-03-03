@@ -13,14 +13,16 @@ namespace FisherPaykelTool
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
+            //var range1 = new DateRange().GetRange();
+
             Log.Log log = new Log.Log();
 
             log.WriteLine("load excel");
             CateAttrCollection.Load();
 
             log.WriteLine("load products");
-            var products = ProductAd.Get();
+            var products = ProductAd.Get(0);
 
             log.WriteLine("write to excel");
 
@@ -43,32 +45,17 @@ namespace FisherPaykelTool
             titleList.Add("Lowest_Price");
             titleList.Add("Url");
             titleList.Add("RetailerProductName");
-            titleList.Add("Price");
+            titleList.Add("Price when report was extracted ");
 
-            new DateRange().GetRange().ForEach(range => { titleList.Add(range.ToString()); });
-            titleList.Add("average_price");
+            new DateRange().GetRange().ForEach(range => {
+                titleList.Add("Lowest Price " + range.ToString());
+                titleList.Add("Average Price " + range.ToString());
+            });
+
+            //titleList.Add("average_price");
 
             var exhelper = new ExcelSimpleHelper();
             exhelper.WriteLine(titleList.ToArray());
-            //exhelper.WriteLine("Retailer Name",
-            //    "Retailer Type",
-            //    "PriceMe_Name",
-            //    "Model No.",
-            //    "Brand",
-            //    "Product Category",
-            //    "",
-            //    "Size/Capacity",
-            //    "",
-            //    "Type/function",
-            //    "",
-            //    "Finish",
-            //    "",
-            //    "Energy/Water Rating",
-            //    "Number_Retailers",
-            //    "Lowest_Price",
-            //    "Url",
-            //    "RetailerProductName",
-            //    "Price");
 
             products.ForEach(item =>
             {
@@ -94,36 +81,60 @@ namespace FisherPaykelTool
                 contentList.Add(item.RetailerProductName);
                 contentList.Add(item.RetailerPrice.ToString("0.00"));
 
-                item.NewPrices.ForEach(newprice =>
+                for (int i = 0; i < item.HistoryPrices.Count; i++)
                 {
-                    if (newprice == 0) contentList.Add("");
-                    else contentList.Add(newprice.ToString("0.00"));
-                });
+                    var historyPrice = item.HistoryPrices[i];
+                    var avgPrice = item.AvgPrices[i];
 
-                contentList.Add(item.AvePrice.ToString("0.00"));
+                    if (historyPrice == 0) contentList.Add("");
+                    else contentList.Add(historyPrice.ToString("0.00"));
+
+                    if (avgPrice == 0) contentList.Add("");
+                    else contentList.Add(avgPrice.ToString("0.00"));
+                }
+
+
+                //item.HistoryPrices.ForEach(newprice =>
+                //{
+                //    if (newprice == 0) contentList.Add("");
+                //    else contentList.Add(newprice.ToString("0.00"));
+                //});
+
+                //contentList.Add(item.AvePrice.ToString("0.00"));
 
                 exhelper.WriteLine(contentList.ToArray());
-
-                //exhelper.WriteLine(item.RetailerName,
-                //    item.RetailerType,
-                //    item.ProductName,
-                //    item.ModelNo,
-                //    item.Brand,
-                //    item.ProductCategory,
-                //    item.Size_CapacityName,
-                //    item.Size_CapacityValue,
-                //    item.Type_FunctionsName,
-                //    item.Type_FunctionsValue,
-                //    item.FinishName,
-                //    item.FinishValue,
-                //    item.Energy_Water_RatingName,
-                //    item.Energy_Water_RatingValue,
-                //    item.NumberRetailers.ToString(),
-                //    item.LowestPrice.ToString("0.00"),
-                //    item.PurchaseURL,
-                //    item.RetailerProductName,
-                //    item.RetailerPrice.ToString("0.00"));
             });
+            
+            //other 
+            //Sort(ProductAd.Get(1)).ForEach(item => {
+            //    exhelper.WriteLine("");
+            //    exhelper.WriteLine(item.Manufacturer, "Other", item.CategoryName);
+
+            //    item.List.ForEach(product => {
+            //        List<string> contentList = new List<string>();
+            //        contentList.Add(product.RetailerName);
+            //        contentList.Add(product.RetailerType);
+            //        contentList.Add(product.ProductName);
+            //        contentList.Add(product.Brand);
+            //        contentList.Add(product.ProductCategory);
+            //        contentList.Add(product.NumberRetailers.ToString());
+            //        contentList.Add(product.LowestPrice.ToString("0.00"));
+            //        contentList.Add(product.PurchaseURL);
+            //        contentList.Add(product.RetailerProductName);
+            //        contentList.Add(product.RetailerPrice.ToString("0.00"));
+
+            //        product.NewPrices.ForEach(newprice =>
+            //        {
+            //            if (newprice == 0) contentList.Add("");
+            //            else contentList.Add(newprice.ToString("0.00"));
+            //        });
+
+            //        contentList.Add(product.AvePrice.ToString("0.00"));
+
+            //        exhelper.WriteLine(contentList.ToArray());
+
+            //    });
+            //});
 
             string outputFile = System.Configuration.ConfigurationManager.AppSettings["outputFilePath"];
             string name = Path.GetFileNameWithoutExtension(outputFile) + "_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
@@ -133,5 +144,40 @@ namespace FisherPaykelTool
 
             log.WriteLine("finish");
         }
-    }
+
+
+        private static List<OtherProduct> Sort(List<ProductAd> productlist)
+        {
+            List<OtherProduct> list = new List<OtherProduct>();
+
+            productlist.ForEach(product => {
+                var otherProduct = list.FirstOrDefault(item => product.Brand == item.Manufacturer && product.ProductCategory == item.CategoryName);
+
+                if (otherProduct == null)
+                {
+                    otherProduct = new OtherProduct();
+                    otherProduct.CategoryName = product.ProductCategory;
+                    otherProduct.Manufacturer = product.Brand;
+
+                    list.Add(otherProduct);
+                }
+
+                otherProduct.List.Add(product);                
+            });
+            
+            return list;
+        }
+
+
+        //class
+        private class OtherProduct
+        {
+            public string Manufacturer { get; set; }
+            public string CategoryName { get; set; }
+
+            public List<ProductAd> List { get; set; } = new List<ProductAd>();
+        }
+
+    }    
+
 }
