@@ -222,7 +222,7 @@
                 }
 
                 > a {
-                    margin: 10px auto 20px auto;
+                    margin: 10px auto 10px auto;
                     display: block;
                 }
 
@@ -321,21 +321,27 @@
                         z-index: 0;
                     }
                 }
-                 
+
                 .sale_info_right {
                     @extend .sale_info;
-
-                    position:relative;
+                    position: relative;
                     padding: 4px 10px 4px 16px;
-                    float:right;
-
+                    float: right;
+                    height: 1px;
 
                     &:after {
                         border-right: 0px;
-                        border-left:14px solid transparent;
+                        border-left: 14px solid transparent;
                     }
                 }
 
+                .sale_info_right_green {
+                    @extend .sale_info_right;
+                     
+                    &:after {
+                        border-top: 28px solid #59b210;
+                    }
+                }
 
             }
         }

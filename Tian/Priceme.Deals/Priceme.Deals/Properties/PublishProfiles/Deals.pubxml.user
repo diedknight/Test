@@ -106,7 +106,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/14/2016 08:49:18</publishTime>
     </File>
     <File Include="bin/Priceme.Deals.dll">
-      <publishTime>03/03/2017 09:58:56</publishTime>
+      <publishTime>03/07/2017 16:06:23</publishTime>
     </File>
     <File Include="bin/Priceme.Infrastructure.DB.Dapper.dll">
       <publishTime>02/17/2017 09:54:36</publishTime>
@@ -115,7 +115,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2016 16:16:27</publishTime>
     </File>
     <File Include="bin/PriceMeCommon.dll">
-      <publishTime>03/02/2017 14:48:47</publishTime>
+      <publishTime>03/06/2017 16:27:23</publishTime>
     </File>
     <File Include="bin/PriceMeDBA.dll">
       <publishTime>11/22/2016 16:16:27</publishTime>
@@ -163,13 +163,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/28/2016 14:05:37</publishTime>
     </File>
     <File Include="css/default.min.css">
-      <publishTime>03/02/2017 12:00:14</publishTime>
+      <publishTime>03/07/2017 15:39:23</publishTime>
     </File>
     <File Include="css/default.scss">
-      <publishTime>03/01/2017 14:02:18</publishTime>
+      <publishTime>03/06/2017 15:05:52</publishTime>
     </File>
     <File Include="css/main.min.css">
-      <publishTime>03/02/2017 12:00:14</publishTime>
+      <publishTime>03/07/2017 15:39:23</publishTime>
     </File>
     <File Include="css/main.scss">
       <publishTime>02/22/2017 14:38:25</publishTime>
@@ -178,10 +178,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/29/2016 10:34:41</publishTime>
     </File>
     <File Include="css/voucher.min.css">
-      <publishTime>03/02/2017 12:00:14</publishTime>
+      <publishTime>03/07/2017 15:39:23</publishTime>
     </File>
     <File Include="css/voucher.scss">
-      <publishTime>03/02/2017 12:00:14</publishTime>
+      <publishTime>03/07/2017 15:39:22</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>03/01/2017 14:02:59</publishTime>
@@ -193,22 +193,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/21/2017 08:42:48</publishTime>
     </File>
     <File Include="Main.Master">
-      <publishTime>02/22/2017 15:53:49</publishTime>
+      <publishTime>03/07/2017 15:45:34</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>02/17/2017 09:58:22</publishTime>
     </File>
     <File Include="Recommend.aspx">
-      <publishTime>03/02/2017 14:19:57</publishTime>
+      <publishTime>03/07/2017 15:46:14</publishTime>
     </File>
     <File Include="Tracker.aspx">
       <publishTime>02/17/2017 16:05:33</publishTime>
     </File>
     <File Include="Voucher.aspx">
-      <publishTime>03/02/2017 11:43:52</publishTime>
+      <publishTime>03/07/2017 09:24:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/02/2017 14:48:52</publishTime>
+      <publishTime>03/06/2017 08:10:05</publishTime>
     </File>
   </ItemGroup>
 </Project>

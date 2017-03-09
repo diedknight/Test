@@ -31,9 +31,7 @@ namespace Priceme.Deals
 
         protected void Application_BeginRequest(Object sender, EventArgs e)
         {
-#if (NoDebug)
             HttpContext.Current.RewritePath(UrlRoute.Decode(this.Request.Url));
-#endif
         }
 
     }

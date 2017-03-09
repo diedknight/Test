@@ -37,23 +37,32 @@ namespace Priceme.Deals.Code
 
         public static string Decode(Uri uri)
         {
+            string url = uri.ToString();
+            if (uri.AbsolutePath.Split('/').Length > 2)
+            {
+                url = url.Substring(0, url.LastIndexOf('/'));
+
+                HttpContext.Current.Response.Status = "301 Moved Permanently";
+                HttpContext.Current.Response.AddHeader("Location", url);
+                HttpContext.Current.Response.End();
+            }
+            
+
             if (uri.ToString().ToLower().Contains("ajaxpage.aspx")) return uri.AbsolutePath;
             if (uri.ToString().ToLower().Contains("default.aspx")) return uri.AbsolutePath;
             if (uri.AbsolutePath.Replace("/", "") == "") return uri.AbsolutePath;
 
-            if (uri.ToString().ToLower().Contains("voucher"))
+            if (uri.ToString().ToLower().Contains("/voucher"))
             {
-                if (!uri.ToString().ToLower().Contains(".aspx")) uri = new Uri(uri.ToString().ToLower().Replace("voucher", "voucher.aspx"));
-
-                if (uri.ToString().ToLower().Contains("voucher.aspx")) return uri.AbsolutePath;
+                if (!uri.ToString().ToLower().Contains(".aspx")) uri = new Uri(uri.ToString().ToLower().Replace("voucher", "voucher.aspx"));                
             }
+            if (uri.ToString().ToLower().Contains("voucher.aspx")) return uri.AbsolutePath;
 
-            if (uri.ToString().ToLower().Contains("recommend"))
+            if (uri.ToString().ToLower().Contains("recommend_voucher"))
             {
-                if (!uri.ToString().ToLower().Contains(".aspx")) uri = new Uri(uri.ToString().ToLower().Replace("voucher", "recommend.aspx"));
-
-                if (uri.ToString().ToLower().Contains("recommend.aspx")) return uri.AbsolutePath;
+                if (!uri.ToString().ToLower().Contains(".aspx")) uri = new Uri(uri.ToString().ToLower().Replace("recommend_voucher", "recommend.aspx"));                
             }
+            if (uri.ToString().ToLower().Contains("recommend.aspx")) return uri.AbsolutePath;
 
 
             if (uri.ToString().ToLower().Contains("tracker.aspx")) return uri.AbsolutePath;
@@ -98,7 +107,7 @@ namespace Priceme.Deals.Code
 
             if (uri.ToString().ToLower().Contains("recommend.aspx"))
             {
-                uri = new Uri(uri.ToString().ToLower().Replace(".aspx", ""));
+                uri = new Uri(uri.ToString().ToLower().Replace("recommend.aspx", "recommend_voucher"));
                 return uri.ToString();
             }
 

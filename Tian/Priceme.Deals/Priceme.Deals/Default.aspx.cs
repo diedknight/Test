@@ -53,7 +53,7 @@ namespace Priceme.Deals
 
             this.productList.ForEach(item =>
             {
-                item.ProductUrl = "http://www.priceme.co.nz" + UrlController.GetProductUrl(item.ProductID, item.ProductName);
+                item.ProductUrl = "https://www.priceme.co.nz" + UrlController.GetProductUrl(item.ProductID, item.ProductName);
 
                 if (!string.IsNullOrEmpty(item.BestPPCLogoPath))
                 {
