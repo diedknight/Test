@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MonitorPriceMeApi.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MonitorPriceMeApi_nz_co_priceme_api_PriceMeService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.priceme.co.nz/PriceMeService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
