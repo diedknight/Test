@@ -40,6 +40,14 @@ namespace PurgeCloudflareCacheService
 
         private void InitData()
         {
+            string sourceName = "PriceMeLog";
+            if (!System.Diagnostics.EventLog.SourceExists(sourceName))
+            {
+                System.Diagnostics.EventLog.CreateEventSource(sourceName, "PurgeCloudflareCacheService");
+            }
+            this.eventLog1.Source = sourceName;
+            this.eventLog1.Log = "PurgeCloudflareCacheService";
+
             eventLog1.WriteEntry("PurgeCloudflareCacheService In InitData");
             myCountriesNodeInfo = (CountriesNodeInfo)ConfigurationManager.GetSection("countries");
             eventLog1.WriteEntry(myCountriesNodeInfo.ToString());
