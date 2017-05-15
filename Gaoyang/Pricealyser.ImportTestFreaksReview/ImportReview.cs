@@ -472,9 +472,9 @@ namespace Pricealyser.ImportTestFreaksReview
                             }
                             else if (!expertCache.ExpertReviewList.Contains(key))//如果匹配不到执行添加操作
                             {
-                                if (sr.Author.Length > 50)
+                                if (!string.IsNullOrEmpty(sr.Author) &&  sr.Author.Length > 50)
                                     continue;
-
+                                
                                 //Writer("add new review... " + DateTime.Now);
                                 #region
                                 expertCache.ExpertReviewList.Add(key);
@@ -503,7 +503,7 @@ namespace Pricealyser.ImportTestFreaksReview
                                         url = url.Substring(url.IndexOf('/'));
                                 }
                                 er.ReviewURL = url;
-                                er.ReviewBy = sr.Author;
+                                er.ReviewBy = string.IsNullOrEmpty(sr.Author) ? string.Empty : sr.Author;
                                 if (string.IsNullOrEmpty(er.ReviewBy))
                                     er.ReviewBy = string.Empty;
 
@@ -763,7 +763,7 @@ namespace Pricealyser.ImportTestFreaksReview
                                 url = url.Replace("'", "''");
                                 string sql = "Update CSK_Store_ExpertReviewAU "
                                             + "Set Title = '" + title + "', Pros = '" + pros + "', Cons = '" + cons + "', Verdict = '" + verdict + "', "
-                                            + "ReviewURL = '" + url + "', ReviewBy = '" + sr.Author + "', ReviewDate = '" + reviewDate + "', ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                                            + "ReviewURL = '" + url + "', ReviewBy = '" + (string.IsNullOrEmpty(sr.Author) ? string.Empty : sr.Author) +"', ReviewDate = '" + reviewDate + "', ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                                             + "' , DisplayLinkStatus=1 Where ProductID = " + productId + " And SourceID = " + sid;
                                 SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
                                 sp.Command.CommandSql = sql;
@@ -780,7 +780,7 @@ namespace Pricealyser.ImportTestFreaksReview
                                 //    needUpdateModifyOn.Add(keyUp);
                             }
                         }
-                        catch (Exception ex) { Writer("Save Error: " + ex.Message + ex.StackTrace + "\n ReviewURL:" + sr.Url + " \n ReviewBy:" + sr.Author); }
+                        catch (Exception ex) { Writer("Save Error: " + ex.Message + ex.StackTrace + "\n ReviewURL:" + sr.Url + " \n ReviewBy:" + (string.IsNullOrEmpty(sr.Author) ? string.Empty : sr.Author)); }
                     }
                     
                     //Writer("delete... " + DateTime.Now);
