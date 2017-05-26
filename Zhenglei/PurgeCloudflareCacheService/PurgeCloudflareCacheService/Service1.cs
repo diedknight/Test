@@ -28,7 +28,8 @@ namespace PurgeCloudflareCacheService
         bool myWorking = false;
         string mySelectSql;
         string mySelectProductInfoSqlFormat = "SELECT [ProductID],[ProductName] FROM [CSK_Store_ProductNew] where [ProductId] in ({0})";
-        string myDeleteSqlFormat = "Delete PurgedProduct where [ProductId] in ({0})";
+        string myUpdateSqlFormat = "Update PurgedProduct set ProductChecked = 1 where [ProductId] in ({0})";
+        string myDeleteSqlFormat = "Delete PurgedProduct where IndexChecked = 1 and ProductChecked = 1";
 
         string myApiUrlPathFormat = "zones/{0}/purge_cache";
 
@@ -57,7 +58,7 @@ namespace PurgeCloudflareCacheService
             myApiEmail = ConfigurationManager.AppSettings["ApiEmail"];
             myMaxCount = int.Parse(ConfigurationManager.AppSettings["MaxCount"]);
 
-            string selectSqlFormat = "SELECT top {0} [ProductId] FROM [PurgedProduct]";
+            string selectSqlFormat = "SELECT top {0} [ProductId] FROM [PurgedProduct] where ProductChecked = 0";
             mySelectSql = string.Format(selectSqlFormat, myMaxCount);
         }
 
@@ -136,6 +137,13 @@ namespace PurgeCloudflareCacheService
                     {
                         eventLog1.WriteEntry("Country " + ci.CountryId + " selectProductInfoSql : " + selectProductInfoSql);
                     }
+
+                    string updateSql = string.Format(myUpdateSqlFormat, idString);
+                    using (SqlCommand updateSqlCmd = new SqlCommand(updateSql, sqlConn))
+                    {
+                        updateSqlCmd.ExecuteNonQuery();
+                    }
+
                     using (SqlCommand sqlCmd2 = new SqlCommand(selectProductInfoSql, sqlConn))
                     {
                         using (SqlDataReader sqlDr = sqlCmd2.ExecuteReader())
