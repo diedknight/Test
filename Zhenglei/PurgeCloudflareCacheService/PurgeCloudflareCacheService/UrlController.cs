@@ -29,5 +29,10 @@ namespace PurgeCloudflareCacheService
 
             return name;
         }
+
+        public static string GetCatalogUrl(string categoryName, int categoryId)
+        {
+            return FilterInvalidNameChar(categoryName) + "/c-" + categoryId + ".aspx";
+        }
     }
 }

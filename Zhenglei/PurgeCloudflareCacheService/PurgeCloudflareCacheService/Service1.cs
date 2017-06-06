@@ -27,7 +27,9 @@ namespace PurgeCloudflareCacheService
         bool isDebug = false;
         bool myWorking = false;
         string mySelectSql;
-        string mySelectProductInfoSqlFormat = "SELECT [ProductID],[ProductName] FROM [CSK_Store_ProductNew] where [ProductId] in ({0})";
+        string mySelectProductInfoSqlFormat = @"SELECT [ProductID],[ProductName],PT.CategoryID,CT.CategoryName FROM [CSK_Store_ProductNew] as PT
+                                                left join CSK_Store_Category as CT on PT.CategoryID = CT.CategoryID
+                                                where PT.[ProductId] in ({0})";
         string myUpdateSqlFormat = "Update PurgedProduct set ProductChecked = 1 where [ProductId] in ({0})";
         string myDeleteSqlFormat = "Delete PurgedProduct where IndexChecked = 1 and ProductChecked = 1";
 
@@ -131,6 +133,7 @@ namespace PurgeCloudflareCacheService
                     string idString = string.Join(",", pidList);
 
                     List<ProductInfo> productInfoList = new List<ProductInfo>();
+                    Dictionary<int, string> categoryDic = new Dictionary<int, string>();
 
                     string selectProductInfoSql = string.Format(mySelectProductInfoSqlFormat, idString);
                     if (isDebug)
@@ -154,6 +157,13 @@ namespace PurgeCloudflareCacheService
                                 productInfo.ProductId = sqlDr.GetInt32(0);
                                 productInfo.ProductName = sqlDr.GetString(1);
                                 productInfoList.Add(productInfo);
+
+                                int categoryId = sqlDr.GetInt32(2);
+                                string categoryName = sqlDr.GetString(3);
+                                if(!categoryDic.ContainsKey(categoryId))
+                                {
+                                    categoryDic.Add(categoryId, categoryName);
+                                }
                             }
                         }
                     }
@@ -161,7 +171,9 @@ namespace PurgeCloudflareCacheService
                     if (productInfoList.Count > 0)
                     {
                         List<string> urls = GetPurgeUrls(productInfoList, ci);
+                        PurgeCloudflareCaches(urls, ci);
 
+                        urls = GetPurgeUrls(categoryDic, ci);
                         PurgeCloudflareCaches(urls, ci);
                     }
                     if (isDebug)
@@ -182,6 +194,20 @@ namespace PurgeCloudflareCacheService
                     eventLog1.WriteEntry("Country " + ci.CountryId + " deleted products : " + idString);
                 }
             }
+        }
+
+        private List<string> GetPurgeUrls(Dictionary<int, string> categoryDic, CountryInfo ci)
+        {
+            List<string> urls = new List<string>();
+
+            foreach (int key in categoryDic.Keys)
+            {
+                string url = ci.WebSite + UrlController.GetCatalogUrl(categoryDic[key], key);
+
+                urls.Add(url);
+            }
+
+            return urls;
         }
 
         private void PurgeCloudflareCaches(List<string> urls, CountryInfo ci)
