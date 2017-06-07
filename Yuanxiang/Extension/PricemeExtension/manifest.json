@@ -1,0 +1,23 @@
+{
+  "name": "PriceMe",
+  "short_name": "PriceMe",
+  "version": "1.2",
+  "manifest_version": 2,
+  "description": "Never miss a good deal. Use PriceMe's shopping comparison service when browsing the web.",
+  "permissions": [ "tabs", "activeTab" ],
+  "content_scripts": [
+    {
+      "matches": [ "http://*/*", "https://*/*" ],
+      "js": [ "jquery-3.2.0.min.js", "cs.js" ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_icon": "priceme-16.png",
+    "default_title": "PriceMe"
+  },
+  "icons": {
+    "48": "priceme-48.png",
+    "128": "priceme-128.png"
+  }
+}
