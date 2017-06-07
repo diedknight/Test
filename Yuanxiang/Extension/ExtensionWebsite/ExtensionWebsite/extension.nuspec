@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>extensionwebsite</id>
+    <version>1.3</version>
+    <authors>PriceMe Devs</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Improvements and bug fixes</description>
+  </metadata>
+  <files>
+    
+    <file src="..\Publish\bin\" target="bin" />
+    <file src="..\Publish\css\" target="css" />
+    <file src="..\Publish\js\" target="js" />
+    <file src="..\Publish\pricemeextension.aspx" target="pricemeextension.aspx" />
+    <file src="..\Publish\Global.asax" target="Global.asax" />
+    <file src="..\Publish\Web.config" target="Web.config" />
+  </files>
+</package>
