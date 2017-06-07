@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>extension</id>
+    <version>1.3</version>
+    <authors>PriceMe Devs</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Improvements and bug fixes</description>
+  </metadata>
+  <files>
+    <file src="..\Publish\bg.js" target="bg.js" />
+    <file src="..\Publish\bootstrap.min.css" target="bootstrap.min.css" />
+    <file src="..\Publish\cs.js" target="cs.js" />
+    <file src="..\Publish\jquery-3.2.0.min.js" target="jquery-3.2.0.min.js" />
+    <file src="..\Publish\manifest.json" target="manifest.json" />
+    <file src="..\Publish\Priceme.css" target="Priceme.css" />
+    <file src="..\Publish\Priceme.html" target="Priceme.html" />
+    <file src="..\Publish\priceme-16.png" target="priceme-16.png" />
+    <file src="..\Publish\priceme-48.png" target="priceme-48.png" />
+    <file src="..\Publish\priceme-128.png" target="priceme-128.png" />
+    <file src="..\Publish\website.publishproj" target="website.publishproj" />
+  </files>
+</package>
