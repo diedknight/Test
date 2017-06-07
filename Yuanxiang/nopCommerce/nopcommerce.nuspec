@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>extension</id>
+    <version>1.3</version>
+    <authors>PriceMe Devs</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Improvements and bug fixes</description>
+  </metadata>
+  <files>
+    <file src="..\Administration" target="Administration" />
+    <file src="..\App_Data" target="App_Data" />
+    <file src="..\bin" target="bin" />
+    <file src="..\Content" target="Content" />
+    <file src="..\Plugins" target="Plugins" />
+    <file src="..\Scripts" target="Scripts" />
+    <file src="..\Themes" target="Themes" />
+    <file src="..\Views" target="Views" />
+    <file src="..\ErrorPage.htm" target="ErrorPage.htm" />
+    <file src="..\FileNotFound.htm" target="FileNotFound.htm" />
+    <file src="..\Global.asax" target="Global.asax" />
+    <file src="..\Web.config" target="Web.config" />
+  </files>
+</package>
