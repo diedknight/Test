@@ -9,11 +9,11 @@
   </metadata>
   <files>
     
-    <file src="..\Publish\bin\" target="bin" />
-    <file src="..\Publish\css\" target="css" />
-    <file src="..\Publish\js\" target="js" />
-    <file src="..\Publish\pricemeextension.aspx" target="pricemeextension.aspx" />
-    <file src="..\Publish\Global.asax" target="Global.asax" />
-    <file src="..\Publish\Web.config" target="Web.config" />
+    <file src="..\ExtensionWebsite\Publish\bin\" target="bin" />
+    <file src="..\ExtensionWebsite\Publish\css\" target="css" />
+    <file src="..\ExtensionWebsite\Publish\js\" target="js" />
+    <file src="..\ExtensionWebsite\Publish\pricemeextension.aspx" target="pricemeextension.aspx" />
+    <file src="..\ExtensionWebsite\Publish\Global.asax" target="Global.asax" />
+    <file src="..\ExtensionWebsite\Publish\Web.config" target="Web.config" />
   </files>
 </package>
