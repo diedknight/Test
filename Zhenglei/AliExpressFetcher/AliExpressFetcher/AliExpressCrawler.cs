@@ -22,6 +22,7 @@ namespace AliExpressFetcher
         string mCountry;
         string mCurrency;
         string mChromeWebDriverDir;
+        List<string> mAddedSkuList;
 
         static AliExpressCrawler()
         {
@@ -41,6 +42,8 @@ namespace AliExpressFetcher
 
         public List<ProductInfo> CrawlProducts(List<CategoryInfo> categoryInfoList)
         {
+            mAddedSkuList = new List<string>();
+
             List<ProductInfo> list = new List<ProductInfo>();
 
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -80,7 +83,7 @@ namespace AliExpressFetcher
             Console.WriteLine(msg);
         }
 
-        public List<ProductInfo> CrawlCategoryProducts(CategoryInfo ci, ChromeDriver driver)
+        private List<ProductInfo> CrawlCategoryProducts(CategoryInfo ci, ChromeDriver driver)
         {
             List<ProductInfo> list = new List<ProductInfo>();
 
@@ -127,13 +130,22 @@ namespace AliExpressFetcher
             return list;
         }
 
-        public ProductInfo GetProductInfo(string productLink, string categoryName, ChromeDriver driver)
+        private ProductInfo GetProductInfo(string productLink, string categoryName, ChromeDriver driver)
         {
             ProductInfo pi = null;
 
             try
             {
                 string sku = SkuRegex_Static.Match(productLink).Groups["sku"].Value;
+
+                if(mAddedSkuList.Contains(sku))
+                {
+                    return null;
+                }
+                else
+                {
+                    mAddedSkuList.Add(sku);
+                }
 
                 driver.Navigate().GoToUrl(productLink);
                 
@@ -232,7 +244,7 @@ namespace AliExpressFetcher
                 System.Threading.Thread.Sleep(800);
                 string fullDescription = descEle.GetAttribute("innerHTML").Trim();
                 int reTryCount = 3;
-                while(fullDescription.Equals("<div class=\"loading32\"></div>") && reTryCount > 0)
+                while(fullDescription.Length < 80 && reTryCount > 0)
                 {
                     System.Threading.Thread.Sleep(300);
                     fullDescription = descEle.GetAttribute("innerHTML").Trim();

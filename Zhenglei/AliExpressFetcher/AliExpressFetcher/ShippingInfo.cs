@@ -22,7 +22,7 @@ namespace AliExpressFetcher
 
         public string ToDeliveryTimeString()
         {
-            return Name.ToCsvSafeString() + " " + EstimatedDeliveryTime.ToCsvSafeString();
+            return EstimatedDeliveryTime.ToCsvSafeString();
         }
     }
 }
