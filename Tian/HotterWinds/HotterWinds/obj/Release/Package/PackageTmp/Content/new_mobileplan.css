@@ -1,0 +1,351 @@
+﻿.bg3{background:url(https://images.pricemestatic.com/images/pricemenewdesign/NZ_mobileplan_bg.png?v=20131028) no-repeat;}
+.newListTable,.commonDiv {
+    border:0;
+    border-spacing:0;
+    width:100%;
+}
+.commonDiv {float:left;}
+.commonDiv h2 {font-size:16px;}
+.newListTable .listHead
+{
+    height:38px;
+    background-position: 0 -118px;
+    background-repeat: repeat-x;
+}
+.newListTable th
+{
+    text-align:left;
+    padding-left:5px;
+    color:White;
+}
+.newListTable .productPhoneRow{height:50px;}
+.newListTable .ch:hover,
+.newListTable .arrow-up,
+.newListTable .arrow-down
+{
+    cursor:pointer;
+    background-color:rgb(94,94,94);
+}
+.ch .span1
+{
+    float:left;
+    display:block;
+    width:70%;
+}
+.ch span
+{
+    float:right;
+    display:block;
+    margin-right:8px;
+    width:9px;
+    height:15px;
+    background-position:0 1000px;
+}
+.ch:hover span
+{
+    background-position:0 -306px;
+}
+.arrow-down span,
+.arrow-up:hover span
+{
+    background-position:0 -278px;
+}
+.arrow-up span,
+.arrow-down:hover span
+{
+    background-position:0 -306px;
+}
+.newListTable td
+{
+    border-bottom:1px solid #ccc;
+    vertical-align: middle;
+    text-align: center;
+}
+.newListTable .sorted
+{
+    background-color:#E7F5FF;
+}
+.newListTable h4
+{
+    font-size:12px;
+}
+
+
+.alink{color:#0C7BE5;cursor:pointer;}
+.alink:hover{text-decoration: underline;}
+.color1{color:#ff7427;}
+.countSpan{color:#999;}
+.carrierHead{width:100px;}
+.planHead{width:180px;}
+.contractHead{width:100px;}
+.minutesHead{width:90px;}
+.dataHead{width:90px;}
+.textHead{width:90px;}
+.upfrontHead{width:120px;}
+.priceHead{width:150px;}
+.visitsiteHead{width:130px;}
+
+
+.tdcarrier,.tdplan,.tddata,.tdcontract,.tdminutes,.tdupfront{text-align:left !important;padding-left:5px;}
+.tdupfront b{font-size:15px;color:#EA5504;}
+.tdprice b{font-size:20px;color:#EA5504;}
+.tdprice strong{font-size:16px;}
+.tdphone small,.tdprice small{color:#ccc;}
+.tdVisitSite a{padding-left:10px;margin-left:10px;}
+
+.newVisiteButton23
+{
+    width:130px;
+    height:31px;
+    display:block;
+    text-indent:-9999px;
+    background-position:0 -190px
+}
+.newVisiteButton23:hover
+{
+    background-position:0 -231px;
+}
+.productPhoneRow{
+    border-bottom:1px solid #ccc;
+    padding:5px 0 0 5px;
+    background-position: 2000px 2000px;
+}
+.productPhoneRow:hover{
+    background-position: 0 0px;
+    background-repeat: repeat-x;
+}
+.productPhoneRow .image{
+    float:left;
+    padding-bottom: 5px;
+    width:90px;
+}
+.productPhoneRow .name{
+    float:left;
+    width:540px;
+    padding:10px 10px 0 10px;
+}
+.productPhoneRow .price{
+    color: #EA5504;
+    float: left;
+    padding-top:10px;
+    text-align: center;
+    width: 100px;
+    font-size:25px;
+    font-weight:bolder;
+}
+.productPhoneRow .upfront{
+    background-position: 0 -17px;
+    display:block;
+    height: 31px;
+    width: 99px;
+    cursor:pointer;
+}
+.productPhoneRow .upfront:hover{
+    background-position: 0 -59px;
+    display:block;
+    height: 31px;
+    width: 99px;
+    cursor:pointer;
+}
+.productPhoneRow .upfrontPrice{font-size:20px;}
+
+#divPhonePlans,#divPlans,#divFilter {display:none;float:left;}
+.showDiv {display:block !important;}
+#profiler{padding-top:10px;}
+#profiler btn{padding:2px 5px;}
+
+.btn {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff;
+	box-shadow:inset 0px 1px 0px 0px #fff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
+	background:-moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
+	background-color:#e9e9e9;
+	-webkit-border-top-left-radius:10px;
+	-moz-border-radius-topleft:10px;
+	-webkit-border-top-right-radius:10px;
+	-moz-border-radius-topright:10px;
+	-webkit-border-bottom-right-radius:10px;
+	-moz-border-radius-bottomright:10px;
+	-webkit-border-bottom-left-radius:10px;
+	-moz-border-radius-bottomleft:10px;
+	border-radius:5px;
+	text-indent:0;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#666;
+	font-family:Arial;
+	font-size:12px;
+	font-style:normal;
+	height:25px;
+	line-height:25px;
+	width:85px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #fff;
+    cursor:pointer;
+    padding:0;
+    vertical-align:top;
+}
+.btn:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
+	background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+	background-color:#e9e9e9;
+}.btn:active {
+	position:relative;
+	top:1px;
+}
+
+ .btnSelected {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #FB6125) );
+	background:-moz-linear-gradient( center top, #fb9e25 5%, #FB6125 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#FB6125');
+	background-color:#FB6125;
+	-webkit-border-top-left-radius:10px;
+	-moz-border-radius-topleft:10px;
+	-webkit-border-top-right-radius:10px;
+	-moz-border-radius-topright:10px;
+	-webkit-border-bottom-right-radius:10px;
+	-moz-border-radius-bottomright:10px;
+	-webkit-border-bottom-left-radius:10px;
+	-moz-border-radius-bottomleft:10px;
+	border-radius:5px;
+	text-indent:0;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	color:#fff;
+	font-family:Arial;
+	font-size:12px;
+	font-style:normal;
+	height:25px;
+	line-height:25px;
+	width:85px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #cc9f52;
+    cursor:pointer;
+}
+.btnSelected:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FFDE77), color-stop(1, #FB6125) );
+	background:-moz-linear-gradient( center top, #FFDE77 5%, #FB6125 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDE77', endColorstr='#FB6125');
+	background-color:#FFDE77;
+	color:#fff;
+}
+    .btnSelected:active {
+        position: relative;
+        top: 1px;
+    }
+    .searchRow
+{
+    padding:5px 8px;
+    clear:both;
+    overflow:visible !important;
+}
+.helpTopicDiv1
+{
+    width:18px;
+    height:18px;
+    display:inline-block;
+    position:relative;
+    overflow:visible !important;
+    background-position: 0 -174px;
+}
+.helpTopicDiv1 .helpC
+{
+    position:absolute;
+    z-index:12;
+    margin:-10px 0 0 20px;
+    display:none;
+}
+.helpTopicDiv1:hover .helpC
+{
+    display:block;
+}
+.helpTopicDiv1 *
+{
+    overflow:visible;
+}
+.filterTitle
+{
+    clear:both;
+    float:left;
+    margin-top:7px;
+    width:175px;
+    overflow:visible !important;
+}
+.filterTitle *
+{
+    vertical-align:middle;
+    *float:left;
+}
+/*弹出提示*/
+.bubble-box{
+      background:#E5E5E5;
+      width:200px;
+      margin-bottom:30px;
+      overflow:visible!important;
+      height:1px;
+}
+.bubble-box .wrap{
+      background:#E1E1E1;
+      overflow:visible!important;
+      /* 修正IE6 */
+      _position:relative;
+}
+/* arrow-effect */
+.arrow-left{ border-left:20px solid #FFF; border-top:20px solid #E1E1E1; margin-top:20px; }
+.arrow-right{ border-right:20px solid #FFF; border-top:20px solid #E1E1E1; }
+.arrow-top{ border-left:20px solid #E1E1E1; border-top:20px solid #E1E1E1; margin-left:20px; }
+.arrow-bottom{ border-left:20px solid #E1E1E1; border-bottom:20px solid #E1E1E1; margin-left:20px; }
+.arrow-left .wrap,
+.arrow-right .wrap{
+      width:200px;
+      padding:12px 10px 12px 10px;
+      margin-top:-30px;
+      font-size:12px;
+      font-weight:normal;
+}
+.arrow-top, .arrow-bottom{ width:140px; }
+.arrow-top .wrap,
+.arrow-bottom .wrap{
+      width:200px;
+      padding:12px 10px 12px 10px;
+      margin-left:-40px;
+}
+
+.btnVSSmall{padding:10px 5px 0 0; float:right; border-bottom:none !important;}
+
+
+/*宽度大于400px时*/
+@media (max-width: 360px),(min-width: 360px) {
+#divPhonePlans,#divPlans,#divFilter {width:310px;}
+.tdplan a {width:100%;}
+.btnVSSmall {display:block;}
+.thdata,.thcontract,.thminutes,.thupfront,.thprice,.tddata,.tdcontract,.tdminutes,.tdupfront,.tdprice,.tdVisitSite{display:none;}
+}
+/*宽度大于400px时*/
+@media (min-width: 400px) {
+#divPhonePlans,#divPlans,#divFilter {width:360px;}
+}
+/*宽度大于768px时*/
+@media (min-width: 768px) {
+#divPhonePlans,#divPlans,#divFilter {width:750px;}
+.tdplan a {width:150px;}
+.btnVSSmall {display:none;}
+.thdata,.thcontract,.thminutes,.thupfront,.thprice,.tddata,.tdcontract,.tdminutes,.tdupfront,.tdprice,.tdVisitSite{display:table-cell;}
+}
+/*宽度大于1007px时*/
+@media (min-width: 1007px) {
+#divPhonePlans,#divPlans,#divFilter {width:990px;}
+}
+/*宽度大于1200px时*/
+@media (min-width: 1200px) {
+#divPhonePlans,#divPlans,#divFilter {width:1170px;}
+
+}

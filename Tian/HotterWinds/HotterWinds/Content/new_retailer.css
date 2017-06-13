@@ -1,0 +1,493 @@
+﻿/* --- Start Dawn --- */
+.Arial14{font-family:Arial;font-size:14px; font-style:normal; font-weight:normal;}
+.noRetailerMap {padding-top:5px;    }
+.retailerList{font-size:16px;font-weight:bold;color:#36C;float: left;padding-left:80px;}
+.retailerList label{color:#36C;font-size:14px;}
+.retailerList a{color:#36C;font-size:14px;}
+.RowDiv{padding:15px 0;}
+.tabTD h2{font-size: 12px;} 
+.retailerInfoContent{padding-left:5px; width:100%;}
+.retailerInfoRtrvDiv{margin-bottom:10px; width:100%;}
+.retailerInfoTitleTD{padding:3px 0 0 0; height: 60px; text-align:left;font:Arial regular 14px;}
+.retailerInfoTitleTD b{padding-right:22px;}
+.retailerInfoTitleTD span{color:#666;}
+.retailerInfoTitleTD a{color:#0a79d3; text-decoration:underline;}
+.RetailerFooterReview{width:90%;padding-top:10px;clear:left; display:none;}
+.listdate {padding-right:35px !important;}
+.retailerInfoDescription b{color: Black;font-weight:normal;font-style:normal;font:Arial;font-size:17px;}
+.retailerInfoRetailerMSG{font-size:13px;font-weight:normal;font-style:normal;color: #666;clear:left;}
+.retailerMSG{font-style:italic; clear:left;font-size:x-small; color:#EC6C00;}
+.comparepricesFrom{font-family:Tahoma;color:#666;padding:5px 0;}
+.nolinkPrice{color:#666666!important; font-weight:normal;}
+
+.retailerInfoTb1{width: 200px; float:left;}
+.retailerInfoTb2{width: 450px; float:left;}
+.wid280 {width:280px;}
+
+@media (min-width: 360px),(max-width:360px) {
+    .pricesDivStock,.DesTd,.RlogoTD,#newsPhoneAppDiv,#redHerringImg {
+    display:none;}
+.retailerList{font-size: 16px;font-weight: bold;color: #36C;float: left;padding-left: 0;display:block;}
+.retailerInfoTb1{width: 120px; float:left;}
+.retailerInfoLogo2{width: 120px; text-align:left;height: 60px;}
+.retailerInfoLogo2 div{width:100px; margin-left:0;padding-top:10px;}
+.retailerInfoTb2{width: 160px; float:left;}
+.wid280 {width:100%;}
+.rcpImg{display:none;}
+.retailerInfoContent{padding-left:0px;width:100%;}
+.googleHorizontalAds{width:300px;margin: 10px 0 0 0px; overflow:hidden}
+
+    .nav > li > a {
+        padding: 10px 5px;
+    }
+}
+@media (min-width: 400px) {
+.pricesDivStock,.DesTd,.RlogoTD,#newsPhoneAppDiv,#redHerringImg {
+    display:none;}
+.retailerList{font-size: 16px;font-weight: bold;color: #36C;float: left;padding-left: 0;display:block;}
+.retailerInfoTb1{width: 130px; float:left;}
+.retailerInfoLogo2{width: 130px; text-align:left;height: 60px;}
+.retailerInfoLogo2 div{width:130px;padding-top:10px;margin-left:3px; }
+.retailerInfoTb2{width: 200px; float:left;}
+.wid280 {width:100%;}
+.rcpImg{display:none;}
+.retailerInfoContent{padding-left:5px; width:100%;}
+.googleHorizontalAds{width:360px}
+
+}
+@media (min-width: 768px) {
+.pricesDivStock,.DesTd,.RlogoTD,#newsPhoneAppDiv,#redHerringImg {
+    display:block;}
+.RlogoTD {display: table-cell;  vertical-align: inherit;}
+#catalogProductsDiv {width: 460px;}
+.retailerList {font-size: 16px;font-weight: bold;color: #36C;float: left;padding-left: 0;display:block;}
+.retailerInfoTb1{width: 200px; float:left;}
+.retailerInfoLogo2{width: 200px; text-align:left;height: 60px;}
+.retailerInfoLogo2 div{width:180px;padding-top:10px;}
+.retailerInfoTb2{width: 450px; float:left;}
+.wid280 {width:280px;}
+.rcpImg{width:12%;float:left;padding:5px;display:block;}
+.retailerInfoContent{padding-left:5px; width:100%;}
+.googleHorizontalAds{width:738px}
+    .nav > li > a {
+        padding: 10px 15px;
+    }
+}
+@media (min-width: 1007px) {
+    .retailerList {
+        font-size: 16px;
+        font-weight: bold;
+        color: #36C;
+        float: left;
+        padding-left: 80px;display:block;
+    }
+.retailerInfoTb1{width: 200px; float:left;}
+.retailerInfoLogo2{width: 200px; text-align:left;height: 60px;}
+.retailerInfoLogo2 div{width:180px;margin-left:3px; padding-top:10px;}
+.retailerInfoTb2{width: 450px; float:left;}
+.wid280 {width:280px;}
+.rcpImg{width:12%;float:left;padding:5px;display:block;}
+.retailerInfoContent{padding-left:5px; width:100%;}
+.googleHorizontalAds{width:979px}
+}
+@media (min-width: 1200px) {
+.googleHorizontalAds{width:1156px}
+}
+/* --- End Dawn --- */
+
+
+/* --- Start HRL ---*/
+
+/*retailerGmap */
+.noRetailerMap
+{
+    font-size: 86%;color: #333;text-align: center;line-height: 23px;white-space: nowrap;
+    background: #DEC;border: 1px solid #8C3;font-family: Arial, Tahoma, helvetica, verdana, geneva, sans-serif;
+}
+.padding-top5{padding-top: 5px;}
+.padding-right2{padding-right: 2px;}
+
+.mapDiv{padding: 2px; border: #ffa44a 1px solid; }
+.mapListDiv{font-size: 12px; text-align: left; padding-bottom:20px 0 54px 0; float: left}
+.retailerMapUL{margin: 0; padding: 0; list-style: none; float: left;}
+.graycf,.cf{clear:both;overflow:hidden;padding-left: 8px; border-bottom:1px solid #ccc; padding: 3px 0}
+.graycf{background-color:#eee}
+
+@media (min-width: 360px),(max-width:360px) {
+    .mapListDiv .retailerMapUL,.mapListDiv .relatedControlTitle{width:290px}
+    .mapListDiv .nameAddress{float:left; padding-left:10px}
+    .mapListDiv .city,
+    .mapListDiv .postcode,
+    .mapListDiv .pohnemail,
+    .retailerMapUL .name,
+    .retailerMapUL .address,
+    .retailerMapUL .city,
+    .retailerMapUL .postcode,
+    .retailerMapUL .pohnemail{width:280px; float:left;}
+    .retailerMapUL .city,
+    .retailerMapUL .postcode,
+    .retailerMapUL .pohnemail{padding-left:10px}
+    .name p,.address p,.city p,.postcode p{padding-right:2px}
+}
+@media (min-width: 400px) {
+    .mapListDiv .retailerMapUL,.mapListDiv .relatedControlTitle{width:345px}
+    .mapListDiv .city,
+    .mapListDiv .postcode,
+    .mapListDiv .pohnemail,
+    .retailerMapUL .name,
+    .retailerMapUL .address,
+    .retailerMapUL .city,
+    .retailerMapUL .postcode,
+    .retailerMapUL .pohnemail{width:335px; float:left;}
+}
+@media (min-width: 768px) {
+    .mapListDiv .retailerMapUL,.mapListDiv .relatedControlTitle{width:735px}
+    .mapListDiv .name,
+    .mapListDiv .address,
+    .retailerMapUL .name,
+    .retailerMapUL .address{width:210px;float:left; }
+    .mapListDiv .city,
+    .mapListDiv .postcode,
+    .mapListDiv .pohnemail,
+    .retailerMapUL .city,
+    .retailerMapUL .postcode,
+    .retailerMapUL .pohnemail{width:100px; float:left;}
+    .retailerMapUL .city,
+    .retailerMapUL .postcode,
+    .retailerMapUL .pohnemail{padding-left:0px}
+}
+@media (min-width: 1007px) {
+    .mapListDiv .retailerMapUL,.mapListDiv .relatedControlTitle{width:975px}
+    .mapListDiv .name,
+    .mapListDiv .address,
+    .retailerMapUL .name,
+    .retailerMapUL .address{width:300px;float:left; }
+}
+@media (min-width: 1200px) {
+    .mapListDiv .retailerMapUL,.mapListDiv .relatedControlTitle{width:1150px}
+    .mapListDiv .city,
+    .mapListDiv .postcode,
+    .mapListDiv .pohnemail,
+    .retailerMapUL .city,
+    .retailerMapUL .postcode,
+    .retailerMapUL .pohnemail{width:150px; float:left;}
+}
+/*end retailerGmap */
+
+.productCenter{margin:0;}
+.productInfoDiv_List .sImage{display:block;float:left;margin:1px 10px 1px 5px}
+.productInfoDiv_List .added{color:Gray;text-align:center;text-decoration:none;padding-top:5px}.productInfoDiv_List .addDiv{width: 70px;cursor:pointer;color:gray;padding-top:5px}
+.productInfoDiv_List .priceDiv{text-align:center;font-size:16px;font-weight:bolder;color:rgb(42, 16, 81)!important;}
+.productInfoDiv_List .bestPPCDiv{color:gray;text-align:center;height:20px;overflow:hidden;padding:2px 0 0 5px}
+.productInfoDiv_List .bestPPCDiv a{text-overflow: ellipsis;white-space: nowrap;display: block;overflow:hidden}
+.productInfoDiv_List .seeAllATag{float:left;display:block;margin:-18px 0 0 160px}
+.priceDiv a{text-align: center;font-size: 16px;font-weight: bolder;color: #FF7300 !important;}
+.retailerListVStd {
+vertical-align: middle;
+}
+/*起始宽度*/
+@media (max-width: 360px),(min-width:360px) {
+    .centerHorizontal, .productInfoDiv_List .descDiv,
+    .productInfoDiv_List .addDiv, .productInfoDiv_List .added, 
+    .productInfoDiv_List .seeAllATag,.productInfoDiv_List .col-review
+    {
+        display: none;
+    }
+
+    .productInfoDiv_List .psdMiddleDiv {
+        float: left;
+        width: 200px;
+        min-width: 1px;
+        height: auto;
+        max-height: 40px;
+        display:block;
+        overflow: hidden;
+    }
+    .productInfoDiv_List .pNameA {
+        display:table-cell;
+        vertical-align:middle;
+    }
+    .productInfoDiv_List {cursor:pointer}
+    .productInfoDiv_List .col-review{text-align:center;width:100px;float:right;padding-top:20px}
+    .productInfoDiv_List .col-prices{text-align:center;width:200px}
+    .productInfoDiv_List .comparePriceDiv{text-align:center;width:20px;float:right;}    
+    .productInfoDiv_List .col-prices {float: left;}
+    .productInfoDiv_List .priceDiv {float: left;}
+    .bestPPCDiv a,.bestPPCDiv a:hover{color:gray;text-decoration:none;}
+    .productInfoDiv_List:hover .addDiv,.productInfoDiv_List:hover .added{display:block;}
+    .quickH2 {
+        width: 300px;
+    }
+
+    .btnVS{margin:0;}
+
+    .visitShop a,.btnVS a{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .btnVS a{width:20px;margin:0 auto;padding: 8px 0;}
+    .visitShop a{width: 110px;}
+
+.btn-cp,.btn-vs,.btn-ps {
+        color: #c06a00 ;
+        background-color: transparent;
+        background-image:none;
+        border:none;
+}
+    .btn-cp:hover,.btn-vs:hover,.btn-ps:hover {
+        color: #d47500 ;
+        background-color: transparent;
+        background-image:none;
+        border:none;
+    }
+    .productCenter,#catalogProductsDiv {
+        width: 300px;
+        margin: 0 auto;
+    }
+    .catalogProductsDiv2{width:283px !important;border-collapse: collapse;margin-left:10px !important;}
+    .retailerListVStd {
+        vertical-align: middle;
+    }
+}
+/*宽度大于400px时*/
+@media (min-width: 400px) {
+    .productCenter,#catalogProductsDiv {
+        width: 360px;
+    }
+    .catalogProductsDiv2{width:343px !important}
+    .productInfoDiv_List .psdMiddleDiv {
+        width: 230px;
+    }
+    .productInfoDiv_List .col-prices{width:220px}
+    .productInfoDiv_List .comparePriceDiv{width:35px;}  
+    
+    .btnVS{margin-left:10px;}
+    .visitShop a{
+        width: 155px;
+    }
+}
+/*宽度大于768px时*/
+@media (min-width: 768px) {
+    .productCenter, #catalogProductsDiv {
+        width: 750px;
+    }
+    .catalogProductsDiv2{width:733px !important}
+    .productInfoDiv_List .col-review,
+    .seeAllATag {
+        display: block;
+    }
+    
+    .centerHorizontal, .productInfoDiv_List .descDiv {/*,#narrowByPanel,#accordion999*/
+        display: none;
+    }
+    .productInfoDiv_List {cursor:default}
+
+    .productInfoDiv_List .psdMiddleDiv {
+        float: left;
+        width: 220px;
+        min-width: 1px;
+        height: 55px;
+        max-height: 55px;
+        display:table;
+        overflow: hidden;
+    }
+    .productInfoDiv_List .pNameA {
+        display:table-cell;
+        vertical-align:middle;
+    }
+
+    .productInfoDiv_List .comparePriceDiv{width:180px}  
+    .productInfoDiv_List .col-prices{width:150px;float: right;padding-top:18px}
+    .productInfoDiv_List .priceDiv {float: none;}  
+    .bestPPCDiv a{color: #36c}
+    .bestPPCDiv a:hover{color: #27f;text-decoration: underline;}    
+
+    .btnVS{margin:15px 0}
+    .btnVS a{width:145px;padding: 0;}
+    .visitShop a{
+        width: 165px;
+    }
+    
+.btn-cp,.btn-vs,.btn-ps {
+    color: #fff;
+    background-color: #d47500;
+    border-color: #d47500;
+    background-image: linear-gradient(#ff9c21,#d47500 50%,#c06a00);
+    background-repeat: no-repeat;
+    filter: none;
+    border: 1px solid #a15900;
+    background-color: #d47500;
+    border-color: #d47500;
+}
+    .btn-cp:hover,.btn-vs:hover,.btn-ps:hover {
+        background-image: linear-gradient(#ff930d,#c06a00 50%,#ab5e00);
+        background-repeat: no-repeat;
+        filter: none;
+        border: 1px solid #8d4e00;
+        color: #fff;
+        background-color: #a15900;
+        border-color: #975300;
+    }
+}
+/*宽度大于1007px时*/
+@media (min-width: 1007px) {
+    .productCenter, #catalogProductsDiv {
+        width: 990px;
+    }
+    .catalogProductsDiv2{width:973px !important}
+    .centerHorizontal {
+        display: block;
+        float: left !important;
+    } 
+
+    .productInfoDiv_List .psdMiddleDiv {
+        width: 400px;
+    }
+    .productInfoDiv_List .col-prices{width:150px;}
+
+    #catalogProductsDiv .productInfo_Grid {
+        width: 188px;
+    }
+    .btnVS a{width:165px;padding: 0;}
+}
+/*宽度大于1200px时*/
+@media (min-width: 1200px) {
+    .productCenter, #catalogProductsDiv {
+        width: 1170px;
+    }
+    .catalogProductsDiv2{width:1153px !important}
+    .productInfoDiv_List .psdMiddleDiv {
+        width: 600px;
+    }
+}
+
+/* StoreReviews */
+.bubble 
+{
+position: relative;
+width: auto;
+height: auto;
+float:right;
+min-height: 80px;
+padding: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.scoreDiv{border-bottom:none;padding:15px 0}
+.scoreDiv1 .scoreContent{padding-left:0px}
+.scoreDiv1 .ReviewSubmit {background-color: #3498db; color: white; margin-top: 10px;}
+.scoreDiv1 .ReviewSubmit:hover {background-color: #1874CD;}
+.scoreStars {padding-right: 5px;float: none;width: 100%; float:left;}
+.reviewDate {float:right; width:105px;position: absolute; top: 21px; right: 5px;}
+.reviewReply {width:700px !important; float:left !important; position: relative; padding: 21px; border: 1px solid #f1f1f1; background-color:#f1f1f1; margin-left: 20px;}
+.reviewReply:before, .reviewReply:after {content: ""; border-width: 7.5px 10px 7.5px 0; width: 0; height: 0; 
+                      border-style: solid; position: absolute; top: 20px;}
+.reviewReply:before {
+  left: -10px;
+  border-color: transparent #f1f1f1;
+}
+.reviewReply:after {
+  left: -8px;
+  border-color: transparent #f1f1f1;
+}
+
+.ftexprvTitle{width:98.5%;padding-left:0px;}
+.ftexprvTitle h3{display:inline; font-size:13px;}
+.ftexprvContent{padding-left:0px;width:100%; font-size:12px;padding-bottom:5px;}
+.reviewImg {width:10%; float:left; text-align:center;}
+.reviewWriter {float: left; width: 10%; padding-left: 10px;}
+.scoreContent{float:right; display:block; width:78%;}
+.reviewSContent {float:left; display:block; padding-left:10px;}
+.scoreAlt{width:110px;margin-left:auto;margin-right:auto; float:left;}
+.reviewRating{height:35px !important}
+.pdleft5{padding:3px 0 0 3px}
+.scoreStarsXs div{float:left}
+.reviewFilter {float:left; width:450px;}
+.reviewSort {text-align: right; float: right; width: 200px; padding-top:4px;}
+
+@media (min-width: 360px),(max-width:360px) {
+.scoreAlt{width:110px;margin-left:auto;margin-right:auto; float:left;}
+.bubble{width:100%; padding-left:0;}
+.scoreStarsXs{float:left;color:gray}
+.reviewImg {width:100px;}
+.reviewWriter {width: 150px;}
+.scoreContent {width: 100%;padding-left:0px}
+.reviewSContent {width:100%; padding-left:3px;}
+.reviewReply {width:100% !important; margin-left: 0px;}
+.reviewFilter {width:340px}
+.reviewFilter .typebtn {width: 300px;}
+.reviewSort {padding-top:10px;}
+}
+
+/*宽度大于400px时*/
+@media (min-width: 400px){
+.scoreAlt{width:110px}
+.bubble{width:100%; padding-left:12px}
+.reviewReply {width:100% !important; margin-left: 0px;}
+.reviewFilter {width:340px}
+.reviewFilter .typebtn {width: 370px;}
+.reviewSContent {width:100%; padding-left:3px;}
+}
+/*宽度大于768px时*/
+@media (min-width: 768px) {
+    .scoreAlt {
+        width: 15%;
+    }
+
+    .bubble {
+        width: 84%;
+    }
+.scoreStarsXs{float:left}
+.reviewSContent {width:100%; padding-left:3px;}
+.reviewReply {width:500px !important; margin-left:20px}
+.reviewFilter {width:450px;}
+.reviewImg {width:12%;}
+.reviewWriter {width: 15%;}
+.scoreContent {width: 70%;padding-left:12px}
+.reviewSort {padding-top:4px;}
+}
+/*宽度大于992px时*/
+@media (min-width: 1007px) {
+.scoreAlt{width:10%}
+.bubble{width:89%}
+.reviewSContent {width:88%; padding-left:10px;}
+.reviewImg {width:10%;}
+.reviewWriter {width: 10%;}
+.scoreContent {width: 78%;padding-left:12px}
+}
+/*宽度大于1200px时*/
+@media (min-width: 1200px) {
+.bubble{width:89%}
+.scoreDiv1 .scoreContent{width: 80%;}
+}
+/* End StoreReviews */
+
+/* ---End HRL ---*/
+
+/* Retailer reviews */
+.divRatingSummaryT {float:left; width:120px; margin-top:-5px;}
+.divRatingSummaryC {float:left; display:flex; padding-top:3px;}
+.divRatingSummaryC:after {content: ""; clear:both;}
+.ratingRate {height:10px; background-color:#3498db; border-radius: 3px 0 0 3px;}
+.ratingLine {height:10px; background-color:#CCC; border-radius: 0 3px 3px 0;}
+.ratingCount {color:gray; top: -3px; position: relative; padding-left: 5px;}
+
+.reviewContent {position: relative;  padding: 21px; border: 1px solid #e0e0e0;}
+.reviewContent:before, .reviewContent:after {content: ""; border-width: 7.5px 10px 7.5px 0; width: 0; height: 0; 
+                      border-style: solid; position: absolute; top: 20px;}
+.reviewContent:before {
+  left: -10px;
+  border-color: transparent #e0e0e0 transparent transparent;
+}
+.reviewContent:after {
+  left: -8px;
+  border-color: transparent #fff transparent transparent;
+}
+
+.reviewFilter .title {margin-right:20px; float: left; width: 60px; margin-top: 9px;}
+.reviewFilter .typebtn {float: left; width: 230px;}
+.reviewFilter .typebtn::after {content:""; clear:both;}
+.reviewFilter .active {background-image: linear-gradient(to bottom, rgb(211,211,211), rgb(211,211,211)); border-color: #CCC; color: #3d3f3f;}
+/* End retailer reviews */

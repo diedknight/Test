@@ -1,0 +1,455 @@
+﻿ .Cpu .svg {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 60px;
+            left: 0px;
+            line-height: 20px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: absolute;
+            text-align: center;
+            top: 0px;
+            transform-origin: 30px 30px;
+            width: 60px;
+        }
+        .Cpu {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: inline-block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 60px;
+            line-height: 20px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            width: 60px;
+        }
+       .Cpu .val {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 300;
+            height: 45px;
+            line-height: 60px;
+            padding-top: 15px;
+            pointer-events: none;
+            position: relative;
+            text-align: center;
+            white-space: nowrap;
+            width: 60px;
+            z-index: 2;
+        }
+
+        .viz-temp {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            height: 112px;
+            line-height: 20px;
+            width: 101px;
+        }
+
+        .ratio-square {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: inline-block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 90px;
+            line-height: 20px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            width: 90px;
+        }
+        .ratio-viz {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 90px;
+            left: 0px;
+            line-height: 20px;
+            position: absolute;
+            text-align: center;
+            top: 0px;
+            width: 90px;
+        }
+        .viz-temp .val {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 21px;
+            font-weight: 300;
+            height: 90px;
+            line-height: 90px;
+            pointer-events: none;
+            position: relative;
+            text-align: center;
+            top: -22.5px;
+            white-space: nowrap;
+            width: 90px;
+            z-index: 2;
+        }
+        .viz-suffix {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            height: 16px;
+            line-height: 16.7999992370605px;
+            margin-top: 6px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .cpu-viz-temp {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            height: 82px;
+            line-height: 20px;
+            width: 90px;
+        }
+        .cpu-viz-suffix {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            height: 16px;
+            line-height: 16.7999992370605px;
+            margin-top: 6px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 90px;
+        }
+
+
+        .battery-viz-temp {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            height: 82px;
+            line-height: 20px;
+            width: 120px;
+        }
+        .battery-viz-wrap {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: inline-block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 60px;
+            line-height: 20px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            width: 60px;
+            top:-10px;
+        }
+
+        .battery-viz {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(221, 221, 221);
+            background-image: none;
+            background-origin: padding-box;
+            background-size: auto;
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 26px;
+            left: 4.796875px;
+            line-height: 20px;
+            position: absolute;
+            text-align: center;
+            top: 15px;
+            width: 48px;
+        }
+        .battery-val {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            font-weight: 300;
+            height: 60px;
+            line-height: 60px;
+            pointer-events: none;
+            position: relative;
+            text-align: center;
+            white-space: nowrap;
+            width: 60px;
+            z-index: 2;
+        }
+        .battery-cap {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(221, 221, 221);
+            background-image: none;
+            background-origin: padding-box;
+            background-size: auto;
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 9px;
+            line-height: 20px;
+            position: absolute;
+            right: -6px;
+            text-align: center;
+            top: 8.5px;
+            width: 5px;
+        }
+        .battery-color {
+            background-color: rgb(178, 215, 100);
+            bottom: 0px;
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 26px;
+            left: 0px;
+            line-height: 20px;
+            position: absolute;
+            text-align: center;
+            width: 33.109375px;
+        }
+        .battery-viz-suffix {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            height: 16px;
+            line-height: 16.7999992370605px;
+            margin-top: 6px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 120px;
+        }
+
+        .vertical-bar-viz-temp {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            height: 82px;
+            line-height: 20px;
+            width: 60px;
+        }
+        .vertical-bar-viz-wrap {
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: inline-block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 60px;
+            line-height: 20px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            width: 60px;
+        }
+        .vertical-bar-viz-short {
+            height:35px !important;
+        }
+        .vertical-bar-viz {
+            background-color: rgb(231, 231, 231);
+            box-shadow: rgba(0, 0, 0, 0.0470588) 1px 0px 2px 0px inset;
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 48px;
+            left: 2.390625px;
+            line-height: 20px;
+            position: absolute;
+            text-align: center;
+            top: 6px;
+            width: 12px;
+        }
+        .vertical-bar-color {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgb(178, 215, 100);
+            background-image: none;
+            background-origin: padding-box;
+            background-size: auto;
+            bottom: 0px;
+            box-sizing: border-box;
+            color: rgb(38, 38, 38);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            height: 26.390625px;
+            left: 0px;
+            line-height: 20px;
+            position: absolute;
+            text-align: center;
+            width: 12px;
+        }
+        .vertical-bar-val {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            height: 60px;
+            line-height: 60px;
+            pointer-events: none;
+            position: relative;
+            right: -9.59375px;
+            text-align: center;
+            white-space: nowrap;
+            width: 70px;
+            z-index: 2;
+        }
+        .vertical-bar-viz-suffix {
+            box-sizing: border-box;
+            color: rgb(77, 77, 77);
+            display: block;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            height: 16px;
+            line-height: 16.7999992370605px;
+            margin-top: 6px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 60px;
+        }
+
+        .star-clr {
+            box-sizing: border-box;
+            clear: both;
+            color: rgb(34, 34, 34);
+            display: block;
+            font-family: Arial, Tahoma, helvetica, verdana, geneva, sans-serif;
+            font-size: 12px;
+            height: 23px;
+            line-height: 18px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            padding-bottom: 5px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: 280px;
+        }
+        .star-float-left1 {
+            box-sizing: border-box;
+            color: rgb(34, 34, 34);
+            display: block;
+            float: left;
+            font-family: Arial, Tahoma, helvetica, verdana, geneva, sans-serif;
+            font-size: 12px;
+            height: 15px;
+            line-height: 18px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: 90px;
+        }
+
+        .star-float-left2 {
+            box-sizing: border-box;
+            color: rgb(34, 34, 34);
+            display: block;
+            float: left;
+            font-family: Arial, Tahoma, helvetica, verdana, geneva, sans-serif;
+            font-size: 12px;
+            height: 18px;
+            line-height: 18px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            width: 20px;
+        }
+        .star-FourAndHaftScoreP {
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: rgba(0, 0, 0, 0);
+            background-image: url(https://images.pricemestatic.com/Images/PriceMeNewDesign/PriceMe_bgnew_161117.png);
+            background-origin: padding-box;
+            
+            background-size: auto;
+            box-sizing: border-box;
+            color: rgb(34, 34, 34);
+            display: block;
+            font-family: Arial, Tahoma, helvetica, verdana, geneva, sans-serif;
+            font-size: 12px;
+            height: 15px;
+            line-height: 18px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+        }
+
+@media (max-width: 360px),(min-width:360px) {
+    .tempAdd-button {
+        top: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .tempAdd-button {
+        top: -13px;
+    }
+}
