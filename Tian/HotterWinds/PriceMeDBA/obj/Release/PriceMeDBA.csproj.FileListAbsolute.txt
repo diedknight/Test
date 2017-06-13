@@ -1,0 +1,7 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\bin\Release\PriceMeDBA.dll.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\bin\Release\PriceMeDBA.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\bin\Release\PriceMeDBA.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\bin\Release\SubSonic.Core.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\obj\Release\PriceMeDBA.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\obj\Release\PriceMeDBA.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\HotterWinds\PriceMeDBA\obj\Release\PriceMeDBA.pdb
