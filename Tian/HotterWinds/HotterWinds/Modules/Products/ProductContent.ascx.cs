@@ -204,7 +204,7 @@ namespace HotterWinds.Modules.Products
             //}
         }
 
-        private void SetProductTopDisplay()
+        private void SetProductTopDisplay() 
         {
             if (ProductTopDisplay1 != null)
             {

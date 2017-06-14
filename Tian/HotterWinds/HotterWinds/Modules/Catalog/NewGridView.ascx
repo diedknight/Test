@@ -27,7 +27,7 @@ if (priceCount <= 1 && !string.IsNullOrEmpty(BestPPCRetailerName))
     <%}
         else
         {
-            int z_index = 0;
+            int z_index = 0; 
             if (Sale <= -0.1 && (PrevPrice - CurrentPrice) >= 10)
             {
                 z_index++;

@@ -714,7 +714,9 @@
     <Content Include="Scripts\RetailerReview.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\wow.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code_Not\ABTesting\ABAlternative.cs" />

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 
 namespace HotterWinds.Modules
-{
+{ 
     public partial class PrettyPager : System.Web.UI.UserControl
     {
         public int currentPage = 0;

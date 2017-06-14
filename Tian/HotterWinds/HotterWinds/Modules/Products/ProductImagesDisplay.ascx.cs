@@ -46,7 +46,7 @@ namespace HotterWinds.Modules.Products
 
                     string imgL = PriceMe.Utility.GetLargeImage(img.ImageFile);
 
-                    listImages.Add(imgL);
+                    listImages.Add(imgL); 
                 }
             }
             else if (!string.IsNullOrEmpty(orgimage))

@@ -173,7 +173,7 @@ namespace HotterWinds
             categoryID = Utility.GetIntParameter("c");//category ID
             if (categoryID == 0)
             {
-                return false;
+                return false; 
             }
 
             if (WebConfig.CountryId == 3 && categoryID == 1283)

@@ -25,7 +25,7 @@
 <%
     int videoCount = 0;
 
-    var Videos = ProductController.GetProductVideos(product.ProductID, PriceMe.WebConfig.CountryId);
+    var Videos = ProductController.GetProductVideos(product.ProductID, PriceMe.WebConfig.CountryId); 
     if (Videos != null)
         videoCount = Videos.Count;
 

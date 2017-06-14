@@ -18,4 +18,4 @@ namespace HotterWinds.Modules
             RootCategoryList = CategoryController.GetAllRootCategoriesOrderByName(WebConfig.CountryId);                        
         }
     }
-}
+} 

@@ -61,7 +61,7 @@ namespace HotterWinds.Modules.Products
         }
 
         protected string GetLinkUrl(int pId, int rId, int rpId, int cid)
-        {            
+        {             
             string retailerProductURL = PriceMe.Utility.GetRootUrl("/ResponseRedirect.aspx?pid=" + pId + "&rid=" + rId + "&rpid=" + rpId + "&countryID=" + PriceMe.WebConfig.CountryId + "&cid=" + cid + "&aid=40&t=" + "HW", PriceMe.WebConfig.CountryId);
             string uuid = Guid.NewGuid().ToString();
             retailerProductURL += "&uuid=" + uuid;

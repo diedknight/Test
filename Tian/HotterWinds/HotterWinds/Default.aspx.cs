@@ -37,4 +37,4 @@ namespace HotterWinds
             Model.Blogs = HomeQuery.GetBlogs();
         }
     }
-}
+} 

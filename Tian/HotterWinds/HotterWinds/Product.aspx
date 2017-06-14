@@ -25,7 +25,7 @@
                 color: #ff0000
             }
     </style>
-
+     
     <style>
         .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
             border-radius: 16px;

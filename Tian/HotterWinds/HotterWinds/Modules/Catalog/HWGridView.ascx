@@ -20,7 +20,7 @@
 
             <div class="desc std">
                 <p><%=ShortDescriptionZH %></p>
-            </div>
+            </div> 
 
             <div class="item-content">
 

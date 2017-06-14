@@ -29,7 +29,7 @@
                     <h2>Related Products</h2>
                 </div>
             </div>--%>
-
+             
             <div id="related-products-slider" class="product-flexslider hidden-buttons">
                 <div class="slider-items slider-width-col4 products-grid block-content">
 

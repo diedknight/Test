@@ -88,7 +88,7 @@ namespace HotterWinds.Modules.Catalog
 
             linkUrl = CatalogProductURL;
             if (CategoryController.IsSearchOnly(int.Parse(CategoryID), WebConfig.CountryId))
-            {
+            { 
                 if (!string.IsNullOrEmpty(BestPPCRetailerName))
                 {
                     linkUrl = ClickOutUrl;

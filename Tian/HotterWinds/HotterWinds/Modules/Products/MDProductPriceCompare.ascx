@@ -14,7 +14,7 @@
     string uuid = Guid.NewGuid().ToString();
     RetailerProductURL += "&uuid=" + uuid;
     
-    if (retailer != null)
+    if (retailer != null) 
     {
         int count = 0;
         string rowClass = string.Empty;

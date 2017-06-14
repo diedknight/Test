@@ -24,7 +24,7 @@ namespace HotterWinds.Modules.Products
 
         const string rich_up = "<span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>";
         const string rich_down = "<span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span>";
-
+         
         protected void Page_Load(object sender, EventArgs e)
         {
 

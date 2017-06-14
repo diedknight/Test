@@ -30,7 +30,7 @@
 
             <uc1:ProductTopDisplay runat="server" ID="ProductTopDisplay1" />
 
-        </div>
+        </div> 
         <!--product-essential-->
 
 

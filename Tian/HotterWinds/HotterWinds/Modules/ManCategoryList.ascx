@@ -21,7 +21,7 @@
     <%else %>
     <%{ %>
     <%
-        string widecss = "";
+        string widecss = ""; 
         if (subCateList.Count == 2) widecss = "has-sub wide col-2";
         if (subCateList.Count > 2) widecss = "has-sub wide col-3";
 
