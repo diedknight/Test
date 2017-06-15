@@ -10,6 +10,8 @@ using PriceMeCommon.BusinessLogic;
 using PriceMe;
 using PriceMeCommon.Data;
 using PriceMeCommon;
+using HotterWinds.DBQuery;
+using Dapper;
 
 namespace HotterWinds.Modules.Products
 {
@@ -124,7 +126,7 @@ namespace HotterWinds.Modules.Products
 
 
             //ProductDesc = ProductController.GetProductDescription(product.ProductID, WebConfig.CountryId);
-            ProductDesc = product.LongDescriptionEN;
+            ProductDesc = this.GetDes(product.ProductID.ToString());
 
             var generationProduct = ProductController.GetGenerationProduct(product.ProductID, WebConfig.CountryId);
             if (generationProduct != null)
@@ -514,5 +516,15 @@ namespace HotterWinds.Modules.Products
                 ParentCategoryName = CategoryController.GetRootCategory(category.CategoryID, WebConfig.CountryId).CategoryName;
             }
         }
+
+        private string GetDes(string pid)
+        {
+            string sql = "select top 1 ShortDescriptionZH from CSK_Store_ProductNew where ProductID=" + pid;
+
+            string des = HotterWindsQuery.GetConnection().ExecuteScalar<string>(sql);
+
+            return des;
+        }
+
     }
 }

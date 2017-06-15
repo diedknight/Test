@@ -8,6 +8,8 @@ using PriceMe;
 using PriceMeCommon;
 using PriceMeCommon.BusinessLogic;
 using PriceMeCommon.Extend;
+using HotterWinds.DBQuery;
+using Dapper;
 
 namespace HotterWinds.Modules.Catalog
 {
@@ -97,6 +99,20 @@ namespace HotterWinds.Modules.Catalog
                 else
                     linkUrl = string.Empty;
             }
+
+
+            ShortDescriptionZH = GetDes(ProductID);
         }
+
+        public string GetDes(string pid)
+        {
+            string sql = "select top 1 ShortDescriptionZH from CSK_Store_ProductNew where ProductID=" + pid;
+
+            string des = HotterWindsQuery.GetConnection().ExecuteScalar<string>(sql);
+
+            return des;
+        }
+
+
     }
 }

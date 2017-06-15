@@ -82,22 +82,21 @@
                 <span class="shiping">+&nbsp;
                     <%if (RetailerProduct.Freight == 0) %>
                     <%{ %>
-                    Free
+                    Free&nbsp;shipping
                     <%} %>
                     <%else if (RetailerProduct.Freight < 0) %>
                     <%{ %>
-                    Unknow
                     <%} %>
                     <%else %>
                     <%{ %>
-                    <%=Resources.Resource.PriceCurrency %> <%=RetailerProduct.Freight %>
+                    <%=Resources.Resource.PriceCurrency %> <%=RetailerProduct.Freight %>&nbsp;shipping
                     <%} %>                    
-                    &nbsp;shipping at
+                    at
                 </span>
 
                 <span class="retailer_name"><%=Retailer.RetailerName %></span>
 
-                <a class="visit_shop" href="<%=VisitShopRetailerProductURL %>">Visit Shop ></a>
+                <a class="visit_shop" target="_blank" href="<%=VisitShopRetailerProductURL %>">Visit Shop ></a>
             </div>
             <div class="clr"></div>
         </div>
@@ -157,7 +156,7 @@
     <div class="social">
         <ul>
             <li class="fb pull-left">
-                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+                <div class="fb-like" data-href="https://hotterwinds.co.nz" data-layout="standard" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
             </li>
             <%--<li class="fb pull-left">
                 <a onclick="window.open('https://www.facebook.com/sharer.php?s=100&amp;p[url]=http%3A%2F%2Fwordpress.magikthemes.com%2Flinea%2Fproduct%2Ftoday-fashion-casual-sleeveless-solid-womens-top-light-pink%2F','sharer', 'toolbar=0,status=0,width=620,height=280');" href="javascript:;"></a>
@@ -189,6 +188,6 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/zh_CN/sdk.js#xfbml=1&version=v2.9";
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=1202589909863312";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>

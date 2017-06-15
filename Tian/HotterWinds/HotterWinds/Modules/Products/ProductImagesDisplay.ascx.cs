@@ -35,7 +35,7 @@ namespace HotterWinds.Modules.Products
             //ImageUrl = PriceMe.Utility.GetImage(Product.DefaultImage, "_ms");
             ImageUrl = PriceMe.Utility.GetLargeImage1(Product.DefaultImage);
 
-            listImages = new List<string>();
+            listImages = new List<string>();            
             List<CSK_Store_Image> images = PriceMeDBStatic.PriceMeDB.CSK_Store_Images.Where(i => i.ProductID == Product.ProductID).ToList();
             if (images != null && images.Count > 0)
             {
@@ -56,6 +56,14 @@ namespace HotterWinds.Modules.Products
                     orgimageurl = orgimage.FixUrl(Resources.Resource.ImageWebsite);
                 listImages.Add(orgimageurl);
             }
+
+
+            //add default img
+            if (listImages.Count != 0)
+            {
+                listImages.Insert(0, ImageUrl);
+            }
+
         }
     }
 }

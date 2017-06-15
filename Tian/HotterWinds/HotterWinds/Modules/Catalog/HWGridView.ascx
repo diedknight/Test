@@ -39,10 +39,9 @@
                 </div>
 
                 <div class="action">
-                    <a href="<%=ClickOutUrl %>" rel="nofollow" data-product_id="106" data-product_sku="" data-quantity="1" class="button add_to_cart_button  product_type_simple btn-cart">
+                    <a href="<%=ClickOutUrl %>" target="_blank" class="button add_to_cart_button btn-cart">
                         <span>Visit Shop</span>
                     </a>
-                    <a href="#" class="button yith-wcqv-button" data-product_id="106">Quick View</a>
                 </div>
             </div>
         </div>

@@ -928,7 +928,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="entry-thumb image-hover2">
                             <a href="<%=blog.Link %>">
-                                <img src="<%=blog.ImgUrl %>" alt="Pellentesque habitant morbi" onerror="onImgError_blog(this)">
+                                <img width="550" height="265" src="<%=blog.ImgUrl %>" onerror="onImgError_blog(this)">
                             </a>
                         </div>
 

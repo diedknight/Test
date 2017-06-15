@@ -9,7 +9,7 @@ namespace HotterWinds.DBQuery
 {
     public class HotterWindsQuery
     {
-        protected static SqlConnection GetConnection()
+        public static SqlConnection GetConnection()
         {
             string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["HotterWinds"].ConnectionString;
 

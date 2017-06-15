@@ -103,6 +103,6 @@
         <%} %>
     </ul>
 
-    <p><%=showingStr %></p>
+    <p style="text-align:right;"><%=showingStr %></p>
 </div>
  

@@ -11,8 +11,7 @@
         background-color: #1fc0a0;
         color: white;
         font-size: 15px;
-        border-radius: 5px;
-        margin-left: 15px;
+        border-radius: 5px;        
     }
 
         .related-pro .action .visit_shop:hover {
@@ -54,15 +53,7 @@
                                         <a href="<%=PriceMe.UrlController.GetProductUrl(p.ProductID,p.ProductName) %>" title="<%=p.ProductName %>"><%=p.ProductName %></a>
                                     </div>
 
-                                    <div class="item-content">
-
-                                        <div class="rating">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div style="width: <%=p.ProductRatingSum %>0%" class="rating"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="item-content">                                                                               
 
                                         <div class="item-price">
                                             <div class="price-box">
@@ -70,9 +61,10 @@
                                             </div>
                                         </div>
 
+                                        <p class="retailer_logo"><img width="120" height="40" src="<%=PriceMe.Utility.GetImage(p.BestPPCLogoPath, "_ms") %>" /></p>
+
                                         <div class="action">
-                                            <a href="<%=GetLinkUrl(Convert.ToInt32(p.ProductID),Convert.ToInt32(p.BestPPCRetailerID),Convert.ToInt32(p.BestPPCRetailerProductID),p.CategoryID) %>" class="visit_shop">Visit Shop >
-                                            </a>
+                                            <a href="<%=GetLinkUrl(Convert.ToInt32(p.ProductID),Convert.ToInt32(p.BestPPCRetailerID),Convert.ToInt32(p.BestPPCRetailerProductID),p.CategoryID) %>" class="visit_shop">Visit Shop ></a>
                                         </div>
 
                                     </div>

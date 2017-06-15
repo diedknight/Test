@@ -268,8 +268,9 @@
 
                                     <div class="toolbar bottom">
 
-                                        <DK:PrettyPager ID="PrettyPager1" runat="server" />
-
+                                        <div id="pagerDiv">
+                                            <DK:PrettyPager ID="PrettyPager1" runat="server" />
+                                        </div>
 <%--                                        <div class="woocommerce-pagination pager pages">
                                             <ul class='page-numbers'>
                                                 <li><span class='page-numbers current'>1</span></li>
