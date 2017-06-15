@@ -794,8 +794,7 @@
                                                 </div>
 
                                                 <div class="action">
-                                                    <a class="single_add_to_cart_button add_to_cart_button  product_type_simple ajax_add_to_cart button btn-cart" title='Add to cart' data-quantity="1" data-product_id="116"
-                                                        href='@Model.HotDeal.PurchaseUrl'>
+                                                    <a class="single_add_to_cart_button add_to_cart_button button btn-cart" target="_blank" href="<%=Model.HotDeal.PurchaseUrl %>">
                                                         <span>Visit Shop</span>
                                                     </a>
 
