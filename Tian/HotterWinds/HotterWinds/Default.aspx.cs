@@ -15,7 +15,7 @@ namespace HotterWinds
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = System.Configuration.ConfigurationManager.AppSettings["HomePageTilte"];
+            this.Title = HttpUtility.HtmlDecode(System.Configuration.ConfigurationManager.AppSettings["HomePageTilte"]);
 
             List<int> cateIds = PriceMe.WebConfig.NPcategoryID.Split(',').Select(item => Convert.ToInt32(item)).ToList();
 
