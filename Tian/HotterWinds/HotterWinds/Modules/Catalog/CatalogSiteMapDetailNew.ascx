@@ -48,7 +48,7 @@
 
                     string url = PriceMe.UrlController.GetCatalogUrl(subc.CategoryID);
                     string imgicon = "";//subc.CategoryIconCode.Replace("512px", "90px");
-                    string imgurl = subc.ImageFile.Replace("_ms.", "_s.");
+                    string imgurl = subc.ImageFile.Replace("_s.", "_m.").Replace("_ms.", "_m.");
                     //if (!string.IsNullOrEmpty(subc.Categoryicon))
                     //    imgurl = subc.Categoryicon;
 
@@ -59,7 +59,7 @@
                     <div class="ctcicon">
                         <a href="<%=url %>">
                             <%if(string.IsNullOrEmpty(imgicon)){ %>
-                            <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=subc.CategoryName %>" width="300" height="300" onerror="onImgError_catalog(this)" /><%}else{ %>
+                            <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=subc.CategoryName %>" width="150" height="150" onerror="onImgError_catalog(this)" /><%}else{ %>
                             <%=imgicon.Replace("#3d3d3d", "#3498db").Replace("#3D3D3D", "#3498db") %>
                             <%} %>
                         </a>
@@ -119,7 +119,7 @@
 
                 <div class="ctcicon">
                     <%if(string.IsNullOrEmpty(imgicon)){ %>
-                    <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=subc.CategoryName %>" width="300" height="300" onerror="onImgError_catalog(this)" /><%}else{ %>
+                    <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=subc.CategoryName %>" width="150" height="150" onerror="onImgError_catalog(this)" /><%}else{ %>
                     <%=imgicon %>
                     <%} %>
                 </div>

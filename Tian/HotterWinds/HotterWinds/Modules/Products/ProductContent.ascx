@@ -46,9 +46,9 @@
                             <li class="description_tab">
                                 <a href="#tab-description">Description</a>
                             </li>
-                            <li class="additional_tab">
+                            <%--<li class="additional_tab">
                                 <a href="#tab-additional">Additional Information</a>
-                            </li>
+                            </li>--%>
                             <li class="reviews_tab">
                                 <a href="#tab-reviews">Reviews (0)</a>
                             </li>
@@ -160,9 +160,8 @@
                         </div>
                         <div class="panel entry-content" id="tab-description">
                             <div><%=ProductDesc %></div>
-                        </div>
+                            <div class="clr"></div>
 
-                        <div class="panel entry-content" id="tab-additional">
                             <div class="productCenter">
                                 <div class="pricesTD clearboth">
                                     <section>
@@ -171,6 +170,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <%--<div class="panel entry-content" id="tab-additional">
+                            
+                        </div>--%>
 
                         <div class="panel entry-content" id="tab-reviews">
                             <div id="reviews">
