@@ -56,7 +56,10 @@ namespace HotterWinds.Modules.Products
         protected void Page_Load(object sender, EventArgs e)
         {
             Retailer = RetailerController.GetRetailerFromCache(RetailerId, WebConfig.CountryId);
+            Retailer = Retailer ?? new RetailerCache();
+
             RetailerProduct = ProductController.GetRetailerProductNew(RetailerProductId, WebConfig.CountryId);
+            RetailerProduct = RetailerProduct ?? new CSK_Store_RetailerProductNew();
 
             ManufacturerUrl = PriceMe.UrlController.GetBrandPageUrl(manufacturer.ManufacturerID);
             //新加代码 2015-8-18 10：10

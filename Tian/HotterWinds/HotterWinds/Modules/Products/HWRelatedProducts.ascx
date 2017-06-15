@@ -17,20 +17,27 @@
         .related-pro .action .visit_shop:hover {
             text-decoration: none;
         }
+
+    .related-pro .item {
+        float:left;
+        width:176px;
+        overflow:hidden;
+    }
+
+    .related-pro .retailer_logo {
+        height:40px;
+        width:120px;
+        margin:0 auto;
+    }
+
 </style>
 
 <!-- Related Slider -->
 <div class="related-pro">
     <div class="slider-items-products">
         <div class="related-block">
-            <%--            <div class="home-block-inner">
-                <div class="block-title">
-                    <h2>Related Products</h2>
-                </div>
-            </div>--%>
-             
             <div id="related-products-slider" class="product-flexslider hidden-buttons">
-                <div class="slider-items slider-width-col4 products-grid block-content">
+                <div class="products-grid">
 
                     <%foreach (var p in filtedRelatedProducts) %>
                     <%{ %>

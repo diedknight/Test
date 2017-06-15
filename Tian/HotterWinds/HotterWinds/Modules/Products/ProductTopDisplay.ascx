@@ -29,6 +29,8 @@
 
     .price-block .retailer_logo {
         padding: 10px 0px;
+        height:40px;
+        width:120px;
     }
 
     .price-block .retailer_msg {
