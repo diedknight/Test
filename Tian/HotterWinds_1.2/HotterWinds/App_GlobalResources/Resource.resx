@@ -2657,7 +2657,7 @@ you prefer this option. Please contact us for more information.&lt;/p&gt;
     <value>days</value>
   </data>
   <data name="TextString_DaysOnPriceMe" xml:space="preserve">
-    <value>Days on PriceMe</value>
+    <value>Days listed</value>
   </data>
   <data name="TextString_LoginName" xml:space="preserve">
     <value>Email Address Or Username</value>

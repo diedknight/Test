@@ -3043,7 +3043,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Days on PriceMe.
+        ///   Looks up a localized string similar to Days listed.
         /// </summary>
         internal static string TextString_DaysOnPriceMe {
             get {

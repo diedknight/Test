@@ -51,6 +51,8 @@ namespace HotterWinds.DBQuery
 
         public static List<ViewModels.Product> GetBestSellerProducts()
         {
+            string trackday = System.Configuration.ConfigurationManager.AppSettings["trackday"];
+
             List<ViewModels.Product> list = new List<ViewModels.Product>();
 
             string sql = "select top 8 "
@@ -71,6 +73,7 @@ namespace HotterWinds.DBQuery
                         + "     select top 8 ProductId from Pam_user..CSK_Store_RetailerTracker"
                         + "     where retailerproductid in(select retailerproductid from csk_store_retailerproduct where retailerproductstatus = 1 and isdeleted = 0) "
                         + "     and AffiliateID = 40"
+                        + "     and ClickTime >getdate() - " + trackday
                         + "     group by ProductId"
                         + "     order by count(ProductId) desc"
                         + " )";

@@ -184,6 +184,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About\AboutUs.aspx" />
+    <Content Include="About\ContactUs.aspx" />
+    <Content Include="About\ContactUsSuccess.aspx" />
+    <Content Include="AjaxPage.aspx" />
     <Content Include="CatalogAjax.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -665,6 +669,7 @@
     <Content Include="linea\wp-includes\js\jquery\jquery.js" />
     <Content Include="linea\wp-includes\js\wp-embed.min.js" />
     <Content Include="linea\wp-includes\wlwmanifest.xml" />
+    <Content Include="Modules\AboutUsNavigation.ascx" />
     <Content Include="Modules\Breadcrumbs.ascx" />
     <Content Include="Modules\Catalog\CatalogSiteMapDetailNew.ascx" />
     <Content Include="Modules\Catalog\CatalogSiteMapNew.ascx" />
@@ -687,6 +692,7 @@
     <Content Include="Modules\Products\ProductItemPriceCompare.ascx" />
     <Content Include="Modules\Products\ProductItemPriceCompareNomal.ascx" />
     <Content Include="Modules\Products\ProductTopDisplay.ascx" />
+    <Content Include="Modules\ResultMessage.ascx" />
     <Content Include="NewCatalog.aspx" />
     <Content Include="Product.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -714,11 +720,40 @@
     <Content Include="Scripts\RetailerReview.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\wow.min.js" />
+    <Content Include="Search.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About\ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About\ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About\ContactUsSuccess.aspx.cs">
+      <DependentUpon>ContactUsSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About\ContactUsSuccess.aspx.designer.cs">
+      <DependentUpon>ContactUsSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxPage.aspx.cs">
+      <DependentUpon>AjaxPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxPage.aspx.designer.cs">
+      <DependentUpon>AjaxPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Code_Not\ABTesting\ABAlternative.cs" />
     <Compile Include="App_Code_Not\ABTesting\ABTest.cs" />
     <Compile Include="App_Code_Not\ABTesting\ABUser.cs" />
@@ -730,6 +765,10 @@
     <Compile Include="App_Code_Not\ABTesting\SerializableDictionary.cs" />
     <Compile Include="App_Code_Not\ABTesting\SerializationHelper.cs" />
     <Compile Include="App_Code_Not\ABTesting\StringConvert.cs" />
+    <Compile Include="App_Code_Not\Ajax\AjaxBuilder.cs" />
+    <Compile Include="App_Code_Not\Ajax\AjaxContext.cs" />
+    <Compile Include="App_Code_Not\Ajax\AjaxController\AjaxDefaultController.cs" />
+    <Compile Include="App_Code_Not\Ajax\IAjaxable.cs" />
     <Compile Include="App_Code_Not\AttributeParameter.cs" />
     <Compile Include="App_Code_Not\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -960,6 +999,13 @@
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
+    <Compile Include="Modules\AboutUsNavigation.ascx.cs">
+      <DependentUpon>AboutUsNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AboutUsNavigation.ascx.designer.cs">
+      <DependentUpon>AboutUsNavigation.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Breadcrumbs.ascx.cs">
       <DependentUpon>Breadcrumbs.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1114,6 +1160,13 @@
     <Compile Include="Modules\Products\ProductTopDisplay.ascx.designer.cs">
       <DependentUpon>ProductTopDisplay.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ResultMessage.ascx.cs">
+      <DependentUpon>ResultMessage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ResultMessage.ascx.designer.cs">
+      <DependentUpon>ResultMessage.ascx</DependentUpon>
+    </Compile>
     <Compile Include="NewCatalog.aspx.cs">
       <DependentUpon>NewCatalog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1145,6 +1198,13 @@
     <Compile Include="Request\TextPart.cs" />
     <Compile Include="Request\WebRequestFactory.cs" />
     <Compile Include="Request\XbaiRequest.cs" />
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BLog.cs" />
     <Compile Include="ViewModels\Category.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -1268,6 +1328,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HotterWindsDBA\HotterWindsDBA.csproj">
+      <Project>{e274a7f5-6a53-4838-bfc2-533548236cee}</Project>
+      <Name>HotterWindsDBA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PriceMeCache\PriceMeCache.csproj">
       <Project>{495480ab-d585-4d6c-b752-c0e51f279e12}</Project>
       <Name>PriceMeCache</Name>
