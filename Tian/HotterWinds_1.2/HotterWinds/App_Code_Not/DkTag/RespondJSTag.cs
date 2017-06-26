@@ -15,7 +15,7 @@ namespace PriceMe
         public RespondJSTag()
             : base("Script")
         {
-            this.Attributes.Add("src", "http://oss.maxcdn.com/respond/1.4.2/respond.min.js");
+            this.Attributes.Add("src", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js");
         }
 
         protected override void Render(System.Web.UI.HtmlTextWriter writer)
