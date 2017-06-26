@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceMeCache", "PriceMeCach
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotterWinds", "HotterWinds\HotterWinds.csproj", "{D71BC8E4-77AB-474F-97E6-8A4E3D2FB581}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotterWindsDBA", "HotterWindsDBA\HotterWindsDBA.csproj", "{E274A7F5-6A53-4838-BFC2-533548236CEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D71BC8E4-77AB-474F-97E6-8A4E3D2FB581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D71BC8E4-77AB-474F-97E6-8A4E3D2FB581}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D71BC8E4-77AB-474F-97E6-8A4E3D2FB581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E274A7F5-6A53-4838-BFC2-533548236CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E274A7F5-6A53-4838-BFC2-533548236CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E274A7F5-6A53-4838-BFC2-533548236CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E274A7F5-6A53-4838-BFC2-533548236CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
