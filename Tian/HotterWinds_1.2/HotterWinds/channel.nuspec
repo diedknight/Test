@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>HotterWind</id>
+    <version>1.1.0</version>
+    <authors>HotterWind Devs</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>HotterWind</description>
+  </metadata>
+  <files>    
+    <file src="bin\" target="bin" />
+	<file src="App_GlobalResources\" target="App_GlobalResources" />    
+	<file src="Content\" target="Content" />    
+	<file src="js\" target="js" />
+	<file src="linea\" target="linea" />
+	<file src="linea1\" target="linea1" />
+	<file src="Modules\" target="Modules" />
+	<file src="Scripts\" target="Scripts" />
+    <file src="*.aspx" target="" />	
+	<file src="*.Master" target="" />
+	<file src="*.asax" target="" />
+	<file src="*.ico" target="" />
+	<file src="*.html" target="" />
+	<file src="*.config" target="" />	
+  </files>
+</package>

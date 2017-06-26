@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Priceme_NZ3" Class="CSK_Store_ProductAlertDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.0.0.26;Initial Catalog=Priceme_NZ3;User ID=sa" SettingsObjectName="PriceMeDBA.Properties.Settings" SettingsPropertyName="Priceme_NZ3ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CSK_Store_ProductAlert" Member="CSK_Store_ProductAlerts">
+    <Type Name="CSK_Store_ProductAlert">
+      <Column Name="AlertId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" IsVersion="true" />
+      <Column Name="AlertGUID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AlertType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExcludedRetailers" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PriceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceEach" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OriginalPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="UnsubscribeDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ParseID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
