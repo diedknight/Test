@@ -20,14 +20,14 @@
     <script src="/js/Common.js"></script>
     <script src="/js/jquery-1.10.2.min.js"></script>
 </head>
-     
+
 <body class="home page page-id-193 page-template page-template-homepage page-template-homepage-php siteorigin-panels cms-index-index cms-linea-home">
     <asp:ContentPlaceHolder ID="BodyStyle" runat="server"></asp:ContentPlaceHolder>
     <form id="form1" runat="server">
         <div id="page" class="page">
 
             <header>
-                <div class="header-container">
+                <%--<div class="header-container">
                     <div class="container">
                         <div class="row">
                             <!-- Header Top Links -->
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
 
                 <div class="container">
                     <div class="row">
@@ -94,7 +94,7 @@
 
                                 <div class="col-lg-7 col-md-9 col-xs-12 col-sm-9 offer-block">
 
-                                    <div class="feature-box first">
+                                    <%--<div class="feature-box first">
                                         <div class="content">
                                             <h3>Free Shipping Worldwide </h3>
                                         </div>
@@ -114,8 +114,7 @@
                                         <div class="content">
                                             <h3>Hotline  +(888) 123-4567</h3>
                                         </div>
-                                    </div>
-
+                                    </div>--%>
                                 </div>
 
                                 <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><span class="offer-label">Offer Zone</span></div>
@@ -146,7 +145,8 @@
                                             <p>
                                                 <label id="footerSubmitDes">SIGN UP FOR EMAILS: </label>
                                                 <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Your email address" required />
-                                                <input id="footerSubmit" type="submit" value="Sign Up" />
+                                                <%--<input id="footerSubmit" type="submit" value="Sign Up" />--%>
+                                                <asp:Button runat="server" Text="Sign Up" ID="footerSubmit" OnClick="footerSubmit_Click" />
                                             </p>
 
                                             <p>
@@ -176,7 +176,7 @@
                                         <h4>Shopping Guide</h4>
                                         <div class="textwidget">
                                             <ul class="links">
-                                                <li><a href="#" title="How to buy">Blog</a></li>
+                                                <li><a href="https://hotterwinds.co.nz/blog/" title="How to buy">Blog</a></li>
                                                 <li><a href="#" title="FAQs">FAQs</a></li>
                                             </ul>
                                         </div>
@@ -225,10 +225,7 @@
                                 </div>
                             </div>
 
-
-
-
-                            <div class="col-md-3 col-sm-6">
+                            <%--<div class="col-md-3 col-sm-6">
                                 <aside id="text-7" class="widget widget_text">
                                     <h4>contact us</h4>
                                     <div class="textwidget">
@@ -242,10 +239,7 @@
                                         </div>
                                     </div>
                                 </aside>
-                            </div>
-
-
-
+                            </div>--%>
                         </div>
                     </div>
                 </div>
@@ -254,7 +248,7 @@
                         <div class="row">
 
                             <div class="col-xs-12 col-sm-6">
-                                <div class="social">
+                                <%--<div class="social">
                                     <ul>
 
                                         <li class="fb pull-left"><a target="_blank" href='/linea/'></a></li>
@@ -265,8 +259,7 @@
                                         <li class="linkedin pull-left"><a target="_blank" href='/linea/'></a></li>
                                         <li class="youtube pull-left"><a target="_blank" href='/linea/'></a></li>
                                     </ul>
-                                </div>
-
+                                </div>--%>
                             </div>
 
                             <div class="col-xs-12 col-sm-6">
@@ -580,9 +573,31 @@
         }
 
         .mega-container {
-            width:270px;
-            margin-left:-15px;
+            width: 270px;
+            margin-left: -15px;
         }
+
+        @media(max-width:1124px) {
+            .mega-container {
+                width: 225px;
+                margin-left: -25px;
+            }
+        }
+
+        @media(max-width:1000px) {
+            .mega-container {
+                width: 165px;
+                margin-left: 95px;
+            }
+        }
+
+        @media(max-width:985px) {
+            .mega-container {
+                width: 165px;
+                margin-left: -15px;
+            }
+        }
+
 
     </style>
 
@@ -597,6 +612,21 @@
         else window.onload = downloadJSAtOnload;
 
         var rootUrl = "<%=Resources.Resource.TrackRootUrl%>";
+
+        //$("#footerSubmit").on("click", function () {
+
+        //    var email = $("#mc4wp_email").val();
+
+        //    GlobalAjax("AjaxDefaultController", "SigningUp", { "email": email}, function (msg) {
+        //        if (msg != "0") {
+        //            alert("Successfully signed up to the newsletter");
+        //        }
+        //        else
+        //        {
+        //            alert("Sign up failed");
+        //        }
+        //    });
+        //});
 
     </script>
 

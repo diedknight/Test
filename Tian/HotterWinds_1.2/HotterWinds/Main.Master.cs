@@ -490,17 +490,17 @@ namespace HotterWinds
             HtmlGenericControl scriptControl = new HtmlGenericControl("script");
             scriptControl.Attributes.Add("type", "text/javascript");
             scriptControl.InnerHtml = @"
-        var googletag = googletag || {};
-        googletag.cmd = googletag.cmd || [];
-        (function() {
-        var gads = document.createElement('script');
-        gads.async = true;
-        gads.type = 'text/javascript';
-        var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-        var node = document.getElementsByTagName('script')[0];
-        node.parentNode.insertBefore(gads, node);
-        })();";
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+            })();";
             return scriptControl;
         }
 
@@ -579,6 +579,22 @@ namespace HotterWinds
         public void SetSpaceID(int spaceID)
         {
             SPACE_ID = spaceID;
+        }
+
+        protected void footerSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HotterWindsDBA.HW_Newsletter_Email newsletter = new HotterWindsDBA.HW_Newsletter_Email();
+                newsletter.EmailAddress = this.Request.Form["email"];
+                newsletter.Save();
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "temp", "<script>alert(\"Successfully signed up to the newsletter\");</script>");
+            }
+            catch
+            {
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "temp", "<script>alert(\"Sign up failed\");</script>");
+            }
         }
     }
 }
