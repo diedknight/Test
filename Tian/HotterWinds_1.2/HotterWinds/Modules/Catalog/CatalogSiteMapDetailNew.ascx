@@ -15,6 +15,13 @@
         width:325px;        
     }
 
+    .sitemapphone .line {
+        height:inherit;
+        width:inherit;
+        margin:0px;
+        border:0px;
+    }
+
 </style>
 
 <div id="CatalogSiteMapDetailNew" class="container">

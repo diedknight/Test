@@ -190,7 +190,7 @@
                                     <div id="review_form">
                                         <div id="respond" class="comment-respond">
                                             <h3 id="reply-title" class="comment-reply-title">Be the first to review &ldquo;Today Fashion Casual Sleeveless Solid Women&#8217;s Top Light Pink&rdquo; <small><a rel="nofollow" id="cancel-comment-reply-link" href="/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/#respond" style="display: none;">Cancel reply</a></small></h3>
-                                            <p class="must-log-in">You must be <a href="http://wordpress.magikthemes.com/linea/my-account/">logged in</a> to post a review.</p>
+                                            <p class="must-log-in">You must be <a href="https://wordpress.magikthemes.com/linea/my-account/">logged in</a> to post a review.</p>
                                         </div>
                                         <!-- #respond -->
                                     </div>
@@ -210,7 +210,7 @@
 
         
 
-        <meta itemprop="url" content="http://wordpress.magikthemes.com/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/" />
+        <meta itemprop="url" content="https://wordpress.magikthemes.com/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/" />
 
     </div>
     <!--itemscope-->

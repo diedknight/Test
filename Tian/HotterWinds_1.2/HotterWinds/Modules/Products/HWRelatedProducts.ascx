@@ -64,7 +64,7 @@
 
                                         <div class="item-price">
                                             <div class="price-box">
-                                                <ins><span class="amount"><%=Resources.Resource.PriceCurrency %><%=p.BestPrice %></span></ins>
+                                                <ins><span class="amount">$ <%=p.BestPrice %></span></ins>
                                             </div>
                                         </div>
 

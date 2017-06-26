@@ -78,7 +78,7 @@
 
         <div>
             <div class="price-box price">
-                <span class="amount"><%=Resources.Resource.PriceCurrency %> <%=GetPriceRange()%></span>
+                <span class="amount"> <%=GetPriceRange()%></span>
             </div>
             <div class="shipping-box">
                 <span class="shiping">
@@ -91,7 +91,7 @@
                     <%} %>
                     <%else %>
                     <%{ %>
-                    +&nbsp;<%=Resources.Resource.PriceCurrency %> <%=RetailerProduct.Freight %>&nbsp;shipping
+                    +&nbsp;$ <%=RetailerProduct.Freight %>&nbsp;shipping
                     <%} %>                    
                     at
                 </span>

@@ -33,6 +33,7 @@
             <div class="inner popup" style="">
                 <ul class="nav sub-menu">
 
+                    <% int index = 1; %>
                     <%foreach (var subCate in subCateList) %>
                     <%{ %>
 
@@ -42,14 +43,23 @@
                         <a href="<%=PriceMe.UrlController.GetCatalogUrl(subCate.CategoryID) %>" class=""><span><%=subCate.CategoryName %></span></a>
                         <ul class="nav sub-menu">
 
+                            
                             <%foreach (var subsubCate in subsubCateList) %>
                             <%{ %>
                             <li id="nav-menu-item-<%=subsubCate.CategoryID %>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat ">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(subsubCate.CategoryID) %>" class=""><span><%=subsubCate.CategoryName %></span></a>
-                            </li>
-                            <%} %>                                                        
+                            </li>                            
+                            <%} %>                         
+                            
                         </ul>
                     </li>
+                    
+                    <%if (index % 3 == 0) %>
+                    <%{ %>                    
+                    <li class="clr"></li>
+                    <%} %>
+
+                    <%index++; %>
                     <%} %>                   
                 </ul>
             </div>

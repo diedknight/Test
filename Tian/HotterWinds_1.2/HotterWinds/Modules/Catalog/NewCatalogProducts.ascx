@@ -5,6 +5,17 @@
 <%@ Register Src="~/Modules/Catalog/QuickProductSummaryDisplay.ascx" TagName="QuickProductSummaryDisplay" TagPrefix="DK" %>
 <%@ Register Src="~/Modules/Catalog/HWGridView.ascx" TagPrefix="DK" TagName="HWGridView" %>
 
+<style type="text/css">
+    .product-shop {
+        width:73% !important;
+    }
+
+    .products-list .item {
+        width:100%;
+    }
+
+</style>
+
 <section>
     <div>
         <ul class="products-grid">
