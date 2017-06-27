@@ -16,6 +16,7 @@
 	<file src="linea1\" target="linea1" />
 	<file src="Modules\" target="Modules" />
 	<file src="Scripts\" target="Scripts" />
+	<file src="About\" target="About" />
     <file src="*.aspx" target="" />	
 	<file src="*.Master" target="" />
 	<file src="*.asax" target="" />
