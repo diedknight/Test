@@ -327,7 +327,7 @@ namespace HotterWinds
                 {
                     googleScriptHtmlControl.InnerHtml += " ga('send', 'pageview', '" + PageViewLink + "');";
                 }
-                this.Page.Header.Controls.Add(googleScriptHtmlControl);
+                //this.Page.Header.Controls.Add(googleScriptHtmlControl);
 
                 HtmlGenericControl googleScriptHtml = new HtmlGenericControl("script");
                 googleScriptHtml.Attributes.Add("type", "text/javascript");
@@ -337,7 +337,7 @@ namespace HotterWinds
                                            + "j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src="
                                            + "'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);"
                                            + "})(window,document,'script','dataLayer','" + WebConfig.GoogTagKey + "');";
-                this.Page.Header.Controls.Add(googleScriptHtml);
+                //this.Page.Header.Controls.Add(googleScriptHtml);
             }
 
             if (IsSearchPage && WebConfig.Environment == "prod")
