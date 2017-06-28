@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34A6312C-3A45-4D78-8F68-B20AA2D27F34}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AliexpressTool</RootNamespace>
+    <AssemblyName>AliexpressTool</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\ExampleFacade.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleCar.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleFamily.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleFamilyGetParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleFamilyGetResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleFamilyPostParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleFamilyPostResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExampleHouse.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\china\openapi\client\example\param\apiexample\ExamplePerson.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\ApiFacade.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AccountResultDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AddressDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AddressDTOs.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopAEProductDisplaySampleDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopAeProductPropertys.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopAeProductSKUs.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopAeProductWindow.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopAnouncementDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopAnouncementResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopChildProductGroup.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopDetailModule.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopFreightCalculateResultDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopLogisticsServiceResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopLogisticsWarehouseOrderResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopOnlineLogisticsServiceResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopProductGroup.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopSKUProperty.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopTaoDaiXiaoProductResultDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopTrackingDetailResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopWlCreateWarehouseOrderResultDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopWlDeclareProductDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeopWlDomesticLogisticsCompanyDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AeProhibitedWord.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaaeproductAeopModifyProductResponse.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaAeProductRenewExpireParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaAeProductRenewExpireResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaAeWarrantieGetListParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaAeWarrantieGetListResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaaewarrantyWarrantyInfo.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaproductAeopAEMultimedia.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaproductAeopAEVideo.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaproductonlineErrorDetail.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaProductPostMultilanguageAeProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\AlibabaProductPostMultilanguageAeProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiAddMsgParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiAddMsgResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiCalculateFreightParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiCalculateFreightResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiClaimTaobaoProducts4APIParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiClaimTaobaoProducts4APIResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiCreateProductGroupParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiCreateProductGroupResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiCreateWarehouseOrderParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiCreateWarehouseOrderResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiDelUnUsePhotoParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiDelUnUsePhotoResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditAeProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditAeProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditMultilanguageProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditMultilanguageProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditProductCategoryAttributesParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditProductCategoryAttributesResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditProductCidAttIdSkuParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditProductCidAttIdSkuResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditSimpleProductFiledParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditSimpleProductFiledResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditSingleSkuPriceParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditSingleSkuPriceResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditSingleSkuStockParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiEditSingleSkuStockResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiExtendsBuyerAcceptGoodsTimeParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiExtendsBuyerAcceptGoodsTimeResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductDetailModuleListByQureyParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductDetailModuleListByQureyResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductModuleByIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductModuleByIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductProhibitedWordsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductProhibitedWordsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductStatusByIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindAeProductStatusByIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindLoanListQueryParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindLoanListQueryResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderBaseInfoParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderBaseInfoResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderListQueryParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderListQueryResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderListSimpleQueryParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderListSimpleQueryResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderReceiptInfoParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderReceiptInfoResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderTradeInfoParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindOrderTradeInfoResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindProductInfoListQueryParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindProductInfoListQueryResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindProductInfoListQueryV2Param.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiFindProductInfoListQueryV2Result.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetAllProvinceParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetAllProvinceResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetNextLevelAddressDataParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetNextLevelAddressDataResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetOnlineLogisticsInfoParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetOnlineLogisticsInfoResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetOnlineLogisticsServiceListByOrderIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetOnlineLogisticsServiceListByOrderIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetPhotoBankInfoParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetPhotoBankInfoResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetProductGroupListParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetProductGroupListResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetRemainingWindowsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetRemainingWindowsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetWindowProductsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiGetWindowProductsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiLeaveOrderMessageParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiLeaveOrderMessageResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListGroupParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListGroupResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListImagePaginationParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListImagePaginationResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListLogisticsServiceParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListLogisticsServiceResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListTbProductByIdsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiListTbProductByIdsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiOfflineAeProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiOfflineAeProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiOnlineAeProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiOnlineAeProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiPostAeProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiPostAeProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryAccountLevelParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryAccountLevelResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryIssueDetailParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryIssueDetailResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryIssueListForSpecialParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryIssueListForSpecialResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryIssueListParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryIssueListResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryMsgDetailListByBuyerIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryMsgDetailListByBuyerIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryMsgDetailListParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryMsgDetailListResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryMsgRelationListParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryMsgRelationListResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryOpenAnouncementParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryOpenAnouncementResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductAddCartInfoEverydayByIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductAddCartInfoEverydayByIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductFavoritedInfoEverydayByIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductFavoritedInfoEverydayByIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductGroupIdByProductIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductGroupIdByProductIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductViewedInfoEverydayByIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryProductViewedInfoEverydayByIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryPromiseTemplateByIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryPromiseTemplateByIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryTrackingResultParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryTrackingResultResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryWarrantiesByOrderIdParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryWarrantiesByOrderIdResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryWarrantiesInforceParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQueryWarrantiesInforceResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQureyWlbDomesticLogisticsCompanyParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiQureyWlbDomesticLogisticsCompanyResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerAbandonReceiveGoodsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerAbandonReceiveGoodsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerAgreeIssueParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerAgreeIssueResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerConrimReceiveGoodsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerConrimReceiveGoodsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerModifiedShipmentParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerModifiedShipmentResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerRefuseIssueParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerRefuseIssueResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerShipmentParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerShipmentResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerSubmitArbiParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSellerSubmitArbiResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSetGroupsParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSetGroupsResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSetShopwindowProductParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSetShopwindowProductResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSetSizeChartParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiSetSizeChartResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateDeliveriedConfirmationFileParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateDeliveriedConfirmationFileResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateMsgProcessedParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateMsgProcessedResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateMsgRankParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateMsgRankResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateMsgReadParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUpdateMsgReadResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadImage4SDKParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadImage4SDKResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadImageParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadImageResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadIssueImageParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadIssueImageResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadTempImage4SDKParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadTempImage4SDKResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadTempImageParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ApiUploadTempImageResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ChildOrderDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\ChinaAddressItemDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\Currency.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\DetailResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\EcResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\FilePath.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\FundLoanListVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\GroupIdHolder.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\IssueAPIDetailDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\IssueAPIIssueDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\IssueAPIIssueProcessDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\IssueMoney.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\IssueRefundSuggestionDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\Money.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OperationResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OrderBaseInfo.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OrderItemVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OrderListVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OrderLoanItemVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OrderProductVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\OrderTradeInfo.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\PhotobankGroup.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\PhotobankImageRecord.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\PhtobankPaginationQuery.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\PushMessageConfirmParam.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\PushMessageConfirmResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\RelationResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\RequestLoanResult.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\SimpleOrderItemVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\SimpleOrderListVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\SimpleOrderProductVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\SonOrderLoanVO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\Summary.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\TpOpenAddressDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\TradeMoney.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\WarrantyDetailApiDTO.cs" />
+    <Compile Include="AliexpressSDK\com\alibaba\openapi\sdk\aeopenapi\param\WarrantyInforceApiDTO.cs" />
+    <Compile Include="AliexpressSDK\sdk\APIFacade.cs" />
+    <Compile Include="AliexpressSDK\sdk\APIId.cs" />
+    <Compile Include="AliexpressSDK\sdk\entity\AuthorizationToken.cs" />
+    <Compile Include="AliexpressSDK\sdk\entity\ErrorExceptionDesc.cs" />
+    <Compile Include="AliexpressSDK\sdk\entity\ResponseStatus.cs" />
+    <Compile Include="AliexpressSDK\sdk\entity\ResponseWrapper.cs" />
+    <Compile Include="AliexpressSDK\sdk\exception\OceanException.cs" />
+    <Compile Include="AliexpressSDK\sdk\http\HttpClient.cs" />
+    <Compile Include="AliexpressSDK\sdk\policy\ClientPolicy.cs" />
+    <Compile Include="AliexpressSDK\sdk\policy\GrantType.cs" />
+    <Compile Include="AliexpressSDK\sdk\policy\Protocol.cs" />
+    <Compile Include="AliexpressSDK\sdk\policy\RequestPolicy.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableBool.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableByte.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableChar.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableDateTime.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableDouble.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableFloat.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableInt.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullableLong.cs" />
+    <Compile Include="AliexpressSDK\sdk\primitive\NullablePrimitiveObject.cs" />
+    <Compile Include="AliexpressSDK\sdk\Request.cs" />
+    <Compile Include="AliexpressSDK\sdk\Response.cs" />
+    <Compile Include="AliexpressSDK\sdk\serialize\DeSerializer.cs" />
+    <Compile Include="AliexpressSDK\sdk\serialize\Json2Deserializer.cs" />
+    <Compile Include="AliexpressSDK\sdk\serialize\Param2RequestSerializer.cs" />
+    <Compile Include="AliexpressSDK\sdk\serialize\Serializer.cs" />
+    <Compile Include="AliexpressSDK\sdk\serialize\SerializerProvider.cs" />
+    <Compile Include="AliexpressSDK\sdk\SyncAPIClient.cs" />
+    <Compile Include="AliexpressSDK\sdk\util\DateUtil.cs" />
+    <Compile Include="AliexpressSDK\sdk\util\SignatureUtil.cs" />
+    <Compile Include="ApiTool\AliexpressOrder.cs" />
+    <Compile Include="Data\ProductData.cs" />
+    <Compile Include="Data\ShopOrderData.cs" />
+    <Compile Include="DisposableTool\DownloadImage.cs" />
+    <Compile Include="DisposableTool\ShopAttribute.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
