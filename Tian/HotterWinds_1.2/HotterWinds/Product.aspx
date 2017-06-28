@@ -4,11 +4,6 @@
 <%@ Register Src="~/Modules/Products/ProductContent.ascx" TagPrefix="uc1" TagName="ProductContent" %>
 <%@ Register Src="~/Modules/Breadcrumbs.ascx" TagPrefix="uc1" TagName="Breadcrumbs" %>
 
-
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
     <title>Today Fashion Casual Sleeveless Solid Women&#8217;s Top Light Pink &#8211; linea demo</title>
@@ -40,10 +35,10 @@
     <link rel="alternate" type="application/rss+xml" title="linea demo &raquo; Feed" href="/linea/feed/" />
     <link rel="alternate" type="application/rss+xml" title="linea demo &raquo; Comments Feed" href="/linea/comments/feed/" />
     <link rel="alternate" type="application/rss+xml" title="linea demo &raquo; Today Fashion Casual Sleeveless Solid Women&#8217;s Top Light Pink Comments Feed" href="/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/feed/" />
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/72x72\/", "ext": ".png", "source": { "concatemoji": "https:\/\/wordpress.magikthemes.com\/linea\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.1" } };
         !function (a, b, c) { function d(a) { var c, d = b.createElement("canvas"), e = d.getContext && d.getContext("2d"); return e && e.fillText ? (e.textBaseline = "top", e.font = "600 32px Arial", "flag" === a ? (e.fillText(String.fromCharCode(55356, 56806, 55356, 56826), 0, 0), d.toDataURL().length > 3e3) : "diversity" === a ? (e.fillText(String.fromCharCode(55356, 57221), 0, 0), c = e.getImageData(16, 16, 1, 1).data.toString(), e.fillText(String.fromCharCode(55356, 57221, 55356, 57343), 0, 0), c !== e.getImageData(16, 16, 1, 1).data.toString()) : ("simple" === a ? e.fillText(String.fromCharCode(55357, 56835), 0, 0) : e.fillText(String.fromCharCode(55356, 57135), 0, 0), 0 !== e.getImageData(16, 16, 1, 1).data[0])) : !1 } function e(a) { var c = b.createElement("script"); c.src = a, c.type = "text/javascript", b.getElementsByTagName("head")[0].appendChild(c) } var f, g; c.supports = { simple: d("simple"), flag: d("flag"), unicode8: d("unicode8"), diversity: d("diversity") }, c.DOMReady = !1, c.readyCallback = function () { c.DOMReady = !0 }, c.supports.simple && c.supports.flag && c.supports.unicode8 && c.supports.diversity || (g = function () { c.readyCallback() }, b.addEventListener ? (b.addEventListener("DOMContentLoaded", g, !1), a.addEventListener("load", g, !1)) : (a.attachEvent("onload", g), b.attachEvent("onreadystatechange", function () { "complete" === b.readyState && c.readyCallback() })), f = c.source || {}, f.concatemoji ? e(f.concatemoji) : f.wpemoji && f.twemoji && (e(f.twemoji), e(f.wpemoji))) }(window, document, window._wpemojiSettings);
-    </script>
+    </script>--%>
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -118,7 +113,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyStyle" runat="server">
     <script type="text/javascript">
-        $("body").attr("class", "single single-product postid-106 siteorigin-panels woocommerce woocommerce-page cms-index-index cms-linea-home");
+        $("body").attr("class", "single single-product postid-106 siteorigin-panels woocommerce woocommerce-page cms-index-index cms-linea-home");        
+
     </script>
     <style type="text/css">
         #productTabContent 

@@ -19,6 +19,20 @@
 
     <script src="/js/Common.js"></script>
     <script src="/js/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript">
+        var winHeight = $(window).height();
+        var winWidth = $(window).width();
+
+        var node = $("<div id=\"wrap\"></div>");
+        node.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "10000" });
+
+        $("body").append(node);
+
+        $(document).ready(function () {
+            node.remove();
+        });
+    </script>
 </head>
 
 <body class="home page page-id-193 page-template page-template-homepage page-template-homepage-php siteorigin-panels cms-index-index cms-linea-home">
@@ -216,8 +230,8 @@
                                                 <li><a href="#" title="Site Map">Site Map</a></li>
                                                 <li><a href="#" title="Search Terms">Search Terms</a></li>
                                                 <li><a href="#" title="Advanced Search">Advanced Search</a></li>
-                                                <li><a href="#" title="About Us">About Us</a></li>
-                                                <li><a href="#" title="Contact Us">Contact Us</a></li>
+                                                <li><a href="/About/AboutUs.aspx" title="About Us">About Us</a></li>
+                                                <li><a href="/About/ContactUs.aspx" title="Contact Us">Contact Us</a></li>
                                                 <li><a href="#" title="Suppliers">Suppliers</a></li>
                                             </ul>
                                         </div>

@@ -167,6 +167,9 @@ namespace HotterWinds.Modules.Products
                     priceRange = bestPriceString + " - " + maxPriceString;
                 }
             }
+
+            priceRange = priceRange.Replace("¥", "$");
+
             return priceRange;
         }
 

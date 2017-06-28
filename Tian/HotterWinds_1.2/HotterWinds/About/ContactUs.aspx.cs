@@ -53,10 +53,10 @@ namespace HotterWinds.About
                 this.EMailDropDownList.DataTextField = "EmailName";
 
                 this.EMailDropDownList.DataSource = emailInfoCollection;
-                this.EMailDropDownList.Attributes.Add("onchange", "checkEmailSelect('" + this.EMailDropDownList.ClientID + "')");                
+                //this.EMailDropDownList.Attributes.Add("onchange", "checkEmailSelect('" + this.EMailDropDownList.ClientID + "')");                
                 this.EMailDropDownList.DataBind();
 
-                this.EMailDropDownList.Items.Add(new ListItem("Website suggestion", "1"));
+                this.EMailDropDownList.Items.Add(new ListItem("Website suggestion", "3"));
                 this.EMailDropDownList.SelectedValue = "1";
             }
 

@@ -39,12 +39,16 @@
         background-color:#1fc0a0;
     }
 
+    .irs-single {
+        background-color:#1fc0a0;
+    }
+
     .irs-bar {
         background:none;
         border-color:#1fc0a0;
         background-color:#1fc0a0;
     }
-
+    
     #newfilter .btn-info {
         background:none;
         background-color:#1fc0a0;

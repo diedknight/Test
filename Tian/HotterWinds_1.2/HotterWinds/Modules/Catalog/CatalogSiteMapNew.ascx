@@ -196,13 +196,14 @@
                     csc.Link.LinkURL = PriceMe.UrlController.GetCatalogUrl(int.Parse(csc.Link.Value));
                     string imgicon = "";//csc.IconCode.Replace("512px", "50px");
                     string imgurl = csc.ImageURL.Replace("_ms.", "_s.");
+
                     //if (!string.IsNullOrEmpty(csc.IconUrl))
                     //    imgurl = csc.IconUrl;
             %>
             <div class="line" onclick="openlink('<%=csc.Link.LinkURL%>');">
                 <div class="icon">
                     <%if(string.IsNullOrEmpty(imgicon)){ %>
-                    <img src="<%=Resources.Resource.ImageWebsite3 + csc.IconUrl %>" alt="<%=csc.Link.LinkText%>" width="50" height="50" onerror="onImgError(this)" /><%}else{ %>
+                    <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=csc.Link.LinkText%>" width="50" height="50" onerror="onImgError(this)" /><%}else{ %>
                     <%=imgicon %>
                     <%} %>
                 </div>
