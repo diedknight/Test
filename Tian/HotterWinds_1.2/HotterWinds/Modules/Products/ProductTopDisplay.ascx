@@ -111,12 +111,15 @@
         <%{ %>
         <p class="availability in-stock"><span>Out Of Stock</span></p>
         <%} %>
+        
+        <div class="clr"></div>
 
         <div style="border-bottom:1px #ddd dotted">
             <p class="retailer_logo"><img width="120" height="40" src="<%=PriceMe.Utility.GetImage(Retailer.LogoFile, "_ms") %>" /></p>
             <p class="retailer_msg"><%=Retailer.RetailerMessage %></p>
         </div>
 
+        <div class="clr"></div>
     </div>
 
     <%--    <div itemprop="description" class="short-description">

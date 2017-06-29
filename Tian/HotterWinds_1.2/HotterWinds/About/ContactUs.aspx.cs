@@ -49,15 +49,15 @@ namespace HotterWinds.About
 
 
 
-                this.EMailDropDownList.DataValueField = "EMailID";
-                this.EMailDropDownList.DataTextField = "EmailName";
+                //this.EMailDropDownList.DataValueField = "EMailID";
+                //this.EMailDropDownList.DataTextField = "EmailName";
 
-                this.EMailDropDownList.DataSource = emailInfoCollection;
+                //this.EMailDropDownList.DataSource = emailInfoCollection;
                 //this.EMailDropDownList.Attributes.Add("onchange", "checkEmailSelect('" + this.EMailDropDownList.ClientID + "')");                
-                this.EMailDropDownList.DataBind();
+                //this.EMailDropDownList.DataBind();
 
                 this.EMailDropDownList.Items.Add(new ListItem("Website suggestion", "3"));
-                this.EMailDropDownList.SelectedValue = "1";
+                this.EMailDropDownList.SelectedValue = "3";
             }
 
             string description = "Contact PriceMe using email.";

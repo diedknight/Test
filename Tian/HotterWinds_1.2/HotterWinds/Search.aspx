@@ -27,7 +27,7 @@
             border-radius: 16px;
             -moz-border-radius: 16px;
             -webkit-border-radius: 16px;
-        }        
+        }
     </style>
     <script type="text/javascript">
         var yith_wcwl_plugin_ajax_web_url = '/linea/wp-admin/admin-ajax.php';
@@ -126,7 +126,7 @@
 
         @media (min-width: 768px) {
             #leftFilters {
-                width:100%;
+                width: 100%;
             }
         }
     </style>
@@ -140,15 +140,30 @@
                         <li>
                             <a href="/">Home</a>
                         </li>
-                        <li> 
-                            <span>/</span>                
-                            <strong><%=Resources.Resource.TextString_SearchResultsFor %> "<%=EncodeSW %>"</strong>     
+                        <li>
+                            <span>/</span>
+                            <strong><%=Resources.Resource.TextString_SearchResultsFor %> "<%=EncodeSW %>"</strong>
                         </li>
                     </ul>
                 </div>
 
                 <div class="row">
                     <div class="newBody">
+
+                        <%if (totalProductCount == 0) %>
+                        <%{ %>
+                        <div class="col-sm-12">
+                            <div class="page-title">
+                                <h2 class="page-heading">
+                                    <span class="page-heading-title"><%=Resources.Resource.TextString_SearchResultsFor %> "<%=EncodeSW %>"</span>
+                                </h2>
+                            </div>
+
+                            <p>Showing all 0 results</p>
+                        </div>
+                        <%} %>
+                        <%else %>
+                        <%{ %>
                         <div id="loadDiv">
                             <div class="col-sm-9 col-sm-push-3">
 
@@ -172,7 +187,7 @@
 
                                             <div style="float: right;">
                                                 <label class="sortByDiv_des left">Sort By: </label>
-                                                <div id="sortByDiv" class="sortByDiv" style="display:inline-block">
+                                                <div id="sortByDiv" class="sortByDiv" style="display: inline-block">
                                                     <%if (catalogPageInfo.CurrentProductCount > 1 && !v.Equals("quick", StringComparison.InvariantCultureIgnoreCase))
                                                         { %>
                                                     <div class="dropdown">
@@ -220,16 +235,19 @@
                                     </div>
                                 </div>
                                 <!--  col-main pro-grid    -->
+
+
                             </div>
                             <!-- col-sm-9   -->
                         </div>
+
                         <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
                             <div id="leftFilters">
                                 <DK:NewFilters ID="NewFilters1" runat="server" />
                             </div>
                         </div>
                         <!-- col-sm-3   -->
-
+                        <%} %>
                         <script>
                             initFilter();
                         </script>
@@ -237,7 +255,7 @@
                 </div>
                 <!-- row -->
             </div>
-            <!-- container -->            
+            <!-- container -->
         </main>
     </div>
     <!-- maincontainer -->
@@ -249,7 +267,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="foot" runat="server">
     <script type='text/javascript'>
                             /* <![CDATA[ */
-                            var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "http:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
+                            var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.4.12'></script>
@@ -269,14 +287,14 @@
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
-        var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "http:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
+        var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/woocompare.js?ver=2.0.5'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/jquery.colorbox-min.js?ver=1.4.21'></script>
     <script type='text/javascript'>
                 /* <![CDATA[ */
-                var yith_qv = { "ajaxurl": "http:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
+                var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-quick-view/assets/js/frontend.js?ver=1.0'></script>
@@ -285,7 +303,7 @@
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>
     <script type='text/javascript'>
                             /* <![CDATA[ */
-                            var yith_wcwl_l10n = { "ajax_url": "http:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
+                            var yith_wcwl_l10n = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.0.13'></script>
@@ -296,7 +314,7 @@
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/revslider.js?ver=4.4.1'></script>
     <script type='text/javascript'>
                             /* <![CDATA[ */
-                            var js_linea_wishvar = { "MGK_ADD_TO_WISHLIST_SUCCESS_TEXT": "Product successfully added to wishlist <a href=\"http:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "MGK_ADD_TO_WISHLIST_EXISTS_TEXT": "The product is already in the wishlist! <a href=\"http:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "IMAGEURL": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/themes\/linea\/images", "WOO_EXIST": "1", "SITEURL": "http:\/\/wordpress.magikthemes.com\/linea" };
+                            var js_linea_wishvar = { "MGK_ADD_TO_WISHLIST_SUCCESS_TEXT": "Product successfully added to wishlist <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "MGK_ADD_TO_WISHLIST_EXISTS_TEXT": "The product is already in the wishlist! <a href=\"http:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "IMAGEURL": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/themes\/linea\/images", "WOO_EXIST": "1", "SITEURL": "http:\/\/wordpress.magikthemes.com\/linea" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/common.js?ver=4.4.1'></script>
@@ -305,7 +323,7 @@
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/cloud-zoom.js?ver=4.4.1'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
-        var js_linea_vars = { "ajax_url": "http:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "container_width": "760", "grid_layout_width": "20" };
+        var js_linea_vars = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "container_width": "760", "grid_layout_width": "20" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/mgk_menu.js?ver=4.4.1'></script>

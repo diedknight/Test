@@ -68,7 +68,7 @@
     @media (max-width: 750px) {
         .related-pro .item {
             width: 183px;
-            height: 364px;
+            height: 358px;
         }
     }
 
@@ -79,9 +79,16 @@
         }
     }
 
-    @media (max-width: 386px) {
+    @media (max-width: 415px) {
         .related-pro .item {
-            width: 240px;
+            width: 150px;
+            height: 358px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .related-pro .item {
+            width: 310px;
             height: 345px;
         }
     }
@@ -121,7 +128,7 @@
 
                                         <div class="item-price">
                                             <div class="price-box">
-                                                <ins><span class="amount">$ <%=p.BestPrice %></span></ins>
+                                                <ins><span class="amount">$<%=p.BestPrice %></span></ins>
                                             </div>
                                         </div>
 

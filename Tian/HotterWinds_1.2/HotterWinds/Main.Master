@@ -19,20 +19,6 @@
 
     <script src="/js/Common.js"></script>
     <script src="/js/jquery-1.10.2.min.js"></script>
-
-    <script type="text/javascript">
-        var winHeight = $(window).height();
-        var winWidth = $(window).width();
-
-        var node = $("<div id=\"wrap\"></div>");
-        node.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "10000" });
-
-        $("body").append(node);
-
-        $(document).ready(function () {
-            node.remove();
-        });
-    </script>
 </head>
 
 <body class="home page page-id-193 page-template page-template-homepage page-template-homepage-php siteorigin-panels cms-index-index cms-linea-home">
@@ -159,8 +145,8 @@
                                             <p>
                                                 <label id="footerSubmitDes">SIGN UP FOR EMAILS: </label>
                                                 <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Your email address" required />
-                                                <%--<input id="footerSubmit" type="submit" value="Sign Up" />--%>
-                                                <asp:Button runat="server" Text="Sign Up" ID="footerSubmit" OnClick="footerSubmit_Click" />
+                                                <input id="footerSubmit" type="button" value="Sign Up" />
+                                                <%--<asp:Button runat="server" Text="Sign Up" ID="footerSubmit" OnClick="footerSubmit_Click" />--%>
                                             </p>
 
                                             <p>
@@ -315,11 +301,9 @@
 
                 </form>
 
-
-
-
                 <div class="search-autocomplete" id="search_autocomplete1" style="display: none;"></div>
             </div>
+
             <div class="menu-wrap">
                 <ul id="menu-mainmenu-1" class="mobile-menu accordion-menu">
                     <li id="accordion-menu-item-3214" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children active has-sub">
@@ -556,6 +540,9 @@
         <asp:ContentPlaceHolder ID="foot" runat="server"></asp:ContentPlaceHolder>
     </form>
 
+    <div id="emailSuccessAlert" class="alert alert-success" style="position: fixed; z-index: 10000; top: 0px; left: 0px; width: 100%; display: none;" role="alert">Successfully signed up to the newsletter</div>
+    <div id="emailfailAlert" class="alert alert-danger" style="position: fixed; z-index: 10000; top: 0px; left: 0px; width: 100%; display: none;" role="alert">Sign up failed</div>
+
     <style type="text/css">
         #footerSubmit {
             background-color: #1fc0a0 !important;
@@ -611,8 +598,6 @@
                 margin-left: -15px;
             }
         }
-
-
     </style>
 
     <script type="text/javascript">
@@ -627,20 +612,29 @@
 
         var rootUrl = "<%=Resources.Resource.TrackRootUrl%>";
 
-        //$("#footerSubmit").on("click", function () {
+        $("#footerSubmit").on("click", function () {
 
-        //    var email = $("#mc4wp_email").val();
+            var emailNode = $("#mc4wp_email");
 
-        //    GlobalAjax("AjaxDefaultController", "SigningUp", { "email": email}, function (msg) {
-        //        if (msg != "0") {
-        //            alert("Successfully signed up to the newsletter");
-        //        }
-        //        else
-        //        {
-        //            alert("Sign up failed");
-        //        }
-        //    });
-        //});
+            if (emailNode.get(0).checkValidity()) {
+                GlobalAjax("AjaxDefaultController", "SigningUp", { "email": emailNode.val() }, function (msg) {
+                    
+                    var node = null;
+                    if (msg != "0") {
+                        node = $("#emailSuccessAlert");
+                        node.css("display", "block");
+                    }
+                    else {
+                        node = $("#emailfailAlert");
+                        node.css("display", "block");
+                    }
+
+                    setTimeout(function () {
+                        node.css("display", "none");
+                    }, 3000);
+                });
+            }
+        });
 
     </script>
 
@@ -656,6 +650,8 @@
         ga('send', 'pageview');
 
     </script>
+
+
 
 </body>
 </html>

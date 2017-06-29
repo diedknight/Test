@@ -581,20 +581,20 @@ namespace HotterWinds
             SPACE_ID = spaceID;
         }
 
-        protected void footerSubmit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                HotterWindsDBA.HW_Newsletter_Email newsletter = new HotterWindsDBA.HW_Newsletter_Email();
-                newsletter.EmailAddress = this.Request.Form["email"];
-                newsletter.Save();
+        //protected void footerSubmit_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        HotterWindsDBA.HW_Newsletter_Email newsletter = new HotterWindsDBA.HW_Newsletter_Email();
+        //        newsletter.EmailAddress = this.Request.Form["email"];
+        //        newsletter.Save();
 
-                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "temp", "<script>alert(\"Successfully signed up to the newsletter\");</script>");
-            }
-            catch
-            {
-                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "temp", "<script>alert(\"Sign up failed\");</script>");
-            }
-        }
+        //        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "temp", "<script>alert(\"Successfully signed up to the newsletter\");</script>");
+        //    }
+        //    catch
+        //    {
+        //        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "temp", "<script>alert(\"Sign up failed\");</script>");
+        //    }
+        //}
     }
 }
