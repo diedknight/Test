@@ -927,6 +927,8 @@ namespace PriceMeCommon.BusinessLogic
 
         public static bool IsSearchOnly(int categoryId, int countryId)
         {
+            return false;
+
             if (MultiCountryCategoryIsSearchOnlyDic_Static.ContainsKey(countryId) && MultiCountryCategoryIsSearchOnlyDic_Static[countryId].Contains(categoryId))
             {
                 return true;
