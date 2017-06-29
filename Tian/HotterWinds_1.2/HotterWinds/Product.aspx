@@ -100,8 +100,8 @@
     <meta name="generator" content="WooCommerce 2.4.12" />
     <link rel="canonical" href="/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/" />
     <link rel='shortlink' href='/linea/?p=799' />
-    <link rel="alternate" type="application/json+oembed" href="/linea/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwordpress.magikthemes.com%2Flinea%2Fproduct%2Ftoday-fashion-casual-sleeveless-solid-womens-top-light-pink%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="/linea/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwordpress.magikthemes.com%2Flinea%2Fproduct%2Ftoday-fashion-casual-sleeveless-solid-womens-top-light-pink%2F&#038;format=xml" />
+    <link rel="alternate" type="application/json+oembed" href="/linea/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwordpress.magikthemes.com%2Flinea%2Fproduct%2Ftoday-fashion-casual-sleeveless-solid-womens-top-light-pink%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="/linea/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwordpress.magikthemes.com%2Flinea%2Fproduct%2Ftoday-fashion-casual-sleeveless-solid-womens-top-light-pink%2F&#038;format=xml" />
     <link rel="alternate" type="application/rss+xml" title="New products" href="/linea/shop/feed/" />
     <style type="text/css">
         .recentcomments a {
@@ -210,7 +210,7 @@
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/revslider.js?ver=4.4.1'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
-        var js_linea_wishvar = { "MGK_ADD_TO_WISHLIST_SUCCESS_TEXT": "Product successfully added to wishlist <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "MGK_ADD_TO_WISHLIST_EXISTS_TEXT": "The product is already in the wishlist! <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "IMAGEURL": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/themes\/linea\/images", "WOO_EXIST": "1", "SITEURL": "http:\/\/wordpress.magikthemes.com\/linea" };
+        var js_linea_wishvar = { "MGK_ADD_TO_WISHLIST_SUCCESS_TEXT": "Product successfully added to wishlist <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "MGK_ADD_TO_WISHLIST_EXISTS_TEXT": "The product is already in the wishlist! <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "IMAGEURL": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/themes\/linea\/images", "WOO_EXIST": "1", "SITEURL": "https:\/\/wordpress.magikthemes.com\/linea" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/common.js?ver=4.4.1'></script>
