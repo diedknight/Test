@@ -8,7 +8,7 @@
     <description>HotterWind</description>
   </metadata>
   <files>    
-    <file src="bin\" target="lib" />
+    <file src="bin\" target="bin" />
 	<file src="App_GlobalResources\" target="App_GlobalResources" />    
 	<file src="Content\" target="Content" />    
 	<file src="js\" target="js" />
