@@ -22,6 +22,10 @@
         border:0px;
     }
 
+    .sitemapphone .link {
+        width:auto;
+    }
+
 </style>
 
 <div id="CatalogSiteMapDetailNew" class="container">

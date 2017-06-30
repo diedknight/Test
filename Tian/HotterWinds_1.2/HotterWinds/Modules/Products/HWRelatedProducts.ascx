@@ -30,6 +30,11 @@
         margin:0 auto;
     }
 
+    .products-grid .item .item-inner .item-info .info-inner .item-title {
+        white-space:normal;
+        height:52px;
+    }
+
     @media (max-width: 1349px) {
         .related-pro .item {
             width: 194px;
