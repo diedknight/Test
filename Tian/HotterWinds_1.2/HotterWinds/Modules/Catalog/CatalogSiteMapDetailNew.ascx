@@ -26,6 +26,10 @@
         width:auto;
     }
 
+    .sitemapphone .name {
+        width:240px;
+    }
+
 </style>
 
 <div id="CatalogSiteMapDetailNew" class="container">
