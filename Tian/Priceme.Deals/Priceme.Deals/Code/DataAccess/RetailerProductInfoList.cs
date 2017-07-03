@@ -175,7 +175,7 @@ public class RetailerProductInfoList : List<RetailerProductInfo>
     {
         if (theBestPriceRetaielrProductInfo != null)
         {
-            if (PriceMeCommon.ConfigAppString.CountryID == 56)
+            if (PriceMe.WebConfig.CountryId == 56)
                 return Resources.Resource.TextString_PriceSymbol + PriceMe.Utility.FormatPrice(theBestPriceRetaielrProductInfo.Price);
             else
                 return PriceMe.Utility.FormatPrice(theBestPriceRetaielrProductInfo.Price);
@@ -205,7 +205,7 @@ public class RetailerProductInfoList : List<RetailerProductInfo>
     {
         if (theMostExpensiveRetailerProductInfo != null)
         {
-            if (PriceMeCommon.ConfigAppString.CountryID == 56)
+            if (PriceMe.WebConfig.CountryId == 56)
                 return Resources.Resource.TextString_PriceSymbol + PriceMe.Utility.FormatPrice(theMostExpensiveRetailerProductInfo.Price);
             else
                 return PriceMe.Utility.FormatPrice(theMostExpensiveRetailerProductInfo.Price);

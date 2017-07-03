@@ -39,6 +39,8 @@ namespace PriceMe
 
         public static string UUID = ConfigurationManager.AppSettings["UUID"];
 
+        public static readonly int CountryId = int.Parse(ConfigurationManager.AppSettings["CountryID"]);
+
         /// <summary>
         /// 配置当前环境, 决定是否显示googel Ads and facebook
         /// </summary>

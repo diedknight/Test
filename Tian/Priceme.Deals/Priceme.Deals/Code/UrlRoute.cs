@@ -2,7 +2,7 @@
 #define NoDebug
 
 using PriceMe;
-using PriceMeCommon;
+using PriceMeCommon.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace Priceme.Deals.Code
         static UrlRoute()
         {
 #if (NoDebug)
-            CategoryController.CategoryOrderByName.ForEach(item =>
+            CategoryController.GetAllCategoryOrderByNameList(PriceMe.WebConfig.CountryId).ForEach(item =>
             {
                 string name = UrlController.FilterInvalidNameChar(item.CategoryName.ToLower());
 
@@ -122,7 +122,7 @@ namespace Priceme.Deals.Code
             {
                 cid = Convert.ToInt32(cids[0]);
 
-                var cate = CategoryController.GetCategoryByCategoryID(cid);
+                var cate = CategoryController.GetCategoryByCategoryID(cid, PriceMe.WebConfig.CountryId);
                 if (cate.IsSiteMap == true || cate.IsSiteMapDetail == true)
                 {
                     path += UrlController.FilterInvalidNameChar(cate.CategoryName);

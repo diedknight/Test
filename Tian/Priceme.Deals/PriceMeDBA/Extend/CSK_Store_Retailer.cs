@@ -9,8 +9,6 @@ using System.Configuration;
 namespace PriceMeDBA {
     public partial class CSK_Store_Retailer: IActiveRecord{
         private decimal _avRating = 0;
-        private string _reviewString = "";
-        private string _retailerLogoSmall = "";
         private List<CSK_Store_RetailerReview> _reviews = null;
         private int _reviewsCount = 0;
         //private CSK_Store_RetailerVotesSum _vote = null;
@@ -50,14 +48,16 @@ namespace PriceMeDBA {
         }
 
 
-        public string ReviewString {
-            get {
+        public string ReviewString
+        {
+            get
+            {
                 if (this.RetailerTotalRatingVotes > 1)
                 {
                     //int totalReviews = Vote.RetailerTotalRatingVotes - 1;
                     int totalReviews = (this.RetailerTotalRatingVotes ?? 2) - 1;
                     string reviewStr = "";
-                    if (PriceMeDBStatic.ListVersionNoEnglishCountryid.Contains(int.Parse(ConfigurationSettings.AppSettings["CountryID"].ToString())))
+                    if (PriceMeDBStatic.ListVersionNoEnglishCountryid.Contains(this.RetailerCountry??3))
                         reviewStr = string.Format("{0} " + ConfigurationSettings.AppSettings["reviewStr"], totalReviews);
                     else
                         reviewStr = string.Format("{0} " + ConfigurationSettings.AppSettings["reviewStr"] + "{1}", totalReviews, totalReviews > 1 ? "s" : "");
@@ -65,8 +65,27 @@ namespace PriceMeDBA {
                 }
 
                 return string.Empty;
-            }  
+            }
         }
+
+        //public string GetReviewString(int countryId)
+        //{
+
+        //    if (this.RetailerTotalRatingVotes > 1)
+        //    {
+        //        //int totalReviews = Vote.RetailerTotalRatingVotes - 1;
+        //        int totalReviews = (this.RetailerTotalRatingVotes ?? 2) - 1;
+        //        string reviewStr = "";
+        //        if (PriceMeDBStatic.ListVersionNoEnglishCountryid.Contains(countryId))
+        //            reviewStr = string.Format("{0} " + ConfigurationSettings.AppSettings["reviewStr"], totalReviews);
+        //        else
+        //            reviewStr = string.Format("{0} " + ConfigurationSettings.AppSettings["reviewStr"] + "{1}", totalReviews, totalReviews > 1 ? "s" : "");
+        //        return reviewStr;
+        //    }
+
+        //    return string.Empty;
+
+        //}
 
         public string StoreTypeName
         {

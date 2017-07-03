@@ -21,7 +21,7 @@ public static class ConsumerController
 
     private static void BindConsumerCategoryMap()
     {
-        string sql = "Select * From dbo.CSK_Store_ConsumerCategoryMap Where CountryId = " + PriceMeCommon.ConfigAppString.CountryID;
+        string sql = "Select * From dbo.CSK_Store_ConsumerCategoryMap Where CountryId = " + PriceMe.WebConfig.CountryId;
         using (SqlConnection conn = new SqlConnection(connectionStr))
         using (SqlCommand cmd = new SqlCommand(sql, conn))
         {

@@ -45,6 +45,9 @@ namespace PriceMeCache
 
         //
         public int ReviewID { get; set; }
+        /// <summary>
+        /// (坑)注意还有个小写的RetailerId
+        /// </summary>
         public int RetailerID { get; set; }
         public float Delivery { get; set; }
         public float Service { get; set; }

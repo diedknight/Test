@@ -313,7 +313,7 @@ namespace PriceMe.Data
             {
                 int rc = GetCount(startDT, nowDate);
                 string retailerString = Resources.Resource.TextString_Retailer;
-                if (PriceMeCommon.ConfigAppString.CountryID != 51)
+                if (PriceMe.WebConfig.CountryId != 51)
                 {
                     if (rc > 1)
                     {
@@ -379,7 +379,7 @@ namespace PriceMe.Data
                 else
                 {
                     string retailerString = Resources.Resource.TextString_Retailer;
-                    if (PriceMeCommon.ConfigAppString.CountryID != 51)
+                    if (PriceMe.WebConfig.CountryId != 51)
                     {
                         if (count > 1)
                         {
@@ -427,7 +427,7 @@ namespace PriceMe.Data
                 int rc = GetCount(startDT, nowDate);
 
                 string retailerString = Resources.Resource.TextString_Retailer;
-                if (PriceMeCommon.ConfigAppString.CountryID != 51)
+                if (PriceMe.WebConfig.CountryId != 51)
                 {
                     if (rc > 1)
                     {
@@ -500,7 +500,7 @@ namespace PriceMe.Data
                 else
                 {
                     string retailerString = Resources.Resource.TextString_Retailer;
-                    if (PriceMeCommon.ConfigAppString.CountryID != 51)
+                    if (PriceMe.WebConfig.CountryId != 51)
                     {
                         if (count > 1)
                         {

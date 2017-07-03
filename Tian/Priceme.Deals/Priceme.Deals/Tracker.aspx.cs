@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Priceme.Deals.Code.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ namespace Priceme.Deals
             string id = HttpUtility.UrlDecode(this.Request.QueryString["id"]);
             string type = HttpUtility.UrlDecode(this.Request.QueryString["type"]);
 
-            string url = PriceMeCommon.Data.DealsVoucher.GetUrl(Convert.ToInt32(id));
+            string url = DealsVoucher.GetUrl(Convert.ToInt32(id));
 
             HttpContext.Current.Response.Status = "301 Moved Permanently";
             HttpContext.Current.Response.AddHeader("Location", url);

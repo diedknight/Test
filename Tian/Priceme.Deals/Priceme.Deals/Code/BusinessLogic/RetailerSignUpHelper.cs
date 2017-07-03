@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PriceMe;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -69,7 +70,7 @@ public class RetailerSignUpHelper
 
             SqlParameter p_ID = new SqlParameter("@ID", SqlDbType.Int);
             p_ID.Direction = ParameterDirection.Input;
-            p_ID.Value = PriceMeCommon.ConfigAppString.CountryID;
+            p_ID.Value = WebConfig.CountryId;
 
             SqlParameter p_RetailerName = new SqlParameter("@RetailerName", SqlDbType.NVarChar);
             p_RetailerName.Direction = ParameterDirection.Input;

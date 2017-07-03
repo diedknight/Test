@@ -220,16 +220,6 @@ namespace PriceMeCache
             set;
         }
 
-        //private List<CSK_Store_RetailerReview> _reviews = null;
-        //public List<CSK_Store_RetailerReview> Reviews
-        //{
-        //    get
-        //    {
-        //        return _reviews;
-        //    }
-        //    set { _reviews = value; }
-        //}
-
         public int ReviewsCount
         {
             get;
@@ -241,18 +231,6 @@ namespace PriceMeCache
             get;
             set;
         }
-
-        //private CSK_Store_RetailerVotesSum _vote;
-        //public CSK_Store_RetailerVotesSum Vote
-        //{
-        //    get { return _vote; }
-        //    set
-        //    {
-        //        _vote = value;
-        //        this.RetailerRatingSum = _vote.RetailerRatingSum;
-        //        this.RetailerTotalRatingVotes = _vote.RetailerTotalRatingVotes;
-        //    }
-        //}
         #endregion
     }
 }

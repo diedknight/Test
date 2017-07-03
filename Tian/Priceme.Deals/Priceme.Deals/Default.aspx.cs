@@ -1,6 +1,4 @@
-﻿using PriceMeCommon;
-using PriceMeCommon.Deal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +7,8 @@ using System.Web.UI.WebControls;
 using Priceme.Deals.Code;
 using PriceMe;
 using PriceMeCommon.Data;
+using PriceMeCommon.BusinessLogic;
+using Priceme.Deals.Code.BusinessLogic;
 
 namespace Priceme.Deals
 {
@@ -45,7 +45,7 @@ namespace Priceme.Deals
             //tempCIds.AddRange(this.cids);
             //tempCIds.Add(this.s_cid);
 
-            var result = Product.GetProducts(this.GetQuery("pg", 1), 50, this.GetQuery("sb", "Sale"), this.GetRecentCIdsFromCookie(), cids.ToArray());
+            var result = DealProduct.GetProducts(this.GetQuery("pg", 1), 50, this.GetQuery("sb", "Sale"), this.GetRecentCIdsFromCookie(), cids.ToArray());
 
             this.productList = result.Products;
 
@@ -76,7 +76,7 @@ namespace Priceme.Deals
 
         public string GetRetailerName(int rid)
         {
-            var r = PriceMeCommon.RetailerController.GetRetailerByID(rid);
+            var r = PriceMeCommon.BusinessLogic.RetailerController.GetRetailerDeep(rid, PriceMe.WebConfig.CountryId);
             if (r != null) return r.RetailerName;
 
             return "";
@@ -105,23 +105,23 @@ namespace Priceme.Deals
 
         private void BindCategoies()
         {
-            if (Product.ExistProduct(2)) this.popularCategories.Add(new Category() { Id = 2, Name = "Digital Cameras" });
-            if (Product.ExistProduct(500)) this.popularCategories.Add(new Category() { Id = 500, Name = "Headphones" });
-            if (Product.ExistProduct(7)) this.popularCategories.Add(new Category() { Id = 7, Name = "Laptops" });
-            if (Product.ExistProduct(11)) this.popularCategories.Add(new Category() { Id = 11, Name = "Mobile Phones" });
-            if (Product.ExistProduct(1287)) this.popularCategories.Add(new Category() { Id = 1287, Name = "Perfumes" });
-            if (Product.ExistProduct(3412)) this.popularCategories.Add(new Category() { Id = 3412, Name = "Portable & Mobile Speakers" });
-            if (Product.ExistProduct(13)) this.popularCategories.Add(new Category() { Id = 13, Name = "Speakers" });
-            if (Product.ExistProduct(2151)) this.popularCategories.Add(new Category() { Id = 2151, Name = "Tablets" });
-            if (Product.ExistProduct(1753)) this.popularCategories.Add(new Category() { Id = 1753, Name = "TVs" });
-            if (Product.ExistProduct(377)) this.popularCategories.Add(new Category() { Id = 377, Name = "Washing Machines" });
+            if (DealProduct.ExistProduct(2)) this.popularCategories.Add(new Category() { Id = 2, Name = "Digital Cameras" });
+            if (DealProduct.ExistProduct(500)) this.popularCategories.Add(new Category() { Id = 500, Name = "Headphones" });
+            if (DealProduct.ExistProduct(7)) this.popularCategories.Add(new Category() { Id = 7, Name = "Laptops" });
+            if (DealProduct.ExistProduct(11)) this.popularCategories.Add(new Category() { Id = 11, Name = "Mobile Phones" });
+            if (DealProduct.ExistProduct(1287)) this.popularCategories.Add(new Category() { Id = 1287, Name = "Perfumes" });
+            if (DealProduct.ExistProduct(3412)) this.popularCategories.Add(new Category() { Id = 3412, Name = "Portable & Mobile Speakers" });
+            if (DealProduct.ExistProduct(13)) this.popularCategories.Add(new Category() { Id = 13, Name = "Speakers" });
+            if (DealProduct.ExistProduct(2151)) this.popularCategories.Add(new Category() { Id = 2151, Name = "Tablets" });
+            if (DealProduct.ExistProduct(1753)) this.popularCategories.Add(new Category() { Id = 1753, Name = "TVs" });
+            if (DealProduct.ExistProduct(377)) this.popularCategories.Add(new Category() { Id = 377, Name = "Washing Machines" });
 
             List<int> popularCIds = new List<int>() { 2, 500, 7, 11, 1287, 3412, 13, 2151, 1753, 377 };
 
             cids.ForEach(cid => {
                 if (popularCIds.Contains(cid)) return;
 
-                var cate = CategoryController.GetCategoryByCategoryID(cid);
+                var cate = CategoryController.GetCategoryByCategoryID(cid, PriceMe.WebConfig.CountryId);
                 if (cate != null)
                 {
                     if (this.popularCategories.Count >= 10)

@@ -13,7 +13,7 @@ namespace PriceMe
         public static void Init()
         {
             Dictionary<int, int> _spaceIDsMap = new Dictionary<int, int>();
-            if (PriceMeCommon.ConfigAppString.CountryID != 3)
+            if (PriceMe.WebConfig.CountryId != 3)
                 return;
 
             using (System.Data.SqlClient.SqlConnection sqlConn = new System.Data.SqlClient.SqlConnection(ConnectionString))
@@ -43,7 +43,7 @@ namespace PriceMe
 
         public static int GetSpaceIDByCategoryID(int categoryID)
         {
-            if (spaceIDsMap.Count == 0 || PriceMeCommon.ConfigAppString.CountryID != 3)
+            if (spaceIDsMap.Count == 0 || PriceMe.WebConfig.CountryId != 3)
                 return 0;
 
             if (spaceIDsMap.ContainsKey(categoryID))
@@ -52,13 +52,13 @@ namespace PriceMe
             }
             else
             {
-                var c = PriceMeCommon.CategoryController.GetCategoryByCategoryID(categoryID);
+                var c = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(categoryID, PriceMe.WebConfig.CountryId);
                 if (c != null)
                 {
                     int parentCategoryID = c.ParentID;
                     while (!spaceIDsMap.ContainsKey(parentCategoryID))
                     {
-                        parentCategoryID = PriceMeCommon.CategoryController.GetCategoryByCategoryID(parentCategoryID).ParentID;
+                        parentCategoryID = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(parentCategoryID, PriceMe.WebConfig.CountryId).ParentID;
                     }
                     return spaceIDsMap[parentCategoryID];
                 }

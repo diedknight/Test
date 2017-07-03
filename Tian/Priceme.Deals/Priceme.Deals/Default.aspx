@@ -77,13 +77,13 @@
                     </div>
 
                     <div class="retailer_logo">
-                        <%if (PriceMeCommon.RetailerController.IsPPC(productList[i].BestPriceRetailerId)) %>
+                        <%if (PriceMeCommon.BusinessLogic.RetailerController.IsPPcRetailer(int.Parse(productList[i].BestPPCRetailerID), PriceMe.WebConfig.CountryId)) %>
                         <%{ %>
                         <img alt="<%=productList[i].BestPPCRetailerName %>" src="<%=productList[i].BestPPCLogoPath %>" />
                         <%}%>
                         <%else%>
                         <%{%>
-                        <label><%=GetRetailerName(productList[i].BestPriceRetailerId) %></label>
+                        <label><%=GetRetailerName(int.Parse(productList[i].BestPPCRetailerID)) %></label>
                         <%} %>
                     </div>
                 </div>

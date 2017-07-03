@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SubSonic;
 using System.IO;
-using PriceMeCommon;
+using PriceMeCommon.BusinessLogic;
 
 namespace Priceme.Deals.Code.Ajax
 {
@@ -17,7 +17,7 @@ namespace Priceme.Deals.Code.Ajax
             string str = context.GetParameter("input", "").Trim().ToLower();
             if (str == "") return "";
 
-            var allCategories = CategoryController.CategoryOrderByName.Where(item => CategoryController.GetCategoryProductCount(item.CategoryID) > 0 && item.IsAccessories == false).ToList();
+            var allCategories = CategoryController.GetAllCategoryOrderByNameList(PriceMe.WebConfig.CountryId).Where(item => item.IsAccessories == false).ToList();
 
             //allCategories = allCategories.Where(item =>
             // {

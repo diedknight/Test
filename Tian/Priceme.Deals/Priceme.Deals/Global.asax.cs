@@ -2,6 +2,7 @@
 #define NoDebug
 
 using Priceme.Deals.Code;
+using PriceMeCommon.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +16,18 @@ namespace Priceme.Deals
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            MultiCountryController.LoadWithCheckIndexPath();
 #if (NoDebug)
-            PriceMeCommon.CategoryController.Load();
-            PriceMeCommon.RetailerController.Load();
-
-            PriceMeCommon.BusinessLogic.IndexModifyController.StartCheckModify();
-
-            PriceMeCommon.BusinessLogic.IndexModifyController.IndexModifyEvent += (s, t) =>
-            {
-                PriceMeCommon.CategoryController.Load();
-                PriceMeCommon.RetailerController.Load();
-            };
+            CategoryController.Load(null);
+            RetailerController.Load(null);
 #endif
+            MultiCountryController.OnIndexChanged += MultiCountryController_OnIndexChanged;
+        }
+
+        private void MultiCountryController_OnIndexChanged(int countryId, string newLuceneIndexPath)
+        {
+            CategoryController.Load(null);
+            RetailerController.Load(null);
         }
 
         protected void Application_BeginRequest(Object sender, EventArgs e)

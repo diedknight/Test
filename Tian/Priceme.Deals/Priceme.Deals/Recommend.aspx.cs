@@ -1,4 +1,5 @@
-﻿using PriceMeCommon.Data;
+﻿using Priceme.Deals.Code.Data;
+using PriceMeCommon.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -9,7 +9,6 @@ using PriceMeCommon;
 using PriceMeCommon.Data;
 using PriceMeCommon.Extend;
 using PriceMeCommon.BusinessLogic;
-using PriceMeCommon.DBTableInfo;
 using PriceMeCache;
 
 namespace PriceMe
@@ -172,14 +171,14 @@ namespace PriceMe
             if (queryParameters.ContainsKey("bg"))
             {
                 int bgid = queryParameters["bg"].ToInt(0);
-                CSK_Store_BuyingGuide bg = BuyingGuideController.GetBuyingGuideByBGID(bgid);
+                var bg = BuyingGuideController.GetBuyingGuideByBGID(bgid, PriceMe.WebConfig.CountryId);
                 //int cid = queryParameters["c"].ToInt(0);
                 //PriceMeCache.CategoryCache cat = CategoryController.GetCategoryByCategoryID(cid);
 
                 string url = "";
                 if (bg != null)
                 {
-                    if (PriceMeCommon.ConfigAppString.CountryID == 1 || PriceMeCommon.ConfigAppString.CountryID == 3 || PriceMeCommon.ConfigAppString.CountryID == 28 || PriceMeCommon.ConfigAppString.CountryID == 36 || PriceMeCommon.ConfigAppString.CountryID == 45)
+                    if (PriceMe.WebConfig.CountryId == 1 || PriceMe.WebConfig.CountryId == 3 || PriceMe.WebConfig.CountryId == 28 || PriceMe.WebConfig.CountryId == 36 || PriceMe.WebConfig.CountryId == 45)
                     {
                         url = "/" + FilterInvalidUrlPathChar(bg.BGName) + "-Buying-Guides/bg-" + bg.BGID + ".aspx";
                     }
@@ -212,7 +211,7 @@ namespace PriceMe
             if (queryParameters.ContainsKey("c"))
             {
                 int cid = queryParameters["c"].ToInt(0);
-                PriceMeCache.CategoryCache cat = CategoryController.GetCategoryByCategoryID(cid);
+                PriceMeCache.CategoryCache cat = CategoryController.GetCategoryByCategoryID(cid, PriceMe.WebConfig.CountryId);
                 return GetCategoryBuyingGuidesUrl(cat);
             }
 
@@ -235,7 +234,7 @@ namespace PriceMe
         {
             string url = "";
             int mid = int.Parse(queryParameters["mid"]);
-            ManufacturerInfo manu = ManufacturerController.GetManufacturerByID(mid);
+            ManufacturerInfo manu = ManufacturerController.GetManufacturerByID(mid, PriceMe.WebConfig.CountryId);
             if (manu != null)
             {
                 string pString = "brand_" + mid;
@@ -248,7 +247,7 @@ namespace PriceMe
         public static string GetBrandPageUrl(int manufacturerID)
         {
             string url = "";
-            ManufacturerInfo manu = ManufacturerController.GetManufacturerByID(manufacturerID);
+            ManufacturerInfo manu = ManufacturerController.GetManufacturerByID(manufacturerID, PriceMe.WebConfig.CountryId);
             if (manu != null)
             {
                 string pString = "brand_" + manufacturerID;
@@ -265,7 +264,7 @@ namespace PriceMe
 
         public static string GetProductUrl(string productID, string productName)
         {
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 return string.Format("/p-{0}.aspx", productID);
             return string.Format("/{0}/p-{1}.aspx", FilterInvalidNameChar(productName), productID);
         }
@@ -282,35 +281,35 @@ namespace PriceMe
 
         public static string GetProductExperReviewUrl(int productID, string productName)
         {
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 return string.Format("/pe-{0}.aspx", productID);
             return string.Format("/{0}-review/pe-{1}.aspx", FilterInvalidNameChar(productName), productID);
         }
 
         public static string GetProductUserReviewUrl(int productID, string productName)
         {
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 return string.Format("/pu-{0}.aspx", productID);
             return string.Format("/{0}-review/pu-{1}.aspx", FilterInvalidUrlPathChar(productName), productID);
         }
 
         public static string GetProductDescriptionUrl(int productID, string productName)
         {
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 return string.Format("/pd-{0}.aspx", productID);
             return string.Format("/{0}-specs/pd-{1}.aspx", FilterInvalidUrlPathChar(productName), productID);
         }
 
         public static string GetProductMapUrl(int productID, string productName)
         {
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 return string.Format("/pm-{0}.aspx", productID);
             return string.Format("/{0}-map/pm-{1}.aspx", FilterInvalidNameChar(productName), productID);
         }
 
         public static string GetRetailerProductUrl(int rpid, string rpname)
         {
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 return string.Format("/rp-{0}.aspx", rpid);
 
             if (rpname.Length > 65)
@@ -359,27 +358,27 @@ namespace PriceMe
 
         public static string GetCatalogUrl(int categoryID)
         {
-            if (categoryID == 1283 && PriceMeCommon.ConfigAppString.CountryID == 3)
+            if (categoryID == 1283 && PriceMe.WebConfig.CountryId == 3)
             {
                 return Resources.Resource.Global_HomePageUrl + "/plans/mobile-plans";
             }
-            else if (categoryID == 358 && PriceMeCommon.ConfigAppString.CountryID == 3)
+            else if (categoryID == 358 && PriceMe.WebConfig.CountryId == 3)
             {
                 return Resources.Resource.Global_HomePageUrl + "/plans/broadband-plans";
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 3 && categoryID == 359)
+            else if (PriceMe.WebConfig.CountryId == 3 && categoryID == 359)
             {
                 return Resources.Resource.Global_HomePageUrl + "/plans/all-broadband-plans?type=1";
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 3 && categoryID == 360)
+            else if (PriceMe.WebConfig.CountryId == 3 && categoryID == 360)
             {
                 return Resources.Resource.Global_HomePageUrl + "/plans/all-broadband-plans?type=5";
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 3 && categoryID == 436)
+            else if (PriceMe.WebConfig.CountryId == 3 && categoryID == 436)
             {
                 return Resources.Resource.Global_HomePageUrl + "/plans/all-broadband-plans?type=4";
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 3 && categoryID == 361)
+            else if (PriceMe.WebConfig.CountryId == 3 && categoryID == 361)
             {
                 return Resources.Resource.Global_HomePageUrl + "/plans/all-broadband-plans";
             }
@@ -463,7 +462,7 @@ namespace PriceMe
 
         public static string RetailerInfoUrl(int retailerId)
         {
-            RetailerCache retailer = RetailerController.GetRetailerByID(retailerId);
+            RetailerCache retailer = RetailerController.GetRetailerDeep(retailerId, PriceMe.WebConfig.CountryId);
 
             if (retailer == null)
                 return string.Empty;
@@ -474,8 +473,6 @@ namespace PriceMe
         public static string RetailerInfoUrl(int retailerId, string retailerName)
         {
             string typeName = FilterInvalidUrlPathChar(retailerName);
-            if (!ConfigAppString.UrlSeo)
-                return "/r-" + retailerId + ".aspx";
 
             typeName = typeName.Length > 80 ? typeName.Substring(0, 80) : typeName;
             typeName.Replace("?", "");
@@ -506,7 +503,7 @@ namespace PriceMe
                 throw new ParameterException("RetailerInfoParameterError! queryParameters not contains 'retailerId'");
 
             int retailerId = int.Parse(queryParameters["retailerId"]);
-            RetailerCache retailer = RetailerController.GetRetailerByID(retailerId);
+            RetailerCache retailer = RetailerController.GetRetailerDeep(retailerId, PriceMe.WebConfig.CountryId);
 
             string typeName = FilterInvalidUrlPathChar(retailer.RetailerName);
             typeName = typeName.Length > 80 ? typeName.Substring(0, 80) : typeName;
@@ -528,10 +525,7 @@ namespace PriceMe
             {
                 int rcId = int.Parse(queryParameters["rcId"]);
 
-                string retailerCategoryName = "";
-                Hashtable retailerCategoryHT = RetailerController.RetailerCategoryHT;
-                if (retailerCategoryHT.Contains(rcId))
-                    retailerCategoryName = retailerCategoryHT[rcId].ToString();
+                string retailerCategoryName = RetailerController.GetRetailerCategoryName(rcId, WebConfig.CountryId);
 
                 string typeName = FilterInvalidUrlPathChar(retailerCategoryName);
                 typeName = typeName.Length > 80 ? typeName.Substring(0, 80) : typeName;
@@ -695,7 +689,7 @@ namespace PriceMe
             else if (specialUrl.IndexOf("/pu-", StringComparison.InvariantCultureIgnoreCase) > -1)
             {
                 Regex regex = new Regex(@"/(?<name>[^/]*)?-review/pu-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
-                if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+                if (PriceMe.WebConfig.CountryId == 41)
                     regex = new Regex(@"/pu-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
 
                 Match match = regex.Match(originalUrl);
@@ -703,9 +697,7 @@ namespace PriceMe
                 if (match.Success)
                 {
                     string pid = match.Groups["pid"].ToString();
-                    string name = string.Empty;
-                    if (ConfigAppString.UrlSeo)
-                        name = match.Groups["name"].ToString();
+                    string name = match.Groups["name"].ToString();
 
                     if (redirectToMobileTouch)
                     {
@@ -720,16 +712,14 @@ namespace PriceMe
             else if (specialUrl.IndexOf("/pm-", StringComparison.InvariantCultureIgnoreCase) > -1)
             {
                 Regex regex = new Regex(@"/(?<name>[^/]*)?-map/pm-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
-                if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+                if (PriceMe.WebConfig.CountryId == 41)
                     regex = new Regex(@"/pm-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
                 Match match = regex.Match(originalUrl);
 
                 if (match.Success)
                 {
                     string pid = match.Groups["pid"].ToString();
-                    string name = string.Empty;
-                    if (ConfigAppString.UrlSeo)
-                        name = match.Groups["name"].ToString();
+                    string name = match.Groups["name"].ToString();
 
                     if (redirectToMobileTouch)
                     {
@@ -744,16 +734,14 @@ namespace PriceMe
             else if (specialUrl.IndexOf("/pd-", StringComparison.InvariantCultureIgnoreCase) > -1)
             {
                 Regex regex = new Regex(@"/(?<name>[^/]*)?-specs/pd-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
-                if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+                if (PriceMe.WebConfig.CountryId == 41)
                     regex = new Regex(@"/pd-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
                 Match match = regex.Match(originalUrl);
 
                 if (match.Success)
                 {
                     string pid = match.Groups["pid"].ToString();
-                    string name = string.Empty;
-                    if (ConfigAppString.UrlSeo)
-                        name = match.Groups["name"].ToString();
+                    string name = match.Groups["name"].ToString();
 
                     if (redirectToMobileTouch)
                     {
@@ -785,8 +773,7 @@ namespace PriceMe
             else if (specialUrl.IndexOf("/r-", StringComparison.InvariantCultureIgnoreCase) > -1)
             {
                 Regex regex = new Regex(@"(/(?<name>[^/]*))?/r-(?<rid>\d+)", RegexOptions.IgnoreCase);
-                if (!ConfigAppString.UrlSeo)
-                    regex = new Regex(@"/r-(?<rid>\d+)", RegexOptions.IgnoreCase);
+
                 Match match = regex.Match(originalUrl);
 
                 if (match.Success)
@@ -794,15 +781,8 @@ namespace PriceMe
                     string rid = match.Groups["rid"].ToString();
                     string name = string.Empty;
                     string url = string.Empty;
-                    if (ConfigAppString.UrlSeo)
-                    {
-                        name = match.Groups["name"].ToString();
-                        url = string.Format("/retailerinfo.aspx?rid={0}&name={1}", rid, name);
-                    }
-                    else
-                    {
-                        url = string.Format("/retailerinfo.aspx?rid={0}", rid);
-                    }
+                    name = match.Groups["name"].ToString();
+                    url = string.Format("/retailerinfo.aspx?rid={0}&name={1}", rid, name);
 
                     regex = new Regex(@"pg=(?<pg>\d+)", RegexOptions.IgnoreCase);
                     match = regex.Match(originalUrl);
@@ -1174,16 +1154,14 @@ namespace PriceMe
         private static string GetExperReviewPageUrl(string originalUrl, bool redirectToMobileTouch)
         {
             Regex regex = new Regex(@"/(?<name>[^/]*)?-review/pe-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
-            if (!ConfigAppString.UrlSeo || ConfigAppString.CountryID == 41)
+            if (PriceMe.WebConfig.CountryId == 41)
                 regex = new Regex(@"/pe-(?<pid>\d+).aspx", RegexOptions.IgnoreCase);
             Match match = regex.Match(originalUrl);
 
             if (match.Success)
             {
                 string pid = match.Groups["pid"].Value;
-                string name = string.Empty;
-                if (ConfigAppString.UrlSeo)
-                    name = match.Groups["name"].ToString();
+                string name = match.Groups["name"].ToString();
 
                 string pg = "", sortType = "", stars = "";
                 if (originalUrl.Contains("?"))
@@ -1272,7 +1250,7 @@ namespace PriceMe
             }
 
             int cid = int.Parse(queryParameters["c"]);
-            PriceMeCache.CategoryCache category = CategoryController.GetCategoryByCategoryID(cid);
+            PriceMeCache.CategoryCache category = CategoryController.GetCategoryByCategoryID(cid, PriceMe.WebConfig.CountryId);
 
             string url = "";
             if (category != null)
@@ -1462,7 +1440,7 @@ namespace PriceMe
             if (queryParameters.ContainsKey("m") && queryParameters["m"].Length > 0)
             {
                 int mid = int.Parse(queryParameters["m"]);
-                ManufacturerInfo manufacturer = ManufacturerController.GetManufacturerByID(mid);
+                ManufacturerInfo manufacturer = ManufacturerController.GetManufacturerByID(mid, PriceMe.WebConfig.CountryId);
                 if (manufacturer != null)
                 {
                     //throw new Exception("catalogParameterError! mid : " + mid + " not exist!");
@@ -1511,10 +1489,10 @@ namespace PriceMe
 
         public static AttributeParameter GetAttributeParameterByAttributeRangeIDAndCategoryID(int arid, int cid)
         {
-            CSK_Store_AttributeValueRange attributeValueRange = AttributesController.GetAttributeValueRangeByID(arid);
+            var attributeValueRange = AttributesController.GetAttributeValueRangeByID(arid);
             if (attributeValueRange != null)
             {
-                AttributeTitleCache productDescriptorTitle = AttributesController.GetAttributeTitleByID(attributeValueRange.AttributeTitleID.Value);
+                AttributeTitleCache productDescriptorTitle = AttributesController.GetAttributeTitleByID(attributeValueRange.AttributeTitleID);
                 string key = cid + "," + productDescriptorTitle.TypeID;
 
                 CategoryAttributeTitleMapCache categoryAttributeTitleMap = AttributesController.GetCategoryAttributeTitleMapByKey(key);
@@ -1652,7 +1630,7 @@ namespace PriceMe
             {
                 foreach (int avID in selectedAttributeIDs)
                 {
-                    int avgID = PriceMeCommon.AttributesController.GetCatalogAttributeGroupID(avID);
+                    int avgID = AttributesController.GetCatalogAttributeGroupID(avID);
                     selectedAttributeGroupIDs.Remove(avgID);
                 }
                 string sagIDs = string.Join("-", selectedAttributeGroupIDs);
@@ -1867,7 +1845,7 @@ namespace PriceMe
                     {
                         pv = pValue + narrowItem.Value;
                         int avID = int.Parse(narrowItem.Value);
-                        int avgID = PriceMeCommon.AttributesController.GetCatalogAttributeGroupID(avID);
+                        int avgID = AttributesController.GetCatalogAttributeGroupID(avID);
                         List<int> _avgIDs = new List<int>(avgIDs);
                         if (_avgIDs.Contains(avgID))
                         {
@@ -2075,7 +2053,7 @@ namespace PriceMe
             {
                 foreach (int avID in selectedAttributeIDs)
                 {
-                    int avgID = PriceMeCommon.AttributesController.GetCatalogAttributeGroupID(avID);
+                    int avgID = AttributesController.GetCatalogAttributeGroupID(avID);
                     selectedAttributeGroupIDs.Remove(avgID);
                 }
                 string sagIDs = string.Join("-", selectedAttributeGroupIDs);
@@ -2125,29 +2103,15 @@ namespace PriceMe
             {
                 string newUrl = "";
 
-                if (!string.IsNullOrEmpty(PriceMeCommon.ConfigAppString.ABTestingKey) && orgUrl.Contains("var="))
+                if (!redirectToMobileTouch)
                 {
-                    int varType = Utility.GetIntParameter("var");
-                    if (varType == 1)
-                        newUrl = "/productv1.aspx?pid=" + ma.Groups["pid"].Value + "&name=" + ma.Groups["name"].Value;
-                    else if (varType == 2)
-                        newUrl = "/productv2.aspx?pid=" + ma.Groups["pid"].Value + "&name=" + ma.Groups["name"].Value;
-
-                    if (orgUrl.Contains("aid=5"))
+                    newUrl = "/product.aspx?pid=" + ma.Groups["pid"].Value + "&name=" + ma.Groups["name"].Value;
+                    if (orgUrl.EndsWith("?aid=5", StringComparison.InvariantCultureIgnoreCase))
                         newUrl += "&aid=5";
                 }
                 else
                 {
-                    if (!redirectToMobileTouch)
-                    {
-                        newUrl = "/product.aspx?pid=" + ma.Groups["pid"].Value + "&name=" + ma.Groups["name"].Value;
-                        if (orgUrl.EndsWith("?aid=5", StringComparison.InvariantCultureIgnoreCase))
-                            newUrl += "&aid=5";
-                    }
-                    else
-                    {
-                        newUrl = Resources.Resource.MobileTouchSiteURL + "/product.aspx?pid=" + ma.Groups["pid"].Value;
-                    }
+                    newUrl = Resources.Resource.MobileTouchSiteURL + "/product.aspx?pid=" + ma.Groups["pid"].Value;
                 }
 
                 return newUrl;
@@ -2168,7 +2132,7 @@ namespace PriceMe
                 if (redirectToMobileTouch)
                 {
                     int rpid = int.Parse(ma.Groups["rpid"].Value);
-                    var retailerProduct = RetailerProductController.GetRetailerProduct(rpid);
+                    var retailerProduct = ProductController.GetRetailerProduct(rpid, PriceMe.WebConfig.CountryId);
                     if (retailerProduct != null)
                     {
                         return Resources.Resource.MobileTouchSiteURL + "/product.aspx?pid=" + retailerProduct.ProductId;

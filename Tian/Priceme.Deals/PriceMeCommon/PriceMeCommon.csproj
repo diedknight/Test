@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2942B9F3-4CDC-4819-B1B3-267B3AFFD723}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PriceMeCommon</RootNamespace>
+    <AssemblyName>PriceMeCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CacheBaseLibrary">
+      <HintPath>..\DLL\CacheBaseLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="CASBase">
+      <HintPath>..\DLL\CASBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientLibrary">
+      <HintPath>..\DLL\ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="LogWriter">
+      <HintPath>..\Dll\LogWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\PriceMe 3.0\IndexBuilder\packages\Lucene.Net.4.8.0-beta00004\lib\net451\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Analysis.Common, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\PriceMe 3.0\IndexBuilder\packages\Lucene.Net.Analysis.Common.4.8.0-beta00004\lib\net451\Lucene.Net.Analysis.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SubSonic.Core">
+      <HintPath>..\DLL\SubSonic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Timer">
+      <HintPath>..\DLL\Timer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllLuceneSearcherInfo.cs" />
+    <Compile Include="BusinessLogic\AttributesController.cs" />
+    <Compile Include="BusinessLogic\BuyingGuideController.cs" />
+    <Compile Include="BusinessLogic\CatalogProductSearchController.cs" />
+    <Compile Include="BusinessLogic\CategoryController.cs" />
+    <Compile Include="BusinessLogic\ConvertController.cs" />
+    <Compile Include="BusinessLogic\FavoritesController.cs" />
+    <Compile Include="BusinessLogic\ProductIndexUpdater.cs" />
+    <Compile Include="BusinessLogic\JsonBuilder.cs" />
+    <Compile Include="BusinessLogic\LogController.cs" />
+    <Compile Include="BusinessLogic\ManufacturerController.cs" />
+    <Compile Include="BusinessLogic\MembershipInfoController.cs" />
+    <Compile Include="BusinessLogic\MobilePlanController.cs" />
+    <Compile Include="BusinessLogic\MultiCountryController.cs" />
+    <Compile Include="BusinessLogic\PopularSearcherController.cs" />
+    <Compile Include="BusinessLogic\PriceAlertController.cs" />
+    <Compile Include="BusinessLogic\ProductController.cs" />
+    <Compile Include="BusinessLogic\ProductReviewController.cs" />
+    <Compile Include="BusinessLogic\ProductSearcher.cs" />
+    <Compile Include="BusinessLogic\RetailerController.cs" />
+    <Compile Include="BusinessLogic\RetailerProductSearcher.cs" />
+    <Compile Include="BusinessLogic\RetailerReviewController.cs" />
+    <Compile Include="BusinessLogic\ReviewController.cs" />
+    <Compile Include="BusinessLogic\SearchController.cs" />
+    <Compile Include="BusinessLogic\StringController.cs" />
+    <Compile Include="BusinessLogic\UserController.cs" />
+    <Compile Include="BusinessLogic\VelocityController.cs" />
+    <Compile Include="BusinessLogic\WebSiteController.cs" />
+    <Compile Include="ConfigAppString.cs" />
+    <Compile Include="CountriesNodeInfo.cs" />
+    <Compile Include="CountryNodeInfoHandler.cs" />
+    <Compile Include="Data\CatalogAttributeGroupInfo.cs" />
+    <Compile Include="Data\CatalogManufeaturerProduct.cs" />
+    <Compile Include="Data\CatalogPageInfo.cs" />
+    <Compile Include="Data\CatalogSitemapCategory.cs" />
+    <Compile Include="Data\CategoryExtend.cs" />
+    <Compile Include="Data\CategoryFilterData.cs" />
+    <Compile Include="Data\CategoryResultsInfo.cs" />
+    <Compile Include="Data\CommonPPCMember.cs" />
+    <Compile Include="Data\ConvertMap.cs" />
+    <Compile Include="Data\DBCountryInfo.cs" />
+    <Compile Include="Data\DaysRange.cs" />
+    <Compile Include="Data\FavouriteProductData.cs" />
+    <Compile Include="Data\FavouritesListData.cs" />
+    <Compile Include="Data\FavouritesPageData.cs" />
+    <Compile Include="Data\HitsInfo.cs" />
+    <Compile Include="Data\HotProduct.cs" />
+    <Compile Include="Data\LinkInfo.cs" />
+    <Compile Include="Data\LuceneUpdateIndexInfo.cs" />
+    <Compile Include="Data\ManufacturerInfo.cs" />
+    <Compile Include="Data\NarrowByInfo.cs" />
+    <Compile Include="Data\NarrowInfo.cs" />
+    <Compile Include="Data\NarrowItemGroup.cs" />
+    <Compile Include="Data\PagerInfo.cs" />
+    <Compile Include="Data\PriceDropItem.cs" />
+    <Compile Include="Data\PriceRange.cs" />
+    <Compile Include="Data\ProductCatalog.cs" />
+    <Compile Include="Data\RelatedPartsData.cs" />
+    <Compile Include="Data\RetailerCategoryCache.cs" />
+    <Compile Include="Data\RetailerProductCatalog.cs" />
+    <Compile Include="Data\RetailerProductItem.cs" />
+    <Compile Include="Data\ReviewerExpertReview.cs" />
+    <Compile Include="Data\ReviewerUserReview.cs" />
+    <Compile Include="Data\SearchResult.cs" />
+    <Compile Include="Data\StoreGLatLng.cs" />
+    <Compile Include="Data\StoreGRegion.cs" />
+    <Compile Include="Data\StoreUserLocation.cs" />
+    <Compile Include="Data\TradeMeSeller.cs" />
+    <Compile Include="Data\VelocityCacheKey.cs" />
+    <Compile Include="DesEncrypt.cs" />
+    <Compile Include="Extend\DecimalExtend.cs" />
+    <Compile Include="Extend\ImageExtend.cs" />
+    <Compile Include="Extend\StringExtend.cs" />
+    <Compile Include="IndexChangedDelegate.cs" />
+    <Compile Include="PriceMeStatic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PriceMeCache\PriceMeCache.csproj">
+      <Project>{495480ab-d585-4d6c-b752-c0e51f279e12}</Project>
+      <Name>PriceMeCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceMeDBA\PriceMeDBA.csproj">
+      <Project>{a5acfd04-8b70-4a08-a07d-13b35f9b6b63}</Project>
+      <Name>PriceMeDBA</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -9,7 +9,6 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Data;
-using PriceMeCommon.DBTableInfo;
 using System.IO;
 using System.Text.RegularExpressions;
 using PriceMeCache;
@@ -29,6 +28,7 @@ namespace PriceMe
         public static IFormatProvider CurrentCulture = new System.Globalization.CultureInfo(Resources.Resource.TextString_Culture);
         private static string accessKeyID = ConfigurationManager.AppSettings["AWSAccessKey"];
         private static string secretAccessKeyID = ConfigurationManager.AppSettings["AWSSecretKey"];
+        //public static List<ProductReviewData> listPrevs;
 
         public static void PageNotFound()
         {
@@ -254,7 +254,7 @@ namespace PriceMe
 
             if (category != null && category.CategoryID != 0)
             {
-                List<PriceMeCache.CategoryCache> categoryList = PriceMeCommon.CategoryController.GetBreadCrumbCategoryList(category);
+                List<PriceMeCache.CategoryCache> categoryList = PriceMeCommon.BusinessLogic.CategoryController.GetBreadCrumbCategoryList(category, WebConfig.CountryId);
 
                 for (int i = categoryList.Count - 1; i > 0; i--)
                 {
@@ -269,7 +269,7 @@ namespace PriceMe
                 }
             }
 
-            if (manufacturer == null || manufacturer.ManufacturerID == 0 || manufacturer.ManufacturerID == -1 || PriceMeCommon.CategoryController.IsHiddenBrandsCategoryID(category.CategoryID))
+            if (manufacturer == null || manufacturer.ManufacturerID == 0 || manufacturer.ManufacturerID == -1 || PriceMeCommon.BusinessLogic.CategoryController.IsHiddenBrandsCategoryID(category.CategoryID, WebConfig.CountryId))
             {
                 if (endWithLink)
                 {
@@ -332,7 +332,7 @@ namespace PriceMe
             }
             catch (Exception ex)
             {
-                LogWriter.FileLogWriter.WriteLine(PriceMeCommon.ConfigAppString.ExceptionLogPath, "Set RecoverPasswordEmail Email error : " + ex.Message + "\t" + ex.StackTrace);
+                PriceMeCommon.BusinessLogic.LogController.WriteException("Set RecoverPasswordEmail Email error : " + ex.Message + "\t" + ex.StackTrace);
                 return false;
             }
         }
@@ -348,30 +348,46 @@ namespace PriceMe
             }
             catch (Exception ex)
             {
-                LogWriter.FileLogWriter.WriteLine(PriceMeCommon.ConfigAppString.ExceptionLogPath, "Set Register Email error : " + ex.Message + "\t" + ex.StackTrace);
-                LogWriter.FileLogWriter.WriteLine(PriceMeCommon.ConfigAppString.ExceptionLogPath, "Email body : " + body);
+                PriceMeCommon.BusinessLogic.LogController.WriteException("Set Register Email error : " + ex.Message + "\t" + ex.StackTrace);
+                PriceMeCommon.BusinessLogic.LogController.WriteException("Email body : " + body);
                 return false;
             }
         }
 
-        public static void UserReviewEmail(CSK_Store_ProductReview review, string userName, string name, string categoryName, string productName, string productUrl, bool isOther, string email)
-        {
-            string em = PriceMeCommon.ConfigAppString.EmailAddress;
+        //public static void UserReviewEmail(CSK_Store_ProductReview review, string userName, string name, string categoryName, string productName, string productUrl, bool isOther, string email)
+        //{
+        //    string em = PriceMeCommon.ConfigAppString.EmailAddress;
 
-            string stringBody = "<br/>Dear " + userName + ",<br/><br/>Thanks for your " + categoryName + " product review.<br/>" +
-                                        "It has been approved and is now displayed online:<br/>" + Resources.Resource.Global_HomePageUrl + productUrl +
-                                        "<br/><br/>You can now update your member profile online:<br/>" + Resources.Resource.Global_HomePageUrl + "/Community/Review-MyPriceMe.aspx<br/><br/>First login and then click 'My Account'.<br/><br/>Thanks again for your review.<br/><br/>" +
-                                        "Best regards,<br/>The PriceMe Team";
-            string stringSource = "Your PriceMe product review for: " + productName;
+        //    string stringBody = "<br/>Dear " + userName + ",<br/><br/>Thanks for your " + categoryName + " product review.<br/>" +
+        //                                "It has been approved and is now displayed online:<br/>" + Resources.Resource.Global_HomePageUrl + productUrl +
+        //                                "<br/><br/>You can now update your member profile online:<br/>" + Resources.Resource.Global_HomePageUrl + "/Community/Review-MyPriceMe.aspx<br/><br/>First login and then click 'My Account'.<br/><br/>Thanks again for your review.<br/><br/>" +
+        //                                "Best regards,<br/>The PriceMe Team";
+        //    string stringSource = "Your PriceMe product review for: " + productName;
 
-            try
-            {
-                AmazonEmail(stringBody, stringSource, email, em);
-            }
-            catch (Exception ex) { LogWriter.FileLogWriter.WriteLine(PriceMeCommon.ConfigAppString.LogPath, "toemail:" + email + "   email:" + em + "  " + ex.Message + ex.StackTrace); }
-            //notify admin new product review
-            NotifyAdminNewProductReviewEmail(review, productName, userName);
-        }
+        //    //保存到cache
+        //    ProductReviewData data = new ProductReviewData();
+        //    data.Id = review.ReviewID;
+        //    data.Body = stringBody;
+        //    data.Source = stringSource;
+        //    data.Email = email;
+        //    data.CreateOn = DateTime.Now;
+        //    listPrevs.Add(data);
+
+        //    //notify admin new product review
+        //    NotifyAdminNewProductReviewEmail(review, productName, userName);
+        //}
+
+        //public static void UserReviewEmail(ProductReviewData pr)
+        //{
+        //    try
+        //    {
+        //        AmazonEmail(pr.Body, pr.Source, pr.Email, PriceMeCommon.ConfigAppString.EmailAddress);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PriceMeCommon.BusinessLogic.LogController.WriteException("toemail:" + pr.Email + "   email:" + PriceMeCommon.ConfigAppString.EmailAddress + "  " + ex.Message + ex.StackTrace);
+        //    }
+        //}
 
         public static void NotifyAdminNewRetailerReviewEmail(string retailer, string author, string reviewContent)
         {
@@ -1099,8 +1115,8 @@ namespace PriceMe
             }
             catch (Exception ex)
             {
-                LogWriter.FileLogWriter.WriteLine(PriceMeCommon.ConfigAppString.ExceptionLogPath, "Set Register Email error : " + ex.Message + "\t" + ex.StackTrace);
-                LogWriter.FileLogWriter.WriteLine(PriceMeCommon.ConfigAppString.ExceptionLogPath, "Email body : " + checkURL);
+                PriceMeCommon.BusinessLogic.LogController.WriteException("Set Register Email error : " + ex.Message + "\t" + ex.StackTrace);
+                PriceMeCommon.BusinessLogic.LogController.WriteException("Email body : " + checkURL);
                 return false;
             }
         }
@@ -1115,7 +1131,7 @@ namespace PriceMe
         public static string GetVisitShopButtonClass()
         {
             var cls = string.Empty;
-            switch (PriceMeCommon.ConfigAppString.CountryID)
+            switch (WebConfig.CountryId)
             {
                 case 41://Hong Kong
                     cls = "-hk"; break;
@@ -1135,38 +1151,38 @@ namespace PriceMe
         {
             var rootUrl = "";
             if (countryID == 3)
-                rootUrl = "http://track.priceme.co.nz";
+                rootUrl = "https://track.priceme.co.nz";
             else if (countryID == 1)
             {
-                rootUrl = "http://track.priceme.com.au";
+                rootUrl = "https://track.priceme.com.au";
             }
             else if (countryID == 28)
             {
-                rootUrl = "http://track.priceme.com.ph";
+                rootUrl = "https://track.priceme.com.ph";
             }
             else if (countryID == 41)
             {
-                rootUrl = "http://track.priceme.com.hk";
+                rootUrl = "https://track.priceme.com.hk";
             }
             else if (countryID == 36)
             {
-                rootUrl = "http://track.priceme.com.sg";
+                rootUrl = "https://track.priceme.com.sg";
             }
             else if (countryID == 45)
             {
-                rootUrl = "http://track.priceme.com.my";
+                rootUrl = "https://track.priceme.com.my";
             }
             else if (countryID == 51)
             {
-                rootUrl = "http://track.priceme.co.id";
+                rootUrl = "https://track.priceme.co.id";
             }
             else if (countryID == 55)
             {
-                rootUrl = "http://track.priceme.com";
+                rootUrl = "https://track.priceme.com";
             }
             else if (countryID == 56)
             {
-                rootUrl = "http://track.priceme.com.vn";
+                rootUrl = "https://track.priceme.com.vn";
             }
             url = rootUrl + url;
 
@@ -1229,7 +1245,7 @@ namespace PriceMe
                 sb.Append("<li class=\"bg1\" id=\"UserLoginReviews\"><a href=\"");
                 sb.Append(UrlController.GetPrimaryProfileUrl("Review"));
                 sb.Append("\"><span class=\"glyphicon glyphicon-star iconGray\"></span> " + Resources.Resource.TextString_MyReviews + "</a></li>");
-                //if(PriceMeCommon.ConfigAppString.CountryID == 3)
+                //if(WebConfig.CountryId == 3)
                 //{
                 //sb.Append("<li class=\"bg1\" id=\"UserLoginPosts\"><a href=\"");
                 //sb.Append(UrlController.GetPrimaryProfileUrl("PricemeForum"));
@@ -1319,15 +1335,15 @@ namespace PriceMe
 
         static string FixPriceFormat(string priceString)
         {
-            if (PriceMeCommon.ConfigAppString.CountryID == 28)
+            if (WebConfig.CountryId == 28)
             {
                 priceString = priceString.Replace("Php", Resources.Resource.TextString_PriceSymbol);
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 56)
+            else if (WebConfig.CountryId == 56)
             {
                 priceString = priceString.Replace("₫", Resources.Resource.TextString_PriceSymbol);
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 36)
+            else if (WebConfig.CountryId == 36)
             {
                 priceString = priceString.Replace("$", Resources.Resource.TextString_PriceSymbol);
             }
@@ -1359,15 +1375,15 @@ namespace PriceMe
         }
         static string FixPriceFormatForPriceFilter(string priceString)
         {
-            if (PriceMeCommon.ConfigAppString.CountryID == 28)
+            if (WebConfig.CountryId == 28)
             {
                 priceString = priceString.Replace("Php", Resources.Resource.TextString_PriceSymbol);
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 56)
+            else if (WebConfig.CountryId == 56)
             {
                 priceString = priceString.Replace("₫", Resources.Resource.TextString_PriceSymbol);
             }
-            else if (PriceMeCommon.ConfigAppString.CountryID == 36)
+            else if (WebConfig.CountryId == 36)
             {
                 priceString = priceString.Replace("$", Resources.Resource.TextString_PriceSymbol);
             }
@@ -1377,12 +1393,12 @@ namespace PriceMe
 
         public static string FormatPrice(double price)
         {
-            if (PriceMeCommon.ConfigAppString.CountryID == 28
-                || PriceMeCommon.ConfigAppString.CountryID == 51
-                || PriceMeCommon.ConfigAppString.CountryID == 41
-                || PriceMeCommon.ConfigAppString.CountryID == 55
-                || PriceMeCommon.ConfigAppString.CountryID == 45
-                || PriceMeCommon.ConfigAppString.CountryID == 56)
+            if (WebConfig.CountryId == 28
+                || WebConfig.CountryId == 51
+                || WebConfig.CountryId == 41
+                || WebConfig.CountryId == 55
+                || WebConfig.CountryId == 45
+                || WebConfig.CountryId == 56)
             {
                 return NewPriceCultureString_Int(price);
             }
@@ -1449,12 +1465,12 @@ namespace PriceMe
         {
             //<img width="16" height="11" alt="" src="<%=Resources.Resource.ImageWebsite + countryInfo.CountryFlag %>" /></div></a>
 
-            var uc = PriceMeCommon.RetailerController.GetUtilCountry(countryID);
+            var uc = PriceMeCommon.BusinessLogic.RetailerController.GetUtilCountry(countryID);
             if (uc == null) return "";
 
-            string imageHTML = "<img width='16' height='11' alt='" + uc.country + "' src='" + Resources.Resource.ImageWebsite + uc.CountryImage + "' />";
+            string imageHTML = "<img width='16' height='11' alt='" + uc.CountryID + "' src='" + Resources.Resource.ImageWebsite + uc.CountryFlag + "' />";
 
-            string html = imageHTML + "&nbsp;<span>" + uc.country + "</span>";
+            string html = imageHTML + "&nbsp;<span>" + uc.CountryID + "</span>";
 
             return html;
         }
@@ -1768,7 +1784,7 @@ namespace PriceMe
 
             var json = JSONHelper.ObjectToJSON(user);
             json = EncryptStr(json).ToLower();
-            HttpCookie c = new HttpCookie("our_custom_session_cookie_xxxx", json);
+            HttpCookie c = new HttpCookie("our_custom_session_cookienew_xxxx", json);
             c.Path = "/";
             //c.Domain = "priceme.co.nz";
             //c.Domain = "192.168.1.109";
@@ -1787,7 +1803,7 @@ namespace PriceMe
         /// <returns></returns>
         public static UserData GetUserInfoFromCookie()
         {
-            var userCookie = HttpContext.Current.Request.Cookies["our_custom_session_cookie_xxxx"];
+            var userCookie = HttpContext.Current.Request.Cookies["our_custom_session_cookienew_xxxx"];
             if (userCookie != null)
             {
                 var json = DecryptStr(userCookie.Value.ToUpper());
@@ -1911,12 +1927,17 @@ namespace PriceMe
                 }
 
                 string imageSRC = !pc.DefaultImage.Contains(".") ? (Resources.Resource.ImageWebsite + "/images/no_image_available.gif") : (GlobalOperator.FixImagePath(pc.DefaultImage.Insert(pc.DefaultImage.LastIndexOf('.'), imgFixString)));
-                if (!imageSRC.StartsWith("http:"))
+                if (!imageSRC.StartsWith("http:") && !imageSRC.StartsWith("https:"))
                 {
                     imageSRC = Resources.Resource.ImageWebsite + imageSRC;
                 }
+                if (imageSRC.Contains("http://"))
+                    imageSRC = imageSRC.Replace("http://", "https://");
                 pc.DefaultImage = imageSRC;
-                string clickOutUrl = Utility.GetRootUrl("/ResponseRedirect.aspx?pid=" + pc.ProductID + "&rid=" + pc.BestPPCRetailerID + "&rpid=" + pc.BestPPCRetailerProductID + "&countryID=" + PriceMeCommon.ConfigAppString.CountryID + "&cid=" + pc.CategoryID + "&t=c", PriceMeCommon.ConfigAppString.CountryID).Replace("&", "&amp;");
+                string clickOutUrl = Utility.GetRootUrl("/ResponseRedirect.aspx?pid=" + pc.ProductID + "&rid=" + pc.BestPPCRetailerID + "&rpid=" + pc.BestPPCRetailerProductID + "&countryID=" + WebConfig.CountryId + "&cid=" + pc.CategoryID + "&t=c", WebConfig.CountryId).Replace("&", "&amp;");
+                string uuid = Guid.NewGuid().ToString();
+                clickOutUrl += "&uuid=" + uuid;
+
                 pc.ClickOutUrl = clickOutUrl;
                 string linkUrl = UrlController.GetProductUrl(int.Parse(pc.ProductID), pc.ProductName);
                 pc.LinkUrl = linkUrl;
@@ -1942,9 +1963,9 @@ namespace PriceMe
                     pc.StarsImageAlt = Resources.Resource.TextString_NoRating;
                 }
 
-                if (PriceMeCommon.ConfigAppString.CountryID != 41)
+                if (WebConfig.CountryId != 41)
                 {
-                    if (PriceMeCommon.ConfigAppString.CountryID == 51)
+                    if (WebConfig.CountryId == 51)
                     {
                         pc.ComparePriceString = Resources.Resource.TextString_Compare;
                     }
@@ -1958,7 +1979,7 @@ namespace PriceMe
                     pc.ComparePriceString = Resources.Resource.TextString_Compare + Resources.Resource.TextString_PriceCount;
                 }
 
-                if (CategoryController.listIsSearchOnly.Contains(pc.CategoryID))
+                if (PriceMeCommon.BusinessLogic.CategoryController.IsSearchOnly(pc.CategoryID, WebConfig.CountryId))
                 {
                     pc.IsSearchOnly = true;
                 }
@@ -2183,6 +2204,38 @@ namespace PriceMe
             }
 
             return false;
+        }
+
+        public static string GetImage(string imageurl, string size)
+        {
+            string img = string.Empty;
+            if (string.IsNullOrEmpty(imageurl))
+                img = Resources.Resource.ImageWebsite + "/images/no_image_available.gif";
+            else
+            {
+                img = GlobalOperator.FixImagePath(imageurl.Insert(imageurl.LastIndexOf('.'), size));
+                if (!img.Contains("https://") && !img.Contains("http://"))
+                    img = Resources.Resource.ImageWebsite + img;
+                if (img.Contains("http://"))
+                    img = img.Replace("http://", "https://");
+
+                if (img.StartsWith("/"))
+                    img = img.Substring(1, img.Length - 1);
+            }
+
+            return img;
+        }
+
+        public static string GetLargeImage(string imageurl)
+        {
+            string size = "_l";
+            string img = string.Empty;
+            if (string.IsNullOrEmpty(imageurl))
+                img = Resources.Resource.ImageWebsite + "/images/no_image_available.gif";
+            else
+                img = Resources.Resource.ImageWebsite + "/Large" + GlobalOperator.FixImagePath(imageurl.Insert(imageurl.LastIndexOf('.'), size));
+
+            return img;
         }
     }
 }

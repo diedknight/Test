@@ -1,8 +1,6 @@
 ﻿using Priceme.Deals.Code;
+using Priceme.Deals.Code.Data;
 using PriceMe;
-using PriceMeCommon.Data;
-using PriceMeCommon;
-using PriceMeCommon.Deal;
 using System;
 using System.Collections.Generic;
 using System.Linq;

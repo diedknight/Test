@@ -1949,6 +1949,16 @@ namespace PriceMeDBA
                 MaxLength = 0
             });
 
+            Columns.Add(new DatabaseColumn("ProductInfo", this)
+            {
+                IsPrimaryKey = false,
+                DataType = DbType.Double,
+                IsNullable = false,
+                AutoIncrement = false,
+                IsForeignKey = false,
+                MaxLength = 0
+            });
+
             Columns.Add(new DatabaseColumn("OverallRating", this)
             {
                 IsPrimaryKey = false,
@@ -2096,6 +2106,22 @@ namespace PriceMeDBA
         }
 
         public static string EaseOfPurchaseColumn
+        {
+            get
+            {
+                return "EaseOfPurchase";
+            }
+        }
+
+        public IColumn ProductInfo
+        {
+            get
+            {
+                return this.GetColumn("ProductInfo");
+            }
+        }
+
+        public static string ProductInfoColumn
         {
             get
             {
