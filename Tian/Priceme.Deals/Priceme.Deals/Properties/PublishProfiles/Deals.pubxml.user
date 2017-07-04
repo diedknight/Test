@@ -6,209 +6,413 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\Publish\Deals</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\Publish\Deals</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AjaxPage.aspx">
-      <publishTime>10/27/2016 14:29:19</publishTime>
+      <publishTime>07/04/2017 09:12:02</publishTime>
     </File>
     <File Include="ApplicationInsights.config">
-      <publishTime>09/21/2016 14:21:29</publishTime>
+      <publishTime>07/03/2017 14:55:32</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.en-AU.resx">
-      <publishTime>06/28/2016 14:02:26</publishTime>
+      <publishTime>06/29/2017 09:57:43</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.en-MY.resx">
-      <publishTime>06/28/2016 14:02:20</publishTime>
+      <publishTime>06/29/2017 09:57:45</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.en-nz.resx">
-      <publishTime>10/14/2016 08:49:20</publishTime>
+      <publishTime>06/29/2017 09:57:44</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.en-PH.resx">
-      <publishTime>10/14/2016 08:49:19</publishTime>
+      <publishTime>06/29/2017 09:57:44</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.en-SG.resx">
-      <publishTime>06/28/2016 14:02:20</publishTime>
+      <publishTime>06/29/2017 09:57:45</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.ID-ID.resx">
-      <publishTime>06/28/2016 14:02:20</publishTime>
+      <publishTime>06/29/2017 09:57:50</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.resx">
-      <publishTime>01/25/2017 09:29:05</publishTime>
+      <publishTime>06/29/2017 09:57:45</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.TH-TH.resx">
-      <publishTime>06/28/2016 14:02:24</publishTime>
+      <publishTime>06/29/2017 09:57:44</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.vi-VN.resx">
-      <publishTime>06/28/2016 14:02:26</publishTime>
+      <publishTime>06/29/2017 09:57:51</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.zh-CHT.resx">
-      <publishTime>06/28/2016 14:02:20</publishTime>
+      <publishTime>06/29/2017 09:57:45</publishTime>
     </File>
     <File Include="App_GlobalResources/Resource.zh-CN.resx">
-      <publishTime>06/28/2016 14:02:20</publishTime>
+      <publishTime>06/29/2017 09:57:51</publishTime>
+    </File>
+    <File Include="bin/ajaxpage.aspx.cdcab7d2.compiled">
+      <publishTime>07/04/2017 09:12:01</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
-      <publishTime>09/21/2016 14:21:29</publishTime>
+      <publishTime>07/03/2017 14:55:32</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>07/04/2017 09:12:00</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>07/04/2017 09:12:00</publishTime>
+    </File>
+    <File Include="bin/App_GlobalResources.compiled">
+      <publishTime>07/04/2017 09:12:00</publishTime>
+    </File>
+    <File Include="bin/App_GlobalResources.dll">
+      <publishTime>07/04/2017 09:12:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_f5rmcjq3.dll">
+      <publishTime>07/04/2017 09:12:02</publishTime>
+    </File>
+    <File Include="bin/App_Web_zpzkkptz.dll">
+      <publishTime>07/04/2017 09:12:01</publishTime>
     </File>
     <File Include="bin/AWSSDK.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>06/29/2017 10:06:35</publishTime>
     </File>
     <File Include="bin/CacheBaseLibrary.dll">
-      <publishTime>06/28/2016 14:06:49</publishTime>
+      <publishTime>08/12/2015 15:25:20</publishTime>
     </File>
     <File Include="bin/CASBase.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>08/12/2015 15:25:20</publishTime>
     </File>
     <File Include="bin/ClientLibrary.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>08/12/2015 15:25:20</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>07/22/2016 14:52:40</publishTime>
+    </File>
+    <File Include="bin/default.aspx.cdcab7d2.compiled">
+      <publishTime>07/04/2017 09:12:02</publishTime>
+    </File>
+    <File Include="bin/en-AU/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:59</publishTime>
+    </File>
+    <File Include="bin/en-MY/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:59</publishTime>
+    </File>
+    <File Include="bin/en-nz/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:59</publishTime>
+    </File>
+    <File Include="bin/en-PH/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:58</publishTime>
+    </File>
+    <File Include="bin/en-SG/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:59</publishTime>
     </File>
     <File Include="bin/FabricCommon.dll">
-      <publishTime>06/28/2016 14:06:49</publishTime>
+      <publishTime>03/09/2009 16:06:06</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
-      <publishTime>06/28/2016 14:06:49</publishTime>
+      <publishTime>06/29/2017 10:07:31</publishTime>
+    </File>
+    <File Include="bin/ID-ID/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:59</publishTime>
     </File>
     <File Include="bin/LogWriter.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>06/29/2017 10:04:47</publishTime>
+    </File>
+    <File Include="bin/Lucene.Net.Analysis.Common.dll">
+      <publishTime>05/18/2017 17:17:30</publishTime>
     </File>
     <File Include="bin/Lucene.Net.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>05/18/2017 17:17:28</publishTime>
+    </File>
+    <File Include="bin/main.master.cdcab7d2.compiled">
+      <publishTime>07/04/2017 09:12:01</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
-      <publishTime>12/07/2015 19:04:38</publishTime>
+      <publishTime>06/27/2017 12:59:34</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.DependencyCollector.dll">
-      <publishTime>03/10/2016 14:26:18</publishTime>
+      <publishTime>06/28/2017 17:59:20</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
-      <publishTime>03/10/2016 14:26:26</publishTime>
+      <publishTime>06/28/2017 18:05:44</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
-      <publishTime>03/09/2016 12:00:14</publishTime>
+      <publishTime>06/27/2017 15:30:06</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Web.dll">
-      <publishTime>03/10/2016 14:26:26</publishTime>
+      <publishTime>06/28/2017 18:05:42</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.WindowsServer.dll">
-      <publishTime>03/10/2016 14:26:26</publishTime>
+      <publishTime>06/28/2017 18:05:44</publishTime>
     </File>
     <File Include="bin/Microsoft.ApplicationInsights.dll">
-      <publishTime>03/09/2016 11:57:34</publishTime>
+      <publishTime>06/27/2017 15:33:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.TelemetryCorrelation.dll">
+      <publishTime>06/28/2017 15:05:26</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>06/15/2015 02:06:24</publishTime>
+      <publishTime>05/05/2017 09:59:26</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>06/29/2017 10:06:16</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>10/14/2016 08:49:18</publishTime>
+      <publishTime>06/29/2017 10:07:31</publishTime>
     </File>
     <File Include="bin/Priceme.Deals.dll">
-      <publishTime>03/10/2017 09:09:31</publishTime>
+      <publishTime>07/03/2017 17:45:07</publishTime>
+    </File>
+    <File Include="bin/Priceme.Deals.pdb">
+      <publishTime>07/03/2017 17:45:07</publishTime>
     </File>
     <File Include="bin/Priceme.Infrastructure.DB.Dapper.dll">
       <publishTime>02/17/2017 09:54:36</publishTime>
     </File>
     <File Include="bin/PriceMeCache.dll">
-      <publishTime>11/22/2016 16:16:27</publishTime>
+      <publishTime>07/03/2017 17:45:03</publishTime>
+    </File>
+    <File Include="bin/PriceMeCache.pdb">
+      <publishTime>07/03/2017 17:45:03</publishTime>
     </File>
     <File Include="bin/PriceMeCommon.dll">
-      <publishTime>03/06/2017 16:27:23</publishTime>
+      <publishTime>07/03/2017 17:45:04</publishTime>
+    </File>
+    <File Include="bin/PriceMeCommon.pdb">
+      <publishTime>07/03/2017 17:45:04</publishTime>
     </File>
     <File Include="bin/PriceMeDBA.dll">
-      <publishTime>11/22/2016 16:16:27</publishTime>
+      <publishTime>07/03/2017 17:45:03</publishTime>
+    </File>
+    <File Include="bin/PriceMeDBA.dll.config">
+      <publishTime>06/20/2017 08:51:03</publishTime>
+    </File>
+    <File Include="bin/PriceMeDBA.pdb">
+      <publishTime>07/03/2017 17:45:03</publishTime>
+    </File>
+    <File Include="bin/recommend.aspx.cdcab7d2.compiled">
+      <publishTime>07/04/2017 09:12:02</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>06/18/2015 20:19:44</publishTime>
+      <publishTime>04/24/2017 11:35:16</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.Process.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Pipes.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.AccessControl.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Claims.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Thread.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>04/24/2017 11:35:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>06/18/2015 20:19:46</publishTime>
+      <publishTime>04/24/2017 11:35:18</publishTime>
     </File>
     <File Include="bin/SubSonic.Core.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>06/29/2017 10:07:31</publishTime>
+    </File>
+    <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>06/27/2017 11:17:34</publishTime>
+    </File>
+    <File Include="bin/TH-TH/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:58</publishTime>
     </File>
     <File Include="bin/Timer.dll">
-      <publishTime>06/28/2016 14:05:37</publishTime>
+      <publishTime>06/29/2017 10:06:16</publishTime>
+    </File>
+    <File Include="bin/tracker.aspx.cdcab7d2.compiled">
+      <publishTime>07/04/2017 09:12:01</publishTime>
+    </File>
+    <File Include="bin/vi-VN/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:58</publishTime>
+    </File>
+    <File Include="bin/voucher.aspx.cdcab7d2.compiled">
+      <publishTime>07/04/2017 09:12:02</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:11:59</publishTime>
+    </File>
+    <File Include="bin/zh-CN/App_GlobalResources.resources.dll">
+      <publishTime>07/04/2017 09:12:00</publishTime>
     </File>
     <File Include="css/default.min.css">
-      <publishTime>03/07/2017 15:39:23</publishTime>
+      <publishTime>06/29/2017 09:57:47</publishTime>
     </File>
     <File Include="css/default.scss">
-      <publishTime>03/06/2017 15:05:52</publishTime>
+      <publishTime>06/29/2017 09:57:42</publishTime>
     </File>
     <File Include="css/main.min.css">
-      <publishTime>03/07/2017 15:39:23</publishTime>
+      <publishTime>06/29/2017 09:57:42</publishTime>
     </File>
     <File Include="css/main.scss">
-      <publishTime>02/22/2017 14:38:25</publishTime>
+      <publishTime>06/29/2017 09:57:47</publishTime>
     </File>
     <File Include="css/StyleSheet1.scss">
-      <publishTime>09/29/2016 10:34:41</publishTime>
+      <publishTime>06/29/2017 09:57:42</publishTime>
     </File>
     <File Include="css/voucher.min.css">
-      <publishTime>03/07/2017 15:39:23</publishTime>
+      <publishTime>07/04/2017 08:14:52</publishTime>
     </File>
     <File Include="css/voucher.scss">
-      <publishTime>03/07/2017 15:39:22</publishTime>
+      <publishTime>07/04/2017 08:14:52</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>03/01/2017 14:02:59</publishTime>
+      <publishTime>07/04/2017 09:12:03</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>09/21/2016 14:21:17</publishTime>
+      <publishTime>06/29/2017 09:57:45</publishTime>
     </File>
     <File Include="js/Common.js">
-      <publishTime>02/21/2017 08:42:48</publishTime>
+      <publishTime>06/29/2017 09:57:42</publishTime>
     </File>
     <File Include="Main.Master">
-      <publishTime>03/07/2017 15:45:34</publishTime>
+      <publishTime>06/29/2017 09:57:42</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>02/17/2017 09:58:22</publishTime>
+      <publishTime>07/03/2017 15:11:12</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>07/04/2017 09:11:52</publishTime>
     </File>
     <File Include="Recommend.aspx">
-      <publishTime>03/10/2017 08:18:40</publishTime>
+      <publishTime>07/04/2017 09:12:03</publishTime>
     </File>
     <File Include="Tracker.aspx">
-      <publishTime>02/17/2017 16:05:33</publishTime>
+      <publishTime>07/04/2017 09:12:03</publishTime>
     </File>
     <File Include="Voucher.aspx">
-      <publishTime>03/07/2017 09:24:59</publishTime>
+      <publishTime>07/04/2017 09:12:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/27/2017 09:04:23</publishTime>
+      <publishTime>07/04/2017 09:11:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

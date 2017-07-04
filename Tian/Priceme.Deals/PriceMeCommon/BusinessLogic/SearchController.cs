@@ -156,7 +156,7 @@ namespace PriceMeCommon.BusinessLogic
             Dictionary<int, string> attrValueRange, 
             bool useSearchonly, 
             DaysRange daysRange, 
-            string onSaleOnly)
+            string onSaleOnly, bool sale = false, float saleMinimumPrice = -0.01f)
         {
             /// <param name="searchMerged">如果categoryMerged为false，searchMerged也为false，则只搜索IsMerged为false的产品</param>
             /// <param name="categoryMerged">如果categoryMerged为true，则只搜索IsDisplay为false的产品</param>
@@ -190,7 +190,7 @@ namespace PriceMeCommon.BusinessLogic
             }
 
             string[] kwList = GetKeyWordsList(keywords, countryId);
-            Query query = GetQuery(categoryIDList, manufacturerIDs, attributeValueIDList, attributeRangeIDList, retailerIDs, countryId, occur, includeAccessories, ppcOnly, attrValueRange, useSearchonly, daysRange, onSaleOnly);
+            Query query = GetQuery(categoryIDList, manufacturerIDs, attributeValueIDList, attributeRangeIDList, retailerIDs, countryId, occur, includeAccessories, ppcOnly, attrValueRange, useSearchonly, daysRange, onSaleOnly, sale, saleMinimumPrice);
             Filter filter = GetPriceRangeFilter(priceRange);
             Sort sort = GetSort(sortby);
 
@@ -381,7 +381,7 @@ namespace PriceMeCommon.BusinessLogic
             Dictionary<int, string> attrValueRange,
             bool useSearchonly,
             DaysRange daysRange,
-            string onSaleOnly)
+            string onSaleOnly, bool sale, float saleMinimumPrice)
         {
             Query categoryQueries = GetCategoryQuery(cidList, useSearchonly, countryId);
             Query attributeQueries = null;
@@ -425,6 +425,11 @@ namespace PriceMeCommon.BusinessLogic
                     brandBooleanQuery.Add(manufacturerQuery, Occur.SHOULD);
                 }
                 booleanQuery.Add(brandBooleanQuery, Occur.MUST);
+            }
+
+            if (sale)
+            {
+                booleanQuery.Add(NumericRangeQuery.NewSingleRange("Sale", -0.85f, saleMinimumPrice, true, true), Occur.MUST);
             }
 
             if (categoryQueries != null)
