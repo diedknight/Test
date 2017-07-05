@@ -20,7 +20,7 @@
                 color: #ff0000
             }
     </style>
-     
+
     <style>
         .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
             border-radius: 16px;
@@ -113,13 +113,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyStyle" runat="server">
     <script type="text/javascript">
-        $("body").attr("class", "single single-product postid-106 siteorigin-panels woocommerce woocommerce-page cms-index-index cms-linea-home");        
+        $("body").attr("class", "single single-product postid-106 siteorigin-panels woocommerce woocommerce-page cms-index-index cms-linea-home");
 
     </script>
     <style type="text/css">
-        #productTabContent 
-        {
-            line-height:inherit;
+        #productTabContent {
+            line-height: inherit;
         }
     </style>
 </asp:Content>
@@ -155,43 +154,43 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="foot" runat="server">
     <script type='text/javascript'>
-                /* <![CDATA[ */
-                var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product\/today-fashion-casual-sleeveless-solid-womens-top-light-pink\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product\/today-fashion-casual-sleeveless-solid-womens-top-light-pink\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.min.js?ver=3.1.6'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.init.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
-                /* <![CDATA[ */
-                var wc_single_product_params = { "i18n_required_rating_text": "Please select a rating", "review_rating_required": "yes" };
+        /* <![CDATA[ */
+        var wc_single_product_params = { "i18n_required_rating_text": "Please select a rating", "review_rating_required": "yes" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
     <script type='text/javascript'>
-            /* <![CDATA[ */
-            var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product\/today-fashion-casual-sleeveless-solid-womens-top-light-pink\/?wc-ajax=%%endpoint%%" };
+                /* <![CDATA[ */
+                var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product\/today-fashion-casual-sleeveless-solid-womens-top-light-pink\/?wc-ajax=%%endpoint%%" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1'></script>
     <script type='text/javascript'>
-            /* <![CDATA[ */
-            var wc_cart_fragments_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product\/today-fashion-casual-sleeveless-solid-womens-top-light-pink\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments" };
+                /* <![CDATA[ */
+                var wc_cart_fragments_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product\/today-fashion-casual-sleeveless-solid-womens-top-light-pink\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var yith_woocompare = { "nonceadd": "bd02eb4d45", "nonceremove": "894f999a6f", "nonceview": "1ed5d0256f", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
+            /* <![CDATA[ */
+            var yith_woocompare = { "nonceadd": "bd02eb4d45", "nonceremove": "894f999a6f", "nonceview": "1ed5d0256f", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/woocompare.js?ver=2.0.5'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/jquery.colorbox-min.js?ver=1.4.21'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
+            /* <![CDATA[ */
+            var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-quick-view/assets/js/frontend.js?ver=1.0'></script>
@@ -249,5 +248,7 @@
                     element.attachEvent('on' + event, handler);
                 }
             }
-        })();</script>
+        })();
+
+    </script>
 </asp:Content>

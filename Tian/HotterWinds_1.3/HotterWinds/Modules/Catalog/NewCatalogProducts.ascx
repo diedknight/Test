@@ -57,7 +57,8 @@
                             Sale='<%#Eval("Sale") %>'
                             RatingPercent='<%#Eval("RatingPercent") %>'
                             CurrentPrice='<%#Eval("CurrentPrice") %>'
-                            IsTop3='<%#Eval("IsTop3") %>' />
+                            IsTop3='<%#Eval("IsTop3") %>'
+                            SKU='<%#Eval("SKU") %>' />
                     </li>
                 </ItemTemplate>
             </asp:Repeater>

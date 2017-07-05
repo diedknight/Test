@@ -28,6 +28,8 @@ namespace HotterWinds
         public string SharePrice = "";
         public string ShareName = "Christmas Wish list";
 
+        public string GoogleAnalytis_require = System.Configuration.ConfigurationManager.AppSettings["GoogleAnalytis_require"].ToString();
+
         string iosAppArgument = "";
 
         public void SetIosAppArgument(string iaa)
@@ -66,7 +68,7 @@ namespace HotterWinds
         }
 
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
             //AddMeta();
             AddLink();
             AddCssAndJs();
@@ -216,7 +218,7 @@ namespace HotterWinds
             if (pageID == (int)CssFile.Home)
             {
                 AddCssFile("home.min");
-                
+
             }
             else if (pageID == (int)CssFile.Catalog)
             {
@@ -386,9 +388,22 @@ namespace HotterWinds
 
             if (pageID != 0)
             {
-                HtmlGenericControl webisteStructuredDataScriptControl = GetWebisteStructuredDataScriptControl(Resources.Resource.Global_HomePageUrl, websiteName, alternateWebsiteName);
+                HtmlGenericControl webisteStructuredDataScriptControl = GetWebisteStructuredDataScriptControl("https://hotterwinds.co.nz/", "hotterwinds", "hotterwinds 25");
                 this.Page.Header.Controls.Add(webisteStructuredDataScriptControl);
             }
+
+            HtmlGenericControl script1 = new HtmlGenericControl("script");
+            script1.Attributes.Add("type", "text/javascript");
+            script1.InnerHtml = "<script>(function (w, d, s, l, i) {"
+            + "w[l] = w[l] || []; w[l].push({"
+            + " 'gtm.start':"
+            + "new Date().getTime(), event: 'gtm.js'"
+            + "}); var f = d.getElementsByTagName(s)[0],"
+            + "j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src ="
+            + "'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);"
+            + "})(window, document, 'script', 'dataLayer', '" + GoogleAnalytis_require + "');</script>";            
+
+            this.Page.Header.Controls.Add(script1);
         }
 
         private HtmlGenericControl GetLotameScriptControl(int countryId)

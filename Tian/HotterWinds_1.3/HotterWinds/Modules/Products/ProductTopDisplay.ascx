@@ -98,7 +98,7 @@
 
                 <span class="retailer_name"><%=Retailer.RetailerName %></span>
 
-                <a class="visit_shop" target="_blank" href="<%=VisitShopRetailerProductURL %>">Visit Shop ></a>
+                <a class="visit_shop" target="_blank" href="<%=VisitShopRetailerProductURL %>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=RetailerProduct.RetailerProductName %>', 'sku': '<%=RetailerProduct.RetailerProductSKU %>','category': <%=Product.CategoryID %>, 'price': <%=RetailerProduct.RetailerPrice %>, 'quantity': 1, 'dimension1' : '<%=RetailerProduct.SKU %>'}],'event': 'pmco_trans'});">Visit Shop ></a>
             </div>
             <div class="clr"></div>
         </div>

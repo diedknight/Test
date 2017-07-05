@@ -28,7 +28,9 @@ namespace HotterWinds.DBQuery
                         + " RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
                         + " PurchaseUrl = (select top 1 PurchaseURL from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
                         + " RetailerId=(select top 1 RetailerId from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
-                        + " RetailerProductId=(select top 1 RetailerProductId from CSK_Store_RetailerProduct where ProductID = a.ProductID)"
+                        + " RetailerProductId=(select top 1 RetailerProductId from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
+                        + " RetailerProductName=(select top 1 RetailerProductName from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
+                        + " SKU=(select top 1 RetailerProductSKU from CSK_Store_RetailerProduct where ProductID = a.ProductID)"
                         + " from CSK_Store_Product as a"
                         + " where categoryId = @cId and ProductStatus=1 order by createdon desc";
 
@@ -65,6 +67,8 @@ namespace HotterWinds.DBQuery
                         + " RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductId), "
                         + " RetailerId,"
                         + " RetailerProductId,"
+                        + " RetailerProductName,"
+                        + " RetailerProductSKU as SKU,"
                         + " CategoryId = (select top 1 CategoryID from CSK_Store_Product where ProductID = a.ProductId)"
                         + " from CSK_Store_RetailerProduct as a"
                         + " where"
@@ -107,7 +111,9 @@ namespace HotterWinds.DBQuery
                         + " RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
                         + " PurchaseUrl = (select top 1 PurchaseURL from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
                         + " RetailerId=(select top 1 RetailerId from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
-                        + " RetailerProductId=(select top 1 RetailerProductId from CSK_Store_RetailerProduct where ProductID = a.ProductID)"
+                        + " RetailerProductId=(select top 1 RetailerProductId from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
+                        + " RetailerProductName=(select top 1 RetailerProductName from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
+                        + " SKU=(select top 1 RetailerProductSKU from CSK_Store_RetailerProduct where ProductID = a.ProductID)"
                         + " from CSK_Store_Product as a"
                         + " where ProductStatus = 1 order by ModifiedOn desc";
 
@@ -155,7 +161,7 @@ namespace HotterWinds.DBQuery
                 string html = item.SelectSingleNode("description").InnerText.Trim();
 
                 JQuery jquery = new JQuery(html);
-                blog.ImgUrl = jquery.first().getLink();
+                blog.ImgUrl = jquery.children().first().getLink();
                 blog.Description = jquery.last().text();
 
                 list.Add(blog);

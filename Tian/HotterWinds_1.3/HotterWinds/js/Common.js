@@ -25,7 +25,7 @@ function onImgError2(source) {
 }
 
 function onImgError3(source) {
-    source.src = "//images.pricemestatic.com/images/PriceMeNewDesign/no_image_available3.gif";
+    source.src = "https://s3.pricemestatic.com/Images/HotterWindsVersion/no_image_available3.gif";
     source.onerror = "";
     return true;
 }

@@ -116,7 +116,7 @@
                                 <div class="item-img-info">
                                     <a href="<%=PriceMe.UrlController.GetProductUrl(p.ProductID,p.ProductName) %>" title="<%=p.ProductName %>" class="product-image">
                                         <figure class="img-responsive">
-                                            <img alt="<%=p.ProductName %>" src="<%=GetImage(p.DefaultImage) %>" onerror="onImgError2(this)">
+                                            <img alt="<%=p.ProductName %>" src="<%=GetImage(p.DefaultImage) %>" onerror="onImgError3(this)">
                                         </figure>
                                     </a>
                                 </div>
@@ -140,7 +140,11 @@
                                         <p class="retailer_logo"><img width="120" height="40" src="<%=PriceMe.Utility.GetImage(p.BestPPCLogoPath, "_ms") %>" /></p>
 
                                         <div class="action">
-                                            <a href="<%=GetLinkUrl(Convert.ToInt32(p.ProductID),Convert.ToInt32(p.BestPPCRetailerID),Convert.ToInt32(p.BestPPCRetailerProductID),p.CategoryID) %>" class="visit_shop">Visit Shop ></a>
+                                            <a href="<%=GetLinkUrl(Convert.ToInt32(p.ProductID),Convert.ToInt32(p.BestPPCRetailerID),Convert.ToInt32(p.BestPPCRetailerProductID),p.CategoryID) %>" 
+                                                class="visit_shop"
+                                                onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.ProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryID %>, 'price': <%=p.BestPrice %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
+                                                Visit Shop >
+                                            </a>
                                         </div>
 
                                     </div>

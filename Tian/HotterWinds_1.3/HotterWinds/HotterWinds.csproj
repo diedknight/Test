@@ -184,9 +184,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
+    <Content Include="500.aspx" />
     <Content Include="About\AboutUs.aspx" />
     <Content Include="About\ContactUs.aspx" />
     <Content Include="About\ContactUsSuccess.aspx" />
+    <Content Include="About\PrivacyPolicy.aspx" />
+    <Content Include="About\TermsCondition.aspx" />
     <Content Include="AjaxPage.aspx" />
     <Content Include="CatalogAjax.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -695,6 +699,7 @@
     <Content Include="Modules\ResultMessage.ascx" />
     <Content Include="NewCatalog.aspx" />
     <Content Include="Product.aspx" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
@@ -726,6 +731,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="500.aspx.cs">
+      <DependentUpon>500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="500.aspx.designer.cs">
+      <DependentUpon>500.aspx</DependentUpon>
+    </Compile>
     <Compile Include="About\AboutUs.aspx.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -746,6 +765,20 @@
     </Compile>
     <Compile Include="About\ContactUsSuccess.aspx.designer.cs">
       <DependentUpon>ContactUsSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About\PrivacyPolicy.aspx.cs">
+      <DependentUpon>PrivacyPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About\PrivacyPolicy.aspx.designer.cs">
+      <DependentUpon>PrivacyPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About\TermsCondition.aspx.cs">
+      <DependentUpon>TermsCondition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About\TermsCondition.aspx.designer.cs">
+      <DependentUpon>TermsCondition.aspx</DependentUpon>
     </Compile>
     <Compile Include="AjaxPage.aspx.cs">
       <DependentUpon>AjaxPage.aspx</DependentUpon>

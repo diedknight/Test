@@ -8,6 +8,7 @@
     <%foreach (PriceMeCache.CategoryCache rootCate in this.RootCategoryList) %>
     <%{ %>
 
+    <%if (rootCate.ProductsCount == 0) continue; %>
     <%var subCateList = CategoryController.GetNextLevelSubCategories(rootCate.CategoryID, WebConfig.CountryId);%>
 
     <%if (subCateList.Count == 0) %>
@@ -37,6 +38,8 @@
                     <%foreach (var subCate in subCateList) %>
                     <%{ %>
 
+                    <%if (subCate.CategoryName == "Golf") continue; %>
+                    <%if (subCate.ProductsCount == 0) continue; %>
                     <%var subsubCateList = CategoryController.GetNextLevelSubCategories(subCate.CategoryID, WebConfig.CountryId);%>
 
                     <li id="nav-menu-item-<%=subCate.CategoryID %>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  sub" data-cols="1">
@@ -46,6 +49,9 @@
                             
                             <%foreach (var subsubCate in subsubCateList) %>
                             <%{ %>
+
+                            <%if (subsubCate.ProductsCount == 0) continue; %>                            
+
                             <li id="nav-menu-item-<%=subsubCate.CategoryID %>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat ">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(subsubCate.CategoryID) %>" class=""><span><%=subsubCate.CategoryName %></span></a>
                             </li>                            

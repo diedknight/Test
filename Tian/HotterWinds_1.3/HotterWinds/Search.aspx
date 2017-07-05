@@ -129,6 +129,15 @@
                 width: 100%;
             }
         }
+
+        #dropdownMenuSortBy {
+            border-radius:0px;
+        }
+
+        .dropdown-menu {
+            left:-48px;
+        }
+
     </style>
 
     <script src="<%=PriceMe.WebConfig.CssJsPath %>/Scripts/new_catalog.js?ver=<%=PriceMe.WebConfig.WEB_cssVersion %>"></script>

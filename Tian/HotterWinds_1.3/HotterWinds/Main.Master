@@ -16,7 +16,7 @@
     <title>Linea Demo &#8211; Just another WordPress Demo Sites site</title>
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
-
+    
     <script src="/js/Common.js"></script>
     <script src="/js/jquery-1.10.2.min.js"></script>
 </head>
@@ -93,6 +93,12 @@
                             <div class="features-block">
 
                                 <div class="col-lg-7 col-md-9 col-xs-12 col-sm-9 offer-block">
+
+                                    <div class="feature-box first">
+                                        <div class="content">
+                                            <h3>WE MAKE IT EASY TO COMPARE BRANDS, PRODUCTS AND PRICES</h3>
+                                        </div>
+                                    </div>
 
                                     <%--<div class="feature-box first">
                                         <div class="content">
@@ -212,13 +218,11 @@
                                     <aside id="text-6" class="widget widget_text">
                                         <h4>Information</h4>
                                         <div class="textwidget">
-                                            <ul class="links">
-                                                <li><a href="#" title="Site Map">Site Map</a></li>
-                                                <li><a href="#" title="Search Terms">Search Terms</a></li>
-                                                <li><a href="#" title="Advanced Search">Advanced Search</a></li>
+                                            <ul class="links">                                                
                                                 <li><a href="/About/AboutUs.aspx" title="About Us">About Us</a></li>
                                                 <li><a href="/About/ContactUs.aspx" title="Contact Us">Contact Us</a></li>
-                                                <li><a href="#" title="Suppliers">Suppliers</a></li>
+                                                <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
+                                                <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>
                                             </ul>
                                         </div>
                                     </aside>
@@ -590,6 +594,10 @@
                 width: 165px;
                 margin-left: 95px;
             }
+
+            #mc4wp_email {
+                width:40% !important;
+            }
         }
 
         @media(max-width:985px) {
@@ -618,7 +626,7 @@
 
             if (emailNode.get(0).checkValidity()) {
                 GlobalAjax("AjaxDefaultController", "SigningUp", { "email": emailNode.val() }, function (msg) {
-                    
+
                     var node = null;
                     if (msg != "0") {
                         node = $("#emailSuccessAlert");
@@ -651,7 +659,12 @@
 
     </script>
 
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=<%=GoogleAnalytis_require %>"
+            height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
 </body>
 </html>

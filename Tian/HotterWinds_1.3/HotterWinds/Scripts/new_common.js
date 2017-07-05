@@ -814,21 +814,21 @@ function proccessSearchBar(windowWidth) {
 
 function proccessNewSearchBar(windowWidth) {
 
-    if (windowWidth < 990) {
-        if (searchBarInHeader) {
-            $('#out-searchbar').html($('#in-searchbar').html()).css('display', 'table');
-            $('#in-searchbar').html('').css('display', 'none');
-            searchBarInHeader = false;
-            SuggestHelper.reInit();
-        }
-    } else {
-        if (!searchBarInHeader) {
-            $('#in-searchbar').html($('#out-searchbar').html()).css('display', 'table');
-            $('#out-searchbar').html('').css('display', 'none');
-            searchBarInHeader = true;
-            SuggestHelper.reInit();
-        }
-    }
+    //if (windowWidth < 990) {
+    //    if (searchBarInHeader) {
+    //        $('#out-searchbar').html($('#in-searchbar').html()).css('display', 'table');
+    //        $('#in-searchbar').html('').css('display', 'none');
+    //        searchBarInHeader = false;
+    //        SuggestHelper.reInit();
+    //    }
+    //} else {
+    //    if (!searchBarInHeader) {
+    //        $('#in-searchbar').html($('#out-searchbar').html()).css('display', 'table');
+    //        $('#out-searchbar').html('').css('display', 'none');
+    //        searchBarInHeader = true;
+    //        SuggestHelper.reInit();
+    //    }
+    //}
 }
 
 var myListAtTop = false;

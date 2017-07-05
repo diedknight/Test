@@ -19,5 +19,7 @@ namespace HotterWinds.ViewModels
         public int RPCount { get; set; }
 
         public string PurchaseUrl { get; set; }
+        public string RetailerProductName { get; set; }
+        public string SKU { get; set; }
     }
 }

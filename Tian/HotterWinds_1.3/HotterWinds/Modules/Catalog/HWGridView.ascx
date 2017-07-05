@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="action">
-                    <a href="<%=ClickOutUrl %>" target="_blank" class="button add_to_cart_button btn-cart">
+                    <a href="<%=ClickOutUrl %>" target="_blank" class="button add_to_cart_button btn-cart" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=ProductName %>', 'sku': '<%=SKU %>','category': <%=CategoryID %>, 'price': <%=BestPrice %>, 'quantity': 1, 'dimension1' : '<%=SKU %>'}],'event': 'pmco_trans'});">
                         <span>Visit Shop</span>
                     </a>
                 </div>

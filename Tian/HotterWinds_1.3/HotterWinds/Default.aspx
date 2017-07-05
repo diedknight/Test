@@ -363,7 +363,7 @@
                                                                         </div>
 
                                                                         <div class="action">
-                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>">
+                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.RetailerProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryId %>, 'price': <%=p.Price %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
                                                                                 <span>Visit Shop</span>
                                                                             </a>
 
@@ -420,7 +420,7 @@
                                                                         </div>
 
                                                                         <div class="action">
-                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>">
+                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.RetailerProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryId %>, 'price': <%=p.Price %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
                                                                                 <span>Visit Shop</span>
                                                                             </a>
 
@@ -476,7 +476,7 @@
                                                                         </div>
 
                                                                         <div class="action">
-                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>">
+                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.RetailerProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryId %>, 'price': <%=p.Price %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
                                                                                 <span>Visit Shop</span>
                                                                             </a>
 
@@ -532,7 +532,7 @@
                                                                         </div>
 
                                                                         <div class="action">
-                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>">
+                                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.RetailerProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryId %>, 'price': <%=p.Price %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
                                                                                 <span>Visit Shop</span>
                                                                             </a>
 
@@ -607,7 +607,7 @@
                                                                 </div>
 
                                                                 <div class="action">
-                                                                    <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>">
+                                                                    <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl%>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.RetailerProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryId %>, 'price': <%=p.Price %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
                                                                         <span>Visit Shop</span>
                                                                     </a>
                                                                 </div>
@@ -679,7 +679,7 @@
                                                         </div>
 
                                                         <div class="action">
-                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl %>">
+                                                            <a target="_blank" class="button btn-cart" href="<%=p.PurchaseUrl %>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.RetailerProductName %>', 'sku': '<%=p.SKU %>','category': <%=p.CategoryId %>, 'price': <%=p.Price %>, 'quantity': 1, 'dimension1' : '<%=p.SKU %>'}],'event': 'pmco_trans'});">
                                                                 <span>Visit Shop</span>
                                                             </a>
                                                         </div>
@@ -795,7 +795,7 @@
                                                 </div>
 
                                                 <div class="action">
-                                                    <a class="single_add_to_cart_button add_to_cart_button button btn-cart" target="_blank" href="<%=Model.HotDeal.PurchaseUrl %>">
+                                                    <a class="single_add_to_cart_button add_to_cart_button button btn-cart" target="_blank" href="<%=Model.HotDeal.PurchaseUrl %>" onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=Model.HotDeal.RetailerProductName %>', 'sku': '<%=Model.HotDeal.SKU %>','category': <%=Model.HotDeal.CategoryId %>, 'price': <%=Model.HotDeal.Price %>, 'quantity': 1, 'dimension1' : '<%=Model.HotDeal.SKU %>'}],'event': 'pmco_trans'});">
                                                         <span>Visit Shop</span>
                                                     </a>
 

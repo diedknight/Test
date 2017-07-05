@@ -271,14 +271,10 @@
                             </div>
                             <div class="block-content">
                                 <ul>
-                                    <li><a href="/About/AboutUs.aspx">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Suppliers</a></li>
-                                    <li><a href="#">Our Store</a></li>
-                                    <li><a href="/About/ContactUs.aspx">Contact Us</a></li>
-                                    <li><a href="#">Site Map</a></li>
+                                    <li><a href="/About/AboutUs.aspx">About Us</a></li>                                    
+                                    <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
+                                    <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>                                    
+                                    <li><a href="/About/ContactUs.aspx">Contact Us</a></li>                                                               
                                 </ul>
                             </div>
                         </div>

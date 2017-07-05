@@ -63,6 +63,10 @@
         color:#1fc0a0;
     }
 
+    .heightBar {
+        width:80%;
+    }
+
 </style>
 
 <aside>

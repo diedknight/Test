@@ -44,6 +44,8 @@ namespace HotterWinds.Modules.Catalog
         public float RatingPercent;
         public double CurrentPrice;
         public bool IsTop3;
+        public string SKU;
+        //public string RetailerProductName;
 
         protected string VSOnclickScript;
 

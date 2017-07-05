@@ -27,13 +27,19 @@
         .search_box_extension .glyphicon-search:before {
             color: black;
             font-size: 18px;
-            line-height:28px;
-            position:relative;
-            top:-3px;
+            line-height: 28px;
+            position: relative;
+            top: -3px;
         }
 
     #headerV1 {
-        border-bottom:none;
+        border-bottom: none;
+    }
+
+    @media (min-width: 768px) {
+        .search_box_extension {
+            width:500px;
+        }
     }
 </style>
 
@@ -43,13 +49,15 @@
 </div>--%>
 <div id="headerV1">
 
-    <%if(isLogin){ %>
+    <%if (isLogin)
+        { %>
     <style type="text/css">
         @media (min-width: 1007px) {
             .new-searchbar {
                 width: 435px !important;
             }
         }
+
         @media (min-width: 1200px) {
             .new-searchbar {
                 width: 610px !important;
