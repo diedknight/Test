@@ -1,0 +1,657 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="HotterWinds.Main" %>
+
+<%@ Register Src="~/Modules/ManCategoryList.ascx" TagPrefix="uc1" TagName="ManCategoryList" %>
+<%@ Register Src="~/Modules/Common/NewHeaderControl.ascx" TagPrefix="uc1" TagName="NewHeaderControl" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Linea Demo &#8211; Just another WordPress Demo Sites site</title>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <script src="/js/Common.js"></script>
+    <script src="/js/jquery-1.10.2.min.js"></script>
+</head>
+
+<body class="home page page-id-193 page-template page-template-homepage page-template-homepage-php siteorigin-panels cms-index-index cms-linea-home">
+    <asp:ContentPlaceHolder ID="BodyStyle" runat="server"></asp:ContentPlaceHolder>
+    <form id="form1" runat="server">
+        <div id="page" class="page">
+
+            <header>
+                <%--<div class="header-container">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Header Top Links -->
+                            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 pull-right hidden-xs">
+                                <div class="toplinks">
+                                    <div class="links">
+                                        <ul id="menu-toplinks" class="top-links1 mega-menu1">
+                                            <li id="nav-menu-item-3311" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/my-account/" class="">My Account</a></li>
+                                            <li id="nav-menu-item-3282" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/shop/" class="">Shop</a></li>
+                                            <li id="nav-menu-item-3284" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/blog/" class="">Blog</a></li>
+                                            <li id="nav-menu-item-3289" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/wishlist-2-6/" class="">Wishlist</a></li>
+                                            <li class="menu-item"><a href="/my-account/"><span>Login</span></a></li>
+                                            <li class="menu-item"><a href="/my-account/"><span>Register</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- End Header Top Links -->
+                            </div>
+                        </div>
+                    </div>
+                </div>--%>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 logo-block">
+                            <!-- Header Logo -->
+                            <div class="logo">
+                                <a class="logo" title="Linea Demo" href="/">
+                                    <img alt="Linea Demo" src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Hotter-Winds-Logo-PNG.png"
+                                        height="28"
+                                        width="240">
+                                </a>
+                            </div>
+                            <!-- End Header Logo -->
+                        </div>
+
+                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
+                            <uc1:NewHeaderControl runat="server" ID="NewHeaderControl" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <nav class="hidden-xs">
+                    <div class="nav-container">
+
+
+                        <div class="col-md-3 col-xs-12 col-sm-3">
+                            <div class="mega-container visible-lg visible-md visible-sm">
+                                <div class="navleft-container">
+                                    <div class="mega-menu-title">
+                                        <h3><i class="fa fa-navicon"></i>All Categories </h3>
+                                    </div>
+                                    <div class="mega-menu-category" style="display: none;">
+                                        <uc1:ManCategoryList runat="server" ID="ManCategoryList" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-features-box hidden-xs">
+                            <div class="features-block">
+
+                                <div class="col-lg-7 col-md-9 col-xs-12 col-sm-9 offer-block">
+
+                                    <%--<div class="feature-box first">
+                                        <div class="content">
+                                            <h3>Free Shipping Worldwide </h3>
+                                        </div>
+                                    </div>
+
+                                    <span class="separator">/</span>
+
+                                    <div class="feature-box">
+                                        <div class="content">
+                                            <h3>Money Back Guarantee</h3>
+                                        </div>
+                                    </div>
+
+                                    <span class="separator">/</span>
+
+                                    <div class="feature-box last">
+                                        <div class="content">
+                                            <h3>Hotline  +(888) 123-4567</h3>
+                                        </div>
+                                    </div>--%>
+                                </div>
+
+                                <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><span class="offer-label">Offer Zone</span></div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </nav>
+            </header>
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+
+            <footer class="footer">
+                <div class="newsletter-wrap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="newsletter">
+
+                                    <script type="text/javascript">!function () { window.mc4wp || (window.mc4wp = { listeners: [], forms: { on: function (n, w) { window.mc4wp.listeners.push({ event: n, callback: w }) } } }) }();</script>
+                                    <!-- MailChimp for WordPress v3.0.9 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
+                                    <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-1276 mc4wp-form-basic" method="post" data-id="1276" data-name="Default sign-up form">
+                                        <div class="mc4wp-form-fields">
+                                            <p>
+                                                <label id="footerSubmitDes">SIGN UP FOR EMAILS: </label>
+                                                <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Your email address" required />
+                                                <input id="footerSubmit" type="button" value="Sign Up" />
+                                                <%--<asp:Button runat="server" Text="Sign Up" ID="footerSubmit" OnClick="footerSubmit_Click" />--%>
+                                            </p>
+
+                                            <p>
+                                            </p>
+                                            <div style="display: none;">
+                                                <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" autofill="off" />
+                                            </div>
+                                            <input type="hidden" name="_mc4wp_timestamp" value="1493784021" /><input type="hidden" name="_mc4wp_form_id" value="1276" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" />
+                                        </div>
+                                        <div class="mc4wp-response"></div>
+                                    </form>
+                                    <!-- / MailChimp for WordPress Plugin -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--newsletter-->
+                <div class="footer-middle">
+                    <div class="container">
+                        <div class="row">
+
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="footer-column pull-left">
+                                    <aside id="text-4" class="widget widget_text">
+                                        <h4>Shopping Guide</h4>
+                                        <div class="textwidget">
+                                            <ul class="links">
+                                                <li><a href="https://hotterwinds.co.nz/blog/" title="How to buy">Blog</a></li>
+                                                <li><a href="#" title="FAQs">FAQs</a></li>
+                                            </ul>
+                                        </div>
+                                    </aside>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="footer-column pull-left">
+                                    <aside id="text-5" class="widget widget_text">
+                                        <h4>POPULAR</h4>
+                                        <div class="textwidget">
+                                            <ul class="links">
+                                                <li><a href="/Furniture-and-Sleep-Supplies/c-747.aspx" title="Furniture and Sleep Supplies">Furniture and Sleep Supplies</a></li>
+                                                <li><a href="/Mens-Jackets/c-1019.aspx" title="Mens Jackets">Mens Jackets</a></li>
+                                                <li><a href="/Womens-Jackets/c-1040.aspx" title="Womens Jackets">Womens Jackets</a></li>
+                                                <li><a href="/Appliances/c-1046.aspx" title="Tops">Tops</a></li>
+                                                <li><a href="/Travel-Bags/c-2299.aspx" title="Travel Bags">Travel Bags</a></li>
+                                                <li><a href="/Multi-Purpose-Tools/c-2950.aspx" title="Multi-Purpose Tools">Multi-Purpose Tools</a></li>
+                                            </ul>
+                                        </div>
+                                    </aside>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="footer-column pull-left">
+                                    <aside id="text-6" class="widget widget_text">
+                                        <h4>Information</h4>
+                                        <div class="textwidget">
+                                            <ul class="links">
+                                                <li><a href="#" title="Site Map">Site Map</a></li>
+                                                <li><a href="#" title="Search Terms">Search Terms</a></li>
+                                                <li><a href="#" title="Advanced Search">Advanced Search</a></li>
+                                                <li><a href="/About/AboutUs.aspx" title="About Us">About Us</a></li>
+                                                <li><a href="/About/ContactUs.aspx" title="Contact Us">Contact Us</a></li>
+                                                <li><a href="#" title="Suppliers">Suppliers</a></li>
+                                            </ul>
+                                        </div>
+                                    </aside>
+                                </div>
+                            </div>
+
+                            <%--<div class="col-md-3 col-sm-6">
+                                <aside id="text-7" class="widget widget_text">
+                                    <h4>contact us</h4>
+                                    <div class="textwidget">
+                                        <div class="contacts-info">
+                                            <address>
+                                                <i class="add-icon">&nbsp;</i>123 Main Street, Anytown,
+                                                <br>
+                                                &nbsp;CA 12345  USA
+                                            </address>
+                                            <div class="email-footer"><i class="email-icon">&nbsp;</i> <a href="mailto:support@magikcommerce.com">support@magikcommerce.com</a> </div>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>--%>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-6">
+                                <%--<div class="social">
+                                    <ul>
+
+                                        <li class="fb pull-left"><a target="_blank" href='/linea/'></a></li>
+                                        <li class="tw pull-left"><a target="_blank" href='/linea/'></a></li>
+                                        <li class="googleplus pull-left"><a target="_blank" href='/linea/'></a></li>
+                                        <li class="rss pull-left"><a target="_blank" href='/linea/'></a></li>
+                                        <li class="pintrest pull-left"><a target="_blank" href='/linea/'></a></li>
+                                        <li class="linkedin pull-left"><a target="_blank" href='/linea/'></a></li>
+                                        <li class="youtube pull-left"><a target="_blank" href='/linea/'></a></li>
+                                    </ul>
+                                </div>--%>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5 col-xs-12 coppyright">© 2017 Hotter Winds. All Rights Reserved.</div>
+                            <div class="col-sm-7 col-xs-12 company-links">
+                                <ul class="links">
+                                    <li>
+                                        <span style="color: #aaa">Hotter Winds is Powered by </span><a title="PriceMe" href="https://www.priceme.co.nz">PriceMe</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </footer>
+
+
+        </div>
+
+
+        <div class="menu-overlay"></div>
+        <div id="nav-panel" class="">
+            <div class="mobile-search">
+                <form name="myform" method="GET" action="/linea/">
+                    <input class="mgksearch" type="text" value="" placeholder="Search entire store here..." maxlength="70" name="s">
+
+                    <input type="hidden" value="product" name="post_type">
+
+                    <button class="search-btn-bg" type="submit">&nbsp;</button>
+
+                </form>
+
+                <div class="search-autocomplete" id="search_autocomplete1" style="display: none;"></div>
+            </div>
+
+            <div class="menu-wrap">
+                <ul id="menu-mainmenu-1" class="mobile-menu accordion-menu">
+                    <li id="accordion-menu-item-3214" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children active has-sub">
+                        <a href="/linea/" class=" current "><i class="fa fa-home"></i>Home</a>
+                        <span class="arrow"></span>
+                        <ul class="sub-menu">
+                            <li id="accordion-menu-item-3216" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active"><a href="/linea/" class="">Home Layout 1</a></li>
+                            <li id="accordion-menu-item-3217" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="/linea2" class="">Home Layout 2</a></li>
+                            <li id="accordion-menu-item-3218" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="/linea3" class="">Home Layout 3</a></li>
+                            <li id="accordion-menu-item-3219" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="/linea4" class="">Home Layout 4</a></li>
+                        </ul>
+                    </li>
+                    <li id="accordion-menu-item-3099" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                        <a href="/linea/product-category/dresses/" class=""><i class="fa fa-male"></i>Dresses</a>
+                        <span class="arrow"></span>
+                        <ul class="sub-menu">
+                            <li id="accordion-menu-item-3100" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/dresses/clothing/" class="">Clothing</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3224" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/clothing/designer-wear/" class="">Designer Wear</a></li>
+                                    <li id="accordion-menu-item-3225" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/clothing/ethnic-wear-clothing/" class="">Ethnic Wear</a></li>
+                                    <li id="accordion-menu-item-3226" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/clothing/night-wear/" class="">Night Wear</a></li>
+                                    <li id="accordion-menu-item-3227" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/clothing/western-wear/" class="">Western Wear</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3101" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/dresses/sportswear/" class="">Sportswear</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3228" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/sportswear/t-shirts/" class="">T Shirts</a></li>
+                                    <li id="accordion-menu-item-3207" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/sportswear/skirts/" class="">Skirts</a></li>
+                                    <li id="accordion-menu-item-3229" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/sportswear/jackets/" class="">Jackets</a></li>
+                                    <li id="accordion-menu-item-3208" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/sportswear/shorts/" class="">Shorts</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3220" class="women-img menu-item menu-item-type-custom menu-item-object-custom "></li>
+                            <li id="accordion-menu-item-3102" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/dresses/winter-wear/" class="">Winter Wear</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3195" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/winter-wear/shrugs/" class="">Shrugs</a></li>
+                                    <li id="accordion-menu-item-3206" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/winter-wear/sweatshirts/" class="">Sweatshirts</a></li>
+                                    <li id="accordion-menu-item-3230" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/winter-wear/thermals/" class="">Thermals</a></li>
+                                    <li id="accordion-menu-item-3231" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/winter-wear/outerwear/" class="">Outerwear</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3103" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/dresses/swimwear/" class="">Swimwear</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3232" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/swimwear/swimsuits/" class="">Swimsuits</a></li>
+                                    <li id="accordion-menu-item-3233" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/swimwear/beach-clothing/" class="">Beach Clothing</a></li>
+                                    <li id="accordion-menu-item-3234" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/swimwear/bikinis/" class="">Bikinis</a></li>
+                                    <li id="accordion-menu-item-3235" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/dresses/swimwear/clothing-swimwear/" class="">Clothing</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="accordion-menu-item-3196" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                        <a href="/linea/product-category/tops/" class=""><i class="fa fa-female"></i>Tops</a>
+                        <span class="arrow"></span>
+                        <ul class="sub-menu">
+                            <li id="accordion-menu-item-3197" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/tops/tops-tunics/" class="">Tops &#038; Tunics</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3198" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tops-tunics/polyester/" class="">Polyester</a></li>
+                                    <li id="accordion-menu-item-3236" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tops-tunics/poly-cotton/" class="">Poly Cotton</a></li>
+                                    <li id="accordion-menu-item-3237" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tops-tunics/poly-crepe/" class="">Poly Crepe</a></li>
+                                    <li id="accordion-menu-item-3238" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tops-tunics/poly-georgette/" class="">Poly Georgette</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3199" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/tops/t-shirts-top/" class="">T Shirts</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3239" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/t-shirts-top/embroidered/" class="">Embroidered</a></li>
+                                    <li id="accordion-menu-item-3240" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/t-shirts-top/floral/" class="">Floral</a></li>
+                                    <li id="accordion-menu-item-3241" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/t-shirts-top/stripes/" class="">Stripes</a></li>
+                                    <li id="accordion-menu-item-3200" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/t-shirts-top/printed/" class="">Printed</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3222" class="men-img menu-item menu-item-type-custom menu-item-object-custom "></li>
+                            <li id="accordion-menu-item-3201" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/tops/shirts/" class="">Shirts</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3202" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/shirts/chinese-collar/" class="">Chinese Collar</a></li>
+                                    <li id="accordion-menu-item-3242" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/shirts/peterpan-collar/" class="">Peterpan Collar</a></li>
+                                    <li id="accordion-menu-item-3243" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/shirts/regular-collar/" class="">Regular Collar</a></li>
+                                    <li id="accordion-menu-item-3244" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/shirts/round-neck/" class="">Round Neck</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3203" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/tops/tees-polo/" class="">Tees &#038; Polo</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3246" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tees-polo/halter-neck/" class="">Halter Neck</a></li>
+                                    <li id="accordion-menu-item-3245" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tees-polo/boat-neck/" class="">Boat Neck</a></li>
+                                    <li id="accordion-menu-item-3247" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tees-polo/hood/" class="">Hood</a></li>
+                                    <li id="accordion-menu-item-3205" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/tops/tees-polo/peterpan/" class="">Peterpan</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3223" class="men-img menu-item menu-item-type-custom menu-item-object-custom "></li>
+                        </ul>
+                    </li>
+                    <li id="accordion-menu-item-3212" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                        <a href="/linea/product-category/ethnic-wear/" class=""><i class="fa fa-cogs"></i>Ethnic Wear</a>
+                        <span class="arrow"></span>
+                        <ul class="sub-menu">
+                            <li id="accordion-menu-item-3204" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/ethnic-wear/sarees/" class="">Sarees</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3210" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/sarees/silk-sarees/" class="">Silk sarees</a></li>
+                                    <li id="accordion-menu-item-3248" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/sarees/cotton-sarees/" class="">Cotton sarees</a></li>
+                                    <li id="accordion-menu-item-3249" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/sarees/designer-sarees/" class="">Designer sarees</a></li>
+                                    <li id="accordion-menu-item-3250" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/sarees/printed-sarees/" class="">Printed sarees</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3209" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/ethnic-wear/kurtas/" class="">Kurtas</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3211" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/kurtas/34-sleeve/" class="">3/4 Sleeve</a></li>
+                                    <li id="accordion-menu-item-3251" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/kurtas/half-sleeve/" class="">Half Sleeve</a></li>
+                                    <li id="accordion-menu-item-3252" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/kurtas/long-sleeve/" class="">Long Sleeve</a></li>
+                                    <li id="accordion-menu-item-3253" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/kurtas/sleeveless/" class="">Sleeveless</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3258" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/ethnic-wear/dress-material/" class="">Dress Material</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3254" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/dress-material/chiffon-dress/" class="">Chiffon</a></li>
+                                    <li id="accordion-menu-item-3255" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/dress-material/cotton-dress/" class="">Cotton</a></li>
+                                    <li id="accordion-menu-item-3256" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/dress-material/silk-dress/" class="">Silk</a></li>
+                                    <li id="accordion-menu-item-3257" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/dress-material/synthetic-dress/" class="">Synthetic</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3269" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/ethnic-wear/stoles-dupattas/" class="">Stoles &#038; Dupattas</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3270" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/stoles-dupattas/wool-stoles/" class="">Wool Stoles</a></li>
+                                    <li id="accordion-menu-item-3271" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/stoles-dupattas/art-silk/" class="">Art Silk</a></li>
+                                    <li id="accordion-menu-item-3272" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/stoles-dupattas/chiffon/" class="">Chiffon</a></li>
+                                    <li id="accordion-menu-item-3273" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/stoles-dupattas/cottonstoles/" class="">Cotton-Stoles</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3259" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/ethnic-wear/anarkalis/" class="">Anarkalis</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3260" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/anarkalis/cotton-anarkalis/" class="">Cotton Anarkalis</a></li>
+                                    <li id="accordion-menu-item-3261" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/anarkalis/net-anarkalis/" class="">Net Anarkalis</a></li>
+                                    <li id="accordion-menu-item-3262" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/anarkalis/silk-anarkalis/" class="">Silk Anarkalis</a></li>
+                                    <li id="accordion-menu-item-3263" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/anarkalis/synthetic-anarkalis/" class="">Synthetic Anarkalis</a></li>
+                                </ul>
+                            </li>
+                            <li id="accordion-menu-item-3264" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  has-sub">
+                                <a href="/linea/product-category/ethnic-wear/salwar-suit-sets/" class="">Salwar Suit Sets</a>
+                                <span class="arrow"></span>
+                                <ul class="sub-menu">
+                                    <li id="accordion-menu-item-3265" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/salwar-suit-sets/embroidered-suit/" class="">Embroidered Suit</a></li>
+                                    <li id="accordion-menu-item-3266" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/salwar-suit-sets/floral-suit/" class="">Floral Suit</a></li>
+                                    <li id="accordion-menu-item-3267" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/salwar-suit-sets/printed-suit/" class="">Printed Suit</a></li>
+                                    <li id="accordion-menu-item-3268" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/ethnic-wear/salwar-suit-sets/stripes-suit/" class="">Stripes Suit</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="accordion-menu-item-3215" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/partywear/" class=""><i class="fa fa-tag"></i>Partywear</a></li>
+                    <li id="accordion-menu-item-3309" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/baby-kids/" class=""><i class="fa fa-child"></i>Baby &#038; Kids</a></li>
+                    <li id="accordion-menu-item-3310" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/linea/product-category/game-sport/" class=""><i class="fa fa-soccer-ball-o"></i>Game &#038; Sport</a></li>
+                    <li id="accordion-menu-item-3285" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/blog/" class=""><i class="fa fa-rss"></i>Blog</a></li>
+                    <li id="accordion-menu-item-3308" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-has-children active has-sub">
+                        <a href="/linea/" class=" current "><i class="fa fa-file-text"></i>Pages</a>
+                        <span class="arrow"></span>
+                        <ul class="sub-menu">
+                            <li id="accordion-menu-item-3302" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/blog/" class="">Blog</a></li>
+                            <li id="accordion-menu-item-3307" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/page-markup-and-formatting/" class="">Typography</a></li>
+                            <li id="accordion-menu-item-3303" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/full-width-page/" class="">Full Width Page</a></li>
+                            <li id="accordion-menu-item-3305" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/page-left-sidbar/" class="">Page &#8211; Left Sidebar</a></li>
+                            <li id="accordion-menu-item-3306" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/page-right-sidebar/" class="">Page &#8211; Right Sidebar</a></li>
+                            <li id="accordion-menu-item-3304" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/page-3-column/" class="">Page &#8211; 3 Column</a></li>
+                        </ul>
+                    </li>
+                    <li id="accordion-menu-item-3213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has-sub">
+                        <a href="/bolt4/shop/" class=""><i class="fa fa-star"></i>Products</a>
+                        <span class="arrow"></span>
+                        <ul class="sub-menu">
+                            <li id="accordion-menu-item-3287" class="menu-item menu-item-type-post_type menu-item-object-product "><a href="/linea/product/riot-jeans-casual-roll-up-sleeve-printed-womens-top/" class="">Single Product</a></li>
+                            <li id="accordion-menu-item-3286" class="menu-item menu-item-type-post_type menu-item-object-product "><a href="/linea/product/united-colors-of-benetton-womens-top-lime/" class="">Variable Product</a></li>
+                            <li id="accordion-menu-item-3290" class="menu-item menu-item-type-post_type menu-item-object-product "><a href="/linea/product/today-fashion-casual-full-sleeve-solid-womens-top-black/" class="">Grouped Product</a></li>
+                            <li id="accordion-menu-item-3288" class="menu-item menu-item-type-post_type menu-item-object-product "><a href="/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/" class="">External Product</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-wrap">
+                <ul id="menu-toplinks-1" class="top-links1 accordion-menu">
+                    <li id="accordion-menu-item-3311" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/my-account/" class="">My Account</a></li>
+                    <li id="accordion-menu-item-3282" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/shop/" class="">Shop</a></li>
+                    <li id="accordion-menu-item-3284" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/blog/" class="">Blog</a></li>
+                    <li id="accordion-menu-item-3283" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/checkout/" class="">Checkout</a></li>
+                    <li id="accordion-menu-item-3289" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/linea/wishlist-2-6/" class="">Wishlist</a></li>
+                    <li class="menu-item"><a href="/linea/my-account/"><span>Login</span></a></li>
+                    <li class="menu-item"><a href="/linea/my-account/"><span>Register</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="yith-quick-view-modal">
+
+            <div class="yith-quick-view-overlay"></div>
+
+            <div class="yith-wcqv-wrapper">
+
+                <div class="yith-wcqv-main">
+
+                    <div class="yith-wcqv-head">
+                        <a href="#" id="yith-quick-view-close" class="yith-wcqv-close">X</a>
+                    </div>
+
+                    <div id="yith-quick-view-content" class="woocommerce single-product"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <asp:ContentPlaceHolder ID="foot" runat="server"></asp:ContentPlaceHolder>
+    </form>
+
+    <div id="emailSuccessAlert" class="alert alert-success" style="position: fixed; z-index: 10000; top: 0px; left: 0px; width: 100%; display: none;" role="alert">Successfully signed up to the newsletter</div>
+    <div id="emailfailAlert" class="alert alert-danger" style="position: fixed; z-index: 10000; top: 0px; left: 0px; width: 100%; display: none;" role="alert">Sign up failed</div>
+
+    <style type="text/css">
+        #footerSubmit {
+            background-color: #1fc0a0 !important;
+            border: 1px solid #1fc0a0 !important;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 17px;
+            margin-left: 10px;
+            overflow: hidden;
+            padding: 10px 15px 9px !important;
+            text-transform: uppercase;
+            transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
+            border-radius: 3px;
+        }
+
+        #footerSubmitDes {
+            display: inline-block !important;
+            font-family: "Poppins", sans-serif;
+            color: #fff !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+            margin-right: 10px;
+            vertical-align: middle !important;
+            line-height: 40px !important;
+            margin-bottom: 0 !important;
+        }
+
+        .mega-container {
+            width: 270px;
+            margin-left: -15px;
+        }
+
+        @media(max-width:1124px) {
+            .mega-container {
+                width: 225px;
+                margin-left: -25px;
+            }
+        }
+
+        @media(max-width:1000px) {
+            .mega-container {
+                width: 165px;
+                margin-left: 95px;
+            }
+        }
+
+        @media(max-width:985px) {
+            .mega-container {
+                width: 165px;
+                margin-left: -15px;
+            }
+        }
+    </style>
+
+    <script type="text/javascript">
+        lazyload({ defObj: "#<%=form1.ClientID%>" });
+        InitATag('<%=PriceMe.Utility.UrlEncode(ATagTitle) %>');
+
+        if (window.addEventListener)
+            window.addEventListener("load", downloadJSAtOnload, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", downloadJSAtOnload);
+        else window.onload = downloadJSAtOnload;
+
+        var rootUrl = "<%=Resources.Resource.TrackRootUrl%>";
+
+        $("#footerSubmit").on("click", function () {
+
+            var emailNode = $("#mc4wp_email");
+
+            if (emailNode.get(0).checkValidity()) {
+                GlobalAjax("AjaxDefaultController", "SigningUp", { "email": emailNode.val() }, function (msg) {
+                    
+                    var node = null;
+                    if (msg != "0") {
+                        node = $("#emailSuccessAlert");
+                        node.css("display", "block");
+                    }
+                    else {
+                        node = $("#emailfailAlert");
+                        node.css("display", "block");
+                    }
+
+                    setTimeout(function () {
+                        node.css("display", "none");
+                    }, 3000);
+                });
+            }
+        });
+
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-99029398-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</body>
+</html>

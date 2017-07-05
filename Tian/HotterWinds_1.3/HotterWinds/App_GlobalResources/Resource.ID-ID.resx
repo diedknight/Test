@@ -1,0 +1,2282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutPriceme" xml:space="preserve">
+    <value>&lt;p&gt;Apapun yang anda beli di web - &lt;a href="http://www.priceme.co.nz/Cameras/c-189.aspx"&gt;kamera&lt;/a&gt;, &lt;a href="http://www.priceme.co.nz/Mobile-Phones/c-11.aspx"&gt;ponsel&lt;/a&gt;, &lt;a href="http://www.priceme.co.nz/LCD-Monitors/c-37.aspx"&gt;monitor LCD&lt;/a&gt;, atau hanya mencari tahu produk-produk terbaru -  PriceMe memperkenankan anda untuk membandingkan dan meneliti produk-produk secara cepat dan mudah. &lt;/p&gt;
+
+&lt;P&gt;Kami memiliki memiliki &lt;a href="../RetailerList.aspx"&gt;pilihan ritel-ritel online&lt;/a&gt; terbesar dan paling lengkap dalam satu tempat. Ritel-ritel ini memiliki total kombinasi yang lebih dari &lt;s&gt;400 ribu produk&lt;/s&gt; yang dapat dibeli secara online!&lt;/p&gt;</value>
+  </data>
+  <data name="Blog_URL" xml:space="preserve">
+    <value>https://blog.priceme.co.id</value>
+  </data>
+  <data name="Brandbuilding" xml:space="preserve">
+    <value>mitra ritel menikmati pemaparan yang berkembang dengan mendisplay logo perusahaan mereka untuk tiap produk yang terdaftar diantara beberapa kelebihan lainnya. Para mitra juga memiliki kemungkinan untuk memperlihatkan slogan penjualan di samping logo, dan juga dipromoskan sebagai ritel unggulan di website dan dalam iklan-iklan PriceMe. Menghubungkan merek dan produk-produk anda dengan mesin pembelanja yang mempunyai ID terpercaya seperti PriceMe merupakan jalan terbaik untuk membangun pengakuan dan kepercayaan pelanggan. Silakan menghubungi kami untuk semua rincian yang berkaitan dengan keuntungan yang dinikmati mitra ritel.</value>
+  </data>
+  <data name="BuyingGuides" xml:space="preserve">
+    <value>Panduan pembelian kami disediakan oleh {0} - sumber informasi produk obyektif terkemuka di Indonesia.</value>
+  </data>
+  <data name="ClassName_categorySitemapTd" xml:space="preserve">
+    <value>categorySitemapTdID</value>
+  </data>
+  <data name="ClassName_CompareImage" xml:space="preserve">
+    <value>IDCompareImage</value>
+  </data>
+  <data name="ClassName_SingUpImg" xml:space="preserve">
+    <value>SingUpImgID</value>
+  </data>
+  <data name="CompanyInfo" xml:space="preserve">
+    <value>PriceMe adalah perusahaan yang berkembang secara inovatif yang berlokasi di Jakarta. Perusahaan ini menyediakan informasi belanja online seperti perbandingan harga dan produk, tinjauan seserta layanan nilai tambah lainnya kepada konsumen di Indonesia. Tujuan dari perusahaan adalah untuk memberdayai konsumen dengan informasi yang mereka butuhkan supaya dapat mencari produk yang tepat dari ritel yang terpercaya dengan harga terendah. Silakan &lt;a href="ContactUs.aspx" rel="nofollow"&gt;hubungi kami&lt;/a&gt; untuk pertanyaan apapun tentang perusahaan dan bisnisnya.</value>
+  </data>
+  <data name="CompetitionAveragePosition" xml:space="preserve">
+    <value>Posisi rata-rata produk anda dalam kategori untuk hari ini. Nilai ini memberikan gambaran kasar bagi anda tentang bagaimana produk anda berbandingan harga dengan pesaing anda. Posisi rata-rata diperhitungkan untuk semua produk yang dimiliki paling sedikit oleh empat ritel.</value>
+  </data>
+  <data name="CompetitionDeatiledPositioning" xml:space="preserve">
+    <value>Rincian posisi produk-produk anda dalam kategori untuk hari ini. Grafik memperlihatkan pembagian produk-produk saya dalam empat segmen harga (25% teratas adalah yang termurah, 26-50% bagian kedua, dsb.). Penempatan posisi berdasrkan pada perbandingan produk yang dimiliki paling sedikit oleh empat ritel.</value>
+  </data>
+  <data name="CompetitionLowestPrice" xml:space="preserve">
+    <value>Jumlah produk anda dalam kategori yang memiliki harga terendah di PriceMe untuk hari  ini. Klik tautan untuk melihat produk lebih terperinci dan informasi selisih harga.</value>
+  </data>
+  <data name="CompetitionMostExpensive" xml:space="preserve">
+    <value>Jumlah produk anda dalam kategori yang memiliki harga tertinggi di PriceMe untuk hari ini. Klik tautan untuk melihat produk lebih terperinci dan informasi selisih harga.</value>
+  </data>
+  <data name="CompetitionPositioningTopProductsInCategory" xml:space="preserve">
+    <value>Menunjukkan peringkat saya untuk produk-produk yang paling sering di-klik dalam kategori pada 30 hari terakhir. Hanya produk-produk yang memiliki paling sedikit empat ritel yang dipertimbangkan. Haruskah saya menaruh produk saya secara berbeda, khususnya untuk produk-produk terpopuler yang ditunjukkan di atas?</value>
+  </data>
+  <data name="CompetitionShareClickInCategory" xml:space="preserve">
+    <value>Klik berbagi saya dalam 30 hari terakhir untuk kategori yang terpilih. Contohnya, 10% menunjukkan bahwa toko saya menarik 10% dari semua klik dalam kategori. Dapatkah saya memposisikan produk saya secara berbeda dalam rangka menarik lebih banyak</value>
+  </data>
+  <data name="CompetitionTopProductByClicks" xml:space="preserve">
+    <value>Peringkat 5 teratas dari produk-produk saya berdasarkan banyaknya klik hari ini. Sebagai contoh, 2 dari 8 menunjukkan bahwa produk say mempunyai peringkat kedua termurah dari 8 ritel. Peringkat tersebut berdasarkan harga dan hanya mempertimbangkan satu harga per ritel. Bagaimana produk-produk teratas saya ditempatkan?</value>
+  </data>
+  <data name="ControlPanel_ProductDisplayed" xml:space="preserve">
+    <value>Jumlah total produk saya dalam kategori yang ditampilkan saat ini dalam website hari ini. Catatan: Ini adalah jumlah total termasuk semua produk dari semua ritel.</value>
+  </data>
+  <data name="ControlPanel_Top5ProByClicks" xml:space="preserve">
+    <value>5 produk saya yang paling sering dikunjungi berdasarkan klik bulan kemarin. Jumlah klik ditamplkan dalam sisipan.</value>
+  </data>
+  <data name="ControlPanel_Top5useripsbyclick" xml:space="preserve">
+    <value>5 alamat IP teratas berdasarkan klik bulan terakhir. Alamat IP yang sebenarnya disembunyikan karena alasan privasi dan tidak dapat ditampilkan. Apakah ada IP tertentu yang memberikan kontribusi melebihi yang lain?</value>
+  </data>
+  <data name="ControlPanel_TotalProducts" xml:space="preserve">
+    <value>Banyaknya produk yang saya masukkan dalam daftar di PriceMe. Jumlah diperbarui tiap harinya.</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Indonesia</value>
+  </data>
+  <data name="Default_HotSearch_Title" xml:space="preserve">
+    <value>Pencarian Terpopuler</value>
+  </data>
+  <data name="Default_MostPopularCategories_Title" xml:space="preserve">
+    <value>Kategori-kategori Terpopuler</value>
+  </data>
+  <data name="Default_MostPopuler_Help" xml:space="preserve">
+    <value>Produk-produk paling populer yang ditampilkan di sini adalah produk-produk yang paling sering dilihat di PriceMe selama 30 hari terakhir.</value>
+  </data>
+  <data name="Default_NewExpertReview_Tilte" xml:space="preserve">
+    <value>Tinjauan Para Ahli Terakhir</value>
+  </data>
+  <data name="Default_NewProducts_Help" xml:space="preserve">
+    <value>Produk-produk yang ditampilkan disini termasuk baik produk-produk yang baru ditambahkan yang ditampilkan untuk pertama kalinya di PriceMe dan tambahan baru untuk produk-produk yang telah ada.</value>
+  </data>
+  <data name="Default_PopulerSearch_Help" xml:space="preserve">
+    <value>Produk paling populer yang dicari di PriceMe pada 20 hari terakhir. Para pengguna membandingkan harga untuk hasil-hasil pencarian yang terkait.</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Rincian</value>
+  </data>
+  <data name="DomainName" xml:space="preserve">
+    <value>priceme.co.id</value>
+  </data>
+  <data name="FindOnPriceMe" xml:space="preserve">
+    <value>PriceMe memasukkan dan membandingkan harga untuk berbagai kategori produk yang luas. Kebanyakan produk adalah produk-produk konsumen (TV, kamera, perangkat rumah, dll.), tetapi kami juga menawarkan layanan seperti rencana berjangka luas. Silakan merujuk ke &lt;a href="../SiteMap.aspx" rel="nofollow"&gt; peta situs &lt;/a&gt; kami untuk suatu gambaran umum dari kategori produk PriceMe. PriceMe saat ini memperluas jangkauan produk kami, jadi jika anda tidak dapat menemukan produk yang anda minati saat ini, maka anda akan dapat menemukannya segera. Silakan &lt;a href="ContactUs.aspx" rel="nofollow"&gt;Hubungi Kami&lt;/a&gt; untuk menyarankan kategori-kategori produk yang anda rasa akan berguna untuk konsumen Kiwi.</value>
+  </data>
+  <data name="Global_HomePageName" xml:space="preserve">
+    <value>Beranda</value>
+  </data>
+  <data name="Global_HomePageUrl" xml:space="preserve">
+    <value>https://www.priceme.co.id</value>
+  </data>
+  <data name="Global_SearchButtonImageUrl" xml:space="preserve">
+    <value>https://images.pricemestatic.com/images/css/search.png</value>
+  </data>
+  <data name="GoogleMapUrl" xml:space="preserve">
+    <value>https://maps.google.co.id</value>
+  </data>
+  <data name="GTSInfo" xml:space="preserve">
+    <value>Semua harga ditampilkan dalam mata uang Indonesia. Biaya yang ditunjukkan di bawah harga pokok termasuk ongkos kirim dan/atau biaya tambahan kartu kredit. Ongkos kirim diperkirakan untuk pengiriman ke Jakarta. Pada dasarnya, ritel tanpa-membayar tidak dapat mempunyai tautan produk yang ditampilkan.</value>
+  </data>
+  <data name="ImageWebsite" xml:space="preserve">
+    <value>https://images.pricemestatic.com</value>
+  </data>
+  <data name="ImageWebsite2" xml:space="preserve">
+    <value>https://images2.pricemestatic.com</value>
+  </data>
+  <data name="ImageWebsite3" xml:space="preserve">
+    <value>https://images.pricemestatic.com</value>
+  </data>
+  <data name="InformationOnPriceMe" xml:space="preserve">
+    <value>Tentu saja. Kami selalu medaftar harga terendah lebih dulu tanpa bias. Tinjauan ditulis oleh konsumen atau oleh ahli independen dan data produk dihimpun dari sumber-sumber independen. PriceMe tidak tergantung pada pabrik, ritel atau organisasi lain untuk informasi yang disediakan dalam website. Kami memiliki ritel yang membayar dan pengiklan sebagai klien, tetapi fakta ini tidak mengkompromikan obyektifitas kami dalam cara apapun. Obyektif utama PriceMe adalah untuk menjadi sumber independen dari informasi belanja di Indonesia.</value>
+  </data>
+  <data name="LocationCity" xml:space="preserve">
+    <value>Jakarta</value>
+  </data>
+  <data name="LocationLat" xml:space="preserve">
+    <value>-6.211544</value>
+  </data>
+  <data name="LocationLng" xml:space="preserve">
+    <value>106.845172</value>
+  </data>
+  <data name="MobilePlansURL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Mobile_URL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Module_CatalogShoppingInformation_Title" xml:space="preserve">
+    <value>Informasi Belanja Online {0}</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_OtherTitle" xml:space="preserve">
+    <value>{0} Kategori-kategori Lainnya</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_SeeMore" xml:space="preserve">
+    <value>{0} Lebih Banyak</value>
+  </data>
+  <data name="Module_CatalogSiteMap_Title" xml:space="preserve">
+    <value>{0} kategori-kategori paling populer</value>
+  </data>
+  <data name="Module_CompareBaske_EmptyInfo" xml:space="preserve">
+    <value>Daftar perbandingan anda kosong</value>
+  </data>
+  <data name="Module_CompareBaske_Title" xml:space="preserve">
+    <value>Membandingkan daftar</value>
+  </data>
+  <data name="Module_FooterBuyingGuides_Content" xml:space="preserve">
+    <value>Apa yang perlu anda ketahui saat membeli {0}.</value>
+  </data>
+  <data name="Module_InfoATagText" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Module_MostPopularProduct_Tilte" xml:space="preserve">
+    <value>Paling Populer</value>
+  </data>
+  <data name="Module_MyHistory_Title" xml:space="preserve">
+    <value>Riwayat Saya</value>
+  </data>
+  <data name="Module_MyRecentlySearch_Tilte" xml:space="preserve">
+    <value>Pencarian Terakhir</value>
+  </data>
+  <data name="Module_MyRecentlyViewed_Tilte" xml:space="preserve">
+    <value>Dilihat Terakhir</value>
+  </data>
+  <data name="Module_MyWishlist_EmptyInfo" xml:space="preserve">
+    <value>Daftar permohonan anda kosong</value>
+  </data>
+  <data name="Module_MyWishlist_Title" xml:space="preserve">
+    <value>Daftar Permohonan Saya</value>
+  </data>
+  <data name="Module_NewsletterSignUp_Content" xml:space="preserve">
+    <value>Daftar dan bergabunglah!</value>
+  </data>
+  <data name="Module_NewsletterSignUp_Title" xml:space="preserve">
+    <value>Buletin</value>
+  </data>
+  <data name="Module_News_Title" xml:space="preserve">
+    <value>Berita</value>
+  </data>
+  <data name="Module_PopularBrands_Tilte" xml:space="preserve">
+    <value>Merek-merek Ternama</value>
+  </data>
+  <data name="Module_StatusBar_ProductsCompared" xml:space="preserve">
+    <value>Produk:</value>
+  </data>
+  <data name="Module_StatusBar_PricesReviews" xml:space="preserve">
+    <value>Tinjauan produk:</value>
+  </data>
+  <data name="Module_StatusBar_RetailersOnline" xml:space="preserve">
+    <value>Ritel-ritel online:</value>
+  </data>
+  <data name="PriceCurrency" xml:space="preserve">
+    <value>IDR</value>
+  </data>
+  <data name="PriceMeNewsletter" xml:space="preserve">
+    <value>PriceMe mencari lebih dari puncak toko online untuk membawa Anda pada penawaran terbaik yang tersedia secara online di Indonesia. Jadi baik anda mencari &lt;a href="/Washing-Machines/c-377.aspx"&gt;mesin cuci&lt;/a&gt;, &lt;a href="/MP3-Players/c-12.aspx"&gt;pemutar MP3&lt;/a&gt; terbaru atau &lt;a href="/Broadband/c-358.aspx"&gt;internet yang cepat&lt;/a&gt; - kami akan menemukannya untuk anda dengan cepat.</value>
+  </data>
+  <data name="Product_ComparePrices" xml:space="preserve">
+    <value>Membandingkan Harga</value>
+  </data>
+  <data name="Product_Compare_DeliveryDetails" xml:space="preserve">
+    <value>Rincian Pengiriman</value>
+  </data>
+  <data name="Product_Compare_MoreInfo" xml:space="preserve">
+    <value>Info lebih lanjut</value>
+  </data>
+  <data name="Product_Description" xml:space="preserve">
+    <value>Deskripsi</value>
+  </data>
+  <data name="Product_ExpertReviews" xml:space="preserve">
+    <value>Tinjauan Para Ahli</value>
+  </data>
+  <data name="Product_Featured" xml:space="preserve">
+    <value>Unggulan</value>
+  </data>
+  <data name="Product_FeaturedContent" xml:space="preserve">
+    <value>Produk unggulan dipilih berdasarkan relevansi, peringkat ritel, harga dan popularitas. Semua produk lain diurutkan berdasarkan harganya.</value>
+  </data>
+  <data name="Product_FooterProductDescription_Listed" xml:space="preserve">
+    <value>Terdaftar di PriceMe sejak</value>
+  </data>
+  <data name="Product_Header_Compare" xml:space="preserve">
+    <value>{0} harga {1} dari {2} ritel {3}</value>
+  </data>
+  <data name="Product_Header_PriceCount" xml:space="preserve">
+    <value>Semua harga {0}</value>
+  </data>
+  <data name="Product_Header_PriceOne" xml:space="preserve">
+    <value>1 penawaran untuk 1 ritel</value>
+  </data>
+  <data name="Product_Locations" xml:space="preserve">
+    <value>Toko-toko setempat</value>
+  </data>
+  <data name="Product_Maps" xml:space="preserve">
+    <value>Peta</value>
+  </data>
+  <data name="Product_MostPopuler_Help" xml:space="preserve">
+    <value>Produk-produk paling populer yang ditampilkan disini adalah produk yang paling sering dilihat {0} di PriceMe dalam 30 hari terakhir.</value>
+  </data>
+  <data name="Product_NoProduct" xml:space="preserve">
+    <value>Tidak ada ritel yang menjual produk ini di PriceMe saat ini. Silakan lihat &lt;a href="{0}"&gt;produk-produk yang berkaitan&lt;/a&gt;.</value>
+  </data>
+  <data name="Product_PriceCompare_Fees" xml:space="preserve">
+    <value>biaya</value>
+  </data>
+  <data name="Product_PriceCompare_FeesSee" xml:space="preserve">
+    <value>+ Biaya</value>
+  </data>
+  <data name="Product_PriceCompare_NoFees" xml:space="preserve">
+    <value>Tidak ada biaya</value>
+  </data>
+  <data name="Product_PriceHistory" xml:space="preserve">
+    <value>Riwayat Harga</value>
+  </data>
+  <data name="Product_ProductDescription" xml:space="preserve">
+    <value>Deskripsi Produk</value>
+  </data>
+  <data name="Product_RatingControl_ExpertReview" xml:space="preserve">
+    <value>Tinjauan para ahli</value>
+  </data>
+  <data name="Product_RatingControl_Rating" xml:space="preserve">
+    <value>Peringkat</value>
+  </data>
+  <data name="Product_RatingControl_UserReview" xml:space="preserve">
+    <value>Tinjauan pengguna</value>
+  </data>
+  <data name="Product_RatingControl_WriteReview" xml:space="preserve">
+    <value>Tuliskan tinjauan</value>
+  </data>
+  <data name="Product_RightMostPopular_More" xml:space="preserve">
+    <value>Lihat yang lebih populer...</value>
+  </data>
+  <data name="Product_RightMostPopular_MostPopular" xml:space="preserve">
+    <value>Paling Populer {0}</value>
+  </data>
+  <data name="Product_SimilarLinks_Checkup" xml:space="preserve">
+    <value>Periksa lebih dari 3 produk dan bandingkan dengan</value>
+  </data>
+  <data name="Product_SimilarLinks_PriceRange" xml:space="preserve">
+    <value>Kisaran Harga</value>
+  </data>
+  <data name="Product_SimilarLinks_Related" xml:space="preserve">
+    <value>Berkaitan</value>
+  </data>
+  <data name="Product_SimilarLinks_Similar" xml:space="preserve">
+    <value>Serupa</value>
+  </data>
+  <data name="Product_Title" xml:space="preserve">
+    <value>Perbandingan Harga Di PriceMe</value>
+  </data>
+  <data name="Product_TopDisplay_Alert" xml:space="preserve">
+    <value>Atur pemberitahuan harga</value>
+  </data>
+  <data name="Product_TopDisplay_FromRetailer" xml:space="preserve">
+    <value>dari {0} ritel</value>
+  </data>
+  <data name="Product_UserReviews" xml:space="preserve">
+    <value>Tinjauan pengguna</value>
+  </data>
+  <data name="Product_What" xml:space="preserve">
+    <value>Apakah ini</value>
+  </data>
+  <data name="RatingControl_AddRating" xml:space="preserve">
+    <value>Tambahkan peringkat anda</value>
+  </data>
+  <data name="RatingControl_CurrentRating" xml:space="preserve">
+    <value>Peringkat saat ini</value>
+  </data>
+  <data name="RatingControl_Excellent" xml:space="preserve">
+    <value>Istimewa</value>
+  </data>
+  <data name="RatingControl_FooterReview_Bought" xml:space="preserve">
+    <value>Mohon sebutkan apa yang anda beli</value>
+  </data>
+  <data name="RatingControl_FooterReview_Rating" xml:space="preserve">
+    <value>Mohon jelaskan peringkat anda</value>
+  </data>
+  <data name="RatingControl_Good" xml:space="preserve">
+    <value>Bagus</value>
+  </data>
+  <data name="RatingControl_ListDate" xml:space="preserve">
+    <value>Tanggal terdaftar</value>
+  </data>
+  <data name="RatingControl_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RatingControl_Poor" xml:space="preserve">
+    <value>buruk</value>
+  </data>
+  <data name="RatingControl_Verypoor" xml:space="preserve">
+    <value>sangat buruk</value>
+  </data>
+  <data name="RetailerCenter" xml:space="preserve">
+    <value>&lt;a href="ListYourProducts.aspx" rel="nofollow"&gt;Daftarkan produk-produk&lt;/a&gt; anda sekarang pada website pembanding belanja Indonesia yang berkembang pesat. Sangat mudah mendaftarkan produk anda!</value>
+  </data>
+  <data name="RetailerFAQsWhatIsPriceMe" xml:space="preserve">
+    <value>&lt;p&gt;PriceMe adalah suatu website pembanding belanja online yang berkembang dengan pesat di Indonesia. Tujuan kami adalah untuk memungkinkan "berbelanja lebih pintar" bagi orang-orang Indonesia. Hal ini berarti menemukan produk yang tepat dari ritel yang dapat diandalkan dengan harga serendah mungkin.                                       Bagi mitra ritel, PriceMe mesin pembanding belanja Indonesia yang membayar untuk ditampilkan. Kami berikan harga yang menyeluruh dan perbandingan produk dan tampilan yang bersih, teratur yang membuat pelanggan melakukan untuk apa mereka datang untuk lakukan: membandingkan dan membeli.&lt;/p&gt;</value>
+  </data>
+  <data name="RetailerInfo" xml:space="preserve">
+    <value>Info Ritel</value>
+  </data>
+  <data name="RetailerInformation" xml:space="preserve">
+    <value>Informasi Ritel</value>
+  </data>
+  <data name="RetailerInfo_Description" xml:space="preserve">
+    <value>Deskripsi</value>
+  </data>
+  <data name="RetailerInfo_General" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="RetailerInfo_HomePage" xml:space="preserve">
+    <value>Beranda</value>
+  </data>
+  <data name="RetailerInfo_ReportRetailer" xml:space="preserve">
+    <value>Laporkan Ritel</value>
+  </data>
+  <data name="RetailerInfo_ReviewsRatings" xml:space="preserve">
+    <value>Tinjauan &amp; Peringkat</value>
+  </data>
+  <data name="RetailerInfo_StoreCategories" xml:space="preserve">
+    <value>Kategori Toko</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo" xml:space="preserve">
+    <value>Info Toko</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Address" xml:space="preserve">
+    <value>Alamat</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardInfo" xml:space="preserve">
+    <value>Info Kartu Kredit</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardNot" xml:space="preserve">
+    <value>Kartu kredit tidak didukung</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_DeliveryInfo" xml:space="preserve">
+    <value>Info Pengiriman</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Friday" xml:space="preserve">
+    <value>Jumat</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_FullCompanyName" xml:space="preserve">
+    <value>Nama Lengkap Perusahaan</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_GSTNumber" xml:space="preserve">
+    <value>GST Number</value>
+    <comment>Nomor GST</comment>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Monday" xml:space="preserve">
+    <value>Senin</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_MoreInfo" xml:space="preserve">
+    <value>Info lebih banyak tentang produk-produk yang diimpor paralel dari Pelanggan</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NoCreditCard" xml:space="preserve">
+    <value>Tidak ada biaya tambahan kartu kredit</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NumberEmployees" xml:space="preserve">
+    <value>Jumlah karyawan</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_OpeningHours" xml:space="preserve">
+    <value>Jam buka</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ParallelImported" xml:space="preserve">
+    <value>Diimpor Paralel</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_PaymentMethods" xml:space="preserve">
+    <value>Metode pembayaran</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_RegistrationNumber" xml:space="preserve">
+    <value>Nomor Registrasi</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ReturnPolicy" xml:space="preserve">
+    <value>Kebijakan Pengembalian</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Saturday" xml:space="preserve">
+    <value>Sabtu</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_SeeWebsite" xml:space="preserve">
+    <value>Lihat website. Produk-produk yang diimpor paralel diindikasikan seperti</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_StoreType" xml:space="preserve">
+    <value>Tipe Toko</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Sunday" xml:space="preserve">
+    <value>Minggu</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Thursday" xml:space="preserve">
+    <value>Kamis</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_TradingName" xml:space="preserve">
+    <value>Nama Dagang</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Tuesday" xml:space="preserve">
+    <value>Selasa</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Wednesday" xml:space="preserve">
+    <value>Rabu</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_YearEstablished" xml:space="preserve">
+    <value>Tahun berdiri</value>
+  </data>
+  <data name="RetailerInfo_StoreLocation" xml:space="preserve">
+    <value>Lokasi Toko</value>
+  </data>
+  <data name="RetailerInfo_StoreProducts" xml:space="preserve">
+    <value>Produk-produk Toko</value>
+  </data>
+  <data name="RetailerInfo_StoreReviews" xml:space="preserve">
+    <value>Tinjauan Toko</value>
+  </data>
+  <data name="RetailerInfo_WhyUs" xml:space="preserve">
+    <value>Mengapa kami</value>
+  </data>
+  <data name="RetailerListOnPriceMe" xml:space="preserve">
+    <value>PriceMe mendaftar ritel-ritel Indonesia yang menawarkan belanja online, misalnya memiliki website sehingga anda dapat membeli dari, dan dianggap memiliki reputasi dengan produk-produk yang berharga kompetitif. Ritel-ritel yang terdaftar tanpa memandang apakah merupakan klien yang membayar atau hanya untuk memberi pandangan independen kepada pelanggan. Semua ritel yang terdaftar di PriceMe memenuhi persyaratan sebagai toko online. Ritel-ritel yang menerima sejumlah besar komplain atau tidak memenuhi persyaratan akan dihapus dari daftar.</value>
+  </data>
+  <data name="RetailerList_AvrRating" xml:space="preserve">
+    <value>Peringkat Rata-rata</value>
+  </data>
+  <data name="RetailerList_RetailerStoreInfoList" xml:space="preserve">
+    <value>Daftar Info Toko Ritel</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_CreditCard" xml:space="preserve">
+    <value>Kartu Kredit</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Delivery" xml:space="preserve">
+    <value>Pengiriman</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Freeshipping" xml:space="preserve">
+    <value>Bebas Ongkos Kirim</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Nofee" xml:space="preserve">
+    <value>Tidak ada biaya</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Notsupported" xml:space="preserve">
+    <value>Tidak didukung</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Only" xml:space="preserve">
+    <value>Hanya</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Providedby" xml:space="preserve">
+    <value>Disediakan oleh</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_UIC" xml:space="preserve">
+    <value>UIC</value>
+  </data>
+  <data name="RetailersList" xml:space="preserve">
+    <value>Selamat Datang di Daftar Ritel PriceMe - lokasi untuk ritel-ritel terkemuka di Indonesia. </value>
+  </data>
+  <data name="RetailerStoreInfoList" xml:space="preserve">
+    <value>&lt;p class="normalText"&gt;Informasi toko dan harga yang diberikan oleh ritel dan PriceMe berasumsi
+bahwa tidak ada tanggung jawab atas ketepatan informasi ini. Spesifikasi produk diperoleh dari ritel atau pihak ketiga dan meskipun kami berusaha sebaik mungkin untuk 
+menyajikan informasi yang akurat, PriceMe tidak bertanggung jawab untuk kesalahan atau ketidaksesuaian apapun. Silakan mengkonfirmasi harga dan spek sebelum membeli secara online.&lt;/p&gt;
+
+                        &lt;p class="normalText"&gt;Peringkat toko dan tinjauan pengguna ditulis dan didaftarkan oleh
+pelanggan online di Indonesia dan luar negeri. Tinjauan ini tidak mewakili opini kami dan kami tidak bertanggung jawab atas isi dari peringkat dan tinjauan yang didaftarkan oleh pengguna.&lt;/p&gt;
+
+                        &lt;p class="normalText"&gt;PriceMe adalah website pembanding belanja bagi pembelanja online di Indonesia, dan
+                        membantu anda mencari penawaran terbaik, lelang dan diskon dengan membandingkan produk dan 
+                        harga dari toko terbaik di  ID dan luar negeri. Beli secara online dan berhemat dengan berbelanja di 
+                        PriceMe. Anda akan menemukan toko-toko dan ritel-ritel online yang mengirim ke Auckland,
+                        Christchurch, Wellington, Dunedin, Hamilton,Nelson dan seluruh dunia disini di
+                        PriceMe.&lt;/p&gt;</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>tinjauan</value>
+  </data>
+  <data name="SearchPanel" xml:space="preserve">
+    <value>Jumlah total klik dan biaya-biaya terkait pada periode dan kategori yang dipilih (jika kategori dipilih). Biayanya berdasarkan tarif PPC untuk suatu kategori. Silakan merujuk pada bagian Pembayaran untuk saldo akun anda saat ini.</value>
+  </data>
+  <data name="ShareWishListEmailBody" xml:space="preserve">
+    <value>Saya hanya ingin membagi Daftar Permintaan saya dengan semua barang keren yang ingin saya miliki! *hint hint*&lt;br /&gt;&lt;br /&gt;Saya telah mencari dan menemukan produk dan ritel ini di PriceMe. Ayo lihatlah!</value>
+  </data>
+  <data name="ShoppingInformation" xml:space="preserve">
+    <value>Informasi Belanja</value>
+  </data>
+  <data name="StatusBarText" xml:space="preserve">
+    <value>Belanja Online di Indonesia</value>
+  </data>
+  <data name="String_DefaultCategoryDescription" xml:space="preserve">
+    <value>Membandingkan {0} harga dan tinjauan di PriceMe, dan beli {0} dari {1} dan lainnya.</value>
+  </data>
+  <data name="TextString_404PageContent" xml:space="preserve">
+    <value>&lt;p&gt;Kami telah mencatat kesalahan ini dan hal ini akan ditinjau ulang oleh staff teknis kami.&lt;/p&gt;
+    &lt;ul id="reasons"&gt;
+     &lt;li&gt;Jika anda mengetikkan alamat anda sendiri, mohon konfirmasi apakah ejaannya tepat.&lt;/li&gt;
+     &lt;li&gt;Jika anda meng-klik suatu tautan dari kesukaan anda, tautan itu mungkin telah kadaluwarsa.&lt;/li&gt;
+     &lt;li&gt;Jika tidak, kami mungkin sedang mengalami masalah dengan server kami. Kami akan meperbaiki hal ini tanpa anda perlu lakukan apapun.&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;br /&gt;
+    &lt;p&gt;Jika anda tetap mengalami masalah silakan &lt;a href="/About/contactUs.aspx"&gt;hubungi us&lt;/a&gt; untuk bantuan.&lt;/p&gt;</value>
+  </data>
+  <data name="TextString_404PageH1" xml:space="preserve">
+    <value>Maaf, halaman tidak ditemukan!</value>
+  </data>
+  <data name="TextString_About" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="TextString_AboutUs" xml:space="preserve">
+    <value>Tentang Kami</value>
+  </data>
+  <data name="TextString_AddToMyCompareList" xml:space="preserve">
+    <value>Daftar</value>
+  </data>
+  <data name="TextString_AddYourReview" xml:space="preserve">
+    <value>Tambahkan tinjauan Anda</value>
+  </data>
+  <data name="TextString_AdvancedFeatures" xml:space="preserve">
+    <value>Fitur Lanjutan</value>
+  </data>
+  <data name="TextString_AllBrands" xml:space="preserve">
+    <value>Semua Merek</value>
+  </data>
+  <data name="TextString_BasePrice" xml:space="preserve">
+    <value>Harga Pokok</value>
+  </data>
+  <data name="TextString_BestPrice" xml:space="preserve">
+    <value>Harga Terbaik</value>
+  </data>
+  <data name="TextString_Brand" xml:space="preserve">
+    <value>Merek</value>
+  </data>
+  <data name="TextString_Brands" xml:space="preserve">
+    <value>Merek-merek</value>
+  </data>
+  <data name="TextString_BrowseAll" xml:space="preserve">
+    <value>Telusuri Semua......</value>
+  </data>
+  <data name="TextString_BrowseAllCategories" xml:space="preserve">
+    <value>Telusuri Semua Kategori</value>
+  </data>
+  <data name="TextString_BuyingGuide" xml:space="preserve">
+    <value>Panduan Pembelian</value>
+  </data>
+  <data name="TextString_CatalogSelection" xml:space="preserve">
+    <value>Pemilihan:</value>
+  </data>
+  <data name="TextString_CatalogSortby" xml:space="preserve">
+    <value>Urutan berdasarkan:</value>
+  </data>
+  <data name="TextString_CatalogView" xml:space="preserve">
+    <value>Tampilan berdasarkan:</value>
+  </data>
+  <data name="TextString_Categories" xml:space="preserve">
+    <value>Kategori-kategori</value>
+  </data>
+  <data name="TextString_Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="TextString_Clearlist" xml:space="preserve">
+    <value>Mengosongkan</value>
+  </data>
+  <data name="TextString_Community" xml:space="preserve">
+    <value>Komunitas</value>
+  </data>
+  <data name="TextString_Compare" xml:space="preserve">
+    <value>Bandingkan</value>
+  </data>
+  <data name="TextString_CompareButtonDescription" xml:space="preserve">
+    <value>Periksa 4 produk pilihan anda dan klik tombol bandingkan</value>
+  </data>
+  <data name="TextString_comparepricesFrom" xml:space="preserve">
+    <value>dari</value>
+  </data>
+  <data name="TextString_CompareProducts" xml:space="preserve">
+    <value>membandingkan produk</value>
+  </data>
+  <data name="TextString_Contact" xml:space="preserve">
+    <value>Kontak</value>
+  </data>
+  <data name="TextString_ContactUs" xml:space="preserve">
+    <value>Hubungi Kami</value>
+  </data>
+  <data name="TextString_ContactUsError1" xml:space="preserve">
+    <value>Silakan masukkan nama lengkap anda</value>
+  </data>
+  <data name="TextString_ContactUsError2" xml:space="preserve">
+    <value>Silakan masukkan alamat Email anda</value>
+  </data>
+  <data name="TextString_ContactUsError3" xml:space="preserve">
+    <value>Silakan masukkan pesan</value>
+  </data>
+  <data name="TextString_ContactUsMessage" xml:space="preserve">
+    <value>Pesan:</value>
+  </data>
+  <data name="TextString_ContactUsSuccess" xml:space="preserve">
+    <value>Hubungi Kami Berhasil</value>
+  </data>
+  <data name="TextString_ContactUsSuccess_Text1" xml:space="preserve">
+    <value>Terima kasih karena menghubungi kami.. 
+                                                &lt;br /&gt;Kami telah menerima pesan anda dan akan menjawab segera.</value>
+  </data>
+  <data name="TextString_ContactUsTopic" xml:space="preserve">
+    <value>Topik:</value>
+  </data>
+  <data name="TextString_ContactUsYourEmail" xml:space="preserve">
+    <value>email Anda:</value>
+  </data>
+  <data name="TextString_ContactUsYourFullName" xml:space="preserve">
+    <value>Nama Lengkap Anda:</value>
+  </data>
+  <data name="TextString_ContactUs_Text1" xml:space="preserve">
+    <value>Silakan menghubungi kami melalui form dibawah ini jika anda mempunyai pertanyaan apapun tentang website PriceMe atau ingin memasang iklan melalui kami.</value>
+  </data>
+  <data name="TextString_ContactUs_Text2" xml:space="preserve">
+    <value>Mohon dicatat:
+                    &lt;br /&gt;
+                    - Jika anda memerlukan informasi lebih pada produk khusus, silakan klik barang yang anda minati dan hubungi ritel yang menjual barang tersebut secara langsung.
+                    &lt;br /&gt;
+                    - PriceMe tidak menjual produk apapun yang ditampilkan pada situs. Ritel-ritel adalah independen atas tindakan PriceMe.</value>
+  </data>
+  <data name="TextString_Continue" xml:space="preserve">
+    <value>Lanjutkan</value>
+  </data>
+  <data name="TextString_CountInStock" xml:space="preserve">
+    <value> stok tersedia</value>
+  </data>
+  <data name="TextString_CreditCard" xml:space="preserve">
+    <value>Kartu Kredit</value>
+  </data>
+  <data name="TextString_DeleteAll" xml:space="preserve">
+    <value>Hapus Semua</value>
+  </data>
+  <data name="TextString_Delivery" xml:space="preserve">
+    <value>Pengiriman&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_DeliveryTime" xml:space="preserve">
+    <value>Waktu Pengiriman</value>
+  </data>
+  <data name="TextString_EmailATagTitle" xml:space="preserve">
+    <value>Klik untuk membagi halaman ini melalui email</value>
+  </data>
+  <data name="TextString_Facebook" xml:space="preserve">
+    <value>Suka - Menangkan</value>
+  </data>
+  <data name="TextString_FacebookATagTitle" xml:space="preserve">
+    <value>Klik untuk membagi halaman ini di Facebook</value>
+  </data>
+  <data name="TextString_FAQs" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="TextString_FirstName" xml:space="preserve">
+    <value>Nama Depan</value>
+  </data>
+  <data name="TextString_FreeShipping" xml:space="preserve">
+    <value>Gratis</value>
+  </data>
+  <data name="TextString_FREE_shipping" xml:space="preserve">
+    <value>Gratis</value>
+  </data>
+  <data name="TextString_Gallery" xml:space="preserve">
+    <value>Galeri</value>
+  </data>
+  <data name="TextString_Guides" xml:space="preserve">
+    <value>Pemandu</value>
+  </data>
+  <data name="TextString_HowThisWorks" xml:space="preserve">
+    <value>Cara Kerja</value>
+  </data>
+  <data name="TextString_HowToUsePriceMe" xml:space="preserve">
+    <value>Bagaimana Cara Menggunakan PriceMe</value>
+  </data>
+  <data name="TextString_JoinPriceMe" xml:space="preserve">
+    <value>Mendaftar</value>
+  </data>
+  <data name="TextString_LessFilters" xml:space="preserve">
+    <value>Kurangi penyaring</value>
+  </data>
+  <data name="TextString_LikeUs" xml:space="preserve">
+    <value>Suka</value>
+  </data>
+  <data name="TextString_List" xml:space="preserve">
+    <value>Daftar</value>
+  </data>
+  <data name="TextString_LogIn" xml:space="preserve">
+    <value>Masuk</value>
+  </data>
+  <data name="TextString_LogOut" xml:space="preserve">
+    <value>Keluar</value>
+  </data>
+  <data name="TextString_LowestPrice" xml:space="preserve">
+    <value>Harga terendah</value>
+  </data>
+  <data name="TextString_Managelist" xml:space="preserve">
+    <value>Mengelola</value>
+  </data>
+  <data name="TextString_Manu_BrowseAll" xml:space="preserve">
+    <value>Telusuri semua</value>
+  </data>
+  <data name="TextString_MediaCentre" xml:space="preserve">
+    <value>Pusat Media</value>
+  </data>
+  <data name="TextString_MyAccount" xml:space="preserve">
+    <value>Akun Saya</value>
+  </data>
+  <data name="TextString_Narrowby" xml:space="preserve">
+    <value>Pendekatan dengan</value>
+  </data>
+  <data name="TextString_NewsArticles" xml:space="preserve">
+    <value>Artikel-artikel Berita</value>
+  </data>
+  <data name="TextString_Newsletter" xml:space="preserve">
+    <value>Buletin</value>
+  </data>
+  <data name="TextString_NextPrice" xml:space="preserve">
+    <value>Harga Berikutnya</value>
+  </data>
+  <data name="TextString_Nofee" xml:space="preserve">
+    <value>Tidak ada biaya</value>
+  </data>
+  <data name="TextString_NoMap" xml:space="preserve">
+    <value>Tidak ada ritel yang menjual produk ini yang terdaftar di PriceMe.</value>
+  </data>
+  <data name="TextString_NoUserReview" xml:space="preserve">
+    <value>Tidak ada tinjauan pengguna yang tersedia. Jadilah yang pertama untuk menuliskan tinjauan tentang {0}</value>
+  </data>
+  <data name="TextString_OnPriceMe" xml:space="preserve">
+    <value>di PriceMe</value>
+  </data>
+  <data name="TextString_PageNext" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="TextString_PagePrev" xml:space="preserve">
+    <value>Sebelumnya</value>
+  </data>
+  <data name="TextString_PhoneSupport" xml:space="preserve">
+    <value>Dukungan</value>
+  </data>
+  <data name="TextString_PhysicalSpecs" xml:space="preserve">
+    <value>Spesifikasi Fisik</value>
+  </data>
+  <data name="TextString_PopularBrands" xml:space="preserve">
+    <value>Merek-merek Ternama</value>
+  </data>
+  <data name="TextString_PopularBrandsSiteMap" xml:space="preserve">
+    <value>Peta Situs Merek-merek Ternama</value>
+  </data>
+  <data name="TextString_Popularity" xml:space="preserve">
+    <value>Popularitas</value>
+  </data>
+  <data name="TextString_popularStores" xml:space="preserve">
+    <value>Toko ternama</value>
+  </data>
+  <data name="TextString_PreviousNewsletters" xml:space="preserve">
+    <value>Buletin Sebelumnya</value>
+  </data>
+  <data name="TextString_Price" xml:space="preserve">
+    <value>Harga</value>
+  </data>
+  <data name="TextString_PriceCount" xml:space="preserve">
+    <value>Harga-harga</value>
+  </data>
+  <data name="TextString_PriceMeBlog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="TextString_PriceMeCommunity" xml:space="preserve">
+    <value>Komunitas PriceMe</value>
+  </data>
+  <data name="TextString_PriceMeLogoATagTitle" xml:space="preserve">
+    <value>Belanja Online &amp; Perbandingan Harga</value>
+  </data>
+  <data name="TextString_PriceMeLogoTitle" xml:space="preserve">
+    <value>PriceMe - Bandingkan harga dan beli secara online</value>
+  </data>
+  <data name="TextString_PricesAndReviews" xml:space="preserve">
+    <value>Harga &amp; Tinjauan</value>
+  </data>
+  <data name="TextString_PriceSymbol" xml:space="preserve">
+    <value>Rp</value>
+  </data>
+  <data name="TextString_PrintATagTitle" xml:space="preserve">
+    <value>Klik untuk mencetak halaman ini</value>
+  </data>
+  <data name="TextString_ProductName" xml:space="preserve">
+    <value>Judul</value>
+  </data>
+  <data name="TextString_Quick" xml:space="preserve">
+    <value>Cepat</value>
+  </data>
+  <data name="TextString_ReviewRating" xml:space="preserve">
+    <value>Peringkat</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful" xml:space="preserve">
+    <value>Pendaftaran Berhasil</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful_Text1" xml:space="preserve">
+    <value>Terima kasih atas pendaftaran anda. PriceMe telah mengirimkan email konfirmasi kepada anda yang berisi
+                                    rincian akun anda. Bersiaplah untuk Berbelanja Lebih Pintar.</value>
+  </data>
+  <data name="TextString_RelatedCategories" xml:space="preserve">
+    <value>Kategori yang Berkaitan</value>
+  </data>
+  <data name="TextString_Removeall" xml:space="preserve">
+    <value>Hapus semua</value>
+  </data>
+  <data name="TextString_ReportATagTitle" xml:space="preserve">
+    <value>Klik untuk melaporkan kesalahan atau memberikan umpan balik</value>
+  </data>
+  <data name="TextString_Retailer" xml:space="preserve">
+    <value>Ritel</value>
+  </data>
+  <data name="TextString_RetailerCentre" xml:space="preserve">
+    <value>Pusat Ritel</value>
+  </data>
+  <data name="TextString_RetailerList" xml:space="preserve">
+    <value>Daftar Ritel</value>
+  </data>
+  <data name="TextString_RetailerMap" xml:space="preserve">
+    <value>Peta dibawah ini menunjukkan pada anda dimana menemukan ritel ini. PriceMe menunjukkan lokasi pembelian baik toko-toko fisik dan toko-toko online dengan pengambilan.</value>
+  </data>
+  <data name="TextString_RetailerNumber" xml:space="preserve">
+    <value>Jumlah ritel</value>
+  </data>
+  <data name="TextString_RetailerProductView" xml:space="preserve">
+    <value>Tunjukkan penawaran lainnya</value>
+  </data>
+  <data name="TextString_Retailers" xml:space="preserve">
+    <value>Ritel-ritel</value>
+  </data>
+  <data name="TextString_Review" xml:space="preserve">
+    <value>Tinjauan</value>
+  </data>
+  <data name="TextString_Reviews" xml:space="preserve">
+    <value>Tinjauan</value>
+  </data>
+  <data name="TextString_ReviewSuccessful" xml:space="preserve">
+    <value>Tinjauan Berhasil</value>
+  </data>
+  <data name="TextString_ReviewSuccessful_Text" xml:space="preserve">
+    <value>Terima kasih karena membagi pengalaman Anda dan karena meninjau produk ini.</value>
+  </data>
+  <data name="TextString_Search" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="TextString_SearchButtonAlter" xml:space="preserve">
+    <value>Mencari produk-produk dari toko-toko online</value>
+  </data>
+  <data name="TextString_SearchNoResultTitle" xml:space="preserve">
+    <value>Tidak ada hasil pencarian yang ditemukan</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_1" xml:space="preserve">
+    <value>Periksa ejaan pencarian Anda</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_2" xml:space="preserve">
+    <value>Coba gunakan istilah pencarian yang lebih banyak dan berbeda.</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_3" xml:space="preserve">
+    <value>Coba gunakan istilah pencarian yang lebih umum (misalnya "kamera Panasonic" sebagai ganti "Alat Penstabil Panasonic FT-2").</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_4" xml:space="preserve">
+    <value>Sebagai alternatif, silakan telusuri berdasarkan kategori atau merek untuk menemukan produk yang anda cari.</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTips" xml:space="preserve">
+    <value>Tips pencarian:</value>
+  </data>
+  <data name="TextString_Searchwithin" xml:space="preserve">
+    <value>Mencari di dalam</value>
+  </data>
+  <data name="TextString_SeeAll" xml:space="preserve">
+    <value>Lihat semua</value>
+  </data>
+  <data name="TextString_SeeAllBrands" xml:space="preserve">
+    <value>Lihat semua merek</value>
+  </data>
+  <data name="TextString_Seemore" xml:space="preserve">
+    <value>Selanjutnya</value>
+  </data>
+  <data name="TextString_SeeProductAt" xml:space="preserve">
+    <value>Lihat produk di</value>
+  </data>
+  <data name="TextString_Shipping" xml:space="preserve">
+    <value>Pengiriman</value>
+  </data>
+  <data name="TextString_ShowMoreFilters" xml:space="preserve">
+    <value>Lebih banyak</value>
+  </data>
+  <data name="TextString_SiteMap" xml:space="preserve">
+    <value>Peta Situs</value>
+  </data>
+  <data name="TextString_Stock" xml:space="preserve">
+    <value>Stok</value>
+  </data>
+  <data name="TextString_Store" xml:space="preserve">
+    <value>Toko</value>
+  </data>
+  <data name="TextString_Stores" xml:space="preserve">
+    <value>Toko-toko</value>
+  </data>
+  <data name="TextString_surcharge" xml:space="preserve">
+    <value>biaya</value>
+  </data>
+  <data name="TextString_Tools" xml:space="preserve">
+    <value>Sarana</value>
+  </data>
+  <data name="TextString_TopBrands" xml:space="preserve">
+    <value>Merek</value>
+  </data>
+  <data name="TextString_TopRetailers" xml:space="preserve">
+    <value>Ritel-ritel Teratas</value>
+  </data>
+  <data name="TextString_Total" xml:space="preserve">
+    <value>Total&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_TwitterATagTitle" xml:space="preserve">
+    <value>Klik untuk membagi halaman ini di Twitter</value>
+  </data>
+  <data name="TextString_URShortTitle" xml:space="preserve">
+    <value>Judul - Urutkan judul yang merangkum tinjauan</value>
+  </data>
+  <data name="TextString_Variation" xml:space="preserve">
+    <value>variasi</value>
+  </data>
+  <data name="TextString_Variations" xml:space="preserve">
+    <value>variasi</value>
+  </data>
+  <data name="TextString_VisitShop" xml:space="preserve">
+    <value>Kunjungi</value>
+  </data>
+  <data name="TextString_WalkinStore" xml:space="preserve">
+    <value>Masuk ke toko</value>
+  </data>
+  <data name="TextString_YourDetails" xml:space="preserve">
+    <value>Rincian Anda</value>
+  </data>
+  <data name="TextString_YourEmail" xml:space="preserve">
+    <value>Your Email</value>
+  </data>
+  <data name="TrafficPriceMe" xml:space="preserve">
+    <value>Anda dapat memeriksa jumlah pengunjung dengan menggunakan PAM. Tim manajemen di PriceMe telah berpengalaman selama bertahun-tahun dalam menggunakan lalu lintas ini melalui kerja sama dengan website-website terkemuka, berbayar dan pencarian alami, dan melalui produk-produk baru kami. Oleh karena itu, tingkat lalu lintas diharapkan untuk meningkat di bulan-bulan mendatang sebagaimana kami tetap mempromosikan website dan mendapatkan lalu lintas berkualitas-tinggi. Sebagai tambahan, perbandingan berbelanja juga menghasilkan daya tarik di Indonesia dan lebih banyak dan lebih banyak konsumen yang cenderung menggunakan layanan seperti ini di waktu yang akan datang.</value>
+  </data>
+  <data name="VisitShop" xml:space="preserve">
+    <value>Kunjungi Toko</value>
+  </data>
+  <data name="WhatIsPriceMe" xml:space="preserve">
+    <value>PriceMe adalah website pembanding belanja yang berkembang pesat di Indonesia. Tujuan kami adalah untuk membuat "belanja lebih pintar" bagi Kiwis. Hal ini menerapkan pencarian produk yang tepat dari ritel yang terpercaya dengan harga serendah mungkin.</value>
+  </data>
+  <data name="TextString_BuyingOnline" xml:space="preserve">
+    <value>Diperlukan informasi lebih tentang {0} sebelum membeli secara online? Kemudian konsultasikan dengan pemandu pembelian kami.</value>
+  </data>
+  <data name="TextString_InStock" xml:space="preserve">
+    <value>Stok tersedia</value>
+  </data>
+  <data name="TextString_Maps" xml:space="preserve">
+    <value>Peta</value>
+  </data>
+  <data name="TextString_NumOfRP" xml:space="preserve">
+    <value>Banyaknya ritel untuk {0}</value>
+  </data>
+  <data name="TextString_Off" xml:space="preserve">
+    <value>dari</value>
+  </data>
+  <data name="TextString_OutofStock" xml:space="preserve">
+    <value>Stok habis</value>
+  </data>
+  <data name="TextString_PriceHistory" xml:space="preserve">
+    <value>Riwayat harga untuk {0}</value>
+  </data>
+  <data name="TextString_Product" xml:space="preserve">
+    <value>Produk</value>
+  </data>
+  <data name="TextString_RetailerReviews" xml:space="preserve">
+    <value>Tinjauan Ritel</value>
+  </data>
+  <data name="TextString_SeeAllCategories" xml:space="preserve">
+    <value>Lihat semua kategori</value>
+  </data>
+  <data name="TextString_Seemorep" xml:space="preserve">
+    <value>Lihat yang lebih populer</value>
+  </data>
+  <data name="TextString_SeemoreStores" xml:space="preserve">
+    <value>Lihat lebih banyak toko</value>
+  </data>
+  <data name="TextString_View" xml:space="preserve">
+    <value>Tampilkan</value>
+  </data>
+  <data name="TextString_FooterOnline" xml:space="preserve">
+    <value>Membandingkan harga-harga dan belanja online di {0}</value>
+  </data>
+  <data name="TextString_Mobile" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="TextString_NarrowByCate" xml:space="preserve">
+    <value>Pendekatan berdasarkan Kategori</value>
+  </data>
+  <data name="TextString_NeedBGinfo" xml:space="preserve">
+    <value>Diperlukan informasi lebih tentang {0} sebelum membeli secara online? Kemudian konsultasikan dengan pemandu pembelian kami.</value>
+  </data>
+  <data name="TextString_ReadBG" xml:space="preserve">
+    <value>Baca {0} pedoman pembelian</value>
+  </data>
+  <data name="TextString_ReviewsTitle" xml:space="preserve">
+    <value>Tinjauan produk - Tinjauan Pengguna dan Para Pakar di PriceMe</value>
+  </data>
+  <data name="TextString_TouchVersion" xml:space="preserve">
+    <value>sentuh Versi</value>
+  </data>
+  <data name="TextString_WelcomeContent" xml:space="preserve">
+    <value>Thank you for visiting PriceMe, where shopping research is fun and easy and will save you heaps of time and money! Just enter the product or retailer you're looking for and click through to their website using the Visit Shop button to purchase directly from that retailer.
+
+We provide up-to-the-minute prices and product reviews plus user ratings on products and retailers. Please help other PriceMe users by posting your feedback and rating your experience with any of the retailers on the site. 
+
+You don't have to be at your computer to find shopping info on PriceMe. Try our iPhone app and receive most of the info from our website direct to your mobile phone while you're on the go or in-store. 
+
+Don't forget - make PriceMe your first online destination before shopping and save a bundle!
+
+Happy shopping from the PriceMe team.
+
+P.S. Receive our hottest deals from retailers around NZ in your mail box. Just fill in the free newsletter subscription form to the right and start saving today!</value>
+  </data>
+  <data name="TextString_WelcomePriceme" xml:space="preserve">
+    <value>Selamat Datang di PriceMe</value>
+  </data>
+  <data name="TextString_Author" xml:space="preserve">
+    <value>Penulis</value>
+  </data>
+  <data name="TextString_Culture" xml:space="preserve">
+    <value>id-ID</value>
+  </data>
+  <data name="TextString_ExpertReviews" xml:space="preserve">
+    <value>Tinjauan Para Ahli</value>
+  </data>
+  <data name="TextString_From" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="TextString_ProductReview" xml:space="preserve">
+    <value>Tinjauan produk</value>
+  </data>
+  <data name="TextString_ReviewDate" xml:space="preserve">
+    <value>Tanggal Tinjauan</value>
+  </data>
+  <data name="TextString_UntitledPage" xml:space="preserve">
+    <value>Halaman Tidak Berjudul</value>
+  </data>
+  <data name="TextString_AlreadyRegister" xml:space="preserve">
+    <value>Telah menjadi anggota PriceMe?</value>
+  </data>
+  <data name="TextString_BrandDescription" xml:space="preserve">
+    <value>Cari {0} produk online dan beli melalui toko-toko online di Indonesia.</value>
+  </data>
+  <data name="TextString_CharLong" xml:space="preserve">
+    <value>sepanjang {0} karakter</value>
+  </data>
+  <data name="TextString_Copyright" xml:space="preserve">
+    <value>Hak Cipta © PriceMe {0}</value>
+  </data>
+  <data name="TextString_EmailAddress" xml:space="preserve">
+    <value>Alamat email</value>
+  </data>
+  <data name="TextString_ForgotPsd" xml:space="preserve">
+    <value>Lupa kata sandi?</value>
+  </data>
+  <data name="TextString_LoginHere" xml:space="preserve">
+    <value>Login di sini.</value>
+  </data>
+  <data name="TextString_Map" xml:space="preserve">
+    <value>Peta</value>
+  </data>
+  <data name="TextString_More" xml:space="preserve">
+    <value>Lebih...</value>
+  </data>
+  <data name="TextString_MostPopuCategories" xml:space="preserve">
+    <value>Kategori yang paling populer</value>
+  </data>
+  <data name="TextString_NotRegistered" xml:space="preserve">
+    <value>Belum terdaftar?</value>
+  </data>
+  <data name="TextString_OR" xml:space="preserve">
+    <value>ATAU</value>
+  </data>
+  <data name="TextString_Password" xml:space="preserve">
+    <value>Kata sandi</value>
+  </data>
+  <data name="TextString_PleaseLogIn" xml:space="preserve">
+    <value>Silakan Masuk</value>
+  </data>
+  <data name="TextString_Products" xml:space="preserve">
+    <value>Produk</value>
+  </data>
+  <data name="TextString_RegisterRemind" xml:space="preserve">
+    <value>Anda dan peninjau Anda akan muncul dengan nama ini di PriceMe sepanjang 4-18 karakter. Dapat terdiri dari huruf, angka, garis bawah dan periode. Tanpa spasi.</value>
+  </data>
+  <data name="TextString_RememberMe" xml:space="preserve">
+    <value>Ingat saya</value>
+  </data>
+  <data name="TextString_RetailerSignUp" xml:space="preserve">
+    <value>Pendaftaran Ritel</value>
+  </data>
+  <data name="TextString_SignUpFind" xml:space="preserve">
+    <value>Daftar dan mulai temukan penawaran terbaik</value>
+  </data>
+  <data name="TextString_SignUpNewsLtt" xml:space="preserve">
+    <value>Mendaftar untuk Buletin PriceMe dan dapatkan semua penawaran terbaru di kotak masuk Anda!</value>
+  </data>
+  <data name="TextString_Subscribe" xml:space="preserve">
+    <value>Berlangganan secara mingguan &lt;a href="Newsletter.aspx"&gt;buletin&lt;/a&gt;</value>
+  </data>
+  <data name="TextString_UserName" xml:space="preserve">
+    <value>Nama pengguna</value>
+  </data>
+  <data name="TextString_YourAccount" xml:space="preserve">
+    <value>Akun Anda</value>
+  </data>
+  <data name="TextString_ComingSoon" xml:space="preserve">
+    <value>Akan Datang...</value>
+  </data>
+  <data name="TextString_MediaCenter" xml:space="preserve">
+    <value>Pusat Media</value>
+  </data>
+  <data name="TextString_NewsLettCQ1" xml:space="preserve">
+    <value>Seberapa sering saya menerima buletin?&lt;br /&gt;Buletin dikirimkan tiap selasa setiap minggu.</value>
+  </data>
+  <data name="TextString_NewsLettCQ2" xml:space="preserve">
+    <value>Apa yang Anda butuhkan dari saya?&lt;br /&gt;Kami hanya memerlukan alamat email Anda pada tahap ini dan nama. Kemudian Anda harus mengikuti instruksi-instruksi dalam email konfirmasi untuk menyelesaikan proses pendaftaran.</value>
+  </data>
+  <data name="TextString_TAndC" xml:space="preserve">
+    <value>Syarat dan Ketentuan</value>
+  </data>
+  <data name="TextString_TAndCstr" xml:space="preserve">
+    <value>PriceMe membenci spam seperti Anda juga. Untuk itu kami tidak menjual atau menyewakan alamat email Anda kepada siapapun. Dan kami membuatnya sangat mudah untuk berlangganan. Periksa &lt;a rel="nofollow" href="About/PrivacyPolicy.aspx" target=_blank&gt;Ketentuan Kebijakan&lt;/a&gt; kami untuk mengetahui lebih lanjut.</value>
+  </data>
+  <data name="TextString_Delete" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="TextString_Edit" xml:space="preserve">
+    <value>Mengedit</value>
+  </data>
+  <data name="PriceMeSocial" xml:space="preserve">
+    <value>&lt;a class="bg2 foot_Facebook" target="_blank" href="https://www.facebook.com/pages/PriceMe-Indonesia/505629202798999"&gt;&lt;/a&gt;&lt;a class="bg2 foot_Twitter" target="_blank" href="https://twitter.com/PriceMeID"&gt;&lt;/a&gt;&lt;a class="bg2 foot_Feed" target="_blank" href="https://blog.priceme.co.id/feed/"&gt;&lt;/a&gt;
+</value>
+  </data>
+  <data name="TextString_EmptyListStr" xml:space="preserve">
+    <value>Daftar anda saat ini kosong. Silakan tambahkan produk-produk anda ke daftar anda dengan meng-klik tautan "Tambahkan ke daftar simpanan saya".</value>
+  </data>
+  <data name="TextString_MySavedListStr" xml:space="preserve">
+    <value>Anda dapat mengelola dan mengorganisir daftar anda di sini. Anda juga dapat membandingkan produk-produk dengan memilih yang anda minati dan klik "bandingkan". Juga memungkinkan untuk menghapus produk dari daftar. Lihat lebih banyak &lt;a href="/MyHistoryInfo.aspx" rel="nofollow"&gt;informasi&lt;/a&gt; tentang daftar simpanan saya.</value>
+  </data>
+  <data name="TextString_ProductComparison" xml:space="preserve">
+    <value>Membandingkan Produk</value>
+  </data>
+  <data name="TextString_ProductComparisonSbs" xml:space="preserve">
+    <value>Berdampingan</value>
+  </data>
+  <data name="Newsletterhighlights" xml:space="preserve">
+    <value>&lt;ul&gt; 
+           &lt;li&gt;Produk keluaran terbaru &lt;/li&gt;
+           &lt;li&gt;Produk-produk teratas Indonesia &lt;/li&gt;
+           &lt;li&gt;Tinjauanan produk &lt;/li&gt;
+           &lt;li&gt;Ritel penjual &lt;/li&gt;
+           &lt;li&gt;Dan informasi 'Belanja lebih pintar' lainnya... &lt;/li&gt;&lt;/ul&gt;
+           &lt;h2  style="padding-top: 10px"&gt;Pertanyaan yang sering muncul:&lt;/h2&gt; 
+&lt;ul&gt;</value>
+  </data>
+  <data name="TextString_AboutMe" xml:space="preserve">
+    <value>Tentang Saya</value>
+  </data>
+  <data name="TextString_BuyGuideTitle" xml:space="preserve">
+    <value>Panduan Belanja untuk Belanja Lebih Pintar</value>
+  </data>
+  <data name="TextString_ChangeEmail" xml:space="preserve">
+    <value>Ubah Email</value>
+  </data>
+  <data name="TextString_Checkout" xml:space="preserve">
+    <value>Lihat {0} di PriceMe</value>
+  </data>
+  <data name="TextString_DealsAndOffers" xml:space="preserve">
+    <value>{0} penawaran - Belanja Online di PriceMe</value>
+  </data>
+  <data name="TextString_Error500" xml:space="preserve">
+    <value>&lt;h1&gt;Error : Server internal error
+
+&lt;/h1&gt;
+    &lt;div style="font-size:14px;"&gt;
+        &lt;br /&gt;Terjadi suatu kekeliruan dalam situs.
+
+&lt;br /&gt;
+        &lt;br /&gt;Kekeliruan ini telah dilaporkan secara otomatis ke staf PriceMe.
+
+&lt;br /&gt;
+        &lt;br /&gt;Mohon klik kembali untuk kembali ke halaman sebelumnya atau kembali ke Halaman &lt;a href="/"&gt;Beranda&lt;/a&gt;&amp;nbsp;&lt;br /&gt;
+        &lt;br /&gt;
+    &lt;/div&gt;</value>
+  </data>
+  <data name="TextString_MoreCountries" xml:space="preserve">
+    <value>Negara-negara Lainnya</value>
+  </data>
+  <data name="TextString_MostPopularDesc" xml:space="preserve">
+    <value>{0} terpopuler di {1} untuk belanja online, tinjauan dan pembanding harga.</value>
+  </data>
+  <data name="TextString_PrivacyPolicy" xml:space="preserve">
+    <value>Kebijakan Privasi</value>
+  </data>
+  <data name="TextString_ReadFullReview" xml:space="preserve">
+    <value>Baca tinjauan lengkap di {0}</value>
+  </data>
+  <data name="TextString_RetailerDesc" xml:space="preserve">
+    <value>Beli dari {0} dan temukan penawaran terbesar secara online. Bandingkan harga, baca tinjauan dan beli secara online dati ritel-ritel terbaik di {1}.</value>
+  </data>
+  <data name="TextString_RetailerLogicTitle" xml:space="preserve">
+    <value>Daftar Ritel - Temukan Toko-toko Online Setempat yang Terbaik &amp; Informasinya di PriceMe</value>
+  </data>
+  <data name="TextString_Summary" xml:space="preserve">
+    <value>Ringkasan</value>
+  </data>
+  <data name="TextString_Verdict" xml:space="preserve">
+    <value>Keputusan</value>
+  </data>
+  <data name="TextString_GetDirections" xml:space="preserve">
+    <value>Cari petunjuk</value>
+  </data>
+  <data name="TextString_MoreDetails" xml:space="preserve">
+    <value>Rincian Lebih Lanjut</value>
+  </data>
+  <data name="TextString_NoSearchResult" xml:space="preserve">
+    <value>Tidak ada hasil pencarian untuk "{0}"</value>
+  </data>
+  <data name="TextString_PageNumber" xml:space="preserve">
+    <value>Jumlah keseluruhan halaman:</value>
+  </data>
+  <data name="TextString_Report_location" xml:space="preserve">
+    <value>Laporkan lokasi</value>
+  </data>
+  <data name="TextString_Report_LocationL" xml:space="preserve">
+    <value>Laporkan Lokasi</value>
+  </data>
+  <data name="TextString_SearchResultsFor" xml:space="preserve">
+    <value>Hasil Pencarian untuk</value>
+  </data>
+  <data name="TextString_SeemoreR" xml:space="preserve">
+    <value>Lihat Ritel-ritel lebih lanjut</value>
+  </data>
+  <data name="TextString_SetYourPrice" xml:space="preserve">
+    <value>Atur pemberitahuan harga anda berikut ini.&lt;br /&gt;Harga terendah hari ini:</value>
+  </data>
+  <data name="TextString_ThanksTakingTime" xml:space="preserve">
+    <value>Terima kasih karena meluangkan waktu untuk memberitahu kami bahwa ada masalah di situs kami.</value>
+  </data>
+  <data name="TextString_YourEmailOp" xml:space="preserve">
+    <value>Email anda (tidak wajib, jika anda membutuhkan tindak lanjut):</value>
+  </data>
+  <data name="TextString_ChannelPartners" xml:space="preserve">
+    <value>Sumber Mitra</value>
+  </data>
+  <data name="TextString_MostPopularTitle" xml:space="preserve">
+    <value>{0} Terpopuler Beli dan Belanja Online di PriceMe</value>
+  </data>
+  <data name="TextString_NotClear" xml:space="preserve">
+    <value>Tidak jelas? Klik gambar Captcha untuk mendapat yang baru! Abaikan kotak.</value>
+  </data>
+  <data name="TextString_OutOfRating" xml:space="preserve">
+    <value>peringkat {0} dari 5</value>
+  </data>
+  <data name="TextString_PReviewSubmitted" xml:space="preserve">
+    <value>&lt;div&gt;&lt;h5&gt;Tinjauan anda untuk {0} telah didaftarkan.&lt;/h5&gt;&lt;/div&gt;
+                        &lt;div&gt;
+                            Terima kasih karena meninjau produk ini. Tinjauan anda akan online segera.
+                        &lt;/div&gt;</value>
+  </data>
+  <data name="TextString_PricemeNotifyprice" xml:space="preserve">
+    <value>PriceMe akan memberitahu anda saat harga {0} turun di bawah {1} {2}.</value>
+  </data>
+  <data name="TextString_ProductAlertSucces" xml:space="preserve">
+    <value>Pemberitahuan Produk Berhasil</value>
+  </data>
+  <data name="TextString_ProductNotFound" xml:space="preserve">
+    <value>Maaf, produk yang anda cari tidak ada atau telah dipindahkan. &lt;br/&gt;Silakan periksa produk-produk yang hampir sama di bawah ini untuk mencari produk.</value>
+  </data>
+  <data name="TextString_ProductReviewTitle" xml:space="preserve">
+    <value>&lt;strong&gt;Judul&lt;/strong&gt; - Silakan tambahkan judul singkat yang meringkas tinjauan&lt;br /&gt;</value>
+  </data>
+  <data name="TextString_Report" xml:space="preserve">
+    <value>Laporan</value>
+  </data>
+  <data name="TextString_ReportCommit" xml:space="preserve">
+    <value>Raporan perbuatan!</value>
+  </data>
+  <data name="TextString_RetypeReview" xml:space="preserve">
+    <value>Mohon ketik ulang Tinjauan</value>
+  </data>
+  <data name="TextString_RetypeTitle" xml:space="preserve">
+    <value>Mohon ketik ulang judul!</value>
+  </data>
+  <data name="TextString_SignUpSuccessful" xml:space="preserve">
+    <value>Pendaftaran berhasil</value>
+  </data>
+  <data name="TextString_SignUpSuccessInfo" xml:space="preserve">
+    <value>Terima kasih, kami telah menerima permintaan pendaftaran anda!&lt;br/&gt;Pemberitahuan penting: anda harus membalas email yang akan kami kirimkan pada anda untuk menyelesaikan proses pendaftaran. 
+Silakan periksa kotak masuk anda segera dan konfirmasi bahwa anda ingin menerima buletin PriceMe.</value>
+  </data>
+  <data name="TextString_SimilarProFor" xml:space="preserve">
+    <value>Produk-produk yang hampir sama dengan {0}</value>
+  </data>
+  <data name="TextString_SubmitReport" xml:space="preserve">
+    <value>Daftarkan laporan</value>
+  </data>
+  <data name="TextString_WhyPriceMe" xml:space="preserve">
+    <value>Mengapa Menggunakan PriceMe?</value>
+  </data>
+  <data name="TextString_WhyPriceMeContent" xml:space="preserve">
+    <value>&lt;h1&gt;Temukan penawaran terbaik dan lihat apa yang dikatakan orang lain!&lt;/h1&gt;
+  &lt;br /&gt;
+&lt;p&gt;Halo pembelanja yang di sana!&lt;/p&gt;
+&lt;p&gt;Apapun yang anda beli di web - kamera, ponsel, monitor LCD, atau hanya untuk melihat produk-produk baru - PriceMe memperkenankan anda untuk membandingkan dan mencari produk-produk dengan cepat dan mudah.&lt;/p&gt;
+&lt;p&gt;Kami memiliki pilihab ritel-ritel online terbesar dan paling menyeluruh di Indonesia dalam satu tempat. Ritel-ritel ini memiliki gabungan total lebih dari 300 ribu produk yang dapat dibeli secara online!
+Mari kami tunjukkan pada anda bagaimana ber-Belanja Lebih Pintar dengan PriceMe!&lt;/p&gt;
+
+&lt;H2&gt;Telusuri produk.&lt;/H2&gt; 
+&lt;P&gt;Lihat kategori-kategori produk kami yang berbeda.&lt;/P&gt; 
+&lt;H2&gt;Temukan produk.&lt;/H2&gt;
+&lt;p&gt;Cari secara seksama apa yang anda inginkan.&lt;/p&gt;
+
+&lt;H2&gt;Bandingkan harga dan produk.&lt;/H2&gt;
+&lt;p&gt;Dapatkan penawaran terbaik dengan membandingkan harga dan produk.&lt;/p&gt;
+
+&lt;H2&gt;Baca tinjauan.&lt;/H2&gt;
+&lt;p&gt;Lihat pendapat sesama pembelanja dan para ahli tentang suatu produk sebelum membeli.&lt;/p&gt;
+
+&lt;h2&gt;Dapatkan saran.&lt;/h2&gt;
+&lt;p&gt;Konsultasi dengan pemandu belanja kami dan didik diri anda sendiri - belanja lebih pintar.&lt;/p&gt;
+
+&lt;h2&gt;Beli dari ritel-ritel terkemuka.&lt;/h2&gt;
+&lt;p&gt;Langkah terakhir: klik terus dan beli dari riel-ritel terkemuka di Indonesia - cepat dan mudah.&lt;/p&gt;</value>
+  </data>
+  <data name="MoreCountries" xml:space="preserve">
+    <value>&lt;option value="http://www.priceme.co.nz"&gt;Negara-negara Lainnya&lt;/option&gt;&lt;option value="http://www.priceme.com.au"&gt;PriceMe Australia&lt;/option&gt;&lt;option value="http://www.priceme.com.hk"&gt;PriceMe Hong Kong&lt;/option&gt;&lt;option value="http://www.priceme.com.sg"&gt;PriceMe Singapore&lt;/option&gt;&lt;option value="http://www.priceme.com.my"&gt;PriceMe Malaysia&lt;/option&gt;</value>
+  </data>
+  <data name="TextString_AllReviews" xml:space="preserve">
+    <value>Semua Tinjauan</value>
+  </data>
+  <data name="TextString_HighestRating" xml:space="preserve">
+    <value>Rating Tertinggi</value>
+  </data>
+  <data name="TextString_LowestRating" xml:space="preserve">
+    <value>Rating Terendah</value>
+  </data>
+  <data name="TextString_NewestRating" xml:space="preserve">
+    <value>Rating Terbaru</value>
+  </data>
+  <data name="TextString_OldestRating" xml:space="preserve">
+    <value>Rating Terlama</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Tinjauan</value>
+  </data>
+  <data name="TextString_CompanyInfo" xml:space="preserve">
+    <value>Informasi perusahaan</value>
+  </data>
+  <data name="TextString_Height" xml:space="preserve">
+    <value>Tinggi</value>
+  </data>
+  <data name="TextString_Help" xml:space="preserve">
+    <value>Membantu</value>
+  </data>
+  <data name="TextString_JoinNowAlt" xml:space="preserve">
+    <value>Daftarkan produk-produk anda di situs pembanding belanja online terbaik Indonesia</value>
+  </data>
+  <data name="TextString_JoinNowTitle" xml:space="preserve">
+    <value>Bergabung dengan situs berbelanja terkemuka di Indonesia</value>
+  </data>
+  <data name="TextString_Latest" xml:space="preserve">
+    <value>{0} Terakhir</value>
+  </data>
+  <data name="TextString_Length" xml:space="preserve">
+    <value>Panjangnya</value>
+  </data>
+  <data name="TextString_MostPopularMetaKey" xml:space="preserve">
+    <value>populer, {0}, belanja, online, harga, membandingkan</value>
+  </data>
+  <data name="TextString_None" xml:space="preserve">
+    <value>Tidak ada</value>
+  </data>
+  <data name="TextString_Other" xml:space="preserve">
+    <value>Lain</value>
+  </data>
+  <data name="TextString_PageNotfound" xml:space="preserve">
+    <value>Halaman tidak ditemukan</value>
+  </data>
+  <data name="TextString_ProductsPurchased" xml:space="preserve">
+    <value>Yang dibeli produk</value>
+  </data>
+  <data name="TextString_RetailerAndAdv" xml:space="preserve">
+    <value>Ritel</value>
+  </data>
+  <data name="TextString_RetailerName" xml:space="preserve">
+    <value>Nama Ritel</value>
+  </data>
+  <data name="TextString_Social" xml:space="preserve">
+    <value>Jejaring Sosial</value>
+  </data>
+  <data name="TextString_star" xml:space="preserve">
+    <value>bintang</value>
+  </data>
+  <data name="TextString_Unknown" xml:space="preserve">
+    <value>Diketahui</value>
+  </data>
+  <data name="TextString_ViewAll" xml:space="preserve">
+    <value>Lihat semua</value>
+  </data>
+  <data name="TextString_Weight" xml:space="preserve">
+    <value>Berat</value>
+  </data>
+  <data name="TextString_Width" xml:space="preserve">
+    <value>Lebar</value>
+  </data>
+  <data name="TextString_Comparelist" xml:space="preserve">
+    <value>Membandingkan</value>
+  </data>
+  <data name="TextString_MyComparisonList" xml:space="preserve">
+    <value>Daftar Pembanding Saya</value>
+  </data>
+  <data name="TextString_RecentlyViewed" xml:space="preserve">
+    <value>Yang Baru Dilihat</value>
+  </data>
+  <data name="ProductReview" xml:space="preserve">
+    <value>{0} Tinjauan Produk - Baca Tinjauan dan Beli Lebih Pintar secara Online.</value>
+  </data>
+  <data name="TextString_AbuseList" xml:space="preserve">
+    <value>Daftar Penyalahgunaan</value>
+  </data>
+  <data name="TextString_AddNewList" xml:space="preserve">
+    <value>Tambahkan Daftar Baru</value>
+  </data>
+  <data name="TextString_Addsearch" xml:space="preserve">
+    <value>Tambahkan pencarian ke peramban anda</value>
+  </data>
+  <data name="TextString_AlertDelete" xml:space="preserve">
+    <value>Silakan konfirmasi bahwa anda ingin menghapus pemberitahuan harga ini!</value>
+  </data>
+  <data name="TextString_AlertPrice" xml:space="preserve">
+    <value>Pemberitahuan Harga</value>
+  </data>
+  <data name="TextString_AskToRegister" xml:space="preserve">
+    <value>Untuk mempublikasikan tinjauan anda di PriceMe kami akan meminta anda untuk mendaftar lebih dulu. Tidak ada tinjauan anonim yang diterima untuk menghindari penyalahgunaan.</value>
+  </data>
+  <data name="TextString_BrandTitle" xml:space="preserve">
+    <value>{0} {1} - Beli di Murah Harga</value>
+    <comment>Beli {0} Produk-produk Murah | Bandingkan {1} harga di PriceMe</comment>
+  </data>
+  <data name="TextString_CatelogKeyword" xml:space="preserve">
+    <value>bandingkan {0} harga-harga, {1} tinjauan-tinjauan, {2}, tinjauan, beli, harga, belanja</value>
+  </data>
+  <data name="TextString_CompareTitle" xml:space="preserve">
+    <value>Membandingkan produk dan tinjauan di PriceMe</value>
+  </data>
+  <data name="TextString_EditReview" xml:space="preserve">
+    <value>Ubah Tinjauan</value>
+  </data>
+  <data name="TextString_EmailFriendTitle" xml:space="preserve">
+    <value>{0} Bandingkan harga dan tinjauan di PriceMe</value>
+  </data>
+  <data name="TextString_ExpertReviewDesc" xml:space="preserve">
+    <value>Baca {0} tinjauan dan rating dari para ahli. Temukan pro dan kontra produk dengan tinjauan para ahli PriceMe dan belanja lebih pintar!</value>
+  </data>
+  <data name="TextString_ExpertReviewTitle" xml:space="preserve">
+    <value>{0} Tinjauan Para Ahli - Baca Tinjauan dan Beli Lebih Pintar secara Online.</value>
+  </data>
+  <data name="TextString_FAQDesc" xml:space="preserve">
+    <value>Pertanyaan yang Sering Diajukan tentang pendaftaran ritel di PriceMe.</value>
+  </data>
+  <data name="TextString_FAQKweword" xml:space="preserve">
+    <value>FAQ, ritel-ritel, belanja, pendaftaran, PriceMe</value>
+  </data>
+  <data name="TextString_GetAccount" xml:space="preserve">
+    <value>Dapatkan Sebuah Akun</value>
+  </data>
+  <data name="TextString_HelpDesc" xml:space="preserve">
+    <value>Mengapa menggunakan PriceMe untuk berbelanja online, pencarian produk dan perbandingan harga</value>
+  </data>
+  <data name="TextString_Helpkeyword" xml:space="preserve">
+    <value>penawaran, temukan, beli, online, berbelanja</value>
+  </data>
+  <data name="TextString_MemberDetails" xml:space="preserve">
+    <value>rincian {0} anggota</value>
+  </data>
+  <data name="TextString_MostPopText" xml:space="preserve">
+    <value>Yang paling sering dilihat {0} di PriceMe selama 15 hari terakhir.</value>
+  </data>
+  <data name="TextString_Newquestion" xml:space="preserve">
+    <value>Pertanyaan baru</value>
+  </data>
+  <data name="TextString_Newquestionfor" xml:space="preserve">
+    <value>Pertanyaan baru tentang</value>
+  </data>
+  <data name="TextString_NewquestionforL" xml:space="preserve">
+    <value>Pertanyaan Baru Tentang</value>
+  </data>
+  <data name="TextString_NewsLcomplete" xml:space="preserve">
+    <value>Pendaftaran Lengkap Buletin PriceMe</value>
+  </data>
+  <data name="TextString_NewsletterDesc" xml:space="preserve">
+    <value>Berlangganan buletin PriceMe untuk berita-berita belanja online terbaru</value>
+  </data>
+  <data name="TextString_Newsletterkeyword" xml:space="preserve">
+    <value>Berbelanja, buletin, online, berita, berlangganan</value>
+  </data>
+  <data name="TextString_NewsletterOptions" xml:space="preserve">
+    <value>Pilihan Buletin PriceMe</value>
+  </data>
+  <data name="TextString_NoRating" xml:space="preserve">
+    <value>tidak ada peringkat</value>
+  </data>
+  <data name="TextString_PreNewsletterDesc" xml:space="preserve">
+    <value>Arsip buletin PriceMe - informasi dan berita-berita belanja online.</value>
+  </data>
+  <data name="TextString_PreNewsletterk" xml:space="preserve">
+    <value>buletin, online, berbelanja, berita, PriceMe</value>
+  </data>
+  <data name="TextString_ProDescTitle" xml:space="preserve">
+    <value>{0} spek produk, fitur dan deskripsi</value>
+  </data>
+  <data name="TextString_ProductAlertfor" xml:space="preserve">
+    <value>Pemberitahuan Harga untuk </value>
+  </data>
+  <data name="TextString_RetailerListDesc" xml:space="preserve">
+    <value>Bandingkan harga dan baca tinjauan ritel dari toko-toko terbaik di ID. Beli secara online dan temukan penawaran terbaik.</value>
+  </data>
+  <data name="TextString_RProductAlertfor" xml:space="preserve">
+    <value>Pemberitahuan Produk Ritel untuk</value>
+  </data>
+  <data name="TextString_SurveyTitle" xml:space="preserve">
+    <value>Survei - Bantu kami meningkatkan PriceMe</value>
+  </data>
+  <data name="TextString_TermsofService" xml:space="preserve">
+    <value>Ketentuan Layanan</value>
+  </data>
+  <data name="TextString_ThankReview" xml:space="preserve">
+    <value>Terima kasih untuk tinjauan anda. Silakan mendaftar di PriceMe untuk mempublikasikannya. Gratis dan mudah.</value>
+  </data>
+  <data name="TextString_ThankYouTitle" xml:space="preserve">
+    <value>Buletin PriceMe Terima Kasih</value>
+  </data>
+  <data name="TextString_UploadPicture" xml:space="preserve">
+    <value>Unggah Gambar</value>
+  </data>
+  <data name="TextString_ViewSnapshot" xml:space="preserve">
+    <value>Lihat snapshot</value>
+  </data>
+  <data name="TextString_CatelogDesc" xml:space="preserve">
+    <value>Perbandingan {0} harga-harga dan baca tinjauan di PriceMe. Beli {1} secara online dari toko-toko terbaik di。</value>
+  </data>
+  <data name="TextString_NotFoundTitle" xml:space="preserve">
+    <value>{0} Hasil - Bandingkan Harga di PriceMe</value>
+  </data>
+  <data name="TextString_CommunityForum" xml:space="preserve">
+    <value>Forum Komunitas PriceMe</value>
+  </data>
+  <data name="TextString_ExpertReviewKeyword" xml:space="preserve">
+    <value>{0}, {1} tinjauan, Tinjauan Para Ahli, peringkat, {2} {3} tinjauan</value>
+  </data>
+  <data name="TextString_LocationInFor" xml:space="preserve">
+    <value>Lokasi di {0} untuk {1}</value>
+  </data>
+  <data name="TextString_Others" xml:space="preserve">
+    <value>Lainnya</value>
+  </data>
+  <data name="TextString_ProductReviewDesc" xml:space="preserve">
+    <value>Baca {0} Tinjauan pengguna. Temukan {1} {2} Tinjauan pengguna dan Peringkat</value>
+  </data>
+  <data name="TextString_ProductReviewKeyword" xml:space="preserve">
+    <value>{0}, {1} tinjauan,peringkat</value>
+  </data>
+  <data name="TextString_ProReviewFor" xml:space="preserve">
+    <value>Tinjauan Produk untuk {0}</value>
+  </data>
+  <data name="TextString_QuestionFor" xml:space="preserve">
+    <value>Pertanyaan tentang</value>
+  </data>
+  <data name="TextString_ReportProduct" xml:space="preserve">
+    <value>Laporkan Produk</value>
+  </data>
+  <data name="TextString_ReportTitle" xml:space="preserve">
+    <value>Laporkan penyalahgunaan di forum PriceMe.</value>
+  </data>
+  <data name="TextString_RetailerfullReview" xml:space="preserve">
+    <value>Tinjauan lengkap ritel---{0}</value>
+  </data>
+  <data name="TextString_ReviewSystem" xml:space="preserve">
+    <value>Sistem Tinjauan</value>
+  </data>
+  <data name="TextString_RPAlertSuccessful" xml:space="preserve">
+    <value>Pemberitahuan Produk Ritel Berhasil</value>
+  </data>
+  <data name="TextString_RPListTitle" xml:space="preserve">
+    <value>Penawaran produk utama dari {0}</value>
+  </data>
+  <data name="HowToUse" xml:space="preserve">
+    <value>PriceMe memungkinkan konsumen seperti anda sendiri untuk membandingkan harga, tinjauan produk dan spesifikasi dari ribuan produk secara independen dari reitel-ritel teratas Indonesia. Setelah hanya beberapa menit menelusuri situs kami, anda telah berada di posisi yang layak untuk membuat suatu pemberitahuan keputusan tentang pembelian. Apapun yang anda cari, anda dapat dengan cepat menyusun model mana yang paling sesuai dengan kebutuhan anda, apakah tersedia, dan pada harga serendah mungkin dari ritel yang terpercaya. Apapun yang ingin anda beli on atau offline, PriceMe akan menunjukkan penawaran terbaik pada anda. Suatu bagian yang tidak terpisahkan dari pengambilan-keputusan adalah informasi yang disediakan oleh komunitas pengguna online PriceMe. Tinjauan tentang produk dan ritel yang anda minati dalam rangka meningkatkan keputusan pembelian.</value>
+  </data>
+  <data name="Product_FeaturedProduct" xml:space="preserve">
+    <value>Produk Unggulan</value>
+  </data>
+  <data name="TextString_Cons" xml:space="preserve">
+    <value>Kekurangan:</value>
+  </data>
+  <data name="TextString_ContactUsMSG1" xml:space="preserve">
+    <value>Tidak jelas? Klik gambar Captcha untuk mendapat yang baru! Abaikan kotak.</value>
+  </data>
+  <data name="TextString_ContactUsMSG2" xml:space="preserve">
+    <value>Tidak jelas? Klik untuk mendapat yang baru!</value>
+  </data>
+  <data name="TextString_CopyToList" xml:space="preserve">
+    <value>Salin ke daftar</value>
+  </data>
+  <data name="CapitalReviews" xml:space="preserve">
+    <value>Tinjauan</value>
+  </data>
+  <data name="TextString_Account" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
+  <data name="TextString_NoReview" xml:space="preserve">
+    <value>Ulasan tidak ada</value>
+  </data>
+  <data name="TextString_ProductDesc" xml:space="preserve">
+    <value>Perbandingan {0} harga-harga dan baca tinjauan. Menemukan harga {1} {2} terbaik!</value>
+  </data>
+  <data name="TextString_ProductDescDesc" xml:space="preserve">
+    <value>{0} specs and product description. Read {1} guides and manual.</value>
+  </data>
+  <data name="TextString_ProductDescKeyword" xml:space="preserve">
+    <value>{0}, specs, specification, manual, description, guide, product</value>
+  </data>
+  <data name="TextString_ProductKeyword" xml:space="preserve">
+    <value>{0}, harga, beli, tinjauan, bandingkan</value>
+  </data>
+  <data name="TextString_RetailerProductDesc" xml:space="preserve">
+    <value>bandingkan {0} harga-harga. Menemukan harga {1} {2} terbaik dari {3}!</value>
+  </data>
+  <data name="TextString_RetailerProductKeyword" xml:space="preserve">
+    <value>{0}, harga, beli, tinjauan, bandingkan, {1}</value>
+  </data>
+  <data name="HomePageUrl_sOut" xml:space="preserve">
+    <value>.id.id</value>
+  </data>
+  <data name="HomePageUrl_sOutR" xml:space="preserve">
+    <value>.id</value>
+  </data>
+  <data name="TextString_RInformation" xml:space="preserve">
+    <value>Informasi {0}</value>
+  </data>
+  <data name="TextString_BuyingGuides" xml:space="preserve">
+    <value>Panduan Pembelian</value>
+  </data>
+  <data name="TextString_ExcludeRetailer" xml:space="preserve">
+    <value>Exclude retailer:</value>
+  </data>
+  <data name="TextString_InCorrectEmailFormat" xml:space="preserve">
+    <value>The email format is not correct.</value>
+  </data>
+  <data name="TextString_PriceRedured" xml:space="preserve">
+    <value>Price reduced.</value>
+  </data>
+  <data name="TextString_PriceReduredBelow" xml:space="preserve">
+    <value>Price reduced below.</value>
+  </data>
+  <data name="TextString_PriceReduredInStock" xml:space="preserve">
+    <value>Price reduced and product in stock.</value>
+  </data>
+  <data name="TextString_Sendmailwhen" xml:space="preserve">
+    <value>Send mail when:</value>
+  </data>
+  <data name="TextString_ThenForEach" xml:space="preserve">
+    <value>then for each:</value>
+  </data>
+  <data name="TextString_WhenPriceBelow" xml:space="preserve">
+    <value>When price below:</value>
+  </data>
+  <data name="PriceAlertReducedForEach" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="TextString_ReviewType" xml:space="preserve">
+    <value>Ulasan Jenis</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Berlangganan</value>
+  </data>
+  <data name="TextString_RelatedBuyingGuide" xml:space="preserve">
+    <value>Panduan Pembelian Berkaitan</value>
+  </data>
+  <data name="TextString_Less" xml:space="preserve">
+    <value>Kurangi</value>
+  </data>
+  <data name="RatingControl_NO" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="TextString_Images" xml:space="preserve">
+    <value>gambar</value>
+  </data>
+  <data name="TextString_NoHistory" xml:space="preserve">
+    <value>Maaf, Tidak ada riwayat.</value>
+  </data>
+  <data name="TextString_NoReviewAvailable" xml:space="preserve">
+    <value>Tidak ada tinjauan yang tersedia.</value>
+  </data>
+  <data name="TextString_score" xml:space="preserve">
+    <value>skor</value>
+  </data>
+  <data name="TextString_SetAlertFor" xml:space="preserve">
+    <value>Kami akan mengirimkan e-mail pada Anda saat harga turun untuk {0}</value>
+  </data>
+  <data name="TextString_veryGood" xml:space="preserve">
+    <value>sangat bagus</value>
+  </data>
+  <data name="TextString_Videos" xml:space="preserve">
+    <value>video</value>
+  </data>
+  <data name="TextString_AboutPriceMe" xml:space="preserve">
+    <value>Tentang PriceMe</value>
+  </data>
+  <data name="TextString_CurrentRetailers" xml:space="preserve">
+    <value>Ritel Saat Ini</value>
+  </data>
+  <data name="TextString_ListProducts" xml:space="preserve">
+    <value>Daftar Produk</value>
+  </data>
+  <data name="TextString_PleaseSelect" xml:space="preserve">
+    <value>Silahkan Pilih…</value>
+  </data>
+  <data name="TextString_RetailerCertification" xml:space="preserve">
+    <value>Sertifikasi Ritel</value>
+  </data>
+  <data name="TextString_RetailerKit" xml:space="preserve">
+    <value>Alat Bantu Ritel</value>
+  </data>
+  <data name="TextString_SignUp" xml:space="preserve">
+    <value>Pendaftaran</value>
+  </data>
+  <data name="TextString_SignUpCon" xml:space="preserve">
+    <value>Sangat mudah untuk bergabung dengan PriceMe. Silahkan sediakan informasi toko Anda berikut ini dan mendaftarlah.</value>
+  </data>
+  <data name="TextString_ContactName" xml:space="preserve">
+    <value>Nama Kontak:</value>
+  </data>
+  <data name="TextString_Features" xml:space="preserve">
+    <value>Fitur</value>
+  </data>
+  <data name="TextString_ToCollapse" xml:space="preserve">
+    <value>Pilihan (klik untuk memendekkan)</value>
+  </data>
+  <data name="TextString_ToExpand" xml:space="preserve">
+    <value>Pilihan (klik untuk membentangkan)</value>
+  </data>
+  <data name="TextString_WebSiteURL" xml:space="preserve">
+    <value>URL Situs Web:</value>
+  </data>
+  <data name="TextString_FAQContent" xml:space="preserve">
+    <value>&lt;p&gt;1. &lt;strong&gt;Dapatkan lalu lintas yang lebih bertujuan&lt;/strong&gt; - salah satu tantangan terbesar dalam ecommerce adalah kualitas yang diarahkan lead penjualan. Para pelanggan mengeklik melintasi menuju situs web mitra ritel PriceMe dan sudah medapatkan cukup informasi dan siap untuk membeli, tidak hanya menelusuri.
+    &lt;br /&gt;
+2. &lt;strong&gt;Konversi dan ROI yang lebih tinggi&lt;/strong&gt; - PriceMe menawarkan nilai konversi yang lebih tinggi dibandingkan saluran pemasaran lainnya karena tingginya lead teredukasi yang dihasilkan oleh informasi pembelanjaan menyeluruh pada pelanggan sebelum mengunjungi situs web mitra:&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o Pilihan harga yang sangat bervariasi - sehingga pengguna yakin mereka melihat berbagai macam harga.&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o Tabel perbandingan dan spesifikasi produk yang terperinci - bagi pembeli untuk mengevaluasi pilihan mereka.&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o Kegunaan penyaring yang mudah digunakan - sehingga para pengguna menemukan apa yang mereka inginkan dengan tepat.&lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o Ulasan pengguna - untuk mengarahkan calon pelanggan yang yakin akan pilihan produk mereka. &lt;br /&gt;
+ &amp;nbsp;&amp;nbsp; o Panduan pembeli yang menyeluruh - untuk mengedukasi dan memberi informasi pada para pelanggan. &lt;br /&gt;
+&amp;nbsp;&amp;nbsp;Semakin tinggi nilai konversi rata-rata menunjukkan penjualan yang lebih banyak pada biaya yang lebih rendah dan sehinggan ROI lebih tinggi.&lt;br /&gt;
+3. &lt;strong&gt;Membina Merek&lt;/strong&gt; - mitra ritel menikmati pemaparan yang berkembang dengan mendisplay logo perusahaan mereka untuk tiap produk yang terdaftar diantara beberapa kelebihan lainnya. Para mitra juga memiliki kemungkinan untuk memperlihatkan slogan penjualan di samping logo, dan juga dipromoskan sebagai ritel unggulan di website dan dalam iklan-iklan PriceMe. Menghubungkan merek dan produk-produk anda dengan mesin pembelanja yang mempunyai ID terpercaya seperti PriceMe merupakan jalan terbaik untuk membangun pengakuan dan kepercayaan pelanggan. Silakan menghubungi kami untuk semua rincian yang berkaitan dengan keuntungan yang dinikmati mitra ritel.&lt;br /&gt;
+4. &lt;strong&gt;Pelaporan yang Lebih Baik&lt;/strong&gt; - Dengan menggunakan siste, Manajemen Akun Price Me/Price Me Account Management (PAM), para ritel bisa mendapatkan wawasan menuju lanskap kompetitif dan memahami kinerja kampanye mereka tentang ringkasan, kategori, bahkan tingkat produk. Menganalisa unsur-unsur kampanye seperti: klik, pembagian lalu lintas, penempatan posisi dan memberikan semua bantuan dalam memahami cara Anda mengarahkan lead penjualan melalui PriceMe. 
+&lt;div class="BigTitle"&gt;&lt;b&gt;
+    &lt;br /&gt;
+    &lt;a name="what"&gt;Apakah arti PPC?&lt;/a&gt;&lt;br /&gt;
+&lt;/b&gt;&lt;/div&gt;
+PPC adalah singkatan dari Pay Per Click dan merupakan model pembayaran untuk menampilkan yang serupa dengan Google Adwords. PPC berarti bahwa Anda dikenakan sedikit biaya hanya ketika pengguna PriceMe mengeklik melaluinya menuju situs web Anda. &lt;br /&gt;
+&lt;div class="BigTitle"&gt;
+    &lt;br /&gt;
+    &lt;a name="Howmuch"&gt;&lt;b&gt;Berapa biaya program ini?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+Tidak ada biaya pembuatan daftar dan tidak ada komisi penjualan.
+Sistem membayar untuk menampilkan (pay-for-performance) memastikan bahwa mitra ritel hanya membayar biaya PPC untuk tiap kunjungan. PPC (Biaya Per Klik/Cost Per Click) adalah jumlah pra-perkiraan yang dibayarkan ritel berdasarkan tiap kategori bagi tiap lead penjualan baru yang dihasilkan PriceMe. 
+Tidak ada biaya bulanan minimum, dan Anda hanya membayar untuk lead penjualan (klik melewati)! Itu saja! Jadi mengapa tidak mencoba program tersebut dan mulai mengemudikan lead berkualitas secara langsung ke situs web Anda?
+
+&lt;div class="BigTitle"&gt;
+    &lt;br /&gt;
+    &lt;a name="Howtra"&gt;&lt;b&gt;Berapa banyak lalu lintas yang dihasilkan PriceMe bagi saya?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+Anda dapat memeriksa jumlah pengunjung dengan menggunakan PAM. Tim manajemen di PriceMe telah berpengalaman selama bertahun-tahun dalam menggunakan lalu lintas ini melalui kerja sama dengan website-website terkemuka, berbayar dan pencarian alami, dan melalui produk-produk baru kami. Oleh karena itu, tingkat lalu lintas diharapkan untuk meningkat di bulan-bulan mendatang sebagaimana kami tetap mempromosikan website dan mendapatkan lalu lintas berkualitas-tinggi. Sebagai tambahan, perbandingan berbelanja juga menghasilkan daya tarik di Indonesia dan lebih banyak dan lebih banyak konsumen yang cenderung menggunakan layanan seperti ini di waktu yang akan datang.
+
+&lt;div class="BigTitle"&gt;
+    &lt;br /&gt;
+    &lt;a name="Howprod"&gt;&lt;b&gt;Bagaimana cara saya mendaftarkan produk saya di PriceMe?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+Setelah ritel mendaftar dengan melalui menghubungi kami, data produk dapat dikirimkan menggunakan feed data. Saat ini format yang didukung yaitu CSV dan XML. PriceMer juga dapat menelusuri situs web Anda dengan sejumlah biaya jika Anda lebih menginginkan pilihan ini. Silahkan menghubungi kami untuk informasi lebih lanjut.
+&lt;div class="BigTitle"&gt;
+    &lt;br /&gt;
+    &lt;a name="Howjoin"&gt;&lt;b&gt;Bagaimana cara saya bergabung?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;
+Silahkan menghubungi kami jika Anda tertarik menjadi mitra ritel PriceMe. &lt;br /&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="TextString_FAQContent2" xml:space="preserve">
+    <value>"&lt;div style=""padding-bottom:5px; ""&gt;&lt;h2&gt;Pertanyaan Yang Sering Diajukan&lt;/h2&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=""#whatis""&gt;Apa itu PriceMe?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#benefits""&gt;Apakah manfaat yang dilakukan program PPC yang ditawarkan pada peserta?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#what""&gt;Apakah arti PPC?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howmuch""&gt;Berapa biaya program tersebut?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howtra""&gt;Berapa banyak lalu lintas yang dihasilkan PriceMe bagi saya?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howprod""&gt;Bagaimana cara saya mengirimkan produk saya pada PriceMe?&lt;/a&gt;&lt;br /&gt;
+&lt;a href=""#Howjoin""&gt;Bagaimana cara saya bergabung?&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;div class=""BigTitle""&gt;&lt;a name=""whatis""&gt;&lt;b&gt;Apa itu PriceMe?&lt;/b&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt;"</value>
+  </data>
+  <data name="TextString_HasBeenAdded" xml:space="preserve">
+    <value>Item telah ditambahkan</value>
+  </data>
+  <data name="TextString_Infoabout" xml:space="preserve">
+    <value>info tentang {0}</value>
+  </data>
+  <data name="TextString_ListYourProds" xml:space="preserve">
+    <value>&lt;h1&gt;Membuat Daftar Produk Anda&lt;/h1&gt; 
+                    &lt;br /&gt;
+                    Setelah ritel mendaftar dengan menghubungi kami, data produk dapat dikirimkan menggunakan feed data. Saat ini, format CSV dan XML yang didukung.
+                    Sebagai alternatif, PriceMe juga dapat menelusuri situs web Anda dengan sejumlah biaya jika Anda lebih menginginkan pilihan ini. 
+                    &lt;br /&gt;&lt;br /&gt;
+                    Saat Anda telah membuat feed dan memberikan kami URL yang menunjukkan di mana lokasinya, PriceMe bisa mulai menelusuri feed Anda. Suatu bot membaca data dalam feed Anda dan PriceMe mengunggah dan memetekan produk-produk Anda ke dalam kategori yang sesuai. 
+                    Kami menelusuri ulang feed Anda setiap hari untuk memperbarui perubahan data yang mungkin telah Anda lakukan.</value>
+  </data>
+  <data name="TextString_NeedHelp" xml:space="preserve">
+    <value>Membutuhkan bantuan dan saran dalam menemukan {0} yang benar?</value>
+  </data>
+  <data name="TextString_ReviewsInformation" xml:space="preserve">
+    <value>Informasi Ulasan</value>
+  </data>
+  <data name="TextString_Targetprice" xml:space="preserve">
+    <value>Harga target</value>
+  </data>
+  <data name="TextString_WeeklyDeals" xml:space="preserve">
+    <value>Penawaran mingguan</value>
+  </data>
+  <data name="Module_HotProduct_Tilte" xml:space="preserve">
+    <value>Paling Populer</value>
+  </data>
+  <data name="TextString_BackToTop" xml:space="preserve">
+    <value>Kembali ke atas</value>
+  </data>
+  <data name="TextString_First" xml:space="preserve">
+    <value>Pertama</value>
+  </data>
+  <data name="TextString_Last" xml:space="preserve">
+    <value>Terakhir</value>
+  </data>
+  <data name="TextString_Popular" xml:space="preserve">
+    <value>Populer</value>
+  </data>
+  <data name="TextString_SpottedProMap" xml:space="preserve">
+    <value>Spotted an incorrect location? Report it here = Menemukan lokasi yang tidak tepat? &lt;a href="../../ReportLocation.aspx"&gt;Laporkan di sini&lt;/a&gt;</value>
+  </data>
+  <data name="TextString_TermsAndConditions" xml:space="preserve">
+    <value>Syarat &amp; Ketentuan</value>
+  </data>
+  <data name="TextString_Submit" xml:space="preserve">
+    <value>Daftarkan</value>
+  </data>
+  <data name="TrackRootUrl" xml:space="preserve">
+    <value>https://track.priceme.co.id</value>
+  </data>
+  <data name="Footer_ContactInfo" xml:space="preserve">
+    <value>&lt;p class="regular-bold"&gt;Temukan, bandingkan dan beli secara online dari toko online terbaik di Indonesia.&lt;/p&gt;</value>
+  </data>
+  <data name="ProductMapDesc" xml:space="preserve">
+    <value>Lokasi &amp; Peta Toko untuk {0} di {1} </value>
+  </data>
+  <data name="ProductMapKeywords" xml:space="preserve">
+    <value>toko, peta, lokasi, toko, {0} </value>
+  </data>
+  <data name="ProductMapPageTitle" xml:space="preserve">
+    <value>Lokasi Toko untuk {0} di {1} </value>
+  </data>
+  <data name="Product_Specifications" xml:space="preserve">
+    <value>Spesifikasi produk </value>
+  </data>
+  <data name="ReportLocationTitle" xml:space="preserve">
+    <value>Laporkan Lokasi &amp; Biarkan Kami Mengetahuinya - PriceMe</value>
+  </data>
+  <data name="SearchBar_Placeholder_Text" xml:space="preserve">
+    <value>Cari produk &amp; kategori </value>
+  </data>
+  <data name="TextString_AddReview" xml:space="preserve">
+    <value>Tambahkan ulasan</value>
+  </data>
+  <data name="TextString_Addtolist" xml:space="preserve">
+    <value>Tambahkan ke daftar</value>
+  </data>
+  <data name="TextString_ConnectWithUS" xml:space="preserve">
+    <value>Terhubung dengan kami </value>
+  </data>
+  <data name="TextString_EmailFails" xml:space="preserve">
+    <value>Maaf, pengiriman email gagal. Silahkan coba lagi nanti atau kirimkan email ke info at priceme.com.</value>
+  </data>
+  <data name="TextString_HelpAndSupport" xml:space="preserve">
+    <value>Bantuan &amp; Dukungan</value>
+  </data>
+  <data name="TextString_NoRetailerMap" xml:space="preserve">
+    <value>Tidak ada peta pengecer.</value>
+  </data>
+  <data name="TextString_Poweredby" xml:space="preserve">
+    <value>Didukung oleh</value>
+  </data>
+  <data name="TextString_PriceAlerts" xml:space="preserve">
+    <value>Pemberitahuan</value>
+  </data>
+  <data name="TextString_PriceGreater" xml:space="preserve">
+    <value>Harga harus lebih besar dari nol. </value>
+  </data>
+  <data name="TextString_PriceLower" xml:space="preserve">
+    <value>Harus lebih rendah dari harga saat ini. </value>
+  </data>
+  <data name="TextString_PriceTrend" xml:space="preserve">
+    <value>Tren Harga </value>
+  </data>
+  <data name="TextString_Sign_Up" xml:space="preserve">
+    <value>Daftar</value>
+  </data>
+  <data name="TextString_ThankSignUp" xml:space="preserve">
+    <value>Terima kasih telah mendaftar </value>
+  </data>
+  <data name="TextString_ThankSignUpCtx" xml:space="preserve">
+    <value>Silahkan periksa kotak masuk email Anda dan konfirmasi alamat email Anda. </value>
+  </data>
+  <data name="TextString_Female" xml:space="preserve">
+    <value>fperempuan</value>
+  </data>
+  <data name="TextString_Male" xml:space="preserve">
+    <value>laki-laki</value>
+  </data>
+  <data name="TextString_Send" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
+  <data name="TextString_Share" xml:space="preserve">
+    <value>Bagikan</value>
+  </data>
+  <data name="TextString_AboutMeText" xml:space="preserve">
+    <value>Teks Tentang Saya</value>
+  </data>
+  <data name="TextString_AboutMe_Info" xml:space="preserve">
+    <value>Silahkan tuliskan deskripsi lengkap tentang diri Anda yang menarik bagi anggota lain (30-40 kata). Deskripsi tersebut akan ditampilkan pada profil anggota Anda. Silahkan tuliskan teks Anda dalam kolom di bawah ini dan klik "Perbarui".</value>
+  </data>
+  <data name="TextString_ChangeEmailAddress" xml:space="preserve">
+    <value>Ubah alamat email</value>
+  </data>
+  <data name="TextString_ConfirmPassword" xml:space="preserve">
+    <value>Konfirmasi Kata Sandi</value>
+  </data>
+  <data name="TextString_CreateAboutMeText" xml:space="preserve">
+    <value>Buat teks "Tentang Saya"</value>
+  </data>
+  <data name="TextString_Formats" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="TextString_ImageFile" xml:space="preserve">
+    <value>File foto</value>
+  </data>
+  <data name="TextString_MaxFileSize" xml:space="preserve">
+    <value>Ukuran file maks</value>
+  </data>
+  <data name="TextString_MemberProfile" xml:space="preserve">
+    <value>Profil anggota</value>
+  </data>
+  <data name="TextString_MemberSince" xml:space="preserve">
+    <value>Anggota sejak</value>
+  </data>
+  <data name="TextString_PriceMeLists" xml:space="preserve">
+    <value>Daftar PriceMe</value>
+  </data>
+  <data name="TextString_Update" xml:space="preserve">
+    <value>perbarui</value>
+  </data>
+  <data name="TextString_UploadPhoto" xml:space="preserve">
+    <value>Unggah foto</value>
+  </data>
+  <data name="TextString_UploadPicture_TextInfo" xml:space="preserve">
+    <value>Buat profil Anda dan PriceMe menjadi lebih atraktif dan menarik dengan mengunggah foto diri Anda. Foto tersebut haruslah diri Anda sendiri, jelas dan terbaru.</value>
+  </data>
+  <data name="TextString_UploadPicture_TextInfo2" xml:space="preserve">
+    <value>Informasi penting tentang menggunggah foto.</value>
+  </data>
+  <data name="TextString_YourNewEmail" xml:space="preserve">
+    <value>Email Baru Anda</value>
+  </data>
+  <data name="TextString_Added" xml:space="preserve">
+    <value>Ditambahkan</value>
+  </data>
+  <data name="TextString_Address" xml:space="preserve">
+    <value>Alamat</value>
+  </data>
+  <data name="TextString_Apply" xml:space="preserve">
+    <value>terapkan</value>
+  </data>
+  <data name="TextString_BackToResult" xml:space="preserve">
+    <value>kembali ke laman hasil</value>
+  </data>
+  <data name="TextString_BackToSettings" xml:space="preserve">
+    <value>kembali ke pengaturan</value>
+  </data>
+  <data name="TextString_ChangePassword" xml:space="preserve">
+    <value>Ubah kata sandi</value>
+  </data>
+  <data name="TextString_ChangePasswordAndEmail" xml:space="preserve">
+    <value>Ubah Kata Sandi &amp; Email</value>
+  </data>
+  <data name="TextString_ClickToViewMore" xml:space="preserve">
+    <value>klik untuk melihat lebih banyak</value>
+  </data>
+  <data name="TextString_CompareFeatures" xml:space="preserve">
+    <value>Bandingkan Produk</value>
+  </data>
+  <data name="TextString_CompareProAndReview" xml:space="preserve">
+    <value>Bandingkan produk dan ulasan</value>
+  </data>
+  <data name="TextString_CurrentPassword" xml:space="preserve">
+    <value>Kata Sandi Saat Ini</value>
+  </data>
+  <data name="TextString_CurrentPrice" xml:space="preserve">
+    <value>Harga saat ini</value>
+  </data>
+  <data name="TextString_FeedURL" xml:space="preserve">
+    <value>URL Feed</value>
+  </data>
+  <data name="TextString_Filter" xml:space="preserve">
+    <value>Saring</value>
+  </data>
+  <data name="TextString_Gender" xml:space="preserve">
+    <value>Jenis Kelamin</value>
+  </data>
+  <data name="TextString_Information" xml:space="preserve">
+    <value>Informasi</value>
+  </data>
+  <data name="TextString_JobFunction" xml:space="preserve">
+    <value>Fungsi Pekerjaan</value>
+  </data>
+  <data name="TextString_LastName" xml:space="preserve">
+    <value>Nama belakang</value>
+  </data>
+  <data name="TextString_MyAlert" xml:space="preserve">
+    <value>Pemberitahuan Saya</value>
+  </data>
+  <data name="TextString_MyLists" xml:space="preserve">
+    <value>Daftar Saya</value>
+  </data>
+  <data name="TextString_MyReviews" xml:space="preserve">
+    <value>Ulasan Saya</value>
+  </data>
+  <data name="TextString_NewPassword" xml:space="preserve">
+    <value>Kata Sandi Baru</value>
+  </data>
+  <data name="TextString_PersonalDetails" xml:space="preserve">
+    <value>Rincian pribadi</value>
+  </data>
+  <data name="TextString_PersonalDetails_Info" xml:space="preserve">
+    <value>Pribadi, tidak ditampilkan sedang online</value>
+  </data>
+  <data name="TextString_ProductReviews" xml:space="preserve">
+    <value>Ulasan Produk</value>
+  </data>
+  <data name="TextString_remove" xml:space="preserve">
+    <value>hapus</value>
+  </data>
+  <data name="TextString_RetailerSignUpSuccessful" xml:space="preserve">
+    <value>Pendaftaran Ritel Berhasil</value>
+  </data>
+  <data name="TextString_RetailerSignUp_Info" xml:space="preserve">
+    <value>Terima kasih telah mendaftar di Program Ritel Unggulan kami. Kami akan segera menghubungi Anda.</value>
+  </data>
+  <data name="TextString_SaveChange" xml:space="preserve">
+    <value>simpan perubahan</value>
+  </data>
+  <data name="TextString_See_XX_MoreReviews" xml:space="preserve">
+    <value>Lihat {0} ulasan lebih banyak</value>
+  </data>
+  <data name="TextString_SetAlert" xml:space="preserve">
+    <value>Atur pemberitahuan</value>
+  </data>
+  <data name="TextString_SetYourPriceAlert" xml:space="preserve">
+    <value>Atur Pemberitahuan Harga Anda</value>
+  </data>
+  <data name="TextString_ShippingUnknown" xml:space="preserve">
+    <value>Pengiriman tidak diketahui</value>
+  </data>
+  <data name="TextString_Suburb" xml:space="preserve">
+    <value>Kabupaten</value>
+  </data>
+  <data name="TextString_ThanksForRetailerSignUp_Info" xml:space="preserve">
+    <value>opsional, temukan spesifikasi berkas feed di sini</value>
+  </data>
+  <data name="TextString_UpdatePersonalDetails" xml:space="preserve">
+    <value>Perbarui rincian pribadi</value>
+  </data>
+  <data name="TextString_DownloadPriceMeApps" xml:space="preserve">
+    <value>Unduh PriceMe Apps</value>
+  </data>
+  <data name="TextString_Departments" xml:space="preserve">
+    <value>Bagian</value>
+  </data>
+  <data name="ShortCountryName" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="TextString_SB_PriceHighToLow" xml:space="preserve">
+    <value>harga tinggi -&gt; rendah</value>
+  </data>
+  <data name="TextString_SB_PriceLowToHigh" xml:space="preserve">
+    <value>harga rendah -&gt; tinggi</value>
+  </data>
+  <data name="TextString_CheckToCompareProduct" xml:space="preserve">
+    <value>Centang untuk membandingkan</value>
+  </data>
+  <data name="TextString_MerchantPortal" xml:space="preserve">
+    <value>Pusat ritel</value>
+  </data>
+  <data name="TextString_MerchantLogin" xml:space="preserve">
+    <value>Merchant Login</value>
+  </data>
+  <data name="TextString_Newest" xml:space="preserve">
+    <value>Terbaru</value>
+  </data>
+  <data name="TextString_ProductNameAZ" xml:space="preserve">
+    <value>Nama A -&gt; Z</value>
+  </data>
+  <data name="TextString_GenerationProductInfo" xml:space="preserve">
+    <value>Model yang lebih baru {0} dirilis pada bulan {1}.</value>
+  </data>
+</root>
