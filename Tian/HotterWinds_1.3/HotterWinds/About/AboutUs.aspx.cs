@@ -11,7 +11,7 @@ namespace HotterWinds.About
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.Title = "About Us - Hotter Winds";
         }
     }
 }

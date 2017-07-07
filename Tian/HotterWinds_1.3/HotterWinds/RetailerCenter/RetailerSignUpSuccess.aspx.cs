@@ -18,6 +18,8 @@ namespace HotterWinds.RetailerCenter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Title = "Retailer Sign Up Success - Hotter Winds";
+
             //
             List<LinkInfo> linkInfoList = new List<LinkInfo>();
             LinkInfo linkInfo = new LinkInfo();

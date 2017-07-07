@@ -16,6 +16,8 @@ namespace HotterWinds.About
         public int count = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Title = "Contact Us - Hotter Winds";
+
             RequiredFieldValidator1.ErrorMessage = Resources.Resource.TextString_ContactUsError1;
             RequiredFieldValidator2.ErrorMessage = Resources.Resource.TextString_ContactUsError2;
             RequiredFieldValidator3.ErrorMessage = Resources.Resource.TextString_ContactUsError3;

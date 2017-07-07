@@ -29,6 +29,8 @@ namespace HotterWinds.RetailerCenter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Title = "Thanks For Retailer Sign Up - Hotter Winds";
+
             if (Request.UrlReferrer == null || !Request.UrlReferrer.ToString().Contains("RetailerSignUp"))
                 Response.Redirect("RetailerSignUp.aspx", false);
 
