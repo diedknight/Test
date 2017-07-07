@@ -211,6 +211,7 @@
     <Content Include="Content\RichAttributeDisplay.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="feed-file-example.txt" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -674,6 +675,7 @@
     <Content Include="linea\wp-includes\js\wp-embed.min.js" />
     <Content Include="linea\wp-includes\wlwmanifest.xml" />
     <Content Include="Modules\AboutUsNavigation.ascx" />
+    <Content Include="Modules\AlexaTrafficRanker.ascx" />
     <Content Include="Modules\Breadcrumbs.ascx" />
     <Content Include="Modules\Catalog\CatalogSiteMapDetailNew.ascx" />
     <Content Include="Modules\Catalog\CatalogSiteMapNew.ascx" />
@@ -685,7 +687,9 @@
     <Content Include="Modules\Catalog\NewListView.ascx" />
     <Content Include="Modules\Catalog\QuickProductSummaryDisplay.ascx" />
     <Content Include="Modules\Common\NewHeaderControl.ascx" />
+    <Content Include="Modules\Hitwise.ascx" />
     <Content Include="Modules\ManCategoryList.ascx" />
+    <Content Include="Modules\MobileSite.ascx" />
     <Content Include="Modules\PrettyPager.ascx" />
     <Content Include="Modules\Products\HWRelatedProducts.ascx" />
     <Content Include="Modules\Products\MDProductPriceCompare.ascx" />
@@ -697,8 +701,13 @@
     <Content Include="Modules\Products\ProductItemPriceCompareNomal.ascx" />
     <Content Include="Modules\Products\ProductTopDisplay.ascx" />
     <Content Include="Modules\ResultMessage.ascx" />
+    <Content Include="Modules\RetailerCenterNavigation.ascx" />
     <Content Include="NewCatalog.aspx" />
+    <Content Include="PopularSearch.aspx" />
     <Content Include="Product.aspx" />
+    <Content Include="RetailerCenter\RetailerSignUp.aspx" />
+    <Content Include="RetailerCenter\RetailerSignUpSuccess.aspx" />
+    <Content Include="RetailerCenter\ThanksForRetailerSignUp.aspx" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1039,6 +1048,13 @@
     <Compile Include="Modules\AboutUsNavigation.ascx.designer.cs">
       <DependentUpon>AboutUsNavigation.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\AlexaTrafficRanker.ascx.cs">
+      <DependentUpon>AlexaTrafficRanker.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AlexaTrafficRanker.ascx.designer.cs">
+      <DependentUpon>AlexaTrafficRanker.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Breadcrumbs.ascx.cs">
       <DependentUpon>Breadcrumbs.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1116,12 +1132,26 @@
     <Compile Include="Modules\Common\NewHeaderControl.ascx.designer.cs">
       <DependentUpon>NewHeaderControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Hitwise.ascx.cs">
+      <DependentUpon>Hitwise.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Hitwise.ascx.designer.cs">
+      <DependentUpon>Hitwise.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\ManCategoryList.ascx.cs">
       <DependentUpon>ManCategoryList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\ManCategoryList.ascx.designer.cs">
       <DependentUpon>ManCategoryList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MobileSite.ascx.cs">
+      <DependentUpon>MobileSite.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\MobileSite.ascx.designer.cs">
+      <DependentUpon>MobileSite.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\PrettyPager.ascx.cs">
       <DependentUpon>PrettyPager.ascx</DependentUpon>
@@ -1200,12 +1230,26 @@
     <Compile Include="Modules\ResultMessage.ascx.designer.cs">
       <DependentUpon>ResultMessage.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\RetailerCenterNavigation.ascx.cs">
+      <DependentUpon>RetailerCenterNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RetailerCenterNavigation.ascx.designer.cs">
+      <DependentUpon>RetailerCenterNavigation.ascx</DependentUpon>
+    </Compile>
     <Compile Include="NewCatalog.aspx.cs">
       <DependentUpon>NewCatalog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NewCatalog.aspx.designer.cs">
       <DependentUpon>NewCatalog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PopularSearch.aspx.cs">
+      <DependentUpon>PopularSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PopularSearch.aspx.designer.cs">
+      <DependentUpon>PopularSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>
@@ -1231,6 +1275,26 @@
     <Compile Include="Request\TextPart.cs" />
     <Compile Include="Request\WebRequestFactory.cs" />
     <Compile Include="Request\XbaiRequest.cs" />
+    <Compile Include="RetailerCenter\RetailerSignUp.aspx.cs">
+      <DependentUpon>RetailerSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RetailerCenter\RetailerSignUp.aspx.designer.cs">
+      <DependentUpon>RetailerSignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RetailerCenter\RetailerSignUpSuccess.aspx.cs">
+      <DependentUpon>RetailerSignUpSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RetailerCenter\RetailerSignUpSuccess.aspx.designer.cs">
+      <DependentUpon>RetailerSignUpSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RetailerCenter\ThanksForRetailerSignUp.aspx.cs">
+      <DependentUpon>ThanksForRetailerSignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RetailerCenter\ThanksForRetailerSignUp.aspx.designer.cs">
+      <DependentUpon>ThanksForRetailerSignUp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

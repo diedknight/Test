@@ -146,7 +146,7 @@ namespace HotterWinds
                 breadCrumbInfo = Utility.GetCatalogBreadCrumbInfo(category, manufacturer, true, "");
 
             breadCrumbInfo.linkInfoList[0].LinkText = Resources.Resource.Global_HomePageName;
-            if (manufacturer.ManufacturerID != -1 && category.IsFilterByBrand)
+            if (manufacturer != null && manufacturer.ManufacturerID != -1 && category.IsFilterByBrand)
             {
                 if (WebConfig.CountryId == 56)
                     breadCrumbInfo.linkInfoList[breadCrumbInfo.linkInfoList.Count - 1].LinkText = category.CategoryName + " " + manufacturer.ManufacturerName;

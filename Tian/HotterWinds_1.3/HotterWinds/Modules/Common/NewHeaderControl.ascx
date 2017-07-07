@@ -36,9 +36,17 @@
         border-bottom: none;
     }
 
+    #suggest-div {
+        width: 100% !important;
+        z-index: 1000;
+        position: absolute;
+        border-top: 2px solid #ccc;
+        border-radius:5px;
+    }
+
     @media (min-width: 768px) {
         .search_box_extension {
-            width:500px;
+            width: 500px;
         }
     }
 </style>
