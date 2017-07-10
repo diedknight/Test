@@ -17,11 +17,13 @@
 	<file src="Modules\" target="Modules" />
 	<file src="Scripts\" target="Scripts" />
 	<file src="About\" target="About" />
+	<file src="RetailerCenter\" target="RetailerCenter" />
     <file src="*.aspx" target="" />	
 	<file src="*.Master" target="" />
 	<file src="*.asax" target="" />
 	<file src="*.ico" target="" />
 	<file src="*.html" target="" />
 	<file src="*.config" target="" />	
+	<file src="*.txt" target="" />	
   </files>
 </package>
