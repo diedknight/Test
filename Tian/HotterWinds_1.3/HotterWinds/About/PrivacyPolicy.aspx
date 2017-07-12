@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="PrivacyPolicy.aspx.cs" Inherits="HotterWinds.About.PrivacyPolicy" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
     <style>
@@ -15,7 +16,7 @@
             }
     </style>
 
-    <style> 
+    <style>
         .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
             border-radius: 16px;
             -moz-border-radius: 16px;
@@ -206,79 +207,88 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         .static-inner p {
-            line-height:22px !important;
+            line-height: 22px !important;
         }
     </style>
 
     <div class="main-container col2-right-layout">
-            <div class="main container">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li> 
-                            <span>/</span>                
-                            <strong>About Us</strong>     
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <div id="content" class="col-sm-9 col-sm-push-3">
-                        <div class="col-main">
-                            <div class="static-inner">
-                                <div class="page-title">
-                                    <h2> About Us</h2>
-                                </div>
-                                <p>Hotter Winds is a specialist price comparison website. We showcase brands and products that are designed for the outdoors, adventure and travel.</p>
-                                <br>
-                                <p>We provide a completely unbiased and comprehensive selection so that consumers can search for what they are looking for and then easily see what other similar products are available. Our aim is for you to discover products that you will love and then we can connect you directly to the retailers website where you can make your informed purchase.</p>
-                                <br>
-                                <p>We cover all of the major NZ brands and distributors as well offering smaller retailers the opportunity to showcase their products. We do not endorse any brand or product as we want consumers to make their own choices. However, we do provide product reviews so that you can see what other people have to say.</p>
-                                <br />
-                                <p>We started hotter winds because we know what its like to have a passion for the outdoors, adventure and travel. We have been involved with or a still participate in the following:</p>
-                                <br />
-                                <ul>
-                                    <li style="list-style:disc; margin-left:30px;">mountain biking</li>
-                                    <li style="list-style:disc; margin-left:30px;">skiing/snowboarding</li>
-                                    <li style="list-style:disc; margin-left:30px;">surfing/SUP</li>
-                                    <li style="list-style:disc; margin-left:30px;">global travel on a budget (a.k.a., backpacking)</li>
-                                    <li style="list-style:disc; margin-left:30px;">adventure tourism</li>
-                                    <li style="list-style:disc; margin-left:30px;">mountaineering</li>
-                                    <li style="list-style:disc; margin-left:30px;">orienteering</li>
-                                    <li style="list-style:disc; margin-left:30px;">hunting</li>
-                                    <li style="list-style:disc; margin-left:30px;">scuba/free diving</li>
-                                </ul>
-                                <br />
-
-                                <p>We know that these represent only a fraction of the travel and adventure opportunities and we will keep on expanding our horizons.</p>
-                                <br />
-                                <p>Enjoy the never-ending and boundless opportunities available and we will help you find and compare the best gear to take with you.</p>
+        <div class="main container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <span>/</span>
+                        <strong>Privacy Policy</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div id="content" class="col-sm-9 col-sm-push-3">
+                    <div class="col-main">
+                        <div class="static-inner">
+                            <div class="page-title">
+                                <h2>Privacy Policy</h2>
                             </div>
+
+                            <p>PRIVACY POLICY</p>
+                            <p>PRIVACY STATEMENT</p>
+                            <p>Hotter Winds is a New Zealand travel, adventure and outdoor gear comparison website.  Hotter Winds lists and compares thousands of products from various retailers and distributors.  This information is presented in a familiar and simple way. This makes it easy to search and navigate with the aim to inform people when they are choosing their next equipment or apparel purchase. In order to do this effectively, often we need to collect some of your personal information.  We value your privacy and provide our services free of charge. If you do click through to an advertisers site then we will receive a commision on that but in no way does that  impact you. These commissions are what allows us to keep the site running, up to date and free of charge. We respect your personal data and we believe knowledge of our data privacy practices will enable you to make the best possible decisions regarding data privacy and your usage of the Hotter Winds website.</p>
+                            <p>HOTTER WINDS PRIVACY AND PERSONAL DATA PROTECTION POLICY STATEMENT</p>
+                            <p>1. General Information</p>
+                            <p>Hotter Winds complies fully with the Privacy Act 1993. The operative legislation concerning personal data protection in New Zealand.  This policy statement details how Hotter Winds collects and uses your personal data as well as keeping you informed about the personal data protection measures we have put in place.  When using our Service, you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information only as described in this Privacy and Personal Data Protection Policy.</p>
+                            <p>2. The Information We Collect</p>
+                            <p>We do not collect personal information if you are only browsing this website.  Unless you enter your email address and subscribe to our newsletter you remain anonymous when you browse this website. </p>
+                            <p>3. How We Collect Data</p>
+                            <p>Hotter Winds collects your personal information only when you choose to register for and/ or use our services, for example in the process of signing up to our mailing list. This information is communicated to us when you voluntarily complete a registration form. By providing this information and volunteering your personal details, you undertake to communicate accurate information that does not prejudice the interest of any third parties.</p>
+                            <p>4. Use of Information</p>
+                            <p>Upon giving us consent, we may collect and use for the following purposes:</p>
+                            <p>Refer you to the brands and retailers listed on our website and/or</p>
+                            <p>To personalize and improve aspects of our overall service to you and our other users, as well as carrying out research such as analyzing market trends and customer demographics; and/or</p>
+                            <p>To communicate with you, in order to verify the personal information provided, or to request any additional information that is vital; and/or</p>
+                            <p>To send you information about products and services which we think may be of interest to you.</p>
+                            <p>5. Passing on Information about You</p>
+                            <p>You authorize Hotter Winds to disclose and transfer personal data to third parties, whose products are listed on the Hotter Winds website, and/ or their authorized representatives. These transactions will only be made with third parties that were consented by you, the user.  Hotter Winds will not sell, distribute, or lease your personal information to third parties unless we have your permission, or are required to do so under the law.</p>
+                            <p>6. Retaining Your Information</p>
+                            <p>Collected information is retained until it is destroyed.  We retain your personal information in order to carry out the data uses stated in section 4 above.  This includes retaining your data to contact you with products or services we believe may be of interest to you in the future.  During the period that Hotter Winds retains your data, we are committed to all reasonable efforts and practical steps to ensure that collected data is protected against any loss, misuse, modification, unauthorized or accidental access or disclosure, alteration or destruction. Hotter Winds undertakes to protect the confidentiality of your data to the purposes set out in section 4 only, and therefore to ensure your data privacy.  We will ensure that your personal data is permanently deleted once it is no longer required to fulfill its original purpose, or as is required by the law.</p>
+                            <p>7. Accessing Data and Ensuring Accuracy</p>
+                            <p>Hotter Winds takes all reasonable steps to ensure that your information is accurate, complete, not misleading and kept up-to-date, consistent with the purpose for which the information was collected.  If you would like to access or correct personal information that is inaccurate, incomplete, misleading or not up-to-date please contact us via email on info@hotterwinds.co.nz.  We will make all reasonable efforts to accommodate requests for access and information changes.  Similarly, please contact us should you wish to withdraw consent for the use of your personal information and/or unsubscribe from our emails.</p>
+                            <p>8. Keeping You Informed</p>
+                            <p>You agree that Hotter Winds shall be entitled to advise you via email regarding any offers we think may interest you.  Whenever you provide us with personal information, we will give you an opportunity to tell us you do not consent to us and others using and sharing your information for marketing purposes. Unless you tell us otherwise, you are consenting to such uses. Any electronic marketing communications we send you will include clear and concise instructions to follow should you wish to unsubscribe at any time. Should you no longer wish to be contacted by us, you can advise us at any time by emailing us at info@hotterwinds.co.nz and requesting that you are unsubscribed.  </p>
+                            <p>9. Improving our Service to You</p>
+                            <p>In order to ensure the Services we provide you continue to meet your needs, we may ask you for feedback on your experience of using the website. Any feedback you provide will only be used as part of our program of continuous improvement and will not be published on the website. Third party providers and data privacy. If you decide to enter into a contract with a third party provider through this Website, the information you have provided to us together with any further information requested by, and supplied by you or us to the third party provider will be held by the provider for the purposes set out in that provider's privacy policy. Therefore, you are strongly advised to read your chosen provider's privacy policy and satisfy yourself as to the purposes for which the provider will use your personal information for entering into the contract. We have no responsibility for the uses to which a provider puts your personal information.</p>
+                            <p>10. Website Browsing and Cookies</p>
+                            <p>A cookie is a very small text file placed on your computer. Cookies help websites like Hotter Winds to:</p>
+                            <p>understand  the number of visitors and browsing habits on the Hotter Winds Website and the pages visited, and remember you when you return to the Hotter Winds Website so we can provide you with a better browsing experience.</p>
+                            <p>Most cookies are deleted as soon as you close your browser, these are known as session cookies. Others, known as persistent cookies, are stored on your computer either until you delete them or they expire. By using this Service, you consent to us using cookies. This website uses a variety of different cookies including Google Analytics and others for a range of purposes.  If you wish to receive a complete list please contact us.</p>
+                            <p>11. Changes to This Policy</p>
+                            <p>We may revise this Privacy Policy from time to time. If we make a change to this policy that, in sole discretion, is material, we will post it clearly on the website. By continuing to access or use the Hotter Winds Website after those changes become effective, you agree to be bound by the revised Privacy Policy. This Privacy Policy was last updated on 29 June 2017.</p>
+
                         </div>
                     </div>
-
-                    <aside id="column-left" class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                        <div>
-                            <div class="side-banner">
-                                
-                            </div>
-                        </div>
-                        <div class="block block-company">
-                            <div class="block-title">
-                                Information
-                            </div>
-                            <div class="block-content">
-                                <ul>
-                                    <li><a href="/About/AboutUs.aspx">About Us</a></li>                                    
-                                    <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
-                                    <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>                                    
-                                    <li><a href="/About/ContactUs.aspx">Contact Us</a></li>                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </aside>
                 </div>
+
+                <aside id="column-left" class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+                    <div>
+                        <div class="side-banner">
+                        </div>
+                    </div>
+                    <div class="block block-company">
+                        <div class="block-title">
+                            Information
+                        </div>
+                        <div class="block-content">
+                            <ul>
+                                <li><a href="/About/AboutUs.aspx">About Us</a></li>
+                                <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
+                                <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>
+                                <li><a href="/About/ContactUs.aspx">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
+    </div>
 </asp:Content>

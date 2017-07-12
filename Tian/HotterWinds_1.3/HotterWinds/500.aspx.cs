@@ -11,7 +11,9 @@ namespace HotterWinds
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.StatusCode = 500;
 
+            this.Title = "An error has occured - Hotter Winds";
         }
     }
 }

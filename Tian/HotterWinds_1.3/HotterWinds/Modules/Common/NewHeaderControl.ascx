@@ -37,11 +37,12 @@
     }
 
     #suggest-div {
-        width: 100% !important;
+        width: 96% !important;
         z-index: 1000;
         position: absolute;
         border-top: 2px solid #ccc;
         border-radius:5px;
+        margin-top:-10px;
     }
 
     @media (min-width: 768px) {

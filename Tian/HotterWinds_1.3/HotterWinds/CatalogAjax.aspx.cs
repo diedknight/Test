@@ -451,8 +451,8 @@ namespace HotterWinds
             //psTemp.Add(qName, clicksKey);
             LinkInfo clicksLinkInfo = new LinkInfo();
             clicksLinkInfo.Value = clicksKey;
-            clicksLinkInfo.LinkText = Resources.Resource.TextString_Popularity;
-            clicksLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            clicksLinkInfo.LinkText = "Sort by popularity";
+            clicksLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
             sortByInfoList.Add(clicksLinkInfo);
 
             string bestPriceKey = "BestPrice";
@@ -460,8 +460,8 @@ namespace HotterWinds
             psTemp.Add(qName, bestPriceKey);
             LinkInfo bestPriceLinkInfo = new LinkInfo();
             bestPriceLinkInfo.Value = bestPriceKey;
-            bestPriceLinkInfo.LinkText = Resources.Resource.TextString_SB_PriceLowToHigh;
-            bestPriceLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            bestPriceLinkInfo.LinkText = "Sort by price: low to high";
+            bestPriceLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
             sortByInfoList.Add(bestPriceLinkInfo);
 
             string bestPriceRevKey = "BestPrice-rev";
@@ -469,8 +469,8 @@ namespace HotterWinds
             psTemp.Add(qName, bestPriceRevKey);
             LinkInfo bestPriceRevLinkInfo = new LinkInfo();
             bestPriceRevLinkInfo.Value = bestPriceRevKey;
-            bestPriceRevLinkInfo.LinkText = Resources.Resource.TextString_SB_PriceHighToLow;
-            bestPriceRevLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            bestPriceRevLinkInfo.LinkText = "Sort by price: high to low";
+            bestPriceRevLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
             sortByInfoList.Add(bestPriceRevLinkInfo);
 
             string ratingKey = "Rating";
@@ -478,8 +478,8 @@ namespace HotterWinds
             psTemp.Add(qName, ratingKey);
             LinkInfo ratingLinkInfo = new LinkInfo();
             ratingLinkInfo.Value = ratingKey;
-            ratingLinkInfo.LinkText = Resources.Resource.TextString_ReviewRating;
-            ratingLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            ratingLinkInfo.LinkText = "Sort by average rating";
+            ratingLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
             sortByInfoList.Add(ratingLinkInfo);
 
             string newestKey = "Newest";
@@ -487,18 +487,18 @@ namespace HotterWinds
             psTemp.Add(qName, newestKey);
             LinkInfo newestInfo = new LinkInfo();
             newestInfo.Value = newestKey;
-            newestInfo.LinkText = Resources.Resource.TextString_Newest;
-            newestInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            newestInfo.LinkText = "Sort by newness";
+            newestInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
             sortByInfoList.Add(newestInfo);
 
-            string titleKey = "Title";
-            psTemp.Remove(qName);
-            psTemp.Add(qName, titleKey);
-            LinkInfo titleInfo = new LinkInfo();
-            titleInfo.Value = titleKey;
-            titleInfo.LinkText = Resources.Resource.TextString_ProductNameAZ;
-            titleInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
-            sortByInfoList.Add(titleInfo);
+            //string titleKey = "Title";
+            //psTemp.Remove(qName);
+            //psTemp.Add(qName, titleKey);
+            //LinkInfo titleInfo = new LinkInfo();
+            //titleInfo.Value = titleKey;
+            //titleInfo.LinkText = Resources.Resource.TextString_ProductNameAZ;
+            //titleInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            //sortByInfoList.Add(titleInfo);
 
             //string onSaleKey = "Sale";
             //psTemp.Remove(qName);

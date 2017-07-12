@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="TermsCondition.aspx.cs" Inherits="HotterWinds.About.TermsCondition" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
     <style>
@@ -15,7 +16,7 @@
             }
     </style>
 
-    <style> 
+    <style>
         .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
             border-radius: 16px;
             -moz-border-radius: 16px;
@@ -206,79 +207,68 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         .static-inner p {
-            line-height:22px !important;
+            line-height: 22px !important;
         }
     </style>
 
     <div class="main-container col2-right-layout">
-            <div class="main container">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li> 
-                            <span>/</span>                
-                            <strong>About Us</strong>     
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <div id="content" class="col-sm-9 col-sm-push-3">
-                        <div class="col-main">
-                            <div class="static-inner">
-                                <div class="page-title">
-                                    <h2> About Us</h2>
-                                </div>
-                                <p>Hotter Winds is a specialist price comparison website. We showcase brands and products that are designed for the outdoors, adventure and travel.</p>
-                                <br>
-                                <p>We provide a completely unbiased and comprehensive selection so that consumers can search for what they are looking for and then easily see what other similar products are available. Our aim is for you to discover products that you will love and then we can connect you directly to the retailers website where you can make your informed purchase.</p>
-                                <br>
-                                <p>We cover all of the major NZ brands and distributors as well offering smaller retailers the opportunity to showcase their products. We do not endorse any brand or product as we want consumers to make their own choices. However, we do provide product reviews so that you can see what other people have to say.</p>
-                                <br />
-                                <p>We started hotter winds because we know what its like to have a passion for the outdoors, adventure and travel. We have been involved with or a still participate in the following:</p>
-                                <br />
-                                <ul>
-                                    <li style="list-style:disc; margin-left:30px;">mountain biking</li>
-                                    <li style="list-style:disc; margin-left:30px;">skiing/snowboarding</li>
-                                    <li style="list-style:disc; margin-left:30px;">surfing/SUP</li>
-                                    <li style="list-style:disc; margin-left:30px;">global travel on a budget (a.k.a., backpacking)</li>
-                                    <li style="list-style:disc; margin-left:30px;">adventure tourism</li>
-                                    <li style="list-style:disc; margin-left:30px;">mountaineering</li>
-                                    <li style="list-style:disc; margin-left:30px;">orienteering</li>
-                                    <li style="list-style:disc; margin-left:30px;">hunting</li>
-                                    <li style="list-style:disc; margin-left:30px;">scuba/free diving</li>
-                                </ul>
-                                <br />
-
-                                <p>We know that these represent only a fraction of the travel and adventure opportunities and we will keep on expanding our horizons.</p>
-                                <br />
-                                <p>Enjoy the never-ending and boundless opportunities available and we will help you find and compare the best gear to take with you.</p>
+        <div class="main container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <span>/</span>
+                        <strong>Terms &amp; Conditions</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div id="content" class="col-sm-9 col-sm-push-3">
+                    <div class="col-main">
+                        <div class="static-inner">
+                            <div class="page-title">
+                                <h2>Terms &amp; Conditions</h2>
                             </div>
+
+                            <p>TERMS & CONDITIONS</p>
+                            <p>hotterwinds.co.nz (hereinafter referred to as Hotter Winds) is an independent adventure, travel and outdoor gear comparison website for New Zealand.</p>
+                            <p></p>
+                            <p>The content on Hotter Winds is provided "as is" and is for general information purposes only. In no way does the content on Hotter Winds constitute advice nor does any part of the content constitute an open offer capable of forming the basis of a contract with Hotter Winds or any of the retailers listed.</p>
+                            <p></p>
+                            <p>Hotter Winds makes best endeavours to ensure the information on the Hotter Winds website is accurate and up to date, however, Hotter Winds does not warrant or guarantee that anything written here is 100% accurate, timely, or relevant to the solution of any problem Hotter Winds website visitors may have.  To the extent permitted by law, Hotter Winds disclaims any and all warranties, expressed or implied, including those of merchantable quality or fitness for a particular purpose, with respect to the publication of the content on the Hotter Winds website.</p>
+                            <p></p>
+                            <p>Hotter Winds may at times include statements, opinions or views of third party companies or individuals and while Hotter Winds may make reference to certain brands, products or retailers by name, it does not constitute an endorsement by Hotter Winds.  Hotter Winds denies any and all liability or responsibility for any errors, inaccuracies, omissions, misleading or defamatory content.</p>
+                            <p></p>
+                            <p>Product names, logos, brands and other trademarks referred to in the Hotter Winds website are the property of their respective trademark holders.  These trademark holders may or may not be  affiliated or associated with Hotter Winds or our website and they do not sponsor or endorse our materials or website.  Hotter Winds specifically excludes liability for any loss or damage no matter how arising from the use of this website or of any information or services provided through this website.  Hotter Winds reserves the right to update, amend or change the content of this website without notice.</p>
+                            <p></p>
+                            <p>Hotter Winds collates information from NZ websites on a regular basis but some information or products may no longer be available due to the constantly changing nature of the market in New Zealand.  We will endeavour to keep the Hotter Winds comparison table as up to date as possible.  If you do come across a brands or products that are no longer available please contact us and we will investigate and update as soon as possible. </p>
+
                         </div>
                     </div>
-
-                    <aside id="column-left" class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                        <div>
-                            <div class="side-banner">
-                                
-                            </div>
-                        </div>
-                        <div class="block block-company">
-                            <div class="block-title">
-                                Information
-                            </div>
-                            <div class="block-content">
-                                <ul>
-                                    <li><a href="/About/AboutUs.aspx">About Us</a></li>                                    
-                                    <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
-                                    <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>                                    
-                                    <li><a href="/About/ContactUs.aspx">Contact Us</a></li>                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </aside>
                 </div>
+
+                <aside id="column-left" class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+                    <div>
+                        <div class="side-banner">
+                        </div>
+                    </div>
+                    <div class="block block-company">
+                        <div class="block-title">
+                            Information
+                        </div>
+                        <div class="block-content">
+                            <ul>
+                                <li><a href="/About/AboutUs.aspx">About Us</a></li>
+                                <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
+                                <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>
+                                <li><a href="/About/ContactUs.aspx">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
+    </div>
 </asp:Content>

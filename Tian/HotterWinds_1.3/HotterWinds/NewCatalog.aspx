@@ -32,7 +32,7 @@
             border-radius: 16px;
             -moz-border-radius: 16px;
             -webkit-border-radius: 16px;
-        }        
+        }
     </style>
     <script type="text/javascript">
         var yith_wcwl_plugin_ajax_web_url = '/linea/wp-admin/admin-ajax.php';
@@ -138,6 +138,20 @@
             margin-right: 0px;
         }
 
+        .sortByDiv select {
+            width: auto !important;
+            height: auto !important;
+            color: black;
+            padding: 6px 12px;
+            padding-right: 25px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+            .sortByDiv select:focus {
+                padding: 6px 12px;
+            }
+
         @media (max-width: 1024px) {
             .sortByDiv_des {
                 display: none;
@@ -146,18 +160,17 @@
 
         @media (min-width: 768px) {
             #leftFilters {
-                width:100%;
+                width: 100%;
             }
         }
 
         #dropdownMenuSortBy {
-            border-radius:0px;
+            border-radius: 0px;
         }
 
         .dropdown-menu {
-            left:-48px;
+            left: -48px;
         }
-
     </style>
 
     <script src="<%=PriceMe.WebConfig.CssJsPath %>/Scripts/new_catalog.js?ver=<%=PriceMe.WebConfig.WEB_cssVersion %>"></script>
@@ -260,8 +273,16 @@
 
                 <div class="row">
                     <div class="newBody">
+
+                        <div class="col-left sidebar col-sm-4 col-xs-12 col-md-3">
+                            <div id="leftFilters">
+                                <DK:NewFilters ID="NewFilters1" runat="server" />
+                            </div>
+                        </div>
+                        <!-- col-sm-3   -->
+
                         <div id="loadDiv">
-                            <div class="col-sm-9 col-sm-push-3">
+                            <div class="col-sm-8  col-md-9">
                                 <DK:Breadcrumbs runat="server" ID="Breadcrumbs" />
 
                                 <div class="page-title">
@@ -284,7 +305,7 @@
 
                                             <div style="float: right;">
                                                 <label class="sortByDiv_des left">Sort By: </label>
-                                                <div id="sortByDiv" class="sortByDiv" style="display:inline-block">
+                                                <div id="sortByDiv" class="sortByDiv" style="display: inline-block">
                                                     <%if (catalogPageInfo.CurrentProductCount > 1 && !v.Equals("quick", StringComparison.InvariantCultureIgnoreCase))
                                                         { %>
                                                     <div class="dropdown">
@@ -335,12 +356,7 @@
                             </div>
                             <!-- col-sm-9   -->
                         </div>
-                        <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                            <div id="leftFilters">
-                                <DK:NewFilters ID="NewFilters1" runat="server" />
-                            </div>
-                        </div>
-                        <!-- col-sm-3   -->
+
 
                         <script>
                             initFilter();
@@ -381,15 +397,15 @@
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
+                            /* <![CDATA[ */
+                            var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/woocompare.js?ver=2.0.5'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/jquery.colorbox-min.js?ver=1.4.21'></script>
     <script type='text/javascript'>
-                /* <![CDATA[ */
-                var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
+        /* <![CDATA[ */
+        var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-quick-view/assets/js/frontend.js?ver=1.0'></script>
@@ -397,8 +413,8 @@
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.init.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var yith_wcwl_l10n = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
+                /* <![CDATA[ */
+                var yith_wcwl_l10n = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.0.13'></script>
@@ -417,8 +433,8 @@
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/owl.carousel.min.js?ver=4.4.1'></script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/cloud-zoom.js?ver=4.4.1'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var js_linea_vars = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "container_width": "760", "grid_layout_width": "20" };
+                            /* <![CDATA[ */
+                            var js_linea_vars = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "container_width": "760", "grid_layout_width": "20" };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/mgk_menu.js?ver=4.4.1'></script>
@@ -435,14 +451,14 @@
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
-                /* <![CDATA[ */
-                var mc4wp_forms_config = [];
+        /* <![CDATA[ */
+        var mc4wp_forms_config = [];
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/mailchimp-for-wp/assets/js/forms-api.min.js?ver=3.0.9'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_add_to_cart_variation_params = { "i18n_no_matching_variations_text": "Sorry, no products matched your selection. Please choose a different combination.", "i18n_unavailable_text": "Sorry, this product is unavailable. Please choose a different combination." };
+                /* <![CDATA[ */
+                var wc_add_to_cart_variation_params = { "i18n_no_matching_variations_text": "Sorry, no products matched your selection. Please choose a different combination.", "i18n_unavailable_text": "Sorry, this product is unavailable. Please choose a different combination." };
 /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=2.4.12'></script>

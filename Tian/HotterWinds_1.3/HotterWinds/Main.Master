@@ -183,7 +183,7 @@
                                         <div class="textwidget">
                                             <ul class="links">
                                                 <li><a href="https://hotterwinds.co.nz/blog/" title="How to buy">Blog</a></li>
-                                                <li><a href="#" title="FAQs">FAQs</a></li>
+                                                <%--<li><a href="#" title="FAQs">FAQs</a></li>--%>
                                             </ul>
                                         </div>
                                     </aside>
@@ -223,6 +223,7 @@
                                                 <li><a href="/About/ContactUs.aspx" title="Contact Us">Contact Us</a></li>
                                                 <li><a href="/About/PrivacyPolicy.aspx">Privacy Policy</a></li>
                                                 <li><a href="/About/TermsCondition.aspx">Terms &amp; Conditions</a></li>
+                                                <li><a href="/RetailerCenter/RetailerSignUp.aspx">List your store</a></li>
                                             </ul>
                                         </div>
                                     </aside>
@@ -308,6 +309,7 @@
                 <div class="search-autocomplete" id="search_autocomplete1" style="display: none;"></div>
             </div>
 
+            <!--
             <div class="menu-wrap">
                 <ul id="menu-mainmenu-1" class="mobile-menu accordion-menu">
                     <li id="accordion-menu-item-3214" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children active has-sub">
@@ -520,6 +522,7 @@
                     <li class="menu-item"><a href="/linea/my-account/"><span>Register</span></a></li>
                 </ul>
             </div>
+            -->
         </div>
         <div id="yith-quick-view-modal">
 

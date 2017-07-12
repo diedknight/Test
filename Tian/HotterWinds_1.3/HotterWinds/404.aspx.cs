@@ -11,7 +11,9 @@ namespace HotterWinds
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.StatusCode = 404;
 
+            this.Title = "Page not found - Hotter Winds";
         }
     }
 }

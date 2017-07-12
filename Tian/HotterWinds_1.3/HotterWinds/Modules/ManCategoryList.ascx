@@ -50,6 +50,7 @@
                             <%foreach (var subsubCate in subsubCateList) %>
                             <%{ %>
 
+                            <%if (subsubCate.CategoryName == "Cycling Apparel") continue; %>       
                             <%if (subsubCate.ProductsCount == 0) continue; %>                            
 
                             <li id="nav-menu-item-<%=subsubCate.CategoryID %>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat ">
