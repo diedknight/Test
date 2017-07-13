@@ -230,7 +230,7 @@ namespace HotterWinds.RetailerCenter
             catch (Exception ex)
             {
                 CSK_Store_ExceptionCollect ec = new CSK_Store_ExceptionCollect();
-                ec.ExceptionInfo = ex.Message;
+                ec.ExceptionInfo = ex.Message + " " + ex.StackTrace;
                 ec.ExceptionType = "Retailer SignUp Send Email";
                 ec.errorPagePath = Request.RawUrl;
                 ec.Save();
