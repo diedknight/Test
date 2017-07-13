@@ -708,6 +708,7 @@
     <Content Include="RetailerCenter\RetailerSignUp.aspx" />
     <Content Include="RetailerCenter\RetailerSignUpSuccess.aspx" />
     <Content Include="RetailerCenter\ThanksForRetailerSignUp.aspx" />
+    <Content Include="Retailer_Sign_Up_Email-NZ-activation.html" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

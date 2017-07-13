@@ -229,7 +229,7 @@
             border: none;
         }
 
-            .btn-info:hover {
+            .btn-info:hover, .btn-info:focus, .btn-info:visited, .btn-info:active {
                 background: none;
                 background-color: #1fc0a0;
                 border: none;
@@ -240,7 +240,7 @@
         }
 
         .le-input:hover, .le-input:focus {
-            background-color:white;
+            background-color: white;
         }
 
         @media (min-width: 360px),(max-width:360px) {

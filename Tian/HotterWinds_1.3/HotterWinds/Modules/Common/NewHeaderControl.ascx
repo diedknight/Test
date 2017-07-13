@@ -47,7 +47,7 @@
 
     @media (min-width: 768px) {
         .search_box_extension {
-            width: 500px;
+            width: 480px;
         }
     }
 </style>

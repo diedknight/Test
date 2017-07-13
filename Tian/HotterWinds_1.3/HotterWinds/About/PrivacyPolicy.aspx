@@ -231,8 +231,7 @@
                             <div class="page-title">
                                 <h2>Privacy Policy</h2>
                             </div>
-
-                            <p>PRIVACY POLICY</p>
+                            
                             <p>PRIVACY STATEMENT</p>
                             <p>Hotter Winds is a New Zealand travel, adventure and outdoor gear comparison website.  Hotter Winds lists and compares thousands of products from various retailers and distributors.  This information is presented in a familiar and simple way. This makes it easy to search and navigate with the aim to inform people when they are choosing their next equipment or apparel purchase. In order to do this effectively, often we need to collect some of your personal information.  We value your privacy and provide our services free of charge. If you do click through to an advertisers site then we will receive a commision on that but in no way does that  impact you. These commissions are what allows us to keep the site running, up to date and free of charge. We respect your personal data and we believe knowledge of our data privacy practices will enable you to make the best possible decisions regarding data privacy and your usage of the Hotter Winds website.</p>
                             <p>HOTTER WINDS PRIVACY AND PERSONAL DATA PROTECTION POLICY STATEMENT</p>

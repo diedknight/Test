@@ -243,7 +243,7 @@
             border: none;
         }
 
-            .btn-info:hover {
+            .btn-info:hover, .btn-info:focus, .btn-info:visited, .btn-info:active {
                 background: none;
                 background-color: #1fc0a0;
                 border: none;

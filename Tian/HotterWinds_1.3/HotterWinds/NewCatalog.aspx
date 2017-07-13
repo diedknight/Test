@@ -150,6 +150,7 @@
 
             .sortByDiv select:focus {
                 padding: 6px 12px;
+                padding-right: 25px;
             }
 
         @media (max-width: 1024px) {

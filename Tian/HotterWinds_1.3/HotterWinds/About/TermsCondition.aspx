@@ -231,8 +231,7 @@
                             <div class="page-title">
                                 <h2>Terms &amp; Conditions</h2>
                             </div>
-
-                            <p>TERMS & CONDITIONS</p>
+                            
                             <p>hotterwinds.co.nz (hereinafter referred to as Hotter Winds) is an independent adventure, travel and outdoor gear comparison website for New Zealand.</p>
                             <p></p>
                             <p>The content on Hotter Winds is provided "as is" and is for general information purposes only. In no way does the content on Hotter Winds constitute advice nor does any part of the content constitute an open offer capable of forming the basis of a contract with Hotter Winds or any of the retailers listed.</p>
