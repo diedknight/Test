@@ -491,14 +491,14 @@ namespace HotterWinds
             newestInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
             sortByInfoList.Add(newestInfo);
 
-            //string titleKey = "Title";
-            //psTemp.Remove(qName);
-            //psTemp.Add(qName, titleKey);
-            //LinkInfo titleInfo = new LinkInfo();
-            //titleInfo.Value = titleKey;
-            //titleInfo.LinkText = Resources.Resource.TextString_ProductNameAZ;
-            //titleInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
-            //sortByInfoList.Add(titleInfo);
+            string titleKey = "Title";
+            psTemp.Remove(qName);
+            psTemp.Add(qName, titleKey);
+            LinkInfo titleInfo = new LinkInfo();
+            titleInfo.Value = titleKey;
+            titleInfo.LinkText = "Sort by name: A to Z";
+            titleInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
+            sortByInfoList.Add(titleInfo);
 
             //string onSaleKey = "Sale";
             //psTemp.Remove(qName);
