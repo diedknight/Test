@@ -39,6 +39,11 @@ namespace HotterWinds
                 Dictionary<string, LinkInfo> ps, cs, bs, bac, rs;
                 List<LinkInfo> otherInfos;
                 PopularSearcherController.GetSuggestKeywords(null, input.ToLower(), 15, 5, 5, false, out ps, out cs, out bs, out bac, out rs, out otherInfos, pids, PriceMe.WebConfig.CountryId);
+
+                bs = new Dictionary<string, LinkInfo>();
+                rs = new Dictionary<string, LinkInfo>();
+                bac = new Dictionary<string, LinkInfo>();
+
                 foreach (string c in cs.Keys)
                 {
                     int cid = 0;
