@@ -37,18 +37,40 @@
     }
 
     #suggest-div {
-        width: 96% !important;
+        /*width: 96% !important;*/
         z-index: 1000;
         position: absolute;
         border-top: 2px solid #ccc;
-        border-radius:5px;
-        margin-top:-10px;
+        border-radius: 5px;
+        margin-top: -10px;
     }
+
+        #suggest-div li strong {
+            color: #1fc0a0;
+        }
 
     @media (min-width: 768px) {
         .search_box_extension {
             width: 480px;
         }
+
+        #suggest-div {
+            width: 480px;
+        }
+
+            #suggest-div #suggestULRight {
+                width: 480px;
+            }
+    }
+
+    @media (min-width: 1200px) {
+        #suggest-div {
+            width: 1000px;
+        }
+
+            #suggest-div #suggestULRight {
+                width: 310px;
+            }
     }
 </style>
 
