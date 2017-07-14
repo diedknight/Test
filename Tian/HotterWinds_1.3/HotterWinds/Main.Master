@@ -28,13 +28,13 @@
         var winHeight = $(window).height();
         var winWidth = $(window).width();
 
-        var node = $("<div id=\"a_wrap\"></div>");
-        node.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "900000" });
+        var nodea = $("<div id=\"a_wrap\"></div>");
+        nodea.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "900000" });
 
-        $("body").append(node);
+        $("body").append(nodea);
 
         $(document).ready(function () {
-            node.remove();
+            nodea.remove();
         });
     </script>
 
