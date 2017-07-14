@@ -233,15 +233,15 @@
                             </div>
                             
                             <p>hotterwinds.co.nz (hereinafter referred to as Hotter Winds) is an independent adventure, travel and outdoor gear comparison website for New Zealand.</p>
-                            <p></p>
+                            <br />
                             <p>The content on Hotter Winds is provided "as is" and is for general information purposes only. In no way does the content on Hotter Winds constitute advice nor does any part of the content constitute an open offer capable of forming the basis of a contract with Hotter Winds or any of the retailers listed.</p>
-                            <p></p>
+                            <br />
                             <p>Hotter Winds makes best endeavours to ensure the information on the Hotter Winds website is accurate and up to date, however, Hotter Winds does not warrant or guarantee that anything written here is 100% accurate, timely, or relevant to the solution of any problem Hotter Winds website visitors may have.  To the extent permitted by law, Hotter Winds disclaims any and all warranties, expressed or implied, including those of merchantable quality or fitness for a particular purpose, with respect to the publication of the content on the Hotter Winds website.</p>
-                            <p></p>
+                            <br />
                             <p>Hotter Winds may at times include statements, opinions or views of third party companies or individuals and while Hotter Winds may make reference to certain brands, products or retailers by name, it does not constitute an endorsement by Hotter Winds.  Hotter Winds denies any and all liability or responsibility for any errors, inaccuracies, omissions, misleading or defamatory content.</p>
-                            <p></p>
+                            <br />
                             <p>Product names, logos, brands and other trademarks referred to in the Hotter Winds website are the property of their respective trademark holders.  These trademark holders may or may not be  affiliated or associated with Hotter Winds or our website and they do not sponsor or endorse our materials or website.  Hotter Winds specifically excludes liability for any loss or damage no matter how arising from the use of this website or of any information or services provided through this website.  Hotter Winds reserves the right to update, amend or change the content of this website without notice.</p>
-                            <p></p>
+                            <br />
                             <p>Hotter Winds collates information from NZ websites on a regular basis but some information or products may no longer be available due to the constantly changing nature of the market in New Zealand.  We will endeavour to keep the Hotter Winds comparison table as up to date as possible.  If you do come across a brands or products that are no longer available please contact us and we will investigate and update as soon as possible. </p>
 
                         </div>
