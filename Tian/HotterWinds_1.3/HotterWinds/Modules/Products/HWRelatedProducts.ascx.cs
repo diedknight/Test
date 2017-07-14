@@ -57,7 +57,11 @@ namespace HotterWinds.Modules.Products
 
         protected string GetImage(string defaultImage)
         {
-            return PriceMe.Utility.GetImage(defaultImage, "_ms");
+            string url = PriceMe.Utility.GetImage(defaultImage, "_ms");
+
+            if (url.ToLower().Contains("no_image_available")) return "";
+
+            return url;
         }
 
         protected string GetLinkUrl(int pId, int rId, int rpId, int cid)
