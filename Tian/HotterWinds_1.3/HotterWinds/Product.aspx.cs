@@ -283,7 +283,7 @@ namespace HotterWinds
             string keyWord = "";
             string manufacturerName = "";
 
-            if (manufacturer.ManufacturerID != -1)
+            if (manufacturer != null && manufacturer.ManufacturerID != -1)
             {
                 manufacturerName = manufacturer.ManufacturerName;
             }
