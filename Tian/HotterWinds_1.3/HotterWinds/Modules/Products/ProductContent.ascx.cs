@@ -80,6 +80,9 @@ namespace HotterWinds.Modules.Products
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (manufacturer == null) manufacturer = new ManufacturerInfo();
+
+
             dkTimer = Session["DKTimer"] as Timer.DKTimer;
             if (dkTimer != null)
                 dkTimer.Set("Begin Modules_Products_ProductContent.Page_Load()");
