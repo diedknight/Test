@@ -138,6 +138,7 @@ namespace HotterWinds
             }
 
             manufacturer = ManufacturerController.GetManufacturerByID(product.ManufacturerID ?? 0, WebConfig.CountryId);
+            if (manufacturer == null) manufacturer = new ManufacturerInfo();
 
             BreadCrumbInfo breadCrumbInfo = null;
             if (category == null)
