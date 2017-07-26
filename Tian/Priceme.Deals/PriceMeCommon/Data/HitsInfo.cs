@@ -35,13 +35,14 @@ namespace PriceMeCommon.Data
         /// <returns></returns>
         public Lucene.Net.Documents.Document GetDocument(int index, string[] fieldNames)
         {
-            ISet<string> s = new HashSet<string>();
-            foreach(string fs in fieldNames)
-            {
-                s.Add(fs);
-            }
+            //ISet<string> s = new HashSet<string>();
+            //foreach(string fs in fieldNames)
+            //{
+            //    s.Add(fs);
+            //}
             
-            return _searcher.Doc(_topDocs.ScoreDocs[index].Doc, s);
+            //return _searcher.Doc(_topDocs.ScoreDocs[index].Doc, s);
+            return _searcher.Doc(_topDocs.ScoreDocs[index].Doc, new Lucene.Net.Documents.MapFieldSelector(fieldNames));
         }
 
         public HitsInfo(Lucene.Net.Search.IndexSearcher searcher, Lucene.Net.Search.TopDocs topDocs)

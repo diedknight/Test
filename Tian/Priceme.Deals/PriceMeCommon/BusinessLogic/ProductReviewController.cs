@@ -26,9 +26,10 @@ namespace PriceMeCommon.BusinessLogic
             Sort sort = new Sort();
             BooleanQuery query = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
             termQuery = new TermQuery(new Term("SourceID", "156"));
@@ -73,9 +74,10 @@ namespace PriceMeCommon.BusinessLogic
             Sort sort = new Sort();
             BooleanQuery query = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
             termQuery = new TermQuery(new Term("SourceID", sourceId.ToString()));
@@ -109,9 +111,10 @@ namespace PriceMeCommon.BusinessLogic
             BooleanQuery query = new BooleanQuery();
             Filter filter = null;
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
             termQuery = new TermQuery(new Term("SourceID", "156"));
@@ -128,17 +131,17 @@ namespace PriceMeCommon.BusinessLogic
                 query.Add(termQuery, Occur.MUST);
 
                 if (starts == 1)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0.1f, 1.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0.1f, 1.5f, true, true);
                 else if (starts == 2)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 1.6f, 2.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 1.6f, 2.5f, true, true);
                 else if (starts == 3)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 2.6f, 3.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 2.6f, 3.5f, true, true);
                 else if (starts == 4)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 3.6f, 4.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 3.6f, 4.5f, true, true);
                 else if (starts == 5)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 4.6f, 6, true, false);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 4.6f, 6, true, false);
                 else if (starts == 6)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0, 0, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0, 0, true, true);
             }
             else if (starts == 7)
             {
@@ -151,17 +154,17 @@ namespace PriceMeCommon.BusinessLogic
                 query.Add(termQuery, Occur.MUST);
 
                 if (starts == 8)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0.1f, 1.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0.1f, 1.5f, true, true);
                 else if (starts == 9)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 1.6f, 2.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 1.6f, 2.5f, true, true);
                 else if (starts == 10)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 2.6f, 3.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 2.6f, 3.5f, true, true);
                 else if (starts == 11)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 3.6f, 4.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 3.6f, 4.5f, true, true);
                 else if (starts == 12)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 4.6f, 6f, true, false);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 4.6f, 6f, true, false);
                 else if (starts == 13)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0, 0, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0, 0, true, true);
             }
 
             docs = searcher.Search(query, filter, MAXDOCS, sort);
@@ -205,9 +208,10 @@ namespace PriceMeCommon.BusinessLogic
             BooleanQuery query = new BooleanQuery();
             Filter filter = null;
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
             termQuery = new TermQuery(new Term("SourceID", "156"));
@@ -224,17 +228,17 @@ namespace PriceMeCommon.BusinessLogic
                 query.Add(termQuery, Occur.MUST);
 
                 if (starts == 1)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0.1f, 1.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0.1f, 1.5f, true, true);
                 else if (starts == 2)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 1.6f, 2.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 1.6f, 2.5f, true, true);
                 else if (starts == 3)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 2.6f, 3.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 2.6f, 3.5f, true, true);
                 else if (starts == 4)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 3.6f, 4.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 3.6f, 4.5f, true, true);
                 else if (starts == 5)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 4.6f, 6, true, false);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 4.6f, 6, true, false);
                 else if (starts == 6)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0, 0, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0, 0, true, true);
             }
             else if (starts == 7)
             {
@@ -247,17 +251,17 @@ namespace PriceMeCommon.BusinessLogic
                 query.Add(termQuery, Occur.MUST);
 
                 if (starts == 8)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0.1f, 1.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0.1f, 1.5f, true, true);
                 else if (starts == 9)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 1.6f, 2.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 1.6f, 2.5f, true, true);
                 else if (starts == 10)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 2.6f, 3.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 2.6f, 3.5f, true, true);
                 else if (starts == 11)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 3.6f, 4.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 3.6f, 4.5f, true, true);
                 else if (starts == 12)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 4.6f, 6f, true, false);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 4.6f, 6f, true, false);
                 else if (starts == 13)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0, 0, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0, 0, true, true);
             }
 
             docs = searcher.Search(query, filter, MAXDOCS, sort);
@@ -302,9 +306,10 @@ namespace PriceMeCommon.BusinessLogic
             BooleanQuery query = new BooleanQuery();
             Filter filter = null;
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
             termQuery = new TermQuery(new Term("SourceID", "156"));
@@ -317,17 +322,17 @@ namespace PriceMeCommon.BusinessLogic
             else if (starts > 0 && starts < 7)
             {
                 if (starts == 1)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0.1f, 1.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0.1f, 1.5f, true, true);
                 else if (starts == 2)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 1.6f, 2.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 1.6f, 2.5f, true, true);
                 else if (starts == 3)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 2.6f, 3.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 2.6f, 3.5f, true, true);
                 else if (starts == 4)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 3.6f, 4.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 3.6f, 4.5f, true, true);
                 else if (starts == 5)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 4.6f, 6, true, false);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 4.6f, 6, true, false);
                 else if (starts == 6)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0, 0, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0, 0, true, true);
             }
             else if (starts == 7)
             {
@@ -336,17 +341,17 @@ namespace PriceMeCommon.BusinessLogic
             else if (starts > 7)
             {
                 if (starts == 8)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0.1f, 1.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0.1f, 1.5f, true, true);
                 else if (starts == 9)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 1.6f, 2.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 1.6f, 2.5f, true, true);
                 else if (starts == 10)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 2.6f, 3.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 2.6f, 3.5f, true, true);
                 else if (starts == 11)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 3.6f, 4.5f, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 3.6f, 4.5f, true, true);
                 else if (starts == 12)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 4.6f, 6f, true, false);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 4.6f, 6f, true, false);
                 else if (starts == 13)
-                    filter = NumericRangeFilter.NewSingleRange("PriceMeScore", 0, 0, true, true);
+                    filter = NumericRangeFilter.NewFloatRange("PriceMeScore", 0, 0, true, true);
             }
 
             docs = searcher.Search(query, filter, MAXDOCS, sort);
@@ -379,15 +384,15 @@ namespace PriceMeCommon.BusinessLogic
             Sort sort = new Sort();
 
             if (sortBy == 1)
-                sort = new Sort(new SortField[] { new SortField("IsExpertReview", SortFieldType.STRING, true) });
+                sort = new Sort(new SortField[] { new SortField("IsExpertReview", SortField.STRING, true) });
             else if (sortBy == 2)
-                sort = new Sort(new SortField[] { new SortField("ReviewDate", SortFieldType.STRING, true) });
+                sort = new Sort(new SortField[] { new SortField("ReviewDate", SortField.STRING, true) });
             else if (sortBy == 3)
-                sort = new Sort(new SortField[] { new SortField("ReviewDate", SortFieldType.STRING, false) });
+                sort = new Sort(new SortField[] { new SortField("ReviewDate", SortField.STRING, false) });
             else if (sortBy == 4)
-                sort = new Sort(new SortField[] { new SortField("PriceMeScore", SortFieldType.SINGLE, true) });
+                sort = new Sort(new SortField[] { new SortField("PriceMeScore", SortField.FLOAT, true) });
             else if (sortBy == 5)
-                sort = new Sort(new SortField[] { new SortField("PriceMeScore", SortFieldType.SINGLE, false) });
+                sort = new Sort(new SortField[] { new SortField("PriceMeScore", SortField.FLOAT, false) });
 
             return sort;
         }

@@ -183,9 +183,10 @@ namespace PriceMeCommon.BusinessLogic
         {
             BooleanQuery booleanQuery = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(pid, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(pid, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", pid.ToString()));
             booleanQuery.Add(termQuery, Occur.MUST);
 
             Sort sort = new Sort();
@@ -211,10 +212,12 @@ namespace PriceMeCommon.BusinessLogic
 
             BooleanQuery booleanQuery = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(pid, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(pid, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", pid.ToString()));
             booleanQuery.Add(termQuery, Occur.MUST);
+
 
             termQuery = new TermQuery(new Term("SourceID", sid.ToString()));
             booleanQuery.Add(termQuery, Occur.MUST);
@@ -244,9 +247,10 @@ namespace PriceMeCommon.BusinessLogic
 
             BooleanQuery booleanQuery = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(pid, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(pid, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", pid.ToString()));
             booleanQuery.Add(termQuery, Occur.MUST);
 
             termQuery = new TermQuery(new Term("SourceID", sid.ToString()));
@@ -297,7 +301,7 @@ namespace PriceMeCommon.BusinessLogic
                 booleanQuery.Add(categoryQueries, Occur.MUST);
             }
 
-            Sort sort = new Sort(new SortField("SortField", SortFieldType.INT32, false));
+            Sort sort = new Sort(new SortField("SortField", SortField.INT, false));
 
             IndexSearcher searcher = MultiCountryController.GetExpertReviewLuceneSearcher(countryId);
 
@@ -347,12 +351,13 @@ namespace PriceMeCommon.BusinessLogic
             List<int> productList = new List<int>();
             BooleanQuery booleanQuery = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(manufacturerID, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ManufacturerID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(manufacturerID, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ManufacturerID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ManufacturerID", manufacturerID.ToString()));
             booleanQuery.Add(termQuery, Occur.MUST);
 
-            Sort sort = new Sort(new SortField("SortField", SortFieldType.INT32, false));
+            Sort sort = new Sort(new SortField("SortField", SortField.INT, false));
 
             IndexSearcher searcher = PriceMeCommon.BusinessLogic.MultiCountryController.GetExpertReviewLuceneSearcher(countryId);
 
@@ -406,10 +411,10 @@ namespace PriceMeCommon.BusinessLogic
             List<int> productList = new List<int>();
 
             BooleanQuery booleanQuery = new BooleanQuery();
-            NumericRangeQuery<int> rangeQuery = NumericRangeQuery.NewInt32Range("SortField", 0, int.MaxValue, true, true);
+            NumericRangeQuery<int> rangeQuery = NumericRangeQuery.NewIntRange("SortField", 0, int.MaxValue, true, true);
             booleanQuery.Add(rangeQuery, Occur.MUST);
 
-            Sort sort = new Sort(new SortField("SortField", SortFieldType.INT32, false));
+            Sort sort = new Sort(new SortField("SortField", SortField.INT, false));
 
             TopFieldDocs topFieldDocs = searcher.Search(booleanQuery, null, MAXDOCS, sort);
 
@@ -455,9 +460,10 @@ namespace PriceMeCommon.BusinessLogic
         {
             BooleanQuery booleanQuery = new BooleanQuery();
 
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
-            TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
+            TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             booleanQuery.Add(termQuery, Occur.SHOULD);
 
             Sort sort = new Sort();
@@ -480,9 +486,10 @@ namespace PriceMeCommon.BusinessLogic
                 string[] cids = GetSubCategoryIDs(categoryID, countryId);
                 foreach (string cid in cids)
                 {
-                    Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-                    Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(int.Parse(cid), 0, btRef);
-                    TermQuery termQuery = new TermQuery(new Term("CategoryID", btRef));
+                    //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+                    //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(int.Parse(cid), 0, btRef);
+                    //TermQuery termQuery = new TermQuery(new Term("CategoryID", btRef));
+                    TermQuery termQuery = new TermQuery(new Term("CategoryID", cid));
                     categoryQuery.Add(termQuery, Occur.SHOULD);
                 }
             }
@@ -511,18 +518,21 @@ namespace PriceMeCommon.BusinessLogic
 
         static string GetAllSubCategoriesString(int cId, int countryId)
         {
-            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(cId, 0, btRef);
-            TermQuery categoryQuery = new TermQuery(new Term("CategoryID", btRef));
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(cId, 0, btRef);
+            //TermQuery categoryQuery = new TermQuery(new Term("CategoryID", btRef));
+            TermQuery categoryQuery = new TermQuery(new Term("CategoryID", cId.ToString()));
 
             IndexSearcher searcher = MultiCountryController.GetCategoriesLuceneSearcher(countryId);
 
             TopDocs topDocs = searcher.Search(categoryQuery, null, 1);
             if (topDocs.ScoreDocs.Length > 0)
             {
-                ISet<string> s = new HashSet<string>();
-                s.Add("SubCategoriesString");
-                Lucene.Net.Documents.Document doc = searcher.Doc(topDocs.ScoreDocs[0].Doc, s);
+                //ISet<string> s = new HashSet<string>();
+                //s.Add("SubCategoriesString");
+                //Lucene.Net.Documents.Document doc = searcher.Doc(topDocs.ScoreDocs[0].Doc, s);
+
+                Lucene.Net.Documents.Document doc = searcher.Doc(topDocs.ScoreDocs[0].Doc, new MapFieldSelector("SubCategoriesString"));
 
                 return doc.Get("SubCategoriesString");
             }

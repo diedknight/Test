@@ -267,14 +267,14 @@ namespace PriceMeCommon
                 if (useRamDirectory)
                 {
                     FSDirectory fsDirectory = FSDirectory.Open(new DirectoryInfo(indexDirectory));
-                    RAMDirectory ramDirectory = new RAMDirectory(fsDirectory, new IOContext());
-                    Lucene.Net.Index.IndexReader indexReader = Lucene.Net.Index.DirectoryReader.Open(ramDirectory);
+                    RAMDirectory ramDirectory = new RAMDirectory(fsDirectory);
+                    Lucene.Net.Index.IndexReader indexReader = Lucene.Net.Index.DirectoryReader.Open(ramDirectory, readOnly);
                     indexSearcher = new IndexSearcher(indexReader);
                 }
                 else
                 {
                     FSDirectory fsDirectory = FSDirectory.Open(new DirectoryInfo(indexDirectory));
-                    Lucene.Net.Index.IndexReader indexReader = Lucene.Net.Index.DirectoryReader.Open(fsDirectory);
+                    Lucene.Net.Index.IndexReader indexReader = Lucene.Net.Index.DirectoryReader.Open(fsDirectory, readOnly);
                     indexSearcher = new IndexSearcher(indexReader);
                 }
                 return indexSearcher;

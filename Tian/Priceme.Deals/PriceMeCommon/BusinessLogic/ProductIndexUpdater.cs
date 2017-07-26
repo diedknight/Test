@@ -45,7 +45,10 @@ namespace PriceMeCommon.BusinessLogic
                         {
                             Document doc = indexInfo.UpdateIndexSearcher.Doc(topFieldDocs.ScoreDocs[0].Doc);
                             doc.RemoveField("BestPrice");
-                            doc.Add(new DoubleField("BestPrice", double.Parse(pc.BestPrice), Field.Store.YES));
+                            //doc.Add(new DoubleField("BestPrice", double.Parse(pc.BestPrice), Field.Store.YES));
+                            NumericField bpField = new NumericField("BestPrice", Field.Store.YES, true);
+                            bpField.SetDoubleValue(double.Parse(pc.BestPrice));
+                            doc.Add(bpField);
 
                             indexInfo.UpdateIndexWriter.UpdateDocument(productIDTerm, doc);
                             updated = true;
@@ -104,14 +107,15 @@ namespace PriceMeCommon.BusinessLogic
                 LuceneUpdateIndexInfo luceneUpdateIndexInfo = new LuceneUpdateIndexInfo();
 
                 Lucene.Net.Store.FSDirectory fsDirectory = Lucene.Net.Store.FSDirectory.Open(new System.IO.DirectoryInfo(indexDirectory));
-                Lucene.Net.Index.IndexReader indexReader = DirectoryReader.Open(fsDirectory);
+                Lucene.Net.Index.IndexReader indexReader = DirectoryReader.Open(fsDirectory, true);
                 Lucene.Net.Search.IndexSearcher indexSearcher = new IndexSearcher(indexReader);
 
-                StandardAnalyzer standardAnalyzer = new StandardAnalyzer(LuceneVersion.LUCENE_48);
-                IndexWriterConfig iwc = new IndexWriterConfig(LuceneVersion.LUCENE_48, standardAnalyzer);
-                iwc.OpenMode = OpenMode.APPEND;
+                //StandardAnalyzer standardAnalyzer = new StandardAnalyzer(LuceneVersion.LUCENE_48);
+                //IndexWriterConfig iwc = new IndexWriterConfig(LuceneVersion.LUCENE_48, standardAnalyzer);
+                //iwc.OpenMode = OpenMode.APPEND;
+                //Lucene.Net.Index.IndexWriter indexWriter = new Lucene.Net.Index.IndexWriter(fsDirectory, iwc);
 
-                Lucene.Net.Index.IndexWriter indexWriter = new Lucene.Net.Index.IndexWriter(fsDirectory, iwc);
+                Lucene.Net.Index.IndexWriter indexWriter = new Lucene.Net.Index.IndexWriter(fsDirectory, new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30), IndexWriter.MaxFieldLength.UNLIMITED);
 
                 luceneUpdateIndexInfo.UpdateIndexSearcher = indexSearcher;
                 luceneUpdateIndexInfo.UpdateIndexWriter = indexWriter;

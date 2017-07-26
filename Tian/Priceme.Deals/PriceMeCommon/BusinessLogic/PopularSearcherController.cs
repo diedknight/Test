@@ -35,7 +35,8 @@ namespace PriceMeCommon.BusinessLogic
                 excludePidList.AddRange(excludePids.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
             }
 
-            Sort sort = new Sort(new SortField("Clicks", Lucene.Net.Search.SortFieldType.INT32, true));
+            //Sort sort = new Sort(new SortField("Clicks", Lucene.Net.Search.SortFieldType.INT32, true));
+            Sort sort = new Sort(new SortField("Clicks", SortField.INT, true));
 
             TopDocs tds1 = null;
             Task task1 = new Task(() => {
@@ -51,9 +52,10 @@ namespace PriceMeCommon.BusinessLogic
                 BooleanQuery categoryQuery = SearchController.GetCategoryQuery(categoryIDList, true, countryId);
                 if (categoryQuery != null)
                 {
-                    Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-                    Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(-1, 0, btRef);
-                    TermQuery termQuery = new TermQuery(new Term("CategoryID", btRef));
+                    //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+                    //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(-1, 0, btRef);
+                    //TermQuery termQuery = new TermQuery(new Term("CategoryID", btRef));
+                    TermQuery termQuery = new TermQuery(new Term("CategoryID", "-1"));
                     categoryQuery.Add(termQuery, Occur.SHOULD);
                     bq.Add(categoryQuery, Occur.MUST);
                 }
@@ -63,9 +65,10 @@ namespace PriceMeCommon.BusinessLogic
                     BooleanQuery ppcQuery = new BooleanQuery();
                     TermQuery ppcTermQuery = new TermQuery(new Term("IncludePPC", "1"));
                     ppcQuery.Add(ppcTermQuery, Occur.SHOULD);
-                    Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
-                    Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(-1, 0, btRef);
-                    TermQuery categoryTermQuery = new TermQuery(new Term("CategoryID", btRef));
+                    //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+                    //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(-1, 0, btRef);
+                    //TermQuery categoryTermQuery = new TermQuery(new Term("CategoryID", btRef));
+                    TermQuery categoryTermQuery = new TermQuery(new Term("CategoryID", "-1"));
                     ppcQuery.Add(categoryTermQuery, Occur.SHOULD);
                     bq.Add(ppcQuery, Occur.MUST);
                 }
