@@ -1823,6 +1823,21 @@ label, label + * {
 	background-color: #ddd;
 }
 
+.overview .overview-Buyerprotection {
+    color: #3e4c66;
+    font-size: 16px;
+}
+
+.overview .overview-Buyerprotection .Learnmore {
+    color: #777;
+    margin-left:10px;
+    font-size: 12px;
+}
+
+.overview .overview-Buyerprotection:hover .Learnmore {
+    color: #ffa101;
+}
+
 .overview .add-to-compare-list-button {
     background-image: url('../images/compare-button.png');
 }
