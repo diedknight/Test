@@ -1,0 +1,27 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Localization
+@using Nop.Web.Framework.Themes
+@using System.Web.Mvc
+
+@model LogoModel
+@using Nop.Web.Models.Common;
+
+@{
+    var currentThemeName = EngineContext.Current.Resolve<IThemeContext>().WorkingThemeName;
+    var logoPath = "~/Themes/" + currentThemeName + "/Content/img/logo.png";
+    var themeLogo = Html.Widget("pavilion_theme_logo11");
+    var currentStore = EngineContext.Current.Resolve<IStoreContext>().CurrentStore;
+}
+
+<a href="@Url.RouteUrl("HomePage")" class="logo">
+    @if (!MvcHtmlString.IsNullOrEmpty(themeLogo))
+    {
+        @themeLogo
+    }
+    else
+    {
+        string storeName = currentStore.GetLocalized(x => x.Name);
+        <img title="" alt="Shop.co.nz" src="https://shop.co.nz/content/images/thumbs/0000129.png" style="background-color: #fff">
+    }
+</a>
