@@ -18,7 +18,7 @@ public static class SiteConfig
     public static void Load()
     {
         try
-        {
+        { 
             Timer.DKTimer dkTimer = new Timer.DKTimer();
             dkTimer.Start();
 
