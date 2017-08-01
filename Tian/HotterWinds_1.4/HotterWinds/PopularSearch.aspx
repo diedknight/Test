@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PopularSearch.aspx.cs" Inherits="HotterWinds.PopularSearch" ContentType="text/javascript" %>
+<%@ OutputCache Duration="86400" VaryByParam="*" %>

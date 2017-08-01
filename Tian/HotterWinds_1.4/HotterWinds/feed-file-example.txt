@@ -1,0 +1,2 @@
+product name;brand;category;price;stock quantity;product url;image url;SKU;MPN
+"100% Pure Colostrum";"Good Health";"Supplements : Immune System : Supplements : Immune System : Colostrum";"29.9500";"999";"http://www.yourdays.co.nz/index.php?route=product/product&amp;product_id=350";"http://www.yourdays.co.nz/image/cache/data/Good Health/100 Pure Colostrum-500x500.jpg";"83681";"MIC-MD220-WH"

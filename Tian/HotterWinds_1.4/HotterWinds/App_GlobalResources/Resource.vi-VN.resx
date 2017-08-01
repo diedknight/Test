@@ -1,0 +1,1884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutPriceme" xml:space="preserve">
+    <value>"&lt;p&gt;Bất kể bạn đang shopping (mua sắm) gì trên mạng - &lt;a&gt;camera&lt;/a&gt;, &lt;a&gt;điện thoại di động&lt;/a&gt;, &lt;a&gt;màn hình LCD&lt;/a&gt;, hoặc chỉ để tìm hiểu các sản phẩm mới nhất - PriceMe cho phép bạn so sánh và nghiên cứu các sản phẩm nhanh chóng và dễ dàng.&lt;/p&gt;
+
+&lt;P&gt;Chúng tôi có các lựa chọn nhà bán lẻ trực tuyến toàn diện và lớn nhất VIệt Nam trong cùng một nơi. Những nhà bán lẻ này có tổng cộng hơn hằng trăm ngàn sản phẩm&lt;/s&gt; có thể được mua trực tuyến!&lt;/p&gt;"</value>
+  </data>
+  <data name="Brandbuilding" xml:space="preserve">
+    <value>Các đối tác bán lẻ được gia tăng sự tiếp cận bằng việc được hiển thị logo công ty của họ cho mỗi danh sách sản phẩm trong số rất nhiều lợi ích khác. Các đối tác còn có thể hiển thị một slogan (khẩu hiệu) bán hàng bên cạnh logo, và cũng được quảng cáo như một nhà bán lẻ đặc biệt trên website và trên các quảng cáo PriceMe. Kết hợp thương hiệu và các sản phẩm của bạn với một cơ cấu mua sắm Việt Nam đáng tin cậy như PriceMe là một cách tuyệt vời để xây dựng sự công nhận và niềm tin của người tiêu dùng. Xin vui lòng liên hệ chúng tôi về tất cả thông tin chi tiết về các lợi ích mà các nhà bán lẻ được hưởng.</value>
+  </data>
+  <data name="BuyingGuides" xml:space="preserve">
+    <value>Những hướng dẫn mua sắm của chúng tôi được cung cấp bởi {0} - nguồn thông tin sản phẩm không thiên vị hàng đầu Việt nam.</value>
+  </data>
+  <data name="CompanyInfo" xml:space="preserve">
+    <value>PriceMe là một công ty phát triển tiên phong có trụ sở ở Jakarta. Công ty cung cấp thông tin mua sắm trực tuyến như so sánh sản phẩm và giá, các nhận xét cũng như các dịch vụ giá trị thêm khác cho người dùng tại Việt Nam.Mục tiêu của công ty là cung cấp cho người dùng thông tin mà anh hoặc cô ấy cần để tìm đúng sản phẩm từ một nhà bán lẻ đáng tin cậy ở mức giá thấp nhất. Xin &lt;a&gt;liên lạc với chúng tôi&lt;/a&gt; đối với bất cứ thắc mắc liên quan đến công ty và công việc kinh doanh.</value>
+  </data>
+  <data name="CompetitionAveragePosition" xml:space="preserve">
+    <value>Vị trí trung bình của các sản phẩm của bạn trong danh mục ngay từ bây giờ. Lợi ích này cho bạn một ý kiến thô về cách các sản phẩm của bạn được so sánh giá với các đối thủ của bạn. Vị trí trung bình được tính toán cho mọi sản phẩm có ít nhất bốn nhà bán lẻ.</value>
+  </data>
+  <data name="CompetitionDeatiledPositioning" xml:space="preserve">
+    <value>Vị trí chi tiết của các sản phẩm của bạn trong danh mục ngay từ bây giờ. Biểu đồ hiển thị thị phần các sản phẩm của bạn trong bốn nhóm giá (Top 25% rẻ nhất, 25-50% rẻ thứ hai,v.v). Vị trí được dựa trên sự so sánh các sản phẩm có ít nhất bốn nhà bán lẻ.</value>
+  </data>
+  <data name="CompetitionLowestPrice" xml:space="preserve">
+    <value>Các sản phẩm của bạn trong danh mục có mức giá thấp nhất trên PriceMe kể từ bây giờ. Nhấn vào liên kết để xem sản phẩm chi tiết hơn và thông tin giá chênh lệch.</value>
+  </data>
+  <data name="CompetitionMostExpensive" xml:space="preserve">
+    <value>Các sản phẩm của bạn trong danh mục có mức giá cao nhất trên PriceMe kể từ bây giờ. Nhấn vào liên kết để xem sản phẩm chi tiết hơn và thông tin giá chênh lệch.</value>
+  </data>
+  <data name="CompetitionPositioningTopProductsInCategory" xml:space="preserve">
+    <value>Hiển thị thứ hạng của tôi cho hầu hết các sản phẩm được click thường xuyên trong danh mục trong 30 ngày gần nhất. Chỉ những sản phẩm có bốn nhà bán lẻ được xem xét. Tôi có nên bố trí sản phẩm của tôi khác nhau, đặc biệt là những sản phẩm phổ biến nhất được hiển thị trên cùng (top)?</value>
+  </data>
+  <data name="CompetitionShareClickInCategory" xml:space="preserve">
+    <value>Thị phần click chuột trong 30 ngày gần nhất của danh mục đã chọn. Ví dụ, 10% có nghĩa là cửa hàng của tôi thu hút 10% trên tất cả click chuột trong danh mục. Tôi có thể phân bố các sản phẩm của tôi khác biệt để thu hút một lượng click lớn hơn?</value>
+    <comment>Currency</comment>
+  </data>
+  <data name="CompetitionTopProductByClicks" xml:space="preserve">
+    <value>Thứ hạng của top 5 sản phẩm của tôi dựa trên các lượt click kể từ bây giờ. Ví dụ, Ví dụ, 2 trên 8 ám chỉ rằng các sản phẩm của tôi xếp hạng rẻ nhất thứ hai trên 8 nhà bán lẻ. Thứ hạng được tính dựa trên giá và chỉ xem xét một giá trên một nhà bán lẻ. Làm thế nào phân bố các sản phẩm top của tôi?</value>
+  </data>
+  <data name="ControlPanel_ProductDisplayed" xml:space="preserve">
+    <value>Tổng số sản phẩm trong danh mục hiện đang hiển thị trên website hôm nay. Lưu ý: Đây là tổng số sản phẩm bao gồm tất cả sản phẩm cho tất cả nhà bán lẻ.</value>
+  </data>
+  <data name="ControlPanel_Top5ProByClicks" xml:space="preserve">
+    <value>5 sản phẩm được ghé thăm nhiều nhất của tôi dựa trên lượt click tháng trước. Số click được hiển thị trong dấu ngoặc.</value>
+  </data>
+  <data name="ControlPanel_Top5useripsbyclick" xml:space="preserve">
+    <value>Top 5 địa chỉ IP dựa trên lượt click tháng trước. Các địa chỉ IP thật sự được giấu do các vấn đề riêng tư và có thể không được hiển thị. Có phải các địa chỉ IP nhất định đóng góp nhiều hơn những ip khác?</value>
+  </data>
+  <data name="ControlPanel_TotalProducts" xml:space="preserve">
+    <value>Số sản phẩm được tôi liệt kê trên PriceMe. Tổng số đếm được cập nhật trên cơ sở hằng ngày.</value>
+  </data>
+  <data name="Default_HotSearch_Title" xml:space="preserve">
+    <value>Tìm Kiếm Phổ Biến</value>
+  </data>
+  <data name="Default_MostPopularCategories_Title" xml:space="preserve">
+    <value>Danh Mục Phổ Biến</value>
+  </data>
+  <data name="Default_MostPopuler_Help" xml:space="preserve">
+    <value>"Các sản phẩm phổ biến nhất được hiển thị tại đây là những sản phẩm được xem thường xuyên nhất trên PriceMe trong
+30 ngày gần đây."</value>
+  </data>
+  <data name="Default_NewExpertReview_Tilte" xml:space="preserve">
+    <value>Các Đánh Giá Chuyên Gia Mới Nhất</value>
+  </data>
+  <data name="Default_NewProducts_Help" xml:space="preserve">
+    <value>Các sản phẩm hiển thị ở đây bao gồm hiển thị cả những sản phẩm vừa được thêm mới cho lần đầu tiên trên PriceMe và những bổ sung mới cho các sản phẩm đã có.</value>
+  </data>
+  <data name="Default_PopulerSearch_Help" xml:space="preserve">
+    <value>Các tìm kiếm sản phẩm phổ biến nhất trên PriceMe trong hơn 20 ngày qua. Các người dùng đã so sánh giá cả đối với các kết quả tìm kiếm liên quan.</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="FindOnPriceMe" xml:space="preserve">
+    <value>"PriceMe bao gồm và so sánh giá cả của một số lượng lớn các danh mục sản phẩm. Hầu hết các sản phẩm là sản phẩm tiêu dùng (TV, camera, đồ dùng trong nhà, v.v), nhưng chúng tôi cũng cung cấp các dịch vụ chẳng hạn như các kế hoạch mở rộng thương hiệu. Xin tham khảo &lt;a&gt;cấu trúc site&lt;/a&gt; của chúng tôi (site map) để có một cái nhìn tổng thể về các danh mục sản phẩm của PriceMe. PriceMe hiện
+đang mở rộng phạm vi sản phẩm của chúng tôi, vì thế nếu bạn không thể tìm thấy sản phẩm bạn quan tâm trong lúc này thì rất có khả năng bạn sẽ có thể tìm thấy sớm. Xin &lt;a&gt;Liên Hệ Chúng Tôi&lt;/a&gt; để đề nghị các danh mục sản phẩm mà bạn nghĩ là hữu ích cho người tiêu dùng."</value>
+  </data>
+  <data name="InformationOnPriceMe" xml:space="preserve">
+    <value>Tuyệt đối. Chúng tôi luôn luôn liệt kê giá thấp nhất đầu tiên mà không có bất cứ sự thiên vị nào. Các nhận xét được viết bởi những người tiêu dùng hoặc bởi các chuyên gia độc lập và dữ liệu sản phẩm được biên dịch từ những nguồn độc lập. PriceMe không phụ thuộc vào bất cứ nhà sản xuất, các nhà bán lẻ hoặc tổ chức nào khác cho các thông tin được cung cấp trên website. Chúng tôi có trả tiền cho các nhà bán lẻ và các nhà quảng cáo như khách hàng, nhưng thông tin này không ảnh hưởng đến sự khách quan của chúng tôi theo bất kỳ cách nào. Mục tiêu chính của PriceMe là trở thành nguồn thông tin mua sắm độc lập của bạn tại Việt Nam.</value>
+  </data>
+  <data name="Module_CatalogShoppingInformation_Title" xml:space="preserve">
+    <value>Thông Tin Mua Sắm {0} Trực Tuyến</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_OtherTitle" xml:space="preserve">
+    <value>{0} Danh Mục Khác</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_SeeMore" xml:space="preserve">
+    <value>Thêm {0}</value>
+  </data>
+  <data name="Module_CatalogSiteMap_Title" xml:space="preserve">
+    <value>Các danh mục {0} phổ biến nhất</value>
+  </data>
+  <data name="Module_CompareBaske_EmptyInfo" xml:space="preserve">
+    <value>Danh sách so sánh của bạn đang trống</value>
+  </data>
+  <data name="Module_FooterBuyingGuides_Content" xml:space="preserve">
+    <value>Những gì bạn cần biết khi mua sắm {0}.</value>
+  </data>
+  <data name="Module_MyHistory_Title" xml:space="preserve">
+    <value>Lịch Sử Của Bạn</value>
+  </data>
+  <data name="Module_MyRecentlySearch_Tilte" xml:space="preserve">
+    <value>Các Tìm Kiếm Gần Nhất</value>
+  </data>
+  <data name="Module_MyRecentlyViewed_Tilte" xml:space="preserve">
+    <value>Đã Xem Gần Nhất</value>
+  </data>
+  <data name="Module_MyWishlist_EmptyInfo" xml:space="preserve">
+    <value>Danh sách mua hàng của bạn đang trống</value>
+  </data>
+  <data name="Module_News_Title" xml:space="preserve">
+    <value>Tin Tức</value>
+  </data>
+  <data name="Product_PriceCompare_Fees" xml:space="preserve">
+    <value>phí</value>
+  </data>
+  <data name="Product_PriceCompare_NoFees" xml:space="preserve">
+    <value>Không có phí</value>
+  </data>
+  <data name="Product_PriceHistory" xml:space="preserve">
+    <value>Lịch Sử Giá</value>
+  </data>
+  <data name="Product_ProductDescription" xml:space="preserve">
+    <value>Miêu Tả Sản Phẩm</value>
+  </data>
+  <data name="Product_RatingControl_ExpertReview" xml:space="preserve">
+    <value>Đánh giá của chuyên gia</value>
+  </data>
+  <data name="Product_RatingControl_Rating" xml:space="preserve">
+    <value>Bình chọn</value>
+  </data>
+  <data name="Product_RatingControl_UserReview" xml:space="preserve">
+    <value>Đánh giá của người dùng</value>
+  </data>
+  <data name="Product_RatingControl_WriteReview" xml:space="preserve">
+    <value>Viết một đánh giá</value>
+  </data>
+  <data name="Product_RightMostPopular_More" xml:space="preserve">
+    <value>Xem phổ biến hơn…</value>
+  </data>
+  <data name="Product_RightMostPopular_MostPopular" xml:space="preserve">
+    <value>{0} phổ Biến Nhất</value>
+  </data>
+  <data name="Product_SimilarLinks_Checkup" xml:space="preserve">
+    <value>Kiểm tra đến 3 sản phẩm và so sánh chúng với</value>
+  </data>
+  <data name="Product_SimilarLinks_PriceRange" xml:space="preserve">
+    <value>Khoảng Giá</value>
+  </data>
+  <data name="Product_SimilarLinks_Related" xml:space="preserve">
+    <value>Liên quan</value>
+  </data>
+  <data name="Product_SimilarLinks_Similar" xml:space="preserve">
+    <value>Tương tự</value>
+  </data>
+  <data name="Product_Title" xml:space="preserve">
+    <value>So Sánh Giá Trên Price Me</value>
+  </data>
+  <data name="Product_TopDisplay_Alert" xml:space="preserve">
+    <value>Đặt thông báo giá</value>
+  </data>
+  <data name="Product_TopDisplay_FromRetailer" xml:space="preserve">
+    <value>từ {0} nhà bán lẻ</value>
+  </data>
+  <data name="Product_UserReviews" xml:space="preserve">
+    <value>Đánh Giá Của Người Dùng</value>
+  </data>
+  <data name="Product_What" xml:space="preserve">
+    <value>Đây là gì</value>
+  </data>
+  <data name="RatingControl_AddRating" xml:space="preserve">
+    <value>Thêm bình chọn của bạn</value>
+  </data>
+  <data name="RatingControl_CurrentRating" xml:space="preserve">
+    <value>Bình chọn hiện tại</value>
+  </data>
+  <data name="RatingControl_Excellent" xml:space="preserve">
+    <value>Xuất sắc</value>
+  </data>
+  <data name="RatingControl_FooterReview_Bought" xml:space="preserve">
+    <value>Xin đề cập những gì bạn đã mua</value>
+  </data>
+  <data name="RatingControl_FooterReview_Rating" xml:space="preserve">
+    <value>Xin giải thích bình chọn của bạn</value>
+  </data>
+  <data name="RatingControl_Good" xml:space="preserve">
+    <value>Tốt</value>
+  </data>
+  <data name="RatingControl_ListDate" xml:space="preserve">
+    <value>Ngày liệt kê</value>
+  </data>
+  <data name="RatingControl_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RetailerInformation" xml:space="preserve">
+    <value>Thông Tin Nhà Bán Lẻ</value>
+  </data>
+  <data name="RetailerInfo_General" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="RetailerInfo_HomePage" xml:space="preserve">
+    <value>Trang chính</value>
+  </data>
+  <data name="RetailerInfo_ReportRetailer" xml:space="preserve">
+    <value>Báo Cáo Nhà Bán Lẻ</value>
+  </data>
+  <data name="RetailerInfo_ReviewsRatings" xml:space="preserve">
+    <value>Đánh Giá &amp; Bình Chọn</value>
+  </data>
+  <data name="RetailerInfo_StoreCategories" xml:space="preserve">
+    <value>Các Danh Mục Cửa Hàng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo" xml:space="preserve">
+    <value>Thông Tin Cửa Hàng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Address" xml:space="preserve">
+    <value>Địa Chỉ</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardInfo" xml:space="preserve">
+    <value>Thông Tin Thẻ Tín Dụng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardNot" xml:space="preserve">
+    <value>Không hỗ trợ thẻ tín dụng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_DeliveryInfo" xml:space="preserve">
+    <value>Thông Tin Giao Hàng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Friday" xml:space="preserve">
+    <value>Thứ Sáu</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_FullCompanyName" xml:space="preserve">
+    <value>Tên Đầy Đủ Của Công Ty</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_GSTNumber" xml:space="preserve">
+    <value>Số GST</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Monday" xml:space="preserve">
+    <value>Thứ Hai</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_MoreInfo" xml:space="preserve">
+    <value>Thêm thông tin về các sản phẩm nhập khẩu song song từ Người Tiêu Dùng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NoCreditCard" xml:space="preserve">
+    <value>Không tính phí thẻ tín dụng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NumberEmployees" xml:space="preserve">
+    <value>Số nhân viên</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_OpeningHours" xml:space="preserve">
+    <value>Giờ mở cửa</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ParallelImported" xml:space="preserve">
+    <value>Nhập khẩu song song</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_PaymentMethods" xml:space="preserve">
+    <value>Phương thức thanh toán</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_RegistrationNumber" xml:space="preserve">
+    <value>Số Đăng Ký</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ReturnPolicy" xml:space="preserve">
+    <value>Chính Sách Trả Lại</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Saturday" xml:space="preserve">
+    <value>Thứ Bảy</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_SeeWebsite" xml:space="preserve">
+    <value>Xem website. Các sản phẩm nhập khẩu song song được chỉ ra như vậy.</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_StoreType" xml:space="preserve">
+    <value>Kiểu Cửa Hàng</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Sunday" xml:space="preserve">
+    <value>Chủ Nhật</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Thursday" xml:space="preserve">
+    <value>Thứ Năm</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_TradingName" xml:space="preserve">
+    <value>Tên Giao Dịch</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Tuesday" xml:space="preserve">
+    <value>Thứ Ba</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Wednesday" xml:space="preserve">
+    <value>Thứ Tư</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_YearEstablished" xml:space="preserve">
+    <value>Năm phát hành</value>
+  </data>
+  <data name="RetailerInfo_StoreLocation" xml:space="preserve">
+    <value>Địa Điểm Cửa Hàng</value>
+  </data>
+  <data name="RetailerInfo_StoreProducts" xml:space="preserve">
+    <value>Các Sản Phẩm Của Cửa Hàng</value>
+  </data>
+  <data name="RetailerInfo_StoreReviews" xml:space="preserve">
+    <value>Đánh Giá Cửa Hàng</value>
+  </data>
+  <data name="RetailerInfo_WhyUs" xml:space="preserve">
+    <value>Tại sao chọn chúng tôi</value>
+  </data>
+  <data name="RetailerListOnPriceMe" xml:space="preserve">
+    <value>PriceMe liệt kê các nhà bản lẻ Việt Nam có cung cấp mua bán trực tuyến, tức là có một website để bạn có thể mua, và được cho là có uy tín với các sản phẩm có giá cạnh tranh. Các nhà bán lẻ được liệt kê để cung cấp cho các người tiêu dùng một cái nhìn độc lập bất kể đó là một khách hàng chịu trả tiền hay không. Tất cả nhà bán lẻ được liệt kê trên PriceMe đều đáp ứng các nhu cầu cho các cửa hàng trực tuyến. Các nhà bán lẻ nhận nhiều phàn nàn hoặc không đáp ứng các yêu cầu sẽ bị loại khỏi danh sách.</value>
+  </data>
+  <data name="RetailerList_AvrRating" xml:space="preserve">
+    <value>Mức Bình Chọn TB</value>
+  </data>
+  <data name="RetailerList_RetailerStoreInfoList" xml:space="preserve">
+    <value>Danh Sách Thông Tin Cửa Hàng Nhà Bán Lẻ</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_CreditCard" xml:space="preserve">
+    <value>Thẻ Tín Dụng</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Delivery" xml:space="preserve">
+    <value>Giao hàng</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Freeshipping" xml:space="preserve">
+    <value>Ship miễn phí</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Nofee" xml:space="preserve">
+    <value>Không phí</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Notsupported" xml:space="preserve">
+    <value>Không hỗ trợ</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Only" xml:space="preserve">
+    <value>Chỉ</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Providedby" xml:space="preserve">
+    <value>Cung cấp bởi</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_UIC" xml:space="preserve">
+    <value>UIC</value>
+  </data>
+  <data name="RetailersList" xml:space="preserve">
+    <value>Chào mừng đến Danh Sách Nhà Bán Lẻ PriceMe - địa điểm dành cho các nhà bán lẻ hàng đầu Việt Nam.</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>đánh giá</value>
+  </data>
+  <data name="SearchPanel" xml:space="preserve">
+    <value>Tổng số click và các chi phí đi kèm đối với các giai đoạn được chọn và danh mục (nếu danh mục được chọn). Các chi phí được tính dựa trên giá PPC cho danh mục. Xin tham khảo mục Thanh Toán để biết số dư hiện tại của tài khoản của bạn.</value>
+  </data>
+  <data name="ShareWishListEmailBody" xml:space="preserve">
+    <value>Tôi chỉ muốn chia sẻ Danh Sách Mua Hàng của tôi với tất cả những thứ tuyệt nhất mà tôi muốn sở hữu! *gợi ý gợi ý*&lt;br /&gt;&lt;br /&gt;Tôi đã tìm kiếm và tìm thấy những sản phẩm và các nhà bán lẻ này trên PriceMe. Hãy khám phá nó!</value>
+  </data>
+  <data name="ShoppingInformation" xml:space="preserve">
+    <value>Thông Tin Mua Sắm</value>
+  </data>
+  <data name="StatusBarText" xml:space="preserve">
+    <value>Mua Sắm Trực Tuyến tại Việt Nam</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>Sản phẩm tương tự cho</value>
+  </data>
+  <data name="String_DefaultCategoryDescription" xml:space="preserve">
+    <value>So sánh {0} giá và các đánh giá trên PriceMe, và mua {0} từ {1} và nhiều hơn.</value>
+  </data>
+  <data name="TextString_404PageContent" xml:space="preserve">
+    <value>&lt;p&gt;Chúng tôi đã ghi nhận lỗi này và nó sẽ được xem xét bởi đội ngũ nhân viên kỹ thuật của chúng tôi.&lt;/p&gt;
+&lt;ul id="reasons"&gt;
+&lt;li&gt;Nếu bạn đã tự nhập địa chỉ, xin hãy xác nhận chính tả đã chỉnh xác.&lt;/li&gt;
+&lt;li&gt;Nếu bạn đã nhấn vào một liên kết từ danh sách yêu thích của bạn, liên kết có thể đã lỗi thời.&lt;/li&gt;
+&lt;li&gt;Ngược lại, chúng tôi có thể đang gặp các sự cố với các máy chủ. Chúng tôi sẽ sữa nó và bạn sẽ không cần phải làm gì thêm.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br /&gt;
+&lt;p&gt;Nếu bạn tiếp tục gặp sự cố xin &lt;a href="/About/contactUs.aspx"&gt;liên hệ chúng tôi&lt;/a&gt; đẻ được hỗ trợ.&lt;/p&gt;</value>
+  </data>
+  <data name="TextString_404PageH1" xml:space="preserve">
+    <value>Xin lỗi, không tìm thấy trang này!</value>
+  </data>
+  <data name="TextString_About" xml:space="preserve">
+    <value>Giói thiệu</value>
+  </data>
+  <data name="TextString_AboutMe" xml:space="preserve">
+    <value>Về Chúng Tôi</value>
+  </data>
+  <data name="TextString_AboutPriceMe" xml:space="preserve">
+    <value>Về PriceMe</value>
+  </data>
+  <data name="TextString_AddToMyCompareList" xml:space="preserve">
+    <value>Danh Sách Của Tôi</value>
+  </data>
+  <data name="TextString_AdvancedFeatures" xml:space="preserve">
+    <value>Các Tính Năng Nâng Cao</value>
+  </data>
+  <data name="TextString_AllBrands" xml:space="preserve">
+    <value>Tất Cả Nhãn Hàng</value>
+  </data>
+  <data name="TextString_AllReviews" xml:space="preserve">
+    <value>Tất Cả Đánh Giá</value>
+  </data>
+  <data name="TextString_BasePrice" xml:space="preserve">
+    <value>Giá Cơ Bản</value>
+  </data>
+  <data name="TextString_BestPrice" xml:space="preserve">
+    <value>Giá Tốt Nhất</value>
+  </data>
+  <data name="TextString_Brand" xml:space="preserve">
+    <value>Nhãn Hàng</value>
+  </data>
+  <data name="TextString_Brands" xml:space="preserve">
+    <value>Nhãn Hàng</value>
+  </data>
+  <data name="TextString_BrowseAll" xml:space="preserve">
+    <value>Duyệt Tất Cả…</value>
+  </data>
+  <data name="TextString_BrowseAllCategories" xml:space="preserve">
+    <value>Duyệt tất cả danh mục</value>
+  </data>
+  <data name="TextString_BuyGuideTitle" xml:space="preserve">
+    <value>Các Hướng Dẫn Mua Sắm để Mua Sắm Thông Minh Hơn</value>
+  </data>
+  <data name="TextString_BuyingGuide" xml:space="preserve">
+    <value>Hướng Dẫn Mua Sắm</value>
+  </data>
+  <data name="TextString_BuyingGuides" xml:space="preserve">
+    <value>Các Hướng Dẫn Mua Sắm</value>
+  </data>
+  <data name="TextString_CatalogSelection" xml:space="preserve">
+    <value>Lựa chọn:</value>
+  </data>
+  <data name="TextString_CatalogSortby" xml:space="preserve">
+    <value>Sắp xếp theo:</value>
+  </data>
+  <data name="TextString_CatalogView" xml:space="preserve">
+    <value>Xem theo:</value>
+  </data>
+  <data name="TextString_Categories" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="TextString_Category" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="TextString_Checkout" xml:space="preserve">
+    <value>Khám phá {0} trên PriceMe</value>
+  </data>
+  <data name="TextString_Community" xml:space="preserve">
+    <value>Cộng đồng</value>
+  </data>
+  <data name="TextString_Compare" xml:space="preserve">
+    <value>So sánh</value>
+  </data>
+  <data name="TextString_CompareButtonDescription" xml:space="preserve">
+    <value>Kiểm tra đến 3 sản phẩm do bạn chọn và nhấn nút so sánh</value>
+  </data>
+  <data name="TextString_CompareProducts" xml:space="preserve">
+    <value>So sánh các sản phẩm</value>
+  </data>
+  <data name="TextString_Contact" xml:space="preserve">
+    <value>Liên hệ</value>
+  </data>
+  <data name="TextString_ContactUs" xml:space="preserve">
+    <value>Liên Hệ Chúng Tôi</value>
+  </data>
+  <data name="TextString_ContactUsMSG1" xml:space="preserve">
+    <value>Không rõ ? Nhấn vào ảnh Captcha để xem ảnh mới! Không phân biệt hoa thường.</value>
+  </data>
+  <data name="TextString_CopyToList" xml:space="preserve">
+    <value>Copy vào danh sách</value>
+  </data>
+  <data name="TextString_CountInStock" xml:space="preserve">
+    <value>còn hàng</value>
+  </data>
+  <data name="TextString_CreateNewList" xml:space="preserve">
+    <value>Tạo Danh Sách Mới</value>
+  </data>
+  <data name="TextString_CurrentRetailers" xml:space="preserve">
+    <value>Các Nhà Bán Lẻ Hiện Tại</value>
+  </data>
+  <data name="TextString_DealsAndOffers" xml:space="preserve">
+    <value>{0} deal và ưu đãi - Mua Sắm Trực Tuyến trên Price Me</value>
+  </data>
+  <data name="TextString_Edit" xml:space="preserve">
+    <value>Sửa</value>
+  </data>
+  <data name="TextString_EditReview" xml:space="preserve">
+    <value>Sửa Đánh Giá</value>
+  </data>
+  <data name="TextString_EmptyListStr" xml:space="preserve">
+    <value>Danh sách hiện tại của bạn đang trống. Xin thêm các sản phẩm vào danh sách của bạn bằng cách click vào liên kết "Thêm vào danh sách đã lưu của tôi".</value>
+  </data>
+  <data name="TextString_Error500" xml:space="preserve">
+    <value>"&lt;h1&gt;Lỗi: Lỗi bên trong máy chủ&lt;/h1&gt;
+    &lt;div style=""font-size:14px;""&gt;
+        &lt;br /&gt;
+Một lỗi đã xảy ra trên trang.&lt;br /&gt;
+        &lt;br /&gt;
+Lỗi này đã được tự động báo cáo về đội ngũ PriceMe.&lt;br /&gt;
+        &lt;br /&gt;
+Xin nhấn trở về để đến trang trước đó hoặc trở về &lt;a href="/"&gt;Trang chủ&amp;nbsp;&lt;br /&gt;
+        &lt;br /&gt;
+    &lt;/div&gt;"</value>
+  </data>
+  <data name="TextString_ExcludeRetailer" xml:space="preserve">
+    <value>Không bao gồm nhà bán lẻ:</value>
+  </data>
+  <data name="TextString_ExpertReviewDesc" xml:space="preserve">
+    <value>Đọc {0} đánh giá và bình chọn của chuyên gia. Tìm ưu điểm và nhược điểm của sản phẩm với các đánh giá chuyên gia của PriceMe và mua sắm thông minh hơn!</value>
+  </data>
+  <data name="TextString_ExpertReviewKeyword" xml:space="preserve">
+    <value>{0}, {1} đánh giá, đánh giá chuyên gia, bình chọn, {2} {3} đánh giá</value>
+  </data>
+  <data name="TextString_ExpertReviewTitle" xml:space="preserve">
+    <value>{0} Đánh Giá Chuyên Gia - Đọc Các Đánh Giá và Mua Sắm Thông Minh Hơn.</value>
+  </data>
+  <data name="TextString_FAQDesc" xml:space="preserve">
+    <value>Các Câu Hỏi Thường Gặp đối với các nhà bán lẻ được liệt kê trên PriceMe.</value>
+  </data>
+  <data name="TextString_FAQKweword" xml:space="preserve">
+    <value>FAQ, nhá bán lẻ, cửa hàng, liệt kê, PriceMe</value>
+  </data>
+  <data name="TextString_FAQs" xml:space="preserve">
+    <value>FAQs</value>
+  </data>
+  <data name="TextString_FeaturedBrand" xml:space="preserve">
+    <value>Nhãn Hàng Nổi Bật</value>
+  </data>
+  <data name="TextString_Features" xml:space="preserve">
+    <value>Các tính năng</value>
+  </data>
+  <data name="TextString_GetAccount" xml:space="preserve">
+    <value>Lấy một Tài Khoản</value>
+  </data>
+  <data name="TextString_GetDirections" xml:space="preserve">
+    <value>Nhận hướng dẫn đường đi</value>
+  </data>
+  <data name="TextString_HasBeenAdded" xml:space="preserve">
+    <value>Sản phẩm đã được thêm vào</value>
+  </data>
+  <data name="TextString_Height" xml:space="preserve">
+    <value>Cao</value>
+  </data>
+  <data name="TextString_Help" xml:space="preserve">
+    <value>Hỗ Trợ</value>
+  </data>
+  <data name="TextString_HelpDesc" xml:space="preserve">
+    <value>Tại sao nên dùng PriceMe cho mua sắm trực tuyến, tìm kiếm sản phẩm và so sánh giá cả</value>
+  </data>
+  <data name="TextString_Helpkeyword" xml:space="preserve">
+    <value>deal, tìm kiếm, mua, trực tuyến, mua sắm</value>
+  </data>
+  <data name="TextString_HowToUsePriceMe" xml:space="preserve">
+    <value>Cách Dùng PriceMe</value>
+  </data>
+  <data name="TextString_Images" xml:space="preserve">
+    <value>hình ảnh</value>
+  </data>
+  <data name="TextString_InCorrectEmailFormat" xml:space="preserve">
+    <value>Định dạng email không đúng</value>
+  </data>
+  <data name="TextString_Infoabout" xml:space="preserve">
+    <value>thông tin về {0}</value>
+  </data>
+  <data name="TextString_JoinNowAlt" xml:space="preserve">
+    <value>Liệt kê các sản phẩm của bạn trên trang so sánh mua sắm trực tuyến tốt nhất Việt Nam.</value>
+  </data>
+  <data name="TextString_JoinNowTitle" xml:space="preserve">
+    <value>Tham gia trang mua sắm hàng đầu Việt Nam</value>
+  </data>
+  <data name="TextString_Latest" xml:space="preserve">
+    <value>{0} Mới Nhất</value>
+  </data>
+  <data name="TextString_ListProducts" xml:space="preserve">
+    <value>Liệt Kê Sản Phẩm</value>
+  </data>
+  <data name="TextString_LocationInFor" xml:space="preserve">
+    <value>Các địa điểm trong {0} đối với {1}</value>
+  </data>
+  <data name="TextString_LoginHere" xml:space="preserve">
+    <value>Đăng nhập ở đây</value>
+  </data>
+  <data name="TextString_LowestPrice" xml:space="preserve">
+    <value>Giá Thấp Nhất</value>
+  </data>
+  <data name="TextString_MemberDetails" xml:space="preserve">
+    <value>{0} thành viên chi tiết</value>
+  </data>
+  <data name="TextString_MoreCountries" xml:space="preserve">
+    <value>Thêm Quốc Gia</value>
+  </data>
+  <data name="TextString_MoreDetails" xml:space="preserve">
+    <value>Chi Tiết Hơn</value>
+  </data>
+  <data name="TextString_MostPopularDesc" xml:space="preserve">
+    <value>{0} phổ biến nhất trong {1} trong mua sắm trực tuyến, đánh giá và so sánh giá cả.</value>
+  </data>
+  <data name="TextString_MostPopularMetaKey" xml:space="preserve">
+    <value>phổ biến, {0}, shopping, trực tuyến, giá cả, so sánh</value>
+  </data>
+  <data name="TextString_MostPopularTitle" xml:space="preserve">
+    <value>{0} Mua và Cửa Hàng Trực Tuyến phổ biến nhất trên PriceMe.</value>
+  </data>
+  <data name="TextString_MySavedListStr" xml:space="preserve">
+    <value>Bạn có thể quản lý và tổ chức danh sách của bạn ở đây. Bạn cũng có thể so sánh các sản phẩm bằng cách chọn các sản phẩm bạn quan tâm và nhấn "so sánh". Bạn cũng có thể bỏ các sản phẩm từ danh sách. Tìm hiểu thêm &lt;a href="/MyHistoryInfo.aspx" rel="nofollow"&gt;thông tin&lt;/a&gt; về danh sách đã lưu của tôi.</value>
+  </data>
+  <data name="TextString_NarrowByCate" xml:space="preserve">
+    <value>Thu hẹp theo Danh Mục</value>
+  </data>
+  <data name="TextString_NeedHelp" xml:space="preserve">
+    <value>Cần hỗ trợ và lời khuyên để tìm kiếm đúng {0} ?</value>
+  </data>
+  <data name="TextString_Newquestion" xml:space="preserve">
+    <value>Câu hỏi mới</value>
+  </data>
+  <data name="TextString_Newquestionfor" xml:space="preserve">
+    <value>Câu hỏi mới cho</value>
+  </data>
+  <data name="TextString_NewsLcomplete" xml:space="preserve">
+    <value>Đăng Ký Hoàn Tất Newsletter PriceMe</value>
+  </data>
+  <data name="TextString_NewsletterDesc" xml:space="preserve">
+    <value>Đăng ký nhận newsletter PriceMe để có những tin tức mua sắm trực tuyến mới</value>
+  </data>
+  <data name="TextString_NewsletterHighlights" xml:space="preserve">
+    <value>Các nổi bật của newsletter</value>
+  </data>
+  <data name="TextString_Newsletterkeyword" xml:space="preserve">
+    <value>Mua sắm, newsletter, trực tuyến, tin tức, đăng ký theo dõi</value>
+  </data>
+  <data name="TextString_NewsletterOptions" xml:space="preserve">
+    <value>Lựa Chọn Newsletter PriceMe</value>
+  </data>
+  <data name="TextString_NoHistory" xml:space="preserve">
+    <value>Xin lỗi, Không có lịch sử.</value>
+  </data>
+  <data name="TextString_NoRating" xml:space="preserve">
+    <value>không bình chọn</value>
+  </data>
+  <data name="TextString_NoReview" xml:space="preserve">
+    <value>Không Đánh Giá</value>
+  </data>
+  <data name="TextString_NoReviewAvailable" xml:space="preserve">
+    <value>Hiện không có đánh giá.</value>
+  </data>
+  <data name="TextString_NoSearchResult" xml:space="preserve">
+    <value>Không tìm kiếm bên trong kết quả đối với "{0}"</value>
+  </data>
+  <data name="TextString_NotFoundTitle" xml:space="preserve">
+    <value>{0} Kết Quả - So Sánh Giá trên PriceMe</value>
+  </data>
+  <data name="TextString_NoUserReview" xml:space="preserve">
+    <value>Hiện không có đánh giá của người dùng. Hãy là người đầu tiên viết một đánh giá cho &lt;a href="{0}"&gt;{1}&lt;/a&gt;.&lt;br /&gt;</value>
+  </data>
+  <data name="TextString_Others" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="TextString_OutOfRating" xml:space="preserve">
+    <value>Bình chọn {0} trên 5</value>
+  </data>
+  <data name="TextString_PageNotfound" xml:space="preserve">
+    <value>Không tìm thấy trang</value>
+  </data>
+  <data name="TextString_PageNumber" xml:space="preserve">
+    <value>Tổng số trang:</value>
+  </data>
+  <data name="TextString_PleaseSelect" xml:space="preserve">
+    <value>Xin chọn…</value>
+  </data>
+  <data name="TextString_popularStores" xml:space="preserve">
+    <value>Các Cửa Hàng Phổ Biến</value>
+  </data>
+  <data name="TextString_PReviewSubmitted" xml:space="preserve">
+    <value>"&lt;div&gt;&lt;h5&gt;Đánh giá của bạn cho {0} đã được gửi.&lt;/h5&gt;&lt;/div&gt;
+                        &lt;div&gt;
+                          Cảm ơn bạn đã đánh giá sản phẩm này. Đánh giá của bạn sẽ được hiển thị trên mạng sớm.
+                        &lt;/div&gt;"</value>
+  </data>
+  <data name="TextString_PreviousNewsletters" xml:space="preserve">
+    <value>Newsletter trước</value>
+  </data>
+  <data name="TextString_PricemeNotifyprice" xml:space="preserve">
+    <value>PriceMe sẽ thông báo cho bạn khi giá của {0} xuống dưới {2}{1}.</value>
+  </data>
+  <data name="TextString_PriceMeReviews" xml:space="preserve">
+    <value>Đánh Giá của Người Dùng PriceMe</value>
+  </data>
+  <data name="TextString_PriceRedured" xml:space="preserve">
+    <value>Giá đã giảm</value>
+  </data>
+  <data name="TextString_PriceReduredBelow" xml:space="preserve">
+    <value>Giá đã giảm bên dưới.</value>
+  </data>
+  <data name="TextString_PriceReduredInStock" xml:space="preserve">
+    <value>Giá đã giảm và sản phẩm còn hàng.</value>
+  </data>
+  <data name="TextString_ProDescTitle" xml:space="preserve">
+    <value>{0} thông số kỹ thuật, tính năng và mô tả sản phẩm</value>
+  </data>
+  <data name="TextString_ProductAlertfor" xml:space="preserve">
+    <value>Thông Báo Sản Phẩm cho</value>
+  </data>
+  <data name="TextString_ProductAlertSucces" xml:space="preserve">
+    <value>Cảnh Báo Sản Phẩm Thành Công</value>
+  </data>
+  <data name="TextString_ProductComparison" xml:space="preserve">
+    <value>So Sánh Sản Phẩm</value>
+  </data>
+  <data name="TextString_ProductComparisonSbs" xml:space="preserve">
+    <value>Cạnh Nhau</value>
+  </data>
+  <data name="TextString_ProductDesc" xml:space="preserve">
+    <value>So sánh {0} giá &amp; đọc đánh giá. Tìm giá {1} {2} tốt nhất!</value>
+  </data>
+  <data name="TextString_ProductDescDesc" xml:space="preserve">
+    <value>{0} thông số kỹ thuật và mô tả sản phẩm. Đọc {1} hướng dẫn và sách hướng dẫn (manual).</value>
+  </data>
+  <data name="TextString_ProductDescKeyword" xml:space="preserve">
+    <value>{0}, thông số kỹ thuật, đặc điểm kỹ thuật, sách hướng dẫn, mô tả, hướng dẫn, sản phẩm</value>
+  </data>
+  <data name="TextString_ProductKeyword" xml:space="preserve">
+    <value>{0}, giá, mua, đánh giá, so sánh</value>
+  </data>
+  <data name="TextString_ProductNotFound" xml:space="preserve">
+    <value>Xin lỗi, sản phẩm mà bạn đang tìm không tồn tại hoặc đã bị xóa. &lt;br /&gt;Xin kiểm tra các sản phẩm tương tự ở dưới hoặc thử tìm kiếm sản phẩm.</value>
+  </data>
+  <data name="TextString_ProductReviewDesc" xml:space="preserve">
+    <value>Đọc {0} đánh giá của người dùng. Tìm {1} {2} đánh giá và bình chọn của người dùng!</value>
+  </data>
+  <data name="TextString_ProductReviewKeyword" xml:space="preserve">
+    <value>{0}, {1} đánh giá, đánh giá, bình chọn</value>
+  </data>
+  <data name="TextString_ProductsPurchased" xml:space="preserve">
+    <value>Các Sản Phẩm Đã Mua</value>
+  </data>
+  <data name="TextString_ProReviewFor" xml:space="preserve">
+    <value>Đánh Giá Sản Phẩm đối với {0}</value>
+  </data>
+  <data name="TextString_QuestionFor" xml:space="preserve">
+    <value>câu hỏi cho</value>
+  </data>
+  <data name="TextString_ReadBG" xml:space="preserve">
+    <value>Đọc {0} hướng dẫn muc sắm</value>
+  </data>
+  <data name="TextString_ReadFullReview" xml:space="preserve">
+    <value>Đọc đánh giá đầy đủ tại {0}</value>
+  </data>
+  <data name="TextString_RelatedBuyingGuide" xml:space="preserve">
+    <value>Các Hướng Dẫn Mua Sắm Liên Quan</value>
+  </data>
+  <data name="TextString_Report" xml:space="preserve">
+    <value>Báo cáo</value>
+  </data>
+  <data name="TextString_ReportProduct" xml:space="preserve">
+    <value>Báo Cáo Sản Phẩm</value>
+  </data>
+  <data name="TextString_ReportTitle" xml:space="preserve">
+    <value>Báo cáo vi phạm trên diễn đàn PriceMe.</value>
+  </data>
+  <data name="TextString_Report_location" xml:space="preserve">
+    <value>Báo cáo địa điểm</value>
+  </data>
+  <data name="TextString_RetailerfullReview" xml:space="preserve">
+    <value>Đánh giá đầy đủ nhà bán lẻ---{0}</value>
+  </data>
+  <data name="TextString_RetailerListDesc" xml:space="preserve">
+    <value>So sánh giá và đọc đánh giá nhà bán lẻ từ những cửa hàng tốt nhất tại VN. Mua trực tuyến và tìm các deal tốt nhất.</value>
+  </data>
+  <data name="TextString_RetailerLogicTitle" xml:space="preserve">
+    <value>Danh Sách Nhà Bán Lẻ - Tìm Các Cửa Hàng Địa Phương Trực Tuyến &amp; Thông Tin Tốt Nhất trên PriceMe</value>
+  </data>
+  <data name="TextString_RetailerMap" xml:space="preserve">
+    <value>Bản đồ dưới đây cho bạn thấy nơi để tìm nhà bán lẻ này. PriceMe hiển thị các địa điểm mua hàng của cả các cửa hàng ngoài đường và cửa hàng trực tuyến để lựa chọn.</value>
+  </data>
+  <data name="TextString_RetailerName" xml:space="preserve">
+    <value>Tên Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_RetailerProductDesc" xml:space="preserve">
+    <value>So sánh {0} giá. Tìm giá {1} {2} tốt nhất từ {3}!</value>
+  </data>
+  <data name="TextString_RetailerProductKeyword" xml:space="preserve">
+    <value>{0}, giá, mua, đánh giá, so sánh, {1}</value>
+  </data>
+  <data name="TextString_RetypeReview" xml:space="preserve">
+    <value>Xin nhập lại Đánh Giá</value>
+  </data>
+  <data name="TextString_RetypeTitle" xml:space="preserve">
+    <value>Xin nhập lại tựa đề!</value>
+  </data>
+  <data name="TextString_ReviewsInformation" xml:space="preserve">
+    <value>Thông Tin Đánh Giá</value>
+  </data>
+  <data name="TextString_ReviewsTitle" xml:space="preserve">
+    <value>Đánh Giá Sản Phẩm - Đánh Giá của Người Dùng và Chuyên Gia  trên PriceMe</value>
+  </data>
+  <data name="TextString_ReviewSystem" xml:space="preserve">
+    <value>Hệ Thống Đánh Giá</value>
+  </data>
+  <data name="TextString_ReviewType" xml:space="preserve">
+    <value>Dạng Đánh Giá</value>
+  </data>
+  <data name="TextString_RInformation" xml:space="preserve">
+    <value>{0} Thông Tin</value>
+  </data>
+  <data name="TextString_RPAlertSuccessful" xml:space="preserve">
+    <value>Thông Báo Sản Phẩm Nhà Bán Lẻ Thành Công</value>
+  </data>
+  <data name="TextString_RPListTitle" xml:space="preserve">
+    <value>Top khuyễn mãi sản phẩm từ {0}</value>
+  </data>
+  <data name="TextString_RProductAlertfor" xml:space="preserve">
+    <value>Thông Báo Sản Phẩm Nhà Bán Lẻ cho</value>
+  </data>
+  <data name="TextString_score" xml:space="preserve">
+    <value>chỉ số</value>
+  </data>
+  <data name="TextString_SearchResultsFor" xml:space="preserve">
+    <value>Tìm Kiếm Kết Quả cho</value>
+  </data>
+  <data name="TextString_SeeAllCategories" xml:space="preserve">
+    <value>Xem tất cả danh mục</value>
+  </data>
+  <data name="TextString_Seelatest" xml:space="preserve">
+    <value>Xem {0} mới nhất</value>
+  </data>
+  <data name="TextString_Seemore" xml:space="preserve">
+    <value>Xem thêm</value>
+  </data>
+  <data name="TextString_SeemoreR" xml:space="preserve">
+    <value>Xem thêm Nhà Bán Lẻ…</value>
+  </data>
+  <data name="TextString_SeemoreStores" xml:space="preserve">
+    <value>Xem thêm cửa hàng</value>
+  </data>
+  <data name="TextString_Sendmailwhen" xml:space="preserve">
+    <value>Gửi mail khi:</value>
+  </data>
+  <data name="TextString_SetYourPrice" xml:space="preserve">
+    <value>Thiết lập thông báo giá của bạn dưới.&lt;br /&gt;Giá thấp nhất hôm nay:</value>
+  </data>
+  <data name="TextString_SignUp" xml:space="preserve">
+    <value>đăng ký</value>
+  </data>
+  <data name="TextString_SignUpCon" xml:space="preserve">
+    <value>Tham gia PriceMe rất dễ dàng. Xin cung cấp thông tin cửa hàng của bạn bên dưới và đăng ký.</value>
+  </data>
+  <data name="TextString_SignUpNewsLtt" xml:space="preserve">
+    <value>Đăng ký nhận Newsletter Deal Hằng Tuần của PriceMe và bắt đầu nhận tất cả deal và khuyến mãi mới nhất vào hộp thư inbox của bạn mỗi Thứ Ba!</value>
+  </data>
+  <data name="TextString_SignUpSuccessful" xml:space="preserve">
+    <value>Đăng ký thành công</value>
+  </data>
+  <data name="TextString_SignUpSuccessInfo" xml:space="preserve">
+    <value>Cảm ơn, chúng tôi đã nhận được yêu cầu đăng ký của bạn!&lt;br /&gt;Lưu ý quan trọng: bạn cần trả lời email chúng tôi sẽ gửi cho bạn để hoàn thành quá trình đăng ký. Xin kiểm tra inbox hộp thư của bạn và xác nhận bạn muốn nhận newsletter từ PriceMe.</value>
+  </data>
+  <data name="TextString_SimilarProFor" xml:space="preserve">
+    <value>Các sản phẩm tương tự đổi với {0}</value>
+  </data>
+  <data name="TextString_SubmitReport" xml:space="preserve">
+    <value>Gửi báo cáo</value>
+  </data>
+  <data name="TextString_Subscribe" xml:space="preserve">
+    <value>Đăng ký nhận &lt;a href="Newsletter.aspx"&gt;newsletter&lt;/a&gt; deal hàng tuần</value>
+  </data>
+  <data name="TextString_Summary" xml:space="preserve">
+    <value>Sơ lược</value>
+  </data>
+  <data name="TextString_Targetprice" xml:space="preserve">
+    <value>Giá đích</value>
+  </data>
+  <data name="TextString_TermsofService" xml:space="preserve">
+    <value>Quy Định Dịch Vụ</value>
+  </data>
+  <data name="TextString_ThankReview" xml:space="preserve">
+    <value>Cảm ơn vì đánh giá của bạn. Xin đăng ký tham gia PriceMe để đăng nó. Miễn phí và dễ dàng.</value>
+  </data>
+  <data name="TextString_ThanksTakingTime" xml:space="preserve">
+    <value>Cảm ơn bạn vì đã dành thời gian cho chúng tôi biết có một sự cố trên trang của chúng tôi.</value>
+  </data>
+  <data name="TextString_ThankYouTitle" xml:space="preserve">
+    <value>PriceMe Newsletter Cảm Ơn Bạn</value>
+  </data>
+  <data name="TextString_ThenForEach" xml:space="preserve">
+    <value>sau đó với mỗi:</value>
+  </data>
+  <data name="TextString_TouchVersion" xml:space="preserve">
+    <value>Phiên Bản Cảm Ứng</value>
+  </data>
+  <data name="TextString_Unknown" xml:space="preserve">
+    <value>Không rõ</value>
+  </data>
+  <data name="TextString_UploadPicture" xml:space="preserve">
+    <value>Tải Ảnh Lên</value>
+  </data>
+  <data name="TextString_URShortTitle" xml:space="preserve">
+    <value>&lt;strong&gt;Tựa đề&lt;/strong&gt; - Tựa đề ngắn tóm tắt đánh giá&lt;br /&gt;</value>
+  </data>
+  <data name="TextString_UserName" xml:space="preserve">
+    <value>Tên người dùng</value>
+  </data>
+  <data name="TextString_Variation" xml:space="preserve">
+    <value>biến thể</value>
+  </data>
+  <data name="TextString_Verdict" xml:space="preserve">
+    <value>Kết quả</value>
+  </data>
+  <data name="TextString_veryGood" xml:space="preserve">
+    <value>rất tốt</value>
+  </data>
+  <data name="TextString_Videos" xml:space="preserve">
+    <value>video</value>
+  </data>
+  <data name="TextString_View" xml:space="preserve">
+    <value>Xem</value>
+  </data>
+  <data name="TextString_ViewAll" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="TextString_ViewSnapshot" xml:space="preserve">
+    <value>Xem ảnh chụp nhanh</value>
+  </data>
+  <data name="TextString_WebSiteURL" xml:space="preserve">
+    <value>Địa Chỉ Trang Web</value>
+  </data>
+  <data name="TextString_Weight" xml:space="preserve">
+    <value>Trọng Lượng</value>
+  </data>
+  <data name="TextString_WelcomeContent" xml:space="preserve">
+    <value>"Cảm ơn bạn vì đã ghé thăm PriceMe, nơi nghiên cứu mua sắm trở nên thú vị và dễ dàng và sẽ tiết kiệm cho bạn rất nhiều thời gian và tiền bạc! Chỉ cần nhập sản phẩm hoặc nhà bán lẻ bạn đang tìm kiếm và nhấn chuột thông qua website của họ bằng cách sử dụng nút Ghé Thăm Cửa Hàng để mua hàng trực tiếp từ nhà bán lẻ đó.
+
+Chúng tôi cung cấp giá cả từng phút và các đánh giá sản phẩm cùng với bình chọn của người dùng về sản phẩm và nhà bán lẻ. Xin giúp những người dùng PriceMe khác bằng cách đăng phản hồi và cho điểm trải nghiệm của bạn với bất kỳ nhà bán lẻ nào trên trang.
+
+Bạn không phải ở trên máy tính của bạn để tìm thông tin mua sắm trên PriceMe. Hãy thử ứng dụng iPhone của chúng tôi và nhận hầu hết thông tin từ website của chúng tôi trực tiếp về điện thoại di động của bạn trong khi bạn đang di chuyển hoặc đang trong cửa hàng.
+
+Đừng quên - biến PriceMe thành điểm đến trực tuyến đầu tiên trước khi mua sắm và tiết kiệm được thật nhiều!
+
+Chúc bạn mua sắm vui vẻ từ đội ngũ PriceMe.
+
+P.S Nhận những deal mua sắm hot nhất của chúng tôi từ những nhà bán lẻ khắp VN trong hộp mail của bạn. Chỉ cần điền vào mẫu đăng ký nhận newsletter miễn phí bên phải và bắt đầu tiết kiệm ngay hôm nay!"</value>
+  </data>
+  <data name="TextString_WelcomePriceme" xml:space="preserve">
+    <value>Chào mừng đến PriceMe</value>
+  </data>
+  <data name="TextString_WhenPriceBelow" xml:space="preserve">
+    <value>Khi giá dưới:</value>
+  </data>
+  <data name="TextString_WhyPriceMe" xml:space="preserve">
+    <value>Tại Sao Nên Dùng PriceMe?</value>
+  </data>
+  <data name="TextString_WhyPriceMeContent" xml:space="preserve">
+    <value>&lt;h1&gt;Tìm những deal tốt nhất và xem những người khác nói gì!&lt;/h1&gt;
+&lt;br /&gt;
+&lt;p&gt;Chào các bạn, những người mua sắm!&lt;/p&gt;
+&lt;p&gt;Bất kể bạn đang shopping gì trên trên mạng - máy ảnh, điện thoại di động, màn hình LCD, hoặc chỉ là muốn tìm hiểu những sản phẩm mới nhất - PriceMe cho phép bạn so sánh và nghiên cứu các sản phẩm nhanh chóng và dễ dàng.&lt;/p&gt;
+&lt;p&gt;Chúng tôi có những lựa chọn nhà bán lẻ trực tuyến toàn diện nhất và lớn nhất Việt Nam trong một nơi. Những nhà bán lẻ này có tổng cộng hơn 300 ngàn sản phẩm có thể được mua trực tuyến!
+Hãy để chúng tôi cho bạn thấy cách bạn có thể Mua Sắm Thông Minh Hơn với PriceMe!&lt;/p&gt;
+&lt;H2&gt;Lựa chọn sản phẩm.&lt;/H2&gt;
+&lt;P&gt;Tìm hiểu những danh mục sản phẩm khác.&lt;/P&gt;
+&lt;H2&gt;Tìm sản phẩm.&lt;/H2&gt;
+&lt;p&gt;Tìm chính xác những gì bạn cần&lt;/p&gt;
+&lt;H2&gt;So sánh giá cả và sản phẩm.&lt;/H2&gt;
+&lt;p&gt;Nhận deal tốt nhất bằng cách so sánh giá cả và sản phẩm.&lt;/p&gt;
+&lt;H2&gt;Đọc đánh giá&lt;/H2&gt;
+&lt;p&gt;Tìm hiểu những người mua sắm cùng và các chuyên gia nghĩ gì về sản phẩm trước khi mua.&lt;/p&gt;
+&lt;h2&gt;Nhận lời khuyên.&lt;/h2&gt;
+&lt;p&gt;Tham khảo các hướng dẫn mua sắm của chúng tôi và phát triển bạn - mua sắm thông minh hơn.&lt;/p&gt;
+&lt;h2&gt;Mua từ những nhà bán lẻ uy tín.&lt;/h2&gt;
+&lt;p&gt;Bước cuối cùng: nhấn vào và mua từ ID những nhà bán lẻ hàng đầu nhanh chóng và dễ dàng&lt;/p&gt;</value>
+  </data>
+  <data name="TextString_Width" xml:space="preserve">
+    <value>Chiều Rộng</value>
+  </data>
+  <data name="TextString_YourEmailOp" xml:space="preserve">
+    <value>Email của bạn (tùy chọn, nếu bạn cần theo dõi thêm):</value>
+  </data>
+  <data name="WhatIsPriceMe" xml:space="preserve">
+    <value>PriceMe là một website mua sắm so sánh giá trực tuyến đang phát triển nhanh chóng tại Việt Nam. Mục tiêu của chúng tôi là cho phép những người mua sắm "mua sắm thông minh hơn". Điều này có nghĩa là tìm kiếm đúng sản phẩm từ một nhà bán lẻ đáng tin cậy với mức giá thấp nhất có thể.</value>
+  </data>
+  <data name="Module_CompareBaske_Title" xml:space="preserve">
+    <value>Danh sách so sánh</value>
+  </data>
+  <data name="TextString_AddYourReview" xml:space="preserve">
+    <value>Thêm đánh giá của bạn</value>
+  </data>
+  <data name="TextString_Author" xml:space="preserve">
+    <value>Tác giả</value>
+  </data>
+  <data name="TextString_Clearlist" xml:space="preserve">
+    <value>Xóa danh sách</value>
+  </data>
+  <data name="TextString_comparepricesFrom" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="TextString_FooterOnline" xml:space="preserve">
+    <value>So sánh giá cả và mua hàng trực tuyến tại {0}</value>
+  </data>
+  <data name="TextString_From" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="TextString_HighestRating" xml:space="preserve">
+    <value>Bình Chọn Cao Nhất</value>
+  </data>
+  <data name="TextString_LowestRating" xml:space="preserve">
+    <value>Bình Chọn Thấp Nhất</value>
+  </data>
+  <data name="TextString_Managelist" xml:space="preserve">
+    <value>Quản lý danh sách</value>
+  </data>
+  <data name="TextString_MyComparisonList" xml:space="preserve">
+    <value>Danh Sách So Sánh Của Tôi</value>
+  </data>
+  <data name="TextString_NeedBGinfo" xml:space="preserve">
+    <value>Cần thêm thông tin về {0} trước khi mua nó trực tuyến? Hãy tham khảo các hướng dẫn mua sắm của chúng tôi.</value>
+  </data>
+  <data name="TextString_NewestRating" xml:space="preserve">
+    <value>Bình Chọn Mới Nhất</value>
+  </data>
+  <data name="TextString_NoMap" xml:space="preserve">
+    <value>Không có nhà bán lẻ được liệt kê trên PriceMe đang bán sản phẩm này.</value>
+  </data>
+  <data name="TextString_None" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="TextString_NumOfRP" xml:space="preserve">
+    <value>Số nhà bán lẻ của {0}</value>
+  </data>
+  <data name="TextString_OldestRating" xml:space="preserve">
+    <value>Bình Chọn Cũ Nhất</value>
+  </data>
+  <data name="TextString_PhoneSupport" xml:space="preserve">
+    <value>Hỗ Trợ Qua Điện Thoại</value>
+  </data>
+  <data name="TextString_PriceHistory" xml:space="preserve">
+    <value>Lịch sử giá của {0}</value>
+  </data>
+  <data name="TextString_Removeall" xml:space="preserve">
+    <value>Xóa tất cả</value>
+  </data>
+  <data name="TextString_ReportATagTitle" xml:space="preserve">
+    <value>Nhấn để báo cáo lỗi hoặc gửi phản hồi</value>
+  </data>
+  <data name="TextString_RetailerCentre" xml:space="preserve">
+    <value>Trung Tâm Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_RetailerDesc" xml:space="preserve">
+    <value>Mua sắm từ {0} và tìm những deal tuyệt nhất trực tuyến. So sánh giá cả, đọc các đánh giá và mua sắm trực tuyến từ những nhà bán lẻ tốt nhất Việt Nam.</value>
+  </data>
+  <data name="TextString_RetailerReviews" xml:space="preserve">
+    <value>Đánh Giá Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_ReviewDate" xml:space="preserve">
+    <value>Ngày Đánh Giá</value>
+  </data>
+  <data name="TextString_Shipping" xml:space="preserve">
+    <value>Ship</value>
+  </data>
+  <data name="TextString_star" xml:space="preserve">
+    <value>ngôi sao</value>
+  </data>
+  <data name="TextString_WalkinStore" xml:space="preserve">
+    <value>Cửa hàng mua sắm tự do</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Vietnam</value>
+  </data>
+  <data name="Global_HomePageUrl" xml:space="preserve">
+    <value>https://www.priceme.com.vn</value>
+  </data>
+  <data name="HowToUse" xml:space="preserve">
+    <value>PriceMe cho phép người tiêu dùng như chính bạn so sánh giá cả độc lập, đánh giá sản phẩm và đặc tả của hàng ngàn sản phẩm từ những nhà bán lẻ hàng đầu Việt Nam. Sau một vài phút tìm duyệt trên trang của chúng tôi, bạn sẽ ở một vị trí tốt để thực hiện một quyết định mua hàng có hiểu biết. Bất kể bạn đang tìm kiếm gì, bạn có thể nhanh chóng tìm ra mẫu tốt nhất phù hợp với nhu cầu của bạn, nơi có sẵn, và ở mức giá thấp nhất có thể từ một nhà bán lẻ tin cậy. Bất kể bạn muốn mua nó trực tuyến hay ngoại tuyến, PriceMe sẽ dẫn bạn đến giao dịch tốt nhất. Một phần trọn vẹn của việc thực hiện quyết định là thông tin được cung cấp bởi cộng đồng người dùng trực tuyến của PriceMe. Hơn nữa, các đánh giá về các sản phẩm và những nhà bán lẻ mà bạn đang quan tâm sẽ nâng cao quyết định mua sắm của bạn.</value>
+  </data>
+  <data name="Product_ComparePrices" xml:space="preserve">
+    <value>So Sánh Giá</value>
+  </data>
+  <data name="Product_Compare_DeliveryDetails" xml:space="preserve">
+    <value>Thông Tin Giao hàng Chi Tiết</value>
+  </data>
+  <data name="Product_Compare_MoreInfo" xml:space="preserve">
+    <value>Thêm thông tin</value>
+  </data>
+  <data name="Product_Featured" xml:space="preserve">
+    <value>Tính năng</value>
+  </data>
+  <data name="Product_FeaturedContent" xml:space="preserve">
+    <value>Sản phẩm nổi bật được lựa chọn dựa trên sự liê nquan, bình chọn của nhà bán lẻ, giá cả và sự phổ biến. Tất cả các sản phẩm khác được sắp xếp theo giá.</value>
+  </data>
+  <data name="Product_FeaturedProduct" xml:space="preserve">
+    <value>Sản Phẩm Nổi Bật</value>
+  </data>
+  <data name="Product_FooterProductDescription_Listed" xml:space="preserve">
+    <value>Được liệt kê trên PriceMe từ</value>
+  </data>
+  <data name="Product_Header_Compare" xml:space="preserve">
+    <value>{0} giá{1} từ {2} nhà bán lẻ {3}</value>
+  </data>
+  <data name="Product_Header_PriceCount" xml:space="preserve">
+    <value>Tất cả {0} giá</value>
+  </data>
+  <data name="Product_Header_PriceOne" xml:space="preserve">
+    <value>1 cơ hội cho 1 nhà bán lẻ</value>
+  </data>
+  <data name="Product_Locations" xml:space="preserve">
+    <value>Cửa Hàng Địa Phương</value>
+  </data>
+  <data name="Product_Maps" xml:space="preserve">
+    <value>Bản Đồ</value>
+  </data>
+  <data name="Product_MostPopuler_Help" xml:space="preserve">
+    <value>Các sản phẩm phổ biến nhất hiển thị ở đây là {0} được xem nhiều nhất trên PriceMe trong 30 ngày gần nhất.</value>
+  </data>
+  <data name="Product_NoProduct" xml:space="preserve">
+    <value>Hiện không có nhà bán lẻ nào trên PriceMe đang bán sản phẩm này. Xin xem &lt;a href="{0}"&gt;các sản phẩm liên quan&lt;/a&gt;.</value>
+  </data>
+  <data name="RatingControl_Poor" xml:space="preserve">
+    <value>kém</value>
+  </data>
+  <data name="RatingControl_Verypoor" xml:space="preserve">
+    <value>rất kém</value>
+  </data>
+  <data name="RetailerCenter" xml:space="preserve">
+    <value>&lt;a href="ListYourProducts.aspx" rel="nofollow"&gt;Liệt Kê Sản Phẩm Của Bạn&lt;/a&gt;Liệt kê các sản phẩm của bạn ngay bây giờ trên trang mua sắm so sánh giá phát triển nhanh nhất Việt Nam. Hãy thử liệt kê sản phẩm của bạn thật dễ dàng!</value>
+  </data>
+  <data name="RetailerFAQsWhatIsPriceMe" xml:space="preserve">
+    <value>&lt;p&gt;PriceMe là một trang mua sắm so sánh giá trực tuyến đang phát triển nhanh chóng tại Việt Nam. Mục tiêu của chúng tôi là mang đến cho những khách hàng đủ điều kiện đang tìm kiếm các sản phẩm để mua và gắn họ với những đối tác bán lẻ đang bán những sản phẩm đó.Đối với các đối tác bán lẻ, PriceMe là một cỗ máy mua sắm so sánh trả-tiền-để-hoạt động của Việt Nam. Chúng tôi cung cấp so sánh sản phẩm và giá cả toàn diện và một giao diện gọn, rõ ràng cho phép người dùng làm điều mà họ muốn làm khi đến đây: so sánh và mua.&lt;/p&gt;</value>
+  </data>
+  <data name="RetailerInfo" xml:space="preserve">
+    <value>Thông Tin Nhà Bán Lẻ</value>
+  </data>
+  <data name="RetailerInfo_Description" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="TextString_AlreadyRegister" xml:space="preserve">
+    <value>Đã là thành viên PriceMe?</value>
+  </data>
+  <data name="TextString_BrandDescription" xml:space="preserve">
+    <value>Tìm {0} sản phẩm trực tuyến và mua nó từ các cửa hàng trực tuyến tốt nhất tại Việt Nam</value>
+  </data>
+  <data name="TextString_ChannelPartners" xml:space="preserve">
+    <value>Kênh Đối Tác</value>
+  </data>
+  <data name="TextString_ComingSoon" xml:space="preserve">
+    <value>Sắp ra mắt</value>
+  </data>
+  <data name="TextString_Cons" xml:space="preserve">
+    <value>Nhược:</value>
+  </data>
+  <data name="TextString_ContactUsError1" xml:space="preserve">
+    <value>Xin nhập đầy đủ tên họ</value>
+  </data>
+  <data name="TextString_ContactUsError2" xml:space="preserve">
+    <value>Xin nhập địa chỉ E-mail</value>
+  </data>
+  <data name="TextString_ContactUsError3" xml:space="preserve">
+    <value>Xin nhập tin nhắn</value>
+  </data>
+  <data name="TextString_ContactUsSuccess" xml:space="preserve">
+    <value>Liên hệ Chúng Tôi Thành Công</value>
+  </data>
+  <data name="TextString_ContactUsSuccess_Text1" xml:space="preserve">
+    <value>Cảm ơn bạn vì đã liên hệ chúng tôi.
+&lt;br /&gt;Chúng tôi đã nhận tin nhắn của bạn và chúng tôi sẽ trả lời sớm nhất ngay khi có thể.</value>
+  </data>
+  <data name="TextString_ContactUsTopic" xml:space="preserve">
+    <value>Chủ đề:</value>
+  </data>
+  <data name="TextString_ContactUs_Text1" xml:space="preserve">
+    <value>Xin liên hệ chúng tôi với bất cứ thắc mắc chung hoặc cụ thể nào mà bạn có về PriceMe.</value>
+  </data>
+  <data name="TextString_ContactUs_Text2" xml:space="preserve">
+    <value>PriceMe là một trang web mua sắm trực tuyến, không phải một nhà bán lẻ hay thương gia.&lt;br/&gt;Dùng nút "Ghé Thăm Cửa Hàng" để kết nối đến nhà bán lẻ hoặc thương gia bán sản phẩm này.</value>
+  </data>
+  <data name="TextString_Continue" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="TextString_DeleteAll" xml:space="preserve">
+    <value>Xóa Tất  Cả</value>
+  </data>
+  <data name="TextString_Delivery" xml:space="preserve">
+    <value>Giao Hàng&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_DeliveryTime" xml:space="preserve">
+    <value>Thời Gian Giao Hàng</value>
+  </data>
+  <data name="TextString_EmailAddress" xml:space="preserve">
+    <value>Địa Chỉ Email</value>
+  </data>
+  <data name="TextString_EmailATagTitle" xml:space="preserve">
+    <value>Nhấn để chia sẻ trang này qua e-mail</value>
+  </data>
+  <data name="TextString_ExpertReviews" xml:space="preserve">
+    <value>Đánh Giá Của Chuyên Gia</value>
+  </data>
+  <data name="TextString_ForgotPsd" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
+  <data name="TextString_Gallery" xml:space="preserve">
+    <value>Thư Viện Ảnh</value>
+  </data>
+  <data name="TextString_Guides" xml:space="preserve">
+    <value>Hướng Dẫn</value>
+  </data>
+  <data name="TextString_HowThisWorks" xml:space="preserve">
+    <value>Cách Hoạt Động</value>
+  </data>
+  <data name="TextString_JoinPriceMe" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="TextString_LessFilters" xml:space="preserve">
+    <value>Ít bộ lọc hơn</value>
+  </data>
+  <data name="TextString_LikeUs" xml:space="preserve">
+    <value>Like Chúng Tôi</value>
+  </data>
+  <data name="TextString_List" xml:space="preserve">
+    <value>Liệt kê</value>
+  </data>
+  <data name="TextString_ListYourProds" xml:space="preserve">
+    <value>"&lt;h1&gt;Liệt Kê Các Sản Phẩm Của Bạn&lt;/h1&gt; &lt;br /&gt;Sau khi một nhà bán lẻ đã đăng ký thông qua việc liên hệ chúng tôi, dữ liệu sản phẩm có thể được gửi lên bằng cách sử dụng một feed dữ liệu. Hiện tại cả hai định dạng CSV và XML đều được hỗ trợ. Nói cách khác, PriceMe cũng có thể thu thập dữ liệu website của bạn với một chi phí nhỏ trong trường hợp bạn ưu tiên lựa chọn này.&lt;br /&gt;&lt;br /&gt;Ngay khi bạn đã tạo một feed và cung cấp cho chúng tôi với URL dẫn đến nơi nó được đặt, PriceMe có thể bắt đầu quét feed của bạn. Một con bot sẽ đọc dữ liệu trong feed của bạn và PriceMe sẽ tải lên và sắp xếp các sản phẩm của bạn vào các danh mục tương ứng trên trang web. 
+Chúng tôi sẽ quét lại feed của bạn hằng ngày để cập nhật bất cứ thay đổi mà bạn có thể đã tạo ra."</value>
+  </data>
+  <data name="TextString_LogIn" xml:space="preserve">
+    <value>Đăng Nhập</value>
+  </data>
+  <data name="TextString_LogOut" xml:space="preserve">
+    <value>Đăng Xuất</value>
+  </data>
+  <data name="TextString_Manu_BrowseAll" xml:space="preserve">
+    <value>Duyệt tất cả…</value>
+  </data>
+  <data name="TextString_MediaCenter" xml:space="preserve">
+    <value>Trung Tâm Truyền Thông</value>
+  </data>
+  <data name="TextString_MediaCentre" xml:space="preserve">
+    <value>Trung Tâm Truyền Thông</value>
+  </data>
+  <data name="TextString_MyAccount" xml:space="preserve">
+    <value>Tài Khoản Của Tôi</value>
+  </data>
+  <data name="TextString_Narrowby" xml:space="preserve">
+    <value>Thu hẹp theo</value>
+  </data>
+  <data name="TextString_NewsArticles" xml:space="preserve">
+    <value>Các Bài Viết Tin Tức</value>
+  </data>
+  <data name="TextString_NewsLettCQ1" xml:space="preserve">
+    <value>Tôi sẽ nhận newsletter bao lâu một lần?&lt;br /&gt;Newletter được gửi đi hai tuần một lần trong thời điểm này (tần suất có thể thay đổi sau).</value>
+  </data>
+  <data name="TextString_NewsLettCQ11" xml:space="preserve">
+    <value>Tôi sẽ nhận newsletter bao lâu một lần?&lt;br /&gt;Newsletter được gửi đi vào mỗi Thứ Ba hằng tuần.</value>
+  </data>
+  <data name="TextString_NewsLettCQ2" xml:space="preserve">
+    <value>Tôi cần cung cấp gì?&lt;br /&gt;Chúng tôi chỉ cần địa chỉ email của bạn trong giai đoạn này. Sau đó bạn sẽ làm theo hướng dẫn trong email xác nhận để hoàn thành quá trình đăng ký.</value>
+  </data>
+  <data name="TextString_Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="TextString_NextPrice" xml:space="preserve">
+    <value>Giá Kế Tiếp</value>
+  </data>
+  <data name="TextString_NotRegistered" xml:space="preserve">
+    <value>Chưa đăng ký?</value>
+  </data>
+  <data name="TextString_Off" xml:space="preserve">
+    <value>tắt</value>
+  </data>
+  <data name="TextString_OnPriceMe" xml:space="preserve">
+    <value>trên Price Me</value>
+  </data>
+  <data name="TextString_OutofStock" xml:space="preserve">
+    <value>Hết hàng</value>
+  </data>
+  <data name="TextString_PageNext" xml:space="preserve">
+    <value>Kế tiếp</value>
+  </data>
+  <data name="TextString_PagePrev" xml:space="preserve">
+    <value>Trước</value>
+  </data>
+  <data name="TextString_Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="TextString_PhysicalSpecs" xml:space="preserve">
+    <value>Đặc Điểm Vật Lý</value>
+  </data>
+  <data name="TextString_PickupStore" xml:space="preserve">
+    <value>Nhận hàng tại cửa hàng</value>
+  </data>
+  <data name="TextString_PleaseLogIn" xml:space="preserve">
+    <value>Xin Đăng Nhập</value>
+  </data>
+  <data name="TextString_PopularBrands" xml:space="preserve">
+    <value>Các Nhãn Hàng Phổ Biến</value>
+  </data>
+  <data name="TextString_Popularity" xml:space="preserve">
+    <value>Mức Phổ Biến</value>
+  </data>
+  <data name="TextString_PreviousNewsletterCont" xml:space="preserve">
+    <value>&lt;h1&gt;Các Newsletter Trước&lt;/h1&gt;
+&lt;br /&gt;
+Kiểm tra lưu trữ newsletter PriceMe bên dưới - rất nhiều thông tin thú vị cho người tiêu dùng. Xin &lt;a href="https://www.priceme.co.nz/Newsletter.aspx"&gt;đăng ký nhận&lt;/a&gt; newsletter và nhận những ấn bản tương lai trực tiếp vào inbox của bạn</value>
+  </data>
+  <data name="TextString_Price" xml:space="preserve">
+    <value>Giá</value>
+  </data>
+  <data name="TextString_PriceCount" xml:space="preserve">
+    <value>Giá</value>
+  </data>
+  <data name="TextString_PriceMeBlog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="TextString_PriceMeCommunity" xml:space="preserve">
+    <value>Cộng Đồng PriceMe</value>
+  </data>
+  <data name="TextString_PriceMeLogoATagTitle" xml:space="preserve">
+    <value>Mua Sắm Trực Tuyến &amp; So Sánh Giá Cả</value>
+  </data>
+  <data name="TextString_PriceMeLogoTitle" xml:space="preserve">
+    <value>PriceMe - So sánh giá cả và mua sắm trực tuyến</value>
+  </data>
+  <data name="TextString_PricesAndReviews" xml:space="preserve">
+    <value>Giá &amp; Đánh Giá</value>
+  </data>
+  <data name="TextString_PrintATagTitle" xml:space="preserve">
+    <value>Nhấn vào để in trang này</value>
+  </data>
+  <data name="TextString_PrivacyPolicy" xml:space="preserve">
+    <value>Chính Sách Riêng Tư</value>
+  </data>
+  <data name="TextString_PrivacyPolicyContent" xml:space="preserve">
+    <value>"&lt;h1&gt;Chính Sách Riêng Tư&lt;/h1&gt;&lt;br /&gt;
+17 Tháng Bảy, 2007&lt;br /&gt;&lt;br /&gt;
+Tại PriceMe, chúng tôi luôn phấn đấu phát triển những dịch vụ tiên tiến để phục vụ những người dùng của chúng tôi tốt hơn. Chúng tôi nhận ra sự riêng tư là một vấn đề quan trọng, vì thế chúng tôi đã thiết kế và vận hành các dịch vụ của chúng tôi với tâm niệm bảo vệ sự riêng tư của bạn. Chính Sách Riêng Tư này vạch ra những dạng thông tin cá nhân chúng tôi thu được khi bạn sử dụng các dịch vụ của Price Me, cũng như một số bước chúng tôi thực hiện để bảo vệ nó. &lt;br /&gt;&lt;br /&gt;
+Các nguyên lý sau đây được áp dụng cho các thông tin danh tính cá nhân được chúng tôi yêu cầu và được bạn cung cấp. ""Thông tin danh tính cá nhân"" là thông tin xác định danh tính cá nhân bạn, chẳng hạn như tên, địa chỉ nhà và địa chỉ email của bạn. &lt;br /&gt;&lt;br /&gt;"</value>
+  </data>
+  <data name="TextString_ProductName" xml:space="preserve">
+    <value>Tựa đề</value>
+  </data>
+  <data name="TextString_Pros" xml:space="preserve">
+    <value>Ưu:</value>
+  </data>
+  <data name="TextString_Quick" xml:space="preserve">
+    <value>Nhanh</value>
+  </data>
+  <data name="TextString_RegisterRemind" xml:space="preserve">
+    <value>Bạn và các đánh giá của bạn sẽ xuất hiện dưới tên này trên PriceMe. Độ dài 4-18 ký tự. Có thể chứa các chữ, số, dấu gạch dưới và dấu chấm. Không có khoảng trống.</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful" xml:space="preserve">
+    <value>Đăng Ký Thành Công</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful_Text1" xml:space="preserve">
+    <value>Cảm ơn bạn đã đăng ký. PriceMe đã gửi cho bạn một email xác nhận có chứa thông tin tài khoản chi tiết của bạn. Hãy sẵn sàng để Mua Sắm Thông Minh Hơn.</value>
+  </data>
+  <data name="TextString_RelatedCategories" xml:space="preserve">
+    <value>Các Danh Mục Liên Quan</value>
+  </data>
+  <data name="TextString_RememberMe" xml:space="preserve">
+    <value>Nhớ tôi</value>
+  </data>
+  <data name="TextString_Retailer" xml:space="preserve">
+    <value>Nhà bán lẻ</value>
+  </data>
+  <data name="TextString_RetailerKit" xml:space="preserve">
+    <value>Bộ Dụng Cụ Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_RetailerList" xml:space="preserve">
+    <value>Danh Sách Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_RetailerNumber" xml:space="preserve">
+    <value>Số Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_RetailerProductView" xml:space="preserve">
+    <value>Xem các ưu đãi khác</value>
+  </data>
+  <data name="TextString_Retailers" xml:space="preserve">
+    <value>Các Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_Reviews" xml:space="preserve">
+    <value>Nhận xét</value>
+  </data>
+  <data name="TextString_ReviewSuccessful" xml:space="preserve">
+    <value>Đánh Giá Thành Công</value>
+  </data>
+  <data name="TextString_ReviewSuccessful_Text" xml:space="preserve">
+    <value>Cảm ơn bạn vì đã chia sẻ kinh nghiệm của bạn và vì đã đánh giá sản phẩm này.</value>
+  </data>
+  <data name="TextString_Search" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
+  <data name="TextString_SearchButtonAlter" xml:space="preserve">
+    <value>Tìm kiếm các sản phẩm từ các cửa hàng trực tuyến</value>
+  </data>
+  <data name="TextString_SearchNoResultTitle" xml:space="preserve">
+    <value>Không có kết quả tìm kiếm nào</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_1" xml:space="preserve">
+    <value>Kiểm tra chính tả tìm kiếm của bạn.</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_2" xml:space="preserve">
+    <value>Thử sử dụng nhiều thuật ngữ tìm kiếm hơn.</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_3" xml:space="preserve">
+    <value>Thử sử dụng nhnhieeuthuaatj ngữ tìm kiếm phổ biến hơn (như là "Panasoc camera" thay vì "Panasonic FT-2 Kit Stabiliser").</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_4" xml:space="preserve">
+    <value>Một cách khác, xin tìm duyệt theo danh mục hoặc nhãn hàng để tim sản phẩm mà bạn đang tìm kiếm.</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTips" xml:space="preserve">
+    <value>Mẹo tìm kiếm:</value>
+  </data>
+  <data name="TextString_Searchwithin" xml:space="preserve">
+    <value>Tìm kiếm trong</value>
+  </data>
+  <data name="TextString_SeeAll" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="TextString_SeeAllBrands" xml:space="preserve">
+    <value>Xem tất cả nhãn hàng</value>
+  </data>
+  <data name="TextString_SeeProductAt" xml:space="preserve">
+    <value>Xem các sản phẩm tại</value>
+  </data>
+  <data name="TextString_SetAlertFor" xml:space="preserve">
+    <value>Chúng tôi sẽ email cho bạn khi giá giảm xuống đối với  {0}</value>
+  </data>
+  <data name="TextString_SetYourPriceAlert" xml:space="preserve">
+    <value>Thiết Lập Thông Báo Giá Của Bạn</value>
+  </data>
+  <data name="TextString_ShowMoreFilters" xml:space="preserve">
+    <value>Thêm bộ lọc</value>
+  </data>
+  <data name="TextString_SignUpFind" xml:space="preserve">
+    <value>Đăng ký và bắt đầu tìm kiếm các deal tốt nhất</value>
+  </data>
+  <data name="TextString_SiteMap" xml:space="preserve">
+    <value>Cấu Trúc Site</value>
+  </data>
+  <data name="TextString_Stock" xml:space="preserve">
+    <value>Hàng trong kho</value>
+  </data>
+  <data name="TextString_Stores" xml:space="preserve">
+    <value>Cửa hàng</value>
+  </data>
+  <data name="TextString_TAndC" xml:space="preserve">
+    <value>Quy Định và Điều Kiện</value>
+  </data>
+  <data name="TextString_TAndCstr" xml:space="preserve">
+    <value>PriceMe ghét spam như bạn ghét. Chúng tôi vì thế không bán hoặc cho thuê địa chỉ email của bạn cho bất cứ ai. Và 
+rất dễ dàng để ngừng đăng ký (unsubscribe). Tìm hiểu &lt;a rel="nofollow" href="About/PrivacyPolicy.aspx" 
+target=_blank&gt;Chính Sách Riêng Tư&lt;/a&gt; để biết thêm.</value>
+  </data>
+  <data name="TextString_ToCollapse" xml:space="preserve">
+    <value>Các lựa chọn (nhấn để rút gọn)</value>
+  </data>
+  <data name="TextString_ToExpand" xml:space="preserve">
+    <value>Các lựa chọn (nhấn để mở rộng)</value>
+  </data>
+  <data name="TextString_Tools" xml:space="preserve">
+    <value>Công cụ</value>
+  </data>
+  <data name="TextString_TopRetailers" xml:space="preserve">
+    <value>Top Nhà Bán Lẻ</value>
+  </data>
+  <data name="TextString_Total" xml:space="preserve">
+    <value>Tổng cộng&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_TwitterATagTitle" xml:space="preserve">
+    <value>Nhấn để chia sẻ trang này lên Twitter</value>
+  </data>
+  <data name="TextString_UntitledPage" xml:space="preserve">
+    <value>Trang Không Tiêu Đề</value>
+  </data>
+  <data name="TextString_VisitShop" xml:space="preserve">
+    <value>Đến Shop</value>
+  </data>
+  <data name="TextString_YourAccount" xml:space="preserve">
+    <value>Tài Khoản Của Bạn</value>
+  </data>
+  <data name="TextString_YourDetails" xml:space="preserve">
+    <value>Thông Tin Chi Tiết Của Bạn</value>
+  </data>
+  <data name="TextString_YourEmail" xml:space="preserve">
+    <value>Email Của Bạn</value>
+  </data>
+  <data name="TrafficPriceMe" xml:space="preserve">
+    <value>Bạn có thể kiểm tra số lượng người truy cập sử dụng PAM. Đội ngũ quản lý tại PriceMe có nhiều năm kinh nghiệm trong việc thu được lưu lượng truy cập thông qua các mối quan hệ đối tác với các website lớn, trả tiền và các tìm kiếm tự nhiên, và thông qua các sản phẩm mới. Vì thế, chắc chắn mức lưu lượng sẽ gia tăng vào những tháng tới vì chúng tôi luôn quảng bá website và đạt được lưu lượng truy cập chất lượng cao. Ngoài ra, mua sắm so sánh cũng đang phát triển tại Việt Nam và ngày càng nhiều người tiêu dùng có thể sử dụng các dịch vụ mua sắm kiểu này trong tương lai gần.</value>
+  </data>
+  <data name="TextString_Culture" xml:space="preserve">
+    <value>vi-VN</value>
+  </data>
+  <data name="TextString_PriceSymbol" xml:space="preserve">
+    <value>Đ</value>
+  </data>
+  <data name="Module_HotProduct_Tilte" xml:space="preserve">
+    <value>Phổ Biến Nhất</value>
+  </data>
+  <data name="TextString_BackToTop" xml:space="preserve">
+    <value>Trở lại đầu trang</value>
+  </data>
+  <data name="TextString_First" xml:space="preserve">
+    <value>Đầu tiên</value>
+  </data>
+  <data name="TextString_Last" xml:space="preserve">
+    <value>Cuối cùng</value>
+  </data>
+  <data name="TextString_Popular" xml:space="preserve">
+    <value>Phổ biến</value>
+  </data>
+  <data name="TextString_TermsAndConditions" xml:space="preserve">
+    <value>Quy định &amp; Điều kiện</value>
+  </data>
+  <data name="TextString_SpottedProMap" xml:space="preserve">
+    <value>Phát hiện một địa điểm sai? Báo cáo nó tại đây</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Ưu:</value>
+  </data>
+  <data name="TextString_Submit" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="TextString_AddReview" xml:space="preserve">
+    <value>Thêm đánh giá</value>
+    <comment>Viết một đánh giá</comment>
+  </data>
+  <data name="TrackRootUrl" xml:space="preserve">
+    <value>https://track.priceme.cm</value>
+  </data>
+  <data name="TextString_Female" xml:space="preserve">
+    <value>nữ</value>
+  </data>
+  <data name="TextString_Male" xml:space="preserve">
+    <value>nam</value>
+  </data>
+  <data name="TextString_Addtolist" xml:space="preserve">
+    <value>Thêm vào danh sách</value>
+  </data>
+  <data name="TextString_PriceAlerts" xml:space="preserve">
+    <value>Thông báo Giá</value>
+  </data>
+  <data name="TextString_PriceTrend" xml:space="preserve">
+    <value>Xu hướng Giá</value>
+  </data>
+  <data name="Global_HomePageName" xml:space="preserve">
+    <value>Trang Chủ</value>
+  </data>
+  <data name="TextString_Manufacturer" xml:space="preserve">
+    <value>Nhà chế tạo</value>
+  </data>
+  <data name="TextString_WeeklyDeals" xml:space="preserve">
+    <value>Deal Hằng Tuần</value>
+  </data>
+  <data name="Product_Specifications" xml:space="preserve">
+    <value>Thông số kỹ Thuật sản phẩm</value>
+  </data>
+  <data name="TextString_CompanyInfo" xml:space="preserve">
+    <value>Thông Tin Công Ty</value>
+  </data>
+  <data name="TextString_RetailerSignUp" xml:space="preserve">
+    <value>Bán lẻ Sign-up</value>
+  </data>
+  <data name="TextString_TopBrands" xml:space="preserve">
+    <value>Nhãn hiệu</value>
+  </data>
+  <data name="TextString_See_XX_MoreReviews" xml:space="preserve">
+    <value>Xem thêm {0} đánh giá</value>
+  </data>
+  <data name="Blog_URL" xml:space="preserve">
+    <value>https://blog.priceme.com.vn</value>
+  </data>
+  <data name="SearchBar_Placeholder_Text" xml:space="preserve">
+    <value>Tìm kiếm sản phẩm &amp; danh mục</value>
+  </data>
+  <data name="TextString_Added" xml:space="preserve">
+    <value>Đã thêm</value>
+  </data>
+  <data name="TextString_Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="TextString_Apply" xml:space="preserve">
+    <value>áp dụng</value>
+  </data>
+  <data name="TextString_ChangeEmail" xml:space="preserve">
+    <value>Đổi Email</value>
+  </data>
+  <data name="TextString_ChangeEmailAddress" xml:space="preserve">
+    <value>Đổi địa chỉ email</value>
+  </data>
+  <data name="TextString_ChangePassword" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="TextString_ChangePasswordAndEmail" xml:space="preserve">
+    <value>Đổi Mật Khẩu &amp; Email</value>
+  </data>
+  <data name="TextString_CompareFeatures" xml:space="preserve">
+    <value>So sánh sản phẩm</value>
+  </data>
+  <data name="TextString_ConfirmPassword" xml:space="preserve">
+    <value>Xác Nhận Mật Khẩu</value>
+  </data>
+  <data name="TextString_ConnectWithUS" xml:space="preserve">
+    <value>Kết nối với chúng tôi</value>
+  </data>
+  <data name="TextString_CurrentPassword" xml:space="preserve">
+    <value>Mật Khẩu Hiện Tại</value>
+  </data>
+  <data name="TextString_Departments" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="TextString_FirstName" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="TextString_JobFunction" xml:space="preserve">
+    <value>Chức Năng Công Việc</value>
+  </data>
+  <data name="TextString_LastName" xml:space="preserve">
+    <value>Họ</value>
+  </data>
+  <data name="TextString_MyLists" xml:space="preserve">
+    <value>Danh Sách Của Tôi</value>
+  </data>
+  <data name="TextString_MyReviews" xml:space="preserve">
+    <value>Đánh Giá Của Tôi</value>
+  </data>
+  <data name="TextString_NewPassword" xml:space="preserve">
+    <value>Mật Khẩu Mới</value>
+  </data>
+  <data name="TextString_PersonalDetails" xml:space="preserve">
+    <value>Thông tin cá nhân</value>
+  </data>
+  <data name="TextString_PersonalDetails_Info" xml:space="preserve">
+    <value>Riêng tư, không hiển thị trực tuyến</value>
+  </data>
+  <data name="TextString_SaveChange" xml:space="preserve">
+    <value>lưu thay đổi</value>
+  </data>
+  <data name="TextString_Sex" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="TextString_ShippingUnknown" xml:space="preserve">
+    <value>Vận chuyển không rõ</value>
+  </data>
+  <data name="TextString_Suburb" xml:space="preserve">
+    <value>Ngoại ô</value>
+  </data>
+  <data name="TextString_ThanksForRetailerSignUp_Info" xml:space="preserve">
+    <value>tùy chọn, tìm thông số tập tin feed tại đây</value>
+  </data>
+  <data name="TextString_ThanksForSigningUp" xml:space="preserve">
+    <value>Cảm ơn bạn đã đăng ký Chương Trình Bán Lẻ Nổi Bật.
+Chúng tôi sẽ liên lạc với bạn sớm.</value>
+  </data>
+  <data name="TextString_UpdatePersonalDetails" xml:space="preserve">
+    <value>Cập nhật thông tin cá nhân</value>
+  </data>
+  <data name="TextString_YourNewEmail" xml:space="preserve">
+    <value>Email Mới Của Bạn</value>
+  </data>
+  <data name="TextString_AboutMeText" xml:space="preserve">
+    <value>Văn bản Về Tôi</value>
+  </data>
+  <data name="TextString_AboutMe_Info" xml:space="preserve">
+    <value>Xin mô tả ngắn gọn về chính bản thân bạn để thu hút những thành viên khác (30-40 từ).
+Mô tả này sẽ được hiển thị trên hồ sơ thành viên của bạn. Xin viết mô tả của bạn trong trường nhập bên dưới và nhấn "Cập Nhật".</value>
+  </data>
+  <data name="TextString_BackToSettings" xml:space="preserve">
+    <value>trở lại thiết lập</value>
+  </data>
+  <data name="TextString_CreateAboutMeText" xml:space="preserve">
+    <value>Tạo văn bản "Về Tôi"</value>
+  </data>
+  <data name="TextString_Filter" xml:space="preserve">
+    <value>Lọc</value>
+  </data>
+  <data name="TextString_Formats" xml:space="preserve">
+    <value>Định dạng</value>
+  </data>
+  <data name="TextString_ImageFile" xml:space="preserve">
+    <value>Tập tin ảnh</value>
+  </data>
+  <data name="TextString_Information" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="TextString_MaxFileSize" xml:space="preserve">
+    <value>Kích thước tập tin tối đa</value>
+  </data>
+  <data name="TextString_MemberProfile" xml:space="preserve">
+    <value>Hồ sơ thành viên</value>
+  </data>
+  <data name="TextString_MemberSince" xml:space="preserve">
+    <value>Thành viên từ</value>
+  </data>
+  <data name="TextString_MostPopulatProducts" xml:space="preserve">
+    <value>{0} Sản Phẩm Phổ Biến Nhất</value>
+  </data>
+  <data name="TextString_PopularBrandFinds" xml:space="preserve">
+    <value>Tìm các nhãn hiệu nổi tiếng tại{0}</value>
+  </data>
+  <data name="TextString_PopularBrandsSiteMap" xml:space="preserve">
+    <value>Cấu trúc Site Nhãn Hiệu Phổ Biến</value>
+  </data>
+  <data name="TextString_PriceMeLists" xml:space="preserve">
+    <value>Danh Sách PriceMe</value>
+  </data>
+  <data name="TextString_Prices" xml:space="preserve">
+    <value>Giá</value>
+  </data>
+  <data name="TextString_Share" xml:space="preserve">
+    <value>Chia sẻ</value>
+  </data>
+  <data name="TextString_Update" xml:space="preserve">
+    <value>cập nhật</value>
+  </data>
+  <data name="TextString_UploadPhoto" xml:space="preserve">
+    <value>tải ảnh lên</value>
+  </data>
+  <data name="TextString_UploadPicture_TextInfo" xml:space="preserve">
+    <value>Hãy làm cho hồ sơ và PriceMe của bạn thêm hấp dẫn và thú vị bằng cách tải lên một ảnh của chính bạn. Ảnh phải là chính bạn, rõ nét và mới nhất.</value>
+  </data>
+  <data name="TextString_UploadPicture_TextInfo2" xml:space="preserve">
+    <value>Thông tin quan trọng về ảnh đang tải lên</value>
+  </data>
+  <data name="TextString_DownloadPriceMeApps" xml:space="preserve">
+    <value>Tải PriceMe Apps</value>
+  </data>
+  <data name="TextString_Products" xml:space="preserve">
+    <value>Sản phẩm</value>
+  </data>
+  <data name="Module_StatusBar_ProductsCompared" xml:space="preserve">
+    <value>Sản phẩm:</value>
+  </data>
+  <data name="TextString_Seemorep" xml:space="preserve">
+    <value>Xem thêm danh mục phổ biến</value>
+  </data>
+  <data name="TextString_HelpAndSupport" xml:space="preserve">
+    <value>Giúp đỡ &amp; hỗ trợ</value>
+  </data>
+  <data name="TextString_Register_Info1" xml:space="preserve">
+    <value>Xin xác nhận PriceMe để dùng địa chỉ email của bạn (chỉ dùng cho web) để đăng nhập vào PriceMe.</value>
+  </data>
+  <data name="TextString_EmailSent" xml:space="preserve">
+    <value>Email đã được gửi</value>
+  </data>
+  <data name="TextString_Login_Info1" xml:space="preserve">
+    <value>Bạn có thể dùng tài khoản &lt;b&gt;Facebook&lt;/b&gt; của bạn để kết nối với PriceMe</value>
+  </data>
+  <data name="TextString_More" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="ShortCountryName" xml:space="preserve">
+    <value>VN</value>
+  </data>
+  <data name="TextString_SB_PriceHighToLow" xml:space="preserve">
+    <value>Giá cao -&gt; thấp</value>
+  </data>
+  <data name="TextString_SB_PriceLowToHigh" xml:space="preserve">
+    <value>Giá thấp -&gt; cao</value>
+  </data>
+  <data name="TextString_CheckToCompareProduct" xml:space="preserve">
+    <value>đánh dấu để so sánh các sản phẩm</value>
+  </data>
+  <data name="TextString_MerchantPortal" xml:space="preserve">
+    <value>Trung tâm thương</value>
+  </data>
+  <data name="TextString_MerchantLogin" xml:space="preserve">
+    <value>Merchant Login</value>
+  </data>
+  <data name="TextString_Newest" xml:space="preserve">
+    <value>mới nhất</value>
+  </data>
+  <data name="TextString_ProductNameAZ" xml:space="preserve">
+    <value>Tên A -&gt; Z</value>
+  </data>
+  <data name="TextString_GenerationProductInfo" xml:space="preserve">
+    <value>Một mô hình mới hơn {0} đã được phát hành vào {1}.</value>
+  </data>
+</root>
