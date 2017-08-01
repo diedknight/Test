@@ -15,15 +15,15 @@
     <script type="text/javascript">document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
     <style>
         #yith-quick-view-modal .yith-wcqv-main {
-            background: #ffffff
+            background: #ffffff;
         }
 
         #yith-quick-view-close {
-            color: #cdcdcd
+            color: #cdcdcd;
         }
 
             #yith-quick-view-close:hover {
-                color: #ff0000
+                color: #ff0000;
             }
     </style>
 
@@ -92,7 +92,7 @@
     <script type='text/javascript'>
         /* <![CDATA[ */
         var megamenu = { "effect": { "fade": { "in": { "animate": { "opacity": "show" } }, "out": { "animate": { "opacity": "hide" } } }, "slide": { "in": { "animate": { "height": "show" }, "css": { "display": "none" } }, "out": { "animate": { "height": "hide" } } } }, "fade_speed": "fast", "slide_speed": "fast", "timeout": "300" };
-/* ]]> */
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/megamenu/js/maxmegamenu.js?ver=1.7.3.1'></script>
     <link rel='https://api.w.org/' href='/linea/wp-json/' />
@@ -162,6 +162,18 @@
         @media (min-width: 768px) {
             #leftFilters {
                 width: 100%;
+            }            
+        }
+
+        @media(max-width:768px) {
+            .clr_max768 {
+                clear:both;
+            }
+        }
+
+        @media only screen and (max-width: 479px) and (min-width: 320px) {
+            button.button, .btn, button.button:hover {
+                padding:1px 5px;
             }
         }
 
@@ -172,6 +184,12 @@
         .dropdown-menu {
             left: -48px;
         }
+
+        .products-grid .item .item-inner .item-info .info-inner .item-title {
+            height:50px;
+            white-space:normal;
+        }
+
     </style>
 
     <script src="<%=PriceMe.WebConfig.CssJsPath %>/Scripts/new_catalog.js?ver=<%=PriceMe.WebConfig.WEB_cssVersion %>"></script>
@@ -279,9 +297,25 @@
                             <div id="leftFilters">
                                 <DK:NewFilters ID="NewFilters1" runat="server" />
                             </div>
+                            <div class="clr"></div>
+
+                            <!--google ad-->
+                            <div>
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- Hotter Winds Skyscraper -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:160px;height:600px"
+                                     data-ad-client="ca-pub-6992217816861590"
+                                     data-ad-slot="4006064329"></ins>
+                                <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+
+                            </div>
+
                         </div>
                         <!-- col-sm-3   -->
-
+                        <div class="clr_max768"></div>
                         <div id="loadDiv">
                             <div class="col-sm-8  col-md-9">
                                 <DK:Breadcrumbs runat="server" ID="Breadcrumbs" />
@@ -299,8 +333,8 @@
 
                                             <div class="sorter">
                                                 <div class="view-mode">
-                                                    <a href="#" class="grid-trigger button-active button-grid"></a>
-                                                    <a href="#" title="List" class="list-trigger  button-list"></a>
+                                                    <a id="gridBtn" href="#" class="grid-trigger button-active button-grid"></a>
+                                                    <a id="listBtn" href="#" title="List" class="list-trigger  button-list"></a>
                                                 </div>
                                             </div>
 
@@ -330,6 +364,7 @@
 
                                     <div id="pcDiv" class="category-products">
                                         <DK:NewCatalogProducts ID="NewCatalogProducts1" runat="server" />
+                                        <div class="clr"></div>
                                     </div>
 
                                     <div class="toolbar bottom">
@@ -356,6 +391,8 @@
                                 <!--  col-main pro-grid    -->
                             </div>
                             <!-- col-sm-9   -->
+
+                            <div class="clr"></div>
                         </div>
 
 
@@ -373,50 +410,50 @@
     <!-- maincontainer -->
 
     <script type="text/javascript">
-                            $(".mega-menu-category").css("display", "none");
+        $(".mega-menu-category").css("display", "none");
     </script>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="foot" runat="server">
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
-/* ]]> */
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%" };
-/* ]]> */
+        /* <![CDATA[ */
+        var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1'></script>
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var wc_cart_fragments_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments" };
-/* ]]> */
+        /* <![CDATA[ */
+        var wc_cart_fragments_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
-/* ]]> */
+        /* <![CDATA[ */
+        var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/woocompare.js?ver=2.0.5'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/jquery.colorbox-min.js?ver=1.4.21'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
         var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
-/* ]]> */
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-quick-view/assets/js/frontend.js?ver=1.0'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.min.js?ver=3.1.5'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.init.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>
     <script type='text/javascript'>
-                /* <![CDATA[ */
-                var yith_wcwl_l10n = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
-/* ]]> */
+        /* <![CDATA[ */
+        var yith_wcwl_l10n = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.0.13'></script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/bootstrap.min.js?ver=4.4.1'></script>
@@ -425,18 +462,18 @@
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/parallax.js?ver=4.4.1'></script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/revslider.js?ver=4.4.1'></script>
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var js_linea_wishvar = { "MGK_ADD_TO_WISHLIST_SUCCESS_TEXT": "Product successfully added to wishlist <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "MGK_ADD_TO_WISHLIST_EXISTS_TEXT": "The product is already in the wishlist! <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "IMAGEURL": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/themes\/linea\/images", "WOO_EXIST": "1", "SITEURL": "https:\/\/wordpress.magikthemes.com\/linea" };
-/* ]]> */
+        /* <![CDATA[ */
+        var js_linea_wishvar = { "MGK_ADD_TO_WISHLIST_SUCCESS_TEXT": "Product successfully added to wishlist <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "MGK_ADD_TO_WISHLIST_EXISTS_TEXT": "The product is already in the wishlist! <a href=\"https:\/\/wordpress.magikthemes.com\/linea\/wishlist\/view\/\">Browse Wishlist.<\/a>", "IMAGEURL": "http:\/\/wordpress.magikthemes.com\/linea\/wp-content\/themes\/linea\/images", "WOO_EXIST": "1", "SITEURL": "https:\/\/wordpress.magikthemes.com\/linea" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/common.js?ver=4.4.1'></script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/jquery.mobile-menu.min.js?ver=4.4.1'></script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/owl.carousel.min.js?ver=4.4.1'></script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/cloud-zoom.js?ver=4.4.1'></script>
     <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var js_linea_vars = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "container_width": "760", "grid_layout_width": "20" };
-/* ]]> */
+        /* <![CDATA[ */
+        var js_linea_vars = { "ajax_url": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "container_width": "760", "grid_layout_width": "20" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/themes/linea/js/mgk_menu.js?ver=4.4.1'></script>
     <script type='text/javascript' src='/linea/wp-includes/js/wp-embed.min.js?ver=4.4.1'></script>
@@ -448,19 +485,19 @@
     <script type='text/javascript'>
         /* <![CDATA[ */
         var woocommerce_price_slider_params = { "currency_symbol": "$", "currency_pos": "left", "min_price": "", "max_price": "" };
-/* ]]> */
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
         var mc4wp_forms_config = [];
-/* ]]> */
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/mailchimp-for-wp/assets/js/forms-api.min.js?ver=3.0.9'></script>
     <script type='text/javascript'>
-                /* <![CDATA[ */
-                var wc_add_to_cart_variation_params = { "i18n_no_matching_variations_text": "Sorry, no products matched your selection. Please choose a different combination.", "i18n_unavailable_text": "Sorry, this product is unavailable. Please choose a different combination." };
-/* ]]> */
+        /* <![CDATA[ */
+        var wc_add_to_cart_variation_params = { "i18n_no_matching_variations_text": "Sorry, no products matched your selection. Please choose a different combination.", "i18n_unavailable_text": "Sorry, this product is unavailable. Please choose a different combination." };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=2.4.12'></script>
     <!-- WooCommerce JavaScript -->

@@ -387,11 +387,11 @@ namespace HotterWinds
                 }
                 else
                 {
-                    if (isAdmin)
-                    {
-                        NewCatalogProducts1.IsAdmin = true;
-                        NewCatalogProducts1.AttributesInfo = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(null);
-                    }
+                    //if (isAdmin)
+                    //{
+                    //    NewCatalogProducts1.IsAdmin = true;
+                    //    NewCatalogProducts1.AttributesInfo = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(null);
+                    //}
                     List<CatalogManufeaturerProduct> temps = new List<CatalogManufeaturerProduct>();
                     List<CatalogManufeaturerProduct> cmps = catalogPageInfo.MyProductSearcher.GetManufeaturerProductList(displayAllProductsManufeaturerIDs, WebConfig.QuickListCount);
                     foreach (CatalogManufeaturerProduct cmp in cmps)
@@ -452,7 +452,7 @@ namespace HotterWinds
             LinkInfo clicksLinkInfo = new LinkInfo();
             clicksLinkInfo.Value = clicksKey;
             clicksLinkInfo.LinkText = "Sort by popularity";
-            clicksLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
+            clicksLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
             sortByInfoList.Add(clicksLinkInfo);
 
             string bestPriceKey = "BestPrice";
@@ -461,7 +461,7 @@ namespace HotterWinds
             LinkInfo bestPriceLinkInfo = new LinkInfo();
             bestPriceLinkInfo.Value = bestPriceKey;
             bestPriceLinkInfo.LinkText = "Sort by price: low to high";
-            bestPriceLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
+            bestPriceLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
             sortByInfoList.Add(bestPriceLinkInfo);
 
             string bestPriceRevKey = "BestPrice-rev";
@@ -470,7 +470,7 @@ namespace HotterWinds
             LinkInfo bestPriceRevLinkInfo = new LinkInfo();
             bestPriceRevLinkInfo.Value = bestPriceRevKey;
             bestPriceRevLinkInfo.LinkText = "Sort by price: high to low";
-            bestPriceRevLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
+            bestPriceRevLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
             sortByInfoList.Add(bestPriceRevLinkInfo);
 
             string ratingKey = "Rating";
@@ -479,7 +479,7 @@ namespace HotterWinds
             LinkInfo ratingLinkInfo = new LinkInfo();
             ratingLinkInfo.Value = ratingKey;
             ratingLinkInfo.LinkText = "Sort by average rating";
-            ratingLinkInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
+            ratingLinkInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
             sortByInfoList.Add(ratingLinkInfo);
 
             string newestKey = "Newest";
@@ -488,7 +488,7 @@ namespace HotterWinds
             LinkInfo newestInfo = new LinkInfo();
             newestInfo.Value = newestKey;
             newestInfo.LinkText = "Sort by newness";
-            newestInfo.LinkURL = UrlController.GetRewriterUrl(PageName.Catalog, psTemp);
+            newestInfo.LinkURL = UrlController.GetRewriterUrl(pageToName, psTemp);
             sortByInfoList.Add(newestInfo);
 
             string titleKey = "Title";
@@ -767,7 +767,7 @@ namespace HotterWinds
 
             //attributes
             //获取分类所包含的所有Attributes.
-            List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoList = productSeacherWithoutFilters.GetAttributesResulte_New(selectedAttrRangeValues);
+            List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoList = productSeacherWithoutFilters.GetAttributesResulte_New(selectedAttrRangeValues, null);
             foreach (var narrow in attributesNarrowByInfoList)
             {
                 if (narrow.IsSlider)
@@ -781,7 +781,7 @@ namespace HotterWinds
                     sliderAttrRange.Add(map.AttributeTitleID, min + "-" + max);
                 }
             }
-            List<NarrowByInfo> attributesNarrowByInfoListWithP = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(selectedAttrRangeValues);
+            List<NarrowByInfo> attributesNarrowByInfoListWithP = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(selectedAttrRangeValues, attributesNarrowByInfoList);
             CatalogProductSearchController.FixAttributesNarrowByInfoProductCount(attributesNarrowByInfoList, attributesNarrowByInfoListWithP);
             narrowByInfoList.AddRange(attributesNarrowByInfoList);
 

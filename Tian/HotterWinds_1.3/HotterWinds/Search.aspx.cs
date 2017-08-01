@@ -532,7 +532,7 @@ namespace HotterWinds
 
                 if (categoryID > 0)
                 {
-                    List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoList = productSeacherWithoutFilters.GetAttributesResulte_New(selectedAttrRangeValues);
+                    List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoList = productSeacherWithoutFilters.GetAttributesResulte_New(selectedAttrRangeValues, null);
                     if (attributesNarrowByInfoList.Count > 0)
                     {
                         foreach (var narrow in attributesNarrowByInfoList)
@@ -549,7 +549,7 @@ namespace HotterWinds
                             }
                         }
 
-                        List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoListWithP = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(selectedAttrRangeValues);
+                        List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoListWithP = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(selectedAttrRangeValues, attributesNarrowByInfoList);
                         CatalogProductSearchController.FixAttributesNarrowByInfoProductCount(attributesNarrowByInfoList, attributesNarrowByInfoListWithP);
                         narrowByInfoList.AddRange(attributesNarrowByInfoList);
                     }

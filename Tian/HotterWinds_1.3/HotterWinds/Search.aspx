@@ -189,8 +189,8 @@
 
                                             <div class="sorter">
                                                 <div class="view-mode">
-                                                    <a href="javascript:void(0);" class="grid-trigger button-active button-grid"></a>
-                                                    <a href="javascript:void(0);" title="List" class="list-trigger  button-list"></a>
+                                                    <a id="gridBtn" href="javascript:void(0);" class="grid-trigger button-active button-grid"></a>
+                                                    <a id="listBtn" href="javascript:void(0);" title="List" class="list-trigger  button-list"></a>
                                                 </div>
                                             </div>
 
@@ -220,6 +220,7 @@
 
                                     <div id="pcDiv" class="category-products">
                                         <DK:NewCatalogProducts ID="NewCatalogProducts1" runat="server" />
+                                        <div class="clr"></div>
                                     </div>
 
                                     <div class="toolbar bottom">
@@ -253,6 +254,21 @@
                         <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
                             <div id="leftFilters">
                                 <DK:NewFilters ID="NewFilters1" runat="server" />
+                            </div>
+                            <div class="clr"></div>
+
+                            <!--google ad-->
+                            <div>
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- Hotter Winds Skyscraper -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:160px;height:600px"
+                                     data-ad-client="ca-pub-6992217816861590"
+                                     data-ad-slot="4006064329"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+
                             </div>
                         </div>
                         <!-- col-sm-3   -->

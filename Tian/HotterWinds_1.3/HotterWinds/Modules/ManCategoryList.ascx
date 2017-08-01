@@ -79,3 +79,13 @@
     <%} %>
 
 </ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#menu-mainmenu > li").on("mouseover", function () {
+            var node = $(this);
+
+            node.find(".mgk-popup.wrap-popup").css("left", "270px");
+        });
+    });
+</script>

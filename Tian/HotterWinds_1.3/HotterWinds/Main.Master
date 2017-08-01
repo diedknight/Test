@@ -164,7 +164,7 @@
                                     </div>--%>
                                 </div>
 
-                                <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><span class="offer-label">Offer Zone</span></div>
+                                <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><%--<span class="offer-label">Offer Zone</span>--%></div>
 
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                         <div class="row">
 
 
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="footer-column pull-left">
                                     <aside id="text-4" class="widget widget_text">
                                         <h4>Shopping Guide</h4>
@@ -233,7 +233,7 @@
 
 
 
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="footer-column pull-left">
                                     <aside id="text-5" class="widget widget_text">
                                         <h4>POPULAR</h4>
@@ -254,7 +254,7 @@
 
 
 
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="footer-column pull-left">
                                     <aside id="text-6" class="widget widget_text">
                                         <h4>Information</h4>
@@ -621,6 +621,22 @@
             margin-bottom: 0 !important;
         }
 
+        .footer-middle .col-md-4:first-child {
+            border-left: 0px solid #e5e5e5;
+            padding-left: 15px;
+        }
+
+        .footer-middle .col-md-4:last-child {
+            padding-right: 0px;
+        }
+
+        .footer-middle .col-md-4 {
+            border-left: 1px solid #444;
+            margin: auto;
+            padding: 35px 20px;
+            overflow: hidden;
+        }
+
         .mega-container {
             width: 270px;
             margin-left: -15px;
@@ -703,7 +719,7 @@
 
     </script>
 
-    
+
 
 </body>
 </html>

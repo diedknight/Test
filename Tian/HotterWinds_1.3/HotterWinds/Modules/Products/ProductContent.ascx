@@ -49,7 +49,7 @@
                             <%--<li class="additional_tab">
                                 <a href="#tab-additional">Additional Information</a>
                             </li>--%>
-                            <li class="reviews_tab">
+                            <li class="reviews_tab" style="display:none;">
                                 <a href="#tab-reviews">Reviews (0)</a>
                             </li>
                         </ul>
@@ -207,7 +207,20 @@
         </div>
         <!--product-collateral-->
 
+        <!--google ad-->
+        <div style="height:350px;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Hotter Winds Horisontal -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6992217816861590"
+                 data-ad-slot="9110394807"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
 
+        </div>
         
 
         <meta itemprop="url" content="https://wordpress.magikthemes.com/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/" />

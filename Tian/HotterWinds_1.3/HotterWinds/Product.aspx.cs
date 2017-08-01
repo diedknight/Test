@@ -66,7 +66,7 @@ namespace HotterWinds
                 return;
             }
 
-            product = ProductController.GetRealProductSimplified(productID, WebConfig.CountryId);
+            product = ProductController.GetRealProductSimplified(productID, WebConfig.CountryId, true);
             if (product == null)
             {
                 Utility.PageNotFound();

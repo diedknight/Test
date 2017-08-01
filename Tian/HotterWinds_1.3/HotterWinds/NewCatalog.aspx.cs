@@ -609,11 +609,11 @@ namespace HotterWinds
                 }
                 else
                 {
-                    if (isAdmin)
-                    {
-                        NewCatalogProducts1.IsAdmin = true;
-                        NewCatalogProducts1.AttributesInfo = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(null);
-                    }
+                    //if (isAdmin)
+                    //{
+                    //    NewCatalogProducts1.IsAdmin = true;
+                    //    NewCatalogProducts1.AttributesInfo = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(null);
+                    //}
                     List<CatalogManufeaturerProduct> temps = new List<CatalogManufeaturerProduct>();
                     List<CatalogManufeaturerProduct> cmps = catalogPageInfo.MyProductSearcher.GetManufeaturerProductList(displayAllProductsManufeaturerIDs, WebConfig.QuickListCount);
                     foreach (CatalogManufeaturerProduct cmp in cmps)
@@ -774,7 +774,7 @@ namespace HotterWinds
 
             //attributes
             //获取分类所包含的所有Attributes.
-            List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoList = productSeacherWithoutFilters.GetAttributesResulte_New(selectedAttrRangeValues);
+            List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoList = productSeacherWithoutFilters.GetAttributesResulte_New(selectedAttrRangeValues, null);
             //得到各slider attribute 的min-max值范围
             foreach (var narrow in attributesNarrowByInfoList)
             {
@@ -790,7 +790,7 @@ namespace HotterWinds
                 }
             }
 
-            List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoListWithP = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(selectedAttrRangeValues);
+            List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoListWithP = catalogPageInfo.MyProductSearcher.GetAttributesResulte_New(selectedAttrRangeValues, attributesNarrowByInfoList);
             CatalogProductSearchController.FixAttributesNarrowByInfoProductCount(attributesNarrowByInfoList, attributesNarrowByInfoListWithP);
             narrowByInfoList.AddRange(attributesNarrowByInfoList);
 

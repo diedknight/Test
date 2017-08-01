@@ -29,6 +29,13 @@
 
     <div id="pcDiv">
         <DK:NewCatalogProducts ID="NewCatalogProducts1" runat="server" />
+        <div class="clr"></div>
+        <script type="text/javascript">
+            var node = $("#listBtn");
+            if (node.hasClass("button-active")) {
+                $("#listBtn").click();
+            }
+        </script>
     </div>
 
     <div id="sortByDiv">

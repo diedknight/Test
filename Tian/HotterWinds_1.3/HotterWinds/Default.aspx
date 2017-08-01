@@ -219,10 +219,10 @@
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1-150x150.jpg'>
                                     <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1.jpg" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1.jpg" />
                                     <div class="info">
-                                        <div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;'><span>Womens style</span> </div>
-                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;'><span>Season Sale</span> </div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'>In augue urna, nunc, tincidunt, augue, augue facilisis facilisis.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><a href='#' class="buy-btn">Shop Now</a> </div>
+                                        <div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;'><%--<span>Womens style</span>--%> </div>
+                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;'><span>FOR ADVENTURE</span> </div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--In augue urna, nunc, tincidunt, augue, augue facilisis facilisis.--%></div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--<a href='#' class="buy-btn">Shop Now</a>--%> </div>
                                     </div>
                                     <a class="s-link" href="https://hotterwinds.co.nz/"></a>
 
@@ -234,10 +234,10 @@
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2-150x150.jpg'>
                                     <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2.jpg" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2.jpg" />
                                     <div class="info">
-                                        <div class='tp-caption ExtraLargeTitle sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap; padding-right: 0px'><span>Super Sale</span> </div>
-                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;'>digital life</div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><a href='#' class="buy-btn">Buy Now</a> </div>
+                                        <div class='tp-caption ExtraLargeTitle sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap; padding-right: 0px'><%--<span>Super Sale</span>--%> </div>
+                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;'>FOR TRAVEL</div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--Lorem ipsum dolor sit amet, consectetur adipiscing elit.--%></div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--<a href='#' class="buy-btn">Buy Now</a>--%> </div>
                                     </div>
                                     <a class="s-link" href="https://hotterwinds.co.nz/"></a>
 
@@ -700,6 +700,9 @@
                 </div>
 
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+                    
+                    <!--
+                    
                     <div class="custom-slider-wrap">
                         <div class="custom-slider-inner">
                             <div class="home-custom-slider">
@@ -756,7 +759,6 @@
                         </div>
                     </div>
 
-
                     <div class="hot-deal">
                         <ul class="products-grid">
                             <li class="right-space two-height item">
@@ -811,8 +813,7 @@
                     </div>
 
 
-
-                    <div class="testimonials">
+                    <%--<div class="testimonials">
                         <div class="ts-testimonial-widget">
                             <div class="slider-items-products">
                                 <div id="testimonials-slider" class="product-flexslider hidden-buttons home-testimonials">
@@ -887,7 +888,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
 
                     <div class="featured-add-box">
                         <div class="featured-add-inner">
@@ -905,6 +906,22 @@
 
 
                         </div>
+                    </div>
+
+                    -->
+
+
+                    <!--google ad-->
+                    <div>
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Hotter Winds Skyscraper -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:160px;height:600px"
+                             data-ad-client="ca-pub-6992217816861590"
+                             data-ad-slot="4006064329"></ins>
+                        <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
                 </aside>
             </div>
@@ -969,4 +986,12 @@
     <script type="text/javascript">
         $(".mega-menu-category").css("display", "");
     </script>
+
+
+    <style type="text/css">
+        .products-grid .item .item-inner .item-info .info-inner .item-title {
+            height:50px;
+            white-space:normal;
+        }
+    </style>
 </asp:Content>

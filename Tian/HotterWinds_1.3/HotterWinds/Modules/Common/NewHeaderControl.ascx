@@ -63,7 +63,39 @@
             }
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: 1000px) {
+        .search_box_extension {
+            width: 600px;
+        }
+
+        #suggest-div {
+            width: 600px;
+        }
+
+            #suggest-div #suggestULRight {
+                width: 580px;
+            }
+    }
+
+    @media (min-width: 1200px) and (max-width:1500px) {
+        #suggest-div {
+            width: 800px;
+        }
+
+            #suggest-div #suggestULLeft {
+                width:480px;
+            }
+
+            #suggest-div li .aaaa {
+                width:380px;
+            }
+
+            #suggest-div #suggestULRight {
+                width: 310px;
+            }
+    }
+
+    @media (min-width: 1500px) {
         #suggest-div {
             width: 1000px;
         }
