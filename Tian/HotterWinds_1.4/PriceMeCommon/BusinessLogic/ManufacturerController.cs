@@ -33,7 +33,7 @@ namespace PriceMeCommon.BusinessLogic
             Dictionary<int, Dictionary<int, string>> multiDic = new Dictionary<int, Dictionary<int, string>>();
 
             var connectionStr = MultiCountryController.CommonConnectionStringSettings_Static.ConnectionString;
-            string sql = "SELECT [PID],[URL],COUNTRYID FROM [CSK_Store_ManufacturerProduct] WHERE COUNTRYID in (" + string.Join(",", MultiCountryController.CountryIdList) + ")";
+            string sql = "SELECT [PID],[URL],COUNTRYID FROM [CSK_Store_ManufacturerProduct] WHERE Status = 1 And COUNTRYID in (" + string.Join(",", MultiCountryController.CountryIdList) + ")";
             using (SqlConnection conn = new SqlConnection(connectionStr))
             using (SqlCommand cmd = new SqlCommand(sql, conn))
             {
@@ -240,12 +240,12 @@ namespace PriceMeCommon.BusinessLogic
 
         private static List<int> GetAllBrandsIdList(int countryId)
         {
-            Lucene.Net.Search.Searcher allBrandsIndexSearcher = MultiCountryController.GetAllBrandsLuceneSearcher(countryId);
+            Lucene.Net.Search.IndexSearcher allBrandsIndexSearcher = MultiCountryController.GetAllBrandsLuceneSearcher(countryId);
 
             List<int> allBrandsId = new List<int>();
             if (allBrandsIndexSearcher != null)
             {
-                for (int i = 0; i < allBrandsIndexSearcher.MaxDoc; i++)
+                for (int i = 0; i < allBrandsIndexSearcher.IndexReader.MaxDoc; i++)
                 {
                     string mid = allBrandsIndexSearcher.Doc(i).Get("ManufacturerID");
                     allBrandsId.Add(int.Parse(mid));

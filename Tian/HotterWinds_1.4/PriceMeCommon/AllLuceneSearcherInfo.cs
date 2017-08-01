@@ -15,8 +15,10 @@ namespace PriceMeCommon
 
         private AllLuceneSearcherInfo() { }
 
+        CountriesNodeInfo mCountriesNodeInfo;
         Dictionary<int, LuceneSearcherInfo> luceneSearcherInfoDic;
-        Thread checkModifyThread;
+        Thread mCheckModifyThread;
+        Thread mCheckProductPriceThread;
         int interval;
 
         public LuceneSearcherInfo GetLuceneSearcherInfoByCountryId(int countryId)
@@ -27,13 +29,38 @@ namespace PriceMeCommon
             return null;
         }
 
+        void CheckProductPrice()
+        {
+            if (interval < 100)
+                interval = 10000;
+
+            while (true)
+            {
+                try
+                {
+                    foreach (var ci in mCountriesNodeInfo.CountryInfoListDic.Values)
+                    {
+                        if(ci.RealTimeUpdateIndex)
+                        {
+                            SearchController.UpdateIndex(ci.CountryId);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+                }
+                Thread.Sleep(interval);
+            }
+        }
+
         /// <summary>
         /// 开始检测Index的路径变化
         /// </summary>
         public void StartCheckPathModify()
         {
-            checkModifyThread = new Thread(new ThreadStart(CheckPathModify));
-            checkModifyThread.Start();
+            mCheckModifyThread = new Thread(new ThreadStart(CheckPathModify));
+            mCheckModifyThread.Start();
         }
 
         /// <summary>
@@ -76,8 +103,11 @@ namespace PriceMeCommon
 
         public void EndCheck()
         {
-            if (checkModifyThread != null && checkModifyThread.IsAlive)
-                checkModifyThread.Abort();
+            if (mCheckModifyThread != null && mCheckModifyThread.IsAlive)
+                mCheckModifyThread.Abort();
+
+            if (mCheckProductPriceThread != null && mCheckProductPriceThread.IsAlive)
+                mCheckProductPriceThread.Abort();
         }
 
         public void Dispose()
@@ -88,6 +118,7 @@ namespace PriceMeCommon
         public static AllLuceneSearcherInfo CreateFromCountriesNodeInfo(CountriesNodeInfo countriesNodeInfo)
         {
             AllLuceneSearcherInfo luceneSearcherInfo = new AllLuceneSearcherInfo();
+            luceneSearcherInfo.mCountriesNodeInfo = countriesNodeInfo;
             luceneSearcherInfo.luceneSearcherInfoDic = new Dictionary<int, LuceneSearcherInfo>();
             luceneSearcherInfo.interval = countriesNodeInfo.Interval;
 
@@ -97,6 +128,9 @@ namespace PriceMeCommon
 
                 luceneSearcherInfo.luceneSearcherInfoDic.Add(ci.CountryId, lsi);
             }
+
+            //luceneSearcherInfo.mCheckProductPriceThread = new Thread(new ThreadStart(luceneSearcherInfo.CheckProductPrice));
+            //luceneSearcherInfo.mCheckProductPriceThread.Start();
 
             return luceneSearcherInfo;
         }
@@ -148,14 +182,16 @@ namespace PriceMeCommon
         public string LuceneConfigPath { get; private set; }
         public string LuceneIndexPath { get; private set; }
         public string IndexKey { get; private set; }
+        public string ProductIndexRootPath { get; private set; }
 
-        public readonly Dictionary<string, IndexSearcher> CategoriesProductLuceneIndexSearcherDic;
-        public readonly IndexSearcher AllCategoryProductsIndexSearcher;
+        public Dictionary<string, IndexSearcher> CategoriesProductLuceneIndexSearcherDic;
+        public IndexSearcher AllCategoryProductsIndexSearcher;
+
+        public readonly IndexSearcher AllBrandsIndexSearcher;
         public readonly IndexSearcher CategoriesIndexSearcher;
         public readonly IndexSearcher AttributesIndexSearcher;
         public readonly IndexSearcher ProductRetailerMapIndexSearcher;
         public readonly IndexSearcher RetailerProductsIndexSearcher;
-        public readonly IndexSearcher AllBrandsIndexSearcher;
         public readonly IndexSearcher PopularIndexSearcher;
         public readonly IndexSearcher ReviewAverageIndexSearcher;
         public readonly IndexSearcher ExpertReviewIndexSearcher;
@@ -175,8 +211,10 @@ namespace PriceMeCommon
             string reviewAverageIndexPath = Path.Combine(expertReviewRootIndexPath, "ExpertAverage");
             string expertReviewIndexPath = Path.Combine(expertReviewRootIndexPath, "ExpertReview");
             string productVideoIndexPath = Path.Combine(expertReviewRootIndexPath, "ProductVideo");
+            ProductIndexRootPath = Path.Combine(LuceneIndexPath, "AllCategoriesProduct");
 
-            CategoriesProductLuceneIndexSearcherDic = CreateAllCategoryProductsLundexSearcher(Path.Combine(LuceneIndexPath, "AllCategoriesProduct"));
+            LoadProductIndex();
+
             CategoriesIndexSearcher = GetIndexSearcher(Path.Combine(LuceneIndexPath, "Categories"));
             AttributesIndexSearcher = GetIndexSearcher(Path.Combine(LuceneIndexPath, "ProductsDescriptor"));
             ProductRetailerMapIndexSearcher = GetIndexSearcher(Path.Combine(LuceneIndexPath, "ProductRetailerMap"));
@@ -189,16 +227,6 @@ namespace PriceMeCommon
             else
             {
                 AllBrandsIndexSearcher = null;
-            }
-
-            IndexSearcher allCategoryProductsIndexSearcher;
-            if (CategoriesProductLuceneIndexSearcherDic.TryGetValue("Products", out allCategoryProductsIndexSearcher))
-            {
-                AllCategoryProductsIndexSearcher = allCategoryProductsIndexSearcher;
-            }
-            else
-            {
-                AllCategoryProductsIndexSearcher = null;
             }
 
             PopularIndexSearcher = GetIndexSearcher(popularSearchIndexPath);
@@ -240,12 +268,14 @@ namespace PriceMeCommon
                 {
                     FSDirectory fsDirectory = FSDirectory.Open(new DirectoryInfo(indexDirectory));
                     RAMDirectory ramDirectory = new RAMDirectory(fsDirectory);
-                    indexSearcher = new IndexSearcher(ramDirectory, readOnly);
+                    Lucene.Net.Index.IndexReader indexReader = Lucene.Net.Index.DirectoryReader.Open(ramDirectory, readOnly);
+                    indexSearcher = new IndexSearcher(indexReader);
                 }
                 else
                 {
                     FSDirectory fsDirectory = FSDirectory.Open(new DirectoryInfo(indexDirectory));
-                    indexSearcher = new IndexSearcher(fsDirectory, readOnly);
+                    Lucene.Net.Index.IndexReader indexReader = Lucene.Net.Index.DirectoryReader.Open(fsDirectory, readOnly);
+                    indexSearcher = new IndexSearcher(indexReader);
                 }
                 return indexSearcher;
             }
@@ -254,6 +284,26 @@ namespace PriceMeCommon
                 LogController.WriteException(indexDirectory + " have no index file!");
             }
             return null;
+        }
+
+        public void LoadProductIndex()
+        {
+            CategoriesProductLuceneIndexSearcherDic = CreateAllCategoryProductsLundexSearcher(ProductIndexRootPath);
+
+            IndexSearcher allCategoryProductsIndexSearcher;
+            if (CategoriesProductLuceneIndexSearcherDic.TryGetValue("Products", out allCategoryProductsIndexSearcher))
+            {
+                AllCategoryProductsIndexSearcher = allCategoryProductsIndexSearcher;
+            }
+            else
+            {
+                AllCategoryProductsIndexSearcher = null;
+            }
+        }
+
+        public void ReLoadProductIndex()
+        {
+            LoadProductIndex();
         }
     }
 }

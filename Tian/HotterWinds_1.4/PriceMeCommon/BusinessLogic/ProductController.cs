@@ -443,7 +443,7 @@ namespace PriceMeCommon.BusinessLogic
 
             Dictionary<int, List<ProductVideo>> pvs = new Dictionary<int, List<ProductVideo>>();
 
-            for (int i = 0; i < searcher.MaxDoc; i++)
+            for (int i = 0; i < searcher.IndexReader.MaxDoc; i++)
             {
                 ProductVideo pv = new ProductVideo();
                 Document doc = searcher.Doc(i);
@@ -487,7 +487,7 @@ namespace PriceMeCommon.BusinessLogic
 
             var searcher = MultiCountryController.GetReviewAverageLuceneSearcher(countryId);
 
-            for (int i = 0; i < searcher.MaxDoc; i++)
+            for (int i = 0; i < searcher.IndexReader.MaxDoc; i++)
             {
                 ReviewAverage ra = new ReviewAverage();
                 Document doc = searcher.Doc(i);
@@ -626,7 +626,7 @@ namespace PriceMeCommon.BusinessLogic
         /// <param name="productId"></param>
         /// <param name="countryId"></param>
         /// <returns></returns>
-        public static CSK_Store_ProductNew GetRealProductSimplified(int productId, int countryId)
+        public static CSK_Store_ProductNew GetRealProductSimplified(int productId, int countryId, bool UseLibraryTable)
         {
             CSK_Store_ProductNew product = GetProductNewSimplified(productId, countryId);
 
@@ -649,8 +649,13 @@ namespace PriceMeCommon.BusinessLogic
                     }
                     else
                     {
-                        product = GetProductHistorySimplified(productId, countryId);
-                        return product;
+                        if (UseLibraryTable)
+                        {
+                            product = GetProductHistorySimplified(productId, countryId);
+                            return product;
+                        }
+                        else
+                            return null;
                     }
                 }
             }
@@ -681,6 +686,7 @@ namespace PriceMeCommon.BusinessLogic
                         product.CategoryID = reader.GetInt32(5);
                         product.ProductAttributeText = reader.IsDBNull(6) ? "" : reader.GetString(6);
 
+                        product.CreatedOn = reader.IsDBNull(7) ? DateTime.Now : reader.GetDateTime(7);
                         product.Weight = reader.IsDBNull(8) ? 0 : reader.GetDecimal(8);
                         product.Height = reader.IsDBNull(9) ? 0 : reader.GetDecimal(9);
                         product.Width = reader.IsDBNull(10) ? 0 : reader.GetDecimal(10);
@@ -1092,22 +1098,22 @@ namespace PriceMeCommon.BusinessLogic
 
             ProductController.GetRetailerProducts(productID, out bestPrice, out maxPrice, out singlePrice, out showFeatured, out rps, out allprice, flag, out isInternational, out overseasPices, countryId);
 
-            if (isInternational)
-            {
-                List<CSK_Store_RetailerProductNew> priceRps = rps.Where(r => !RetailerController.IsInternationalRetailer(r.RetailerId, countryId)).ToList();
-                if (priceRps.Count > 0)
-                {
-                    singlePrice = priceRps.Count == 1;
+            //if (isInternational)
+            //{
+            //    List<CSK_Store_RetailerProductNew> priceRps = rps.Where(r => !RetailerController.IsInternationalRetailer(r.RetailerId, countryId)).ToList();
+            //    if (priceRps.Count > 0)
+            //    {
+            //        singlePrice = priceRps.Count == 1;
 
-                    bestPrice = priceRps.First().RetailerPrice;
-                    if (!singlePrice && priceRps[1].RetailerPrice < bestPrice)
-                        bestPrice = priceRps[1].RetailerPrice;
+            //        bestPrice = priceRps.First().RetailerPrice;
+            //        if (!singlePrice && priceRps[1].RetailerPrice < bestPrice)
+            //            bestPrice = priceRps[1].RetailerPrice;
 
-                    maxPrice = priceRps.Last().RetailerPrice;
-                    if (!singlePrice && priceRps[0].RetailerPrice > maxPrice)
-                        maxPrice = priceRps[0].RetailerPrice;
-                }
-            }
+            //        maxPrice = priceRps.Last().RetailerPrice;
+            //        if (!singlePrice && priceRps[0].RetailerPrice > maxPrice)
+            //            maxPrice = priceRps[0].RetailerPrice;
+            //    }
+            //}
 
             var count531 = rps.Where(w => w.RetailerId == 531).ToList();
             if (count531.Count() > 1)
@@ -1673,6 +1679,75 @@ namespace PriceMeCommon.BusinessLogic
                 return GetProductNew(IntraLinkingGenerationsDic_Static[productId], countryId);
             }
             return null;
+        }
+
+        public static List<RelatedPartsData> GetRelatedParts(int pid, int countryId)
+        {
+            List<RelatedPartsData> datas = new List<RelatedPartsData>();
+
+            string connectionStr = MultiCountryController.GetDBConnectionString(countryId);
+            var sql = "Select * from csk_store_RelatedParts Where ProductId = " + pid;
+            using (SqlConnection conn = new SqlConnection(connectionStr))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.CommandTimeout = 0;
+
+                using (IDataReader dr = cmd.ExecuteReader())
+                {
+                    while(dr.Read())
+                    {
+                        int id = 0, spid = 0;
+                        int.TryParse(dr["Id"].ToString(), out id);
+                        int.TryParse(dr["ShopProductId"].ToString(), out spid);
+
+                        RelatedPartsData data = new RelatedPartsData();
+                        data.Id = id;
+                        data.ProductId = pid;
+                        data.ShopProductId = spid;
+
+                        datas.Add(data);
+                    }
+                    dr.Close();
+                }
+            }
+
+            return datas;
+        }
+
+        public static List<RelatedPartsData> GetRelatedProduct(int pid, int countryId)
+        {
+            List<RelatedPartsData> datas = new List<RelatedPartsData>();
+
+            string connectionStr = MultiCountryController.CommonConnectionStringSettings_Static.ConnectionString;
+            var sql = "Select* From RelatedProductWithScore Where ProductId = " + pid
+                    + " And countryid = " + countryId + " order by Score desc";
+            using (SqlConnection conn = new SqlConnection(connectionStr))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.CommandTimeout = 0;
+
+                using (IDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        int id = 0, spid = 0;
+                        int.TryParse(dr["ID"].ToString(), out id);
+                        int.TryParse(dr["RelatedProductId"].ToString(), out spid);
+
+                        RelatedPartsData data = new RelatedPartsData();
+                        data.Id = id;
+                        data.ProductId = pid;
+                        data.ShopProductId = spid;
+
+                        datas.Add(data);
+                    }
+                    dr.Close();
+                }
+            }
+
+            return datas;
         }
     }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PriceMeCommon</RootNamespace>
     <AssemblyName>PriceMeCommon</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,8 +46,9 @@
     <Reference Include="Lucene.Net">
       <HintPath>..\DLL\Lucene.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Dll\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SubSonic.Core">
       <HintPath>..\DLL\SubSonic.Core.dll</HintPath>
@@ -73,6 +75,7 @@
     <Compile Include="BusinessLogic\CategoryController.cs" />
     <Compile Include="BusinessLogic\ConvertController.cs" />
     <Compile Include="BusinessLogic\FavoritesController.cs" />
+    <Compile Include="BusinessLogic\ProductIndexUpdater.cs" />
     <Compile Include="BusinessLogic\JsonBuilder.cs" />
     <Compile Include="BusinessLogic\LogController.cs" />
     <Compile Include="BusinessLogic\ManufacturerController.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="Data\CatalogSitemapCategory.cs" />
     <Compile Include="Data\CategoryExtend.cs" />
     <Compile Include="Data\CategoryFilterData.cs" />
+    <Compile Include="Data\CategoryHWDInfo.cs" />
     <Compile Include="Data\CategoryResultsInfo.cs" />
     <Compile Include="Data\CommonPPCMember.cs" />
     <Compile Include="Data\ConvertMap.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Data\HitsInfo.cs" />
     <Compile Include="Data\HotProduct.cs" />
     <Compile Include="Data\LinkInfo.cs" />
+    <Compile Include="Data\LuceneUpdateIndexInfo.cs" />
     <Compile Include="Data\ManufacturerInfo.cs" />
     <Compile Include="Data\NarrowByInfo.cs" />
     <Compile Include="Data\NarrowInfo.cs" />
@@ -121,12 +126,14 @@
     <Compile Include="Data\PriceDropItem.cs" />
     <Compile Include="Data\PriceRange.cs" />
     <Compile Include="Data\ProductCatalog.cs" />
+    <Compile Include="Data\RelatedPartsData.cs" />
     <Compile Include="Data\RetailerCategoryCache.cs" />
     <Compile Include="Data\RetailerProductCatalog.cs" />
     <Compile Include="Data\RetailerProductItem.cs" />
     <Compile Include="Data\ReviewerExpertReview.cs" />
     <Compile Include="Data\ReviewerUserReview.cs" />
     <Compile Include="Data\SearchResult.cs" />
+    <Compile Include="Data\SpecialAttributesTitle.cs" />
     <Compile Include="Data\StoreGLatLng.cs" />
     <Compile Include="Data\StoreGRegion.cs" />
     <Compile Include="Data\StoreUserLocation.cs" />

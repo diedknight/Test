@@ -11,25 +11,28 @@ namespace PriceMeCommon.BusinessLogic
     public class ProductSearcher
     {
         int _categoryId;
+        List<int> _categoryIdList;
         List<int> _brandIds;
         PriceRange _priceRange;
         List<int> _selectedAttributeIds;
         List<int> _selectedAttributeRangeIds;
-        Dictionary<int, string> _selectedAttributeValueRanges;
         string _sortby;
         string _keywords;
         List<int> _retailerIds;
         int _countryId;
         bool _includeAccessoies = true;
-        List<int> _categoryIdList;
         bool _ppcOnly = false;
 
         //
         HitsInfo _resultHitsInfo;
         List<string> _resultProductIDs = null;
-        Dictionary<string, int> _attributeProductCountDictionary = null;
+        Dictionary<string, int> _attributeIdProductCountDictionary = null;
         Dictionary<int, int> _attrValueProductCountDictionary = null;
         List<int> selectAttributeTitle = new List<int>();
+        List<float> _heightList = null;
+        List<float> _widthtList = null;
+        List<float> _lengthList = null;
+        List<float> _weightList = null;
 
         private void Init(string keywords, int categoryID, List<int> manufacturerIDs, PriceRange priceRange, List<int> attributeValueIDList, List<int> attributeRangeIDList, string sortby, List<int> retailerIDs, int maxDocCount, int countryId, bool multiAttribute, bool includeAccessories, bool ppcOnly)
         {
@@ -78,6 +81,7 @@ namespace PriceMeCommon.BusinessLogic
             {
                 categoryID = categoryIDs[0];
             }
+            _categoryIdList = categoryIDs;
             Init(keywords, categoryID, manufacturerIDs, priceRange, attributeValueIDList, attributeRangeIDList, sortby, retailerIDs, maxDocCount, countryId, multiAttribute, includeAccessories, ppcOnly);
 
             _resultHitsInfo = SearchController.SearchProducts(this._keywords, categoryIDs, this._brandIds, this._priceRange, this._selectedAttributeIds, this._selectedAttributeRangeIds, this._sortby, this._retailerIds, maxDocCount, countryId, multiAttribute, includeAccessories, ppcOnly, attrRanges, useIsSearchonly, daysRange, onSaleOnly);
@@ -89,7 +93,7 @@ namespace PriceMeCommon.BusinessLogic
 
             List<int> cidList = new List<int>();
             cidList.Add(categoryId);
-
+            _categoryIdList = cidList;
             _resultHitsInfo = SearchController.SearchProducts(this._keywords, cidList, this._brandIds, this._priceRange, this._selectedAttributeIds, this._selectedAttributeRangeIds, this._sortby, this._retailerIds, maxDocCount, countryId, multiAttribute, includeAccessories, ppcOnly, attrRanges, useIsSearchonly, daysRange, onSaleOnly);
         }
 
@@ -197,8 +201,8 @@ namespace PriceMeCommon.BusinessLogic
         {
             int count = 0;
             PriceRange range = new PriceRange(minimumPrice, 1000000d);
-            Lucene.Net.Search.Searcher searcher = MultiCountryController.GetAllCategoryProductsIndexSearcher(countryId);
-            for (int i = 0; i < searcher.MaxDoc; i++)
+            Lucene.Net.Search.IndexSearcher searcher = MultiCountryController.GetAllCategoryProductsIndexSearcher(countryId);
+            for (int i = 0; i < searcher.IndexReader.MaxDoc; i++)
             {
                 ProductCatalog productCatalog = SearchController.GetProductCatalogFromDoc(searcher.Doc(i));
                 float bp = float.Parse(productCatalog.BestPrice);
@@ -615,14 +619,15 @@ namespace PriceMeCommon.BusinessLogic
         }
 
 
-        public List<NarrowByInfo> GetAttributesResulte_New(Dictionary<int, string> selectedAttrRangeValues)
+        public List<NarrowByInfo> GetAttributesResulte_New(Dictionary<int, string> selectedAttrRangeValues, List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoListWithOutP)
         {
             List<NarrowByInfo> narrowByInfoList = new List<NarrowByInfo>();
             List<PriceMeCache.AttributeTitleCache> attributeTitles = AttributesController.GetAttributesTitleByCategoryID(this._categoryId);
-            if (attributeTitles == null)
+            if (attributeTitles == null || attributeTitles.Count == 0)
             {
                 return narrowByInfoList;
             }
+
             //获取attr products
             SetAttributeData();
 
@@ -630,12 +635,10 @@ namespace PriceMeCommon.BusinessLogic
             {
                 //if (selectAttributeTitle.Contains(pdt.TypeID)) continue;//选中的分类改为任然显示，用以支持多选
                 NarrowByInfo narrowByInfo = AttributesController.GetAttributesResulteList(pdt.TypeID, this._categoryId);
-                if (pdt.AttributeTypeID == 2)
-                {
-                    narrowByInfo.IsBool = true;
-                }
                 narrowByInfo.ID = pdt.TypeID;
                 narrowByInfo.Title = pdt.Title;
+                narrowByInfo.Description = pdt.ShortDescription;
+
                 string key = this._categoryId + "," + pdt.TypeID;
                 PriceMeCache.CategoryAttributeTitleMapCache categoryAttributeTitleMap = AttributesController.GetCategoryAttributeTitleMapByKey(key);
                 if (categoryAttributeTitleMap != null)
@@ -646,28 +649,151 @@ namespace PriceMeCommon.BusinessLogic
                 {
                     narrowByInfo.ListOrder = 3;
                 }
-                narrowByInfo.Description = pdt.ShortDescription;
-                if (narrowByInfo.IsSlider)
+
+                if (narrowByInfo.ID < 0)
                 {
-                    if (selectedAttrRangeValues != null && selectedAttrRangeValues.Count > 0)
+                    SetOthersNarrowByInfo(narrowByInfo, attributesNarrowByInfoListWithOutP);
+                }
+                else
+                {
+                    if (pdt.AttributeTypeID == 2)
                     {
-                        //设置选中的值， 以获取选中值的下标
-                        if (selectedAttrRangeValues.ContainsKey(pdt.TypeID))
-                            narrowByInfo.SelectedValue = selectedAttrRangeValues[pdt.TypeID];
+                        narrowByInfo.IsBool = true;
+                    }
+                    
+                    if (narrowByInfo.IsSlider)
+                    {
+                        if (selectedAttrRangeValues != null && selectedAttrRangeValues.Count > 0)
+                        {
+                            //设置选中的值， 以获取选中值的下标
+                            if (selectedAttrRangeValues.ContainsKey(pdt.TypeID))
+                                narrowByInfo.SelectedValue = selectedAttrRangeValues[pdt.TypeID];
+                        }
+
                     }
 
+                    SetProductCount(narrowByInfo);
                 }
-
-                SetProductCount(narrowByInfo);
-
                 if (narrowByInfo.NarrowItemList.Count == 0)
                 {
                     continue;
                 }
-
                 narrowByInfoList.Add(narrowByInfo);
             }
             return narrowByInfoList.OrderBy(ni => ni.ListOrder).ToList();
+        }
+
+        private void SetOthersNarrowByInfo(NarrowByInfo narrowByInfo, List<PriceMeCommon.Data.NarrowByInfo> attributesNarrowByInfoListWithOutP)
+        {
+            List<float> values = null;
+            if (narrowByInfo.ID == SpecialAttributesTitle.HeightAttribute.TypeID)
+            {
+                values = _heightList;
+            }
+            else if (narrowByInfo.ID == SpecialAttributesTitle.WidthAttribute.TypeID)
+            {
+                values = _widthtList;
+            }
+            else if (narrowByInfo.ID == SpecialAttributesTitle.LengthAttribute.TypeID)
+            {
+                values = _lengthList;
+            }
+            else if (narrowByInfo.ID == SpecialAttributesTitle.WeightAttribute.TypeID)
+            {
+                if(_categoryIdList != null && _categoryIdList.Count == 1)
+                {
+                    values = _weightList;
+                }
+            }
+            if (values != null && values.Count > 0)
+            {
+                var hwdInfo = AttributesController.GetCategoryHWDInfo(_categoryId);
+
+                values.Sort();
+
+                //int count = values.Count;
+
+                float maxValue = values.Last();
+                float minValue = values.First();
+
+                if (!hwdInfo.WeightUnitIsKG && narrowByInfo.ID == -4)
+                {
+                    minValue = values.First() - 1f;
+                    maxValue = values.Last() + 1f;
+                }
+                else
+                {
+                    minValue = values.First() - 0.1f;
+                    maxValue = values.Last() + 0.1f;
+                }
+
+                if (minValue < 0)
+                {
+                    minValue = 0;
+                }
+
+                if (attributesNarrowByInfoListWithOutP != null)
+                {
+                    foreach (var ni in attributesNarrowByInfoListWithOutP)
+                    {
+                        if (ni.ID == narrowByInfo.ID)
+                        {
+                            minValue = ni.NarrowItemList[0].FloatValue;
+                            maxValue = ni.NarrowItemList.Last().FloatValue;
+                            break;
+                        }
+                    }
+                }
+
+                float rs = maxValue - minValue;
+                int step = 10;
+                float valueStep = 0.1f;
+                if (rs > 1)
+                {
+                    valueStep = rs / step;
+                }
+                else
+                {
+                    step = (int)(rs * 10);
+                }
+
+                List<NarrowItem> narrowList = new List<NarrowItem>();
+
+                int pCount = 0;
+                for (int i = 0; i <= step; i++)
+                {
+                    float p = minValue + valueStep * i;
+                    if(i == step)
+                    {
+                        p = maxValue;
+                    }
+                    NarrowItem narrowItem = new NarrowItem();
+                    narrowItem.DisplayName = narrowItem.Value = p.ToString("0");
+                    narrowItem.FloatValue = p;
+
+                    int pc = values.Where(pr => pr <= p).Count();
+                    narrowItem.ProductCount = pc - pCount;
+                    pCount = pc;
+                    if (narrowByInfo.ID == -4)
+                    {
+                        if (!hwdInfo.WeightUnitIsKG)
+                        {
+                            narrowItem.OtherInfo = "g";
+                        }
+                        else
+                        {
+                            narrowItem.OtherInfo = "kg";
+                        }
+                    }
+                    else
+                    {
+                        narrowItem.OtherInfo = "cm";
+                    }
+                    narrowList.Add(narrowItem);
+                }
+
+                narrowByInfo.NarrowItemList = narrowList;
+            }
         }
 
         private void FixSliderAttributeItems(List<NarrowItem> narrowItemList)
@@ -1198,7 +1324,7 @@ namespace PriceMeCommon.BusinessLogic
 
             int count = _resultHitsInfo.ResultCount;
             List<double> priceList = new List<double>();
-            List<double> priceList2 = new List<double>();
+            
             for (int i = 0; i < count; i++)
             {
                 double price = double.Parse(_resultHitsInfo.GetDocument(i, new string[] { "BestPrice" }).Get("BestPrice"));
@@ -1312,126 +1438,126 @@ namespace PriceMeCommon.BusinessLogic
             return narrowByInfo;
         }
 
-        public NarrowByInfo GetSearchPriceRangeResult2(IFormatProvider provider)
-        {
-            NarrowByInfo narrowByInfo = new NarrowByInfo();
-            //结果小于24(每页数量)个不需要显示PriceRange
-            if (_resultHitsInfo == null || _resultHitsInfo.ResultCount < 24)
-            {
-                return narrowByInfo;
-            }
+        //public NarrowByInfo GetSearchPriceRangeResult2(IFormatProvider provider)
+        //{
+        //    NarrowByInfo narrowByInfo = new NarrowByInfo();
+        //    //结果小于24(每页数量)个不需要显示PriceRange
+        //    if (_resultHitsInfo == null || _resultHitsInfo.ResultCount < 24)
+        //    {
+        //        return narrowByInfo;
+        //    }
 
-            narrowByInfo.Name = "SearchPriceRange";
-            narrowByInfo.Title = "Price";
-            narrowByInfo.ListOrder = 5;
+        //    narrowByInfo.Name = "SearchPriceRange";
+        //    narrowByInfo.Title = "Price";
+        //    narrowByInfo.ListOrder = 5;
 
-            List<NarrowItem> narrowList = new List<NarrowItem>();
+        //    List<NarrowItem> narrowList = new List<NarrowItem>();
 
-            int count = _resultHitsInfo.ResultCount;
-            List<float> priceList = new List<float>();
-            List<float> priceList2 = new List<float>();
-            for (int i = 0; i < count; i++)
-            {
-                float price = float.Parse(_resultHitsInfo.GetDocument(i, new string[] { "BestPrice" }).Get("BestPrice"));
-                priceList.Add(price);
-            }
+        //    int count = _resultHitsInfo.ResultCount;
+        //    List<float> priceList = new List<float>();
+        //    List<float> priceList2 = new List<float>();
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        float price = float.Parse(_resultHitsInfo.GetDocument(i, new string[] { "BestPrice" }).Get("BestPrice"));
+        //        priceList.Add(price);
+        //    }
 
-            priceList.Sort();
-            int step = priceList.Count / 22;//0 ...(22个)...max, 总共24个slider step
-            if (priceList.Count % 22 == 0)
-            {
-                //如果除得尽， 那么max == 第23个， 有重复的
-                step = priceList.Count / 23;
-            }
+        //    priceList.Sort();
+        //    int step = priceList.Count / 22;//0 ...(22个)...max, 总共24个slider step
+        //    if (priceList.Count % 22 == 0)
+        //    {
+        //        //如果除得尽， 那么max == 第23个， 有重复的
+        //        step = priceList.Count / 23;
+        //    }
 
-            NarrowItem narrowItem = new NarrowItem();
-            float maxPrice = 0;
-            narrowItem.ProductCount = step;
-            narrowItem.DisplayName = narrowItem.Value = "0";
-            narrowList.Add(narrowItem);
-            if (priceList.Last() < 24)
-            {
-                //if max < 24, slider:
-                //0 1 2 3 4 5 ......23
-                for (int i = 1; i < 24; i++)
-                {
-                    narrowItem = new NarrowItem();
+        //    NarrowItem narrowItem = new NarrowItem();
+        //    float maxPrice = 0;
+        //    narrowItem.ProductCount = step;
+        //    narrowItem.DisplayName = narrowItem.Value = "0";
+        //    narrowList.Add(narrowItem);
+        //    if (priceList.Last() < 24)
+        //    {
+        //        //if max < 24, slider:
+        //        //0 1 2 3 4 5 ......23
+        //        for (int i = 1; i < 24; i++)
+        //        {
+        //            narrowItem = new NarrowItem();
 
-                    narrowItem.ProductCount = step;
-                    narrowItem.DisplayName = narrowItem.Value = i.ToString("0");
-                    narrowList.Add(narrowItem);
-                }
+        //            narrowItem.ProductCount = step;
+        //            narrowItem.DisplayName = narrowItem.Value = i.ToString("0");
+        //            narrowList.Add(narrowItem);
+        //        }
 
-                narrowByInfo.NarrowItemList = narrowList;
-                return narrowByInfo;
-            }
+        //        narrowByInfo.NarrowItemList = narrowList;
+        //        return narrowByInfo;
+        //    }
 
-            //所有products 分成4大份， 
-            //第1和第4份，分成5小份，加上0或max value， 
-            //中间每份再分6小份，总共24份
-            var cc = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                var narrowList_ = new List<NarrowItem>();
-                priceList2 = new List<float>();
-                //5|6|6|5 = 22
-                var mm = 6;//每大份分成的份数
-                if (i == 0 || i == 3) mm = 5;
-                for (int j = 0; j < mm; j++)
-                {
-                    cc++;
-                    narrowItem = new NarrowItem();
-                    var pi = step * cc - 1;
-                    if (pi >= priceList.Count) continue;
-                    maxPrice = priceList[pi];
-                    maxPrice = GetSearchPrice(maxPrice);//取整数
-                    if (priceList2.Contains(maxPrice)) continue;//去掉重复的
+        //    //所有products 分成4大份， 
+        //    //第1和第4份，分成5小份，加上0或max value， 
+        //    //中间每份再分6小份，总共24份
+        //    var cc = 0;
+        //    for (int i = 0; i < 4; i++)
+        //    {
+        //        var narrowList_ = new List<NarrowItem>();
+        //        priceList2 = new List<float>();
+        //        //5|6|6|5 = 22
+        //        var mm = 6;//每大份分成的份数
+        //        if (i == 0 || i == 3) mm = 5;
+        //        for (int j = 0; j < mm; j++)
+        //        {
+        //            cc++;
+        //            narrowItem = new NarrowItem();
+        //            var pi = step * cc - 1;
+        //            if (pi >= priceList.Count) continue;
+        //            maxPrice = priceList[pi];
+        //            maxPrice = GetSearchPrice(maxPrice);//取整数
+        //            if (priceList2.Contains(maxPrice)) continue;//去掉重复的
 
-                    narrowItem.ProductCount = step;
-                    narrowItem.DisplayName = narrowItem.Value = maxPrice.ToString("0");
-                    narrowList_.Add(narrowItem);
+        //            narrowItem.ProductCount = step;
+        //            narrowItem.DisplayName = narrowItem.Value = maxPrice.ToString("0");
+        //            narrowList_.Add(narrowItem);
 
-                    priceList2.Add(maxPrice);
-                }
+        //            priceList2.Add(maxPrice);
+        //        }
 
-                //如果第1，第4大份没有分成5小份， 2,3 大份没有分成6小份， 要再分
-                //按每大份的min-max， 平均分成5、6小份                
-                if (narrowList_.Count < mm)
-                {
-                    narrowList_ = new List<NarrowItem>();
-                    var min = priceList[step * (cc - mm + 1) - 1];
-                    var max = priceList[step * cc - 1];
-                    var range = max - min;
-                    var step_ = (int)(range / (mm - 1));
-                    if (step_ == 0) step_ = 1;
-                    priceList2 = new List<float>();
-                    for (int k = 0; k < (mm - 1); k++)
-                    {
-                        narrowItem = new NarrowItem();
-                        var price = min + k * step_;
-                        if (price > max) price = max;
+        //        //如果第1，第4大份没有分成5小份， 2,3 大份没有分成6小份， 要再分
+        //        //按每大份的min-max， 平均分成5、6小份                
+        //        if (narrowList_.Count < mm)
+        //        {
+        //            narrowList_ = new List<NarrowItem>();
+        //            var min = priceList[step * (cc - mm + 1) - 1];
+        //            var max = priceList[step * cc - 1];
+        //            var range = max - min;
+        //            var step_ = (int)(range / (mm - 1));
+        //            if (step_ == 0) step_ = 1;
+        //            priceList2 = new List<float>();
+        //            for (int k = 0; k < (mm - 1); k++)
+        //            {
+        //                narrowItem = new NarrowItem();
+        //                var price = min + k * step_;
+        //                if (price > max) price = max;
 
-                        narrowItem.ProductCount = step;
-                        narrowItem.DisplayName = narrowItem.Value = price.ToString("0");
-                        narrowList_.Add(narrowItem);
-                    }
-                    narrowItem = new NarrowItem();
-                    narrowItem.ProductCount = step;
-                    narrowItem.DisplayName = narrowItem.Value = max.ToString("0");
-                    narrowList_.Add(narrowItem);
-                }
+        //                narrowItem.ProductCount = step;
+        //                narrowItem.DisplayName = narrowItem.Value = price.ToString("0");
+        //                narrowList_.Add(narrowItem);
+        //            }
+        //            narrowItem = new NarrowItem();
+        //            narrowItem.ProductCount = step;
+        //            narrowItem.DisplayName = narrowItem.Value = max.ToString("0");
+        //            narrowList_.Add(narrowItem);
+        //        }
 
-                narrowList.AddRange(narrowList_);
-            }
-            maxPrice = GetSearchPrice(priceList.Last());
-            narrowItem = new NarrowItem();
-            narrowItem.ProductCount = step;
-            narrowItem.DisplayName = narrowItem.Value = maxPrice.ToString("0");
-            narrowList.Add(narrowItem);
+        //        narrowList.AddRange(narrowList_);
+        //    }
+        //    maxPrice = GetSearchPrice(priceList.Last());
+        //    narrowItem = new NarrowItem();
+        //    narrowItem.ProductCount = step;
+        //    narrowItem.DisplayName = narrowItem.Value = maxPrice.ToString("0");
+        //    narrowList.Add(narrowItem);
 
-            narrowByInfo.NarrowItemList = narrowList;
-            return narrowByInfo;
-        }
+        //    narrowByInfo.NarrowItemList = narrowList;
+        //    return narrowByInfo;
+        //}
 
         private void SetAttributeData()
         {
@@ -1439,42 +1565,42 @@ namespace PriceMeCommon.BusinessLogic
 
             HitsInfo attributeHitsInfo = SearchController.SearchAttributes(productIdList, _countryId);
 
-            if (_attributeProductCountDictionary == null)
+            if (_attributeIdProductCountDictionary == null || _attrValueProductCountDictionary == null || _heightList == null)
             {
                 if (attributeHitsInfo != null)
                 {
-                    _attributeProductCountDictionary = GetProductCountDictionary(attributeHitsInfo, "AttributeValueID");
+                    SetAttributesProductCountDictionary(attributeHitsInfo);
+                    //_attributeProductCountDictionary = GetProductCountDictionary(attributeHitsInfo, "AttributeValueID");
                 }
             }
 
-            //得到对应attribute 的产品数量
-            if (_attrValueProductCountDictionary == null)
-            {
-                if (attributeHitsInfo != null)
-                {
-                    _attrValueProductCountDictionary = new Dictionary<int, int>();
-                    var dict = GetProductCountDictionary(attributeHitsInfo, "AttributeValue");
-                    //10.1 => 10, 10.9 => 10
-                    foreach (var item in dict)
-                    {
-                        int key = 0;
-                        string key_ = item.Key;
-                        if (key_.Contains("."))
-                            key_ = key_.Substring(0, key_.IndexOf("."));
-                        if (int.TryParse(key_, out key))
-                        {
-                            if (_attrValueProductCountDictionary.ContainsKey(key))
-                            {
-                                _attrValueProductCountDictionary[key] += item.Value;
-                            }
-                            else
-                            {
-                                _attrValueProductCountDictionary.Add(key, item.Value);
-                            }
-                        }
-                    }
-                }
-            }
+            //if (_attrValueProductCountDictionary == null)
+            //{
+            //    if (attributeHitsInfo != null)
+            //    {
+            //        _attrValueProductCountDictionary = new Dictionary<int, int>();
+            //        var dict = GetProductCountDictionary(attributeHitsInfo, "AttributeValue");
+            //        //10.1 => 10, 10.9 => 10
+            //        foreach (var item in dict)
+            //        {
+            //            int key = 0;
+            //            string key_ = item.Key;
+            //            if (key_.Contains("."))
+            //                key_ = key_.Substring(0, key_.IndexOf("."));
+            //            if (int.TryParse(key_, out key))
+            //            {
+            //                if (_attrValueProductCountDictionary.ContainsKey(key))
+            //                {
+            //                    _attrValueProductCountDictionary[key] += item.Value;
+            //                }
+            //                else
+            //                {
+            //                    _attrValueProductCountDictionary.Add(key, item.Value);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
             if (this._selectedAttributeIds != null)
             {
@@ -1575,6 +1701,95 @@ namespace PriceMeCommon.BusinessLogic
                 }
             }
             return productCountDictionary;
+        }
+
+        private void SetAttributesProductCountDictionary(HitsInfo hitsInfo)
+        {
+            _attributeIdProductCountDictionary = new Dictionary<string, int>();
+            _attrValueProductCountDictionary = new Dictionary<int, int>();
+            _heightList = new List<float>();
+            _widthtList = new List<float>();
+            _lengthList = new List<float>();
+            _weightList = new List<float>();
+
+            var attrValueProductCountDictionary = new Dictionary<string, int>();
+
+            for (int j = 0; j < hitsInfo.ResultCount; j++)
+            {
+                var doc = hitsInfo.GetDocument(j, new string[] { "TypeID", "AttributeValueID", "AttributeValue" });
+
+                string tId = doc.Get("TypeID");
+                string attrValue = doc.Get("AttributeValue");
+
+                if (tId == SpecialAttributesTitle.HeightAttribute.TypeID.ToString())
+                {
+                    float height = float.Parse(attrValue);
+                    _heightList.Add(height);
+                }
+                else if (tId == SpecialAttributesTitle.WidthAttribute.TypeID.ToString())
+                {
+                    float width = float.Parse(attrValue);
+                    _widthtList.Add(width);
+                }
+                else if (tId == SpecialAttributesTitle.LengthAttribute.TypeID.ToString())
+                {
+                    float length = float.Parse(attrValue);
+                    _lengthList.Add(length);
+                }
+                else if (tId == SpecialAttributesTitle.WeightAttribute.TypeID.ToString())
+                {
+                    float weight = float.Parse(attrValue);
+                    _weightList.Add(weight);
+                }
+                else
+                {
+                    string attrValueId = doc.Get("AttributeValueID");
+                    
+                    if (!string.IsNullOrEmpty(attrValueId))
+                    {
+                        if (_attributeIdProductCountDictionary.ContainsKey(attrValueId))
+                        {
+                            _attributeIdProductCountDictionary[attrValueId]++;
+                        }
+                        else
+                        {
+                            _attributeIdProductCountDictionary.Add(attrValueId, 1);
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(attrValue))
+                    {
+                        if (attrValueProductCountDictionary.ContainsKey(attrValue))
+                        {
+                            attrValueProductCountDictionary[attrValue]++;
+                        }
+                        else
+                        {
+                            attrValueProductCountDictionary.Add(attrValue, 1);
+                        }
+                    }
+                }
+            }
+
+            //得到对应attribute 的产品数量
+            foreach (var item in attrValueProductCountDictionary)
+            {
+                int key = 0;
+                string key_ = item.Key;
+                if (key_.Contains("."))
+                    key_ = key_.Substring(0, key_.IndexOf("."));
+                if (int.TryParse(key_, out key))
+                {
+                    if (_attrValueProductCountDictionary.ContainsKey(key))
+                    {
+                        _attrValueProductCountDictionary[key] += item.Value;
+                    }
+                    else
+                    {
+                        _attrValueProductCountDictionary.Add(key, item.Value);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -1694,7 +1909,7 @@ namespace PriceMeCommon.BusinessLogic
 
         private int GetAttributeProductCount(List<string> attributeValueIDs)
         {
-            if (_attributeProductCountDictionary == null)
+            if (_attributeIdProductCountDictionary == null)
             {
                 return 0;
             }
@@ -1702,9 +1917,9 @@ namespace PriceMeCommon.BusinessLogic
             int sum = 0;
             foreach (string attributeValueID in attributeValueIDs)
             {
-                if (_attributeProductCountDictionary.ContainsKey(attributeValueID))
+                if (_attributeIdProductCountDictionary.ContainsKey(attributeValueID))
                 {
-                    sum += _attributeProductCountDictionary[attributeValueID];
+                    sum += _attributeIdProductCountDictionary[attributeValueID];
                 }
             }
             return sum;

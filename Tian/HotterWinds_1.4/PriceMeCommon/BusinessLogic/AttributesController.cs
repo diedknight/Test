@@ -19,6 +19,7 @@ namespace PriceMeCommon.BusinessLogic
         static List<AttributeValueRangeCache> AttributeValueRangeCacheList_Static;
         static Dictionary<int, AttributeValueRangeCache> AttributeValueRangeDic_Static;
         static Dictionary<string, AttributeValueCache> AttributeTitleIDAndListOrderDic_Static;
+        static Dictionary<int, CategoryHWDInfo> CategoryHWDInfoDic_Static;
 
         static List<CategoryAttributeTitleMapCache> CategoryAttributeTilteMaps_Static;
         static Dictionary<int, List<AttributeTitleCache>> CategoryAttributeTitleDic_Static;
@@ -57,6 +58,7 @@ namespace PriceMeCommon.BusinessLogic
             }
 
             AttributeTitleDic_Static = GetAttributeTitleDicFromDB();
+            CategoryHWDInfoDic_Static = GetCategoryHWDInfoDicFromDB();
 
             List<AttributeValueCache> attributeValues = GetAttributeValuesCacheListFromDB();
             AttributeValueDic_Static = attributeValues.ToDictionary(a => a.AttributeValueID, a => a);
@@ -72,7 +74,7 @@ namespace PriceMeCommon.BusinessLogic
             AttributeValueRangeDic_Static = AttributeValueRangeCacheList_Static.ToDictionary(ar => ar.ValueRangeID, ar => ar);
             AttributeTitleIDAndListOrderDic_Static = GetAttributeTitleIDAndListOrderDic(attributeValues, AttributeValueRangeCacheList_Static);
 
-            CategoryAttributeTilteMaps_Static = GetCategoryAttributeTilteMapsFromDB();
+            CategoryAttributeTilteMaps_Static = GetCategoryAttributeTilteMapsFromDB(CategoryHWDInfoDic_Static);
             CategoryAttributeTitleDic_Static = GetCategoryAttributeTitleDic(CategoryAttributeTilteMaps_Static);
             CategoryAttributeTitleMapDic_Static = GetCategoryAttributeTitleMapDic(CategoryAttributeTilteMaps_Static);
 
@@ -90,9 +92,51 @@ namespace PriceMeCommon.BusinessLogic
             AllAttributeCategoryComparison_Static = GetAllAttributeCategoryComparison();
         }
 
+        private static Dictionary<int, CategoryHWDInfo> GetCategoryHWDInfoDicFromDB()
+        {
+            Dictionary<int, CategoryHWDInfo> dic = new Dictionary<int, CategoryHWDInfo>();
+
+              string selectSql = @"select HWDSliderAttribute.CategoryID,[Heightslider],[Widthslider],[Depthslider],[Weightslider], CSK_Store_Category.WeightUnit from HWDSliderAttribute
+                                left join CSK_Store_Category on CSK_Store_Category.CategoryID = HWDSliderAttribute.CategoryID";
+
+            string connString = MultiCountryController.CommonConnectionStringSettings_Static.ConnectionString;
+            using (var sqlConn = new SqlConnection(connString))
+            {
+                sqlConn.Open();
+                using (var sqlCMD = new SqlCommand(selectSql, sqlConn))
+                {
+                    sqlCMD.CommandTimeout = 0;
+                    using (var dr = sqlCMD.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            int categoryId = dr.GetInt32(0);
+                            bool isHeightSlider = dr.GetBoolean(1);
+                            bool isWidthslider = dr.GetBoolean(2);
+                            bool isDepthslider = dr.GetBoolean(3);
+                            bool isWeightslider = dr.GetBoolean(4);
+                            bool weightUnitIsKG = dr.GetBoolean(5);
+
+                            CategoryHWDInfo hwd = new CategoryHWDInfo();
+                            hwd.CategoryId = categoryId;
+                            hwd.Heightslider = isHeightSlider;
+                            hwd.Widthslider = isWidthslider;
+                            hwd.Depthslider = isDepthslider;
+                            hwd.Weightslider = isWeightslider;
+                            hwd.WeightUnitIsKG = weightUnitIsKG;
+
+                            dic.Add(categoryId, hwd);
+                        }
+                    }
+                }
+            }
+            return dic;
+        }
+
         public static void LoadForBuildIndex()
         {
             AttributeTitleDic_Static = GetAttributeTitleDicFromDB();
+            CategoryHWDInfoDic_Static = GetCategoryHWDInfoDicFromDB();
 
             List<AttributeValueCache> attributeValues = GetAttributeValuesCacheListFromDB();
             AttributeValueDic_Static = attributeValues.ToDictionary(a => a.AttributeValueID, a => a);
@@ -104,7 +148,7 @@ namespace PriceMeCommon.BusinessLogic
             }
             AttributeTitlesValuesDic_Static = GetAttributeTitlesValuesDic(attributeValues, AttributeTitleDic_Static);
 
-            CategoryAttributeTilteMaps_Static = GetCategoryAttributeTilteMapsFromDB();
+            CategoryAttributeTilteMaps_Static = GetCategoryAttributeTilteMapsFromDB(CategoryHWDInfoDic_Static);
             CategoryAttributeTitleDic_Static = GetCategoryAttributeTitleDic(CategoryAttributeTilteMaps_Static);
             CategoryAttributeTitleMapDic_Static = GetCategoryAttributeTitleMapDic(CategoryAttributeTilteMaps_Static);
 
@@ -954,6 +998,53 @@ namespace PriceMeCommon.BusinessLogic
                 }
             }
 
+            //foreach(int cid in categoryHWDInfoDic.Keys)
+            //{
+            //    var hwdInfo = categoryHWDInfoDic[cid];
+            //    if (dic.ContainsKey(cid))
+            //    {
+            //        if(hwdInfo.Heightslider)
+            //        {
+            //            dic[cid].Add(SpecialAttributesTitle.HeightAttribute);
+            //        }
+            //        if (hwdInfo.Widthslider)
+            //        {
+            //            dic[cid].Add(SpecialAttributesTitle.WidthAttribute);
+            //        }
+            //        if (hwdInfo.Depthslider)
+            //        {
+            //            dic[cid].Add(SpecialAttributesTitle.LengthAttribute);
+            //        }
+            //        if (hwdInfo.Weightslider)
+            //        {
+            //            dic[cid].Add(SpecialAttributesTitle.WeightAttribute);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        List<AttributeTitleCache> list = new List<AttributeTitleCache>();
+
+            //        if (hwdInfo.Heightslider)
+            //        {
+            //            list.Add(SpecialAttributesTitle.HeightAttribute);
+            //        }
+            //        if (hwdInfo.Widthslider)
+            //        {
+            //            list.Add(SpecialAttributesTitle.WidthAttribute);
+            //        }
+            //        if (hwdInfo.Depthslider)
+            //        {
+            //            list.Add(SpecialAttributesTitle.LengthAttribute);
+            //        }
+            //        if (hwdInfo.Weightslider)
+            //        {
+            //            list.Add(SpecialAttributesTitle.WeightAttribute);
+            //        }
+
+            //        dic.Add(cid, list);
+            //    }
+            //}
+
             return dic;
         }
 
@@ -973,7 +1064,7 @@ namespace PriceMeCommon.BusinessLogic
             return dic;
         }
 
-        private static List<CategoryAttributeTitleMapCache> GetCategoryAttributeTilteMapsFromDB()
+        private static List<CategoryAttributeTitleMapCache> GetCategoryAttributeTilteMapsFromDB(Dictionary<int, CategoryHWDInfo> categoryHWDInfoDic)
         {
             List<CategoryAttributeTitleMapCache> categoryAttributeTilteMaps = new List<CategoryAttributeTitleMapCache>();
             //可以考虑放到Pam_User
@@ -1037,6 +1128,54 @@ namespace PriceMeCommon.BusinessLogic
                 }
             }
 
+            foreach(var cid in categoryHWDInfoDic.Keys)
+            {
+                var hwd = categoryHWDInfoDic[cid];
+                if(hwd.Heightslider)
+                {
+                    CategoryAttributeTitleMapCache cache = new CategoryAttributeTitleMapCache();
+                    cache.MapID = -99;
+                    cache.CategoryID = cid;
+                    cache.AttributeTitleID = SpecialAttributesTitle.HeightAttribute.TypeID;
+                    cache.IsPrimary = true;
+                    cache.IsSlider = true;
+                    categoryAttributeTilteMaps.Add(cache);
+                }
+
+                if (hwd.Widthslider)
+                {
+                    CategoryAttributeTitleMapCache cache = new CategoryAttributeTitleMapCache();
+                    cache.MapID = -99;
+                    cache.CategoryID = cid;
+                    cache.AttributeTitleID = SpecialAttributesTitle.WidthAttribute.TypeID;
+                    cache.IsPrimary = true;
+                    cache.IsSlider = true;
+                    categoryAttributeTilteMaps.Add(cache);
+                }
+
+                if (hwd.Depthslider)
+                {
+                    CategoryAttributeTitleMapCache cache = new CategoryAttributeTitleMapCache();
+                    cache.MapID = -99;
+                    cache.CategoryID = cid;
+                    cache.AttributeTitleID = SpecialAttributesTitle.LengthAttribute.TypeID;
+                    cache.IsPrimary = true;
+                    cache.IsSlider = true;
+                    categoryAttributeTilteMaps.Add(cache);
+                }
+
+                if (hwd.Weightslider)
+                {
+                    CategoryAttributeTitleMapCache cache = new CategoryAttributeTitleMapCache();
+                    cache.MapID = -99;
+                    cache.CategoryID = cid;
+                    cache.AttributeTitleID = SpecialAttributesTitle.WeightAttribute.TypeID;
+                    cache.IsPrimary = true;
+                    cache.IsSlider = true;
+                    categoryAttributeTilteMaps.Add(cache);
+                }
+            }
+
             return categoryAttributeTilteMaps;
         }
     
@@ -1084,6 +1223,10 @@ namespace PriceMeCommon.BusinessLogic
             List<AttributeTitleCache> attributesTitles = ConvertController<AttributeTitleCache, CSK_Store_ProductDescriptorTitle>.ConvertData(CSK_Store_ProductDescriptorTitle.All().ToList());
 
             Dictionary<int, AttributeTitleCache> attributesTitleDic = attributesTitles.ToDictionary(a => a.TypeID, a => a);
+            attributesTitleDic.Add(SpecialAttributesTitle.HeightAttribute.TypeID, SpecialAttributesTitle.HeightAttribute);
+            attributesTitleDic.Add(SpecialAttributesTitle.WidthAttribute.TypeID, SpecialAttributesTitle.WidthAttribute);
+            attributesTitleDic.Add(SpecialAttributesTitle.LengthAttribute.TypeID, SpecialAttributesTitle.LengthAttribute);
+            attributesTitleDic.Add(SpecialAttributesTitle.WeightAttribute.TypeID, SpecialAttributesTitle.WeightAttribute);
 
             return attributesTitleDic;
         }
@@ -1573,6 +1716,16 @@ namespace PriceMeCommon.BusinessLogic
             }
 
             return dic;
+        }
+
+        public static CategoryHWDInfo GetCategoryHWDInfo(int categoryId)
+        {
+            if(CategoryHWDInfoDic_Static.ContainsKey(categoryId))
+            {
+                return CategoryHWDInfoDic_Static[categoryId];
+            }
+
+            return null;
         }
     }
 }

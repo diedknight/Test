@@ -63,7 +63,15 @@ namespace PriceMeCommon
 
                 bool finance;
                 if (!bool.TryParse(financeAttr.Value, out finance))
-                    throw new Exception("id finance.");
+                    throw new Exception("no finance.");
+
+                var rtUpdateIndexAttr = node.Attributes["rtUpdateIndex"];
+                if (rtUpdateIndexAttr == null || string.IsNullOrEmpty(rtUpdateIndexAttr.Value))
+                    throw new Exception("no rtUpdateIndex.");
+
+                bool rtUpdateIndex;
+                if (!bool.TryParse(rtUpdateIndexAttr.Value, out rtUpdateIndex))
+                    throw new Exception("no rtUpdateIndex.");
 
                 if (node.ChildNodes.Count == 0)
                     throw new Exception("no velocity info.");
@@ -93,7 +101,7 @@ namespace PriceMeCommon
                     throw new Exception("no velocityRegion.");
 
                 VelocityInfo velocityInfo = new VelocityInfo(velocityHostNameAttr.Value, velocityPort, velocityCacheHostNameAttr.Value, velocityRegionAttr.Value);
-                CountryInfo ci = new CountryInfo(pathAttr.Value, id, indexPathKeyAttr.Value, dbConnectionKeyAttr.Value, finance, velocityInfo);
+                CountryInfo ci = new CountryInfo(pathAttr.Value, id, indexPathKeyAttr.Value, dbConnectionKeyAttr.Value, finance, rtUpdateIndex, velocityInfo);
                 countryInfoList.Add(ci);
             }
 

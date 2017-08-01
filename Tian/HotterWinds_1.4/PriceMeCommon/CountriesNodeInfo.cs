@@ -48,22 +48,24 @@ namespace PriceMeCommon
         public int CountryId { get; private set; }
         public string IndexPathKey { get; private set; }
         public bool Finance { get; private set; }
+        public bool RealTimeUpdateIndex { get; private set; }
         public VelocityInfo VelocityInfo { get; private set; }
         public ConnectionStringSettings MyConnectionStringSettings { get; private set; }
 
-        public CountryInfo(string configPath, int countryId, string indexPathKey, string dbConnectionKey, bool finance, VelocityInfo velocityInfo)
+        public CountryInfo(string configPath, int countryId, string indexPathKey, string dbConnectionKey, bool finance, bool realTimeUpdateIndex, VelocityInfo velocityInfo)
         {
             ConfigPath = configPath;
             CountryId = countryId;
             IndexPathKey = indexPathKey;
             MyConnectionStringSettings = ConfigurationManager.ConnectionStrings[dbConnectionKey];
             Finance = finance;
+            RealTimeUpdateIndex = realTimeUpdateIndex;
             VelocityInfo = velocityInfo;
         }
 
         public override string ToString()
         {
-            return "CountryId: " + CountryId + "\t ConfigPath: " + ConfigPath + "\t IndexPathKey: " + IndexPathKey + "\t ConnectionString: " + MyConnectionStringSettings.ConnectionString + "\t Finance:" + Finance + Environment.NewLine + "VelocityInfo - " + VelocityInfo.ToString();
+            return "CountryId: " + CountryId + "\t ConfigPath: " + ConfigPath + "\t IndexPathKey: " + IndexPathKey + "\t ConnectionString: " + MyConnectionStringSettings.ConnectionString + "\t Finance:" + Finance + "\t RealTimeUpdateIndex:" + RealTimeUpdateIndex + Environment.NewLine + "VelocityInfo - " + VelocityInfo.ToString();
         }
     }
 

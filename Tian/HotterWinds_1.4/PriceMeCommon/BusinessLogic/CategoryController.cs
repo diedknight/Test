@@ -43,6 +43,11 @@ namespace PriceMeCommon.BusinessLogic
         static Dictionary<int, Dictionary<int, CategoryCache>> MultiCountryCategoryOrderByNameDic_Static;
         static Dictionary<int, List<CategoryCache>> MultiCountryCategoryOrderByNameList_Static;
         /// <summary>
+        /// 保存多国家的MoneyPlans链接信息
+        /// ShortDescription用于保存Url
+        /// </summary>
+        static Dictionary<int, List<CategoryCache>> MultiCountryMoneyPlansList_Static;
+        /// <summary>
         /// 保存多国家的分类的下一级分类信息
         /// </summary>
         static Dictionary<int, Dictionary<int, List<CategoryCache>>> MultiCountryNextLevelActiveCategories_Static;
@@ -108,17 +113,17 @@ namespace PriceMeCommon.BusinessLogic
 
                 //
                 List<CategoryCache> allPopularParentCategoriesOrderByName = categoryOrderByName.FindAll(cat => cat.ParentID == 0 && cat.IsActive && cat.PopularCategory == true).ToList();
-                List<CategoryCache> categoriesManuList = new List<CategoryCache>(allPopularParentCategoriesOrderByName);
-                if (MultiCountryController.HasFinanceSite(countryId))
-                {
-                    CategoryCache cc = new CategoryCache();
-                    cc.CategoryID = -99;
-                    cc.CategoryName = "Money & Plans";
-                    cc.PopularCategory = true;
-                    categoriesManuList.Add(cc);
-                    categoriesManuList = categoriesManuList.OrderBy(c => c.CategoryName).ToList();
-                }
-                MultiCountryCategoriesMenuListDic_Static.Add(countryId, categoriesManuList);
+                //List<CategoryCache> categoriesManuList = new List<CategoryCache>(allPopularParentCategoriesOrderByName);
+                //if (MultiCountryController.HasFinanceSite(countryId))
+                //{
+                //    CategoryCache cc = new CategoryCache();
+                //    cc.CategoryID = -99;
+                //    cc.CategoryName = "Money & Plans";
+                //    cc.PopularCategory = true;
+                //    categoriesManuList.Add(cc);
+                //    categoriesManuList = categoriesManuList.OrderBy(c => c.CategoryName).ToList();
+                //}
+                //MultiCountryCategoriesMenuListDic_Static.Add(countryId, categoriesManuList);
 
                 Dictionary<int, List<CategoryCache>> nextLevelCategories = new Dictionary<int, List<CategoryCache>>();
                 foreach (var c in categoryOrderByName)
@@ -228,6 +233,7 @@ namespace PriceMeCommon.BusinessLogic
             MultiCountryCategoryWuDic_Static = new Dictionary<int, List<int>>();
             MultiCountryCategoryShortCutsDic_Static = new Dictionary<int, Dictionary<int, Dictionary<int, bool>>>();
             MultiCountrySiteMapRootCategoriesList_Static = new Dictionary<int, List<CategoryCache>>();
+            MultiCountryMoneyPlansList_Static = new Dictionary<int, List<CategoryCache>>();
 
             foreach (int countryId in MultiCountryController.CountryIdList)
             {
@@ -260,6 +266,11 @@ namespace PriceMeCommon.BusinessLogic
                     cc.PopularCategory = true;
                     categoriesManuList.Add(cc);
                     categoriesManuList = categoriesManuList.OrderBy(c => c.CategoryName).ToList();
+                    List<CategoryCache> plansList = GetPlansInfo(countryId);
+                    if (plansList.Count > 0)
+                    {
+                        MultiCountryMoneyPlansList_Static.Add(countryId, plansList);
+                    }
                 }
                 MultiCountryCategoriesMenuListDic_Static.Add(countryId, categoriesManuList);
 
@@ -275,6 +286,34 @@ namespace PriceMeCommon.BusinessLogic
 
                 MultiCountryCategoryShortCutsDic_Static.Add(countryId, GetCategoryShortCutsDictionary(countryId));
             }
+        }
+
+        private static List<CategoryCache> GetPlansInfo(int countryId)
+        {
+            List<CategoryCache> list = new List<CategoryCache>();
+            string sql = "SELECT [Name],[url],[IconUrl] FROM [MoneyPlan]";
+            string commonConnString = MultiCountryController.GetDBConnectionString(countryId);
+            using (SqlConnection commonSqlConn = new SqlConnection(commonConnString))
+            {
+                commonSqlConn.Open();
+
+                using (SqlCommand sqlCMD = new SqlCommand(sql, commonSqlConn))
+                {
+                    using (SqlDataReader sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            CategoryCache cc = new CategoryCache();
+                            cc.CategoryName = sqlDR.GetString(0);
+                            cc.ShortDescription = sqlDR.GetString(1);
+                            cc.CategoryIconCode = sqlDR.GetString(2);
+                            list.Add(cc);
+                        }
+                    }
+                }
+            }
+
+            return list;
         }
 
         static List<CategoryCache> RemoveNoProductCategoryAndSetClicks(List<CategoryCache> categoryOrderByName, Dictionary<int, int> categoryProductCountDic)
@@ -314,20 +353,27 @@ namespace PriceMeCommon.BusinessLogic
                 //去掉没有产品的分类以及获取分类的点击数量和产品数量
                 foreach (CategoryCache category in categoryOrderByName)
                 {
-                    List<int> categoryIdList = new List<int>();
-                    categoryIdList.Add(category.CategoryID);
-                    HitsInfo hitsInfo = SearchController.SearchProducts("", categoryIdList, null, null, null, null, "", null, SearchController.MaxSearchCount_Static, countryId, false, true, false, null, false, null, "");
-                    if (hitsInfo != null && hitsInfo.ResultCount > 0)
+                    try
                     {
-                        int totalClicks = 0;
-                        for (int i = 0; i < hitsInfo.ResultCount; i++)
+                        List<int> categoryIdList = new List<int>();
+                        categoryIdList.Add(category.CategoryID);
+                        HitsInfo hitsInfo = SearchController.SearchProducts("", categoryIdList, null, null, null, null, "", null, SearchController.MaxSearchCount_Static, countryId, false, true, false, null, false, null, "");
+                        if (hitsInfo != null && hitsInfo.ResultCount > 0)
                         {
-                            var doc = hitsInfo.GetDocument(i, new string[] { "Clicks" });
-                            string clicks = doc.Get("Clicks");
-                            totalClicks += int.Parse(clicks);
+                            int totalClicks = 0;
+                            for (int i = 0; i < hitsInfo.ResultCount; i++)
+                            {
+                                var doc = hitsInfo.GetDocument(i, new string[] { "Clicks" });
+                                string clicks = doc.Get("Clicks");
+                                totalClicks += int.Parse(clicks);
+                            }
+                            categoryProductClickCount.Add(category.CategoryID, totalClicks);
+                            category.ProductsCount = hitsInfo.ResultCount;
                         }
-                        categoryProductClickCount.Add(category.CategoryID, totalClicks);
-                        category.ProductsCount = hitsInfo.ResultCount;
+                    }
+                    catch(Exception ex)
+                    {
+                        LogController.WriteException("Country: " + countryId + " ex:" + ex.Message + ex.StackTrace);
                     }
                 }
 
@@ -426,7 +472,7 @@ namespace PriceMeCommon.BusinessLogic
             }
         }
 
-        private static CategoryCache GetCategoryCacheFromDB(int categoryID, int countryId)
+        public static CategoryCache GetCategoryCacheFromDB(int categoryID, int countryId)
         {
             PriceMeDBA.CSK_Store_Category category = null;
 
@@ -596,6 +642,21 @@ namespace PriceMeCommon.BusinessLogic
             ccList.Add(cc);
 
             return ccList;
+        }
+
+        public static CategoryCache GetCategoryFromCache(int categoryID, int countryId)
+        {
+            CategoryCache category = null;
+            if (MultiCountryCategoryOrderByNameDic_Static.ContainsKey(countryId))
+            {
+                var categoryCache = MultiCountryCategoryOrderByNameDic_Static[countryId];
+                if (categoryCache != null && categoryCache.ContainsKey(categoryID))
+                {
+                    category = categoryCache[categoryID];
+                }
+            }
+
+            return category;
         }
 
         public static CategoryCache GetCategoryByCategoryID(int categoryID, int countryId)
@@ -927,8 +988,6 @@ namespace PriceMeCommon.BusinessLogic
 
         public static bool IsSearchOnly(int categoryId, int countryId)
         {
-            return false;
-
             if (MultiCountryCategoryIsSearchOnlyDic_Static.ContainsKey(countryId) && MultiCountryCategoryIsSearchOnlyDic_Static[countryId].Contains(categoryId))
             {
                 return true;
@@ -1056,6 +1115,16 @@ namespace PriceMeCommon.BusinessLogic
             if(MultiCountryReviewCategoriesDic_Static.ContainsKey(countryId))
             {
                 return MultiCountryReviewCategoriesDic_Static[countryId];
+            }
+
+            return null;
+        }
+
+        public static List<CategoryCache> GetMoneyPlansList(int countryId)
+        {
+            if (MultiCountryMoneyPlansList_Static.ContainsKey(countryId))
+            {
+                return MultiCountryMoneyPlansList_Static[countryId];
             }
 
             return null;

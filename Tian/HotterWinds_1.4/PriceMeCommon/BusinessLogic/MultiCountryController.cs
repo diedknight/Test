@@ -142,6 +142,26 @@ namespace PriceMeCommon.BusinessLogic
             return null;
         }
 
+        public static string GetAllCategoryProductsIndexRootPath(int countryId)
+        {
+            LuceneSearcherInfo luceneSearcherInfo = AllLuceneSearcherInfo_Static.GetLuceneSearcherInfoByCountryId(countryId);
+            if (luceneSearcherInfo != null)
+            {
+                return luceneSearcherInfo.ProductIndexRootPath;
+            }
+
+            return null;
+        }
+
+        public static void ReopenProductIndex(int countryId)
+        {
+            LuceneSearcherInfo luceneSearcherInfo = AllLuceneSearcherInfo_Static.GetLuceneSearcherInfoByCountryId(countryId);
+            if (luceneSearcherInfo != null)
+            {
+                luceneSearcherInfo.ReLoadProductIndex();
+            }
+        }
+
         public static IndexSearcher GetAttributesLuceneSearcher(int countryId)
         {
             LuceneSearcherInfo luceneSearcherInfo = AllLuceneSearcherInfo_Static.GetLuceneSearcherInfoByCountryId(countryId);

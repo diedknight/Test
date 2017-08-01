@@ -35,44 +35,52 @@ namespace PriceMeCommon.BusinessLogic
                 excludePidList.AddRange(excludePids.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
             }
 
-            TopDocs tds;
-            BooleanQuery bq = new BooleanQuery();
+            Sort sort = new Sort(new SortField("Clicks", SortField.INT, true));
 
-            BooleanQuery nameQuery = new BooleanQuery();
-            Query query1 = new WildcardQuery(new Term("Name", input + "*"));
-            Query query2 = new WildcardQuery(new Term("Name", "*" + input));
-            nameQuery.Add(query1, Occur.SHOULD);
-            nameQuery.Add(query2, Occur.SHOULD);
-            bq.Add(nameQuery, Occur.MUST);
+            TopDocs tds1 = null;
+            Task task1 = new Task(() => {
+                BooleanQuery bq = new BooleanQuery();
 
-            BooleanQuery categoryQuery = SearchController.GetCategoryQuery(categoryIDList, true, countryId);
-            if (categoryQuery != null)
-            {
-                TermQuery termQuery = new TermQuery(new Term("CategoryID", "-1"));
-                categoryQuery.Add(termQuery, Occur.SHOULD);
-                bq.Add(categoryQuery, Occur.MUST);
-            }
+                BooleanQuery nameQuery = new BooleanQuery();
+                Query query1 = new WildcardQuery(new Term("Name", input + "*"));
+                Query query2 = new WildcardQuery(new Term("Name", "*" + input));
+                nameQuery.Add(query1, Occur.SHOULD);
+                nameQuery.Add(query2, Occur.SHOULD);
+                bq.Add(nameQuery, Occur.MUST);
 
-            if (ppcOnly)
-            {
-                BooleanQuery ppcQuery = new BooleanQuery();
-                TermQuery ppcTermQuery = new TermQuery(new Term("IncludePPC", "1"));
-                ppcQuery.Add(ppcTermQuery, Occur.SHOULD);
-                TermQuery categoryTermQuery = new TermQuery(new Term("CategoryID", "-1"));
-                ppcQuery.Add(categoryTermQuery, Occur.SHOULD);
-                bq.Add(ppcQuery, Occur.MUST);
-            }
+                BooleanQuery categoryQuery = SearchController.GetCategoryQuery(categoryIDList, true, countryId);
+                if (categoryQuery != null)
+                {
+                    //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+                    //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(-1, 0, btRef);
+                    //TermQuery termQuery = new TermQuery(new Term("CategoryID", btRef));
+                    TermQuery termQuery = new TermQuery(new Term("CategoryID", "-1"));
+                    categoryQuery.Add(termQuery, Occur.SHOULD);
+                    bq.Add(categoryQuery, Occur.MUST);
+                }
 
-            Sort sort = new Sort(new SortField("Clicks", Lucene.Net.Search.SortField.INT, true));
-            tds = searcher.Search(bq, null, 600, sort);
+                if (ppcOnly)
+                {
+                    BooleanQuery ppcQuery = new BooleanQuery();
+                    TermQuery ppcTermQuery = new TermQuery(new Term("IncludePPC", "1"));
+                    ppcQuery.Add(ppcTermQuery, Occur.SHOULD);
+                    //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+                    //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(-1, 0, btRef);
+                    //TermQuery categoryTermQuery = new TermQuery(new Term("CategoryID", btRef));
+                    TermQuery categoryTermQuery = new TermQuery(new Term("CategoryID", "-1"));
+                    ppcQuery.Add(categoryTermQuery, Occur.SHOULD);
+                    bq.Add(ppcQuery, Occur.MUST);
+                }
+                
+                tds1 = searcher.Search(bq, null, 600, sort);
+            });
+            task1.Start();
 
-            int hitCount = tds.ScoreDocs.Length;
-
-            if (hitCount == 0)
+            TopDocs tds2 = null;
+            Task task2 = new Task(() =>
             {
                 string[] keys = Regex.Split(input, @"\s+");
-                //BooleanQuery.SetMaxClauseCount(int.MaxValue);
-                bq = new BooleanQuery();
+                BooleanQuery bq = new BooleanQuery();
 
                 for (int i = 0; i < keys.Length; i++)
                 {
@@ -80,8 +88,18 @@ namespace PriceMeCommon.BusinessLogic
                     bq.Add(wq, Occur.MUST);
                 }
 
-                tds = searcher.Search(bq, null, 1000, sort);
-                hitCount = tds.ScoreDocs.Length;
+                tds2 = searcher.Search(bq, null, 1000, sort);
+            });
+            task2.Start();
+
+            task1.Wait();
+            int hitCount = tds1.ScoreDocs.Length;
+
+            if (hitCount == 0)
+            {
+                task2.Wait();
+                hitCount = tds2.ScoreDocs.Length;
+                tds1 = tds2;
             }
 
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -89,7 +107,7 @@ namespace PriceMeCommon.BusinessLogic
             Document doc;
             for (int i = 0; i < hitCount; i++)
             {
-                doc = searcher.Doc(tds.ScoreDocs[i].Doc);
+                doc = searcher.Doc(tds1.ScoreDocs[i].Doc);
                 name = doc.Get("DisplayValue");
                 type = doc.Get("Type");
                 id = doc.Get("ID");

@@ -26,6 +26,9 @@ namespace PriceMeCommon.BusinessLogic
             Sort sort = new Sort();
             BooleanQuery query = new BooleanQuery();
 
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
             TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
@@ -71,6 +74,9 @@ namespace PriceMeCommon.BusinessLogic
             Sort sort = new Sort();
             BooleanQuery query = new BooleanQuery();
 
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
             TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
@@ -105,6 +111,9 @@ namespace PriceMeCommon.BusinessLogic
             BooleanQuery query = new BooleanQuery();
             Filter filter = null;
 
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
             TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
@@ -199,6 +208,9 @@ namespace PriceMeCommon.BusinessLogic
             BooleanQuery query = new BooleanQuery();
             Filter filter = null;
 
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
             TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
@@ -294,6 +306,9 @@ namespace PriceMeCommon.BusinessLogic
             BooleanQuery query = new BooleanQuery();
             Filter filter = null;
 
+            //Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            //Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(productId, 0, btRef);
+            //TermQuery termQuery = new TermQuery(new Term("ProductID", btRef));
             TermQuery termQuery = new TermQuery(new Term("ProductID", productId.ToString()));
             query.Add(termQuery, Occur.MUST);
 
