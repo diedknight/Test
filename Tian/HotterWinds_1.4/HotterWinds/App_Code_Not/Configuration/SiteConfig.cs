@@ -22,20 +22,20 @@ public static class SiteConfig
             Timer.DKTimer dkTimer = new Timer.DKTimer();
             dkTimer.Start();
 
-            dkTimer.Set(" ------ Website " + WebVersion_Static + " restart. ------ ");
+            //dkTimer.Set(" ------ Website " + WebVersion_Static + " restart. ------ ");
 
-            if (!string.IsNullOrEmpty(PriceMe.WebConfig.ParseServer))
-            {
-                ParseClient.Initialize(new ParseClient.Configuration
-                {
-                    ApplicationId = PriceMe.WebConfig.ParseAPPID,
-                    Server = PriceMe.WebConfig.ParseServer
-                });
-            }
-            else
-            {
-                ParseClient.Initialize(PriceMe.WebConfig.ParseAPPID, PriceMe.WebConfig.ParseNETSDK);
-            }
+            //if (!string.IsNullOrEmpty(PriceMe.WebConfig.ParseServer))
+            //{
+            //    ParseClient.Initialize(new ParseClient.Configuration
+            //    {
+            //        ApplicationId = PriceMe.WebConfig.ParseAPPID,
+            //        Server = PriceMe.WebConfig.ParseServer
+            //    });
+            //}
+            //else
+            //{
+            //    ParseClient.Initialize(PriceMe.WebConfig.ParseAPPID, PriceMe.WebConfig.ParseNETSDK);
+            //}
 
             dkTimer.Set("Start load Cache");
 
