@@ -208,7 +208,7 @@
         <!--product-collateral-->
 
         <!--google ad-->
-        <div style="height:350px;">
+        <div style="height:90px;">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Hotter Winds Horisontal -->
             <ins class="adsbygoogle"
