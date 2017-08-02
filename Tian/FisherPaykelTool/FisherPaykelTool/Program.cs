@@ -14,6 +14,9 @@ namespace FisherPaykelTool
     {
         static void Main(string[] args)
         {
+
+            var a = Product.RRPProduct.Get();
+
             //var range1 = new DateRange().GetRange();
 
             Log.Log log = new Log.Log();
@@ -23,6 +26,7 @@ namespace FisherPaykelTool
 
             log.WriteLine("load products");
             var products = ProductAd.Get(0);
+            products = RemoveOverdueRepeatData(products);
 
             log.WriteLine("write to excel");
 
@@ -45,7 +49,9 @@ namespace FisherPaykelTool
             titleList.Add("Lowest_Price");
             titleList.Add("Url");
             titleList.Add("RetailerProductName");
+            titleList.Add("RRP");
             titleList.Add("Price when report was extracted ");
+            
 
             new DateRange().GetRange().ForEach(range => {
                 titleList.Add("Lowest Price " + range.ToString());
@@ -79,12 +85,24 @@ namespace FisherPaykelTool
                 contentList.Add(item.LowestPrice.ToString("0.00"));
                 contentList.Add(item.PurchaseURL);
                 contentList.Add(item.RetailerProductName);
-                contentList.Add(item.RetailerPrice.ToString("0.00"));
 
+                if (GetConfigArr("RRP-rid").Contains(item.RetailerId) && item.OriginalPrice > 0) contentList.Add(item.OriginalPrice.ToString("0.00"));
+                else contentList.Add("");
+
+                if (item.RetailerProductStatus) contentList.Add(item.RetailerPrice.ToString("0.00"));
+                else contentList.Add("");
+                
                 for (int i = 0; i < item.HistoryPrices.Count; i++)
                 {
                     var historyPrice = item.HistoryPrices[i];
                     var avgPrice = item.AvgPrices[i];
+
+                    //last data
+                    if (i == item.HistoryPrices.Count - 1 && item.RetailerProductStatus)
+                    {
+                        if (historyPrice == 0) historyPrice = item.RetailerPrice;
+                        if (avgPrice == 0) avgPrice = item.RetailerPrice;
+                    }
 
                     if (historyPrice == 0) contentList.Add("");
                     else contentList.Add(historyPrice.ToString("0.00"));
@@ -102,7 +120,9 @@ namespace FisherPaykelTool
 
                 //contentList.Add(item.AvePrice.ToString("0.00"));
 
-                exhelper.WriteLine(contentList.ToArray());
+                if (item.RetailerProductStatus) exhelper.WriteLine(contentList.ToArray());
+                else exhelper.WriteLine(true, contentList.ToArray());
+
             });
             
             //other 
@@ -145,6 +165,42 @@ namespace FisherPaykelTool
             log.WriteLine("finish");
         }
 
+        private static List<ProductAd> RemoveOverdueRepeatData(List<ProductAd> list)
+        {
+            HashSet<string> set = new HashSet<string>();
+            HashSet<string> set1 = new HashSet<string>();
+            HashSet<string> set2 = new HashSet<string>();
+            List<ProductAd> products = new List<ProductAd>();
+
+            list.ForEach(item => {
+
+                string key = item.RetailerId + "_" + item.ProductId;
+                string rpname1 = item.RetailerId + "_" + item.RetailerProductName.ToLower().TrimA();
+                string rpname2 = item.RetailerProductName.ToLower().TrimA();
+
+                if (item.RetailerProductStatus == true)
+                {                    
+                    products.Add(item);
+
+                    set.Add(key);
+                    set1.Add(rpname1);
+                    set2.Add(rpname2);
+                }
+                else
+                {                    
+                    if (set.Contains(key)) return;
+                    if (set1.Contains(rpname1)) return;
+
+                    set.Add(key);
+                    set1.Add(rpname1);
+                    set2.Add(rpname2);
+
+                    products.Add(item);
+                }
+            });
+             
+            return products;
+        }
 
         private static List<OtherProduct> Sort(List<ProductAd> productlist)
         {
@@ -165,6 +221,18 @@ namespace FisherPaykelTool
                 otherProduct.List.Add(product);                
             });
             
+            return list;
+        }
+
+        private static List<int> GetConfigArr(string key)
+        {
+            List<int> list = new List<int>();
+
+            string str = System.Configuration.ConfigurationManager.AppSettings[key];
+            if (string.IsNullOrEmpty(str)) return list;
+
+            list = str.Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
+
             return list;
         }
 

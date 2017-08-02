@@ -46,6 +46,9 @@ namespace FisherPaykelTool.Model
             this.Type_FunctionsName = p.Type_FunctionsName;
             this.Type_FunctionsValue = p.Type_FunctionsValue;
             this.RetailerProductId = p.RetailerProductId;
+            this.RetailerProductStatus = p.RetailerProductStatus;
+            this.RetailerProductModifiedOn = p.RetailerProductModifiedOn;
+            this.OriginalPrice = p.OriginalPrice;
         }
 
         public static new List<ProductAd> Get(int type = 0)
@@ -130,6 +133,14 @@ namespace FisherPaykelTool.Model
 
                 string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["EDW"].ConnectionString;
                 string sql = "select RPID,NewPrice,CreatedOn from CSK_Store_RetailerProductHistory where RID in @RIds order by CreatedOn asc";
+
+                //string sql = "";
+                //sql += " select * from(";
+                //sql += " select RPID, NewPrice, CreatedOn, RID from CSK_Store_RetailerProductHistory";
+                //sql += " UNION ALL";
+                //sql += " select RPID, NewPrice, CreatedOn, RID from CSK_Store_RetailerProductHistory_bak";
+                //sql += " ) as a";
+                //sql += " where a.RID in (20) order by CreatedOn asc";
 
                 using (SqlConnection con = new SqlConnection(conStr))
                 {
@@ -265,6 +276,7 @@ namespace FisherPaykelTool.Model
 
                     if ((pointDay - perDay).Days == 0)
                         this._priceList.Add(new PerPrice(tempList[0].NewPrice, perDay));
+
                     if ((pointDay - perDay).Days > 0)
                     {
                         var prevPrice = this._priceList[this._priceList.Count - 1].Price;

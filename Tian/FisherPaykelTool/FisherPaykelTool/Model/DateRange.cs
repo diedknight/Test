@@ -12,8 +12,8 @@ namespace FisherPaykelTool.Model
         private DateTime _start = DateTime.MinValue;
         private DateTime _end = DateTime.MinValue;
 
-        public DateTime Start { get { return this._start; } }
-        public DateTime End { get { return this._end; } }
+        private DateTime Start { get { return this._start; } }
+        private DateTime End { get { return this._end; } }
 
         public DateRange()
         {
@@ -46,13 +46,23 @@ namespace FisherPaykelTool.Model
                 list = GetRangeByWeekly();                
             }
 
-            DateTime end = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
-            DateTime start = new DateTime(end.Year, end.Month, end.Day, 0, 0, 0);
-            start = start.AddDays(-6);
 
-            Range r = new Range() { Start = start, End = end };
+            //DateTime end = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
+            //DateTime start = new DateTime(end.Year, end.Month, end.Day, 0, 0, 0);
+            //start = start.AddDays(-6);
 
-            list.Insert(0, r);
+            //Range r = new Range() { Start = start, End = end };
+
+            //list.Insert(0, r);
+
+
+            //current time range
+            var dateCurrentRange = System.Configuration.ConfigurationManager.AppSettings["current-time"].ToString().Split('-').Select(item => Convert.ToDateTime(item)).ToList();
+            dateCurrentRange[0] = new DateTime(dateCurrentRange[0].Year, dateCurrentRange[0].Month, dateCurrentRange[0].Day, 0, 0, 0);
+            dateCurrentRange[1] = new DateTime(dateCurrentRange[1].Year, dateCurrentRange[1].Month, dateCurrentRange[1].Day, 23, 59, 59);
+
+            var r = new Range() { Start = dateCurrentRange[0], End = dateCurrentRange[1] };
+            list.Insert(0, r);            
 
             //list = list.OrderByDescending(item => item.End).ToList();
 

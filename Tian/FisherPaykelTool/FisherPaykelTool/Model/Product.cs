@@ -10,6 +10,8 @@ namespace FisherPaykelTool.Model
 {
     public class Product
     {
+        public DateTime RetailerProductModifiedOn { get; set; }
+        public bool RetailerProductStatus { get; set; }
         public int RetailerProductId { get; set; }
 
         public int RetailerId { get; set; }
@@ -21,6 +23,7 @@ namespace FisherPaykelTool.Model
         public string ProductName { get; set; }
         public string RetailerProductName { get; set; }
         public decimal RetailerPrice { get; set; }
+        public decimal OriginalPrice { get; set; }
         public string PurchaseURL { get; set; }
 
         public string RetailerType { get; set; }
@@ -44,62 +47,93 @@ namespace FisherPaykelTool.Model
         public string Energy_Water_RatingValue { get; set; }
         public string Energy_Water_RatingName { get; set; }
 
-
-
-
         public static List<Product> Get(int type = 0)
         {
             List<Product> list = new List<Product>();
 
-            string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["Priceme"].ConnectionString;
-
-            string sql = " select TT.RetailerProductId,TT.RetailerId,R.RetailerName,R.StoreType,ProductId,TT.ManufacturerId,TT.CategoryId,ProductName,RetailerProductName,RetailerPrice,PurchaseURL"
-                        + " ,RetailerType = (select top 1 StoreTypeName from CSK_Store_RetailerStoreType where RetailerStoreTypeID = R.StoreType)"
-                        + " ,Brand = (select top 1 ManufacturerName from CSK_Store_Manufacturer where ManufacturerID=TT.ManufacturerId)"
-                        + " ,ProductCategory = (select top 1 CategoryName from CSK_Store_Category where CategoryID=TT.CategoryID)"
-
-                        + " from csk_store_retailer R"
-                        + " inner join"
-                        + " ("
-                        + "	select RetailerProductId,RetailerId,P.ProductID,P.ManufacturerID,categoryid,ProductName,RetailerProductName,RetailerPrice,PurchaseURL from CSK_Store_RetailerProduct RP"
-                        + "	inner join CSK_Store_Product P on RP.ProductId = P.ProductID"
-                        + "	where Rp.RetailerProductStatus=1"
-                        + "	and RP.IsDeleted=0"
-                        + "	and IsMerge=1"
-                        + "	and retailerid<>1979"
-                        + "	and CategoryID in @CIds"
-                        + "	and ManufacturerID in @MIds"
-                        + " ) TT"
-                        + " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3 and R.RetailerId in @RIds"
-                        //+ " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3"
-                        + " order by CategoryId,ProductName";
-
+            List<int> exceptRIds = GetConfigArr("ExceptRetaierIDs");
+            List<int> mIds = GetConfigArr("ManufacturerIds");
+            List<int> rIds = GetConfigArr("RID");
+            List<int> cIds = new List<int>();
             var cateCollection = CateAttrCollection.Load();
 
-            List<int> mIds = System.Configuration.ConfigurationManager.AppSettings["ManufacturerIds"].Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
-            List<int> rIds = System.Configuration.ConfigurationManager.AppSettings["RID"].Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
-            List<int> cIds = new List<int>();
-            
+            //GetConfigArr("RRP-rid").ForEach(id => {
+            //    if (rIds.Contains(id)) return;
+
+            //    rIds.Add(id);
+            //});
+
             switch (type)
             {
                 case 0: cIds = cateCollection.GetCateIds(); break;
                 case 1: cIds = cateCollection.GetOtherCateIds(); break;
             }
 
+            string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["Priceme"].ConnectionString;
+
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendLine(" select TT.OriginalPrice,TT.Modifiedon as RetailerProductModifiedOn,TT.RetailerProductStatus,TT.RetailerProductId,TT.RetailerId,R.RetailerName,R.StoreType,ProductId,TT.ManufacturerId,TT.CategoryId,ProductName,RetailerProductName,RetailerPrice,PurchaseURL");
+            sql.AppendLine(" ,RetailerType = (select top 1 StoreTypeName from CSK_Store_RetailerStoreType where RetailerStoreTypeID = R.StoreType)");
+            sql.AppendLine(" ,Brand = (select top 1 ManufacturerName from CSK_Store_Manufacturer where ManufacturerID=TT.ManufacturerId)");
+            sql.AppendLine(" ,ProductCategory = (select top 1 CategoryName from CSK_Store_Category where CategoryID=TT.CategoryID)");
+
+            sql.AppendLine(" from csk_store_retailer R");
+            sql.AppendLine(" inner join");
+            sql.AppendLine(" (");
+            sql.AppendLine("	select OriginalPrice,RetailerProductId,RetailerId,P.ProductID,P.ManufacturerID,categoryid,ProductName,RetailerProductName,RetailerPrice,PurchaseURL,RetailerProductStatus,RP.Modifiedon from CSK_Store_RetailerProduct RP");
+            sql.AppendLine("	inner join CSK_Store_Product P on RP.ProductId = P.ProductID");
+            //+ "	where Rp.RetailerProductStatus=1";
+            sql.AppendLine("	where 1=1");
+            sql.AppendLine("	and RP.IsDeleted=0");
+            sql.AppendLine("	and IsMerge=1");
+            sql.AppendLine("	and retailerid<>1979");
+            sql.AppendLine("	and CategoryID in @CIds");
+            sql.AppendLine("	and ManufacturerID in @MIds");
+            sql.AppendLine(" ) TT");
+            sql.AppendLine(" on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3");
+            if (rIds.Count != 0)
+            {
+                sql.AppendLine(" and R.RetailerId in @RIds");
+            }
+            else
+            {
+                sql.AppendLine(" and R.RetailerId not in @exceptRIds");
+            }
+            //+ " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3";
+            sql.AppendLine(" order by CategoryId,ProductName");
+
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                list = con.Query<Product>(sql, new { CIds = cIds, MIds = mIds, RIds = rIds }, null, true, 3000).ToList();
+                List<Product> tempList = new List<Product>();
+                DateTime lastYear = DateTime.Now.AddYears(-1);
+
+                list = con.Query<Product>(sql.ToString(), new { CIds = cIds, MIds = mIds, RIds = rIds, exceptRIds = exceptRIds }, null, true, 3000).ToList();
+                list.ForEach(item =>
+                {
+                    if (item.RetailerProductStatus == false && item.RetailerProductModifiedOn < lastYear) return;
+
+                    tempList.Add(item);
+                });
+
+                list = tempList;
             }
 
             //group
             Dictionary<string, decimal> dic = new Dictionary<string, decimal>();
+            HashSet<string> PidRIds = new HashSet<string>();
 
             list.ForEach(item =>
             {
-                //number
-                string numKey = "num_" + item.ProductId;
-                if (dic.ContainsKey(numKey)) dic[numKey] = dic[numKey] + 1;
-                else dic.Add(numKey, 1);
+                if (!PidRIds.Contains(item.ProductId + "_" + item.RetailerId))
+                {
+                    //number
+                    string numKey = "num_" + item.ProductId;
+                    if (dic.ContainsKey(numKey)) dic[numKey] = dic[numKey] + 1;
+                    else dic.Add(numKey, 1);
+
+                    PidRIds.Add(item.ProductId + "_" + item.RetailerId);
+                }
 
                 //price
                 string priceKey = "price_" + item.ProductId;
@@ -140,7 +174,61 @@ namespace FisherPaykelTool.Model
 
             });
 
+            //original price
+            var rrpList = RRPProduct.Get();
+            list.ForEach(item => {
+
+                if (item.OriginalPrice != 0) return;
+
+                var rrp = rrpList.SingleOrDefault(rrpItem => rrpItem.ProductId == item.ProductId && rrpItem.OriginalPrice != 0);
+                if (rrp == null) return;
+
+                item.OriginalPrice = rrp.OriginalPrice;
+            });
+
             return list;
         }
+
+        private static List<int> GetConfigArr(string key)
+        {
+            List<int> list = new List<int>();
+
+            string str = System.Configuration.ConfigurationManager.AppSettings[key];
+            if (string.IsNullOrEmpty(str)) return list;
+
+            list = str.Split(',').Select(item => Convert.ToInt32(item.Trim())).ToList();
+
+            return list;
+        }
+
+        //private class
+        public class RRPProduct
+        {
+            public int OrderIndex { get; set; }
+            public int RetailerId { get; set; }
+            public int ProductId { get; set; }
+            public int RetailerProductId { get; set; }
+            public decimal OriginalPrice { get; set; }
+
+            public static List<RRPProduct> Get()
+            {
+                List<RRPProduct> list = new List<RRPProduct>();
+                List<int> rIds = GetConfigArr("RRP-rid");
+
+                string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["Priceme"].ConnectionString;
+                string sql = "select RetailerId,RetailerProductId,ProductId,OriginalPrice from CSK_Store_RetailerProduct where RetailerId in @RIds";
+
+                using (SqlConnection con = new SqlConnection(conStr))
+                {                                     
+                    list = con.Query<RRPProduct>(sql.ToString(), new { RIds = rIds}, null, true, 3000).ToList();
+                }
+
+                list.ForEach(item => { item.OrderIndex = rIds.IndexOf(item.RetailerId); });
+                list = list.OrderBy(item => item.OrderIndex).ToList();
+
+                return list;
+            }
+        }
+
     }
 }

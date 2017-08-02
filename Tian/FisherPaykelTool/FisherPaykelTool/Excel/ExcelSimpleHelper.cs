@@ -14,7 +14,13 @@ namespace FisherPaykelTool.Excel
         private IWorkbook _workbook = null;
         private ISheet _curSheet = null;
         private IRow _curRow = null;
-        
+
+        private ICellStyle _boldStyle = null;
+        private IFont _boldFont = null;
+
+        private ICellStyle _normalStyle = null;
+        private IFont _normalFont = null;
+
         private string _userId = "";
         private string _targetIP = "";
         private string _password = "";
@@ -29,6 +35,16 @@ namespace FisherPaykelTool.Excel
 
             this._curSheet = this._workbook.GetSheetAt(0);
             this._curRow = this._curSheet.CreateRow(0);
+
+            this._boldFont = this._workbook.CreateFont();
+            this._boldFont.Boldweight = (short)FontBoldWeight.Bold;
+            this._boldStyle = this._workbook.CreateCellStyle();
+            this._boldStyle.SetFont(this._boldFont);
+
+            this._normalFont = this._workbook.CreateFont();
+            this._normalFont.Boldweight = (short)FontBoldWeight.Normal;
+            this._normalStyle = this._workbook.CreateCellStyle();
+            this._normalStyle.SetFont(this._normalFont);
         }
 
         public ExcelSimpleHelper()
@@ -38,6 +54,11 @@ namespace FisherPaykelTool.Excel
 
         public void WriteLine(params string[] dataList)
         {
+            this.WriteLine(false, dataList);
+        }
+
+        public void WriteLine(bool bold, params string[] dataList)
+        {            
             //init
             if (this._workbook == null)
             {
@@ -46,9 +67,25 @@ namespace FisherPaykelTool.Excel
 
             for (int i = 0; i < dataList.Length; i++)
             {
-                this._curRow.CreateCell(i).SetCellValue(dataList[i]);
-            }
+                var cell = this._curRow.CreateCell(i);
+                
+                cell.SetCellValue(dataList[i]);
+                
 
+                if (bold)
+                {
+                    cell.CellStyle = this._boldStyle;
+
+                    //cell.CellStyle.SetFont(this._boldFont);
+                }
+                else
+                {
+                    cell.CellStyle = this._normalStyle;
+                    
+                    //cell.CellStyle.SetFont(this._normalFont);
+                }
+            }
+            
             //下一行
             this._curRow = this._curSheet.CreateRow(this._curRow.RowNum + 1);
         }
