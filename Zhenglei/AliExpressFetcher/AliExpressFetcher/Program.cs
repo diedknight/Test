@@ -43,14 +43,15 @@ namespace AliExpressFetcher
             string outZipFile = feedPath + ".gz";
             FSuite.FZip.Zip(feedPath, outZipFile);
 
-
             string targetPathFTP = System.Configuration.ConfigurationManager.AppSettings["targetPathFTP"];
             string targetIPFTP = System.Configuration.ConfigurationManager.AppSettings["targetIPFTP"];
             string userIDFTP = System.Configuration.ConfigurationManager.AppSettings["userIDFTP"];
             string passwordFTP = System.Configuration.ConfigurationManager.AppSettings["passwordFTP"];
-
+            string msgFileDir = System.Configuration.ConfigurationManager.AppSettings["MsgFileDir"];
+            
             CopyFile.FtpCopy.UploadFileSmall(outZipFile, targetPathFTP, targetIPFTP, userIDFTP, passwordFTP);
 
+            string msgFilePath = Path.Combine(msgFileDir, outZipFile.Substring(outZipFile.LastIndexOf("\\") + 1));
             var info = new MT.Contract.ImportInfo();
             info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             info.Label = outZipFile;
