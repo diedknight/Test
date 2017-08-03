@@ -47,14 +47,17 @@ namespace AliExpressFetcher
             List<ProductInfo> list = new List<ProductInfo>();
 
             ChromeOptions chromeOptions = new ChromeOptions();
-
-            using (ChromeDriver driver = new ChromeDriver(mChromeWebDriverDir, new ChromeOptions()))
+            using (ChromeDriver driver = new ChromeDriver(mChromeWebDriverDir, chromeOptions))
             {
                 InitDriver(driver);
 
                 driver.Navigate().GoToUrl("https://www.aliexpress.com/");
 
+                ClosePopup(driver);
+
                 Login(driver);
+
+                ClosePopup(driver);
 
                 if (!string.IsNullOrEmpty(mCountry))
                 {
@@ -67,6 +70,7 @@ namespace AliExpressFetcher
                     }
                 }
 
+                
                 foreach (var ci in categoryInfoList)
                 {
                     Log("Url : " + ci.CategoryUrl);
@@ -92,6 +96,8 @@ namespace AliExpressFetcher
             do
             {
                 driver.Navigate().GoToUrl(nextPageUrl);
+
+                ClosePopup(driver);
 
                 string currentCurrency = driver.FindElementByCssSelector(".currency").GetAttribute("innerText").Trim();
                 if(!currentCurrency.Equals(mCurrency, StringComparison.InvariantCultureIgnoreCase))
@@ -148,7 +154,9 @@ namespace AliExpressFetcher
                 }
 
                 driver.Navigate().GoToUrl(productLink);
-                
+
+                System.Threading.Thread.Sleep(300);
+
                 var footerEle = driver.FindElementByCssSelector(".site-footer");
                 driver.ExecuteScript("arguments[0].scrollIntoView(true);", footerEle);
                 System.Threading.Thread.Sleep(1000);
@@ -158,6 +166,13 @@ namespace AliExpressFetcher
                 string productName = driver.FindElementByCssSelector("h1.product-name").Text.Trim();
                 string productPriceCurrency = "";
                 string productPriceStr = "";
+                int stockNum = 0;
+
+                if (driver.FindElementsByCssSelector("#j-sell-stock-num").Count > 0)
+                {
+                    string stockInfo = driver.FindElementByCssSelector("#j-sell-stock-num").Text.Trim();
+                    stockNum = int.Parse(stockInfo.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)[0]);
+                }
 
                 if (driver.FindElementsByCssSelector(".product-multi-price-main.notranslate span[itemprop=priceCurrency]").Count > 0)
                 {
@@ -276,6 +291,10 @@ namespace AliExpressFetcher
                 pi = new ProductInfo();
                 pi.Name = productName;
                 pi.Url = productLink;
+                if(pi.Url.Contains(".html?"))
+                {
+                    pi.Url = pi.Url.Split(new string[] { ".html?" }, StringSplitOptions.RemoveEmptyEntries)[0] + ".html";
+                }
                 pi.Category = categoryName;
                 pi.Price = productPrice;
                 pi.PriceCurrency = productPriceCurrency;
@@ -294,6 +313,7 @@ namespace AliExpressFetcher
                 pi.UnitType = unitType;
                 pi.Unit = unit;
                 pi.Weight = weight;
+                pi.StockNum = stockNum;
             }
             catch (Exception ex)
             {
@@ -364,11 +384,11 @@ namespace AliExpressFetcher
 
             var switcher = driver.FindElementById("switcher-info");
             switcher.Click();
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
 
             var switcherCountrySelector = driver.FindElementByClassName("switcher-shipto-c");
             switcherCountrySelector.Click();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1500);
 
             var countryNameSpans = driver.FindElementsByCssSelector(".list-container .country-text");
             foreach (var cn in countryNameSpans)
@@ -442,6 +462,23 @@ namespace AliExpressFetcher
             loginSubmitEle.Click();
 
             driver.SwitchTo().DefaultContent();
+        }
+
+        private void ClosePopup(ChromeDriver driver)
+        {
+            try
+            {
+                var popup = driver.FindElementByCssSelector(".ui-newuser-layer-dialog > .ui-window-bd > .ui-window-content > a.close-layer");
+                if (popup != null)
+                {
+                    popup.Click();
+                    System.Threading.Thread.Sleep(2000);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void InitDriver(ChromeDriver driver)

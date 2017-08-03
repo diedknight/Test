@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>AliExpressFetcher</RootNamespace>
     <AssemblyName>AliExpressFetcher</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -69,6 +70,24 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CopyFile\CopyFile.csproj">
+      <Project>{e92b2149-21cb-43af-b0b7-7251746e8cf6}</Project>
+      <Name>CopyFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MairSoft.Common\MairSoft.Common.csproj">
+      <Project>{5b51945f-d667-408a-b135-a2c3ff691427}</Project>
+      <Name>MairSoft.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MT.Contract\MT.Contract.csproj">
+      <Project>{e519e3b6-ef0b-4177-abd8-a4fc6071d924}</Project>
+      <Name>MT.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MT.Extend\MT.Extend.csproj">
+      <Project>{946e7365-2835-47e8-97c6-c82ae8c28ff2}</Project>
+      <Name>MT.Extend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MT.Extend;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,9 +13,11 @@ namespace AliExpressFetcher
         static void Main(string[] args)
         {
             string timeStr = DateTime.Now.ToString("yyyy_MM_dd HH_mm");
+            string feedFilePrefix = System.Configuration.ConfigurationManager.AppSettings["FeedFilePrefix"];
+            
             string logPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["LogRootPath"], timeStr + ".txt");
             //string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], timeStr + ".xml");
-            string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], timeStr + ".csv");
+            string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], feedFilePrefix + "_" + timeStr + ".csv");
             string chromeWebDriverDir = System.Configuration.ConfigurationManager.AppSettings["ChromeWebDriverDir"];
             string aliexpressMapFile = System.Configuration.ConfigurationManager.AppSettings["MapFile"];
             string account = System.Configuration.ConfigurationManager.AppSettings["Account"];
@@ -28,7 +31,31 @@ namespace AliExpressFetcher
             List<ProductInfo> productInfoList = aliExpressCrawler.CrawlProducts(categoryInfoList);
 
             //WriteXmlFile(productInfoList, feedPath);
+            
             WriteCsvFile(productInfoList, feedPath);
+            CopyAndSetMessage(feedPath);
+        }
+
+        private static void CopyAndSetMessage(string feedPath)
+        {
+            SimplePublisherBus publisherBus = new SimplePublisherBus();
+
+            string outZipFile = feedPath + ".gz";
+            FSuite.FZip.Zip(feedPath, outZipFile);
+
+
+            string targetPathFTP = System.Configuration.ConfigurationManager.AppSettings["targetPathFTP"];
+            string targetIPFTP = System.Configuration.ConfigurationManager.AppSettings["targetIPFTP"];
+            string userIDFTP = System.Configuration.ConfigurationManager.AppSettings["userIDFTP"];
+            string passwordFTP = System.Configuration.ConfigurationManager.AppSettings["passwordFTP"];
+
+            CopyFile.FtpCopy.UploadFileSmall(outZipFile, targetPathFTP, targetIPFTP, userIDFTP, passwordFTP);
+
+            var info = new MT.Contract.ImportInfo();
+            info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            info.Label = outZipFile;
+            info.Recoverable = true;
+            publisherBus.Publish<MT.Contract.IImportInfo>(info);
         }
 
         private static void WriteCsvFile(List<ProductInfo> productInfoList, string feedPath)
