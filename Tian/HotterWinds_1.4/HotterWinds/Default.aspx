@@ -912,7 +912,7 @@
 
 
                     <!--google ad-->
-                    <div>
+                    <div style="text-align:center; margin-top:30px;">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <!-- Hotter Winds Skyscraper -->
                         <ins class="adsbygoogle"

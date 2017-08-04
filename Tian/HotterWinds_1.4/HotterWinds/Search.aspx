@@ -118,6 +118,21 @@
             margin-right: 0px;
         }
 
+        .sortByDiv select {
+            width: auto !important;
+            height: auto !important;
+            color: black;
+            padding: 6px 12px;
+            padding-right: 25px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+            .sortByDiv select:focus {
+                padding: 6px 12px;
+                padding-right: 25px;
+            }
+
         @media (max-width: 1024px) {
             .sortByDiv_des {
                 display: none;
@@ -127,15 +142,32 @@
         @media (min-width: 768px) {
             #leftFilters {
                 width: 100%;
+            }            
+        }
+
+        @media(max-width:768px) {
+            .clr_max768 {
+                clear:both;
+            }
+        }
+
+        @media only screen and (max-width: 479px) and (min-width: 320px) {
+            button.button, .btn, button.button:hover {
+                padding:1px 5px;
             }
         }
 
         #dropdownMenuSortBy {
-            border-radius:0px;
+            border-radius: 0px;
         }
 
         .dropdown-menu {
-            left:-48px;
+            left: -48px;
+        }
+
+        .products-grid .item .item-inner .item-info .info-inner .item-title {
+            height:50px;
+            white-space:normal;
         }
 
     </style>
@@ -159,6 +191,29 @@
                 <div class="row">
                     <div class="newBody">
 
+                        <div class="col-left sidebar col-sm-4 col-xs-12 col-md-3">
+                            <div id="leftFilters">
+                                <DK:NewFilters ID="NewFilters1" runat="server" />
+                            </div>
+                            <div class="clr"></div>
+
+                            <!--google ad-->
+                            <div style="text-align:center;">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- Hotter Winds Skyscraper -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:160px;height:600px"
+                                     data-ad-client="ca-pub-6992217816861590"
+                                     data-ad-slot="4006064329"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+
+                            </div>
+                        </div>
+                        <!-- col-sm-3   -->
+                        <div class="clr_max768"></div>
+
                         <%if (totalProductCount == 0) %>
                         <%{ %>
                         <div class="col-sm-12">
@@ -174,7 +229,7 @@
                         <%else %>
                         <%{ %>
                         <div id="loadDiv">
-                            <div class="col-sm-9 col-sm-push-3">
+                            <div class="col-sm-8 col-md-9">
 
                                 <div class="page-title">
                                     <h2 class="page-heading">
@@ -250,28 +305,7 @@
                             </div>
                             <!-- col-sm-9   -->
                         </div>
-
-                        <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                            <div id="leftFilters">
-                                <DK:NewFilters ID="NewFilters1" runat="server" />
-                            </div>
-                            <div class="clr"></div>
-
-                            <!--google ad-->
-                            <div>
-                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                <!-- Hotter Winds Skyscraper -->
-                                <ins class="adsbygoogle"
-                                     style="display:inline-block;width:160px;height:600px"
-                                     data-ad-client="ca-pub-6992217816861590"
-                                     data-ad-slot="4006064329"></ins>
-                                <script>
-                                    (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
-
-                            </div>
-                        </div>
-                        <!-- col-sm-3   -->
+                        
                         <%} %>
                         <script>
                             initFilter();

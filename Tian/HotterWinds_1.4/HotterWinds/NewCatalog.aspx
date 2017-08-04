@@ -300,7 +300,7 @@
                             <div class="clr"></div>
 
                             <!--google ad-->
-                            <div>
+                            <div style="text-align:center;">
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <!-- Hotter Winds Skyscraper -->
                                 <ins class="adsbygoogle"
@@ -317,7 +317,7 @@
                         <!-- col-sm-3   -->
                         <div class="clr_max768"></div>
                         <div id="loadDiv">
-                            <div class="col-sm-8  col-md-9">
+                            <div class="col-sm-8 col-md-9">
                                 <DK:Breadcrumbs runat="server" ID="Breadcrumbs" />
 
                                 <div class="page-title">

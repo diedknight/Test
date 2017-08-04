@@ -13,6 +13,15 @@ namespace HotterWinds {
     public partial class Search {
         
         /// <summary>
+        /// NewFilters1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::HotterWinds.Modules.Catalog.NewFilters NewFilters1;
+        
+        /// <summary>
         /// NewCatalogProducts1 control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace HotterWinds {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::HotterWinds.Modules.PrettyPager PrettyPager1;
-        
-        /// <summary>
-        /// NewFilters1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::HotterWinds.Modules.Catalog.NewFilters NewFilters1;
         
         /// <summary>
         /// Master property.
