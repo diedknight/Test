@@ -396,7 +396,7 @@ namespace AliExpressFetcher
                 if (cn.GetAttribute("innerText").Equals(mCountry, StringComparison.InvariantCultureIgnoreCase))
                 {
                     driver.ExecuteScript("arguments[0].scrollIntoView(true);", cn);
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(500);
                     cn.Click();
                     selected = true;
                     break;
@@ -430,7 +430,7 @@ namespace AliExpressFetcher
                 if (cn.GetAttribute("data-currency").Equals(mCurrency, StringComparison.InvariantCultureIgnoreCase))
                 {
                     driver.ExecuteScript("arguments[0].scrollIntoView(true);", cn);
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(500);
                     cn.Click();
                     selected = true;
                     break;
@@ -459,6 +459,7 @@ namespace AliExpressFetcher
 
             loginIdEle.SendKeys(mAccount);
             loginPasswordEle.SendKeys(mPassword);
+            System.Threading.Thread.Sleep(1200);
             loginSubmitEle.Click();
 
             driver.SwitchTo().DefaultContent();
