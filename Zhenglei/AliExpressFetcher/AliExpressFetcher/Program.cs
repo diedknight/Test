@@ -75,16 +75,16 @@ namespace AliExpressFetcher
 
         private static void CopyAndSetMessage(string feedPath)
         {
-            try
-            {
-                var bus = new SimpleConsumerBus<Consumer>();
-                bus.Start();
+            //try
+            //{
+            //    var bus = new SimpleConsumerBus<Consumer>();
+            //    bus.Start();
 
-                System.Threading.Thread.Sleep(3000);
+            //    System.Threading.Thread.Sleep(3000);
 
-                bus.Stop();
-            }
-            catch { }
+            //    bus.Stop();
+            //}
+            //catch { }
 
             SimplePublisherBus publisherBus = new SimplePublisherBus();
 
@@ -101,11 +101,11 @@ namespace AliExpressFetcher
 
             publisherBus.Start();
             string msgFilePath = Path.Combine(msgFileDir, outZipFile.Substring(outZipFile.LastIndexOf("\\") + 1));
-            var info = new MT.Contract.ImportInfo();
+            var info = new MT.Contract.ShopContract();
             info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             info.Label = outZipFile;
             info.Recoverable = true;
-            publisherBus.Publish<MT.Contract.IImportInfo>(info);
+            publisherBus.Publish<MT.Contract.IShopContract>(info);
 
             System.Threading.Thread.Sleep(10000);
             publisherBus.Stop();
