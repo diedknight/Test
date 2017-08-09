@@ -53,11 +53,11 @@ namespace AliExpressFetcher
 
                 driver.Navigate().GoToUrl("https://www.aliexpress.com/");
 
-                ClosePopup(driver);
+                ClosePopup(driver, true);
 
                 Login(driver);
 
-                ClosePopup(driver);
+                ClosePopup(driver, true);
 
                 if (!string.IsNullOrEmpty(mCountry))
                 {
@@ -97,7 +97,7 @@ namespace AliExpressFetcher
             {
                 driver.Navigate().GoToUrl(nextPageUrl);
 
-                ClosePopup(driver);
+                ClosePopup(driver, true);
 
                 string currentCurrency = driver.FindElementByCssSelector(".currency").GetAttribute("innerText").Trim();
                 if(!currentCurrency.Equals(mCurrency, StringComparison.InvariantCultureIgnoreCase))
@@ -465,20 +465,23 @@ namespace AliExpressFetcher
             driver.SwitchTo().DefaultContent();
         }
 
-        private void ClosePopup(ChromeDriver driver)
+        private void ClosePopup(ChromeDriver driver, bool retry)
         {
             try
             {
                 var popup = driver.FindElementByCssSelector(".ui-newuser-layer-dialog > .ui-window-bd > .ui-window-content > a.close-layer");
-                if (popup != null)
-                {
-                    popup.Click();
-                    System.Threading.Thread.Sleep(2000);
-                }
+
+                popup.Click();
+                System.Threading.Thread.Sleep(2000);
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message + "\t" + ex.StackTrace);
+                if(retry)
+                {
+                    System.Threading.Thread.Sleep(20000);
+                    ClosePopup(driver, false);
+                }
             }
         }
 

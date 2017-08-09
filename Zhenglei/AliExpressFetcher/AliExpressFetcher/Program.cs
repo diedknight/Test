@@ -12,6 +12,9 @@ namespace AliExpressFetcher
     {
         static void Main(string[] args)
         {
+            //CopyAndSetMessage_Test("E:\\Ali1_2017_08_03 14_59.csv.gz");
+            //return;
+
             string timeStr = DateTime.Now.ToString("yyyy_MM_dd HH_mm");
             string feedFilePrefix = System.Configuration.ConfigurationManager.AppSettings["FeedFilePrefix"];
             
@@ -36,8 +39,53 @@ namespace AliExpressFetcher
             CopyAndSetMessage(feedPath);
         }
 
+        private class Consumer : BaseConsumer<MT.Contract.IShopContract>
+        {
+            protected override void ConsumeHandle(SimpleConsumeContext<MT.Contract.IShopContract> context)
+            {
+                
+            }
+        }
+
+
+        private static void CopyAndSetMessage_Test(string feedPath)
+        {
+            try
+            {
+                var bus = new SimpleConsumerBus<Consumer>();
+                bus.Start();
+
+                System.Threading.Thread.Sleep(3000);
+
+                bus.Stop();
+            }
+            catch { }
+
+            SimplePublisherBus publisherBus = new SimplePublisherBus();
+
+            publisherBus.Start();
+            var info = new MT.Contract.ShopContract();
+            info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            info.Label = feedPath;
+            info.Recoverable = true;
+            publisherBus.Publish<MT.Contract.IShopContract>(info);
+            System.Threading.Thread.Sleep(10000);
+            publisherBus.Stop();
+        }
+
         private static void CopyAndSetMessage(string feedPath)
         {
+            try
+            {
+                var bus = new SimpleConsumerBus<Consumer>();
+                bus.Start();
+
+                System.Threading.Thread.Sleep(3000);
+
+                bus.Stop();
+            }
+            catch { }
+
             SimplePublisherBus publisherBus = new SimplePublisherBus();
 
             string outZipFile = feedPath + ".gz";
@@ -51,12 +99,16 @@ namespace AliExpressFetcher
             
             CopyFile.FtpCopy.UploadFileSmall(outZipFile, targetPathFTP, targetIPFTP, userIDFTP, passwordFTP);
 
+            publisherBus.Start();
             string msgFilePath = Path.Combine(msgFileDir, outZipFile.Substring(outZipFile.LastIndexOf("\\") + 1));
             var info = new MT.Contract.ImportInfo();
             info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             info.Label = outZipFile;
             info.Recoverable = true;
             publisherBus.Publish<MT.Contract.IImportInfo>(info);
+
+            System.Threading.Thread.Sleep(10000);
+            publisherBus.Stop();
         }
 
         private static void WriteCsvFile(List<ProductInfo> productInfoList, string feedPath)
