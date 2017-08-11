@@ -48,30 +48,30 @@ namespace AliExpressFetcher
         }
 
 
-        private static void CopyAndSetMessage_Test(string feedPath)
-        {
-            try
-            {
-                var bus = new SimpleConsumerBus<Consumer>();
-                bus.Start();
+        //private static void CopyAndSetMessage_Test(string feedPath)
+        //{
+        //    try
+        //    {
+        //        var bus = new SimpleConsumerBus<Consumer>();
+        //        bus.Start();
 
-                System.Threading.Thread.Sleep(3000);
+        //        System.Threading.Thread.Sleep(3000);
 
-                bus.Stop();
-            }
-            catch { }
+        //        bus.Stop();
+        //    }
+        //    catch { }
 
-            SimplePublisherBus publisherBus = new SimplePublisherBus();
+        //    SimplePublisherBus publisherBus = new SimplePublisherBus();
 
-            publisherBus.Start();
-            var info = new MT.Contract.ShopContract();
-            info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            info.Label = feedPath;
-            info.Recoverable = true;
-            publisherBus.Publish<MT.Contract.IShopContract>(info);
-            System.Threading.Thread.Sleep(10000);
-            publisherBus.Stop();
-        }
+        //    publisherBus.Start();
+        //    var info = new MT.Contract.ShopContract();
+        //    info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        //    info.Label = feedPath;
+        //    info.Recoverable = true;
+        //    publisherBus.Publish<MT.Contract.IShopContract>(info);
+        //    System.Threading.Thread.Sleep(10000);
+        //    publisherBus.Stop();
+        //}
 
         private static void CopyAndSetMessage(string feedPath)
         {
