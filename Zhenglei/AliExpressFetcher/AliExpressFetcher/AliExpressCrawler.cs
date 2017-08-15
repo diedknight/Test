@@ -16,6 +16,7 @@ namespace AliExpressFetcher
         static Regex SkuRegex_Static;
         static Regex PriceRegex_Static;
         static Regex UnitRegex_Static;
+        static Regex RelatedProductRegex_Static;
 
         string mAccount;
         string mPassword;
@@ -29,6 +30,7 @@ namespace AliExpressFetcher
             SkuRegex_Static = new Regex("/(?<sku>[\\w]+)\\.html", RegexOptions.IgnoreCase | RegexOptions.Singleline| RegexOptions.Compiled);
             PriceRegex_Static = new Regex("(?<price>[\\d]+(\\.[\\d]{0,2})?)", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
             UnitRegex_Static = new Regex("(?<l>[\\d]+(\\.[\\d]{0,2})?)(?<unit>\\w+)\\s?x\\s?(?<w>[\\d]+(\\.[\\d]{0,2})?)\\w+\\s?x\\s?(?<h>[\\d]+(\\.[\\d]{0,2})?)\\w+", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
+            RelatedProductRegex_Static = new Regex(@"<kse:widget\s*.*<\/kse:widget>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         }
 
         public AliExpressCrawler(string account, string password, string country, string currency, string chromeWebDriverDir)
@@ -47,6 +49,10 @@ namespace AliExpressFetcher
             List<ProductInfo> list = new List<ProductInfo>();
 
             ChromeOptions chromeOptions = new ChromeOptions();
+            if ("true".Equals(System.Configuration.ConfigurationManager.AppSettings["DisableImage"], StringComparison.InvariantCultureIgnoreCase))
+            {
+                chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
+            }
             using (ChromeDriver driver = new ChromeDriver(mChromeWebDriverDir, chromeOptions))
             {
                 InitDriver(driver);
@@ -265,6 +271,7 @@ namespace AliExpressFetcher
                     fullDescription = descEle.GetAttribute("innerHTML").Trim();
                     reTryCount--;
                 }
+                fullDescription = RelatedProductRegex_Static.Replace(fullDescription, "");
 
                 List<string> images = new List<string>();
                 var imageTags = driver.FindElementsByCssSelector("#j-image-thumb-list img");

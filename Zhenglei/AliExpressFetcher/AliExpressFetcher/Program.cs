@@ -12,14 +12,13 @@ namespace AliExpressFetcher
     {
         static void Main(string[] args)
         {
-            //CopyAndSetMessage_Test("E:\\Ali1_2017_08_03 14_59.csv.gz");
+            //TestChrome();
             //return;
 
             string timeStr = DateTime.Now.ToString("yyyy_MM_dd HH_mm");
             string feedFilePrefix = System.Configuration.ConfigurationManager.AppSettings["FeedFilePrefix"];
             
             string logPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["LogRootPath"], timeStr + ".txt");
-            //string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], timeStr + ".xml");
             string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], feedFilePrefix + "_" + timeStr + ".csv");
             string chromeWebDriverDir = System.Configuration.ConfigurationManager.AppSettings["ChromeWebDriverDir"];
             string aliexpressMapFile = System.Configuration.ConfigurationManager.AppSettings["MapFile"];
@@ -39,6 +38,19 @@ namespace AliExpressFetcher
             CopyAndSetMessage(feedPath);
         }
 
+        private static void TestChrome()
+        {
+            string chromeWebDriverDir = System.Configuration.ConfigurationManager.AppSettings["ChromeWebDriverDir"];
+            OpenQA.Selenium.Chrome.ChromeOptions chromeOptions = new OpenQA.Selenium.Chrome.ChromeOptions();
+
+            chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
+
+            using (OpenQA.Selenium.Chrome.ChromeDriver driver = new OpenQA.Selenium.Chrome.ChromeDriver(chromeWebDriverDir, chromeOptions))
+            {
+                driver.Navigate().GoToUrl("http://www.163.com");
+            }
+        }
+
         private class Consumer : BaseConsumer<MT.Contract.IShopContract>
         {
             protected override void ConsumeHandle(SimpleConsumeContext<MT.Contract.IShopContract> context)
@@ -46,32 +58,6 @@ namespace AliExpressFetcher
                 
             }
         }
-
-
-        //private static void CopyAndSetMessage_Test(string feedPath)
-        //{
-        //    try
-        //    {
-        //        var bus = new SimpleConsumerBus<Consumer>();
-        //        bus.Start();
-
-        //        System.Threading.Thread.Sleep(3000);
-
-        //        bus.Stop();
-        //    }
-        //    catch { }
-
-        //    SimplePublisherBus publisherBus = new SimplePublisherBus();
-
-        //    publisherBus.Start();
-        //    var info = new MT.Contract.ShopContract();
-        //    info.Body = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        //    info.Label = feedPath;
-        //    info.Recoverable = true;
-        //    publisherBus.Publish<MT.Contract.IShopContract>(info);
-        //    System.Threading.Thread.Sleep(10000);
-        //    publisherBus.Stop();
-        //}
 
         private static void CopyAndSetMessage(string feedPath)
         {
