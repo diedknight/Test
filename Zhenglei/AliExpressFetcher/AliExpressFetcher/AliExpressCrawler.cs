@@ -267,7 +267,7 @@ namespace AliExpressFetcher
                 int reTryCount = 3;
                 while(fullDescription.Length < 80 && reTryCount > 0)
                 {
-                    System.Threading.Thread.Sleep(300);
+                    System.Threading.Thread.Sleep(500);
                     fullDescription = descEle.GetAttribute("innerHTML").Trim();
                     reTryCount--;
                 }
