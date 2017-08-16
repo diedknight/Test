@@ -75,7 +75,7 @@ namespace PriceMeEventLog
             }
             FileLogWriter.WriteLine(filePath, "All ip : " + text3);
 
-            filePath = @"E:\2017_08_02 17_08.csv";
+            //filePath = @"E:\2017_08_02 17_08.csv";
             FileInfo fileInfo = new FileInfo(filePath);
             long len = fileInfo.Length / 1024;
             int maxFileSize = int.Parse(ConfigurationManager.AppSettings["MaxFileSize"]);
