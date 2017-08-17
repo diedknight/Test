@@ -16,7 +16,7 @@ namespace AliExpressFetcher
         static Regex SkuRegex_Static;
         static Regex PriceRegex_Static;
         static Regex UnitRegex_Static;
-        static Regex RelatedProductRegex_Static;
+        static List<List<string>> RelatedProductFormatList;
 
         string mAccount;
         string mPassword;
@@ -30,7 +30,30 @@ namespace AliExpressFetcher
             SkuRegex_Static = new Regex("/(?<sku>[\\w]+)\\.html", RegexOptions.IgnoreCase | RegexOptions.Singleline| RegexOptions.Compiled);
             PriceRegex_Static = new Regex("(?<price>[\\d]+(\\.[\\d]{0,2})?)", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
             UnitRegex_Static = new Regex("(?<l>[\\d]+(\\.[\\d]{0,2})?)(?<unit>\\w+)\\s?x\\s?(?<w>[\\d]+(\\.[\\d]{0,2})?)\\w+\\s?x\\s?(?<h>[\\d]+(\\.[\\d]{0,2})?)\\w+", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
-            RelatedProductRegex_Static = new Regex(@"<kse:widget\s*.*<\/kse:widget>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+            string relatedProductFormatFilePath = System.Configuration.ConfigurationManager.AppSettings["RelatedProductFormatFile"];
+            RelatedProductFormatList = GetRelatedProductFormatList(relatedProductFormatFilePath);
+        }
+
+        private static List<List<string>> GetRelatedProductFormatList(string relatedProductFormatFilePath)
+        {
+            //内容格式 标签名，属性名，属性值 之间用Tab符号隔开
+            List<List<string>> formatList = new List<List<string>>();
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(relatedProductFormatFilePath))
+            {
+                string line = sr.ReadLine();
+                while(!string.IsNullOrEmpty(line))
+                {
+                    string[] infos = line.Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                    List<string> formats = new List<string>();
+                    formats.AddRange(infos);
+                    formatList.Add(formats);
+
+                    line = sr.ReadLine();
+                }
+            }
+
+            return formatList;
         }
 
         public AliExpressCrawler(string account, string password, string country, string currency, string chromeWebDriverDir)
@@ -271,7 +294,7 @@ namespace AliExpressFetcher
                     fullDescription = descEle.GetAttribute("innerHTML").Trim();
                     reTryCount--;
                 }
-                fullDescription = RelatedProductRegex_Static.Replace(fullDescription, "");
+                fullDescription = FixDesc(fullDescription);
 
                 List<string> images = new List<string>();
                 var imageTags = driver.FindElementsByCssSelector("#j-image-thumb-list img");
@@ -328,7 +351,36 @@ namespace AliExpressFetcher
             }
             return pi;
         }
-        
+
+        private string FixDesc(string fullDescription)
+        {
+            string html = fullDescription;
+            CsQuery.CQ cq = CsQuery.CQ.Create(html);
+
+            bool removed = false;
+            foreach (var formats in RelatedProductFormatList)
+            {
+                if (cq[formats[0]] != null)
+                {
+                    var divList = cq[formats[0]].ToList();
+                    foreach (var div in divList)
+                    {
+                        string style = div.Attributes[formats[1]];
+                        if (style.Equals(formats[2], StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            div.Remove();
+                            removed = true;
+                            break;
+                        }
+                    }
+                }
+                if (removed) break;
+            }
+
+            string newHtml = cq.Render();
+            return newHtml;
+        }
+
         private List<ShippingInfo> GetShippingInfos(ChromeDriver driver)
         {
             List<ShippingInfo> list = new List<ShippingInfo>();
