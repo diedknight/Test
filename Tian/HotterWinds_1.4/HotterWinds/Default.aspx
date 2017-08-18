@@ -18,7 +18,7 @@
             }
     </style>
 
-    <style> 
+    <style>
         .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
             border-radius: 16px;
             -moz-border-radius: 16px;
@@ -700,7 +700,7 @@
                 </div>
 
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                    
+
                     <!--
                     
                     <div class="custom-slider-wrap">
@@ -912,15 +912,15 @@
 
 
                     <!--google ad-->
-                    <div style="text-align:center; margin-top:30px;">
+                    <div class="hideMax768" style="text-align: center; margin-top: 30px;">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <!-- Hotter Winds Skyscraper -->
                         <ins class="adsbygoogle"
-                             style="display:inline-block;width:160px;height:600px"
-                             data-ad-client="ca-pub-6992217816861590"
-                             data-ad-slot="4006064329"></ins>
+                            style="display: inline-block; width: 160px; height: 600px"
+                            data-ad-client="ca-pub-6992217816861590"
+                            data-ad-slot="4006064329"></ins>
                         <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
                     </div>
                 </aside>
@@ -984,14 +984,20 @@
 
 
     <script type="text/javascript">
-        $(".mega-menu-category").css("display", "");
+                                $(".mega-menu-category").css("display", "");
     </script>
 
 
     <style type="text/css">
         .products-grid .item .item-inner .item-info .info-inner .item-title {
-            height:50px;
-            white-space:normal;
+            height: 50px;
+            white-space: normal;
+        }
+
+        @media (max-width: 768px) {
+            .hideMax768 {
+                display:none;
+            }
         }
     </style>
 </asp:Content>

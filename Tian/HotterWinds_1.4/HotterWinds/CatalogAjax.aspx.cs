@@ -310,6 +310,7 @@ namespace HotterWinds
                 catalogPageInfo = PriceMeCommon.BusinessLogic.CatalogProductSearchController.SearchProducts(this.categoryID, this.brandIDList, priceRange, avIDs, selectedAttributeRangeIDs, this.sortBy, swi + " " + queryKeywords, selectedRetailers, true, WebConfig.CountryId, false, selectedAttrRangeValues, true, currentPage, pageSize, daysRange, onSaleOnly);
             }
             Utility.FixProductCatalogList(catalogPageInfo.ProductCatalogList, v);
+            catalogPageInfo.ProductCatalogList.ForEach(item => item.DefaultImage = item.DefaultImage.Replace("_s.", "_ms."));
 
             currentParameters = UrlController.GetCatalogParameters(this.categoryID, this.brandIDList, priceRangeString,
             selectedAttributeIDs, selectedAttributeRangeIDs, this.sortBy, selectedRetailers, v, swi,

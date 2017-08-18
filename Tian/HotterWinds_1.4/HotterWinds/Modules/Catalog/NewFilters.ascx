@@ -78,7 +78,7 @@
 
         <input type="hidden" class="ppr" name="ps" value="<%=PageSize %>" />
         <input type="hidden" class="ppr" name="pg" value="<%=PagePosition %>" />
-        <input type="hidden" class="ppr" name="v" value="<%=View %>" />
+        <input type="hidden" class="ppr" name="v" value="Grid" />
         <input type="hidden" class="ppr" name="q" value="<%=QueryKeywords %>" />
         <input type="hidden" class="ppr" name="pt" value="<%=PageToName %>" />
         <input type="hidden" class="ppr" name="c" value="<%=CategoryID %>" />

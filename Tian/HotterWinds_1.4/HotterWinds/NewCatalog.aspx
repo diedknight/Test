@@ -162,18 +162,18 @@
         @media (min-width: 768px) {
             #leftFilters {
                 width: 100%;
-            }            
+            }
         }
 
-        @media(max-width:768px) {
+        @media(max-width:767px) {
             .clr_max768 {
-                clear:both;
+                clear: both;
             }
         }
 
         @media only screen and (max-width: 479px) and (min-width: 320px) {
             button.button, .btn, button.button:hover {
-                padding:1px 5px;
+                padding: 1px 5px;
             }
         }
 
@@ -186,10 +186,16 @@
         }
 
         .products-grid .item .item-inner .item-info .info-inner .item-title {
-            height:50px;
-            white-space:normal;
+            height: 50px;
+            white-space: normal;
         }
 
+
+        @media (max-width: 768px) {
+            .hideMax768 {
+                display:none;
+            }
+        }
     </style>
 
     <script src="<%=PriceMe.WebConfig.CssJsPath %>/Scripts/new_catalog.js?ver=<%=PriceMe.WebConfig.WEB_cssVersion %>"></script>
@@ -300,15 +306,15 @@
                             <div class="clr"></div>
 
                             <!--google ad-->
-                            <div style="text-align:center;">
+                            <div class="hideMax768" style="text-align: center;">
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <!-- Hotter Winds Skyscraper -->
                                 <ins class="adsbygoogle"
-                                     style="display:inline-block;width:160px;height:600px"
-                                     data-ad-client="ca-pub-6992217816861590"
-                                     data-ad-slot="4006064329"></ins>
+                                    style="display: inline-block; width: 160px; height: 600px"
+                                    data-ad-client="ca-pub-6992217816861590"
+                                    data-ad-slot="4006064329"></ins>
                                 <script>
-                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
 
                             </div>
@@ -339,10 +345,11 @@
                                             </div>
 
                                             <div style="float: right;">
+                                                <%if (catalogPageInfo.CurrentProductCount > 1 && !v.Equals("quick", StringComparison.InvariantCultureIgnoreCase))
+                                                    { %>
                                                 <label class="sortByDiv_des left">Sort By: </label>
                                                 <div id="sortByDiv" class="sortByDiv" style="display: inline-block">
-                                                    <%if (catalogPageInfo.CurrentProductCount > 1 && !v.Equals("quick", StringComparison.InvariantCultureIgnoreCase))
-                                                        { %>
+
                                                     <div class="dropdown">
                                                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuSortBy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                             <%=GetSortByTitle(sortBy, sortByInfoList, sortByInfoList[0].LinkText)%>
@@ -355,8 +362,9 @@
                                                             <%} %>
                                                         </ul>
                                                     </div>
-                                                    <%} %>
                                                 </div>
+                                                <%} %>
+
                                                 <div class="clear"></div>
                                             </div>
                                         </div>
@@ -397,7 +405,7 @@
 
 
                         <script>
-                            initFilter();
+                                        initFilter();
                         </script>
                     </div>
                 </div>
@@ -410,7 +418,10 @@
     <!-- maincontainer -->
 
     <script type="text/javascript">
-        $(".mega-menu-category").css("display", "none");
+                            $(".mega-menu-category").css("display", "none");
+
+
+
     </script>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="foot" runat="server">

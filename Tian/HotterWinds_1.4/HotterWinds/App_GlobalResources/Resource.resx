@@ -905,7 +905,7 @@ submitted by users.&lt;/p&gt;
     <value>Browse all...</value>
   </data>
   <data name="TextString_OnPriceMe" xml:space="preserve">
-    <value>on Price Me</value>
+    <value>on Hotter Winds</value>
   </data>
   <data name="TextString_PriceMeLogoATagTitle" xml:space="preserve">
     <value>Online Shopping &amp; Price Comparison</value>
@@ -2331,7 +2331,7 @@ you prefer this option. Please contact us for more information.&lt;/p&gt;
     <value>Please check your email inbox and confirm your email address.</value>
   </data>
   <data name="TextString_EmailFails" xml:space="preserve">
-    <value>Sorry, Send out of email fails, please try again later or send email to info at Sorry, Send out of email fails, please try again later or send email to info at priceme.com.</value>
+    <value>Sorry, Send out of email fails, please try again later or send email to info at Sorry, Send out of email fails, please try again later or send email to info@hotterwinds.co.nz.</value>
   </data>
   <data name="TrackRootUrl" xml:space="preserve">
     <value>https://track.priceme.co.nz</value>

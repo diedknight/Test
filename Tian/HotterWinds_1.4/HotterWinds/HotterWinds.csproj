@@ -1411,18 +1411,22 @@
     <Content Include="App_GlobalResources\Resource.TH-TH.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.TH-TH.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\Resource.vi-VN.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.vi-VN.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\Resource.zh-CHT.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.zh-CHT.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\Resource.zh-CN.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.zh-CN.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

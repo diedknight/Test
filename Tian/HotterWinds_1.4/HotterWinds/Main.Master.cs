@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -394,14 +395,20 @@ namespace HotterWinds
 
             HtmlGenericControl script1 = new HtmlGenericControl("script");
             script1.Attributes.Add("type", "text/javascript");
-            script1.InnerHtml = "<script>(function (w, d, s, l, i) {"
-            + "w[l] = w[l] || []; w[l].push({"
-            + " 'gtm.start':"
-            + "new Date().getTime(), event: 'gtm.js'"
-            + "}); var f = d.getElementsByTagName(s)[0],"
-            + "j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src ="
-            + "'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);"
-            + "})(window, document, 'script', 'dataLayer', '" + GoogleAnalytis_require + "');</script>";            
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<!-- Google Tag Manager -->");
+            sb.AppendLine("<script>(function (w, d, s, l, i) {");
+            sb.AppendLine("w[l] = w[l] || []; w[l].push({");
+            sb.AppendLine(" 'gtm.start':");
+            sb.AppendLine("new Date().getTime(), event: 'gtm.js'");
+            sb.AppendLine("}); var f = d.getElementsByTagName(s)[0],");
+            sb.AppendLine("j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =");
+            sb.AppendLine("'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);");
+            sb.AppendLine("})(window, document, 'script', 'dataLayer', '" + GoogleAnalytis_require + "');</script>");
+            sb.AppendLine("<!-- End Google Tag Manager -->");
+
+            script1.InnerHtml = sb.ToString();
 
             this.Page.Header.Controls.Add(script1);
         }
