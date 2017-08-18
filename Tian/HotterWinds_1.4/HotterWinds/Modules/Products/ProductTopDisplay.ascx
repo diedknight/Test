@@ -27,15 +27,19 @@
             font-weight: bold;
         }
 
-    .price-block .retailer_logo {
-        padding: 10px 0px;
-        height:40px;
-        width:120px;
+    .price-block {
+        position: relative;
     }
 
-    .price-block .retailer_msg {
-        padding: 10px 0px;
-    }
+        .price-block .retailer_logo {
+            padding: 10px 0px;
+            height: 40px;
+            width: 120px;
+        }
+
+        .price-block .retailer_msg {
+            padding: 10px 0px;
+        }
 
     .product-view .product-shop .shipping-box .visit_shop {
         display: inline-block;
@@ -60,6 +64,26 @@
         top: inherit;
         left: inherit;
     }
+
+    .google_ad_block {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 15px;
+        left: 480px;        
+        display:none;
+    }
+
+    @media (min-width:1300px) {
+        .google_ad_block {
+            display:block;
+        }
+
+        .logo_block {
+            width:450px;   
+        }
+    }
+
 </style>
 
 <div class="product-shop col-lg-8 col-sm-7 col-xs-12">
@@ -78,7 +102,7 @@
 
         <div>
             <div class="price-box price">
-                <span class="amount"> <%=GetPriceRange()%></span>
+                <span class="amount"><%=GetPriceRange()%></span>
             </div>
             <div class="shipping-box">
                 <span class="shiping">
@@ -111,15 +135,28 @@
         <%{ %>
         <p class="availability in-stock"><span>Out Of Stock</span></p>
         <%} %>
-        
+
         <div class="clr"></div>
 
-        <div style="border-bottom:1px #ddd dotted">
-            <p class="retailer_logo"><img width="120" height="40" src="<%=PriceMe.Utility.GetImage(Retailer.LogoFile, "_ms") %>" /></p>
+        <div class="logo_block" style="border-bottom: 1px #ddd dotted;">
+            <p class="retailer_logo">
+                <img width="120" height="40" src="<%=PriceMe.Utility.GetImage(Retailer.LogoFile, "_ms") %>" /></p>
             <p class="retailer_msg"><%=Retailer.RetailerMessage %></p>
         </div>
 
         <div class="clr"></div>
+
+        <div class="google_ad_block">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Hotter Winds Medium Rectangle -->
+            <ins class="adsbygoogle"
+                style="display: inline-block; width: 300px; height: 250px"
+                data-ad-client="ca-pub-6992217816861590"
+                data-ad-slot="6007033367"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 
     <%--    <div itemprop="description" class="short-description">

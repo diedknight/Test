@@ -398,14 +398,14 @@ namespace HotterWinds
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("<!-- Google Tag Manager -->");
-            sb.AppendLine("<script>(function (w, d, s, l, i) {");
+            sb.AppendLine("(function (w, d, s, l, i) {");
             sb.AppendLine("w[l] = w[l] || []; w[l].push({");
             sb.AppendLine(" 'gtm.start':");
             sb.AppendLine("new Date().getTime(), event: 'gtm.js'");
             sb.AppendLine("}); var f = d.getElementsByTagName(s)[0],");
             sb.AppendLine("j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =");
-            sb.AppendLine("'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);");
-            sb.AppendLine("})(window, document, 'script', 'dataLayer', '" + GoogleAnalytis_require + "');</script>");
+            sb.AppendLine("'https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parentNode.insertBefore(j, f);");
+            sb.AppendLine("})(window, document, 'script', 'dataLayer', '" + GoogleAnalytis_require + "');");
             sb.AppendLine("<!-- End Google Tag Manager -->");
 
             script1.InnerHtml = sb.ToString();
