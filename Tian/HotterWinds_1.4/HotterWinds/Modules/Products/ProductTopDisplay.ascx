@@ -70,7 +70,7 @@
         height: 300px;
         position: absolute;
         top: 15px;
-        left: 480px;        
+        left: 450px;        
         display:none;
     }
 
