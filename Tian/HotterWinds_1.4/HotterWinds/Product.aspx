@@ -147,7 +147,7 @@
     </div>
 
     <script type="text/javascript">
-        $(".mega-menu-category").css("display", "none");
+        //$(".mega-menu-category").css("display", "none");
     </script>
 </asp:Content>
 

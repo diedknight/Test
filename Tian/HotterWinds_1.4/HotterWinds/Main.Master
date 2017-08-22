@@ -13,7 +13,7 @@
 <html>
 <head runat="server">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="view" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <title>Linea Demo &#8211; Just another WordPress Demo Sites site</title>
 
@@ -58,10 +58,14 @@
         var nodea = $("<div id=\"a_wrap\"></div>");
         nodea.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "900000" });
 
+        $("#view").attr("content", "width=1200px, initial-scale=1.0");        
         $("body").append(nodea);
 
         $(document).ready(function () {
-            nodea.remove();
+            setTimeout(function () {
+                $("#view").attr("content", "width=device-width, initial-scale=1.0");
+                nodea.remove();
+            }, 1);            
         });
     </script>
 
@@ -123,7 +127,7 @@
 
 
                                     <div data-hover="dropdown" class="basket dropdown-toggle">
-                                        <a href="http://wordpress.magikthemes.com/linea/cart/">
+                                        <a href="#">
                                             <span class="price hidden-xs">Shopping Cart</span>
                                             <span class="cart_count hidden-xs">0 Items/ <span class="amount">&#36;0.00</span></span>
                                         </a>

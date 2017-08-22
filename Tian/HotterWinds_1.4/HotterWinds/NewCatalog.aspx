@@ -193,7 +193,7 @@
 
         @media (max-width: 768px) {
             .hideMax768 {
-                display:none;
+                display: none;
             }
         }
     </style>
@@ -405,7 +405,7 @@
 
 
                         <script>
-                                        initFilter();
+                                    initFilter();
                         </script>
                     </div>
                 </div>
@@ -418,7 +418,7 @@
     <!-- maincontainer -->
 
     <script type="text/javascript">
-                            $(".mega-menu-category").css("display", "none");
+                            //$(".mega-menu-category").css("display", "none");
 
 
 
@@ -426,8 +426,8 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="foot" runat="server">
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
+                                        /* <![CDATA[ */
+                                        var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.4.12'></script>

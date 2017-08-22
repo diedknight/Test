@@ -984,7 +984,7 @@
 
 
     <script type="text/javascript">
-                                $(".mega-menu-category").css("display", "");
+                                //$(".mega-menu-category").css("display", "");
     </script>
 
 
