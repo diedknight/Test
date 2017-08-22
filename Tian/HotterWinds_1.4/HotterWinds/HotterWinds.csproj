@@ -689,6 +689,7 @@
     <Content Include="Modules\Common\NewHeaderControl.ascx" />
     <Content Include="Modules\Hitwise.ascx" />
     <Content Include="Modules\ManCategoryList.ascx" />
+    <Content Include="Modules\ManCategoryList1.ascx" />
     <Content Include="Modules\MobileSite.ascx" />
     <Content Include="Modules\PrettyPager.ascx" />
     <Content Include="Modules\Products\HWRelatedProducts.ascx" />
@@ -1146,6 +1147,13 @@
     </Compile>
     <Compile Include="Modules\ManCategoryList.ascx.designer.cs">
       <DependentUpon>ManCategoryList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ManCategoryList1.ascx.cs">
+      <DependentUpon>ManCategoryList1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ManCategoryList1.ascx.designer.cs">
+      <DependentUpon>ManCategoryList1.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\MobileSite.ascx.cs">
       <DependentUpon>MobileSite.ascx</DependentUpon>

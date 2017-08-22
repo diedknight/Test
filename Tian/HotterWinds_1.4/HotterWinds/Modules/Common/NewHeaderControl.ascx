@@ -157,7 +157,7 @@
                 <div class="new-searchbar input-group navbar-left search_box_extension" id="in-searchbar">
                     <input class="form-control search-textbox" type="text" id="SearchTextBox" runat="server" />
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-info search-btn" onclick="search('<%=SearchTextBox.ClientID%>')" title="Search for products from online shops"><span class="glyphicon glyphicon-search"></span></button>
+                        <button id="btnSearch" type="button" class="btn btn-info search-btn" onclick="search('<%=SearchTextBox.ClientID%>')" title="Search for products from online shops"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                 </div>
             </div>
