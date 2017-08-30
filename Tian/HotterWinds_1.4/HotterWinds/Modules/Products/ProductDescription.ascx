@@ -323,7 +323,7 @@
 
                 <li>
                     <div class="rich-left-attr">
-                        <span class="attTitle">List date PriceMe </span>
+                        <span class="attTitle">List date Hotter Winds</span>
                     </div>
                     <div class="rich-right-attr">
                         <%=GetProductDate()%>
@@ -395,7 +395,7 @@
 
                     <li>
                         <div class="rich-left-attr">
-                            <span class="attTitle">List date PriceMe</span>
+                            <span class="attTitle">List date Hotter Winds</span>
                         </div>
                         <div class="rich-right-attr">
                             <%=GetProductDate()%>

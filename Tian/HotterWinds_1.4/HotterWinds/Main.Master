@@ -281,12 +281,11 @@
                                         <h4>POPULAR</h4>
                                         <div class="textwidget">
                                             <ul class="links">
-                                                <li><a href="/Furniture-and-Sleep-Supplies/c-747.aspx" title="Furniture and Sleep Supplies">Furniture and Sleep Supplies</a></li>
-                                                <li><a href="/Mens-Jackets/c-1019.aspx" title="Mens Jackets">Mens Jackets</a></li>
-                                                <li><a href="/Womens-Jackets/c-1040.aspx" title="Womens Jackets">Womens Jackets</a></li>
-                                                <li><a href="/Appliances/c-1046.aspx" title="Tops">Tops</a></li>
-                                                <li><a href="/Travel-Bags/c-2299.aspx" title="Travel Bags">Travel Bags</a></li>
-                                                <li><a href="/Multi-Purpose-Tools/c-2950.aspx" title="Multi-Purpose Tools">Multi-Purpose Tools</a></li>
+
+                                                <%foreach (var cate in popularCategoryList) %>
+                                                <%{ %>
+                                                <li><a href="<%=PriceMe.UrlController.GetCatalogUrl(cate.CategoryID) %>" title="<%=cate.CategoryName %>"><%=cate.CategoryName %></a></li>
+                                                <%} %>
                                             </ul>
                                         </div>
                                     </aside>

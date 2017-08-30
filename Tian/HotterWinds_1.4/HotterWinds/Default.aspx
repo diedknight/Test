@@ -220,7 +220,7 @@
                                     <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1.jpg" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1.jpg" />
                                     <div class="info">
                                         <div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;'><%--<span>Womens style</span>--%> </div>
-                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;'><span>FOR ADVENTURE</span> </div>
+                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap; font-size:20px;'><span>get the gear for your next adventure</span> </div>
                                         <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--In augue urna, nunc, tincidunt, augue, augue facilisis facilisis.--%></div>
                                         <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--<a href='#' class="buy-btn">Shop Now</a>--%> </div>
                                     </div>
@@ -235,7 +235,7 @@
                                     <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2.jpg" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2.jpg" />
                                     <div class="info">
                                         <div class='tp-caption ExtraLargeTitle sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap; padding-right: 0px'><%--<span>Super Sale</span>--%> </div>
-                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;'>FOR TRAVEL</div>
+                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap; font-size:20px;'>search for all your travel essentials</div>
                                         <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--Lorem ipsum dolor sit amet, consectetur adipiscing elit.--%></div>
                                         <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--<a href='#' class="buy-btn">Buy Now</a>--%> </div>
                                     </div>
@@ -269,8 +269,8 @@
 
 
                             <div class="col-lg-5 col-sm-5">
-                                <a href="https://hotterwinds.co.nz/" title=" Banner 1">
-                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/home-banner1.jpg" alt=" Banner 1">
+                                <a href="<%=PriceMe.UrlController.GetCatalogUrl(3523) %>" title="Bags">
+                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Packs_Bags.png" alt="Bags">
                                 </a>
                             </div>
 
@@ -278,9 +278,10 @@
 
 
                             <div class="col-lg-7 col-sm-7">
-                                <a href="https://hotterwinds.co.nz/" title=" Banner 2">
-                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/home-banner2.jpg" alt=" Banner 2">
+                                <a href="<%=PriceMe.UrlController.GetCatalogUrl(1040) %>" title="Womens Jackets" style="float:right;">
+                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Jackets.png" alt="Womens Jackets">
                                 </a>
+                                <div class="clr"></div>
                             </div>
 
                         </div>
@@ -912,7 +913,7 @@
 
 
                     <!--google ad-->
-                    <div class="hideMax768" style="text-align: center; margin-top: 30px;">
+                    <div class="hideMax768" style="text-align: center; margin-top: -200px;">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <!-- Hotter Winds Skyscraper -->
                         <ins class="adsbygoogle"

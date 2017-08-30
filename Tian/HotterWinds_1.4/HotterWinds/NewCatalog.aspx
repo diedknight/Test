@@ -410,10 +410,28 @@
                     </div>
                 </div>
                 <!-- row -->
+
+                <!--google ad-->
+                <div style="height: 90px; margin-top:15px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Hotter Winds Horisontal -->
+                    <ins class="adsbygoogle"
+                        style="display: block"
+                        data-ad-client="ca-pub-6992217816861590"
+                        data-ad-slot="9110394807"
+                        data-ad-format="auto"></ins>
+                    <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+
+                </div>
             </div>
             <!-- container -->
             <%}%>
         </main>
+
+
+
     </div>
     <!-- maincontainer -->
 
@@ -426,15 +444,15 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="foot" runat="server">
     <script type='text/javascript'>
-                                        /* <![CDATA[ */
-                                        var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
+                                    /* <![CDATA[ */
+                                    var wc_add_to_cart_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View Cart", "cart_url": "https:\/\/wordpress.magikthemes.com\/linea\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%" };
+                                        /* <![CDATA[ */
+                                        var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=2.4.12'></script>

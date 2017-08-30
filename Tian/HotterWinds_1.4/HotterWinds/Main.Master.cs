@@ -1,4 +1,5 @@
 ﻿using PriceMe;
+using PriceMeCommon.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -30,6 +31,8 @@ namespace HotterWinds
         public string ShareName = "Christmas Wish list";
 
         public string GoogleAnalytis_require = System.Configuration.ConfigurationManager.AppSettings["GoogleAnalytis_require"].ToString();
+
+        public List<PriceMeCache.CategoryCache> popularCategoryList = new List<PriceMeCache.CategoryCache>();
 
         string iosAppArgument = "";
 
@@ -73,6 +76,15 @@ namespace HotterWinds
             //AddMeta();
             AddLink();
             AddCssAndJs();
+
+            //foot popular category
+            System.Configuration.ConfigurationManager.AppSettings["HomeHotRootCategories"].Split(',')
+                .Select(item => Convert.ToInt32(item))
+                .ToList()
+                .ForEach(item =>
+                {
+                    popularCategoryList.Add(CategoryController.GetCategoryByCategoryID(item, WebConfig.CountryId));
+                });            
         }
 
         public void AddCanonical(string canonicalUrl)

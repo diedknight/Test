@@ -140,7 +140,7 @@
                                         <p class="retailer_logo"><img width="120" height="40" src="<%=PriceMe.Utility.GetImage(p.BestPPCLogoPath, "_ms") %>" /></p>
 
                                         <div class="action">
-                                            <a href="<%=GetLinkUrl(Convert.ToInt32(p.ProductID),Convert.ToInt32(p.BestPPCRetailerID),Convert.ToInt32(p.BestPPCRetailerProductID),p.CategoryID) %>" 
+                                            <a target="_blank" href="<%=GetLinkUrl(Convert.ToInt32(p.ProductID),Convert.ToInt32(p.BestPPCRetailerID),Convert.ToInt32(p.BestPPCRetailerProductID),p.CategoryID) %>" 
                                                 class="visit_shop"
                                                 onclick="dataLayer.push({'transactionId': '<%=Guid.NewGuid() %>','transactionProducts': [{ 'name': '<%=p.ProductName %>', 'sku': '<%=p.BestPPCRetailerID %>','category': <%=p.CategoryID %>, 'price': <%=p.BestPrice %>, 'quantity': 1, 'dimension1' : '<%=p.BestPPCRetailerID %>'}],'event': 'pmco_trans'});">
                                                 Visit Shop >
