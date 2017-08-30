@@ -42,6 +42,7 @@ namespace PriceMeCommon.BusinessLogic
             IsSearchOnlyCateogryIdList_Static = new List<int>();
 
             string connectionString = MultiCountryController.CommonConnectionStringSettings_Static.ConnectionString;
+            connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["HotterWinds"].ConnectionString;
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
                 string sql = @"GetCategoryRootInfo";
