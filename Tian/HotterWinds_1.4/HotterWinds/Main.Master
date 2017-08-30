@@ -58,7 +58,7 @@
         var nodea = $("<div id=\"a_wrap\"></div>");
         nodea.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "900000" });
 
-        $("#view").attr("content", "width=1200px, initial-scale=1.0");        
+        $("#view").attr("content", "width=1800px, initial-scale=1.0");        
         $("body").append(nodea);
 
         $(document).ready(function () {

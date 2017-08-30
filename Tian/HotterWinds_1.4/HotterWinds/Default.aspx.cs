@@ -33,7 +33,8 @@ namespace HotterWinds
 
             Model.BestSellerProducts = HomeQuery.GetBestSellerProducts();
             Model.FeaturesProducts = HomeQuery.GetFeatureProducts();
-            Model.HotDeal = HomeQuery.GetProducts(1, 806)[0];
+            //Model.HotDeal = HomeQuery.GetProducts(1, 806)[0];
+            Model.HotDeal = Model.Dresses[0];
             Model.Blogs = HomeQuery.GetBlogs();
         }
     }
