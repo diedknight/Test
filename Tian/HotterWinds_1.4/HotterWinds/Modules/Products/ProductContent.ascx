@@ -30,7 +30,7 @@
 
             <uc1:ProductTopDisplay runat="server" ID="ProductTopDisplay1" />
 
-        </div> 
+        </div>
         <!--product-essential-->
 
 
@@ -49,7 +49,7 @@
                             <%--<li class="additional_tab">
                                 <a href="#tab-additional">Additional Information</a>
                             </li>--%>
-                            <li class="reviews_tab" style="display:none;">
+                            <li class="reviews_tab" style="display: none;">
                                 <a href="#tab-reviews">Reviews (0)</a>
                             </li>
                         </ul>
@@ -155,7 +155,7 @@
                                 </div>
                             </div>--%>
 
-                            <PD:HWRelatedProducts runat="server" id="SimilarLinks1" />
+                            <PD:HWRelatedProducts runat="server" ID="SimilarLinks1" />
 
                         </div>
                         <div class="panel entry-content" id="tab-description">
@@ -208,20 +208,24 @@
         <!--product-collateral-->
 
         <!--google ad-->
-        <div style="height:90px;">
+        <div>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Hotter Winds Horisontal -->
             <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-6992217816861590"
-                 data-ad-slot="9110394807"
-                 data-ad-format="auto"></ins>
+                style="display: block"
+                data-ad-client="ca-pub-6992217816861590"
+                data-ad-slot="9110394807"
+                data-ad-format="auto"></ins>
             <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 1);
+                });
             </script>
 
         </div>
-        
+
 
         <meta itemprop="url" content="https://wordpress.magikthemes.com/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/" />
 
