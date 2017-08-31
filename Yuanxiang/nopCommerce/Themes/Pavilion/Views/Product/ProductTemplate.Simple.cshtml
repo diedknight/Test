@@ -171,6 +171,7 @@
                         @nopQuickTabsHtml @*nop quick tabs*@
 
                         @productsCarouselHtml @*products carousel for related or also purchased with 1 visible item*@
+
                     </div>
                 }
                 
@@ -184,6 +185,39 @@
                     @Html.Partial("_ProductTierPrices", Model.TierPrices)
                     @Html.Partial("_ProductSpecifications", Model.ProductSpecifications)
                     @Html.Partial("_ProductTags", Model.ProductTags)
+
+                    <div class="product-des">
+                        @if (Model.Width > 0 || Model.Length > 0 || Model.Width > 0 || Model.Height > 0)
+                        {
+                            <div class="des-title">
+                                Package Size
+                            </div>
+                        }
+                        @if (Model.Weight > 0)
+                        {
+                            <div class="des-line">
+                                <span>Weight:</span> @Model.Weight.ToString("0.000") kg
+                            </div>
+                        }
+                        @if (Model.Length > 0)
+                        {
+                            <div class="des-line">
+                                <span>Length:</span> @Model.Length.ToString("0.000") m
+                            </div>
+                        }
+                        @if (Model.Width > 0)
+                        {
+                            <div class="des-line">
+                                <span>Width:</span> @Model.Width.ToString("0.000") m
+                            </div>
+                        }
+                        @if (Model.Height > 0)
+                        {
+                            <div class="des-line">
+                                <span>Height:</span> @Model.Height.ToString("0.000") m
+                            </div>
+                        }
+                    </div>
                 </div>
                 @Html.Action("ProductsAlsoPurchased", "Product", new { productId = Model.Id })
                 @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })

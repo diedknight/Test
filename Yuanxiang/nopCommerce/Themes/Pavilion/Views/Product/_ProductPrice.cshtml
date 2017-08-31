@@ -13,9 +13,12 @@
 	        <div class="product-price call-for-price">
 	            <span>@T("Products.CallForPrice")</span>
 	        </div>
-	    }
-	    else
-	    {
+        }
+        else
+        {
+            if (!String.IsNullOrEmpty(Model.CurrencyCode))
+            {
+                <meta itemprop="priceCurrency" content="@Model.CurrencyCode" />       }
 	        <div class="@if (String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
 	            {
 					<text>product-price</text>
@@ -69,10 +72,6 @@
 	                <label>@T("Products.Price.RentalPrice"):</label>
 	                <span>@Model.RentalPrice</span>
 	            </div>
-	        }
-	        if (!String.IsNullOrEmpty(Model.CurrencyCode))
-	        {
-	            <meta itemprop="priceCurrency" content="@Model.CurrencyCode" />
 	        }
 	    }
 	</div>

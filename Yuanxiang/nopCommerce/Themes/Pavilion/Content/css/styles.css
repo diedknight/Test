@@ -1244,7 +1244,23 @@ label, label + * {
 	background-color: #fff;
 	color: #333;
 }
-
+.product-des {
+    padding:20px;
+}
+.product-des .des-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom:20px;
+}
+.product-des .des-line {
+    margin-bottom:10px;
+}
+.product-des .des-line span {
+    font-size: 14px;
+    font-weight: bold;
+    width: 70px;
+    display: inline-block;
+}
 .poll strong {
 	display: block;
 	margin: 0 0 10px;
@@ -4562,16 +4578,57 @@ label, label + * {
 }
 .basic-search,
 .advanced-search {
-	width: 480px;
-	max-width: 100%;
-	margin: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: inline-block;
+}
+.basic-search .search-label {
+    float: left;
+    width: 130px;
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.basic-search .search-key {
+    float: left;
+    width: 300px !important;
+    margin-top: 5px;
+}
+@media (min-width: 300px) {
+    .basic-search .search-key {
+        width: 200px !important;
+    }
+}
+@media (min-width: 360px) {
+    .basic-search .search-key {
+        width: 260px !important;
+    }
+}
+@media (min-width: 798px) {
+    .basic-search .search-key {
+        width: 300px !important;
+    }
+}
+@media (min-width: 1000px) {
+    .basic-search .search-key {
+        width: 260px !important;
+    }
+}
+@media (min-width: 1280px) {
+    .basic-search .search-key {
+        width: 300px !important;
+    }
 }
 .basic-search .inputs.reversed {
-	position: relative;
-	height: 48px;
-	margin: 0 0 1px;
-	background-color: #f9f9f9;
-	padding: 12px 20px;
+    position: relative;
+    height: 48px;
+    margin: 0 0 1px;
+    background-color: #f9f9f9;
+    padding: 12px 20px;
+    float: left;
+    width: 220px;
 }
 .basic-search .inputs.reversed input {
 	position: absolute;

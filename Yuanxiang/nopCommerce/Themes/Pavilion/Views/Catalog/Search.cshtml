@@ -48,13 +48,12 @@
                 <div class="fieldset">
                     <div class="form-fields">
                         <div class="basic-search">
-                            <div class="inputs">
-                                @Html.LabelFor(model => model.q, new { }, ":")
-                                @Html.TextBoxFor(model => model.q, new { @class = "search-text" })
-                            </div>
+                            @Html.LabelFor(model => model.q, new { @class = "search-label" }, ":")
+                            @Html.TextBoxFor(model => model.q, new { @class = "search-text search-key" })
+
                             @Html.Widget("productsearch_page_basic")
                             <div class="inputs reversed">
-                                @Html.CheckBoxFor(model => model.adv)
+                                <input id="adv" name="adv" type="checkbox" value="true">
                                 @Html.LabelFor(model => model.adv)
                             </div>
                         </div>
@@ -101,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="buttons">
+                <div class="buttons" style="clear:both;">
                     <input type="submit" class="button-1 search-button" value="@T("Search.Button")" />
                 </div>
             }
