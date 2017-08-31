@@ -412,7 +412,7 @@
                 <!-- row -->
 
                 <!--google ad-->
-                <div style="height: 90px; margin-top:15px;">
+                <div style="display: block; height: 90px; width:100%; margin-top: 15px; overflow: hidden;">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- Hotter Winds Horisontal -->
                     <ins class="adsbygoogle"
@@ -424,7 +424,10 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
 
+                    <div class="clr"></div>
                 </div>
+                <div class="clr"></div>
+
             </div>
             <!-- container -->
             <%}%>
@@ -451,28 +454,28 @@
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
     <script type='text/javascript'>
-                                        /* <![CDATA[ */
-                                        var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%" };
+                                    /* <![CDATA[ */
+                                    var woocommerce_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=2.4.12'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_cart_fragments_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments" };
+                                    /* <![CDATA[ */
+                                    var wc_cart_fragments_params = { "ajax_url": "\/linea\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/linea\/product-category\/dresses\/clothing\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.4.12'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
+                                    /* <![CDATA[ */
+                                    var yith_woocompare = { "nonceadd": "3eada33b0d", "nonceremove": "88f09ee1cf", "nonceview": "86a1f613bf", "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "actionadd": "yith-woocompare-add-product", "actionremove": "yith-woocompare-remove-product", "actionview": "yith-woocompare-view-table", "added_label": "Added", "table_title": "Product Comparison", "auto_open": "yes", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-compare\/assets\/images\/loader.gif", "button_text": "Compare" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/woocompare.js?ver=2.0.5'></script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-compare/assets/js/jquery.colorbox-min.js?ver=1.4.21'></script>
     <script type='text/javascript'>
-        /* <![CDATA[ */
-        var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
+                                        /* <![CDATA[ */
+                                        var yith_qv = { "ajaxurl": "https:\/\/wordpress.magikthemes.com\/linea\/wp-admin\/admin-ajax.php", "is2_2": "", "loader": "https:\/\/wordpress.magikthemes.com\/linea\/wp-content\/plugins\/yith-woocommerce-quick-view\/assets\/image\/qv-loader.gif" };
         /* ]]> */
     </script>
     <script type='text/javascript' src='/linea/wp-content/plugins/yith-woocommerce-quick-view/assets/js/frontend.js?ver=1.0'></script>

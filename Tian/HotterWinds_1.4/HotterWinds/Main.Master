@@ -484,7 +484,7 @@
             display: none;
         }
 
-        @media(max-width:768px) {
+        @media(max-width:767px) {
             .mini-cart .basket a {
                 display: block;
             }
