@@ -19,6 +19,8 @@ namespace CheckCategoryTool
             set { _sw = value; }
         }
 
+        List<ProductData> listPs;
+
         List<int> listCates;
         List<int> listCountry;
         int CountryId;
@@ -63,6 +65,9 @@ namespace CheckCategoryTool
                 CountryId = countryid;
                 Write("Get " + countryid + " country......" + DateTime.Now);
 
+                GetAllRetailerProductPrice(countryid);
+                Write("Get " + countryid + " price......" + DateTime.Now);
+
                 foreach (int cid in listCates)
                 {
                     Write("Categoryid: " + cid + " ......" + DateTime.Now);
@@ -91,10 +96,18 @@ namespace CheckCategoryTool
                         isMinError = false;
                         if (maxprice != newMaxPrice || minprice != newMinPrice)
                         {
-                            decimal rateMax = decimal.Round(Math.Abs(newMaxPrice - maxprice) / maxprice, 2);
+                            decimal rateMax = 0m;
+                            if (maxprice == 0)
+                                rateMax = 1;
+                            else
+                                rateMax = decimal.Round(Math.Abs(newMaxPrice - maxprice) / maxprice, 2);
                             if ((newMaxPrice > maxprice) && rateMax > PriceRateJudge)
                                 isMaxError = true;
-                            decimal rateMin = decimal.Round(Math.Abs(newMinPrice - minprice) / minprice, 2);
+                            decimal rateMin = 0m;
+                            if (minprice == 0)
+                                rateMin = 1;
+                            else
+                                rateMin = decimal.Round(Math.Abs(newMinPrice - minprice) / minprice, 2);
                             if ((newMinPrice < minprice) && rateMin > PriceRateJudge)
                                 isMinError = true;
 
@@ -190,13 +203,31 @@ namespace CheckCategoryTool
 
         private void GetRetailerPrice(int cid, string sort, out decimal price, out int rpid, out int pid)
         {
+            List<ProductData> product = new List<ProductData>();
             price = 0;
             rpid = 0;
             pid = 0;
-            string sql = "Select top 1 rp.RetailerPrice, rp.RetailerProductId, rp.ProductId From CSK_Store_RetailerProduct rp inner join CSK_Store_Product p "
-                        + "On rp.ProductId = p.ProductID Where p.CategoryID = " + cid + " And rp.RetailerProductStatus = 1 And "
+            if (sort == "desc")
+                product = listPs.Where(p => p.CategoryId == cid).OrderByDescending(p => p.Price).Take(1).ToList();
+            else
+                product = listPs.Where(p => p.CategoryId == cid).OrderBy(p => p.Price).Take(1).ToList();
+
+            if (product != null && product.Count > 0)
+            {
+                price = product[0].Price;
+                rpid = product[0].RetailerProductId;
+                pid = product[0].ProductId;
+            }
+        }
+
+        private void GetAllRetailerProductPrice(int countryid)
+        {
+            listPs = new List<ProductData>();
+
+            string sql = "Select rp.RetailerPrice, rp.RetailerProductId, rp.ProductId, p.CategoryId From CSK_Store_RetailerProduct rp inner join CSK_Store_Product p "
+                        + "On rp.ProductId = p.ProductID Where rp.RetailerProductStatus = 1 And "
                         + "rp.IsDeleted = 0 And p.IsMerge = 1 And RetailerId in (Select RetailerId From CSK_Store_Retailer "
-                        + "Where RetailerStatus = 1 And RetailerCountry = " + CountryId + ") order by rp.RetailerPrice " + sort;
+                        + "Where RetailerStatus = 1 And RetailerCountry = " + CountryId + ")";
             try
             {
                 StoredProcedure sp = new StoredProcedure("");
@@ -206,9 +237,19 @@ namespace CheckCategoryTool
                 IDataReader dr = sp.ExecuteReader();
                 while (dr.Read())
                 {
+                    int pid, rpid, cid;
+                    decimal price;
                     decimal.TryParse(dr["RetailerPrice"].ToString(), out price);
                     int.TryParse(dr["RetailerProductId"].ToString(), out rpid);
                     int.TryParse(dr["ProductId"].ToString(), out pid);
+                    int.TryParse(dr["CategoryId"].ToString(), out cid);
+
+                    ProductData p = new ProductData();
+                    p.ProductId = pid;
+                    p.RetailerProductId = rpid;
+                    p.CategoryId = cid;
+                    p.Price = price;
+                    listPs.Add(p);
                 }
                 dr.Close();
             }
