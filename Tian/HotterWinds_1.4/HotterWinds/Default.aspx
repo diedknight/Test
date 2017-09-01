@@ -268,7 +268,7 @@
 
 
 
-                            <div class="col-lg-5 col-sm-5">
+                            <div class="col-lg-6 col-sm-6">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(3523) %>" title="Bags">
                                     <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Packs_Bags.png" alt="Bags">
                                 </a>
@@ -277,7 +277,7 @@
 
 
 
-                            <div class="col-lg-7 col-sm-7">
+                            <div class="col-lg-6 col-sm-6">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(1040) %>" title="Womens Jackets" style="float:right;">
                                     <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Jackets.png" alt="Womens Jackets">
                                 </a>

@@ -306,7 +306,7 @@
                             <div class="clr"></div>
 
                             <!--google ad-->
-                            <div class="hideMax768" style="text-align: center;">
+                            <div class="hideMax768" style="text-align: center; margin-top:5px;">
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <!-- Hotter Winds Skyscraper -->
                                 <ins class="adsbygoogle"
