@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,7 @@
     <Compile Include="Config\DataInfo.cs" />
     <Compile Include="Config\XmlConfig.cs" />
     <Compile Include="Config\DBInfo.cs" />
+    <Compile Include="ImageOper.cs" />
     <Compile Include="LocalImage.cs" />
     <Compile Include="Log\ErrorLog.cs" />
     <Compile Include="Log\SuccessLog.cs" />
@@ -66,6 +68,7 @@
   <ItemGroup>
     <Content Include="Config\config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

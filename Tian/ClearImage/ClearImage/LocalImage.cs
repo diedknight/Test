@@ -17,6 +17,7 @@ namespace ClearImage
         private string _filePath_m = "";
         private string _filePath_ms = "";
         private string _filePath_s = "";
+        private string _filePath_ss = "";
         private string _filePath_l = "";
 
         private DataInfo _dataInfo = null;
@@ -49,7 +50,13 @@ namespace ClearImage
             this._filePath_m = this.AddPostfix(filePath, "_m");
             this._filePath_ms = this.AddPostfix(filePath, "_ms");
             this._filePath_s = this.AddPostfix(filePath, "_s");
+            this._filePath_ss = this.AddPostfix(filePath, "_ss");
             this._filePath_l = this.AddPostfix(largeFilePath, "_l");
+
+            if (!File.Exists(this._filePath_ss))
+            {
+                ImageOper.Resize_ss(this._filePath);
+            }
         }
 
         public string Upload()
@@ -59,6 +66,7 @@ namespace ClearImage
             this.Upload(this._filePath_m);
             this.Upload(this._filePath_ms);
             this.Upload(this._filePath_s);
+            this.Upload(this._filePath_ss);
             this.Upload(this._filePath_l);
 
             return url;
@@ -99,7 +107,7 @@ namespace ClearImage
 
             string key = this.GetS3Key(filePath);
 
-            string url = "http://s3.pricemestatic.com/" + key;
+            string url = "https://s3.pricemestatic.com/" + key;
 
             if (string.IsNullOrEmpty(filePath)) return url;
             if (!File.Exists(filePath)) return url;
@@ -149,6 +157,7 @@ namespace ClearImage
             this.CopyLocalImage(this._filePath_m);
             this.CopyLocalImage(this._filePath_ms);
             this.CopyLocalImage(this._filePath_s);
+            this.CopyLocalImage(this._filePath_ss);
             this.CopyLocalImage(this._filePath_l);
         }
 
@@ -178,6 +187,7 @@ namespace ClearImage
             this.DeleteLocalImage(this._filePath_m);
             this.DeleteLocalImage(this._filePath_ms);
             this.DeleteLocalImage(this._filePath_s);
+            this.DeleteLocalImage(this._filePath_ss);
             this.DeleteLocalImage(this._filePath_l);
         }
 
@@ -212,6 +222,7 @@ namespace ClearImage
             filePath = filePath.Replace("_ms.", ".");
             filePath = filePath.Replace("_s.", ".");
             filePath = filePath.Replace("_l.", ".");
+            filePath = filePath.Replace("_ss.", ".");
 
             return filePath;
         }
