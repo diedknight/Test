@@ -14,6 +14,8 @@ namespace RelatedProductsTool
 
         static void Main(string[] args)
         {
+            System.Diagnostics.Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.Idle;
+
             int retedCount = int.Parse(ConfigurationManager.AppSettings["RetedCount"]);
             string logDir = ConfigurationManager.AppSettings["LogDir"];
             LogDir_Static = System.IO.Path.Combine(logDir, DateTime.Now.ToString("yyyy-MM-dd"));
