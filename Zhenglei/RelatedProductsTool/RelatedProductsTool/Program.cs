@@ -12,10 +12,12 @@ namespace RelatedProductsTool
         static string LogDir_Static;
         static LogWriter LogWriter_Static;
 
+        static int MaxCount_Static = int.Parse(ConfigurationManager.AppSettings["MaxCount"]);
+        static int Interval_Static = int.Parse(ConfigurationManager.AppSettings["Interval"]);
+
         static void Main(string[] args)
         {
             System.Diagnostics.Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.Idle;
-
             int retedCount = int.Parse(ConfigurationManager.AppSettings["RetedCount"]);
             string logDir = ConfigurationManager.AppSettings["LogDir"];
             LogDir_Static = System.IO.Path.Combine(logDir, DateTime.Now.ToString("yyyy-MM-dd"));
@@ -171,7 +173,9 @@ namespace RelatedProductsTool
 
         private static void FindAndWriteRelatedProductScore(Dictionary<int, List<ProductInfo>> cProductDic, int retedCount, bool detailLog, int countryId)
         {
-            foreach(int key in cProductDic.Keys)
+            RelatedProductsOperator relatedProductsOperator = new RelatedProductsOperator(MaxCount_Static, Interval_Static, countryId);
+
+            foreach (int key in cProductDic.Keys)
             {
                 List<ProductRelatedScore> logList = new List<ProductRelatedScore>();
                 List<ProductInfo> pList = cProductDic[key];
@@ -198,17 +202,21 @@ namespace RelatedProductsTool
                     {
                         logList.AddRange(prsList);
                     }
-                    try
-                    {
-                        //这里还有优化的空间
-                        prsList = prsList.Take(retedCount).ToList();
-                        RelatedProductsController.WriteToDBByProductId(prsList, mainPI.ProductId, countryId, DateTime.Now, ConfigurationManager.ConnectionStrings["PriceMe_PM"].ConnectionString);
-                    }
-                    catch(Exception ex)
-                    {
-                        LogWriter_Static.WriteLine("Main product id : " + mainPI.ProductId + " ex:");
-                        LogWriter_Static.WriteLine(ex.Message + "\t" + ex.StackTrace);
-                    }
+
+                    prsList = prsList.Take(retedCount).ToList();
+                    relatedProductsOperator.Add(prsList, mainPI.ProductId);
+
+                    //try
+                    //{
+                    //    //这里还有优化的空间
+                    //    prsList = prsList.Take(retedCount).ToList();
+                    //    //RelatedProductsController.WriteToDBByProductId(prsList, mainPI.ProductId, countryId, DateTime.Now, ConfigurationManager.ConnectionStrings["PriceMe_PM"].ConnectionString);
+                    //}
+                    //catch(Exception ex)
+                    //{
+                    //    LogWriter_Static.WriteLine("Main product id : " + mainPI.ProductId + " ex:");
+                    //    LogWriter_Static.WriteLine(ex.Message + "\t" + ex.StackTrace);
+                    //}
                 }
 
                 if (detailLog)
@@ -217,9 +225,9 @@ namespace RelatedProductsTool
                     LogWriter_Static.WriteLine("Start write detail log cid : " + key + ".");
                     WriteToFile(logList, filePath);
                 }
-                //LogWriter_Static.WriteLine("Start write to db cid : " + key + ".");
-                
             }
+
+            relatedProductsOperator.Finish();
         }
 
         private static void SortProductInfosByClicks(List<ProductInfo> pList)

@@ -178,6 +178,54 @@ namespace RelatedProductsTool
             }
         }
 
+        internal static void WriteToDBByProductId(List<ProductRelatedScore> cRelatedProductScoreList, List<int> productIds, int countryId, DateTime dtNow, string connStr)
+        {
+            string pIdsStr = string.Join(",", productIds);
+            string deleteSql = @"delete [dbo].[RelatedProductWithScore] where [CountryId] = " + countryId + " and [ProductId] in (" + pIdsStr + ")";
+            string insertSql = @"INSERT INTO [dbo].[RelatedProductWithScore]
+                               ([ProductId]
+                               ,[CountryId]
+                               ,[RelatedProductId]
+                               ,[Score]
+                               ,[CreatedOn]
+                               ,[ModifiedOn]
+                               ,[CategoryId])";
+            foreach (var prs in cRelatedProductScoreList)
+            {
+                insertSql += prs.ToSqlString(dtNow, countryId) + " union all ";
+            }
+
+            if (insertSql.EndsWith(" union all "))
+            {
+                insertSql = insertSql.Substring(0, insertSql.Length - " union all ".Length);
+            }
+
+            string sql = "BEGIN TRANSACTION ";
+            sql += @"
+                    " + deleteSql + " ";
+            sql += @"
+                    IF @@ERROR>0 GOTO TRANS_ERR ";
+            sql += @"
+                    " + insertSql + " ";
+            sql += @"
+                    IF @@ERROR>0 GOTO TRANS_ERR ";
+            sql += @"
+                    COMMIT TRANSACTION 
+                    Return
+                    TRANS_ERR:
+	                    ROLLBACK TRANSACTION";
+
+            using (SqlConnection sqlConn = new SqlConnection(connStr))
+            {
+                sqlConn.Open();
+                using (SqlCommand sqlCmd1 = new SqlCommand(sql, sqlConn))
+                {
+                    sqlCmd1.CommandTimeout = 0;
+                    sqlCmd1.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static List<ProductInfo> GetProductInfosByProductIds(List<int> pids, string connStr)
         {
             List<ProductInfo> pList = new List<ProductInfo>();
