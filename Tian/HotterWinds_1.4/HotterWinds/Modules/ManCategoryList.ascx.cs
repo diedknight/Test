@@ -27,8 +27,6 @@ namespace HotterWinds.Modules
                 {
                     RootCategoryList.Add(CategoryController.GetRootCategory(cid, WebConfig.CountryId));
                 });
-
-
         }
     }
 }

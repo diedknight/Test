@@ -686,7 +686,7 @@ namespace PriceMeCommon.BusinessLogic
         /// <returns></returns>
         public static CategoryCache GetRootCategory(int categoryId, int countryId)
         {
-            int rootId = SearchController.GetRootCategoryId(countryId);
+            int rootId = SearchController.GetRootCategoryId(categoryId);
             if(rootId > 0)
             {
                 return GetCategoryByCategoryID(rootId, countryId);
