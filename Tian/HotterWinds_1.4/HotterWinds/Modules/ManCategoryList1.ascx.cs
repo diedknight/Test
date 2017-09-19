@@ -15,7 +15,18 @@ namespace HotterWinds.Modules
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RootCategoryList = CategoryController.GetAllRootCategoriesOrderByName(WebConfig.CountryId);
+            //RootCategoryList = CategoryController.GetAllRootCategoriesOrderByName(WebConfig.CountryId);
+
+            RootCategoryList = new List<PriceMeCache.CategoryCache>();
+
+            System.Configuration.ConfigurationManager.AppSettings["RuleCategoryID"]
+                .Split(',')
+                .Select(item => Convert.ToInt32(item))
+                .ToList()
+                .ForEach(cid =>
+                {
+                    RootCategoryList.Add(CategoryController.GetRootCategory(cid, WebConfig.CountryId));
+                });
         }
     }
 }
