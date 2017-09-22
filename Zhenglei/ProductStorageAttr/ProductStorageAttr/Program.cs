@@ -142,7 +142,7 @@ namespace ProductStorageAttr
                                 select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in
                                 (select typeid from CSK_Store_ProductDescriptorTitle) and CategoryID in
                                 (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
-                                and ProductId in(
+                                and IsMerge=1 and ProductId in(
                                 select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
                                 (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
 
