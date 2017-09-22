@@ -143,7 +143,8 @@ namespace ProductStorageAttr
                                 (select typeid from CSK_Store_ProductDescriptorTitle) and CategoryID in
                                 (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
                                 and ProductId in(
-                                select distinct(ProductId) from CSK_Store_RetailerProduct where RetailerProductStatus = 1)";
+                                select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
+                                (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
 
             //string selectSql = @"select ProductID, ProductName, CategoryID from CSK_Store_Product where CategoryID = 11";
 
