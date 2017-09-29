@@ -1,4 +1,42 @@
-﻿User-agent: Teemer
+User-agent:*
+Disallow:/EmailFriend.aspx
+Disallow:/ResponseRedirect.aspx
+Disallow:/RetailerReview/
+Disallow:/members/productreview.aspx
+Disallow:/ReviewRedirect.aspx?
+Disallow:/Register2.aspx
+Disallow:/Login.aspx?*
+Disallow:/ReportLocation.aspx
+Disallow:/DealPostBack.aspx
+Disallow:/ReportProduct.aspx
+Disallow:/ProductAlert.aspx 
+Disallow:/.axd$
+Disallow:/ViewTracking.aspx
+Disallow:/500.aspx
+Disallow:/NewTopic.aspx
+Disallow:/RetailerProductAlert.aspx
+Disallow:/RetailerProductAlert.aspx$
+Disallow:/UserInfoAjax.aspx?
+Disallow:/RetailerProductAlert.aspx?
+Disallow:/GetMyProductList.aspx
+Disallow:/MarkerImages.aspx
+Disallow:/search.aspx
+Disallow:/productnotfound.aspx
+Disallow:/Register2.aspx?
+Disallow:/Login.aspx?
+Disallow:/RetailerProductAlert.aspx
+Disallow:/410.aspx
+Disallow:/RetailerProductAlert.aspx 
+Disallow:/1053498/horisontal_lower_banner
+Disallow:/1053498/horisontal_middle_banner
+Disallow:/1053498/pm_prod_mrec
+Disallow:/FeedbackReport.aspx?*
+
+
+Sitemap: https://hotterwinds.co.nz/sitemap/SiteMap.xml
+
+
+User-agent: Teemer
 User-agent: NetSeer
 User-agent: dotbot
 User-agent: DomainCrawler
@@ -81,6 +119,8 @@ User-agent: proximic
 User-agent: grapeshot
 User-agent: sogou develop spider
 User-agent: sogou spider
+User-agent: Sogou inst spider/4.0
+User-agent: Sogou web spider/4.0
 User-agent: Mail.Ru
 User-agent: GrapeshotCrawler 
 user-agent: AhrefsBot 
@@ -89,46 +129,6 @@ User-agent: BLEXBot
 User-agent: safesearch
 User-agent: SafeSearch microdata crawler
 User-agent: Mozilla/4.0 (compatible; Synapse)
-Disallow: /
-User-agent: Slurp
-Crawl-delay: 5
-user-agent:*
-Disallow:
 User-agent: Charlotte
 Disallow: /
-Crawl-Delay: 30
-User-agent: Mediapartners-Google
-Crawl-delay: 5
-Sitemap: https://hotterwinds.co.nz/sitemap/SiteMap.xml
-Disallow:/EmailFriend.aspx
-Disallow:/ResponseRedirect.aspx
-Disallow:/RetailerReview/
-Disallow:/members/productreview.aspx
-Disallow:/ReviewRedirect.aspx?
-Disallow:/Register2.aspx
-Disallow:/Login.aspx?*
-Disallow:/ReportLocation.aspx
-Disallow:/DealPostBack.aspx
-Disallow:/ReportProduct.aspx
-Disallow:/ProductAlert.aspx 
-Disallow:/.axd$
-Disallow:/ViewTracking.aspx
-Disallow:/error500.aspx
-Disallow:/NewTopic.aspx
-Disallow:/RetailerProductAlert.aspx
-Disallow:/RetailerProductAlert.aspx$
-Disallow:/UserInfoAjax.aspx?
-Disallow:/RetailerProductAlert.aspx?
-Disallow:/GetMyProductList.aspx
-Disallow:/MarkerImages.aspx
-Disallow:/search.aspx
-Disallow:/productnotfound.aspx
-Disallow:/Register2.aspx?
-Disallow:/Login.aspx?
-Disallow:/RetailerProductAlert.aspx
-Disallow:/410.aspx
-Disallow:/RetailerProductAlert.aspx 
-Disallow:/1053498/horisontal_lower_banner
-Disallow:/1053498/horisontal_middle_banner
-Disallow:/1053498/pm_prod_mrec
 
