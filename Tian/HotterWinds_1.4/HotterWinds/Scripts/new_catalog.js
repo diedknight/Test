@@ -661,7 +661,7 @@ function shortenDsc() {
 }
 
 function showDsc() {
-    var html = $(".ctcTitleTd .categoryDec").html().trim();
+    var html = $(".ctcTitleTd .categoryDec").html();
     if (html.length > 0) {
         $(".ctcTitleTd .categoryDec").css('white-space', 'normal').css('text-overflow', 'initial');
         $("#morelessATag").remove();

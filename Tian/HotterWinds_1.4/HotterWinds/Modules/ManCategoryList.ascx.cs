@@ -17,7 +17,7 @@ namespace HotterWinds.Modules
         {
             //RootCategoryList = CategoryController.GetAllRootCategoriesOrderByName(WebConfig.CountryId);
 
-            RootCategoryList = new List<PriceMeCache.CategoryCache>();
+            RootCategoryList = new List<PriceMeCache.CategoryCache>();            
 
             System.Configuration.ConfigurationManager.AppSettings["RuleCategoryID"]
                 .Split(',')

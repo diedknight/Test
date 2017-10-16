@@ -326,10 +326,12 @@
                             <div class="col-sm-8 col-md-9">
                                 <DK:Breadcrumbs runat="server" ID="Breadcrumbs" />
 
-                                <div class="page-title">
+                                <div class="ctcTitleTd page-title">
                                     <h2 class="page-heading">
-                                        <span class="page-heading-title"><%=category.CategoryName %></span>
+                                        <span class="page-heading-title"><%=category.CategoryName %></span>                                                                                
                                     </h2>
+
+                                    <div class="categoryDec" style="white-space: normal; text-overflow: initial;"><%=category.LocalDescription %></div>                                    
                                 </div>
 
                                 <div class="col-main pro-grid">

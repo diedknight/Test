@@ -217,32 +217,26 @@
                             <ul>
 
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1-150x150.jpg'>
-                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1.jpg" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img1.jpg" />
+                                    <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner1"] %>" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner1"] %>" />
                                     <div class="info">
                                         <div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;'><%--<span>Womens style</span>--%> </div>
-                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap; font-size:20px;'><span>get the gear for your next adventure</span> </div>
+                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto;'><span>get the gear for your next adventure</span> </div>
                                         <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--In augue urna, nunc, tincidunt, augue, augue facilisis facilisis.--%></div>
                                         <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--<a href='#' class="buy-btn">Shop Now</a>--%> </div>
                                     </div>
                                     <a class="s-link" href="https://hotterwinds.co.nz/"></a>
-
-
-
                                 </li>
 
 
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2-150x150.jpg'>
-                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2.jpg" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="https://s3.pricemestatic.com/Images/HotterWindsVersion/slide-img2.jpg" />
+                                    <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner2"] %>" data-data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner2"] %>" />
                                     <div class="info">
                                         <div class='tp-caption ExtraLargeTitle sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 2; max-width: auto; max-height: auto; white-space: nowrap; padding-right: 0px'><%--<span>Super Sale</span>--%> </div>
-                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto; white-space: nowrap; font-size:20px;'>search for all your travel essentials</div>
+                                        <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 3; max-width: auto; max-height: auto;'>search for all your travel essentials</div>
                                         <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--Lorem ipsum dolor sit amet, consectetur adipiscing elit.--%></div>
                                         <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;'><%--<a href='#' class="buy-btn">Buy Now</a>--%> </div>
                                     </div>
                                     <a class="s-link" href="https://hotterwinds.co.nz/"></a>
-
-
-
                                 </li>
 
 
@@ -270,7 +264,7 @@
 
                             <div class="col-lg-6 col-sm-6">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(3523) %>" title="Bags">
-                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Packs_Bags.png" alt="Bags">
+                                    <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner3"] %>" alt="Bags">
                                 </a>
                             </div>
 
@@ -279,7 +273,7 @@
 
                             <div class="col-lg-6 col-sm-6">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(1040) %>" title="Womens Jackets" style="float:right;">
-                                    <img src="https://s3.pricemestatic.com/Images/HotterWindsVersion/Jackets.png" alt="Womens Jackets">
+                                    <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner4"] %>" alt="Womens Jackets">
                                 </a>
                                 <div class="clr"></div>
                             </div>
@@ -911,9 +905,16 @@
 
                     -->
 
+                    <div class="hideMax768" style="text-align: center; margin-top: -200px;">
+                            <div style="width:160px; height:600px; margin:0 auto;">
+                                <a href="#">
+                                    <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner5"] %>" />
+                                </a>
+                            </div>
+                    </div>
 
                     <!--google ad-->
-                    <div class="hideMax768" style="text-align: center; margin-top: -200px;">
+<%--                    <div class="hideMax768" style="text-align: center; margin-top: -200px;">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <!-- Hotter Winds Skyscraper -->
                         <ins class="adsbygoogle"
@@ -923,7 +924,8 @@
                         <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
-                    </div>
+                    </div>--%>
+
                 </aside>
             </div>
         </div>
@@ -993,6 +995,10 @@
         .products-grid .item .item-inner .item-info .info-inner .item-title {
             height: 50px;
             white-space: normal;
+        }
+
+        #rev_slider_4_wrapper .info {
+            width:92%;
         }
 
         @media (max-width: 768px) {

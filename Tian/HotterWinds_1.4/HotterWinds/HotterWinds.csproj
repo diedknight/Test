@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1438,6 +1439,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HotterWinds.Extension\HotterWinds.Extension.csproj">
+      <Project>{b3765433-3d07-40f0-8f31-2846350b8bbf}</Project>
+      <Name>HotterWinds.Extension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotterWindsDBA\HotterWindsDBA.csproj">
       <Project>{e274a7f5-6a53-4838-bfc2-533548236cee}</Project>
       <Name>HotterWindsDBA</Name>

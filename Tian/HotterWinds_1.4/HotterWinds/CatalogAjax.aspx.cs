@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HotterWinds.Extension;
 
 namespace HotterWinds
 {
@@ -70,7 +71,7 @@ namespace HotterWinds
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (GetParameters())
             {
                 SetValue();
@@ -697,6 +698,17 @@ namespace HotterWinds
                     AddNarrowByCatalogyUrl(categoryNarrowByInfo.NarrowItemList);
                     narrowByInfoList.Add(categoryNarrowByInfo);
                 }
+                else
+                {
+                    //Related Category
+                    var parentCategoryId = CategoryController.GetCategoryByCategoryID(category.CategoryID, WebConfig.CountryId).ParentID;
+                    categoryNarrowByInfo = productSeacherWithoutFilters.GetCatalogCategoryResulte(parentCategoryId, WebConfig.CountryId);
+                    categoryNarrowByInfo.Title = "Related Categories";
+                    categoryNarrowByInfo.NarrowItemList = categoryNarrowByInfo.NarrowItemList.Where(item => item.Value != category.CategoryID.ToString()).ToList();
+
+                    AddNarrowByCatalogyUrl(categoryNarrowByInfo.NarrowItemList);
+                    narrowByInfoList.Add(categoryNarrowByInfo);
+                }
             }
             else
             {
@@ -706,6 +718,17 @@ namespace HotterWinds
                     if (categoryNarrowByInfo.NarrowItemList.Count > 0)
                     {
                         AddNarrowBySearchCatalogyUrl(categoryNarrowByInfo.NarrowItemList);
+                        narrowByInfoList.Add(categoryNarrowByInfo);
+                    }
+                    else
+                    {
+                        //Related Category
+                        var parentCategoryId = CategoryController.GetCategoryByCategoryID(category.CategoryID, WebConfig.CountryId).ParentID;
+                        categoryNarrowByInfo = productSeacherWithoutFilters.GetCatalogCategoryResulte(parentCategoryId, WebConfig.CountryId);
+                        categoryNarrowByInfo.Title = "Related Categories";
+                        categoryNarrowByInfo.NarrowItemList = categoryNarrowByInfo.NarrowItemList.Where(item => item.Value != category.CategoryID.ToString()).ToList();
+
+                        AddNarrowByCatalogyUrl(categoryNarrowByInfo.NarrowItemList);
                         narrowByInfoList.Add(categoryNarrowByInfo);
                     }
                 }

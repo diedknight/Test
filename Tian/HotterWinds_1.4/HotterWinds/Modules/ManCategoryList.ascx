@@ -4,12 +4,20 @@
 <%@ Import Namespace="PriceMeCache" %>
 <%@ Import Namespace="PriceMeCommon.BusinessLogic" %>
 
-<ul id="menu-mainmenu" class="mega-menu nav">    
+<style type="text/css">
+    .mega-menu-category > .nav > li > a .fa {
+        margin: 5px 0;
+        float: left;
+    }
+</style>
+
+<ul id="menu-mainmenu" class="mega-menu nav">
     <%foreach (PriceMeCache.CategoryCache rootCate in this.RootCategoryList) %>
     <%{ %>
 
     <%if (rootCate.ProductsCount == 0) continue; %>
     <%var subCateList = CategoryController.GetNextLevelSubCategories(rootCate.CategoryID, WebConfig.CountryId);%>
+    <%subCateList = subCateList.OrderBy(item => item.ListOrder).ToList(); %>
 
     <%if (subCateList.Count == 0) %>
     <%{ %>
@@ -22,7 +30,7 @@
     <%else %>
     <%{ %>
     <%
-        string widecss = ""; 
+        string widecss = "";
         if (subCateList.Count == 2) widecss = "has-sub wide col-2";
         if (subCateList.Count > 2) widecss = "has-sub wide col-3";
 
@@ -41,33 +49,33 @@
                     <%if (subCate.CategoryName == "Golf") continue; %>
                     <%if (subCate.ProductsCount == 0) continue; %>
                     <%var subsubCateList = CategoryController.GetNextLevelSubCategories(subCate.CategoryID, WebConfig.CountryId);%>
+                    <%subsubCateList = subsubCateList.OrderBy(item => item.ListOrder).ToList(); %>
 
                     <li id="nav-menu-item-<%=subCate.CategoryID %>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  sub" data-cols="1">
                         <a href="<%=PriceMe.UrlController.GetCatalogUrl(subCate.CategoryID) %>" class=""><span><%=subCate.CategoryName %></span></a>
                         <ul class="nav sub-menu">
 
-                            
+
                             <%foreach (var subsubCate in subsubCateList) %>
                             <%{ %>
 
-                            <%if (subsubCate.CategoryName == "Cycling Apparel") continue; %>       
-                            <%if (subsubCate.ProductsCount == 0) continue; %>                            
+                            <%if (subsubCate.CategoryName == "Cycling Apparel") continue; %>
+                            <%if (subsubCate.ProductsCount == 0) continue; %>
 
                             <li id="nav-menu-item-<%=subsubCate.CategoryID %>" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat ">
                                 <a href="<%=PriceMe.UrlController.GetCatalogUrl(subsubCate.CategoryID) %>" class=""><span><%=subsubCate.CategoryName %></span></a>
-                            </li>                            
-                            <%} %>                         
-                            
+                            </li>
+                            <%} %>
                         </ul>
                     </li>
-                    
+
                     <%if (index % 3 == 0) %>
-                    <%{ %>                    
+                    <%{ %>
                     <li class="clr"></li>
                     <%} %>
 
                     <%index++; %>
-                    <%} %>                   
+                    <%} %>
                 </ul>
             </div>
         </div>
@@ -77,7 +85,6 @@
 
 
     <%} %>
-
 </ul>
 
 <script type="text/javascript">

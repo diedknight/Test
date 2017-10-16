@@ -124,6 +124,11 @@
                     {
                         collapse = "1";
                     }
+
+                    if (nb.Title == "Brands") continue;
+                    if (nb.Title == "Days listed") continue;
+
+                    if (nb.Title == "Retailers") nb.Title = "Brands/Retailers";
             %>
             <div class="nbDiv">
                 <div class="nbTitle">
@@ -139,6 +144,7 @@
                     <%}%>
                     <span class="glyphicon glyphicon-minus" data-collapse="<%=collapse %>"></span>
                 </div>
+
                 <div class="nbValues">
                     <%if (nb.Title.Equals("Categories"))
                         {%>
@@ -466,6 +472,7 @@
                     <%} %>
                     <%} %>
                 </div>
+
             </div>
             <%} %>
         </div>

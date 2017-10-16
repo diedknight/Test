@@ -66,7 +66,7 @@
                     <div class="ctcicon">
                         <a href="<%=csc.Link.LinkURL%>">
                             <%if (string.IsNullOrEmpty(imgicon)) { %>
-                            <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=csc.Link.LinkText%>" width="150" height="150" onerror="onImgError_catalog(this)" /><%} else { %>
+                            <img src="<%=/*Resources.Resource.ImageWebsite +*/ imgurl %>" alt="<%=csc.Link.LinkText%>" width="150" height="150" onerror="onImgError_catalog(this)" /><%} else { %>
                             <%=imgicon.Replace("#3d3d3d", "#3498db").Replace("#3D3D3D", "#3498db") %>
                             <%} %>
                         </a>
@@ -119,7 +119,7 @@
 
                 <div class="ctcicon">
                     <%if (string.IsNullOrEmpty(imgicon)) { %>
-                    <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=csc.Link.LinkText%>" width="150" height="150" onerror="onImgError_catalog(this)" /><%} else { %>
+                    <img src="<%=/*Resources.Resource.ImageWebsite +*/ imgurl %>" alt="<%=csc.Link.LinkText%>" width="150" height="150" onerror="onImgError_catalog(this)" /><%} else { %>
                     <%=imgicon %>
                     <%} %>
                 </div>

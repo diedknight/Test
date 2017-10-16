@@ -9,6 +9,7 @@ using PriceMeCache;
 using PriceMeCommon;
 using PriceMeCommon.BusinessLogic;
 using PriceMeCommon.Data;
+using HotterWinds.Extension;
 
 namespace HotterWinds
 {    
@@ -716,7 +717,18 @@ namespace HotterWinds
                 AddNarrowByCatalogyUrl(categoryNarrowByInfo.NarrowItemList);
                 narrowByInfoList.Add(categoryNarrowByInfo);
             }
+            else
+            {
+                //Related Category
+                var parentCategoryId = CategoryController.GetCategoryByCategoryID(category.CategoryID, WebConfig.CountryId).ParentID;
+                categoryNarrowByInfo = productSeacherWithoutFilters.GetCatalogCategoryResulte(parentCategoryId, WebConfig.CountryId);
+                categoryNarrowByInfo.Title = "Related Categories";
+                categoryNarrowByInfo.NarrowItemList = categoryNarrowByInfo.NarrowItemList.Where(item => item.Value != category.CategoryID.ToString()).ToList();
 
+                AddNarrowByCatalogyUrl(categoryNarrowByInfo.NarrowItemList);
+                narrowByInfoList.Add(categoryNarrowByInfo);
+            }           
+            
             //brands
             if (!CategoryController.IsHiddenBrandsCategoryID(category.CategoryID, WebConfig.CountryId))
             {

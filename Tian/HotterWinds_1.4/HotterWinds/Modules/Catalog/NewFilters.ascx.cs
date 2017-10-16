@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using PriceMeCommon.Data;
+using PriceMeCommon.BusinessLogic;
+using PriceMe;
 
 namespace HotterWinds.Modules.Catalog
 {
@@ -37,7 +39,7 @@ namespace HotterWinds.Modules.Catalog
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         public int GetIconHeight(int cateID, int typeID, int count, double av, int maxCount)
