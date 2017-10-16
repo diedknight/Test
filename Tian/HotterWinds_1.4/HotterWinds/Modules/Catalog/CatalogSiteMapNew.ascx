@@ -211,7 +211,7 @@
             <div class="line" onclick="openlink('<%=csc.Link.LinkURL%>');">
                 <div class="icon">
                     <%if(string.IsNullOrEmpty(imgicon)){ %>
-                    <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=csc.Link.LinkText%>" width="50" height="50" onerror="onImgError(this)" /><%}else{ %>
+                    <img src="<%=/*Resources.Resource.ImageWebsite +*/ imgurl %>" alt="<%=csc.Link.LinkText%>" width="50" height="50" onerror="onImgError(this)" /><%}else{ %>
                     <%=imgicon %>
                     <%} %>
                 </div>

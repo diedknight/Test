@@ -263,7 +263,7 @@
             <div class="line" onclick="openlink('<%=url%>');">
                 <div class="icon">
                     <%if(string.IsNullOrEmpty(imgicon)){ %>
-                    <img src="<%=Resources.Resource.ImageWebsite + imgurl %>" alt="<%=subc.CategoryName %>" width="50" height="50" onerror="onImgError(this)" /><%}else{ %>
+                    <img src="<%=/*Resources.Resource.ImageWebsite +*/ imgurl %>" alt="<%=subc.CategoryName %>" width="50" height="50" onerror="onImgError(this)" /><%}else{ %>
                     <%=imgicon %>
                     <%} %>
                 </div>

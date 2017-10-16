@@ -10,6 +10,7 @@
 
     <%if (rootCate.ProductsCount == 0) continue; %>
     <%var subCateList = CategoryController.GetNextLevelSubCategories(rootCate.CategoryID, WebConfig.CountryId);%>
+    <%subCateList = subCateList.OrderBy(item => item.ListOrder).ToList(); %>
 
     <%if (subCateList.Count == 0) %>
     <%{ %>
@@ -38,6 +39,7 @@
             <%if (subCate.CategoryName == "Golf") continue; %>
             <%if (subCate.ProductsCount == 0) continue; %>
             <%var subsubCateList = CategoryController.GetNextLevelSubCategories(subCate.CategoryID, WebConfig.CountryId);%>
+            <%subsubCateList = subsubCateList.OrderBy(item => item.ListOrder).ToList(); %>
 
             <%if (subsubCateList.Count == 0) %>
             <%{ %>

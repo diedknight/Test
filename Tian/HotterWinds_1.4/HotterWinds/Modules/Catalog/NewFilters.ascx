@@ -32,41 +32,40 @@
     }
 
     .irs-from {
-        background-color:#1fc0a0;
+        background-color: #1fc0a0;
     }
 
     .irs-to {
-        background-color:#1fc0a0;
+        background-color: #1fc0a0;
     }
 
     .irs-single {
-        background-color:#1fc0a0;
+        background-color: #1fc0a0;
     }
 
     .irs-bar {
-        background:none;
-        border-color:#1fc0a0;
-        background-color:#1fc0a0;
+        background: none;
+        border-color: #1fc0a0;
+        background-color: #1fc0a0;
     }
-    
+
     #newfilter .btn-info {
-        background:none;
-        background-color:#1fc0a0;
-        border-color:#1fc0a0;
+        background: none;
+        background-color: #1fc0a0;
+        border-color: #1fc0a0;
     }
 
     #newfilter .nameATag {
-        color:#000;
+        color: #000;
     }
 
-    #newfilter .nameATag:hover {
-        color:#1fc0a0;
-    }
+        #newfilter .nameATag:hover {
+            color: #1fc0a0;
+        }
 
     .heightBar {
-        width:80%;
+        width: 80%;
     }
-
 </style>
 
 <aside>
@@ -127,6 +126,7 @@
 
                     if (nb.Title == "Brands") continue;
                     if (nb.Title == "Days listed") continue;
+                    if (nb.Title == "Related Categories") continue;
 
                     if (nb.Title == "Retailers") nb.Title = "Brands/Retailers";
             %>
@@ -476,6 +476,63 @@
             </div>
             <%} %>
         </div>
+
+        <%var nb1 = NarrowByInfoList.FirstOrDefault(item => item.Title == "Related Categories"); %>
+        <%{ %>
+        <div id="filters">
+            <div class="nbTitle">
+                <h4><%=nb1.Title %></h4>
+                <%if (nb1.IsSlider && !nb1.Name.Contains("PriceRange") && !nb1.Name.Contains("Days"))
+                    {%>
+                <span class="unit">(<%=nb1.NarrowItemList[0].OtherInfo %>)</span>
+                <%} %>
+                <%if (!string.IsNullOrEmpty(nb1.Description))
+                    {%>
+                <div class="helpTopicDiv bg1" data-placement="top" data-original-title="<%= nb1.Description.Replace("\"", " ")%>" data-toggle="tooltip" style="vertical-align: middle;">
+                </div>
+                <%}%>
+                <span class="glyphicon glyphicon-minus" data-collapse="0"></span>
+            </div>
+            <div class="nbValues">
+                <div id="filterCategoriesDiv">
+                        <%
+                            var topItems = nb1.NarrowItemList.Take(MaxValueCount);
+                            foreach (var ti in topItems)
+                            {%>
+
+                        <div>
+                            <a class="nameATag" href="<%=ti.Url %>"><%=ti.DisplayName %></a>
+                            <span class="count">(<%=ti.ProductCount %>)</span>
+                        </div>
+
+                        <%}
+
+                            if (nb1.NarrowItemList.Count > MaxValueCount)
+                            {%>
+                        <div class="moreValues">
+                            <%
+                                for (int i = MaxValueCount; i < nb1.NarrowItemList.Count; i++)
+                                {%>
+
+                            <div>
+                                <a class="nameATag" href="<%=nb1.NarrowItemList[i].Url %>"><%=nb1.NarrowItemList[i].DisplayName %></a>
+                                <span class="count">(<%=nb1.NarrowItemList[i].ProductCount %>)</span>
+                            </div>
+
+                            <%}
+                            %>
+                        </div>
+
+                        <div class="moreButton">
+                            <div class="more" data-more="<%=Resources.Resource.TextString_ShowMore %>" data-less="<%=Resources.Resource.TextString_ShowLess %>"><%=Resources.Resource.TextString_ShowLess %></div>
+                        </div>
+                        <%
+                            }%>
+                    </div>
+                
+            </div>
+        </div>
+        <%} %>
     </div>
 
 </aside>
