@@ -195,6 +195,7 @@ namespace PriceMeCommon.BusinessLogic
                             categoryCache.IsSearchOnly = bool.Parse(sqlDR["IsSearchOnly"].ToString());
                             categoryCache.CategoryViewType = int.Parse(sqlDR["CategoryViewType"].ToString());
                             categoryCache.WeightUnit = bool.Parse(sqlDR["WeightUnit"].ToString());
+                            categoryCache.ListOrder = int.Parse(sqlDR["ListOrder"].ToString());
 
                             categoryOrderByName.Add(categoryCache);
                         }
