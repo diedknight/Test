@@ -263,7 +263,7 @@
 
 
                             <div class="col-lg-6 col-sm-6">
-                                <a href="<%=PriceMe.UrlController.GetCatalogUrl(1040) %>" title="Bags">
+                                <a href="<%=PriceMe.UrlController.GetCatalogUrl(1040) %>" title="Womens Jackets">
                                     <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner3"] %>" alt="Bags">
                                 </a>
                             </div>
@@ -272,7 +272,7 @@
 
 
                             <div class="col-lg-6 col-sm-6">
-                                <a href="<%=PriceMe.UrlController.GetCatalogUrl(3523) %>" title="Womens Jackets" style="float:right;">
+                                <a href="<%=PriceMe.UrlController.GetCatalogUrl(3523) %>" title="Bags" style="float:right;">
                                     <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner4"] %>" alt="Womens Jackets">
                                 </a>
                                 <div class="clr"></div>
