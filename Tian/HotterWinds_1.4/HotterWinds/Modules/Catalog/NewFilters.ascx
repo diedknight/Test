@@ -478,6 +478,7 @@
         </div>
 
         <%var nb1 = NarrowByInfoList.FirstOrDefault(item => item.Title == "Related Categories"); %>
+        <%if(nb1!=null) %>
         <%{ %>
         <div id="filters">
             <div class="nbTitle">
