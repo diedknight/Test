@@ -58,7 +58,6 @@
         <div class="sitemap">
             <%foreach (PriceMeCache.CategoryCache subc in subSisteMapDetailCategoryCollection)
                 {
-                    if (subc.ProductsCount == 0) continue;
                     if (CategoryController.IsSearchOnly(subc.CategoryID, PriceMe.WebConfig.CountryId) || subc.CategoryID == 1283)
                         continue;
 
@@ -89,26 +88,25 @@
                       if (subCatas.Count > 0)
                       { %>
                     <% 
-                        bool ismore = false;
-                        int count = 0;
-                        bool isaccessories = false;
-                        if (subCatas.Count > 9)
-                            isaccessories = true;
+                  bool ismore = false;
+                  int count = 0;
+                  bool isaccessories = false;
+                  if (subCatas.Count > 9)
+                      isaccessories = true;
 
-                        foreach(PriceMeCache.CategoryCache subCate in subCatas)
-                        {
-                            if (subCate.ProductsCount == 0) continue;
-                            if (CategoryController.IsSearchOnly(subCate.CategoryID, WebConfig.CountryId))
-                                continue;
-                            if (isaccessories)
-                            {
-                                if (subCate.IsAccessories)
-                                    continue;
-                            }
-
-                            if (count > 8) { ismore = true; continue; }
-                            count++;
-                            string subUrl = PriceMe.UrlController.GetCatalogUrl(subCate.CategoryID);
+                  foreach(PriceMeCache.CategoryCache subCate in subCatas)
+                      {
+                          if (CategoryController.IsSearchOnly(subCate.CategoryID, WebConfig.CountryId))
+                              continue;
+                          if (isaccessories)
+                          {
+                              if (subCate.IsAccessories)
+                                  continue;
+                          }
+                      
+                          if (count > 8) { ismore = true; continue; }
+                          count++;
+                          string subUrl = PriceMe.UrlController.GetCatalogUrl(subCate.CategoryID);
                     %>
                         <div><a href="<%=subUrl%>"><i class="glyphicon glyphicon-folder-open iconLight"></i><%=subCate.CategoryName.Length > 17 ? subCate.CategoryName.Substring(0, 17) + "..." : subCate.CategoryName %></a></div>
                         <%} %>
@@ -252,13 +250,12 @@
         <div class="sitemapphone">
             <%foreach (PriceMeCache.CategoryCache subc in subSisteMapDetailCategoryCollection)
                 {
-                    if (subc.ProductsCount == 0) continue;
                     if (CategoryController.IsSearchOnly(subc.CategoryID, WebConfig.CountryId))
                         continue;
 
                     string url = PriceMe.UrlController.GetCatalogUrl(subc.CategoryID);
                     string imgicon = "";//subc.CategoryIconCode.Replace("512px", "50px");
-                    string imgurl = subc.ImageFile.Replace("_ms.", "_s.");
+                    string imgurl = subc.ImageFile.Replace("_ms.", "_s.");                    
 
                     //if (!string.IsNullOrEmpty(subc.Categoryicon))
                     //    imgurl = subc.Categoryicon;
