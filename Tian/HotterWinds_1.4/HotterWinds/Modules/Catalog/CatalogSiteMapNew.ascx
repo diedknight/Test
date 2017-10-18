@@ -49,7 +49,7 @@
         <div>
         <div class="sitemap">
             <%foreach (CatalogSitemapCategory csc in catalogSitemapCategories)
-                {
+                {                    
                     if (CategoryController.IsSearchOnly(csc.CategoryID, WebConfig.CountryId))
                         continue;
 
