@@ -537,7 +537,7 @@
 
             var emailNode = $("#mc4wp_email");
 
-            if (emailNode.get(0).checkValidity()) {
+            if (emailNode.get(0).checkValidity()) {                
                 GlobalAjax("AjaxDefaultController", "SigningUp", { "email": emailNode.val() }, function (msg) {
 
                     var node = null;

@@ -77,7 +77,7 @@
                     </div>
 
                         <%
-                            List<PriceMeCache.CategoryCache> shortCutsCategoryCollection = CategoryController.GetShortCutsCategories(csc.CategoryID, WebConfig.CountryId);
+                            List<PriceMeCache.CategoryCache> shortCutsCategoryCollection = CategoryController.GetShortCutsCategories(csc.CategoryID, WebConfig.CountryId).OrderBy(item=>item.ListOrder).ToList();
                             bool ismore = false;
                             int count = 0;
                             bool isaccessories = false;

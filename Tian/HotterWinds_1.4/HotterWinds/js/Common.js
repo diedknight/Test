@@ -1,5 +1,5 @@
 ﻿function GlobalAjax(controller, action, param_json, callback_func) {
-    var url = "AjaxPage.aspx";
+    var url = "../AjaxPage.aspx";
     var data = {
         "controller": controller,
         "action": action,

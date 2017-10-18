@@ -51,9 +51,9 @@
         </div>
 
         <div>
-        <%List<PriceMeCache.CategoryCache> subSisteMapDetailCategoryCollection = CategoryController.GetNextLevelSubCategoriesIsSiteMapDetailPopularOrderByClicks(Category.CategoryID, PriceMe.WebConfig.CountryId);
-          List<PriceMeCache.CategoryCache> notSubSisteMapDetailCategoryCollection = CategoryController.GetNextLevelSubCategoriesIsNotSiteMapDetailPopular(Category.CategoryID, PriceMe.WebConfig.CountryId);
-          List<PriceMeCache.CategoryCache> shortCutsCategoryCollection = CategoryController.GetShortCutsCategories(Category.CategoryID, WebConfig.CountryId);%>
+        <%List<PriceMeCache.CategoryCache> subSisteMapDetailCategoryCollection = CategoryController.GetNextLevelSubCategoriesIsSiteMapDetailPopularOrderByClicks(Category.CategoryID, PriceMe.WebConfig.CountryId).OrderBy(item=>item.ListOrder).ToList();
+          List<PriceMeCache.CategoryCache> notSubSisteMapDetailCategoryCollection = CategoryController.GetNextLevelSubCategoriesIsNotSiteMapDetailPopular(Category.CategoryID, PriceMe.WebConfig.CountryId).OrderBy(item=>item.ListOrder).ToList();
+          List<PriceMeCache.CategoryCache> shortCutsCategoryCollection = CategoryController.GetShortCutsCategories(Category.CategoryID, WebConfig.CountryId).OrderBy(item=>item.ListOrder).ToList();%>
 
         <div class="sitemap">
             <%foreach (PriceMeCache.CategoryCache subc in subSisteMapDetailCategoryCollection)
@@ -84,7 +84,7 @@
                         <a href="<%=url %>"><%=subc.CategoryName %></a>
                     </div>
 
-                    <%List<PriceMeCache.CategoryCache> subCatas = CategoryController.GetAllSubCategory(subc.CategoryID, WebConfig.CountryId);
+                    <%List<PriceMeCache.CategoryCache> subCatas = CategoryController.GetAllSubCategory(subc.CategoryID, WebConfig.CountryId).OrderBy(item=>item.ListOrder).ToList();
                       if (subCatas.Count > 0)
                       { %>
                     <% 
@@ -115,7 +115,7 @@
                     <%} %>
 
                     <%}else{
-                          if (subc.IsFilterByBrand)
+                          if (subc.IsFilterByBrand&&false)
                           {
                               PriceMeCommon.Data.NarrowByInfo narrowByInfo = GetAllTopManufacturerCache(subc.CategoryID);
 
