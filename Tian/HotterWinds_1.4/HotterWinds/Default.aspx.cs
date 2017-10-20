@@ -36,6 +36,8 @@ namespace HotterWinds
             Model.Boots.ForEach(item => item.Stars = 0);
 
             Model.BestSellerProducts = HomeQuery.GetBestSellerProducts();
+            Model.BestSellerProducts.ForEach(item => item.Stars = 0);
+
             Model.FeaturesProducts = HomeQuery.GetFeatureProducts();
             Model.FeaturesProducts.ForEach(item => item.Stars = 0);
 
