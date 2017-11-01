@@ -331,7 +331,7 @@
                                         <span class="page-heading-title"><%=category.CategoryName %></span>                                                                                
                                     </h2>
 
-                                    <div class="categoryDec" style="white-space: normal; text-overflow: initial;"><%=category.LocalDescription %></div>                                    
+                                    <div class="categoryDec" style="white-space: normal; text-overflow: initial; margin-bottom:15px;"><%=category.LocalDescription %></div>                                    
                                 </div>
 
                                 <div class="col-main pro-grid">

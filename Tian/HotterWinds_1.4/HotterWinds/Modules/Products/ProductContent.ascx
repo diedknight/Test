@@ -43,7 +43,7 @@
                             <li class="compare_tab">
                                 <a href="#tab-compare">Compare</a>
                             </li>
-                            <li class="description_tab">
+                            <li class="description_tab" style="display: none;">
                                 <a href="#tab-description">Description</a>
                             </li>
                             <%--<li class="additional_tab">

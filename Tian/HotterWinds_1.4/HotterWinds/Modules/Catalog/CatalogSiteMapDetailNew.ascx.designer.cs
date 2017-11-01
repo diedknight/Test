@@ -11,5 +11,14 @@ namespace HotterWinds.Modules.Catalog {
     
     
     public partial class CatalogSiteMapDetailNew {
+        
+        /// <summary>
+        /// Breadcrumbs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::HotterWinds.Modules.Breadcrumbs Breadcrumbs;
     }
 }

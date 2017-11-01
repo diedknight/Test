@@ -41,6 +41,8 @@ namespace HotterWinds.Modules.Catalog
             SearchResult sr = productSearcher.GetSearchResult(1, 4);
             //DataList1.DataSource = sr.ProductCatalogList;
             //DataList1.DataBind();
+
+            Breadcrumbs.CategoryId = Category.CategoryID;
         }
 
         public NarrowByInfo GetAllTopManufacturerCache(int cid)
