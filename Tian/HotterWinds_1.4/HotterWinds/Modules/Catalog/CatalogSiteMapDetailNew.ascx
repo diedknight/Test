@@ -20,6 +20,14 @@
             opacity: 1;
         }
 
+        .ctcdiv .ctcname {
+            text-align: left;
+        }
+
+        .ctcdiv .ctcicon {
+            text-align:left;
+        }
+
     .sitemapphone .line {
         height: inherit;
         width: inherit;
@@ -33,6 +41,14 @@
 
     .sitemapphone .name {
         width: 240px;
+    }
+
+    .glyphicon.glyphicon-folder-open.iconLight {
+        display: none;
+    }
+
+    .glyphicon.glyphicon-play.iconLight {
+        display: none;
     }
 </style>
 
@@ -117,11 +133,11 @@
                                         continue;
                                 }
 
-                                if (count > 8) { ismore = true; continue; }
+                                if (count > 800000) { ismore = true; continue; }
                                 count++;
                                 string subUrl = PriceMe.UrlController.GetCatalogUrl(subCate.CategoryID);
                         %>
-                        <div><a href="<%=subUrl%>"><i class="glyphicon glyphicon-folder-open iconLight"></i><%=subCate.CategoryName.Length > 17 ? subCate.CategoryName.Substring(0, 17) + "..." : subCate.CategoryName %></a></div>
+                        <div><a href="<%=subUrl%>"><i class="glyphicon glyphicon-folder-open iconLight"></i><%=subCate.CategoryName /*subCate.CategoryName.Length > 17 ? subCate.CategoryName.Substring(0, 17) + "..." : subCate.CategoryName*/ %></a></div>
                         <%} %>
                         <%if (ismore)
                             {%>
@@ -395,7 +411,7 @@
                 });
             </script>
             <div class="clr"></div>
-        </div>        
+        </div>
 
     </div>
 </div>
