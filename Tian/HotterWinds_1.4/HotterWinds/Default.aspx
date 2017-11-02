@@ -906,7 +906,7 @@
                     -->
 
                     <div class="hideMax768" style="text-align: center; margin-top: -200px;">
-                            <div style="width:160px; height:600px; margin:0 auto;">
+                            <div style="margin:0 auto;">
                                 <a href="#">
                                     <img src="<%=System.Configuration.ConfigurationManager.AppSettings["HomeBanner5"] %>" />
                                 </a>
