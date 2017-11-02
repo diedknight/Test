@@ -13,6 +13,10 @@
         height: 400px;
     }
 
+    .ctcdivhover {
+        z-index:auto;
+    }
+
         .ctcdiv .ctcdivhover {
             width: 275px;
             visibility: visible;
@@ -41,6 +45,10 @@
 
     .sitemapphone .name {
         width: 240px;
+    }
+
+    .ctcdisplayname {
+        display:none;
     }
 
     .glyphicon.glyphicon-folder-open.iconLight {
@@ -141,7 +149,7 @@
                         <%} %>
                         <%if (ismore)
                             {%>
-                        <div><i class="glyphicon glyphicon-play iconLight"></i><a href="<%=url %>">More <%=subc.CategoryName %>...</a></div>
+                        <%--<div><i class="glyphicon glyphicon-play iconLight"></i><a href="<%=url %>">More <%=subc.CategoryName %>...</a></div>--%>
                         <%} %>
 
                         <%}
@@ -161,7 +169,7 @@
                         <div><a href="<%=filter.FilterUrl %>"><i class="glyphicon glyphicon-filter iconLight"></i><%=filter.FilterName %></a></div>
                         <%} %>
 
-                        <div><a href="<%=PriceMe.UrlController.GetCatalogUrl(subc.CategoryID) %>"><i class="glyphicon glyphicon-arrow-right iconLight"></i><%=Resources.Resource.Module_CatalogSiteMapDetail_SeeMore.Replace("{0}", subc.CategoryName) %></a></div>
+                        <%--<div><a href="<%=PriceMe.UrlController.GetCatalogUrl(subc.CategoryID) %>"><i class="glyphicon glyphicon-arrow-right iconLight"></i><%=Resources.Resource.Module_CatalogSiteMapDetail_SeeMore.Replace("{0}", subc.CategoryName) %></a></div>--%>
                         <%} %>
                     </div>
 
