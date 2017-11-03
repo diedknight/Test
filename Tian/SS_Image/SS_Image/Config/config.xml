@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xbai>
+  <table>
+    <id_col>retailerproductid</id_col>
+    <image_col>defaultimage</image_col>
+
+    <top>10</top>
+    <name>csk_store_retailerproduct</name>
+    <where>retailerproductid=32550</where>
+  </table>
+
+  <table>
+    <id_col>retailerproductid</id_col>
+    <image_col>defaultimage</image_col>
+
+    <top>10</top>
+    <name>csk_store_retailerproduct</name>
+    <where>retailerproductid=8703</where>
+  </table>
+
+</xbai>

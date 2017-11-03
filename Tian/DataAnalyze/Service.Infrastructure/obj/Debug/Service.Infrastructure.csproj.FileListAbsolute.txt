@@ -1,0 +1,61 @@
+c:\users\xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.dll
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.pdb
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb
+C:\Users\Xbai\documents\visual studio 2013\Projects\AKDService\Service.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.pdb
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.xml
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+F:\AKD\AKDService\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache
+F:\AKD\AKDService\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.dll
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.pdb
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
+C:\Users\Administrator\Desktop\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.dll
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Service.Infrastructure.pdb
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
+C:\Users\dawn\Desktop\AKDService\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Service.Infrastructure.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Service.Infrastructure.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.xml
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb

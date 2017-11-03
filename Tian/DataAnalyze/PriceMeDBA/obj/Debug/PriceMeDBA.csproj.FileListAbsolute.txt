@@ -1,0 +1,50 @@
+E:\新建文件夹\PriceMeDBA\obj\Debug\ResolveAssemblyReference.cache
+E:\新建文件夹\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+E:\新建文件夹\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+E:\新建文件夹\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+E:\新建文件夹\PriceMeDBA\bin\Debug\SubSonic.Core.dll
+E:\新建文件夹\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+E:\新建文件夹\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+E:\PriceMe_Code 3.0\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+E:\PriceMe_Code 3.0\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+E:\PriceMe_Code 3.0\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+E:\PriceMe_Code 3.0\PriceMeDBA\bin\Debug\SubSonic.Core.dll
+E:\PriceMe_Code 3.0\PriceMeDBA\obj\Debug\ResolveAssemblyReference.cache
+E:\PriceMe_Code 3.0\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+E:\PriceMe_Code 3.0\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+E:\PriceMe MainSite\PriceMe_Code 3.1\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+E:\PriceMe MainSite\PriceMe_Code 3.1\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+E:\PriceMe MainSite\PriceMe_Code 3.1\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+E:\PriceMe MainSite\PriceMe_Code 3.1\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+E:\PriceMe MainSite\PriceMe_Code 3.1\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+E:\PriceMe MainSite\PriceMe_Code 3.1\PriceMeDBA\obj\Debug\PriceMeDBA.csprojResolveAssemblyReference.cache
+F:\PriceMeCrawlerTask\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+F:\PriceMeCrawlerTask\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+F:\PriceMeCrawlerTask\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+F:\PriceMeCrawlerTask\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+F:\PriceMeCrawlerTask\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+F:\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+F:\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+F:\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+F:\PriceMeCrawlerTask3.0\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+F:\PriceMeCrawlerTask3.0\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+F:\PriceMeCrawlerTask3.0\PriceMeDBA\obj\Debug\PriceMeDBA.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\obj\Debug\PriceMeDBA.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\FeedImportTool\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+F:\XbaiTwoV_Project\FeedImportTool\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+F:\XbaiTwoV_Project\FeedImportTool\PriceMeDBA\bin\Debug\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\FeedImportTool\PriceMeDBA\obj\Debug\PriceMeDBA.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\FeedImportTool\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+F:\XbaiTwoV_Project\FeedImportTool\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\PriceMeCrawlerTask3.0\PriceMeDBA\bin\Debug\SubSonic.Core.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\PriceMeDBA\obj\Debug\PriceMeDBA.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\PriceMeDBA\obj\Debug\PriceMeDBA.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\PriceMeDBA\obj\Debug\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\PriceMeDBA\bin\Debug\PriceMeDBA.dll.config
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\PriceMeDBA\bin\Debug\PriceMeDBA.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\PriceMeDBA\bin\Debug\PriceMeDBA.pdb

@@ -1,0 +1,8 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\bin\Debug\SS_Image.exe.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\bin\Debug\SS_Image.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\bin\Debug\SS_Image.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\bin\Debug\AWSSDK.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\obj\Debug\SS_Image.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\obj\Debug\SS_Image.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\obj\Debug\SS_Image.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SS_Image\SS_Image\bin\Debug\Config\config.xml

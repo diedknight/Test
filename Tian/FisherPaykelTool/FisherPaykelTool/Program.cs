@@ -15,7 +15,7 @@ namespace FisherPaykelTool
         static void Main(string[] args)
         {
 
-            var a = Product.RRPProduct.Get();
+            //var a = Product.RRPProduct.Get();
 
             //var range1 = new DateRange().GetRange();
 
@@ -86,7 +86,7 @@ namespace FisherPaykelTool
                 contentList.Add(item.PurchaseURL);
                 contentList.Add(item.RetailerProductName);
 
-                if (GetConfigArr("RRP-rid").Contains(item.RetailerId) && item.OriginalPrice > 0) contentList.Add(item.OriginalPrice.ToString("0.00"));
+                if (/*GetConfigArr("RRP-rid").Contains(item.RetailerId) && */item.OriginalPrice > 0) contentList.Add(item.OriginalPrice.ToString("0.00"));
                 else contentList.Add("");
 
                 if (item.RetailerProductStatus) contentList.Add(item.RetailerPrice.ToString("0.00"));

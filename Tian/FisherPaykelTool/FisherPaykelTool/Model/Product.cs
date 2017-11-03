@@ -73,7 +73,7 @@ namespace FisherPaykelTool.Model
 
             StringBuilder sql = new StringBuilder();
 
-            sql.AppendLine(" select TT.OriginalPrice,TT.Modifiedon as RetailerProductModifiedOn,TT.RetailerProductStatus,TT.RetailerProductId,TT.RetailerId,R.RetailerName,R.StoreType,ProductId,TT.ManufacturerId,TT.CategoryId,ProductName,RetailerProductName,RetailerPrice,PurchaseURL");
+            sql.AppendLine(" select TT.Modifiedon as RetailerProductModifiedOn,TT.RetailerProductStatus,TT.RetailerProductId,TT.RetailerId,R.RetailerName,R.StoreType,ProductId,TT.ManufacturerId,TT.CategoryId,ProductName,RetailerProductName,RetailerPrice,PurchaseURL");
             sql.AppendLine(" ,RetailerType = (select top 1 StoreTypeName from CSK_Store_RetailerStoreType where RetailerStoreTypeID = R.StoreType)");
             sql.AppendLine(" ,Brand = (select top 1 ManufacturerName from CSK_Store_Manufacturer where ManufacturerID=TT.ManufacturerId)");
             sql.AppendLine(" ,ProductCategory = (select top 1 CategoryName from CSK_Store_Category where CategoryID=TT.CategoryID)");
@@ -81,7 +81,7 @@ namespace FisherPaykelTool.Model
             sql.AppendLine(" from csk_store_retailer R");
             sql.AppendLine(" inner join");
             sql.AppendLine(" (");
-            sql.AppendLine("	select OriginalPrice,RetailerProductId,RetailerId,P.ProductID,P.ManufacturerID,categoryid,ProductName,RetailerProductName,RetailerPrice,PurchaseURL,RetailerProductStatus,RP.Modifiedon from CSK_Store_RetailerProduct RP");
+            sql.AppendLine("	select RetailerProductId,RetailerId,P.ProductID,P.ManufacturerID,categoryid,ProductName,RetailerProductName,RetailerPrice,PurchaseURL,RetailerProductStatus,RP.Modifiedon from CSK_Store_RetailerProduct RP");
             sql.AppendLine("	inner join CSK_Store_Product P on RP.ProductId = P.ProductID");
             //+ "	where Rp.RetailerProductStatus=1";
             sql.AppendLine("	where 1=1");
@@ -102,6 +102,8 @@ namespace FisherPaykelTool.Model
             }
             //+ " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3";
             sql.AppendLine(" order by CategoryId,ProductName");
+
+            //string ab = sql.ToString();
 
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -176,11 +178,11 @@ namespace FisherPaykelTool.Model
 
             //original price
             var rrpList = RRPProduct.Get();
-            list.ForEach(item => {
-
+            list.ForEach(item =>
+            {
                 if (item.OriginalPrice != 0) return;
 
-                var rrp = rrpList.SingleOrDefault(rrpItem => rrpItem.ProductId == item.ProductId && rrpItem.OriginalPrice != 0);
+                var rrp = rrpList.FirstOrDefault(rrpItem => rrpItem.ProductId == item.ProductId && rrpItem.OriginalPrice != 0);
                 if (rrp == null) return;
 
                 item.OriginalPrice = rrp.OriginalPrice;
@@ -216,7 +218,7 @@ namespace FisherPaykelTool.Model
                 List<int> rIds = GetConfigArr("RRP-rid");
 
                 string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["Priceme"].ConnectionString;
-                string sql = "select RetailerId,RetailerProductId,ProductId,OriginalPrice from CSK_Store_RetailerProduct where RetailerId in @RIds";
+                string sql = "select RetailerId,RetailerProductId,ProductId,OriginalPrice from CSK_Store_RetailerProduct where RetailerProductStatus=1 and OriginalPrice<>0 and RetailerId in @RIds";
 
                 using (SqlConnection con = new SqlConnection(conStr))
                 {                                     

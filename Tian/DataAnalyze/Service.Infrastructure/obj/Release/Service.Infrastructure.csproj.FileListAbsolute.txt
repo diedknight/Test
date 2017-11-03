@@ -1,0 +1,12 @@
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Service.Infrastructure.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Service.Infrastructure.pdb
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Microsoft.Practices.Unity.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Microsoft.Practices.Unity.RegistrationByConvention.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Newtonsoft.Json.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Microsoft.Practices.Unity.xml
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Microsoft.Practices.Unity.Configuration.xml
+F:\AKD\AKDService\AKDService\Service.Infrastructure\bin\Release\Microsoft.Practices.Unity.RegistrationByConvention.xml
+F:\AKD\AKDService\AKDService\Service.Infrastructure\obj\Release\Service.Infrastructure.csprojResolveAssemblyReference.cache
+F:\AKD\AKDService\AKDService\Service.Infrastructure\obj\Release\Service.Infrastructure.dll
+F:\AKD\AKDService\AKDService\Service.Infrastructure\obj\Release\Service.Infrastructure.pdb
