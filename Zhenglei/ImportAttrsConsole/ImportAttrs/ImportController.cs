@@ -1177,7 +1177,28 @@ namespace ImportAttrs
 
         static void WriteMatchedReport(AttributeMatchedReport attributeMatchedReport)
         {
-            string insertSql = @"INSERT INTO [dbo].[AttributeMatchedReport]
+            string selectSql = @"SELECT [ID] FROM [dbo].[AttributeMatchedReport]
+                                 where RID = " + attributeMatchedReport.RID + " and PID = " + attributeMatchedReport.PID + " and CID = " + attributeMatchedReport.CID + " and AttType = " + attributeMatchedReport.AttType + " and AttTitleID = " + attributeMatchedReport.AttTitleID;
+
+            using (SqlConnection sqlConn = GetDBConnection())
+            {
+                sqlConn.Open();
+
+                bool exist = false;
+                using (SqlCommand sqlCmd = new SqlCommand(selectSql, sqlConn))
+                {
+                    using (SqlDataReader sqlDr = sqlCmd.ExecuteReader())
+                    {
+                        if (sqlDr.Read())
+                        {
+                            exist = true;
+                        }
+                    }
+                }
+
+                if (!exist)
+                {
+                    string insertSql = @"INSERT INTO [dbo].[AttributeMatchedReport]
                                ([RID]
                                ,[CID]
                                ,[PID]
@@ -1206,24 +1227,39 @@ namespace ImportAttrs
                                ,'ImportAttributeTool'
                                ,@createdOn)";
 
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
+
+                    using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
+                    {
+                        sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeMatchedReport.RID));
+                        sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeMatchedReport.CID));
+                        sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeMatchedReport.PID));
+                        sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeMatchedReport.AttType));
+                        sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeMatchedReport.AttTitleID));
+                        sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeMatchedReport.PM_AttName));
+                        sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
+                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
+                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
+                        sqlCmd.Parameters.Add(new SqlParameter("@autoImport", attributeMatchedReport.AutoImport));
+                        sqlCmd.Parameters.Add(new SqlParameter("@saveToDB", attributeMatchedReport.SaveToDB));
+                        sqlCmd.Parameters.Add(new SqlParameter("@createdOn", DateTime.Now));
+                        sqlCmd.ExecuteNonQuery();
+                    }
+                }
+                else
                 {
-                    sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeMatchedReport.RID));
-                    sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeMatchedReport.CID));
-                    sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeMatchedReport.PID));
-                    sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeMatchedReport.AttType));
-                    sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeMatchedReport.AttTitleID));
-                    sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeMatchedReport.PM_AttName));
-                    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
-                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
-                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
-                    sqlCmd.Parameters.Add(new SqlParameter("@autoImport", attributeMatchedReport.AutoImport));
-                    sqlCmd.Parameters.Add(new SqlParameter("@saveToDB", attributeMatchedReport.SaveToDB));
-                    sqlCmd.Parameters.Add(new SqlParameter("@createdOn", DateTime.Now));
-                    sqlCmd.ExecuteNonQuery();
+                    string updateSql = @"UPDATE [dbo].[AttributeMatchedReport]
+                                         SET [DR_AttName] = @drAttName
+                                            ,[DR_AttValue_Orignal] = @drAttValueOrignal
+                                            ,[DR_AttValue_Changed] = @drAttValueChanged
+                                            where RID = " + attributeMatchedReport.RID + " and PID = " + attributeMatchedReport.PID + " and CID = " + attributeMatchedReport.CID + " and AttType = " + attributeMatchedReport.AttType + " and AttTitleID = " + attributeMatchedReport.AttTitleID;
+
+                    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+                    {
+                        sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
+                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
+                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
+                        sqlCmd.ExecuteNonQuery();
+                    }
                 }
             }
         }
