@@ -13,6 +13,7 @@ namespace ExtensionWebsite.Data
         public string RetailerProductName { get; set; }
         public string PurchaseURL { get; set; }
         public decimal RetailerPrice { get; set; }
+        public decimal OrderRetailerPrice { get; set; }
         public decimal Freight { get; set; }
         public decimal DiffPrice { get; set; }
         public string RetailerLogo { get; set; }

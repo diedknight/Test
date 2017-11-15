@@ -32,10 +32,14 @@ namespace ExtensionWebsite.Code
                     p.RetailerLogo = r.RetailerLog;
                     p.RetailerName = r.RetailerName;
                     p.IsNolink = r.IsNolink;
+                    p.OrderRetailerPrice = p.RetailerPrice;
+                    if (r.IsNolink)
+                        p.OrderRetailerPrice = p.RetailerPrice + 0.1m;
 
                     datas.Add(p);
                 }
             }
+            datas = datas.OrderBy(d => d.OrderRetailerPrice).ToList();
 
             return datas;
         }
