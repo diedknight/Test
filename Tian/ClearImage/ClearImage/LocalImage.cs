@@ -2,6 +2,7 @@
 using Amazon.S3;
 using Amazon.S3.Model;
 using ClearImage.Config;
+using ClearImage.Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,9 +43,11 @@ namespace ClearImage
             //if (!File.Exists(filePath)) return;
             if (!File.Exists(filePath)) this.NoImageOnDrive = true;
 
-
-            filePath = this.RemovePostfix(filePath);
-            largeFilePath = this.RemovePostfix(largeFilePath);
+            if (Program.key.ToLower() == "category")
+            {
+                filePath = this.RemovePostfix(filePath);
+                largeFilePath = this.RemovePostfix(largeFilePath);
+            }
 
             this._filePath = filePath;
             this._filePath_m = this.AddPostfix(filePath, "_m");
@@ -53,9 +56,26 @@ namespace ClearImage
             this._filePath_ss = this.AddPostfix(filePath, "_ss");
             this._filePath_l = this.AddPostfix(largeFilePath, "_l");
 
+            if (!File.Exists(this._filePath_m))
+            {
+                ImageOper.Resize_M(this._filePath);
+            }
+            if (!File.Exists(this._filePath_ms))
+            {
+                ImageOper.Resize_Ms(this._filePath);
+            }
+            if (!File.Exists(this._filePath_s))
+            {
+                ImageOper.Resize_s(this._filePath);
+            }
             if (!File.Exists(this._filePath_ss))
             {
                 ImageOper.Resize_ss(this._filePath);
+            }
+            if (!File.Exists(this._filePath_l))
+            {
+                ImageOper.Resize_l(this._filePath);
+                this._filePath_l = this._filePath.Insert(this._filePath.LastIndexOf("."), "_l");
             }
         }
 
@@ -85,7 +105,8 @@ namespace ClearImage
             key = Path.Combine(key, fileName);
             key = key.Replace(" ", "").Replace("\\", "/");
             key = key.ToLower();
-
+            if (filePath == this._filePath_l)
+                key = key.Replace("large/", "Large/");
             if (key.IndexOf("/") == 0) key = key.Substring(1);
 
             return key;
@@ -106,7 +127,6 @@ namespace ClearImage
             //if (key.IndexOf("/") == 0) key = key.Substring(1);
 
             string key = this.GetS3Key(filePath);
-
             string url = "https://s3.pricemestatic.com/" + key;
 
             if (string.IsNullOrEmpty(filePath)) return url;
@@ -147,7 +167,7 @@ namespace ClearImage
                 using (PutObjectResponse response1 = client.PutObject(putRequest1))
                 { }
             }
-
+            
             return url;
         }
 

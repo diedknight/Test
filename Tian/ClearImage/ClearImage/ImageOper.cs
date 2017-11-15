@@ -10,6 +10,45 @@ namespace ClearImage
 {
     public class ImageOper
     {
+        public static void Resize_M(string imagePath)
+        {
+            if (!imagePath.Contains("."))
+            {
+                Console.WriteLine("this image path is invaild: " + imagePath);
+            }
+            else
+            {
+                Image pircemeImage = ImageOper.GetPircemeImage(imagePath, new Size(200, 200));
+                string filename = imagePath.Insert(imagePath.LastIndexOf("."), "_m");
+                pircemeImage.Save(filename, ImageFormat.Jpeg);
+            }
+        }
+        public static void Resize_Ms(string imagePath)
+        {
+            if (!imagePath.Contains("."))
+            {
+                Console.WriteLine("this image path is invaild: " + imagePath);
+            }
+            else
+            {
+                Image pircemeImage = ImageOper.GetPircemeImage(imagePath, new Size(150, 150));
+                string filename = imagePath.Insert(imagePath.LastIndexOf("."), "_ms");
+                pircemeImage.Save(filename, ImageFormat.Jpeg);
+            }
+        }
+        public static void Resize_s(string imagePath)
+        {
+            if (!imagePath.Contains("."))
+            {
+                Console.WriteLine("this image path is invaild: " + imagePath);
+            }
+            else
+            {
+                Image pircemeImage = ImageOper.GetPircemeImage(imagePath, new Size(90, 90));
+                string filename = imagePath.Insert(imagePath.LastIndexOf("."), "_s");
+                pircemeImage.Save(filename, ImageFormat.Jpeg);
+            }
+        }
         public static void Resize_ss(string imagePath)
         {
             if (!imagePath.Contains("."))
@@ -20,6 +59,20 @@ namespace ClearImage
             {
                 Image pircemeImage = ImageOper.GetPircemeImage(imagePath, new Size(35, 35));
                 string filename = imagePath.Insert(imagePath.LastIndexOf("."), "_ss");
+                pircemeImage.Save(filename, ImageFormat.Jpeg);
+            }
+        }
+
+        public static void Resize_l(string imagePath)
+        {
+            if (!imagePath.Contains("."))
+            {
+                Console.WriteLine("this image path is invaild: " + imagePath);
+            }
+            else
+            {
+                Image pircemeImage = ImageOper.GetPircemeImage(imagePath, new Size(600, 600));
+                string filename = imagePath.Insert(imagePath.LastIndexOf("."), "_l");
                 pircemeImage.Save(filename, ImageFormat.Jpeg);
             }
         }

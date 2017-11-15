@@ -22,5 +22,9 @@ namespace ClearImage.Log
             base.WriteLine(tableName, Id.ToString(), path);
         }
 
+        public void WriteLine(string info)
+        {
+            base.WriteLine(info);
+        }
     }
 }

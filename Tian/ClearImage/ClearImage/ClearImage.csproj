@@ -51,8 +51,10 @@
   <ItemGroup>
     <Compile Include="Config\ConfigInfo.cs" />
     <Compile Include="Config\DataInfo.cs" />
+    <Compile Include="Config\SourcsData.cs" />
     <Compile Include="Config\XmlConfig.cs" />
     <Compile Include="Config\DBInfo.cs" />
+    <Compile Include="DataSourcsController.cs" />
     <Compile Include="ImageOper.cs" />
     <Compile Include="LocalImage.cs" />
     <Compile Include="Log\ErrorLog.cs" />
@@ -63,7 +65,9 @@
     <Compile Include="SqlMapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\config.xml">
