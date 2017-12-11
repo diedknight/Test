@@ -71,6 +71,9 @@ public static class DynamicHtmlHeader
             HtmlMeta desc = new HtmlMeta();
             desc.Name = "Description";
             desc.Content = description.Replace("<b>", "").Replace("</b>", "");
+            desc.Content = description.Replace("PriceMe", "hotterwinds");
+            desc.Content = description.Replace("priceme", "hotterwinds");
+            desc.Content = description.Replace("Price Me", "hotterwinds");
             page.Header.Controls.Add(desc);
         }
 
@@ -138,7 +141,7 @@ public static class DynamicHtmlHeader
 
         HtmlMeta mateFBurl = new HtmlMeta();
         mateFBurl.Attributes.Add("property", "og:url");
-        mateFBurl.Content = url;
+        mateFBurl.Content = url.Replace("www.priceme", "hotterwinds");
         page.Header.Controls.Add(mateFBurl);
 
         //HtmlMeta mateFBsiteName = new HtmlMeta();

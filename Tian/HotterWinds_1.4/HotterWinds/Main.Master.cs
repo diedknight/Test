@@ -90,7 +90,7 @@ namespace HotterWinds
         public void AddCanonical(string canonicalUrl)
         {
             HtmlLink canonicalLink = new HtmlLink();
-            canonicalLink.Href = Resources.Resource.Global_HomePageUrl + canonicalUrl;
+            canonicalLink.Href = "https://hotterwinds.co.nz" + canonicalUrl;
             canonicalLink.Href = canonicalLink.Href.TrimEnd('/');
             canonicalLink.Attributes.Add("rel", "canonical");
             this.Page.Header.Controls.Add(canonicalLink);
