@@ -14,7 +14,7 @@ using System.Text;
 /// </summary>
 public static class DynamicHtmlHeader
 {
-    public static void SetHtmlHeader(string keyword, string description,Page page)
+    public static void SetHtmlHeader(string keyword, string description, Page page)
     {
         if (page.Request.RawUrl.ToLower().Contains("catalog") || page.Request.RawUrl.Contains("p-") || page.Request.RawUrl.ToLower().Contains("full-"))
         {
@@ -32,7 +32,7 @@ public static class DynamicHtmlHeader
         if (page.Request.RawUrl.Contains("EmailFriend") || page.Request.RawUrl.ToLower().Contains("login") || page.Request.RawUrl.ToLower().Contains("retailerproductalert") || page.Request.RawUrl.ToLower().Contains("/410.")
             || page.Request.RawUrl.ToLower().Contains("productnotfound") || page.Request.RawUrl.ToLower().Contains("contactus") || page.Request.RawUrl.ToLower().Contains("/404.")
             || page.Request.RawUrl.ToLower().Contains("register.aspx") || page.Request.RawUrl.ToLower().Contains("register2.aspx") || page.Request.RawUrl.ToLower().Contains("reportlocation.aspx") || page.Request.RawUrl.ToLower().Contains("dealpostback.aspx")
-           || page.Request.RawUrl.ToLower().Contains("feed-file-specs") )
+           || page.Request.RawUrl.ToLower().Contains("feed-file-specs"))
         {
             HtmlMeta mate = new HtmlMeta();
             mate.Name = "robots";
@@ -46,7 +46,7 @@ public static class DynamicHtmlHeader
             mate.Content = "noindex";
             page.Header.Controls.Add(mate);
         }
-        
+
         //Encode/Content type
         if (!ClearMeta(page, "Content-Type"))
         {
@@ -71,9 +71,9 @@ public static class DynamicHtmlHeader
             HtmlMeta desc = new HtmlMeta();
             desc.Name = "Description";
             desc.Content = description.Replace("<b>", "").Replace("</b>", "");
-            desc.Content = description.Replace("PriceMe", "hotterwinds");
-            desc.Content = description.Replace("priceme", "hotterwinds");
-            desc.Content = description.Replace("Price Me", "hotterwinds");
+            desc.Content = desc.Content.Replace("PriceMe", "hotterwinds");
+            desc.Content = desc.Content.Replace("priceme", "hotterwinds");
+            desc.Content = desc.Content.Replace("Price Me", "hotterwinds");
             page.Header.Controls.Add(desc);
         }
 
@@ -154,6 +154,9 @@ public static class DynamicHtmlHeader
             HtmlMeta mateDes = new HtmlMeta();
             mateDes.Attributes.Add("property", "og:description");
             mateDes.Content = des;
+            mateDes.Content = mateDes.Content.Replace("PriceMe", "hotterwinds");
+            mateDes.Content = mateDes.Content.Replace("priceme", "hotterwinds");
+            mateDes.Content = mateDes.Content.Replace("Price Me", "hotterwinds");
             page.Header.Controls.Add(mateDes);
         }
 
@@ -183,9 +186,9 @@ public static class DynamicHtmlHeader
     {
         HtmlMeta mateFBvideo = new HtmlMeta();
         mateFBvideo.Attributes.Add("property", "og:video");
-        mateFBvideo.Content = "https://api.treepodia.com/video/compact.swf?video_url=http://api.treepodia.com/video/get/"+PriceMe.WebConfig.UUID +"/"+pid;
+        mateFBvideo.Content = "https://api.treepodia.com/video/compact.swf?video_url=http://api.treepodia.com/video/get/" + PriceMe.WebConfig.UUID + "/" + pid;
         page.Header.Controls.Add(mateFBvideo);
-        
+
         HtmlMeta mateFBvideoType = new HtmlMeta();
         mateFBvideoType.Attributes.Add("property", "og:video:type");
         mateFBvideoType.Content = "application/x-shockwave-flash";
@@ -223,7 +226,7 @@ public static class DynamicHtmlHeader
 
     }
 
-    public static void SetFaceBookHeaderForVideoDes(string pid,string pName,string pDescription,string imageUrl ,string type,Page page)
+    public static void SetFaceBookHeaderForVideoDes(string pid, string pName, string pDescription, string imageUrl, string type, Page page)
     {
         HtmlMeta mateFBtitle = new HtmlMeta();
         mateFBtitle.Attributes.Add("itemprop", "name");
@@ -233,6 +236,9 @@ public static class DynamicHtmlHeader
         HtmlMeta mateFBdes = new HtmlMeta();
         mateFBdes.Attributes.Add("itemprop", "description");
         mateFBdes.Content = pDescription;
+        mateFBdes.Content = mateFBdes.Content.Replace("PriceMe", "hotterwinds");
+        mateFBdes.Content = mateFBdes.Content.Replace("priceme", "hotterwinds");
+        mateFBdes.Content = mateFBdes.Content.Replace("Price Me", "hotterwinds");
         page.Header.Controls.Add(mateFBdes);
 
         HtmlMeta mateFBthumbnailUrl = new HtmlMeta();
