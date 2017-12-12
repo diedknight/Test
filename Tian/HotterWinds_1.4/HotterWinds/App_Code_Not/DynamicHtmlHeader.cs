@@ -71,9 +71,9 @@ public static class DynamicHtmlHeader
             HtmlMeta desc = new HtmlMeta();
             desc.Name = "Description";
             desc.Content = description.Replace("<b>", "").Replace("</b>", "");
-            desc.Content = desc.Content.Replace("PriceMe", "hotterwinds");
-            desc.Content = desc.Content.Replace("priceme", "hotterwinds");
-            desc.Content = desc.Content.Replace("Price Me", "hotterwinds");
+            desc.Content = desc.Content.Replace("PriceMe", "Hotter Winds");
+            desc.Content = desc.Content.Replace("priceme", "Hotter Winds");
+            desc.Content = desc.Content.Replace("Price Me", "Hotter Winds");
             page.Header.Controls.Add(desc);
         }
 
@@ -154,9 +154,9 @@ public static class DynamicHtmlHeader
             HtmlMeta mateDes = new HtmlMeta();
             mateDes.Attributes.Add("property", "og:description");
             mateDes.Content = des;
-            mateDes.Content = mateDes.Content.Replace("PriceMe", "hotterwinds");
-            mateDes.Content = mateDes.Content.Replace("priceme", "hotterwinds");
-            mateDes.Content = mateDes.Content.Replace("Price Me", "hotterwinds");
+            mateDes.Content = mateDes.Content.Replace("PriceMe", "Hotter Winds");
+            mateDes.Content = mateDes.Content.Replace("priceme", "Hotter Winds");
+            mateDes.Content = mateDes.Content.Replace("Price Me", "Hotter Winds");
             page.Header.Controls.Add(mateDes);
         }
 
@@ -236,9 +236,9 @@ public static class DynamicHtmlHeader
         HtmlMeta mateFBdes = new HtmlMeta();
         mateFBdes.Attributes.Add("itemprop", "description");
         mateFBdes.Content = pDescription;
-        mateFBdes.Content = mateFBdes.Content.Replace("PriceMe", "hotterwinds");
-        mateFBdes.Content = mateFBdes.Content.Replace("priceme", "hotterwinds");
-        mateFBdes.Content = mateFBdes.Content.Replace("Price Me", "hotterwinds");
+        mateFBdes.Content = mateFBdes.Content.Replace("PriceMe", "Hotter Winds");
+        mateFBdes.Content = mateFBdes.Content.Replace("priceme", "Hotter Winds");
+        mateFBdes.Content = mateFBdes.Content.Replace("Price Me", "Hotter Winds");
         page.Header.Controls.Add(mateFBdes);
 
         HtmlMeta mateFBthumbnailUrl = new HtmlMeta();

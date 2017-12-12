@@ -43,7 +43,7 @@ namespace HotterWinds.RetailerCenter
             Master.AddCanonical("/RetailerCenter/RetailerSignUp.aspx");
 
             DynamicHtmlHeader.SetHtmlHeader("sign up, retailer, product, list, sales",
-                "Sign up and list your products on HoterWinds. Increase sales and conversions.", this.Page);
+                "Sign up and list your products on Hotter Winds. Our model is proven to increase ROI by sending you qualified traffic so you get higher conversions and increased sales.", this.Page);
             if (WebConfig.CountryId != 3)
             {
                 txtGSTNumber.ValidationGroup = rfvGst.ValidationGroup = "step1" + WebConfig.CountryId;
