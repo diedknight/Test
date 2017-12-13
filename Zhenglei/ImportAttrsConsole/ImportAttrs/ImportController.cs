@@ -1029,7 +1029,7 @@ namespace ImportAttrs
                     newValueId = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 }
 
-                string selectPriceMeAttributeValueSql = "SELECT [AttributeValueID],[AttributeTitleID],[Value],[PopularAttribute],[ListOrder] FROM [Priceme].[dbo].[CSK_Store_AttributeValue] where AttributeValueID = " + newValueId;
+                string selectPriceMeAttributeValueSql = "SELECT [AttributeValueID],[AttributeTitleID],[Value],[PopularAttribute],[ListOrder] FROM [dbo].[CSK_Store_AttributeValue] where AttributeValueID = " + newValueId;
                 using (SqlCommand sqlCmd = new SqlCommand(selectPriceMeAttributeValueSql, sqlConn))
                 {
                     using (SqlDataReader sqlDr = sqlCmd.ExecuteReader())
