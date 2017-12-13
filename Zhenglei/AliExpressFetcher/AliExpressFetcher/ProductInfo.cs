@@ -67,11 +67,13 @@ namespace AliExpressFetcher
             imageCsv = imageCsv.TrimEnd(',');
 
             string deliveryDate = "";
+            string shipping = "0";
             if (ShippingInfos.Count > 0)
             {
                 deliveryDate = ShippingInfos[0].ToDeliveryTimeString();
+                shipping = ShippingInfos[0].Price.ToString("0.00");
             }
-
+            
             string lengthStr;
             string widthStr;
             string heightStr;
@@ -89,8 +91,8 @@ namespace AliExpressFetcher
                 heightStr = Height.ToString("0.00");
             }
 
-            string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\",\"{14}\",\"{15}\",\"{16}\",{17}";
-            string csv = string.Format(csvFormat, Name.ToCsvSafeString(),SKU.ToCsvSafeString(), lengthStr, widthStr, heightStr, Weight.ToString("0.00"), FullDescription.ToCsvSafeString(), Vender.ToCsvSafeString(), deliveryDate, PriceCurrency, Price.ToString("0.00"), OldPriceCurrency, OldPrice.ToString("0.00"), 0, Category.ToCsvSafeString(), Url.ToCsvSafeString(), StockNum, imageCsv);
+            string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\",\"{14}\",\"{15}\",\"{16}\",\"{17}\",{18}";
+            string csv = string.Format(csvFormat, Name.ToCsvSafeString(),SKU.ToCsvSafeString(), lengthStr, widthStr, heightStr, Weight.ToString("0.00"), FullDescription.ToCsvSafeString(), Vender.ToCsvSafeString(), shipping, deliveryDate, PriceCurrency, Price.ToString("0.00"), OldPriceCurrency, OldPrice.ToString("0.00"), 0, Category.ToCsvSafeString(), Url.ToCsvSafeString(), StockNum, imageCsv);
 
             return csv;
         }
@@ -103,7 +105,7 @@ namespace AliExpressFetcher
                 imageHeader += "Picture" + (i + 1) + ",";
             }
             imageHeader = imageHeader.TrimEnd(',');
-            string headerString = "Name,Sku,Length,Width,Height,Weight,FullDescription,Vendor,DeliveryDate,PriceCurrency,Price,OldPriceCurrency,OldPrice,ProductCost,Category,AdminComment,Stock," + imageHeader;
+            string headerString = "Name,Sku,Length,Width,Height,Weight,FullDescription,Vendor,Shipping,DeliveryDate,PriceCurrency,Price,OldPriceCurrency,OldPrice,ProductCost,Category,AdminComment,Stock," + imageHeader;
             return headerString;
         }
     }

@@ -546,17 +546,36 @@ namespace AliExpressFetcher
 
         private void ClosePopup(ChromeDriver driver, bool retry)
         {
+            //活动1
+            //try
+            //{
+            //    var popup = driver.FindElementByCssSelector(".ui-newuser-layer-dialog > .ui-window-bd > .ui-window-content > a.close-layer");
+
+            //    popup.Click();
+            //    System.Threading.Thread.Sleep(2000);
+            //}
+            //catch(Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message + "\t" + ex.StackTrace);
+            //    if(retry)
+            //    {
+            //        System.Threading.Thread.Sleep(20000);
+            //        ClosePopup(driver, false);
+            //    }
+            //}
+
+            //活动2
             try
             {
-                var popup = driver.FindElementByCssSelector(".ui-newuser-layer-dialog > .ui-window-bd > .ui-window-content > a.close-layer");
+                var popup = driver.FindElementByCssSelector(".ui-window-transition > .ui-window-bd > .ui-window-content > a.close-layer");
 
                 popup.Click();
                 System.Threading.Thread.Sleep(2000);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + "\t" + ex.StackTrace);
-                if(retry)
+                if (retry)
                 {
                     System.Threading.Thread.Sleep(20000);
                     ClosePopup(driver, false);
