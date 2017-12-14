@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliexpressDBA", "AliexpressDBA\AliexpressDBA.csproj", "{6538BD9C-C998-4738-ACF3-EA22C7297085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliexpressUpdateImport", "AliexpressUpdateImport\AliexpressUpdateImport.csproj", "{6C7173EE-B4FE-45A5-ACBC-F51DD5571047}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6538BD9C-C998-4738-ACF3-EA22C7297085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6538BD9C-C998-4738-ACF3-EA22C7297085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6538BD9C-C998-4738-ACF3-EA22C7297085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6538BD9C-C998-4738-ACF3-EA22C7297085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7173EE-B4FE-45A5-ACBC-F51DD5571047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7173EE-B4FE-45A5-ACBC-F51DD5571047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7173EE-B4FE-45A5-ACBC-F51DD5571047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7173EE-B4FE-45A5-ACBC-F51DD5571047}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

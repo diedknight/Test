@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C7173EE-B4FE-45A5-ACBC-F51DD5571047}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AliexpressImport</RootNamespace>
+    <AssemblyName>AliexpressImport</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK">
+      <HintPath>..\..\..\..\TheThirdPartyDLL\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="CopyFile">
+      <HintPath>..\..\..\..\priceme_pricealyser\PriceMeCrawlerTask\PriceMeCrawlerTaskDLL\CopyFile.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>..\..\..\..\priceme_pricealyser\PriceMeCrawlerTask\PriceMeCrawlerTaskDLL\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="MairSoft.Common">
+      <HintPath>..\..\..\..\priceme_pricealyser\PriceMeCrawlerTask\MairSoft.Common\bin\Debug\MairSoft.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="MT.Contract">
+      <HintPath>..\..\..\..\priceme_pricealyser\PriceMeCrawlerTask\MT.Extend\bin\Debug\MT.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="MT.Extend">
+      <HintPath>..\..\..\..\priceme_pricealyser\PriceMeCrawlerTask\MT.Extend\bin\Debug\MT.Extend.dll</HintPath>
+    </Reference>
+    <Reference Include="SubSonic.Core">
+      <HintPath>..\..\..\..\priceme_pricealyser\PriceMeCrawlerTask\PriceMeCrawlerTaskDLL\SubSonic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessLogic\AWSS3.cs" />
+    <Compile Include="BusinessLogic\CategoryContronller.cs" />
+    <Compile Include="BusinessLogic\ConfigAppString.cs" />
+    <Compile Include="BusinessLogic\FeedContronller.cs" />
+    <Compile Include="BusinessLogic\ImageOperator.cs" />
+    <Compile Include="BusinessLogic\OutManagerContronller.cs" />
+    <Compile Include="BusinessLogic\ProductContronller.cs" />
+    <Compile Include="CustomConsumer\Consumer.cs" />
+    <Compile Include="CustomConsumer\IShopContract.cs" />
+    <Compile Include="CustomConsumer\ShopContract.cs" />
+    <Compile Include="Data\CategoryData.cs" />
+    <Compile Include="Data\CrawlerParameter.cs" />
+    <Compile Include="Data\ProductInfoEntity.cs" />
+    <Compile Include="ImportProduct.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AliexpressDBA\AliexpressDBA.csproj">
+      <Project>{6538bd9c-c998-4738-acf3-ea22c7297085}</Project>
+      <Name>AliexpressDBA</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
