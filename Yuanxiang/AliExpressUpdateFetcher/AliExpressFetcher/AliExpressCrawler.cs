@@ -169,12 +169,21 @@ namespace AliExpressFetcher
                             decimal price = 0m;
                             decimal.TryParse(stringprice, out price);
 
+                            decimal shipping = 0m;
+                            var shippingInfoEles = pro.FindElements(By.CssSelector(".pnl-shipping .price .value"));
+                            if(shippingInfoEles.Count == 1)
+                            {
+                                var shippingInfo = shippingInfoEles[0].Text.Replace("NZ$", "").Trim();
+                                decimal.TryParse(shippingInfo, out shipping);
+                            }
+
                             ProductInfo pi = new ProductInfo();
                             pi.Name = name;
                             pi.Url = url;
                             pi.SKU = sku;
                             pi.Category = ci.CategoryName;
                             pi.Price = price;
+                            pi.Shipping = shipping;
 
                             list.Add(pi);
                         }
@@ -191,197 +200,6 @@ namespace AliExpressFetcher
             while (!string.IsNullOrEmpty(nextPageUrl));
 
             return list;
-        }
-
-        private ProductInfo GetProductInfo(string productLink, string categoryName, ChromeDriver driver)
-        {
-            ProductInfo pi = null;
-            int retry = 0;
-
-            while (retry < RetryCount_Static)
-            {
-                try
-                {
-                    string sku = SkuRegex_Static.Match(productLink).Groups["sku"].Value;
-                    if (mAddedSkuList.Contains(sku))
-                    {
-                        return null;
-                    }
-
-                    driver.Navigate().GoToUrl(productLink);
-
-                    System.Threading.Thread.Sleep(300);
-
-                    var footerEle = driver.FindElementByCssSelector(".site-footer");
-                    driver.ExecuteScript("arguments[0].scrollIntoView(true);", footerEle);
-                    System.Threading.Thread.Sleep(1000);
-                    var headerEle = driver.FindElementByCssSelector(".top-lighthouse");
-                    driver.ExecuteScript("arguments[0].scrollIntoView(true);", headerEle);
-
-                    string productName = driver.FindElementByCssSelector("h1.product-name").Text.Trim();
-                    string productPriceCurrency = "";
-                    string productPriceStr = "";
-                    int stockNum = 0;
-
-                    if (driver.FindElementsByCssSelector("#j-sell-stock-num").Count > 0)
-                    {
-                        string stockInfo = driver.FindElementByCssSelector("#j-sell-stock-num").Text.Trim();
-                        stockNum = int.Parse(stockInfo.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)[0]);
-                    }
-
-                    if (driver.FindElementsByCssSelector(".product-multi-price-main.notranslate span[itemprop=priceCurrency]").Count > 0)
-                    {
-                        productPriceCurrency = driver.FindElementByCssSelector(".product-multi-price-main.notranslate span[itemprop=priceCurrency]").Text.Trim();
-                        productPriceStr = driver.FindElementByCssSelector("#j-multi-currency-price span[itemprop=price]").Text.Trim();
-                    }
-                    else
-                    {
-                        productPriceCurrency = driver.FindElementByCssSelector(".p-price-content .p-symbol").Text.Trim();
-                        productPriceStr = "";
-                        var productPriceEles = driver.FindElementsByCssSelector("#j-sku-discount-price");
-
-
-                        if (productPriceEles.Count > 0)
-                        {
-                            productPriceStr = productPriceEles[0].Text.Trim();
-                        }
-                        else
-                        {
-                            productPriceStr = driver.FindElementByCssSelector("#j-sku-price").Text.Trim();
-                        }
-                    }
-
-                    decimal productPrice = decimal.Parse(productPriceStr);
-                    string productPriceUnit = driver.FindElementByCssSelector(".p-price-content .p-unit").Text.Trim();
-
-                    string oldProductPriceCurrency = "";
-                    decimal oldProductPrice = 0;
-                    if (driver.FindElementsByCssSelector(".p-del-price-detail").Count > 0)
-                    {
-                        oldProductPriceCurrency = driver.FindElementByCssSelector(".p-del-price-detail .p-symbol").Text.Trim();
-                        string oldProductPriceStr = driver.FindElementByCssSelector(".p-del-price-detail .p-price").Text.Trim();
-                        oldProductPrice = decimal.Parse(oldProductPriceStr);
-                    }
-
-                    string bulkPriceStr = "";
-
-                    var bulkPriceNodes = driver.FindElementsByCssSelector(".bulk-price-tips.ui-balloon.ui-balloon-tl");
-                    if (bulkPriceNodes.Count > 0)
-                    {
-                        bulkPriceStr = bulkPriceNodes[0].GetAttribute("innerText").Trim();
-                    }
-
-                    string vender = driver.FindElementByCssSelector(".shop-name a").Text.Trim();
-
-                    string unitType = "";
-                    float weight = 0;
-                    float length = 0;
-                    float width = 0;
-                    float height = 0;
-                    string unit = "";
-
-                    var packagingListEles = driver.FindElementsByCssSelector(".product-packaging-list.util-clearfix .packaging-item");
-                    driver.ExecuteScript("arguments[0].scrollIntoView(true);", packagingListEles[0]);
-                    foreach (var pge in packagingListEles)
-                    {
-                        string pgTitle = pge.FindElement(By.ClassName("packaging-title")).GetAttribute("innerText").Trim().TrimEnd(':');
-                        string pgValue = pge.FindElement(By.ClassName("packaging-des")).GetAttribute("innerText").Trim();
-                        if (pgTitle.Equals("Unit Type", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            unitType = pgValue;
-                        }
-                        else if (pgTitle.Equals("Package Size", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            string unitString = pgValue.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries)[0].Trim();
-                            Match match = UnitRegex_Static.Match(unitString);
-                            if (match.Success)
-                            {
-                                length = float.Parse(match.Groups["l"].Value);
-                                width = float.Parse(match.Groups["w"].Value);
-                                height = float.Parse(match.Groups["h"].Value);
-                                unit = match.Groups["unit"].Value;
-                            }
-                        }
-                        else if (pgTitle.Equals("Package Weight", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            string pgw = pgValue.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries)[0].Replace("kg", "").Trim();
-                            weight = float.Parse(pgw);
-                        }
-                    }
-
-                    var descEle = driver.FindElementByCssSelector(".description-content");
-                    driver.ExecuteScript("arguments[0].scrollIntoView(true);", descEle);
-                    System.Threading.Thread.Sleep(800);
-                    string fullDescription = descEle.GetAttribute("innerHTML").Trim();
-                    int reTryCount = 3;
-                    while (fullDescription.Length < 80 && reTryCount > 0)
-                    {
-                        System.Threading.Thread.Sleep(500);
-                        fullDescription = descEle.GetAttribute("innerHTML").Trim();
-                        reTryCount--;
-                    }
-                    fullDescription = FixDesc(fullDescription);
-
-                    List<string> images = new List<string>();
-                    var imageTags = driver.FindElementsByCssSelector("#j-image-thumb-list img");
-                    foreach (var img in imageTags)
-                    {
-                        string imgUrl = img.GetAttribute("src").Replace("_50x50.jpg", "");
-                        images.Add(imgUrl);
-                    }
-
-                    Dictionary<string, string> attrs = new Dictionary<string, string>();
-                    var attrTags = driver.FindElementsByCssSelector(".product-property-list.util-clearfix .property-item");
-                    foreach (var attrTag in attrTags)
-                    {
-                        string key = attrTag.FindElement(By.ClassName("propery-title")).GetAttribute("innerText").Trim().TrimEnd(':');
-                        string value = attrTag.FindElement(By.ClassName("propery-des")).GetAttribute("innerText").Trim();
-                        if (!attrs.ContainsKey(key))
-                        {
-                            attrs.Add(key, value);
-                        }
-                    }
-
-                    List<ShippingInfo> shippingInfos = GetShippingInfos(driver);
-
-                    pi = new ProductInfo();
-                    pi.Name = productName;
-                    pi.Url = productLink;
-                    if (pi.Url.Contains(".html?"))
-                    {
-                        pi.Url = pi.Url.Split(new string[] { ".html?" }, StringSplitOptions.RemoveEmptyEntries)[0] + ".html";
-                    }
-                    pi.Category = categoryName;
-                    pi.Price = productPrice;
-                    pi.PriceCurrency = productPriceCurrency;
-                    pi.OldPrice = oldProductPrice;
-                    pi.OldPriceCurrency = oldProductPriceCurrency;
-                    pi.ProductPriceUnit = productPriceUnit;
-                    pi.SKU = sku;
-                    pi.Vender = vender;
-                    pi.FullDescription = fullDescription;
-                    pi.ShippingInfos = shippingInfos;
-                    pi.Images = images;
-                    pi.Attributes = attrs;
-                    pi.Length = length;
-                    pi.Width = width;
-                    pi.Height = height;
-                    pi.UnitType = unitType;
-                    pi.Unit = unit;
-                    pi.Weight = weight;
-                    pi.StockNum = stockNum;
-
-                    mAddedSkuList.Add(sku);
-
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    retry++;
-                }
-            }
-            return pi;
         }
 
         private string FixDesc(string fullDescription)

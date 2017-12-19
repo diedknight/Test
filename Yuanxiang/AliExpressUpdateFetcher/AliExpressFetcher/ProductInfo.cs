@@ -28,6 +28,7 @@ namespace AliExpressFetcher
         public float Weight { get; set; }
         public List<string> Images { get; set; }
         public int StockNum { get; set; }
+        public decimal Shipping { get; set; }
         public List<ShippingInfo> ShippingInfos { get; set; }
         public Dictionary<string, string> Attributes { get; set; }
 
@@ -59,8 +60,8 @@ namespace AliExpressFetcher
         //Name  Sku	FullDescription	Vendor	DeliveryDate PriceCurrency	Price OldPriceCurrency	OldPrice	ProductCost	Categories	Picture1	Picture2	Picture3
         public string ToCsvString()
         {
-            string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"";
-            string csv = string.Format(csvFormat, Name.ToCsvSafeString(), SKU.ToCsvSafeString(), Price.ToString("0.00"), Category.ToCsvSafeString(), Url.ToCsvSafeString());
+            string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"";
+            string csv = string.Format(csvFormat, Name.ToCsvSafeString(), SKU.ToCsvSafeString(), Price.ToString("0.00"), Category.ToCsvSafeString(), Url.ToCsvSafeString(), Shipping.ToString("0.00"));
             
             string deliveryDate = "";
             if (ShippingInfos.Count > 0)
@@ -85,23 +86,12 @@ namespace AliExpressFetcher
                 heightStr = Height.ToString("0.00");
             }
 
-            string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\",\"{14}\",\"{15}\",\"{16}\",{17}";
-            string csv = string.Format(csvFormat, Name.ToCsvSafeString(),SKU.ToCsvSafeString(), lengthStr, widthStr, heightStr, Weight.ToString("0.00"), FullDescription.ToCsvSafeString(), Vender.ToCsvSafeString(), deliveryDate, PriceCurrency, Price.ToString("0.00"), OldPriceCurrency, OldPrice.ToString("0.00"), 0, Category.ToCsvSafeString(), Url.ToCsvSafeString(), StockNum, imageCsv);
-
             return csv;
         }
 
         public static string ToCsvHeaderString()
         {
-            string headerString = "Name,Sku,Price,Category,AdminComment";
-
-            string imageHeader = "";
-            for (int i = 0; i < maxImageCount; i++)
-            {
-                imageHeader += "Picture" + (i + 1) + ",";
-            }
-            imageHeader = imageHeader.TrimEnd(',');
-            string headerString = "Name,Sku,Length,Width,Height,Weight,FullDescription,Vendor,Shipping,DeliveryDate,PriceCurrency,Price,OldPriceCurrency,OldPrice,ProductCost,Category,AdminComment,Stock," + imageHeader;
+            string headerString = "Name,Sku,Price,Category,AdminComment,Shipping";
 
             return headerString;
         }
