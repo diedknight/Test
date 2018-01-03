@@ -158,10 +158,10 @@ namespace HotterWinds.DBQuery
                 blog.Title = item.SelectSingleNode("title").InnerText.Trim();
                 blog.Comments = Convert.ToInt32(item.SelectSingleNode("slash:comments", nsp).InnerText.Trim());
 
-                string html = item.SelectSingleNode("description").InnerText.Trim();
+                string html = item.SelectSingleNode("description").OuterXml.Trim();
 
                 JQuery jquery = new JQuery(html);
-                blog.ImgUrl = jquery.children().first().getLink();
+                blog.ImgUrl = jquery.find("img").getLink();
                 blog.Description = jquery.last().text();
 
                 list.Add(blog);
