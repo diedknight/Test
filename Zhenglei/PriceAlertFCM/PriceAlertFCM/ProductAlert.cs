@@ -82,7 +82,7 @@ namespace PriceAlertFCM
                             if (deviceSystem == "0")
                             {
                                 rs = GlobalOperator.SendPushNotification(pai, token);
-                                Write("Android PushNotification :" + rs);
+                                Write("Android PushNotification :" + rs + " token : " + token);
                             }
                             else if(deviceSystem == "1")
                             {
@@ -94,7 +94,7 @@ namespace PriceAlertFCM
                                 productInfo.ProductName = pai.ProductName;
                                 productInfo.ProductBestPrice = pai.ProductBestPrice;
                                 IOSPush.AppleApns.Push(productInfo, token);
-                                Write("Ios Push Notification : Ok.");
+                                Write("Ios Push Notification : Ok. token : " + token);
                             }
                             else
                             {
