@@ -173,7 +173,7 @@ namespace PriceAlertFCM
                 imageSRC = imageSRC.Replace("http://", "https://");
             }
 
-            string priceInfo = price.ToString("CO", currentCulture);
+            string priceInfo = price.ToString("C0", currentCulture);
             var match1 = PriceRegex.Match(priceInfo);
             if (match1.Success)
             {
