@@ -73,7 +73,7 @@ namespace PriceAlertFCM
 
                         if (string.IsNullOrEmpty(token))
                         {
-                            Write("alertid:" + pa.AlertId + " user firebase token is null.");
+                            Write("alertid:" + pa.AlertId + " user token is null.");
                         }
                         else
                         {
@@ -436,7 +436,7 @@ namespace PriceAlertFCM
         private List<ProductAlertData> GetProductAlert()
         {
             List<ProductAlertData> paList = new List<ProductAlertData>();
-            string sql = "Select AlertId, ProductId, Email, ProductPrice, APPStatus, APPIsActive, UserId, "
+            string sql = "Select AlertId, ProductId, Email, ProductPrice, APPStatus, APPIsActive, ParseId, "
                         + "AlertType, ExcludedRetailers, PriceType, PriceEach, AlertGUID From CSK_Store_ProductAlert "
                         + "Where APPStatus = 0 And APPIsactive = 1 and AlertType > 0 and PriceType > 0";
 
@@ -473,7 +473,7 @@ namespace PriceAlertFCM
                             string _priceEach = dr["PriceEach"].ToString();
                             decimal.TryParse(_priceEach, out priceEach);
                             string _alertGUID = dr["AlertGUID"].ToString();
-                            string _userId = dr["UserId"].ToString();
+                            string _userId = dr["ParseId"].ToString();
 
                             ProductAlertData pa = new ProductAlertData();
                             pa.AlertId = alertId;
