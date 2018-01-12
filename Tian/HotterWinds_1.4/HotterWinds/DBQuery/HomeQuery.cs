@@ -161,7 +161,7 @@ namespace HotterWinds.DBQuery
                 string html = item.SelectSingleNode("description").OuterXml.Trim();
 
                 JQuery jquery = new JQuery(html);
-                blog.ImgUrl = jquery.find("img").getLink();
+                blog.ImgUrl = jquery.find("img").getLink().Replace("-150x150", "");
                 blog.Description = jquery.last().text();
 
                 list.Add(blog);
