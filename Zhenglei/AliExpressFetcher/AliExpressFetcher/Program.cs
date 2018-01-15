@@ -19,6 +19,7 @@ namespace AliExpressFetcher
             string feedFilePrefix = System.Configuration.ConfigurationManager.AppSettings["FeedFilePrefix"];
             
             string logPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["LogRootPath"], timeStr + ".txt");
+            string resultPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["LogRootPath"], "rs.txt");
             string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], feedFilePrefix + "_" + timeStr + ".csv");
             string chromeWebDriverDir = System.Configuration.ConfigurationManager.AppSettings["ChromeWebDriverDir"];
             string aliexpressMapFile = System.Configuration.ConfigurationManager.AppSettings["MapFile"];
@@ -26,16 +27,79 @@ namespace AliExpressFetcher
             string password = System.Configuration.ConfigurationManager.AppSettings["Password"];
             string country = System.Configuration.ConfigurationManager.AppSettings["Country"];
             string currency = System.Configuration.ConfigurationManager.AppSettings["Currency"];
+            int threadCount = int.Parse(System.Configuration.ConfigurationManager.AppSettings["ThreadCount"]);
+
+            CrawlLogInfo crawlLogInfo = ReadCrawlLogInfo(resultPath);
 
             List<CategoryInfo> categoryInfoList = GetCategoryInfoList(aliexpressMapFile);
+            AliExpressCrawler aliExpressCrawler = null;
+            if (!string.IsNullOrEmpty(crawlLogInfo.FeedPath) && !crawlLogInfo.IsAllFinished)
+            {
+                aliExpressCrawler = new AliExpressCrawler(account, password, country, currency, chromeWebDriverDir, crawlLogInfo.FeedPath, resultPath);
+                aliExpressCrawler.CrawlProductsRealTimeAndMultiThread(categoryInfoList, crawlLogInfo.FinishedUrls, threadCount);
+            }
+            else
+            {
+                using (StreamWriter sw = new StreamWriter(resultPath, false))
+                {
+                    sw.WriteLine(feedPath);
+                    sw.WriteLine(Boolean.FalseString);
+                }
 
-            AliExpressCrawler aliExpressCrawler = new AliExpressCrawler(account, password, country, currency, chromeWebDriverDir);
-            List<ProductInfo> productInfoList = aliExpressCrawler.CrawlProducts(categoryInfoList);
+                aliExpressCrawler = new AliExpressCrawler(account, password, country, currency, chromeWebDriverDir, feedPath, resultPath);
+                aliExpressCrawler.CrawlProductsRealTimeAndMultiThread(categoryInfoList, new List<string>(), threadCount);
+            }
+            Console.WriteLine("Wait for finish.");
+            while(!aliExpressCrawler.AllFinished)
+            {
+                System.Threading.Thread.Sleep(1000);
+            }
+            using (StreamWriter sw = new StreamWriter(resultPath, false))
+            {
+                sw.WriteLine(aliExpressCrawler.FeedPath);
+                sw.WriteLine(Boolean.TrueString);
+            }
+            Console.WriteLine("All finished.");
+            //List<ProductInfo> productInfoList = aliExpressCrawler.CrawlProducts(categoryInfoList);
+            //WriteCsvFile(productInfoList, feedPath);
+            CopyAndSetMessage(aliExpressCrawler.FeedPath);
+        }
 
-            //WriteXmlFile(productInfoList, feedPath);
-            
-            WriteCsvFile(productInfoList, feedPath);
-            CopyAndSetMessage(feedPath);
+        private static CrawlLogInfo ReadCrawlLogInfo(string resultPath)
+        {
+            CrawlLogInfo crawlLogInfo = new CrawlLogInfo();
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(resultPath))
+                {
+                    int index = 0;
+                    string line = sr.ReadLine();
+                    while (!string.IsNullOrEmpty(line))
+                    {
+                        if (index == 0)
+                        {
+                            crawlLogInfo.FeedPath = line;
+                        }
+                        else if (index == 1)
+                        {
+                            crawlLogInfo.IsAllFinished = bool.Parse(line);
+                        }
+                        else
+                        {
+                            crawlLogInfo.FinishedUrls.Add(line);
+                        }
+                        index++;
+                        line = sr.ReadLine();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return crawlLogInfo;
         }
 
         private static void TestChrome()

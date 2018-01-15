@@ -97,6 +97,46 @@ namespace AliExpressFetcher
             return csv;
         }
 
+        public string ToCsvStringNew()
+        {
+            string imageCsv = "";
+            foreach (string imgUrl in Images)
+            {
+                imageCsv += "\"" + imgUrl.ToCsvSafeString() + "|";
+            }
+            imageCsv = imageCsv.TrimEnd('|') + "\"";
+
+            string deliveryDate = "";
+            string shipping = "0";
+            if (ShippingInfos.Count > 0)
+            {
+                deliveryDate = ShippingInfos[0].ToDeliveryTimeString();
+                shipping = ShippingInfos[0].Price.ToString("0.00");
+            }
+
+            string lengthStr;
+            string widthStr;
+            string heightStr;
+
+            if (Unit.Equals("cm", StringComparison.InvariantCultureIgnoreCase))
+            {
+                lengthStr = (Length / 100).ToString("0.00");
+                widthStr = (Width / 100).ToString("0.00");
+                heightStr = (Height / 100).ToString("0.00");
+            }
+            else
+            {
+                lengthStr = Length.ToString("0.00");
+                widthStr = Width.ToString("0.00");
+                heightStr = Height.ToString("0.00");
+            }
+
+            string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\",\"{14}\",\"{15}\",\"{16}\",\"{17}\",{18}";
+            string csv = string.Format(csvFormat, Name.ToCsvSafeString(), SKU.ToCsvSafeString(), lengthStr, widthStr, heightStr, Weight.ToString("0.00"), FullDescription.ToCsvSafeString(), Vender.ToCsvSafeString(), shipping, deliveryDate, PriceCurrency, Price.ToString("0.00"), OldPriceCurrency, OldPrice.ToString("0.00"), 0, Category.ToCsvSafeString(), Url.ToCsvSafeString(), StockNum, imageCsv);
+
+            return csv;
+        }
+
         public static string ToCsvHeaderString(int maxImageCount)
         {
             string imageHeader = "";
@@ -106,6 +146,12 @@ namespace AliExpressFetcher
             }
             imageHeader = imageHeader.TrimEnd(',');
             string headerString = "Name,Sku,Length,Width,Height,Weight,FullDescription,Vendor,Shipping,DeliveryDate,PriceCurrency,Price,OldPriceCurrency,OldPrice,ProductCost,Category,AdminComment,Stock," + imageHeader;
+            return headerString;
+        }
+
+        public static string ToCsvHeaderStringNew()
+        {
+            string headerString = "Name,Sku,Length,Width,Height,Weight,FullDescription,Vendor,Shipping,DeliveryDate,PriceCurrency,Price,OldPriceCurrency,OldPrice,ProductCost,Category,AdminComment,Stock,Picture";
             return headerString;
         }
     }
