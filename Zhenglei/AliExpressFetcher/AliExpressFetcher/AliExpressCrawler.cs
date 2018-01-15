@@ -223,12 +223,14 @@ namespace AliExpressFetcher
             using (StreamWriter sw = new StreamWriter(mFeedPath, false))
             {
                 sw.WriteLine(ProductInfo.ToCsvHeaderStringNew());
+                sw.Flush();
             }
         }
 
         private void WriteToCsv(ProductInfo pi)
         {
             mCsvStreamWriter.WriteLine(pi.ToCsvStringNew());
+            mCsvStreamWriter.Flush();
         }
 
         private void AddCrawledUrl(string url)
@@ -493,7 +495,7 @@ namespace AliExpressFetcher
                     var attrTags = driver.FindElementsByCssSelector(".product-property-list.util-clearfix .property-item");
                     foreach (var attrTag in attrTags)
                     {
-                        string key = attrTag.FindElement(By.ClassName("propery-title")).GetAttribute("innerText").Trim().TrimEnd(':');
+                        string key = attrTag.FindElement(By.ClassName("propery-title")).GetAttribute("innerText").Trim().TrimEnd(':').TrimEnd(':').Trim();
                         string value = attrTag.FindElement(By.ClassName("propery-des")).GetAttribute("innerText").Trim();
                         if (!attrs.ContainsKey(key))
                         {
