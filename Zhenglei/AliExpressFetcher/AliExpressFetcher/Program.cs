@@ -62,6 +62,7 @@ namespace AliExpressFetcher
             Console.WriteLine("All finished.");
             //List<ProductInfo> productInfoList = aliExpressCrawler.CrawlProducts(categoryInfoList);
             //WriteCsvFile(productInfoList, feedPath);
+            aliExpressCrawler.CloseFile();
             CopyAndSetMessage(aliExpressCrawler.FeedPath);
         }
 
