@@ -112,7 +112,7 @@ namespace AliExpressFetcher
             {
                 if (!crawledUrls.Contains(categoryInfo.CategoryUrl))
                 {
-                    Thread.Sleep(3000);
+                    Thread.Sleep(10000);
                     mWorkerCount++;
                     ThreadPool.QueueUserWorkItem(CrawlCatalogProducts, categoryInfo);
                 }
