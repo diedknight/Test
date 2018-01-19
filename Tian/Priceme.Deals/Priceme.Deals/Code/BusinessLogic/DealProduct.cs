@@ -40,7 +40,7 @@ namespace Priceme.Deals.Code.BusinessLogic
                 minimunPrice = 0.01d;
             }
 
-            var hitInfo = SearchController.SearchProducts("", cids.ToList(), null, new PriceRange(minimunPrice, 0d), null, null, orderBy, null, 100000, PriceMe.WebConfig.CountryId, false, true, false, null, true, null, "", true, saleRate);
+            var hitInfo = SearchController.SearchProducts("", cids.ToList(), null, new PriceRange(minimunPrice, 0d), null, null, orderBy, null, 100000, PriceMe.WebConfig.CountryId, false, true, false, null, false, null, "", true, saleRate);
 
             int amount = hitInfo.ResultCount;
             int pageCount = amount / pageSize;

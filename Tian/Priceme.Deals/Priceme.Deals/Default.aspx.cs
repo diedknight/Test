@@ -61,10 +61,10 @@ namespace Priceme.Deals
                 }
 
                 item.BestPPCLogoPath = item.BestPPCLogoPath.Replace("http:", "https:");
-                
+
                 item.DefaultImage = this.FixImgUrl(item.DefaultImage);
             });
-            
+
             //pagination
             var pagination = this.CreatePagination(50);
             pagination.Init(result.Amount);
@@ -118,7 +118,8 @@ namespace Priceme.Deals
 
             List<int> popularCIds = new List<int>() { 2, 500, 7, 11, 1287, 3412, 13, 2151, 1753, 377 };
 
-            cids.ForEach(cid => {
+            cids.ForEach(cid =>
+            {
                 if (popularCIds.Contains(cid)) return;
 
                 var cate = CategoryController.GetCategoryByCategoryID(cid, PriceMe.WebConfig.CountryId);
@@ -145,7 +146,7 @@ namespace Priceme.Deals
             {
                 string ids = "";
                 string css = "btn btn-xs btnShowDiff ";
-                
+
                 cids.ForEach(cid =>
                 {
                     if (cid == item.Id) return;
@@ -188,18 +189,21 @@ namespace Priceme.Deals
 
         private List<int> GetRecentCIdsFromCookie()
         {
-            List<int> list = new List<int>();
+            return new List<int>();
 
-            if (this.Request.Cookies["myrecentlyviewCidCollection"] == null) return list;
+            //List<int> list = new List<int>();
 
-            string val = this.Request.Cookies["myrecentlyviewCidCollection"].Value;
+            //if (this.Request.Cookies["myrecentlyviewCidCollection"] != null)
+            //{
+            //    string val = this.Request.Cookies["myrecentlyviewCidCollection"].Value;
 
-            if (!string.IsNullOrEmpty(val))
-            {
-                list = val.Split('|').Select(item => Convert.ToInt32(item)).ToList();
-            }
+            //    if (!string.IsNullOrEmpty(val))
+            //    {
+            //        list = val.Split('|').Select(item => Convert.ToInt32(item)).ToList();
+            //    }
+            //}
 
-            return list;
+            //return list;
         }
 
         private string FixImgUrl(string url)
