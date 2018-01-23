@@ -3,15 +3,17 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AliExpressFetcher
 {
-    public class AliExpressCrawler
+    public class AliExpressCrawler : IDisposable
     {
         static Regex SkuRegex_Static;
         static Regex PriceRegex_Static;
@@ -25,6 +27,21 @@ namespace AliExpressFetcher
         string mCurrency;
         string mChromeWebDriverDir;
         List<string> mAddedSkuList;
+
+        string mFeedPath;
+        string mResultPath;
+        StreamWriter mCsvStreamWriter;
+
+        public string FeedPath
+        {
+            get { return mFeedPath; }
+        }
+
+        int mWorkerCount;
+        public bool AllFinished
+        {
+            get { return mWorkerCount == 0; }
+        }
 
         static AliExpressCrawler()
         {
@@ -66,6 +83,184 @@ namespace AliExpressFetcher
             mCountry = country;
             mCurrency = currency;
             mChromeWebDriverDir = chromeWebDriverDir;
+        }
+
+        public AliExpressCrawler(string account, string password, string country, string currency, string chromeWebDriverDir, string feedPath, string resultPath)
+        {
+            mAccount = account;
+            mPassword = password;
+            mCountry = country;
+            mCurrency = currency;
+            mChromeWebDriverDir = chromeWebDriverDir;
+            mFeedPath = feedPath;
+            mResultPath = resultPath;
+        }
+
+        public void CrawlProductsRealTimeAndMultiThread(List<CategoryInfo> categoryInfoList, List<string> crawledUrls, int threadCount)
+        {
+            if (crawledUrls.Count == 0)
+            {
+                WriteCsvFileHeader();
+            }
+
+            mAddedSkuList = new List<string>();
+            mCsvStreamWriter = new StreamWriter(mFeedPath, true);
+            var s1 = ThreadPool.SetMinThreads(1, 1);
+            var s = ThreadPool.SetMaxThreads(threadCount, threadCount);
+            mWorkerCount = 0;
+            foreach (var categoryInfo in categoryInfoList)
+            {
+                if (!crawledUrls.Contains(categoryInfo.CategoryUrl))
+                {
+                    Thread.Sleep(10000);
+                    mWorkerCount++;
+                    ThreadPool.QueueUserWorkItem(CrawlCatalogProducts, categoryInfo);
+                }
+            }
+        }
+
+        private void CrawlCatalogProducts(object categoryInfo)
+        {
+            try
+            {
+                CategoryInfo ci = categoryInfo as CategoryInfo;
+
+                ChromeOptions chromeOptions = new ChromeOptions();
+                if ("true".Equals(System.Configuration.ConfigurationManager.AppSettings["DisableImage"], StringComparison.InvariantCultureIgnoreCase))
+                {
+                    chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
+                }
+
+                using (ChromeDriver driver = new ChromeDriver(mChromeWebDriverDir, chromeOptions))
+                {
+                    InitDriver(driver);
+
+                    driver.Navigate().GoToUrl("https://www.aliexpress.com/");
+
+                    ClosePopup(driver, true);
+
+                    Login(driver);
+
+                    ClosePopup(driver, true);
+
+                    if (!string.IsNullOrEmpty(mCountry))
+                    {
+                        bool selected = SelectCountry(driver);
+
+                        if (!selected)
+                        {
+                            Log("CrawlCatalogProducts log : " + mCountry + " not exist.");
+                            return;
+                        }
+                    }
+
+                    string nextPageUrl = ci.CategoryUrl;
+
+                    do
+                    {
+                        int retry = 0;
+                        while (retry < RetryCount_Static)
+                        {
+                            try
+                            {
+                                driver.Navigate().GoToUrl(nextPageUrl);
+
+                                ClosePopup(driver, true);
+
+                                string currentCurrency = driver.FindElementByCssSelector(".currency").GetAttribute("innerText").Trim();
+                                if (!currentCurrency.Equals(mCurrency, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    SelectCurrency(driver);
+                                }
+
+                                var nextATag = driver.FindElementsByCssSelector("a.page-next.ui-pagination-next");
+                                if (nextATag.Count > 0)
+                                {
+                                    nextPageUrl = nextATag[0].GetAttribute("href").Trim();
+                                }
+                                else
+                                {
+                                    nextPageUrl = "";
+                                }
+
+                                var products = driver.FindElementsByCssSelector("#list-items .list-item");
+                                foreach (var pro in products)
+                                {
+                                    var aTag = pro.FindElement(By.ClassName("product"));
+                                    string url = aTag.GetAttribute("href").Trim();
+                                    string name = aTag.Text.Trim();
+                                    string sku = SkuRegex_Static.Match(url).Groups["sku"].Value;
+
+                                    if (mAddedSkuList.Contains(sku))
+                                    {
+                                        continue;
+                                    }
+
+                                    var stringprice = pro.FindElement(By.CssSelector(".price.price-m .value")).Text.Replace("NZ$", "").Trim();
+                                    decimal price = 0m;
+                                    decimal.TryParse(stringprice, out price);
+
+                                    decimal shipping = 0m;
+                                    var shippingInfoEles = pro.FindElements(By.CssSelector(".pnl-shipping .price .value"));
+                                    if (shippingInfoEles.Count == 1)
+                                    {
+                                        var shippingInfo = shippingInfoEles[0].Text.Replace("NZ$", "").Trim();
+                                        decimal.TryParse(shippingInfo, out shipping);
+                                    }
+
+                                    ProductInfo pi = new ProductInfo();
+                                    pi.Name = name;
+                                    pi.Url = url;
+                                    pi.SKU = sku;
+                                    pi.Category = ci.CategoryName;
+                                    pi.Price = price;
+                                    pi.Shipping = shipping;
+
+                                    WriteToCsv(pi);
+                                }
+
+                                break;
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message + "\t" + ex.StackTrace);
+                                retry++;
+                            }
+                        }
+                    }
+                    while (!string.IsNullOrEmpty(nextPageUrl));
+                }
+
+                AddCrawledUrl(ci.CategoryUrl);
+            }
+            catch (Exception ex)
+            {
+                Log("CrawlCatalogProducts ex : " + ex.StackTrace + "\t" + ex.Message);
+            }
+            mWorkerCount--;
+        }
+
+        private void WriteToCsv(ProductInfo pi)
+        {
+            mCsvStreamWriter.WriteLine(pi.ToCsvString());
+            mCsvStreamWriter.Flush();
+        }
+
+        private void AddCrawledUrl(string url)
+        {
+            using (StreamWriter sw = new StreamWriter(mResultPath, true))
+            {
+                sw.WriteLine(url);
+            }
+        }
+
+        private void WriteCsvFileHeader()
+        {
+            using (StreamWriter sw = new StreamWriter(mFeedPath, false))
+            {
+                sw.WriteLine(ProductInfo.ToCsvHeaderString());
+                sw.Flush();
+            }
         }
 
         public List<ProductInfo> CrawlProducts(List<CategoryInfo> categoryInfoList)
@@ -292,21 +487,33 @@ namespace AliExpressFetcher
             bool selected = false;
 
             var switcher = driver.FindElementById("switcher-info");
-            switcher.Click();
-            System.Threading.Thread.Sleep(1000);
+            driver.ExecuteScript("arguments[0].click();", switcher);
+            //switcher.Click();
+
 
             var switcherCountrySelector = driver.FindElementByClassName("switcher-shipto-c");
-            switcherCountrySelector.Click();
-            System.Threading.Thread.Sleep(1500);
+            while (switcherCountrySelector == null)
+            {
+                System.Threading.Thread.Sleep(100);
+                switcherCountrySelector = driver.FindElementByClassName("switcher-shipto-c");
+            }
+            driver.ExecuteScript("arguments[0].click();", switcherCountrySelector);
+            //switcherCountrySelector.Click();
 
             var countryNameSpans = driver.FindElementsByCssSelector(".list-container .country-text");
+            while (countryNameSpans == null || countryNameSpans.Count == 0)
+            {
+                System.Threading.Thread.Sleep(100);
+                countryNameSpans = driver.FindElementsByCssSelector(".list-container .country-text");
+            }
             foreach (var cn in countryNameSpans)
             {
                 if (cn.GetAttribute("innerText").Equals(mCountry, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    driver.ExecuteScript("arguments[0].scrollIntoView(true);", cn);
-                    System.Threading.Thread.Sleep(500);
-                    cn.Click();
+                    //driver.ExecuteScript("arguments[0].scrollIntoView(true);", cn);
+                    //System.Threading.Thread.Sleep(500);
+                    driver.ExecuteScript("arguments[0].click();", cn);
+                    //cn.Click();
                     selected = true;
                     break;
                 }
@@ -314,23 +521,9 @@ namespace AliExpressFetcher
 
             if (selected)
             {
-                var switcherCurrencySelector = driver.FindElementByCssSelector(".switcher-currency .switcher-currency-c a");
-                switcherCurrencySelector.Click();
-                System.Threading.Thread.Sleep(1500);
-
-                var countryNames = driver.FindElementsByCssSelector(".notranslate li a");
-                foreach (var cou in countryNames)
-                {
-                    var name = cou.GetAttribute("data-currency");
-                    if (name == "NZD")
-                    {
-                        cou.Click();
-                        break;
-                    }
-                }
-
                 var countryNameSaveButton = driver.FindElementByCssSelector(".switcher-common .go-contiune-btn");
-                countryNameSaveButton.Click();
+                driver.ExecuteScript("arguments[0].click();", countryNameSaveButton);
+                //countryNameSaveButton.Click();
             }
 
             return selected;
@@ -341,21 +534,34 @@ namespace AliExpressFetcher
             bool selected = false;
 
             var switcher = driver.FindElementById("switcher-info");
-            switcher.Click();
-            System.Threading.Thread.Sleep(500);
+            driver.ExecuteScript("arguments[0].click();", switcher);
+            //switcher.Click();
+            //System.Threading.Thread.Sleep(200);
 
             var switcherCurrencySelector = driver.FindElementByClassName("switcher-currency-c");
-            switcherCurrencySelector.Click();
-            System.Threading.Thread.Sleep(800);
+            while (switcherCurrencySelector == null)
+            {
+                System.Threading.Thread.Sleep(100);
+                switcherCurrencySelector = driver.FindElementByClassName("switcher-currency-c");
+            }
+            driver.ExecuteScript("arguments[0].click();", switcherCurrencySelector);
+            //switcherCurrencySelector.Click();
+            //System.Threading.Thread.Sleep(400);
 
             var currencyNameSpans = driver.FindElementsByCssSelector(".switcher-currency .notranslate a");
+            while (currencyNameSpans == null || currencyNameSpans.Count == 0)
+            {
+                System.Threading.Thread.Sleep(100);
+                currencyNameSpans = driver.FindElementsByCssSelector(".switcher-currency .notranslate a");
+            }
             foreach (var cn in currencyNameSpans)
             {
                 if (cn.GetAttribute("data-currency").Equals(mCurrency, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    driver.ExecuteScript("arguments[0].scrollIntoView(true);", cn);
-                    System.Threading.Thread.Sleep(500);
-                    cn.Click();
+                    driver.ExecuteScript("arguments[0].click();", cn);
+                    //driver.ExecuteScript("arguments[0].scrollIntoView(true);", cn);
+                    //System.Threading.Thread.Sleep(500);
+                    //cn.Click();
                     selected = true;
                     break;
                 }
@@ -364,7 +570,8 @@ namespace AliExpressFetcher
             if (selected)
             {
                 var countryNameSaveButton = driver.FindElementByCssSelector(".switcher-common .go-contiune-btn");
-                countryNameSaveButton.Click();
+                driver.ExecuteScript("arguments[0].click();", countryNameSaveButton);
+                //countryNameSaveButton.Click();
             }
 
             return selected;
@@ -415,14 +622,14 @@ namespace AliExpressFetcher
                 var popup = driver.FindElementByCssSelector(".ui-window-transition > .ui-window-bd > .ui-window-content > a.close-layer");
 
                 popup.Click();
-                System.Threading.Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(1500);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + "\t" + ex.StackTrace);
                 if (retry)
                 {
-                    System.Threading.Thread.Sleep(20000);
+                    System.Threading.Thread.Sleep(5000);
                     ClosePopup(driver, false);
                 }
             }
@@ -433,6 +640,22 @@ namespace AliExpressFetcher
             driver.Manage().Window.Size = new System.Drawing.Size(1280, 960);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromMinutes(2);
+        }
+
+        public void CloseFile()
+        {
+            if (mCsvStreamWriter != null)
+            {
+                mCsvStreamWriter.Close();
+            }
+        }
+
+        public void Dispose()
+        {
+            if (mCsvStreamWriter != null)
+            {
+                mCsvStreamWriter.Close();
+            }
         }
     }
 }

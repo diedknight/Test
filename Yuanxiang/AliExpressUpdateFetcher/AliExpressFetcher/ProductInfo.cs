@@ -62,30 +62,6 @@ namespace AliExpressFetcher
         {
             string csvFormat = "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"";
             string csv = string.Format(csvFormat, Name.ToCsvSafeString(), SKU.ToCsvSafeString(), Price.ToString("0.00"), Category.ToCsvSafeString(), Url.ToCsvSafeString(), Shipping.ToString("0.00"));
-            
-            string deliveryDate = "";
-            if (ShippingInfos.Count > 0)
-            {
-                deliveryDate = ShippingInfos[0].ToDeliveryTimeString();
-            }
-
-            string lengthStr;
-            string widthStr;
-            string heightStr;
-
-            if(Unit.Equals("cm", StringComparison.InvariantCultureIgnoreCase))
-            {
-                lengthStr = (Length / 100).ToString("0.00");
-                widthStr = (Width / 100).ToString("0.00");
-                heightStr = (Height / 100).ToString("0.00");
-            }
-            else
-            {
-                lengthStr = Length.ToString("0.00");
-                widthStr = Width.ToString("0.00");
-                heightStr = Height.ToString("0.00");
-            }
-
             return csv;
         }
 
