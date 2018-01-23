@@ -778,7 +778,7 @@ namespace AliExpressFetcher
                 Console.WriteLine(ex.Message + "\t" + ex.StackTrace);
                 if (retry)
                 {
-                    System.Threading.Thread.Sleep(10000);
+                    System.Threading.Thread.Sleep(5000);
                     ClosePopup(driver, false);
                 }
             }
