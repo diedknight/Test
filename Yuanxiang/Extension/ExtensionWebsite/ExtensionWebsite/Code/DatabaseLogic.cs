@@ -30,9 +30,10 @@ namespace ExtensionWebsite.Code
 
             RetailerProduct rp = new RetailerProduct();
 
+            key = key.Replace("'", "''");
             string sql = "Select RetailerProductId, ProductId, RetailerProductName, RetailerPrice From "
                        + "CSK_Store_RetailerProductNew Where RetailerId = " + retailer.RetailerId + " And PurchaseURL = '" + key + "'";
-
+            
             GetRetailerProducts(sql, rp, retailer);
 
             if (key.Contains("https:") && (rp == null || string.IsNullOrEmpty(rp.RetailerProductName)))
