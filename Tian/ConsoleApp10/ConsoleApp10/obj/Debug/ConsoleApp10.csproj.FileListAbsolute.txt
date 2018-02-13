@@ -1,0 +1,16 @@
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\Test cases similarity merging.xlsx
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\ConsoleApp10.exe.config
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\ConsoleApp10.exe
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\ConsoleApp10.pdb
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\NPOI.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\NPOI.OOXML.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\Priceme.Infrastructure.Excel.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\StrSimilarity.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\bin\Debug\StrSimilarity.pdb
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.csprojResolveAssemblyReference.cache
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.csproj.CoreCompileInputs.cache
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.exe
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.pdb

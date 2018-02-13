@@ -1,0 +1,14 @@
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\RetailerProductsIndexController.pdb
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\Lucene.Net.dll
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\obj\Debug\ResolveAssemblyReference.cache
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\obj\Debug\RetailerProductsIndexController.pdb
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\RetailerProductsIndexController.dll.config
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\RetailerProductsIndexController.dll
+G:\Visual Studio 2005\Projects\RetailerProductsIndex\RetailerProductsIndexController\obj\Debug\RetailerProductsIndexController.dll
+F:\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\RetailerProductsIndexController.dll.config
+F:\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\RetailerProductsIndexController.dll
+F:\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\RetailerProductsIndexController.pdb
+F:\RetailerProductsIndex\RetailerProductsIndexController\bin\Debug\Lucene.Net.dll
+F:\RetailerProductsIndex\RetailerProductsIndexController\obj\Debug\ResolveAssemblyReference.cache
+F:\RetailerProductsIndex\RetailerProductsIndexController\obj\Debug\RetailerProductsIndexController.dll
+F:\RetailerProductsIndex\RetailerProductsIndexController\obj\Debug\RetailerProductsIndexController.pdb

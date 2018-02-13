@@ -1,0 +1,16 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\ImportAttrToExcel.exe.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\ImportAttrToExcel.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\ImportAttrToExcel.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\ICSharpCode.SharpZipLib.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\NPOI.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\NPOI.OOXML.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\NPOI.OpenXml4Net.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\NPOI.OpenXmlFormats.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\obj\Debug\ImportAttrToExcel.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\obj\Debug\ImportAttrToExcel.csproj.CoreCompileInputs.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\obj\Debug\ImportAttrToExcel.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\obj\Debug\ImportAttrToExcel.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\Priceme.Infrastructure.HtmlParser.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\Winista.HTMLParserLite.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttrToExcel\ImportAttrToExcel\bin\Debug\Priceme.Infrastructure.DB.Dapper.dll

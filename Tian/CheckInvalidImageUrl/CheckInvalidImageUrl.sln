@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckInvalidImageUrl", "CheckInvalidImageUrl\CheckInvalidImageUrl.csproj", "{B6A2E884-A9F9-49A3-ACCD-32202F46E534}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6A2E884-A9F9-49A3-ACCD-32202F46E534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A2E884-A9F9-49A3-ACCD-32202F46E534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A2E884-A9F9-49A3-ACCD-32202F46E534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A2E884-A9F9-49A3-ACCD-32202F46E534}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AE89107-368D-4C75-A342-370AE9A4876F}
+	EndGlobalSection
+EndGlobal

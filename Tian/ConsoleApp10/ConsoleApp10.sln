@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp10", "ConsoleApp10\ConsoleApp10.csproj", "{17495FB8-BA29-4CF1-A58B-2E98C1849704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrSimilarity", "StrSimilarity\StrSimilarity.csproj", "{1C7DEDC1-2F84-4316-8246-61B5CA699896}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17495FB8-BA29-4CF1-A58B-2E98C1849704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17495FB8-BA29-4CF1-A58B-2E98C1849704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17495FB8-BA29-4CF1-A58B-2E98C1849704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17495FB8-BA29-4CF1-A58B-2E98C1849704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C7DEDC1-2F84-4316-8246-61B5CA699896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7DEDC1-2F84-4316-8246-61B5CA699896}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7DEDC1-2F84-4316-8246-61B5CA699896}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7DEDC1-2F84-4316-8246-61B5CA699896}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9677CFCA-0ADA-4EDD-9BFE-7A3B27B1428D}
+	EndGlobalSection
+EndGlobal

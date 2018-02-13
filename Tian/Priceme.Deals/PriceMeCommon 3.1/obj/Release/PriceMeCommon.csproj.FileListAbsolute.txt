@@ -1,0 +1,73 @@
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.pdb
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CacheBaseLibrary.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CASBase.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ClientLibrary.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\FabricCommon.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Lucene.Net.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Newtonsoft.Json.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\SubSonic.Core.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Timer.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.pdb
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.pdb
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.csprojResolveAssemblyReference.cache
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.dll
+C:\Users\dawn\Documents\Visual Studio 2015\Projects\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.pdb
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.pdb
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CacheBaseLibrary.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CASBase.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ClientLibrary.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\FabricCommon.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ICSharpCode.SharpZipLib.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Lucene.Net.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Newtonsoft.Json.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\SubSonic.Core.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Timer.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.pdb
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.dll
+F:\XbaiTwoV_Project\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CacheBaseLibrary.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CASBase.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ClientLibrary.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\FabricCommon.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ICSharpCode.SharpZipLib.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Lucene.Net.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Newtonsoft.Json.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\SubSonic.Core.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Timer.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.pdb
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.csprojResolveAssemblyReference.cache
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.dll
+F:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCommon.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CacheBaseLibrary.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\CASBase.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ClientLibrary.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\FabricCommon.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\ICSharpCode.SharpZipLib.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Lucene.Net.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Newtonsoft.Json.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Priceme.Infrastructure.DB.Dapper.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\SubSonic.Core.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\Timer.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeCache.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\bin\Release\PriceMeDBA.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\Priceme.Deals\PriceMeCommon 3.1\obj\Release\PriceMeCommon.pdb

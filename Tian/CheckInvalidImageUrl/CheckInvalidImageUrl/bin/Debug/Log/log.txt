@@ -1,0 +1,78 @@
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51
+索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.set_Item(Int32 index, T value)
+   在 CheckInvalidImageUrl.Program.GetBorder1(Bitmap bitmap) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 125
+   在 CheckInvalidImageUrl.Program.Main(String[] args) 位置 H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\Program.cs:行号 51

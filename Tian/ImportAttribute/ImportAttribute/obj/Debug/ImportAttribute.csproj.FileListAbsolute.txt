@@ -1,0 +1,19 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\Dragon Matching.xlsx
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\ImportAttribute.exe.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\ImportAttribute.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\ImportAttribute.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\ICSharpCode.SharpZipLib.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\NPOI.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\NPOI.OOXML.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\NPOI.OpenXml4Net.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\NPOI.OpenXmlFormats.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\obj\Debug\ImportAttribute.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\obj\Debug\ImportAttribute.csproj.CoreCompileInputs.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\obj\Debug\ImportAttribute.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\obj\Debug\ImportAttribute.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\PriceMeDBA.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\SubSonic.Core.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\PriceMeDBA.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\PriceMeDBA.dll.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\ImportAttribute\bin\Debug\Priceme.Infrastructure.DB.Dapper.dll

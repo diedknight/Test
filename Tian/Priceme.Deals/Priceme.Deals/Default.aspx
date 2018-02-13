@@ -59,6 +59,12 @@
 
                 <%for (int i = 0; i < productList.Count; i++) %>
                 <%{ %>
+
+                <%if (productList[i].IsSearchOnly) %>
+                <%{ %>
+                <p style="color:red;">isSearchOnly</p>
+                <%} %>
+
                 <div class="product-grid-item">
                     <div class="sale_info"><span><%=Convert.ToInt32(Math.Abs(productList[i].Sale*100)) %>% Off</span></div>
 

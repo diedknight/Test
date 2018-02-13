@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Priceme.Infrastructure.Excel</id>
+        <version>1.0.8</version>
+        <authors>Xbai</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <developmentDependency>true</developmentDependency>
+        <description>My package description.</description>
+    </metadata>
+    <files>
+        <file src="bin\Release\ICSharpCode.SharpZipLib.dll" target="lib\ICSharpCode.SharpZipLib.dll" />
+        <file src="bin\Release\NPOI.dll" target="lib\NPOI.dll" />
+        <file src="bin\Release\NPOI.OOXML.dll" target="lib\NPOI.OOXML.dll" />
+        <file src="bin\Release\NPOI.OpenXml4Net.dll" target="lib\NPOI.OpenXml4Net.dll" />
+        <file src="bin\Release\NPOI.OpenXmlFormats.dll" target="lib\NPOI.OpenXmlFormats.dll" />
+        <file src="bin\Release\Priceme.Infrastructure.Excel.dll" target="lib\Priceme.Infrastructure.Excel.dll" />
+    </files>
+</package>

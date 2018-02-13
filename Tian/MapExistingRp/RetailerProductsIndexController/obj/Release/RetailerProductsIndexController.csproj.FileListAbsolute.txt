@@ -1,0 +1,7 @@
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\bin\Release\RetailerProductsIndexController.dll.config
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\bin\Release\RetailerProductsIndexController.dll
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\bin\Release\RetailerProductsIndexController.pdb
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\bin\Release\Lucene.Net.dll
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\obj\Release\RetailerProductsIndexController.csprojResolveAssemblyReference.cache
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\obj\Release\RetailerProductsIndexController.dll
+F:\PriceMeCrawlerTask3.0\RetailerProductsIndexController\obj\Release\RetailerProductsIndexController.pdb

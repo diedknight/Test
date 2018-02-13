@@ -161,6 +161,9 @@ namespace PriceMeCommon.BusinessLogic
             /// <param name="searchMerged">如果categoryMerged为false，searchMerged也为false，则只搜索IsMerged为false的产品</param>
             /// <param name="categoryMerged">如果categoryMerged为true，则只搜索IsDisplay为false的产品</param>
             /// 
+
+            useSearchonly = true;
+
             if (maxDocCount > MAXDOCS)
             {
                 maxDocCount = MAXDOCS;

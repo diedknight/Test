@@ -1,0 +1,12 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\Priceme.Infrastructure.Excel.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\ICSharpCode.SharpZipLib.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\NPOI.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\NPOI.OOXML.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\NPOI.OpenXml4Net.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\NPOI.OpenXmlFormats.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\bin\Debug\NPOI.xml
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\obj\Debug\Priceme.Infrastructure.Excel.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\obj\Debug\Priceme.Infrastructure.Excel.csproj.CoreCompileInputs.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\obj\Debug\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\ImportAttribute\Priceme.Infrastructure.Excel\obj\Debug\Priceme.Infrastructure.Excel.pdb

@@ -1,0 +1,9 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\bin\Debug\MonitorPriceMeApi.exe.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\bin\Debug\MonitorPriceMeApi.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\bin\Debug\MonitorPriceMeApi.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\bin\Debug\AWSSDK.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\bin\Debug\Priceme.Infrastructure.Email.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\bin\Debug\Topshelf.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\obj\Debug\MonitorPriceMeApi.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\obj\Debug\MonitorPriceMeApi.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\MonitorPriceMeApi\MonitorPriceMeApi\obj\Debug\MonitorPriceMeApi.pdb

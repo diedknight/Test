@@ -1,0 +1,20 @@
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\bin\Debug\IOSPush.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\bin\Debug\IOSPush.pdb
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\bin\Debug\PushSharp.Apple.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\bin\Debug\PushSharp.Core.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\obj\Debug\IOSPush.csprojResolveAssemblyReference.cache
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\obj\Debug\IOSPush.csproj.CoreCompileInputs.cache
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\obj\Debug\IOSPush.dll
+C:\Users\Xbai\Documents\Visual Studio 2017\Projects\ConsoleApp6\IOSPush\obj\Debug\IOSPush.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\IOSPush.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\IOSPush.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\Newtonsoft.Json.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\PushSharp.Apple.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\PushSharp.Core.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\obj\Debug\IOSPush.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\obj\Debug\IOSPush.csproj.CoreCompileInputs.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\obj\Debug\IOSPush.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\obj\Debug\IOSPush.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\IOSPush.dll.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\IOSPush\IOSPush\bin\Debug\Newtonsoft.Json.xml

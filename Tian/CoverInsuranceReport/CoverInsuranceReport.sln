@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoverInsuranceReport", "CoverInsuranceReport\CoverInsuranceReport.csproj", "{26D18072-F6C3-43F9-AD53-B4164B856522}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Priceme.Infrastructure.Excel", "Priceme.Infrastructure.Excel\Priceme.Infrastructure.Excel.csproj", "{B2EDFF2A-75F9-40CD-AB3B-CA09AACC5726}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26D18072-F6C3-43F9-AD53-B4164B856522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D18072-F6C3-43F9-AD53-B4164B856522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D18072-F6C3-43F9-AD53-B4164B856522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D18072-F6C3-43F9-AD53-B4164B856522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2EDFF2A-75F9-40CD-AB3B-CA09AACC5726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2EDFF2A-75F9-40CD-AB3B-CA09AACC5726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2EDFF2A-75F9-40CD-AB3B-CA09AACC5726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2EDFF2A-75F9-40CD-AB3B-CA09AACC5726}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5952A190-C381-4A1E-A974-A8B1A85D7376}
+	EndGlobalSection
+EndGlobal

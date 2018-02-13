@@ -49,7 +49,7 @@ namespace Priceme.Deals
 
             this.productList = result.Products;
 
-            Utility.FixProductCatalogList(this.productList, "");
+            //Utility.FixProductCatalogList(this.productList, "");
 
             this.productList.ForEach(item =>
             {

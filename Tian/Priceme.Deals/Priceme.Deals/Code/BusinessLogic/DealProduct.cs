@@ -40,9 +40,20 @@ namespace Priceme.Deals.Code.BusinessLogic
                 minimunPrice = 0.01d;
             }
 
-            var hitInfo = SearchController.SearchProducts("", cids.ToList(), null, new PriceRange(minimunPrice, 0d), null, null, orderBy, null, 100000, PriceMe.WebConfig.CountryId, false, true, false, null, false, null, "", true, saleRate);
+            var hitInfo = SearchController.SearchProducts("", cids.ToList(), null, new PriceRange(minimunPrice, 0d), null, null, orderBy, null, 100000, PriceMe.WebConfig.CountryId, false, true, false, null, true, null, "", true, saleRate);
 
-            int amount = hitInfo.ResultCount;
+            List<PriceMeCommon.Data.ProductCatalog> templist = new List<PriceMeCommon.Data.ProductCatalog>();
+            for (int i = 0; i < hitInfo.ResultCount; i++)
+            {
+                var info = SearchController.GetProductCatalog(hitInfo, i);
+
+                templist.Add(info);
+            }
+
+            PriceMe.Utility.FixProductCatalogList(templist, "");
+            templist = templist.Where(item => item.IsSearchOnly == false).ToList();
+
+            int amount = templist.Count;
             int pageCount = amount / pageSize;
             if (amount % pageSize > 0) pageCount += 1;
 
@@ -52,7 +63,8 @@ namespace Priceme.Deals.Code.BusinessLogic
             {
                 range.ForEach(index =>
                 {
-                    list.Add(SearchController.GetProductCatalog(hitInfo, index));
+                    //list.Add(SearchController.GetProductCatalog(hitInfo, index));
+                    list.Add(templist[index]);
                 });
             }
             else

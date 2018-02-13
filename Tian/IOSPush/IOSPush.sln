@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOSPush", "IOSPush\IOSPush.csproj", "{4F8E2764-2F25-4DE9-AD8C-0BEF38E36E68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6", "ConsoleApp6\ConsoleApp6.csproj", "{4BFE1705-46E4-4172-9EEE-7A0346CC6A6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F8E2764-2F25-4DE9-AD8C-0BEF38E36E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8E2764-2F25-4DE9-AD8C-0BEF38E36E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8E2764-2F25-4DE9-AD8C-0BEF38E36E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8E2764-2F25-4DE9-AD8C-0BEF38E36E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFE1705-46E4-4172-9EEE-7A0346CC6A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFE1705-46E4-4172-9EEE-7A0346CC6A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFE1705-46E4-4172-9EEE-7A0346CC6A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFE1705-46E4-4172-9EEE-7A0346CC6A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65A778A1-C06E-46EE-B05F-0A4C44204B40}
+	EndGlobalSection
+EndGlobal

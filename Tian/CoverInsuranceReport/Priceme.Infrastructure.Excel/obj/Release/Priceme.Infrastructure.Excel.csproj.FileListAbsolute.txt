@@ -1,0 +1,11 @@
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\Priceme.Infrastructure.Excel.pdb
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\ICSharpCode.SharpZipLib.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\NPOI.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\NPOI.OOXML.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\NPOI.OpenXml4Net.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\NPOI.OpenXmlFormats.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\bin\Release\NPOI.xml
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\obj\Release\Priceme.Infrastructure.Excel.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\obj\Release\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\PricemePackage\Priceme.Infrastructure\Priceme.Infrastructure.Excel\obj\Release\Priceme.Infrastructure.Excel.pdb

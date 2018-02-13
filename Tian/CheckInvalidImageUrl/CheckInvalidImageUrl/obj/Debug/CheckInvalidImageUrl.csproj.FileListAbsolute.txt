@@ -1,0 +1,13 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\CheckInvalidImageUrl.exe.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\CheckInvalidImageUrl.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\CheckInvalidImageUrl.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\ICSharpCode.SharpZipLib.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\NPOI.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\NPOI.OOXML.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\NPOI.OpenXml4Net.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\NPOI.OpenXmlFormats.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\bin\Debug\Priceme.Infrastructure.Excel.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\obj\Debug\CheckInvalidImageUrl.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\obj\Debug\CheckInvalidImageUrl.csproj.CoreCompileInputs.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\obj\Debug\CheckInvalidImageUrl.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CheckInvalidImageUrl\CheckInvalidImageUrl\obj\Debug\CheckInvalidImageUrl.pdb
