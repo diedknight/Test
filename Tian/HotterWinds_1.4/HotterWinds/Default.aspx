@@ -291,7 +291,7 @@
                                 </div>
 
                                 <ul class="nav navbar-nav">
-                                    <li class=" active ">
+<%--                                    <li class=" active ">
                                         <a href="#cat-982" data-toggle="tab"><%=Model.DressesName %></a>
                                     </li>
 
@@ -305,7 +305,7 @@
 
                                     <li class="">
                                         <a href="#cat-963" data-toggle="tab"><%=Model.BootsName %></a>
-                                    </li>
+                                    </li>--%>
 
                                 </ul>
                             </div>
@@ -373,7 +373,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="tab-panel " id="cat-1191">
+<%--                                        <div class="tab-panel " id="cat-1191">
                                             <div class="category-products">
                                                 <ul class="products-grid">
 
@@ -541,7 +541,7 @@
                                                     <%} %>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>--%>
 
                                     </div>
                                 </div>

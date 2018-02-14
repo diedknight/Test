@@ -32,7 +32,8 @@ namespace HotterWinds.DBQuery
                         + " RetailerProductName=(select top 1 RetailerProductName from CSK_Store_RetailerProductNew where ProductID = a.ProductID),"
                         + " SKU=(select top 1 RetailerProductSKU from CSK_Store_RetailerProductNew where ProductID = a.ProductID)"
                         + " from CSK_Store_ProductNew as a"
-                        + " where categoryId = @cId and ProductStatus=1 order by createdon desc";
+                        //+ " where categoryId = @cId and ProductStatus=1 order by createdon desc";
+                        + " where ProductStatus=1 order by createdon desc";
 
             var con = GetConnection();
             list = con.Query<ViewModels.Product>(sql, new { cId = categoryId }).ToList();

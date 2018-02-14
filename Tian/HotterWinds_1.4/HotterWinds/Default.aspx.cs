@@ -23,17 +23,17 @@ namespace HotterWinds
             Model.Dresses = HomeQuery.GetProducts(4, cateIds[0]);
             Model.Dresses.ForEach(item => item.Stars = 0);
 
-            Model.SunGlassesName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[1], PriceMe.WebConfig.CountryId).CategoryName;
-            Model.SunGlasses = HomeQuery.GetProducts(4, cateIds[1]);
-            Model.SunGlasses.ForEach(item => item.Stars = 0);
+            //Model.SunGlassesName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[1], PriceMe.WebConfig.CountryId).CategoryName;
+            //Model.SunGlasses = HomeQuery.GetProducts(4, cateIds[1]);
+            //Model.SunGlasses.ForEach(item => item.Stars = 0);
 
-            Model.TentsName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[2], PriceMe.WebConfig.CountryId).CategoryName;
-            Model.Tents = HomeQuery.GetProducts(4, cateIds[2]);
-            Model.Tents.ForEach(item => item.Stars = 0);
+            //Model.TentsName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[2], PriceMe.WebConfig.CountryId).CategoryName;
+            //Model.Tents = HomeQuery.GetProducts(4, cateIds[2]);
+            //Model.Tents.ForEach(item => item.Stars = 0);
 
-            Model.BootsName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[3], PriceMe.WebConfig.CountryId).CategoryName;
-            Model.Boots = HomeQuery.GetProducts(4, cateIds[3]);
-            Model.Boots.ForEach(item => item.Stars = 0);
+            //Model.BootsName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[3], PriceMe.WebConfig.CountryId).CategoryName;
+            //Model.Boots = HomeQuery.GetProducts(4, cateIds[3]);
+            //Model.Boots.ForEach(item => item.Stars = 0);
 
             Model.BestSellerProducts = HomeQuery.GetBestSellerProducts();
             Model.BestSellerProducts.ForEach(item => item.Stars = 0);
