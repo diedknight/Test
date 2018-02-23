@@ -31,13 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PriceMePlansDBA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\PriceMePlansDBA.dll</HintPath>
+    <Reference Include="PriceMePlansDBA">
+      <HintPath>..\Dll\PriceMePlansDBA.dll</HintPath>
     </Reference>
-    <Reference Include="SubSonic.Core, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\SubSonic.Core.dll</HintPath>
+    <Reference Include="SubSonic.Core">
+      <HintPath>..\Dll\SubSonic.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

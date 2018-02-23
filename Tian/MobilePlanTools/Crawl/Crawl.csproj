@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SmartThreadPool">
-      <HintPath>..\..\..\priceme_pricealyser\TheThirdPartyDLL\SmartThreadPool\SmartThreadPool.dll</HintPath>
+      <HintPath>..\Dll\SmartThreadPool.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
