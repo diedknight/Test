@@ -1,1 +1,0 @@
-Could not find server 'web' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers.
