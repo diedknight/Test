@@ -115,19 +115,19 @@ namespace Fetcher
                     foreach(var p in products)
                     {
                         string productUrl = p["mobileDetailsURI"].Value<string>();
-                        //XbaiRequest productReq = new XbaiRequest(productUrl);
-                        //JQuery doc = new JQuery(productReq.Get(), url);
-
                         var infos = new MobilePhoneInfo();
-                        //infos.PhoneName = doc.find(".productTitle h1").text().Trim();
-                        //infos.phoneURL = productUrl;
-                        //Uri imgAbsoluteUri = new Uri(new Uri("https://www.vodafone.co.nz/"), doc.find(".productPic1 img").attr("src"));
-                        //infos.PhoneImage = imgAbsoluteUri.ToString();
-                        //infos.PlanName = doc.find(".withPlanName").text().Trim();
 
-                        infos.PhoneName = p["displayName"].Value<string>();
+                        XbaiRequest productReq = new XbaiRequest(productUrl);
+                        JQuery doc = new JQuery(productReq.Get(), url);
+                        infos.PhoneName = doc.find(".productTitle h1").text().Trim();
                         infos.phoneURL = productUrl;
-
+                        Uri imgAbsoluteUri = new Uri(new Uri("https://www.vodafone.co.nz/"), doc.find(".productPic1 img").attr("src"));
+                        infos.PhoneImage = imgAbsoluteUri.ToString();
+                        infos.PlanName = doc.find(".withPlanName").text().Trim();
+                        infos.UpfrontPrice = doc.find(".price-container").text().Trim().Replace("\t", "").Replace("\n", "").ToDecimal();
+                        
+                        //infos.PhoneName = p["displayName"].Value<string>();
+                        //infos.phoneURL = productUrl;
 
                         pInfos.Add(infos);
                     }
