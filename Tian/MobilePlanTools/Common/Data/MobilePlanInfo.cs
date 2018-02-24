@@ -103,5 +103,6 @@ namespace Common.Data
         //CSK_Store_MobilePlanPhoneMap
         public decimal UpfrontPrice { get; set; }
         public string phoneURL { get; set; }
+        public string PlanName { get; set; }
     }
 }

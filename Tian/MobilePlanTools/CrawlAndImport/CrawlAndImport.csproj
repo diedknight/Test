@@ -42,7 +42,7 @@
       <HintPath>..\Import\bin\Debug\Import.dll</HintPath>
     </Reference>
     <Reference Include="SubSonic.Core">
-      <HintPath>bin\MobilePlanTools\SubSonic.Core.dll</HintPath>
+      <HintPath>..\Dll\SubSonic.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

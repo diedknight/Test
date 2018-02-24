@@ -20,11 +20,10 @@ namespace CrawlAndImport
         static CrawlReportLog crlog;
         static void Main(string[] args)
         {
+            Fetcher.BaseFetcher fetcher = new Fetcher.VodafoneFetcher();
+            fetcher.GetMobilePlanInfoList();
+
             CrawlReport();
-
-            //Fetcher.BaseFetcher fetcher = new Fetcher.TelecomFetcher();
-            //fetcher.GetMobilePlanInfoList();
-
 
             FetcherCrawler fetcherCrawler = new FetcherCrawler();
             fetcherCrawler.CrawlFinishedEvent += new CrawlFinishedEventArgs.OnCrawlFinished(fetcherCrawler_CrawlFinishedEvent);
