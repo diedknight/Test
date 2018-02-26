@@ -38,48 +38,50 @@ namespace Fetcher
         private void GetData(List<MobilePlanInfo> mobilePlanList, string url, string phone_url, bool isPlan)
         {
             StarlCrawlPlansLinkLog(url);
+
             #region Phone
+            //var pInfos = new List<MobilePhoneInfo>();
+            //XbaiRequest req = new XbaiRequest(phone_url);
+            //JQuery doc = new JQuery(req.Get(), phone_url);
 
-            var pInfos = new List<MobilePhoneInfo>();
-            XbaiRequest req = new XbaiRequest(phone_url);
-            JQuery doc = new JQuery(req.Get(), phone_url);
-
-            doc.find("#entry > .container-fluid > *").each(item =>
-            {
-                var node = item.ToJQuery();
-                if (node.get(0).OuterHtml.StartsWith("<spark-device-card"))
-                {
-                    var infos = new MobilePhoneInfo();
-                    //infos.ContractTypeID = node.attr("prop-id");
-                    infos.PhoneName = node.attr("prop-brandName") + " " + node.attr("prop-name");
-                    infos.UpfrontPrice = node.attr("prop-deferredPrice").ToDecimal();
-                    infos.PhoneImage = node.attr("prop-productImage");
-                    Uri imageAbsoluteUri = new Uri(new Uri("https://www.spark.co.nz/"), infos.PhoneImage);
-                    infos.PhoneImage = imageAbsoluteUri.ToString();
-                    infos.phoneURL = node.attr("prop-cta");
-                    Uri productAbsoluteUri = new Uri(new Uri("https://www.spark.co.nz/"), infos.phoneURL);
-                    infos.phoneURL = productAbsoluteUri.ToString();
-                    infos.PlanName = node.attr("prop-listedPlanName");
-                    pInfos.Add(infos);
-                }
-            });
+            //doc.find("#entry > .container-fluid > *").each(item =>
+            //{
+            //    var node = item.ToJQuery();
+            //    if (node.get(0).OuterHtml.StartsWith("<spark-device-card"))
+            //    {
+            //        var infos = new MobilePhoneInfo();
+            //        //infos.ContractTypeID = node.attr("prop-id");
+            //        infos.PhoneName = node.attr("prop-brandName") + " " + node.attr("prop-name");
+            //        infos.UpfrontPrice = node.attr("prop-deferredPrice").ToDecimal();
+            //        infos.PhoneImage = node.attr("prop-productImage");
+            //        Uri imageAbsoluteUri = new Uri(new Uri("https://www.spark.co.nz/"), infos.PhoneImage);
+            //        infos.PhoneImage = imageAbsoluteUri.ToString();
+            //        infos.phoneURL = node.attr("prop-cta");
+            //        Uri productAbsoluteUri = new Uri(new Uri("https://www.spark.co.nz/"), infos.phoneURL);
+            //        infos.phoneURL = productAbsoluteUri.ToString();
+            //        infos.PlanName = node.attr("prop-listedPlanName");
+            //        pInfos.Add(infos);
+            //    }
+            //});
 
 
-            if(pInfos.Count == 0)
-            {
-                LogEventArgs logEventArgs = new LogEventArgs(LogType.CrawlLog, "Telecom Phone not found!", "TelecomFetcher");
-                GenerateLog(logEventArgs);
-            }
+            //if(pInfos.Count == 0)
+            //{
+            //    LogEventArgs logEventArgs = new LogEventArgs(LogType.CrawlLog, "Telecom Phone not found!", "TelecomFetcher");
+            //    GenerateLog(logEventArgs);
+            //}
             #endregion
 
-            GetMobilePlan(mobilePlanList, pInfos, url);
+            GetMobilePlan(mobilePlanList, url);
 
             url = "https://www.spark.co.nz/shop/mobile-plans/prepaid.html";
-            GetMobilePlan(mobilePlanList, pInfos, url);
+            GetMobilePlan(mobilePlanList, url);
         }
 
-        private void GetMobilePlan(List<MobilePlanInfo> mobilePlanList, List<MobilePhoneInfo> pInfos, string url)
+        private void GetMobilePlan(List<MobilePlanInfo> mobilePlanList, string url)
         {
+            string phonesUrlBase = "https://www.spark.co.nz/shop/mobile/phones.html?contr=phones&tab=-1&source=SOPO_ServicePlan&servicePlanId=";
+
             JQuery doc = new JQuery(this.GetHttpContent(url), url);
             doc.find(".clearfix.device-carousel-card").each(item =>
             {
@@ -124,14 +126,32 @@ namespace Fetcher
                 info.plus = 0;
                 var PhoneList = new List<MobilePhoneInfo>();
                 string priceInfo = info.Price.ToString("0.00");
-                foreach (var p in pInfos)
+
+                string phonesUrlFlag = node.find(".hightlight-text.view-mobi-add").attr("data-serviceplanid");
+                string phonesUrl = phonesUrlBase + phonesUrlFlag;
+                JQuery phonesDoc = new JQuery(this.GetHttpContent(phonesUrl), phonesUrl);
+
+                List<MobilePhoneInfo> pInfos = new List<MobilePhoneInfo>();
+                phonesDoc.find("#entry > .container-fluid > *").each(phonesItem =>
                 {
-                    if (p.PlanName.Contains("$" + priceInfo))
+                    var phoneNode = phonesItem.ToJQuery();
+                    if (phoneNode.get(0).OuterHtml.StartsWith("<spark-device-card"))
                     {
-                        PhoneList.Add(p);
+                        var infos = new MobilePhoneInfo();
+                        //infos.ContractTypeID = node.attr("prop-id");
+                        infos.PhoneName = phoneNode.attr("prop-brandName") + " " + phoneNode.attr("prop-name");
+                        infos.UpfrontPrice = phoneNode.attr("prop-deferredPrice").ToDecimal();
+                        infos.PhoneImage = phoneNode.attr("prop-productImage");
+                        Uri imageAbsoluteUri = new Uri(new Uri("https://www.spark.co.nz/"), infos.PhoneImage);
+                        infos.PhoneImage = imageAbsoluteUri.ToString();
+                        infos.phoneURL = phoneNode.attr("prop-cta");
+                        Uri productAbsoluteUri = new Uri(new Uri("https://www.spark.co.nz/"), infos.phoneURL);
+                        infos.phoneURL = productAbsoluteUri.ToString();
+                        infos.PlanName = phoneNode.attr("prop-listedPlanName");
+                        pInfos.Add(infos);
                     }
-                }
-                info.Phones = PhoneList;
+                });
+                info.Phones = pInfos;
 
                 mobilePlanList.Add(info);
             });

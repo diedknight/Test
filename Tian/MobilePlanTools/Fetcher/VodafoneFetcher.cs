@@ -37,7 +37,7 @@ namespace Fetcher
         {
             StartCrawlingLog();
             List<MobilePlanInfo> mobilePlanList = new List<MobilePlanInfo>();
-
+            //return mobilePlanList;
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
             ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(CheckValidationResult);
 

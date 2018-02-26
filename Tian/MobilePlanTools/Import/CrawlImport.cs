@@ -291,9 +291,11 @@ namespace Import
             }
             catch (Exception ex)
             {
-                StreamWriter sw = new StreamWriter("log.txt");
-                sw.WriteLine(ex.Message);
-                sw.Flush(); 
+                using (StreamWriter sw = new StreamWriter("log.txt"))
+                {
+                    sw.WriteLine(ex.Message);
+                    sw.Flush();
+                }
             }
 
             return info;

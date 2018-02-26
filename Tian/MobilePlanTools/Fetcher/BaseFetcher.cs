@@ -128,11 +128,12 @@ namespace Fetcher
                 request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
                 request.Timeout = 1000000;
 
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                StreamReader streamReader = new StreamReader(response.GetResponseStream());
-
-                string html = streamReader.ReadToEnd();
-                return html;
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                {
+                    string html = streamReader.ReadToEnd();
+                    return html;
+                }
             }
             catch (Exception ex)
             {
