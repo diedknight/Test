@@ -59,7 +59,7 @@ namespace Fetcher
 
                     var info = new MobilePlanInfo();
                     info.CarrierName = this.ProviderName;
-                    info.MobilePlanName = item.Find(".plan-tbl__name__title").InnerText.Trim();
+                    info.MobilePlanName = item.Find(".plan-tbl__name__title").InnerText.Trim() + " " + item.Find(".plan-tbl__price__sum").InnerText.Trim();
                     var infos = item.Find(".plan-tbl__feature__title");
                     info.DataMB = infos.Item(0).InnerText.Trim();
                     var talk = infos.Item(1).InnerText.Trim(); 
