@@ -1,0 +1,20 @@
+﻿@using Nop.Core
+@using Nop.Services.Localization
+@using Nop.Web.Framework.Themes
+
+@inject IThemeContext themeContext
+@inject IStoreContext storeContext
+
+@model LogoModel
+
+@{
+    var logoPath = $"~/Themes/{themeContext.WorkingThemeName}/Content/img/logo.png";
+
+    var themeLogo = await Component.InvokeAsync("Widget", new { widgetZone = "pavilion_theme_logo" });
+    
+}
+
+<a href="@Url.RouteUrl("HomePage")" class="logo">
+       
+        <img title="" alt="Shop.co.nz" src="https://shop.co.nz/content/images/thumbs/0000129.png" style="background-color: #fff">
+</a>
