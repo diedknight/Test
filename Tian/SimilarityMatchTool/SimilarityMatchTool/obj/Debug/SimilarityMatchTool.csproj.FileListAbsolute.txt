@@ -1,0 +1,13 @@
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\SimilarityMatchTool.exe.config
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\SimilarityMatchTool.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\SimilarityMatchTool.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\Priceme.Infrastructure.DB.Dapper.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\StrSimilarity.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\StrSimilarity.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\obj\Debug\SimilarityMatchTool.csprojResolveAssemblyReference.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\obj\Debug\SimilarityMatchTool.csproj.CoreCompileInputs.cache
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\obj\Debug\SimilarityMatchTool.exe
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\obj\Debug\SimilarityMatchTool.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\Sql\cache1.sql
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\Sql\cache2.sql
+H:\XbaiTwoV_Project\priceme_minitools\Tian\SimilarityMatchTool\SimilarityMatchTool\bin\Debug\Sql\InsertSimilarityMatchReport.sql
