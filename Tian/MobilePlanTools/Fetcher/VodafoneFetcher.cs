@@ -125,7 +125,7 @@ namespace Fetcher
                         infos.PhoneImage = imgAbsoluteUri.ToString();
                         infos.PlanName = doc.find(".withPlanName").text().Trim();
                         infos.UpfrontPrice = doc.find(".price-container").text().Trim().Replace("\t", "").Replace("\n", "").ToDecimal();
-                        
+                        infos.ContractTypeID = 3;
                         //infos.PhoneName = p["displayName"].Value<string>();
                         //infos.phoneURL = productUrl;
 

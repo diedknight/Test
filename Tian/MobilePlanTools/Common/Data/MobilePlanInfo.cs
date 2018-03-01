@@ -24,8 +24,7 @@ namespace Common.Data
         public int Texts { get; set; }
         public int plus { get; set; }
 
-        public string ContractType { get; set; }
-
+        public int ContractTypeId { get; set; }
 
         public decimal CallRate { get; set; }
         public decimal DataRate { get; set; }
@@ -58,7 +57,6 @@ namespace Common.Data
             string[] info = textLine.Split('\t');
             if (info.Length == 10)
             {
-                
                 return this;
             }
             else
