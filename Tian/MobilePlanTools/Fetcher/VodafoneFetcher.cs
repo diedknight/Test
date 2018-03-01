@@ -82,10 +82,12 @@ namespace Fetcher
                         info.ContractTypeId = 3;
                     }
 
+                    string realPlanName = item.Find(".plan-tbl__name__title").InnerText.Trim();
+
                     var PhoneList = new List<MobilePhoneInfo>();
                     foreach (var pi in pInfos)
                     {
-                        if (pi.PlanName.Contains(info.MobilePlanName) && pi.PlanName.Contains(info.Price.ToString("0.00")))
+                        if (pi.PlanName.Contains(realPlanName) && pi.PlanName.Contains(info.Price.ToString("0.00")))
                         {
                             PhoneList.Add(pi);
                         }
