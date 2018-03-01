@@ -46,11 +46,9 @@ namespace Fetcher
                 string url = "https://www.vodafone.co.nz/shop/rest/model/atg/commerce/catalog/ProductCatalogActor/getProducts?callback=angular.callbacks._5&categoryId=cat1190007&filterBy=planView_onAccount&pageNum={0}&paymentType=interestFree&sortKey=SortBundleRecommended";
                 StarlCrawlPhonesLinkLog(url);
                //获取手机数据列表
-                var pInfos = new List<MobilePhoneInfo>();
-                GetPhonesData(url, pInfos);
+                var pInfos = GetPhonesData(url);
 
                 //获取手机套餐
-
                 string plansUrl = "https://www.vodafone.co.nz/pay-monthly/";
                 XbaiRequest req = new XbaiRequest(plansUrl);
                 JQuery doc = new JQuery(req.Get(), url);
@@ -69,6 +67,20 @@ namespace Fetcher
                     info.MobilePlanURL = item.Find(".plan-tbl__cta.plan-tbl__cta--buy").First.GetLink();
                     info.Texts = -1;
                     info.plus = 0;
+
+                    string termInfo = item.Find(".plan-tbl__price__term").InnerText.Trim();
+                    if(termInfo.Contains("1 month"))
+                    {
+                        info.ContractTypeId = 1;
+                    }
+                    else if (termInfo.Contains("12 month"))
+                    {
+                        info.ContractTypeId = 2;
+                    }
+                    else if (termInfo.Contains("24 month"))
+                    {
+                        info.ContractTypeId = 3;
+                    }
 
                     var PhoneList = new List<MobilePhoneInfo>();
                     foreach (var pi in pInfos)
@@ -92,9 +104,9 @@ namespace Fetcher
             return mobilePlanList;
         }
 
-        private void GetPhonesData(string urlFormat, List<MobilePhoneInfo> pInfos)
+        private List<MobilePhoneInfo> GetPhonesData(string urlFormat)
         {
-            pInfos = new List<MobilePhoneInfo>();
+            List<MobilePhoneInfo> pInfos = new List<MobilePhoneInfo>();
             bool hasProducts = true;
             int pageIndex = 0;
             string url = string.Format(urlFormat, pageIndex);
@@ -126,6 +138,7 @@ namespace Fetcher
                         infos.PlanName = doc.find(".withPlanName").text().Trim();
                         infos.UpfrontPrice = doc.find(".price-container").text().Trim().Replace("\t", "").Replace("\n", "").ToDecimal();
                         infos.ContractTypeID = 3;
+
                         //infos.PhoneName = p["displayName"].Value<string>();
                         //infos.phoneURL = productUrl;
 
@@ -146,6 +159,8 @@ namespace Fetcher
                 LogEventArgs logEventArgs = new LogEventArgs(LogType.CrawlLog, "Telecom Phone not found!", "TelecomFetcher");
                 GenerateLog(logEventArgs);
             }
+
+            return pInfos;
         }
     }
 }
