@@ -14,9 +14,11 @@ namespace ExtensionWebsite.Code
         public static List<Retailer> ListRetailer;
         public static List<int> ListOverseasRetailer;
         public static List<RetailerExtension> ListRetailerExtension;
+        public static string Countrys;
 
         public static void Load()
         {
+            Countrys = System.Configuration.ConfigurationManager.AppSettings["Countrys"].ToString();
             BindConnection();
             BindRetailerProductUrls();
             BindOverseasRetailers();
@@ -62,7 +64,7 @@ namespace ExtensionWebsite.Code
         {
             ListRetailer = new List<Retailer>();
             string sql = "Select r.RetailerId, RetailerName, RetailerURL, LogoFile, r.RetailerCountry, p.PPCMemberTypeID From csk_store_retailer r "
-                       + "inner join CSK_Store_PPCMember p on r.RetailerId = p.RetailerId Where RetailerStatus = 1 And IsSetupComplete = 1";
+                       + "inner join CSK_Store_PPCMember p on r.RetailerId = p.RetailerId Where RetailerStatus = 1 And IsSetupComplete = 1 And r.RetailerCountry in (" + Countrys + ")";
             using (SqlConnection sqlConn = new SqlConnection(dicConnection[0]))
             {
                 sqlConn.Open();

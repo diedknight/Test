@@ -92,8 +92,9 @@ namespace ExtensionWebsite.Code
         {
             List<RetailerProduct> rps = new List<RetailerProduct>();
 
-            string sql = "select RetailerProductId, RetailerId, ProductId, RetailerProductName, RetailerPrice, Freight from "
-                       + "CSK_Store_RetailerProductNew Where RetailerId != " + retailer.RetailerId + " And RetailerProductCondition = 0 And ProductId = " + pid;
+            string sql = "select p.RetailerProductId, p.RetailerId, p.ProductId, p.RetailerProductName, p.RetailerPrice, p.Freight from "
+                       + "CSK_Store_RetailerProductNew p inner join csk_store_retailer r On p.RetailerId = r.RetailerId Where "
+                       + "p.RetailerId != " + retailer.RetailerId + " And p.RetailerProductCondition = 0 And p.ProductId = " + pid + " And r.RetailerCountry in  (" + SiteConfig.Countrys + ")";
             using (SqlConnection sqlConn = new SqlConnection(SiteConfig.dicConnection[retailer.RetailerCountry]))
             {
                 sqlConn.Open();
