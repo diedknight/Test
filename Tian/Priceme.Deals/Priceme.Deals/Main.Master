@@ -6,14 +6,14 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css" />
-    <link href="//images.pricemestatic.com/pricemeico.ico" rel="shortcut icon" />    
+    <link href="//images.pricemestatic.com/pricemeico.ico" rel="shortcut icon" />
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-    
+
 
     <link href="css/main.min.css?v=1.1.2" rel="stylesheet" />
     <script src="js/Common.js?v=1.1.1"></script>
@@ -104,7 +104,7 @@
         </div>
 
 
-        <div class="container">                        
+        <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
 
             <%--<div class="tab-content">
@@ -112,7 +112,6 @@
                     
                 </div>                
             </div>--%>
-            
         </div>
 
         <div id="ad" style="text-align: center;">
@@ -131,12 +130,12 @@
         <div id="newFootNavDiv">
             <div id="NewsletterDiv">
                 <div class="container input-group">
-                    <div class="widthDiv">
+<%--                    <div class="widthDiv">
                         <input class="form-control" type="email" id="iContact_fields_email_footer" placeholder="WEEKLY DEALS : Your Email" name="fields_email" />
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-info">Subscribe</button>
                         </span>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
 
@@ -237,7 +236,7 @@
 
             <div class="copyright-div">
                 <div class="container">
-                    <label>Copyright © PriceMe 2016</label>
+                    <label>Copyright © PriceMe <%=DateTime.Now.Year %></label>
 
                     <div class="backToTopSpan">
                         <a href="#header">Back to top <span class="glyphicon glyphicon-circle-arrow-up"></span></a>
