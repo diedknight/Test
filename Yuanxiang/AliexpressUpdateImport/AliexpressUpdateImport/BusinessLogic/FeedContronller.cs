@@ -88,7 +88,11 @@ namespace AliexpressImport.BusinessLogic
             
             productInfoEntity.Category = GetColumnData(csvReader, 3);
             productInfoEntity.AdminComment = GetColumnData(csvReader, 4);
-            
+
+            decimal shipping = 0m;
+            decimal.TryParse(GetColumnData(csvReader, 5), out shipping);
+            productInfoEntity.Shipping = shipping;
+
             return productInfoEntity;
         }
 

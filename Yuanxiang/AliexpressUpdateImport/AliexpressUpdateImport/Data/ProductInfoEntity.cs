@@ -15,6 +15,7 @@ namespace AliexpressImport.Data
         public decimal Height { get; set; }
         public decimal Weight { get; set; }
         public string FullDescription { get; set; }
+        public decimal Shipping { get; set; }
         public string Vendor { get; set; }
         public string DeliveryDate { get; set; }
         public string PriceCurrency { get; set; }
