@@ -50,10 +50,13 @@ namespace GoogleShoppingFeed
         {
             List<GoogleFeedProduct> pList = new List<GoogleFeedProduct>();
 
+            if (googleCategoryMapDic == null || googleCategoryMapDic.Count == 0)
+                return pList;
+
             string sqlFormat = @"with TempT as(
                     select ROW_NUMBER() over(partition BY RPT.ProductId ORDER BY RetailerPrice) as Num, PT.ProductId, PT.ProductName, PT.DefaultImage, PT.CategoryID, PT.ManufacturerID, RPT.RetailerPrice, RPT.Freight, RPT.RetailerProductCondition, RPT.StockStatus from CSK_Store_RetailerProduct as RPT 
                     inner join CSK_Store_Product as PT on RPT.ProductId = PT.ProductID
-                    where PT.CategoryID in ({0}) and PT.IsMerge = 1
+                    where PT.IsMerge = 1 {0}
                     and RetailerId in ( select RetailerId from CSK_Store_Retailer where RetailerCountry = 3 and RetailerStatus = 1 and RetailerId in (select RetailerId from CSK_Store_PPCMember where PPCMemberTypeID = 2)
                     ) and RetailerProductStatus = 1)
 
@@ -63,8 +66,11 @@ namespace GoogleShoppingFeed
                     left join CSK_Store_PM_ProductDescription PDT on PDT.PID = TempT.ProductID and PDT.CountryID = 3
                     where TempT.Num = 1 and TempT.RetailerPrice > {1}";
 
+            string cIdSqlFormat = "and PT.CategoryID in ({0}) ";
             string cidListStr = string.Join(",", googleCategoryMapDic.Keys);
-            string querySql = string.Format(sqlFormat, cidListStr, minPrice);
+            string cIdSql = string.Format(cIdSqlFormat, cidListStr);
+
+            string querySql = string.Format(sqlFormat, cIdSql, minPrice);
 
             using (SqlConnection sqlConn = new SqlConnection(dbConnStr))
             using (SqlCommand sqlCmd = new SqlCommand(querySql, sqlConn))
