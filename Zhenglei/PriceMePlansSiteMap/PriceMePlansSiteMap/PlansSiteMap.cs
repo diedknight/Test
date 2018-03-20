@@ -55,7 +55,8 @@ namespace PriceMePlansSiteMap
 
         private void GetMobilePlan(List<string> plans)
         {
-            string sql = "Select Id, CarrierId, PlanName From dbo.CSK_Store_MobilePlan";
+            string sql = @"Select Id, CarrierId, PlanName From dbo.CSK_Store_MobilePlan
+                           where Status = 1 and Id in (select MobilePlanId from CSK_Store_MobilePlanPhoneMap where Status = 1)";
             IDataReader dr = new StoredProcedure("")
             {
                 Command =
@@ -77,7 +78,7 @@ namespace PriceMePlansSiteMap
                 {
                     carrierName = this.carrDic[cid];
                 }
-                string url = this.appPath + this.FilterInvalidUrlPathChar(carrierName + "-" + planName) + "_p_" + id;
+                string url = this.appPath + this.FilterInvalidUrlPathChar(carrierName) + "_p_" + id;
                 plans.Add(url);
             }
             dr.Close();
