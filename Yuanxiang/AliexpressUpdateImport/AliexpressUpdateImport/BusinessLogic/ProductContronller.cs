@@ -22,7 +22,7 @@ namespace AliexpressImport.BusinessLogic
             if (product == null)
                 product = Product.SingleOrDefault(p => p.Sku == info.Sku);
 
-            if (product != null)
+            if (product != null && product.Price > 0m)
             {
                 ProductUpdate(product, info);
                 type = 2;
