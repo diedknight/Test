@@ -197,6 +197,8 @@ namespace AliExpressFetcher
                                     }
 
                                     var stringprice = pro.FindElement(By.CssSelector(".price.price-m .value")).Text.Replace("NZ$", "").Trim();
+                                    if (stringprice.Contains(" - "))
+                                        stringprice = stringprice.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
                                     decimal price = 0m;
                                     decimal.TryParse(stringprice, out price);
 
