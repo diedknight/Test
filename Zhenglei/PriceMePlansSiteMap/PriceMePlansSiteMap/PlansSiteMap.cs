@@ -86,7 +86,10 @@ namespace PriceMePlansSiteMap
 
         private void GetMobilePhone(List<string> phones)
         {
-            string sql = "Select m.Id, m.MobilePlanId, m.MobilePhoneId, p.CarrierId, p.PlanName, ph.Name From dbo.CSK_Store_MobilePlanPhoneMap m inner join CSK_Store_MobilePlan p on m.MobilePlanId = p.Id inner join dbo.CSK_Store_MobilePhone ph on m.MobilePhoneId = ph.Id";
+            string sql = "Select m.Id, m.MobilePlanId, m.MobilePhoneId, p.CarrierId, p.PlanName, ph.Name From dbo.CSK_Store_MobilePlanPhoneMap m " +
+                         "inner join CSK_Store_MobilePlan p on m.MobilePlanId = p.Id " +
+                         "inner join dbo.CSK_Store_MobilePhone ph on m.MobilePhoneId = ph.Id " +
+                         "where m.Status = 1 and p.Status = 1 and ph.Pid > 0";
             IDataReader dr = new StoredProcedure("")
             {
                 Command =
