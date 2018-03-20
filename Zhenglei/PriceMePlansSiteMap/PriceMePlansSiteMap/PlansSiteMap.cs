@@ -78,7 +78,7 @@ namespace PriceMePlansSiteMap
                 {
                     carrierName = this.carrDic[cid];
                 }
-                string url = this.appPath + this.FilterInvalidUrlPathChar(carrierName) + "_p_" + id;
+                string url = this.appPath + this.FilterInvalidUrlPathChar(carrierName + "-" + planName) + "_p_" + id;
                 plans.Add(url);
             }
             dr.Close();
@@ -122,9 +122,7 @@ namespace PriceMePlansSiteMap
                         {
                             carrierName,
                             "-",
-                            planName,
-                            "-",
-                            phoneName
+                            planName
                         })),
                         "_p_",
                         id,
