@@ -75,15 +75,15 @@ namespace GoogleShoppingFeed
                                 <g:id>{0}</g:id><g:title>{1}</g:title>
                                 <g:description>{2}</g:description><g:link>{3}</g:link>
                                 <g:image_link>{4}</g:image_link><g:availability>{5}</g:availability>
-                                <g:condition>{6}</g:condition><g:google_product_category>{7}</g:google_product_category>
-                                <g:product_type>{8}</g:product_type><g:price>{9}</g:price><g:brand>{10}</g:brand>
-                                <g:adult>No</g:adult><g:shipping>{11}</g:shipping>
+                                <g:condition>{6}</g:condition>
+                                <g:product_type>{7}</g:product_type><g:price>{8}</g:price><g:brand>{9}</g:brand>
+                                <g:adult>No</g:adult><g:shipping>{10}</g:shipping>
                                 </item>";
 
             string priceInfo = Price.ToString("0.00") + " NZD";
             string shippingInfo = Shipping < 0 ? "" : Shipping.ToString("0.00") + " NZD";
 
-            return string.Format(xmlFormat, Id, SafeString(Title), SafeString(Description), Link, SafeString(ImageLink), Availability, Condition, GoogleProductCategory, SafeString(ProductType), priceInfo, Brand, shippingInfo);
+            return string.Format(xmlFormat, Id, SafeString(Title), SafeString(Description), Link, SafeString(ImageLink), Availability, Condition, SafeString(ProductType), priceInfo, SafeString(Brand), shippingInfo);
         }
 
         public string SafeString(string str)

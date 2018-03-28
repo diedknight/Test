@@ -15,28 +15,20 @@ namespace GoogleShoppingFeed
         {
             string timeStr = DateTime.Now.ToString("yyyy_MM_dd HH_mm");
             string logPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["LogRootPath"], timeStr + ".txt");
+            string includeCategoriesSQL = System.Configuration.ConfigurationManager.AppSettings["IncludeCategoriesSQL"];
+            
             using (LogWriter logWriter = new LogWriter(logPath))
             {
                 logWriter.WriteLine("Start load config. --- " + DateTime.Now.ToString("HH:mm:ss"));
 
-                string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], timeStr + ".xml");
+                string feedPath = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FeedRootPath"], "priceme.xml");
                 decimal minPrice = decimal.Parse(System.Configuration.ConfigurationManager.AppSettings["MinPrice"]);
-                string categoryConfig = System.Configuration.ConfigurationManager.AppSettings["IncludeCategories"];
-                List<int> categoriesList = GetCategoriesList(categoryConfig);
-                string googleCategoryMapFile = System.Configuration.ConfigurationManager.AppSettings["GoogleCategoryMap"];
-                Dictionary<int, int> googleCategoryMapDic = GetGoogleCategoryMapDic(googleCategoryMapFile, categoriesList);
-                string dbConnStr = System.Configuration.ConfigurationManager.ConnectionStrings["PriceMeDB"].ConnectionString;
 
-                foreach (int cId in categoriesList)
-                {
-                    if (!googleCategoryMapDic.ContainsKey(cId))
-                    {
-                        logWriter.WriteLine("Cid : " + cId + " no map.");
-                    }
-                }
+                string dbConnStr = System.Configuration.ConfigurationManager.ConnectionStrings["PriceMeDB"].ConnectionString;
+                List<int> categoriesList = GetCategoriesList(includeCategoriesSQL, dbConnStr);
 
                 logWriter.WriteLine("Start load products. --- " + DateTime.Now.ToString("HH:mm:ss"));
-                List<GoogleFeedProduct> gProducts = LoadGoogleFeedProducts(googleCategoryMapDic, minPrice, dbConnStr);
+                List<GoogleFeedProduct> gProducts = LoadGoogleFeedProducts(categoriesList, minPrice, dbConnStr);
                 logWriter.WriteLine("products count : " + gProducts.Count + " --- " + DateTime.Now.ToString("HH:mm:ss"));
 
                 logWriter.WriteLine("Start write xml. --- " + DateTime.Now.ToString("HH:mm:ss"));
@@ -46,11 +38,11 @@ namespace GoogleShoppingFeed
             }
         }
 
-        private static List<GoogleFeedProduct> LoadGoogleFeedProducts(Dictionary<int, int> googleCategoryMapDic, decimal minPrice, string dbConnStr)
+        private static List<GoogleFeedProduct> LoadGoogleFeedProducts(List<int> categoryIds, decimal minPrice, string dbConnStr)
         {
             List<GoogleFeedProduct> pList = new List<GoogleFeedProduct>();
 
-            if (googleCategoryMapDic == null || googleCategoryMapDic.Count == 0)
+            if (categoryIds == null || categoryIds.Count == 0)
                 return pList;
 
             string sqlFormat = @"with TempT as(
@@ -67,7 +59,7 @@ namespace GoogleShoppingFeed
                     where TempT.Num = 1 and TempT.RetailerPrice > {1}";
 
             string cIdSqlFormat = "and PT.CategoryID in ({0}) ";
-            string cidListStr = string.Join(",", googleCategoryMapDic.Keys);
+            string cidListStr = string.Join(",", categoryIds);
             string cIdSql = string.Format(cIdSqlFormat, cidListStr);
 
             string querySql = string.Format(sqlFormat, cIdSql, minPrice);
@@ -87,7 +79,6 @@ namespace GoogleShoppingFeed
                         string imagePath = sqlDr.GetString(3);
                         gfp.ImageLink = GetImageLink(imagePath);
                         int pCategoryId = sqlDr.GetInt32(4);
-                        gfp.GoogleProductCategory = googleCategoryMapDic[pCategoryId];
                         gfp.Price = sqlDr.GetDecimal(6);
                         gfp.Shipping = sqlDr.GetDecimal(7);
                         int condition = sqlDr.GetInt32(8);
@@ -220,14 +211,26 @@ namespace GoogleShoppingFeed
             return dic;
         }
 
-        private static List<int> GetCategoriesList(string categoryConfig)
+        private static List<int> GetCategoriesList(string categoryIdSQL, string dbConnStr)
         {
-            string[] cs = categoryConfig.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
             List<int> list = new List<int>();
-            foreach(string str in cs)
+
+            string querySql = categoryIdSQL;
+
+            using (SqlConnection sqlConn = new SqlConnection(dbConnStr))
+            using (SqlCommand sqlCmd = new SqlCommand(querySql, sqlConn))
             {
-                list.Add(int.Parse(str));
+                sqlConn.Open();
+                sqlCmd.CommandTimeout = 0;
+                using (SqlDataReader sqlDr = sqlCmd.ExecuteReader())
+                {
+                    while (sqlDr.Read())
+                    {
+                        list.Add(sqlDr.GetInt32(0));
+                    }
+                }
             }
+
             return list;
         }
     }
