@@ -413,6 +413,8 @@ namespace AliExpressFetcher
                         }
                     }
 
+                    if (productPriceStr.Contains(" - "))
+                        productPriceStr = productPriceStr.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
                     decimal productPrice = decimal.Parse(productPriceStr);
                     string productPriceUnit = driver.FindElementByCssSelector(".p-price-content .p-unit").Text.Trim();
 
@@ -422,6 +424,8 @@ namespace AliExpressFetcher
                     {
                         oldProductPriceCurrency = driver.FindElementByCssSelector(".p-del-price-detail .p-symbol").Text.Trim();
                         string oldProductPriceStr = driver.FindElementByCssSelector(".p-del-price-detail .p-price").Text.Trim();
+                        if (oldProductPriceStr.Contains(" - "))
+                            oldProductPriceStr = oldProductPriceStr.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
                         oldProductPrice = decimal.Parse(oldProductPriceStr);
                     }
 
