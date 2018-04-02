@@ -155,7 +155,7 @@ namespace AliexpressImport.BusinessLogic
             foreach (string att in atts)
             {
                 string[] temps = att.Split(':');
-                if (!string.IsNullOrEmpty(temps[0]) && !string.IsNullOrEmpty(temps[1]) && temps[1] != "/")
+                if (temps.Length > 1 && !string.IsNullOrEmpty(temps[0]) && !string.IsNullOrEmpty(temps[1]) && temps[1] != "/")
                     ProductAtt(temps[0], temps[1], product.Id);
             }
         }
@@ -192,7 +192,7 @@ namespace AliexpressImport.BusinessLogic
             Picture pic = new Picture();
             pic.PictureBinary = imgBytesIn;
             pic.MimeType = imagetype;
-            pic.SeoFilename = pseos;
+            pic.SeoFilename = imgName.Substring(0, imgName.LastIndexOf('.'));
             pic.Save();
             
             fs.Flush();
