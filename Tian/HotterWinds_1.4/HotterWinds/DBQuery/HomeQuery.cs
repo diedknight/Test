@@ -33,7 +33,7 @@ namespace HotterWinds.DBQuery
                         + " SKU=(select top 1 RetailerProductSKU from CSK_Store_RetailerProductNew where ProductID = a.ProductID)"
                         + " from CSK_Store_ProductNew as a"
                         //+ " where categoryId = @cId and ProductStatus=1 order by createdon desc";
-                        + " where ProductStatus=1 order by createdon desc";
+                        + " where ProductStatus=1 and len(DefaultImage)>10 order by createdon desc";
 
             var con = GetConnection();
             list = con.Query<ViewModels.Product>(sql, new { cId = categoryId }).ToList();
@@ -58,7 +58,7 @@ namespace HotterWinds.DBQuery
 
             List<ViewModels.Product> list = new List<ViewModels.Product>();
 
-            string sql = "select top 8 "
+            string sql = "select top 80 "
                         + " ProductId, "
                         + " ProductName = (select top 1 ProductName from CSK_Store_ProductNew where ProductID = a.ProductId), "
                         + " PurchaseURL, "
@@ -75,7 +75,7 @@ namespace HotterWinds.DBQuery
                         + " where"
                         + " ProductId in"
                         + " ("
-                        + "     select top 8 ProductId from Pam_user..CSK_Store_RetailerTracker"
+                        + "     select top 80 ProductId from Pam_user..CSK_Store_RetailerTracker"
                         + "     where retailerproductid in(select retailerproductid from CSK_Store_RetailerProductNew where retailerproductstatus = 1 and isdeleted = 0) "
                         + "     and AffiliateID = 40"
                         + "     and ClickTime >getdate() - " + trackday
@@ -85,16 +85,18 @@ namespace HotterWinds.DBQuery
 
             var con = GetConnection();
             list = con.Query<ViewModels.Product>(sql).ToList();
-
-            list.ForEach(item => {
+            
+            list.ForEach(item => {                                
                 item.ImgUrl = Utility.FixImagePath(item.ImgUrl, "_ms");
 
                 string retailerProductURL = PriceMe.Utility.GetRootUrl("/ResponseRedirect.aspx?pid=" + item.ProductId + "&rid=" + item.RetailerId + "&rpid=" + item.RetailerProductId + "&countryID=" + PriceMe.WebConfig.CountryId + "&cid=" + item.CategoryId + "&aid=40&t=" + "HW", PriceMe.WebConfig.CountryId);
                 string uuid = Guid.NewGuid().ToString();
                 retailerProductURL += "&uuid=" + uuid;
 
-                item.PurchaseUrl = retailerProductURL;
+                item.PurchaseUrl = retailerProductURL;                
             });
+
+            list = list.Where(item => item.ImgUrl.Length > 10).Take(8).ToList();
 
             return list;
         }
@@ -116,7 +118,7 @@ namespace HotterWinds.DBQuery
                         + " RetailerProductName=(select top 1 RetailerProductName from CSK_Store_RetailerProductNew where ProductID = a.ProductID),"
                         + " SKU=(select top 1 RetailerProductSKU from CSK_Store_RetailerProductNew where ProductID = a.ProductID)"
                         + " from CSK_Store_ProductNew as a"
-                        + " where ProductStatus = 1 order by ModifiedOn desc";
+                        + " where ProductStatus = 1 and len(DefaultImage)>10 order by ModifiedOn desc";
 
             var con = GetConnection();
             list = con.Query<ViewModels.Product>(sql).ToList();
