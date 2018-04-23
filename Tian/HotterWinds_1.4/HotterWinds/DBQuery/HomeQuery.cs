@@ -85,15 +85,16 @@ namespace HotterWinds.DBQuery
 
             var con = GetConnection();
             list = con.Query<ViewModels.Product>(sql).ToList();
-            
-            list.ForEach(item => {                                
+
+            list.ForEach(item =>
+            {
                 item.ImgUrl = Utility.FixImagePath(item.ImgUrl, "_ms");
 
                 string retailerProductURL = PriceMe.Utility.GetRootUrl("/ResponseRedirect.aspx?pid=" + item.ProductId + "&rid=" + item.RetailerId + "&rpid=" + item.RetailerProductId + "&countryID=" + PriceMe.WebConfig.CountryId + "&cid=" + item.CategoryId + "&aid=40&t=" + "HW", PriceMe.WebConfig.CountryId);
                 string uuid = Guid.NewGuid().ToString();
                 retailerProductURL += "&uuid=" + uuid;
 
-                item.PurchaseUrl = retailerProductURL;                
+                item.PurchaseUrl = retailerProductURL;
             });
 
             list = list.Where(item => item.ImgUrl.Length > 10).Take(8).ToList();
@@ -140,34 +141,38 @@ namespace HotterWinds.DBQuery
         {
             List<ViewModels.BLog> list = new List<ViewModels.BLog>();
 
-            XbaiRequest req = new XbaiRequest("https://hotterwinds.co.nz/blog/feed/");
-            string xml = req.Get();
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(xml);
-
-
-            XmlNamespaceManager nsp = new XmlNamespaceManager(doc.NameTable);
-            nsp.AddNamespace("dc", "http://purl.org/dc/elements/1.1/");
-            nsp.AddNamespace("slash", "http://purl.org/rss/1.0/modules/slash/");
-
-            foreach (XmlNode item in doc.SelectNodes("rss/channel/item"))
+            string url = System.Configuration.ConfigurationManager.AppSettings["BlogUrl"];
+            if (!string.IsNullOrEmpty(url))
             {
-                if (list.Count >= 2) break;
+                XbaiRequest req = new XbaiRequest(url);
+                string xml = req.Get();
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(xml);
 
-                HotterWinds.ViewModels.BLog blog = new HotterWinds.ViewModels.BLog();
-                blog.Creator = item.SelectSingleNode("dc:creator", nsp).InnerText.Trim();
-                blog.Link = item.SelectSingleNode("link").InnerText.Trim();
-                blog.PubDate = Convert.ToDateTime(item.SelectSingleNode("pubDate").InnerText.Trim());
-                blog.Title = item.SelectSingleNode("title").InnerText.Trim();
-                blog.Comments = Convert.ToInt32(item.SelectSingleNode("slash:comments", nsp).InnerText.Trim());
 
-                string html = item.SelectSingleNode("description").OuterXml.Trim();
+                XmlNamespaceManager nsp = new XmlNamespaceManager(doc.NameTable);
+                nsp.AddNamespace("dc", "http://purl.org/dc/elements/1.1/");
+                nsp.AddNamespace("slash", "http://purl.org/rss/1.0/modules/slash/");
 
-                JQuery jquery = new JQuery(html);
-                blog.ImgUrl = jquery.find("img").getLink().Replace("-150x150", "");
-                blog.Description = jquery.last().text();
+                foreach (XmlNode item in doc.SelectNodes("rss/channel/item"))
+                {
+                    if (list.Count >= 2) break;
 
-                list.Add(blog);
+                    HotterWinds.ViewModels.BLog blog = new HotterWinds.ViewModels.BLog();
+                    blog.Creator = item.SelectSingleNode("dc:creator", nsp).InnerText.Trim();
+                    blog.Link = item.SelectSingleNode("link").InnerText.Trim();
+                    blog.PubDate = Convert.ToDateTime(item.SelectSingleNode("pubDate").InnerText.Trim());
+                    blog.Title = item.SelectSingleNode("title").InnerText.Trim();
+                    blog.Comments = Convert.ToInt32(item.SelectSingleNode("slash:comments", nsp).InnerText.Trim());
+
+                    string html = item.SelectSingleNode("description").OuterXml.Trim();
+
+                    JQuery jquery = new JQuery(html);
+                    blog.ImgUrl = jquery.find("img").getLink().Replace("-150x150", "");
+                    blog.Description = jquery.last().text();
+
+                    list.Add(blog);
+                }
             }
 
             return list;
