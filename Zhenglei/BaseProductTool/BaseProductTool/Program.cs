@@ -43,15 +43,16 @@ namespace BaseProductTool
                 List<IntraLinkingGenerationAndRelated> ilgrList = new List<IntraLinkingGenerationAndRelated>();
                 var list = dic[pName];
 
-                //if (list[0].CategoryId != 2)
-                //{
-                //    list = list.OrderBy(l => l.AttributeData).ToList();
-                //}
-                //else
-                //{
-                //    list = list.OrderBy(l => l.ProductName.Length).ToList();
-                //}
-                list = list.OrderByDescending(l => l.Clicks).ThenBy(l => l.ProductName.Length).ToList();
+                if (list[0].CategoryId != 2)
+                {
+                    //list = list.OrderBy(l => l.AttributeData).ToList();
+                    list = list.OrderByDescending(l => l.Clicks).ThenBy(l => l.ProductName.Length).ToList();
+                }
+                else
+                {
+                    list = list.OrderBy(l => l.ProductName.Length).ToList();
+                }
+                
                 for (int i = 1; i < list.Count; i++)
                 {
                     IntraLinkingGenerationAndRelated ilgr = new IntraLinkingGenerationAndRelated();
