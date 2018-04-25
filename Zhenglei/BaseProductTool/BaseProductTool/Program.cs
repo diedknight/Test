@@ -171,7 +171,7 @@ namespace BaseProductTool
         {
             Dictionary<int, List<ProductInfo>> dic = new Dictionary<int, List<ProductInfo>>();
             string selectSql = @"select PT.ProductID, ProductName, CategoryID, clicks from CSK_Store_Product PT
-                                inner join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
+                                left join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
                                 on TPT.ProductId = PT.ProductID
                                 where CategoryID in (
                                 select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in
