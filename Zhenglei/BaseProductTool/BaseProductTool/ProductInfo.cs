@@ -9,5 +9,6 @@ namespace BaseProductTool
         public string ProductName { get; set; }
         public string ProductNameLower { get; set; }
         public float AttributeData { get; set; }
+        public int Clicks { get; set; }
     }
 }

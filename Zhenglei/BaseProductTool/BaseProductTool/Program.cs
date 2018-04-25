@@ -43,15 +43,16 @@ namespace BaseProductTool
                 List<IntraLinkingGenerationAndRelated> ilgrList = new List<IntraLinkingGenerationAndRelated>();
                 var list = dic[pName];
 
-                if (list[0].CategoryId != 2)
-                {
-                    list = list.OrderBy(l => l.AttributeData).ToList();
-                }
-                else
-                {
-                    list = list.OrderBy(l => l.ProductName.Length).ToList();
-                }
-                for(int i = 1; i < list.Count; i++)
+                //if (list[0].CategoryId != 2)
+                //{
+                //    list = list.OrderBy(l => l.AttributeData).ToList();
+                //}
+                //else
+                //{
+                //    list = list.OrderBy(l => l.ProductName.Length).ToList();
+                //}
+                list = list.OrderByDescending(l => l.Clicks).ToList();
+                for (int i = 1; i < list.Count; i++)
                 {
                     IntraLinkingGenerationAndRelated ilgr = new IntraLinkingGenerationAndRelated();
                     ilgr.ProductId = list[0].ProductId;
@@ -169,12 +170,14 @@ namespace BaseProductTool
         static Dictionary<int, List<ProductInfo>> GetProductCategoryDic()
         {
             Dictionary<int, List<ProductInfo>> dic = new Dictionary<int, List<ProductInfo>>();
-            string selectSql = @"select ProductID, ProductName, CategoryID from CSK_Store_Product 
+            string selectSql = @"select PT.ProductID, ProductName, CategoryID, clicks from CSK_Store_Product PT
+                                inner join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
+                                on TPT.ProductId = PT.ProductID
                                 where CategoryID in (
                                 select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in
                                 (select typeid from CSK_Store_ProductDescriptorTitle) and CategoryID in
                                 (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
-                                and IsMerge=1 and ProductId in(
+                                and IsMerge=1 and PT.ProductId in(
                                 select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
                                 (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
 
@@ -200,6 +203,7 @@ namespace BaseProductTool
                             pi.CategoryId = cId;
                             pi.ProductName = pName;
                             pi.ProductNameLower = pi.ProductName.ToLower();
+                            pi.Clicks = sqlDr.GetInt32(3);
 
                             if (dic.ContainsKey(cId))
                             {
