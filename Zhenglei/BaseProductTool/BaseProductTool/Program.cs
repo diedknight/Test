@@ -51,7 +51,7 @@ namespace BaseProductTool
                 //{
                 //    list = list.OrderBy(l => l.ProductName.Length).ToList();
                 //}
-                list = list.OrderByDescending(l => l.Clicks).ToList();
+                list = list.OrderByDescending(l => l.Clicks).ThenBy(l => l.ProductName.Length).ToList();
                 for (int i = 1; i < list.Count; i++)
                 {
                     IntraLinkingGenerationAndRelated ilgr = new IntraLinkingGenerationAndRelated();
@@ -203,7 +203,11 @@ namespace BaseProductTool
                             pi.CategoryId = cId;
                             pi.ProductName = pName;
                             pi.ProductNameLower = pi.ProductName.ToLower();
-                            pi.Clicks = sqlDr.GetInt32(3);
+                            pi.Clicks = 0;
+                            if(!sqlDr.IsDBNull(3))
+                            {
+                                pi.Clicks = sqlDr.GetInt32(3);
+                            }
 
                             if (dic.ContainsKey(cId))
                             {
