@@ -1021,10 +1021,10 @@ namespace PriceMeCommon.BusinessLogic
                 narrowItem.Value = retailerID;
                 narrowItem.ProductCount = retailerProductCountDictionary[retailerID];
                 //只显示是ppc的网店
-                if (!RetailerController.IsPPcRetailer(retailer.RetailerId, _countryId))
-                {
-                    continue;
-                }
+                //if (!RetailerController.IsPPcRetailer(retailer.RetailerId, _countryId))
+                //{
+                //    continue;
+                //}
 
                 narrowList.Add(narrowItem);
             }
