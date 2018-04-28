@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>deals</id>
+    <version>1.0</version>
+    <authors>deals Devs</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>deals</description>
+  </metadata>
+  <files>
+    <file src="Allow\" target="Allow" />
+    <file src="bin\" target="bin" />
+    <file src="js\" target="js" />
+    <file src="css\" target="css" />
+    <file src="images\" target="images" />
+    <file src="fonts\" target="fonts" />
+    <file src="less\" target="less" />
+    <file src="Modules\" target="Modules" />
+    <file src="plugins\" target="plugins" />
+    <file src="*.aspx" target="" />
+    <file src="web.config" target="" />
+    <file src="Global.asax" target="" />
+    <file src="Main.Master" target="" />
+  </files>
+</package>
