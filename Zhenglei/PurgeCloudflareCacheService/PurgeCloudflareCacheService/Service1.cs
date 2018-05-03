@@ -43,6 +43,7 @@ namespace PurgeCloudflareCacheService
 
         private void InitData()
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             string sourceName = "PriceMeLog";
             if (!System.Diagnostics.EventLog.SourceExists(sourceName))
             {
