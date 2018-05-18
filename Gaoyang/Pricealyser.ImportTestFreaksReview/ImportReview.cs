@@ -40,7 +40,6 @@ namespace Pricealyser.ImportTestFreaksReview
 
         public void Import()
         {
-
             Writer("Begin Import Review... " + DateTime.Now);
             string feedFile=string.Empty;
             if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["isDevelop"].ToString()))
@@ -128,12 +127,13 @@ namespace Pricealyser.ImportTestFreaksReview
                         string pid = temps[0];
                         string sid = temps[1];
 
-                        string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0 where ProductID=" + pid + " and SourceID=" + sid + "";
+                        string sql6 = "update CSK_Store_ExpertReviewAU set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', DisplayLinkStatus=0, ModifiedBy = 'import_DL' where ProductID=" + pid + " and SourceID=" + sid + "";
                         var sp6 = new SubSonic.Schema.StoredProcedure("");
                         sp6.Command.CommandSql = sql6;
                         sp6.Command.CommandType = CommandType.Text;
                         sp6.Command.CommandTimeout = 0;
                         sp6.Execute();
+                        Writer("Sql_DL: " + sql6);
                     }
                 }
 
@@ -160,12 +160,13 @@ namespace Pricealyser.ImportTestFreaksReview
                     }
                     else
                     {
-                        string sql = "update CSK_Store_ExpertReviewAU set DisplayLinkStatus=0 where ModifiedOn<'" + DateTime.Now.ToString("yyyy-MM-dd") + "'";
+                        string sql = "update CSK_Store_ExpertReviewAU set DisplayLinkStatus=0, ModifiedBy = 'import_Rate' where ModifiedOn<'" + DateTime.Now.ToString("yyyy-MM-dd") + "'";
                         SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
                         sp.Command.CommandSql = sql;
                         sp.Command.CommandType = CommandType.Text;
                         sp.Command.CommandTimeout = 0;
                         sp.Execute();
+                        Writer("Sql_Rate: " + sql);
                     }
                 }
                 
@@ -174,14 +175,14 @@ namespace Pricealyser.ImportTestFreaksReview
             Writer("Update ModifyOn sql... " + DateTime.Now);
             string updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
                                           + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'"
-                                          + " Where DisplayLinkStatus=1";
+                                          + ", ModifiedBy = 'import_Mo' Where DisplayLinkStatus=1";
 
             SubSonic.Schema.StoredProcedure spup = new SubSonic.Schema.StoredProcedure("");
             spup.Command.CommandSql = updModifyOnSQL;
             spup.Command.CommandType = CommandType.Text;
             spup.Command.CommandTimeout = 0;
             spup.Execute();
-
+            Writer("Sql_Mo: " + updModifyOnSQL);
             Writer("Exec sql... " + DateTime.Now);
             Console.WriteLine("==========The program execution is completed======== Time is" + DateTime.Now);
             string deleteNullReviewSql = @"delete dbo.CSK_Store_ExpertReviewAU 
@@ -442,7 +443,7 @@ namespace Pricealyser.ImportTestFreaksReview
                         try
                         {//此两个ID来源于Feed
                             int sid = SaveReviewSource(sr);
-
+                            
                             var urls = sr.Url.Replace("http://", "");
                             if (urls.Contains("/"))
                                 urls = urls.Substring(urls.IndexOf('/'));
@@ -460,7 +461,7 @@ namespace Pricealyser.ImportTestFreaksReview
                                 //更新状态DisplayLinkStatus=0
                                 string updModifyOnSQL = "Update CSK_Store_ExpertReviewAU "
                                           + "Set ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DisplayLinkStatus=1,ReviewURL='" + urls + "'"
-                                          + " Where ";
+                                          + ", ModifiedBy = 'import_SDL' Where ";
                                 updModifyOnSQL += "(ProductID = " + productId + " And SourceID = " + sid + ")";
 
                                 string sql = updModifyOnSQL;
@@ -469,6 +470,7 @@ namespace Pricealyser.ImportTestFreaksReview
                                 sp.Command.CommandType = CommandType.Text;
                                 sp.Command.CommandTimeout = 0;
                                 sp.Execute();
+                                Writer("Sql_SDL: " + sql);
                             }
                             else if (!expertCache.ExpertReviewList.Contains(key))//如果匹配不到执行添加操作
                             {
@@ -516,7 +518,7 @@ namespace Pricealyser.ImportTestFreaksReview
 
                                 er.Score = (double)sr.Score;
                                 decimal pricemeScore = 0m;
-                                if (er.Score >= 0&&er.Score<=1)
+                                if (er.Score > 0&&er.Score<=1)
                                     pricemeScore=1;
                                 else
                                     pricemeScore = decimal.Round((sr.Score / 2m), 1);
@@ -619,7 +621,7 @@ namespace Pricealyser.ImportTestFreaksReview
                                     System.Data.SqlClient.SqlParameter sqlCreatedByParameter = new System.Data.SqlClient.SqlParameter();
                                     sqlCreatedByParameter.ParameterName = "@CreatedBy";
                                     sqlCreatedByParameter.SqlDbType = System.Data.SqlDbType.NVarChar;
-                                    sqlCreatedByParameter.SqlValue = "Improt";
+                                    sqlCreatedByParameter.SqlValue = "Improt_New";
                                     sqlCMD.Parameters.Add(sqlCreatedByParameter);
 
                                     System.Data.SqlClient.SqlParameter sqlPriceMeScoreParameter = new System.Data.SqlClient.SqlParameter();
@@ -761,10 +763,11 @@ namespace Pricealyser.ImportTestFreaksReview
                                 cons = cons.Replace("'", "''");
                                 verdict = verdict.Replace("'", "''");
                                 url = url.Replace("'", "''");
+                                string author = sr.Author.Replace("'", "''").Replace(";", "").Replace("--", "").Trim();
                                 string sql = "Update CSK_Store_ExpertReviewAU "
                                             + "Set Title = '" + title + "', Pros = '" + pros + "', Cons = '" + cons + "', Verdict = '" + verdict + "', "
-                                            + "ReviewURL = '" + url + "', ReviewBy = '" + (string.IsNullOrEmpty(sr.Author) ? string.Empty : sr.Author) +"', ReviewDate = '" + reviewDate + "', ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                                            + "' , DisplayLinkStatus=1 Where ProductID = " + productId + " And SourceID = " + sid;
+                                            + "ReviewURL = '" + url + "', ReviewBy = '" + author + "', ReviewDate = '" + reviewDate + "', ModifiedOn= '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                                            + "' , DisplayLinkStatus=1, ModifiedBy = 'import_Up' Where ProductID = " + productId + " And SourceID = " + sid;
                                 SubSonic.Schema.StoredProcedure sp = new SubSonic.Schema.StoredProcedure("");
                                 sp.Command.CommandSql = sql;
                                 sp.Command.CommandType = CommandType.Text;
@@ -940,9 +943,13 @@ namespace Pricealyser.ImportTestFreaksReview
                     Directory.CreateDirectory(driverPath);
 
                 string imgName = imgUrl.Substring(imgUrl.LastIndexOf('/') + 1);
+                string imageFilePaths = driverPath + imgName;
                 WebClient webClient = new WebClient();
-                webClient.DownloadFile(imgUrl, (driverPath + imgName));
-                logoFile = imageLogo + imgName;
+                webClient.DownloadFile(imgUrl, imageFilePaths);
+
+                logoFile = AmazonS3.UploadImage(imageFilePaths, imageLogo);
+                
+                System.IO.File.Delete(imageFilePaths);
             }
             catch { }
 
@@ -952,7 +959,7 @@ namespace Pricealyser.ImportTestFreaksReview
         private string ReplacementString(string info)
         {
             if (!string.IsNullOrEmpty(info))
-                info = info.Replace("—", "-").Replace("’", "'").Replace("“", "\"").Replace("”", "\"").Replace("�", "");
+                info = info.Replace("—", "-").Replace("’", "'").Replace("“", "\"").Replace("”", "\"").Replace("�", "").Replace("?", "");
             else if (info == null)
                 info = string.Empty;
 
