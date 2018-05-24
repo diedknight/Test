@@ -3,6 +3,8 @@
 <%@ Register Src="~/Modules/ManCategoryList.ascx" TagPrefix="uc1" TagName="ManCategoryList" %>
 <%@ Register Src="~/Modules/Common/NewHeaderControl.ascx" TagPrefix="uc1" TagName="NewHeaderControl" %>
 <%@ Register Src="~/Modules/ManCategoryList1.ascx" TagPrefix="uc1" TagName="ManCategoryList1" %>
+<%@ Register Src="~/Modules/HWHeaderTop.ascx" TagPrefix="uc1" TagName="HWHeaderTop" %>
+
 
 
 
@@ -58,14 +60,14 @@
         var nodea = $("<div id=\"a_wrap\"></div>");
         nodea.css({ "height": winHeight, "width": winWidth, "position": "fixed", "background": "white", "z-index": "900000" });
 
-        $("#view").attr("content", "width=1800px, initial-scale=1.0");        
+        $("#view").attr("content", "width=1800px, initial-scale=1.0");
         $("body").append(nodea);
 
         $(document).ready(function () {
             setTimeout(function () {
                 $("#view").attr("content", "width=device-width, initial-scale=1.0");
                 nodea.remove();
-            }, 1);            
+            }, 1);
         });
     </script>
 
@@ -74,28 +76,7 @@
         <div id="page" class="page">
 
             <header>
-                <%--<div class="header-container">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Header Top Links -->
-                            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 pull-right hidden-xs">
-                                <div class="toplinks">
-                                    <div class="links">
-                                        <ul id="menu-toplinks" class="top-links1 mega-menu1">
-                                            <li id="nav-menu-item-3311" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/my-account/" class="">My Account</a></li>
-                                            <li id="nav-menu-item-3282" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/shop/" class="">Shop</a></li>
-                                            <li id="nav-menu-item-3284" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/blog/" class="">Blog</a></li>
-                                            <li id="nav-menu-item-3289" class="menu-item menu-item-type-post_type menu-item-object-page  narrow "><a href="/wishlist-2-6/" class="">Wishlist</a></li>
-                                            <li class="menu-item"><a href="/my-account/"><span>Login</span></a></li>
-                                            <li class="menu-item"><a href="/my-account/"><span>Register</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- End Header Top Links -->
-                            </div>
-                        </div>
-                    </div>
-                </div>--%>
+                <%--<uc1:HWHeaderTop runat="server" id="HWHeaderTop" />--%>
 
                 <div class="container">
                     <div class="row">
@@ -233,7 +214,7 @@
                                         <div class="mc4wp-form-fields">
                                             <p>
                                                 <label id="footerSubmitDes">SIGN UP FOR EMAILS: </label>
-                                                <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Your email address" required />
+                                                <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Your email address" />
                                                 <input id="footerSubmit" type="button" value="Sign Up" />
                                                 <%--<asp:Button runat="server" Text="Sign Up" ID="footerSubmit" OnClick="footerSubmit_Click" />--%>
                                             </p>
@@ -522,8 +503,8 @@
     </style>
 
     <script type="text/javascript">
-                    lazyload({ defObj: "#<%=form1.ClientID%>" });
-                    InitATag('<%=PriceMe.Utility.UrlEncode(ATagTitle) %>');
+        lazyload({ defObj: "#<%=form1.ClientID%>" });
+        InitATag('<%=PriceMe.Utility.UrlEncode(ATagTitle) %>');
 
         if (window.addEventListener)
             window.addEventListener("load", downloadJSAtOnload, false);
@@ -537,7 +518,7 @@
 
             var emailNode = $("#mc4wp_email");
 
-            if (emailNode.get(0).checkValidity()) {                
+            if (emailNode.val() != "" && emailNode.get(0).checkValidity()) {
                 GlobalAjax("AjaxDefaultController", "SigningUp", { "email": emailNode.val() }, function (msg) {
 
                     var node = null;

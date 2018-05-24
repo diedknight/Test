@@ -47,5 +47,14 @@ namespace HotterWinds.Modules.Products {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::HotterWinds.Modules.Products.ProductDescription ProductDescription1;
+        
+        /// <summary>
+        /// HWProductReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::HotterWinds.Modules.Products.HWProductReview HWProductReview;
     }
 }

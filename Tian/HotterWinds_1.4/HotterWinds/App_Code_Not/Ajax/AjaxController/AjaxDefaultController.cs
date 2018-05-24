@@ -24,5 +24,40 @@ namespace HotterWinds.App_Code_Not.Ajax.AjaxController
                 return "0";
             }
         }
+
+        public string AddReview(AjaxContext context)
+        {
+            try
+            {
+                string comment = context.GetParameter("comment", "");
+                int rating = context.GetParameter("rating", 0);
+                int pid = context.GetParameter("pid", 0);
+                string name = context.GetParameter("name", "");
+
+                HotterWindsDBA.CSK_Store_ProductReview review = new HotterWindsDBA.CSK_Store_ProductReview();
+                review.Body = comment;
+                review.createdBy = name;
+                review.createdOn = DateTime.Now;
+                review.IsApproved = true;
+                review.modifiedBy = name;
+                review.modifiedOn = DateTime.Now;
+                review.PostDate = DateTime.Now;
+                review.ProductID = pid;
+                review.Rating = rating;
+                review.RetailerCountry = 3;
+                review.UserName = name;
+                review.Title = "";
+                review.AuthorName = name;
+
+                review.Save();
+
+                return "1";
+            }
+            catch(Exception ex)
+            {
+                return "0";
+            }
+        }
+
     }
 }

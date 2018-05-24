@@ -675,6 +675,8 @@
     <Content Include="linea\wp-includes\js\jquery\jquery.js" />
     <Content Include="linea\wp-includes\js\wp-embed.min.js" />
     <Content Include="linea\wp-includes\wlwmanifest.xml" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Modules\AboutUsNavigation.ascx" />
     <Content Include="Modules\AlexaTrafficRanker.ascx" />
     <Content Include="Modules\Breadcrumbs.ascx" />
@@ -689,10 +691,12 @@
     <Content Include="Modules\Catalog\QuickProductSummaryDisplay.ascx" />
     <Content Include="Modules\Common\NewHeaderControl.ascx" />
     <Content Include="Modules\Hitwise.ascx" />
+    <Content Include="Modules\HWHeaderTop.ascx" />
     <Content Include="Modules\ManCategoryList.ascx" />
     <Content Include="Modules\ManCategoryList1.ascx" />
     <Content Include="Modules\MobileSite.ascx" />
     <Content Include="Modules\PrettyPager.ascx" />
+    <Content Include="Modules\Products\HWProductReview.ascx" />
     <Content Include="Modules\Products\HWRelatedProducts.ascx" />
     <Content Include="Modules\Products\MDProductPriceCompare.ascx" />
     <Content Include="Modules\Products\MDProductPriceCompareNomal.ascx" />
@@ -871,6 +875,9 @@
     <Compile Include="App_Code_Not\PriceMeRequestValidator.cs" />
     <Compile Include="App_Code_Not\RetailerCountHistoryList.cs" />
     <Compile Include="App_Code_Not\RetailerLogic.cs" />
+    <Compile Include="App_Code_Not\UserPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="App_Code_Not\Utility\JSONHelper.cs" />
     <Compile Include="App_Code_Not\Utility\Utility.cs" />
     <Compile Include="App_Code_Not\WebConfig.cs" />
@@ -1037,6 +1044,20 @@
     <Compile Include="HtmlParser\WinistaTags\ProxyCompositeTag.cs" />
     <Compile Include="HtmlParser\WinistaTags\RegisterCustomTag.cs" />
     <Compile Include="HtmlParser\WinistaUtil.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1142,6 +1163,13 @@
     <Compile Include="Modules\Hitwise.ascx.designer.cs">
       <DependentUpon>Hitwise.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HWHeaderTop.ascx.cs">
+      <DependentUpon>HWHeaderTop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\HWHeaderTop.ascx.designer.cs">
+      <DependentUpon>HWHeaderTop.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\ManCategoryList.ascx.cs">
       <DependentUpon>ManCategoryList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1169,6 +1197,13 @@
     </Compile>
     <Compile Include="Modules\PrettyPager.ascx.designer.cs">
       <DependentUpon>PrettyPager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Products\HWProductReview.ascx.cs">
+      <DependentUpon>HWProductReview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Products\HWProductReview.ascx.designer.cs">
+      <DependentUpon>HWProductReview.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Products\HWRelatedProducts.ascx.cs">
       <DependentUpon>HWRelatedProducts.ascx</DependentUpon>

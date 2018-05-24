@@ -13,8 +13,12 @@ namespace HotterWinds.Modules
     {
         public List<PriceMeCache.CategoryCache> RootCategoryList = null;
 
+        public UserData UserData = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.UserData = PriceMe.Utility.GetUserInfoFromCookie();
+
             //RootCategoryList = CategoryController.GetAllRootCategoriesOrderByName(WebConfig.CountryId);
 
             RootCategoryList = new List<PriceMeCache.CategoryCache>();

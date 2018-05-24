@@ -74,6 +74,18 @@
     <%} %>
 
     <%} %>
+
+    <%--<li id="accordion-menu-item-3416" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="http://wordpress.magikthemes.com/linea/blog/" class="">Blog</a></li>
+
+    <%if (this.UserData == null) %>
+    <%{ %>
+    <li id="accordion-menu-item-3416" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/Login.aspx" class="">Login</a></li>
+    <%} %>
+    <%else %>
+    <%{ %>
+    <li id="accordion-menu-item-3416" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="/Logout.aspx" class="">Logout</a></li>
+    <%} %>--%>
+
 </ul>
 
 

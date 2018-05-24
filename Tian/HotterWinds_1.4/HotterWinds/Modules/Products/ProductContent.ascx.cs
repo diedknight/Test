@@ -78,10 +78,14 @@ namespace HotterWinds.Modules.Products
         public bool isUpcoming = false;
         public bool hasppc = false;
 
+        public UserData UserData = null;
+        public List<HotterWindsDBA.CSK_Store_ProductReview> ProductReviewList = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
 
+
+            this.UserData = Utility.GetUserInfoFromCookie();
 
             dkTimer = Session["DKTimer"] as Timer.DKTimer;
             if (dkTimer != null)
@@ -115,6 +119,8 @@ namespace HotterWinds.Modules.Products
             SetRelatedProduct();
 
             SetProductTopDisplay();
+
+            SetProductReview();
 
             hasGmap = ProductController.HaveProductMap(product.ProductID, rpis, WebConfig.CountryId);
 
@@ -207,6 +213,14 @@ namespace HotterWinds.Modules.Products
             //    ProductItemPriceCompareNomalInt.CategoryId = category.CategoryID;
             //    ProductItemPriceCompareNomalInt.isSinglePrice = singlePrice;
             //}
+        }
+
+        private void SetProductReview()
+        {
+            ProductReviewList = HotterWindsDBA.CSK_Store_ProductReview.Find(item => item.ProductID == product.ProductID).ToList();
+
+            HWProductReview.Product = product;
+            HWProductReview.ProductReviewList = ProductReviewList;
         }
 
         private void SetProductTopDisplay() 

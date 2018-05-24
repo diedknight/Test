@@ -5,6 +5,8 @@
 <%@ Register Src="~/Modules/Products/ProductItemPriceCompareNomal.ascx" TagPrefix="uc37" TagName="ProductItemPriceCompareNomal" %>
 <%@ Register Src="~/Modules/Products/ProductDescription.ascx" TagName="ProductDescription" TagPrefix="PD" %>
 <%@ Register Src="~/Modules/Products/HWRelatedProducts.ascx" TagPrefix="PD" TagName="HWRelatedProducts" %>
+<%@ Register Src="~/Modules/Products/HWProductReview.ascx" TagPrefix="PD" TagName="HWProductReview" %>
+
 
 
 
@@ -49,8 +51,8 @@
                             <%--<li class="additional_tab">
                                 <a href="#tab-additional">Additional Information</a>
                             </li>--%>
-                            <li class="reviews_tab" style="display: none;">
-                                <a href="#tab-reviews">Reviews (0)</a>
+                            <li class="reviews_tab" style="">
+                                <a id="tab_reviews" href="#tab-reviews">Reviews (<%=ProductReviewList.Count %>)</a>
                             </li>
                         </ul>
 
@@ -176,29 +178,7 @@
                         </div>--%>
 
                         <div class="panel entry-content" id="tab-reviews">
-                            <div id="reviews">
-                                <div id="comments">
-                                    <h2>Reviews</h2>
-
-
-                                    <p class="woocommerce-noreviews">There are no reviews yet.</p>
-
-                                </div>
-
-
-                                <div id="review_form_wrapper">
-                                    <div id="review_form">
-                                        <div id="respond" class="comment-respond">
-                                            <h3 id="reply-title" class="comment-reply-title">Be the first to review &ldquo;Today Fashion Casual Sleeveless Solid Women&#8217;s Top Light Pink&rdquo; <small><a rel="nofollow" id="cancel-comment-reply-link" href="/linea/product/today-fashion-casual-sleeveless-solid-womens-top-light-pink/#respond" style="display: none;">Cancel reply</a></small></h3>
-                                            <p class="must-log-in">You must be <a href="https://wordpress.magikthemes.com/linea/my-account/">logged in</a> to post a review.</p>
-                                        </div>
-                                        <!-- #respond -->
-                                    </div>
-                                </div>
-
-
-                                <div class="clear"></div>
-                            </div>
+                            <PD:HWProductReview runat="server" id="HWProductReview" />
                         </div>
                     </div>
                 </div>
