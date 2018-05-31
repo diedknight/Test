@@ -156,11 +156,11 @@
 
                 $("#reviewList1 > li .rating.score").each(function () {                    
                     var tempNode = $(this);
-                    average += tempNode.attr("rating") * 1;
+                    average += tempNode.attr("rating") * 1.0;
                 });
 
-                average = average / count;
-                
+                average = average / count;                
+
                 $("#tab_reviews").text("Reviews (" + count + ")");
                 $(".product-essential .price-block .rating").attr("style", "width: " + (average * 2 * 10) + "%");
                 $(".product-essential .price-block .rating").parent().next().text(count + " reviews");

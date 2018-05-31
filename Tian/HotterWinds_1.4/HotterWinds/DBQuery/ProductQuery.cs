@@ -16,7 +16,7 @@ namespace HotterWinds.DBQuery
         {
             Tuple<double, int> t = null;
 
-            string sql = "select avg(Rating) as [avg],count(1) as [count] from CSK_Store_ProductReview where ProductID=" + productId;
+            string sql = "select avg(Rating*1.0) as [avg],count(1) as [count] from CSK_Store_ProductReview where ProductID=" + productId;
 
             var con = GetConnection();
             using (var reader = con.ExecuteReader(sql))
@@ -63,7 +63,7 @@ namespace HotterWinds.DBQuery
                      + " ProductName = (select top 1 ProductName from CSK_Store_Product where ProductID = a.ProductId), "
                      + " PurchaseURL, "
                      + " ImgUrl = (select top 1 DefaultImage from CSK_Store_Product where ProductID = a.ProductId), "
-                     + " Stars = (select avg(Rating) from CSK_Store_ProductReview where ProductID=a.ProductID), "
+                     + " Stars = (select avg(Rating*1.0) from CSK_Store_ProductReview where ProductID=a.ProductID), "
                      + " RetailerPrice as Price, "
                      + " RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductId) "
                      + " from CSK_Store_RetailerProduct as a"
@@ -153,7 +153,7 @@ namespace HotterWinds.DBQuery
                         + "     ProductStatus,"
                         + "     ProductID,DefaultImage as ImgUrl, "
                         + "     ProductName, "
-                        + "     Stars = (select avg(Rating) from CSK_Store_ProductReview where ProductID=a.ProductID),"
+                        + "     Stars = (select avg(Rating*1.0) from CSK_Store_ProductReview where ProductID=a.ProductID),"
                         + "     LongDescriptionEN as [Description],"
                         + "     Price = (select top 1 RetailerPrice from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
                         + "     RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
