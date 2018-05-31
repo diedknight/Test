@@ -20,7 +20,7 @@ namespace PriceMeCommon.BusinessLogic
         static Dictionary<int, Dictionary<int, string>> MultiCountryEnergyImgsDic_Static;
         static Dictionary<int, List<HotProduct>> MultiCountryHotProducts_Static;
         static Dictionary<int, Dictionary<int, RetailerProductCondition>> MultiCountryRetailerProductConditionDic_Static;
-        
+
         static Dictionary<int, Dictionary<int, string>> MultiCountryProductDescriptionDic_Static;
 
         static Dictionary<int, int> IntraLinkingGenerationsDic_Static;
@@ -39,7 +39,7 @@ namespace PriceMeCommon.BusinessLogic
 
             MultiCountryHotProducts_Static = GetMultiCountryHotProducts();
             MultiCountryRetailerProductConditionDic_Static = GetMultiCountryRetailerProductConditionDic();
-            
+
             MultiCountryProductDescriptionDic_Static = GetMultiCountryProductDescriptionDic();
             IntraLinkingGenerationsDic_Static = GetIntraLinkingGenerationsDic();
 
@@ -100,7 +100,7 @@ namespace PriceMeCommon.BusinessLogic
             return dic;
         }
 
-        
+
 
 
         public static List<ProductDescAndAttr> GetDescriptionAndAttribute(int pId)
@@ -130,7 +130,14 @@ namespace PriceMeCommon.BusinessLogic
                     {
                         int pId = idr.GetInt32(0);
                         int linedProductId = idr.GetInt32(1);
-                        dic.Add(pId, linedProductId);
+                        if (dic.ContainsKey(pId))
+                        {
+                            dic[pId] = linedProductId;
+                        }
+                        else
+                        {
+                            dic.Add(pId, linedProductId);
+                        }
                     }
                 }
             }
@@ -156,7 +163,7 @@ namespace PriceMeCommon.BusinessLogic
                         int pid = idr.GetInt32(0);
                         string desc = idr.GetString(1);
                         int countryId = idr.GetInt32(2);
-                        if(multiDic.ContainsKey(countryId))
+                        if (multiDic.ContainsKey(countryId))
                         {
                             multiDic[countryId].Add(pid, desc);
                         }
@@ -252,7 +259,7 @@ namespace PriceMeCommon.BusinessLogic
                 AND rp.RetailerProductStatus = 1 GROUP BY p.ProductId,p.ProductName, p.DefaultImage";
 
             sql = string.Format(sql, string.Join(",", commonList.Select(h => h.ProductID)));
-            
+
             using (SqlConnection conn = new SqlConnection(MultiCountryController.GetDBConnectionString(countryId)))
             using (SqlCommand cmd = new SqlCommand(sql, conn))
             {
@@ -324,7 +331,7 @@ namespace PriceMeCommon.BusinessLogic
                     }
                 }
             }
-            
+
             return hotProducts;
         }
 
@@ -340,7 +347,7 @@ namespace PriceMeCommon.BusinessLogic
 
             return multiDic;
         }
-        
+
         private static Dictionary<int, string> GetEnergyImgs(int countryId)
         {
             //原Velocity - VelocityCacheKey.EnergyImgs
@@ -475,7 +482,7 @@ namespace PriceMeCommon.BusinessLogic
         {
             Dictionary<int, Dictionary<int, ReviewAverage>> multiDic = new Dictionary<int, Dictionary<int, ReviewAverage>>();
 
-            foreach(int countryId in MultiCountryController.CountryIdList)
+            foreach (int countryId in MultiCountryController.CountryIdList)
             {
                 Dictionary<int, ReviewAverage> dic = GetReviewAverageDic(countryId);
                 multiDic.Add(countryId, dic);
@@ -506,7 +513,7 @@ namespace PriceMeCommon.BusinessLogic
 
                 float erating = 0;
                 float.TryParse(doc.Get("TFEAverageRating").ToString(), out erating);
-                    ra.TFEAverageRating = erating;
+                ra.TFEAverageRating = erating;
                 float urating = 0;
                 float.TryParse(doc.Get("TFUAverageRating").ToString(), out urating);
                 ra.TFUAverageRating = urating;
@@ -538,7 +545,7 @@ namespace PriceMeCommon.BusinessLogic
         {
             if (key != 0 && MultiCountryRetailerProductConditionDic_Static.ContainsKey(countryId) && MultiCountryRetailerProductConditionDic_Static[countryId].ContainsKey(key))
                 return MultiCountryRetailerProductConditionDic_Static[countryId][key];
-            
+
             return null;
         }
 
@@ -720,8 +727,8 @@ namespace PriceMeCommon.BusinessLogic
                         CSK_Store_ProductNew product = new CSK_Store_ProductNew();
                         product.ProductID = reader.GetInt32(0);
                         product.ProductName = reader.GetString(1);
-                        product.ShortDescriptionZH = reader.IsDBNull(2)? "":reader.GetString(2);
-                        
+                        product.ShortDescriptionZH = reader.IsDBNull(2) ? "" : reader.GetString(2);
+
                         product.ManufacturerID = reader.GetInt32(3);
                         product.DefaultImage = reader.IsDBNull(4) ? "" : reader.GetString(4);
                         product.CategoryID = reader.GetInt32(5);
@@ -1177,7 +1184,7 @@ namespace PriceMeCommon.BusinessLogic
 
         public static ReviewAverage GetReviewAverage(int productId, int countryId)
         {
-            if(MultiContryReviewAverageDic_Static.ContainsKey(countryId) && MultiContryReviewAverageDic_Static[countryId].ContainsKey(productId))
+            if (MultiContryReviewAverageDic_Static.ContainsKey(countryId) && MultiContryReviewAverageDic_Static[countryId].ContainsKey(productId))
             {
                 return MultiContryReviewAverageDic_Static[countryId][productId];
             }
@@ -1246,7 +1253,7 @@ namespace PriceMeCommon.BusinessLogic
 
         public static string GetEnergyImg(int productId, int countryId)
         {
-            if(MultiCountryEnergyImgsDic_Static.ContainsKey(countryId) && MultiCountryEnergyImgsDic_Static[countryId].ContainsKey(productId))
+            if (MultiCountryEnergyImgsDic_Static.ContainsKey(countryId) && MultiCountryEnergyImgsDic_Static[countryId].ContainsKey(productId))
             {
                 return MultiCountryEnergyImgsDic_Static[countryId][productId];
             }
@@ -1283,7 +1290,7 @@ namespace PriceMeCommon.BusinessLogic
         public static decimal GetRetailerProductPrice(int retailerProductId, int countryId)
         {
             var rp = GetRetailerProductNew(retailerProductId, countryId);
-            if(rp != null)
+            if (rp != null)
             {
                 return rp.RetailerPrice;
             }
@@ -1292,7 +1299,7 @@ namespace PriceMeCommon.BusinessLogic
 
         public static List<ProductVideo> GetProductVideos(int productId, int countryId)
         {
-            if(MultiContryProductVideoDic_Static.ContainsKey(countryId) && MultiContryProductVideoDic_Static[countryId].ContainsKey(productId))
+            if (MultiContryProductVideoDic_Static.ContainsKey(countryId) && MultiContryProductVideoDic_Static[countryId].ContainsKey(productId))
             {
                 return MultiContryProductVideoDic_Static[countryId][productId];
             }
@@ -1322,7 +1329,7 @@ namespace PriceMeCommon.BusinessLogic
 
         public static List<HotProduct> GetHotProducts(int countryId)
         {
-            if(MultiCountryHotProducts_Static.ContainsKey(countryId))
+            if (MultiCountryHotProducts_Static.ContainsKey(countryId))
             {
                 return MultiCountryHotProducts_Static[countryId];
             }
@@ -1698,7 +1705,7 @@ namespace PriceMeCommon.BusinessLogic
 
                 using (IDataReader dr = cmd.ExecuteReader())
                 {
-                    while(dr.Read())
+                    while (dr.Read())
                     {
                         int id = 0, spid = 0;
                         int.TryParse(dr["Id"].ToString(), out id);
