@@ -21,7 +21,7 @@ namespace HotterWinds
 
             Model.DressesName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[0], PriceMe.WebConfig.CountryId).CategoryName;
             Model.Dresses = HomeQuery.GetProducts(4, cateIds[0]);
-            Model.Dresses.ForEach(item => item.Stars = 0);
+            //Model.Dresses.ForEach(item => item.Stars = 0);
 
             //Model.SunGlassesName = PriceMeCommon.BusinessLogic.CategoryController.GetCategoryByCategoryID(cateIds[1], PriceMe.WebConfig.CountryId).CategoryName;
             //Model.SunGlasses = HomeQuery.GetProducts(4, cateIds[1]);
@@ -36,10 +36,10 @@ namespace HotterWinds
             //Model.Boots.ForEach(item => item.Stars = 0);
 
             Model.BestSellerProducts = HomeQuery.GetBestSellerProducts();
-            Model.BestSellerProducts.ForEach(item => item.Stars = 0);
+            //Model.BestSellerProducts.ForEach(item => item.Stars = 0);
 
             Model.FeaturesProducts = HomeQuery.GetFeatureProducts();
-            Model.FeaturesProducts.ForEach(item => item.Stars = 0);
+            //Model.FeaturesProducts.ForEach(item => item.Stars = 0);
 
             //Model.HotDeal = HomeQuery.GetProducts(1, 806)[0];
             Model.HotDeal = Model.Dresses[0];

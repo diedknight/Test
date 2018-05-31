@@ -27,7 +27,7 @@
                 <div class="rating">
                     <div class="ratings">
                         <div class="rating-box">
-                            <div style="width: <%=Score*100 %>%" class="rating"></div>                                   
+                            <div style="width: <%=Score*2*10 %>%" class="rating"></div>                                   
                         </div>
                     </div>
                 </div>

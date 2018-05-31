@@ -12,6 +12,28 @@ namespace HotterWinds.DBQuery
 {
     public class ProductQuery : HotterWindsQuery
     {
+        public static Tuple<int, int> GetProductRating(int productId)
+        {
+            Tuple<int, int> t = null;
+
+            string sql = "select avg(Rating) as [avg],count(1) as [count] from CSK_Store_ProductReview where ProductID=" + productId;
+
+            var con = GetConnection();
+            using (var reader = con.ExecuteReader(sql))
+            {
+                while (reader.Read())
+                {
+                    int avg = reader["avg"] == DBNull.Value ? 0 : Convert.ToInt32(reader["avg"]);
+                    int count = reader["count"] == DBNull.Value ? 0 : Convert.ToInt32(reader["count"]);
+
+                    t = new Tuple<int, int>(avg, count);
+                }
+            }
+
+            return t;
+        }
+
+
         public static ViewModels.CategoryV GetCategory(int cid)
         {
             string sql = "select CategoryId,CategoryName,ParentId from CSK_Store_Category where CategoryId=@cId";
@@ -41,7 +63,7 @@ namespace HotterWinds.DBQuery
                      + " ProductName = (select top 1 ProductName from CSK_Store_Product where ProductID = a.ProductId), "
                      + " PurchaseURL, "
                      + " ImgUrl = (select top 1 DefaultImage from CSK_Store_Product where ProductID = a.ProductId), "
-                     + " Stars = (select top 1 ProductRatingSum from CSK_Store_Product where ProductID = a.ProductId), "
+                     + " Stars = (select avg(Rating) from CSK_Store_ProductReview where ProductID=a.ProductID), "
                      + " RetailerPrice as Price, "
                      + " RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductId) "
                      + " from CSK_Store_RetailerProduct as a"
@@ -131,7 +153,7 @@ namespace HotterWinds.DBQuery
                         + "     ProductStatus,"
                         + "     ProductID,DefaultImage as ImgUrl, "
                         + "     ProductName, "
-                        + "     ProductRatingSum as Stars,"
+                        + "     Stars = (select avg(Rating) from CSK_Store_ProductReview where ProductID=a.ProductID),"
                         + "     LongDescriptionEN as [Description],"
                         + "     Price = (select top 1 RetailerPrice from CSK_Store_RetailerProduct where ProductID = a.ProductID),"
                         + "     RPCount = (select count(1) from CSK_Store_RetailerProduct where ProductID = a.ProductID),"

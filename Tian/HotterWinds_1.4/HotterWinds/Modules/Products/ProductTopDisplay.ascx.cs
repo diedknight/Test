@@ -53,6 +53,8 @@ namespace HotterWinds.Modules.Products
 
         public int InStockStatus = 0;
 
+        public Tuple<int, int> ReviewsRatings = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Retailer = RetailerController.GetRetailerFromCache(RetailerId, WebConfig.CountryId);
@@ -64,6 +66,12 @@ namespace HotterWinds.Modules.Products
             ManufacturerUrl = PriceMe.UrlController.GetBrandPageUrl(manufacturer.ManufacturerID);
             //新加代码 2015-8-18 10：10
             var userReviews = ReviewController.SearchUserReviewByProductID(Product.ProductID, WebConfig.CountryId);
+
+            ReviewsRatings = DBQuery.ProductQuery.GetProductRating(Product.ProductID);
+            if (ReviewsRatings == null)
+            {
+                ReviewsRatings = new Tuple<int, int>(0, 0);
+            }
 
             //ProductRatingControl1.productId = Product.ProductID;
             //ProductRatingControl1.productName = Product.ProductName;

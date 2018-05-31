@@ -95,9 +95,9 @@
 
         <div class="ratings">
             <div class="rating-box">
-                <div style="width: <%=Product.ProductRatingSum %>0%" class="rating"></div>
+                <div style="width: <%=ReviewsRatings.Item1*2*10 %>%" class="rating"></div>
             </div>
-            <span>0 reviews</span>
+            <span><%=ReviewsRatings.Item2%> reviews</span>
         </div>
 
         <div>

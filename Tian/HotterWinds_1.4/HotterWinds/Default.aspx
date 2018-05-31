@@ -346,7 +346,7 @@
                                                                         <div class="rating">
                                                                             <div class="ratings">
                                                                                 <div class="rating-box">
-                                                                                    <div style="width: <%=p.Stars%>0%" class="rating"></div>
+                                                                                    <div style="width: <%=p.Stars*2*10%>%" class="rating"></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -590,7 +590,7 @@
                                                                 <div class="rating">
                                                                     <div class="ratings">
                                                                         <div class="rating-box">
-                                                                            <div style="width: <%=p.Stars%>0%" class="rating"></div>
+                                                                            <div style="width: <%=p.Stars*2*10%>%" class="rating"></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -662,7 +662,7 @@
                                                         <div class="rating">
                                                             <div class="ratings">
                                                                 <div class="rating-box">
-                                                                    <div style="width: <%=p.Stars%>0%" class="rating"></div>
+                                                                    <div style="width: <%=p.Stars*2*10%>%" class="rating"></div>
                                                                 </div>
                                                             </div>
                                                         </div>

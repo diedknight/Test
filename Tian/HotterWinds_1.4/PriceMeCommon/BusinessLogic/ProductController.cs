@@ -100,6 +100,9 @@ namespace PriceMeCommon.BusinessLogic
             return dic;
         }
 
+        
+
+
         public static List<ProductDescAndAttr> GetDescriptionAndAttribute(int pId)
         {
             if (ProductDescAndAttrsDic_Static.ContainsKey(pId))

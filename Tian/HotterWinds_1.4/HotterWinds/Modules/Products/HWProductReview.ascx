@@ -5,7 +5,7 @@
 
         <%if (this.ProductReviewList != null && this.ProductReviewList.Count != 0) %>
         <%{ %>
-        <ol id="reviewList" class="commentlist">
+        <ol id="reviewList1" class="commentlist">
             <%foreach (var review in this.ProductReviewList) %>
             <%{ %>
             <li itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment byuser comment-author-123 even thread-even depth-1">
@@ -17,7 +17,7 @@
                         <div class="rating" style="float: right;">
                             <div class="ratings" style="cursor: default;">
                                 <div class="rating-box">
-                                    <div style="cursor: default; width: <%=(review.Rating * 2 * 10) %>%" class="rating"></div>
+                                    <div rating="<%=review.Rating %>" style="cursor: default; width: <%=(review.Rating * 2 * 10) %>%" class="rating score"></div>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,11 @@
         <%} %>
         <%else %>
         <%{ %>
-        <p class="woocommerce-noreviews">There are no reviews yet.</p>
+        <ol id="reviewList1" class="commentlist">
+            
+        </ol>
+
+        <p id="notreviews" class="woocommerce-noreviews">There are no reviews yet.</p>
         <%} %>
     </div>
 
@@ -123,7 +127,9 @@
         GlobalAjax("AjaxDefaultController", "AddReview", data, function (msg) {
             
             if (msg == "1") {
-                var node = $("#reviewList");
+                $("#notreviews").remove();
+
+                var node = $("#reviewList1");
                 var template = "";
                 template += "<li itemprop=\"review\" itemscope=\"\" itemtype=\"http://schema.org/Review\" class=\"comment byuser comment-author-123 even thread-even depth-1\">";
                 template += "<div class=\"comment_container\">";
@@ -132,7 +138,7 @@
                 template += "<div class=\"rating\" style=\"float: right;\">";
                 template += "<div class=\"ratings\" style=\"cursor: default;\">";
                 template += "<div class=\"rating-box\">";
-                template += "<div style=\"cursor: default; width: " + (data.rating * 2 * 10) + "%\" class=\"rating\"></div>";
+                template += "<div rating=\"" + data.rating + "\" style=\"cursor: default; width: " + (data.rating * 2 * 10) + "%\" class=\"rating score\"></div>";
                 template += "</div>";
                 template += "</div>";
                 template += "</div>";
@@ -145,10 +151,21 @@
 
                 node.append(template);
 
-                var tabNode = $("#tab_reviews");
-                var count = $("#reviewList>li").length;
+                var count = $("#reviewList1>li").length;
+                var average = 0;
 
-                tabNode.text("Reviews (" + count + ")");
+                $("#reviewList1 > li .rating.score").each(function () {                    
+                    var tempNode = $(this);
+                    average += tempNode.attr("rating") * 1;
+                });
+
+                average = average / count;
+                
+                $("#tab_reviews").text("Reviews (" + count + ")");
+                $(".product-essential .price-block .rating").attr("style", "width: " + (average * 2 * 10) + "%");
+                $(".product-essential .price-block .rating").parent().next().text(count + " reviews");
+
+
             }
 
         });

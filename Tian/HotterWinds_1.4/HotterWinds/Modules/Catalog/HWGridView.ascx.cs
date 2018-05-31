@@ -80,6 +80,13 @@ namespace HotterWinds.Modules.Catalog
                 Score = 0d;
             }
 
+            var t = ProductQuery.GetProductRating(int.Parse(ProductID));
+            if (t != null)
+            {
+                Score = t.Item1;
+            }
+
+
             CatalogProductURL = UrlController.GetProductUrl(int.Parse(ProductID), ProductName);
 
             StarsScore = Utility.GetStarImage(Score);
