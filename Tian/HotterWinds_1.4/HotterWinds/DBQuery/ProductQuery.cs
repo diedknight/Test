@@ -29,7 +29,7 @@ namespace HotterWinds.DBQuery
                     t = new Tuple<double, int>(avg, count);
                 }
             }
-
+             
             return t;
         }
 
