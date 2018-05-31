@@ -53,7 +53,7 @@ namespace HotterWinds.Modules.Products
 
         public int InStockStatus = 0;
 
-        public Tuple<int, int> ReviewsRatings = null;
+        public Tuple<double, int> ReviewsRatings = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,7 +70,7 @@ namespace HotterWinds.Modules.Products
             ReviewsRatings = DBQuery.ProductQuery.GetProductRating(Product.ProductID);
             if (ReviewsRatings == null)
             {
-                ReviewsRatings = new Tuple<int, int>(0, 0);
+                ReviewsRatings = new Tuple<double, int>(0, 0);
             }
 
             //ProductRatingControl1.productId = Product.ProductID;
