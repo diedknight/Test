@@ -12,9 +12,9 @@ namespace HotterWinds.DBQuery
 {
     public class ProductQuery : HotterWindsQuery
     {
-        public static Tuple<int, int> GetProductRating(int productId)
+        public static Tuple<double, int> GetProductRating(int productId)
         {
-            Tuple<int, int> t = null;
+            Tuple<double, int> t = null;
 
             string sql = "select avg(Rating) as [avg],count(1) as [count] from CSK_Store_ProductReview where ProductID=" + productId;
 
@@ -23,10 +23,10 @@ namespace HotterWinds.DBQuery
             {
                 while (reader.Read())
                 {
-                    int avg = reader["avg"] == DBNull.Value ? 0 : Convert.ToInt32(reader["avg"]);
+                    double avg = reader["avg"] == DBNull.Value ? 0 : Convert.ToDouble(reader["avg"]);
                     int count = reader["count"] == DBNull.Value ? 0 : Convert.ToInt32(reader["count"]);
 
-                    t = new Tuple<int, int>(avg, count);
+                    t = new Tuple<double, int>(avg, count);
                 }
             }
 
