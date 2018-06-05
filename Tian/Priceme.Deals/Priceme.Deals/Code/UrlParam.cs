@@ -20,8 +20,10 @@ namespace Priceme.Deals.Code
             {
                 string value = request.QueryString[keys[i]];
 
+                if (keys[i] == null) continue;
                 if (string.IsNullOrWhiteSpace(value)) continue;
 
+               
                 if (urlDic.ContainsKey(keys[i]))
                 {
                     urlDic[keys[i]] = value;

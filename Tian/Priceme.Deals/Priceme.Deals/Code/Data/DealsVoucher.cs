@@ -52,7 +52,10 @@ namespace Priceme.Deals.Code.Data
         {
             List<DealsVoucher> list = new List<DealsVoucher>();
 
-            if (cids == null) cids = new List<int>();
+            if (cids == null)
+            {
+                cids = new List<int>();
+            }
 
             string conStr = ConfigurationManager.ConnectionStrings["CommerceTemplate_Common"].ConnectionString;
 
