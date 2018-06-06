@@ -118,6 +118,7 @@ namespace PriceMePlansSiteMap
                 string url = string.Empty;
                 if (pid > 0)
                 {
+                    continue;
                     url = string.Concat(new object[]
                     {
                         this.appPath,
