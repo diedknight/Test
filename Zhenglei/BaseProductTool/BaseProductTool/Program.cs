@@ -34,6 +34,8 @@ namespace BaseProductTool
                 LogWriter_Static.WriteLine("CategoryId : " + cId + " \t Related storage product count : " + dic[cId].Count);
                 CreateIntraLinkingGenerationAndRelatedAndWriteToDB(dic[cId], relatedProductsOperator);
             }
+
+            relatedProductsOperator.Finish();
         }
 
         private static void CreateIntraLinkingGenerationAndRelatedAndWriteToDB(Dictionary<string, List<ProductInfo>> dic, BaseProductsOperator baseProductsOperator)
@@ -171,18 +173,18 @@ namespace BaseProductTool
         static Dictionary<int, List<ProductInfo>> GetProductCategoryDic()
         {
             Dictionary<int, List<ProductInfo>> dic = new Dictionary<int, List<ProductInfo>>();
-            string selectSql = @"select PT.ProductID, ProductName, CategoryID, clicks from CSK_Store_Product PT
-                                left join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
-                                on TPT.ProductId = PT.ProductID
-                                where CategoryID in (
-                                select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in
-                                (select typeid from CSK_Store_ProductDescriptorTitle) and CategoryID in
-                                (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
-                                and IsMerge=1 and PT.ProductId in(
-                                select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
-                                (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
+            //string selectSql = @"select PT.ProductID, ProductName, CategoryID, clicks from CSK_Store_Product PT
+            //                    left join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
+            //                    on TPT.ProductId = PT.ProductID
+            //                    where CategoryID in (
+            //                    select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in
+            //                    (select typeid from CSK_Store_ProductDescriptorTitle) and CategoryID in
+            //                    (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
+            //                    and IsMerge=1 and PT.ProductId in(
+            //                    select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
+            //                    (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
 
-            //string selectSql = @"select ProductID, ProductName, CategoryID from CSK_Store_Product where CategoryID = 2";
+            string selectSql = @"select ProductID, ProductName, CategoryID, 0 from CSK_Store_Product where CategoryID = 2";
 
             using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
             {

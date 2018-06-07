@@ -26,10 +26,10 @@ namespace BaseProductTool
         {
             mIntraLinkingGenerationAndRelatedList.AddRange(relatedProductScoreList);
 
-            if (mIntraLinkingGenerationAndRelatedList.Count >= mMaxCount)
-            {
-                SaveToDB();
-            }
+            //if (mIntraLinkingGenerationAndRelatedList.Count >= mMaxCount)
+            //{
+            //    SaveToDB();
+            //}
         }
 
         private void SaveToDB()
@@ -63,7 +63,9 @@ namespace BaseProductTool
         {
             DateTime dtNow = DateTime.Now;
             string pIdsStr = string.Join(",", list.Select(p => p.ProductId).Distinct());
-            string deleteSql = @"delete [dbo].[IntraLinkingGenerationAndRelated] where ShowType = '1' and [ProductId] in (" + pIdsStr + ")";
+            //string deleteSql = @"delete [dbo].[IntraLinkingGenerationAndRelated] where ShowType = '1' and [ProductId] in (" + pIdsStr + ")";
+            string deleteSql = @"delete [dbo].[IntraLinkingGenerationAndRelated] where ShowType = '1' and LinkType = 'Variant'";
+            
             string insertSql = @"INSERT INTO [dbo].[IntraLinkingGenerationAndRelated]
                                ([ProductID]
                                ,[LinkType]
