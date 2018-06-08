@@ -140,7 +140,7 @@
 
         GlobalAjax("AjaxDefaultController", "AddReview", data, function (msg) {
             
-            if (msg == "1") {
+            if (msg != "0") {
                 $("#notreviews").remove();
 
                 var node = $("#reviewList1");
@@ -157,6 +157,7 @@
                 template += "</div>";
                 template += "</div>";
                 template += "<div itemprop=\"description\" class=\"description\">";
+                template += "<p><span style=\"color:#808080; font-weight:bold; font-size:12px;\">" + data.yourName + "</span> - <span style=\"color:#808080; font-size:12px;\">" + msg + "</span></p>";
                 template += "<p>" + data.comment + "</p>";
                 template += "</div>";
                 template += "</div>";

@@ -52,7 +52,7 @@ namespace HotterWinds.App_Code_Not.Ajax.AjaxController
 
                 review.Save();
 
-                return "1";
+                return review.PostDate.ToString("MMMM dd , yyyy");
             }
             catch(Exception ex)
             {
