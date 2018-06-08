@@ -13,7 +13,7 @@
                 <div class="comment_container">
 
                     <img alt="" src="http://2.gravatar.com/avatar/b2d7d2d13aed54c2ed7feb538b382b42?s=60&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/b2d7d2d13aed54c2ed7feb538b382b42?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60">
-                    <div class="comment-text">
+                    <div class="comment-text" style="padding-top:0.5em;">
                         <div class="rating" style="float: right;">
                             <div class="ratings" style="cursor: default;">
                                 <div class="rating-box">
@@ -23,6 +23,7 @@
                         </div>
 
                         <div itemprop="description" class="description">
+                            <p><span style="color:#808080; font-weight:bold; font-size:12px;"><%=review.UserName %></span> - <span style="color:#808080; font-size:12px;"><%=review.PostDate.ToString("MMMM dd , yyyy") %></span></p>
                             <p><%=review.Body %></p>
                         </div>
                     </div>
@@ -72,6 +73,12 @@
                 </p>
 
                 <p class="comment-form-comment">
+                    <label for="txtName">Your Name</label>
+                    <br />
+                    <input id="txtYourName" name="txtYourName" value="" style="border:1px solid #ddd" />
+                </p>
+
+                <p class="comment-form-comment">
                     <label for="comment">Your Review</label>
                     <textarea id="comment" name="comment" cols="45" rows="8" style="padding: 8px;"></textarea>
                     <%--<asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" cols="45" rows="8"></asp:TextBox>--%>
@@ -116,13 +123,20 @@
             "comment": $("#comment").val(),
             "rating": $("#rating").val(),
             "pid": $("#txtProductId").val(),
-            "name": $("#txtUserName").val()
+            "name": $("#txtUserName").val(),
+            "yourName": $("#txtYourName").val()
         };
 
         if (data.comment == "") {
             alert("please type a comment.");
             return;
         }
+
+        if (data.yourName == "") {
+            alert("please type a name.");
+            return;
+        }
+
 
         GlobalAjax("AjaxDefaultController", "AddReview", data, function (msg) {
             

@@ -33,6 +33,7 @@ namespace HotterWinds.App_Code_Not.Ajax.AjaxController
                 int rating = context.GetParameter("rating", 0);
                 int pid = context.GetParameter("pid", 0);
                 string name = context.GetParameter("name", "");
+                string yourname = context.GetParameter("yourName", "");
 
                 HotterWindsDBA.CSK_Store_ProductReview review = new HotterWindsDBA.CSK_Store_ProductReview();
                 review.Body = comment;
@@ -45,7 +46,7 @@ namespace HotterWinds.App_Code_Not.Ajax.AjaxController
                 review.ProductID = pid;
                 review.Rating = rating;
                 review.RetailerCountry = 3;
-                review.UserName = name;
+                review.UserName = yourname;
                 review.Title = "";
                 review.AuthorName = name;
 
