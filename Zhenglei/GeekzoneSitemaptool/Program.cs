@@ -27,6 +27,8 @@ namespace Pricealyser.SiteMap
             sml.SetSiteMapListing();
 
             sw.Close();
+
+            PriceMeCommon.BusinessLogic.MultiCountryController.AllLuceneSearcherInfo_Static.EndCheck();
         }
 
         private static void CreateDir(string path)
