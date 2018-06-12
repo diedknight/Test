@@ -47,21 +47,23 @@ namespace PurgeCloudflareCacheService
         public int CountryId { get; private set; }
         public string ZoneId { get; private set; }
         public string WebSite { get; private set; }
+        public string AMPSite { get; private set; }
         public bool UrlSeo { get; set; }
         public ConnectionStringSettings MyConnectionStringSettings { get; private set; }
 
-        public CountryInfo(int countryId, string dbConnectionKey, string zoneId, string webSite, bool urlSeo)
+        public CountryInfo(int countryId, string dbConnectionKey, string zoneId, string webSite, string ampSite, bool urlSeo)
         {
             CountryId = countryId;
             MyConnectionStringSettings = ConfigurationManager.ConnectionStrings[dbConnectionKey];
             ZoneId = zoneId;
             WebSite = webSite;
+            AMPSite = ampSite;
             UrlSeo = urlSeo;
         }
 
         public override string ToString()
         {
-            return "CountryId: " + CountryId + "\t ConnectionString: " + MyConnectionStringSettings.ConnectionString + "\t ZoneId: " + ZoneId + "\t WebSite: " + WebSite + "\t UrlSeo: " + UrlSeo;
+            return "CountryId: " + CountryId + "\t ConnectionString: " + MyConnectionStringSettings.ConnectionString + "\t ZoneId: " + ZoneId + "\t WebSite: " + WebSite + "\t AMPSite: " + AMPSite + "\t UrlSeo: " + UrlSeo;
         }
     }
 }

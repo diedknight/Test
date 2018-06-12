@@ -203,9 +203,16 @@ namespace PurgeCloudflareCacheService
 
             foreach (int key in categoryDic.Keys)
             {
-                string url = ci.WebSite + UrlController.GetCatalogUrl(categoryDic[key], key);
+                string partUrl = UrlController.GetCatalogUrl(categoryDic[key], key);
+                string url = ci.WebSite + partUrl;
 
                 urls.Add(url);
+
+                if (!string.IsNullOrEmpty(ci.AMPSite))
+                {
+                    url = ci.AMPSite + partUrl;
+                    urls.Add(url);
+                }
             }
 
             return urls;
@@ -247,9 +254,16 @@ namespace PurgeCloudflareCacheService
 
             foreach(ProductInfo pi in productInfoList)
             {
-                string url = ci.WebSite + UrlController.GetProductUrl(pi.ProductId, pi.ProductName, ci.UrlSeo);
+                string partUrl = UrlController.GetProductUrl(pi.ProductId, pi.ProductName, ci.UrlSeo);
+                string url = ci.WebSite + partUrl;
 
                 urls.Add(url);
+
+                if(!string.IsNullOrEmpty(ci.AMPSite))
+                {
+                    url = ci.AMPSite + partUrl;
+                    urls.Add(url);
+                }
             }
 
             return urls;

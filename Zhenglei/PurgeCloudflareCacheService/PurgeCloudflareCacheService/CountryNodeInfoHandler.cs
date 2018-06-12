@@ -55,6 +55,8 @@ namespace PurgeCloudflareCacheService
                 if (webSiteAttr == null || string.IsNullOrEmpty(webSiteAttr.Value))
                     throw new Exception("no webSite.");
 
+                var ampSiteAttr = node.Attributes["ampSite"];
+
                 var urlSeoAttr = node.Attributes["urlSeo"];
                 if (urlSeoAttr == null || string.IsNullOrEmpty(urlSeoAttr.Value))
                     throw new Exception("no finance.");
@@ -62,7 +64,7 @@ namespace PurgeCloudflareCacheService
                 if (!bool.TryParse(urlSeoAttr.Value, out urlSeo))
                     urlSeo = false;
 
-                CountryInfo ci = new CountryInfo(id, dbConnectionKeyAttr.Value, zoneIdAttr.Value, webSiteAttr.Value, urlSeo);
+                CountryInfo ci = new CountryInfo(id, dbConnectionKeyAttr.Value, zoneIdAttr.Value, webSiteAttr.Value, ampSiteAttr == null ? "" : ampSiteAttr.Value, urlSeo);
                 countryInfoList.Add(ci);
             }
 
