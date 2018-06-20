@@ -86,28 +86,29 @@ namespace BaseProductTool
                 {
                     foreach (var pi in pList)
                     {
+                        string newName = pi.ProductNameLower;
                         foreach (var regex in regexList)
                         {
-                            string newName = regex.Replace(pi.ProductNameLower, "");
+                            newName = regex.Replace(newName, "");
+                        }
 
-                            if (newName != pi.ProductNameLower)
+                        if (newName != pi.ProductNameLower)
+                        {
+                            //var match = regex.Match(pi.ProductNameLower);
+                            //if (match.Success)
+                            //{
+                            //    pi.AttributeData = float.Parse(match.Groups["data"].Value);
+                            //}
+
+                            if (dic.ContainsKey(newName))
                             {
-                                var match = regex.Match(pi.ProductNameLower);
-                                if (match.Success)
-                                {
-                                    pi.AttributeData = float.Parse(match.Groups["data"].Value);
-                                }
-
-                                if (dic.ContainsKey(newName))
-                                {
-                                    dic[newName].Add(pi);
-                                }
-                                else
-                                {
-                                    List<ProductInfo> list = new List<ProductInfo>();
-                                    list.Add(pi);
-                                    dic.Add(newName, list);
-                                }
+                                dic[newName].Add(pi);
+                            }
+                            else
+                            {
+                                List<ProductInfo> list = new List<ProductInfo>();
+                                list.Add(pi);
+                                dic.Add(newName, list);
                             }
                         }
                     }
@@ -173,7 +174,7 @@ namespace BaseProductTool
         static Dictionary<int, List<ProductInfo>> GetProductCategoryDic()
         {
             Dictionary<int, List<ProductInfo>> dic = new Dictionary<int, List<ProductInfo>>();
-            string selectSql = @"select PT.ProductID, ProductName, CategoryID, clicks from CSK_Store_Product PT
+            string selectSql = @"select PT.ProductID, ProductName, PT.CategoryID, clicks from CSK_Store_Product PT
                                 left join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
                                 on TPT.ProductId = PT.ProductID
                                 where CategoryID in (
@@ -184,7 +185,14 @@ namespace BaseProductTool
                                 select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
                                 (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
 
-            //string selectSql = @"select ProductID, ProductName, CategoryID, 0 from CSK_Store_Product where CategoryID = 2";
+            //string selectSql = @"select PT.ProductID, ProductName, PT.CategoryID, 0 from CSK_Store_Product PT where CategoryID in (459,2)
+            //                    and CategoryID in (
+            //                    select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in
+            //                    (select typeid from CSK_Store_ProductDescriptorTitle) and CategoryID in
+            //                    (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
+            //                    and IsMerge=1 and PT.ProductId in(
+            //                    select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
+            //                    (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
 
             using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
             {
