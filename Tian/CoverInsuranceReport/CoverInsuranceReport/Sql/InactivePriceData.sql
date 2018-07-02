@@ -13,7 +13,7 @@ median=(
 		and RetailerId in (
 			select RetailerId from CSK_Store_Retailer where RetailerStatus = 1 and RetailerCountry = 3
 		) 
-		and RetailerPrice<10000
+		and RetailerPrice<9999
 	) AS x
 	WHERE rn IN ((c + 1)/2, (c + 2)/2)
 	GROUP BY productid
@@ -23,6 +23,6 @@ where ProductId in @Pids
 and RetailerId in (
 	select RetailerId from CSK_Store_Retailer where RetailerStatus = 1 and RetailerCountry = 3
 ) 
-and RetailerPrice<10000
+and RetailerPrice<9999
 group by productid  
 order by productid desc
