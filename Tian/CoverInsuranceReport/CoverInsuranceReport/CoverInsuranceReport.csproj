@@ -48,8 +48,10 @@
   <ItemGroup>
     <Compile Include="CateCtrl.cs" />
     <Compile Include="Data\ActiveData.cs" />
+    <Compile Include="Data\ActiveHistoricalPriceData.cs" />
     <Compile Include="Data\ActivePriceData.cs" />
     <Compile Include="Data\CategoryData.cs" />
+    <Compile Include="Data\HistoricalPriceData.cs" />
     <Compile Include="Data\ImageData.cs" />
     <Compile Include="Data\InactiveData.cs" />
     <Compile Include="Data\InactivePriceData.cs" />
@@ -63,7 +65,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\ActiveData.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sql\ActiveHistoricalPriceData.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sql\ActivePriceData.sql">

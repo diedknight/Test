@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CoverInsuranceReport.Data
 {
-    public class ActiveData : ExcelData
+    public class ActiveHistoricalPriceData
     {
-        public bool IsNew { get; set; }
-
-        
-
+        public int PId { get; set; }
+        public decimal NewPrice { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

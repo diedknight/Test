@@ -21,3 +21,4 @@ H:\XbaiTwoV_Project\priceme_minitools\Tian\CoverInsuranceReport\CoverInsuranceRe
 H:\XbaiTwoV_Project\priceme_minitools\Tian\CoverInsuranceReport\CoverInsuranceReport\bin\Debug\Sql\ImageData.sql
 H:\XbaiTwoV_Project\priceme_minitools\Tian\CoverInsuranceReport\CoverInsuranceReport\bin\Debug\Sql\UpComingData.sql
 H:\XbaiTwoV_Project\priceme_minitools\Tian\CoverInsuranceReport\CoverInsuranceReport\bin\Debug\Sql\UpComingPriceData.sql
+H:\XbaiTwoV_Project\priceme_minitools\Tian\CoverInsuranceReport\CoverInsuranceReport\bin\Debug\Sql\ActiveHistoricalPriceData.sql

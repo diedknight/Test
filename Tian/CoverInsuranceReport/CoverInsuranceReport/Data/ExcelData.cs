@@ -19,13 +19,22 @@ namespace CoverInsuranceReport.Data
         public decimal MinPrice { get; set; }
         public decimal AveragePrice { get; set; }
         public decimal MaxPrice { get; set; }
+        public decimal MedianPrice { get; set; }
         public int NumberOfPrices { get; set; }
         public string ProductImageUrl { get; set; }
         public string Upcoming { get; set; }
         public string CreatedOn { get; set; }
         public string UpdateOn { get; set; }
         public string ForSale { get; set; }
-        
+
+        public decimal _30DaysMinPriceDiff { get; set; }
+        public decimal _30DaysMaxPriceDiff { get; set; }
+        public decimal _30DaysMedianPriceDiff { get; set; }
+
+        public decimal _180DaysMinPriceDiff { get; set; }
+        public decimal _180DaysMaxPriceDiff { get; set; }
+        public decimal _180DaysMedianPriceDiff { get; set; }
+        public decimal _180DaysAvgPriceDiff { get; set; }
 
     }
 }

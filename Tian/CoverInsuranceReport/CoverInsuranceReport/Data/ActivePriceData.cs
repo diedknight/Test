@@ -12,6 +12,7 @@ namespace CoverInsuranceReport.Data
         public decimal Min { get; set; }
         public decimal Avg { get; set; }
         public decimal Max { get; set; }
+        public decimal Median { get; set; }
         public int Num { get; set; }
     }
 }

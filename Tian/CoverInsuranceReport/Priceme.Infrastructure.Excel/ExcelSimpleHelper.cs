@@ -16,6 +16,7 @@ namespace Priceme.Infrastructure.Excel
         private IRow _curRow = null;
 
         private int _curIndex = 0;
+        private Dictionary<string, ICellStyle> _cellStyleDic = null;
 
         public int CurIndex
         {
@@ -37,11 +38,49 @@ namespace Priceme.Infrastructure.Excel
 
             this._curSheet = this._workbook.GetSheetAt(0);
             this._curRow = this._curSheet.CreateRow(0);
+
+            this._cellStyleDic.Add("0000", CreateCellStyle(false, false, false, false));
+            this._cellStyleDic.Add("0001", CreateCellStyle(false, false, false, true));
+            this._cellStyleDic.Add("0010", CreateCellStyle(false, false, true, false));
+            this._cellStyleDic.Add("0011", CreateCellStyle(false, false, true, true));
+            this._cellStyleDic.Add("0100", CreateCellStyle(false, true, false, false));
+            this._cellStyleDic.Add("0101", CreateCellStyle(false, true, false, true));
+            this._cellStyleDic.Add("0110", CreateCellStyle(false, true, true, false));
+            this._cellStyleDic.Add("0111", CreateCellStyle(false, true, true, true));
+            this._cellStyleDic.Add("1000", CreateCellStyle(true, false, false, false));
+            this._cellStyleDic.Add("1001", CreateCellStyle(true, false, false, true));
+            this._cellStyleDic.Add("1010", CreateCellStyle(true, false, true, false));
+            this._cellStyleDic.Add("1011", CreateCellStyle(true, false, true, true));
+            this._cellStyleDic.Add("1100", CreateCellStyle(true, true, false, false));
+            this._cellStyleDic.Add("1101", CreateCellStyle(true, true, false, true));
+            this._cellStyleDic.Add("1110", CreateCellStyle(true, true, true, false));
+            this._cellStyleDic.Add("1111", CreateCellStyle(true, true, true, true));
+
         }
 
         public ExcelSimpleHelper()
         {
+            this._cellStyleDic = new Dictionary<string, ICellStyle>();
+        }
 
+        private ICellStyle CreateCellStyle(bool isBold, bool isRed, bool isUrl, bool isForegroundColor)
+        {
+            var cellStyle = this._workbook.CreateCellStyle();
+            var font = this._workbook.CreateFont();
+
+            if (isBold) font.IsBold = true;
+            if (isRed) font.Color = NPOI.SS.UserModel.IndexedColors.Red.Index;
+            if (isUrl) font.Underline = FontUnderlineType.Single;
+
+            if (isForegroundColor)
+            {
+                cellStyle.FillForegroundColor = NPOI.SS.UserModel.IndexedColors.Green.Index;
+                cellStyle.FillPattern = FillPattern.SolidForeground;
+            }
+
+            cellStyle.SetFont(font);
+
+            return cellStyle;
         }
 
         //public void InsertCol(int colIndex, string data)
@@ -112,18 +151,15 @@ namespace Priceme.Infrastructure.Excel
             {
                 var cell = this._curRow.CreateCell(i);
 
-                if (isRed || isWeight)
+                string key = "";
+                key += isWeight ? "1" : "0";
+                key += isRed ? "1" : "0";
+                key += "0";
+                key += "0";
+
+                if (key != "0000")
                 {
-
-                    var cellStyle = this._workbook.CreateCellStyle();
-                    var font = this._workbook.CreateFont();
-
-                    if (isRed) font.Color = NPOI.SS.UserModel.IndexedColors.Red.Index;
-                    if (isWeight) font.IsBold = true;
-
-
-                    cellStyle.SetFont(font);
-                    cell.CellStyle = cellStyle;
+                    cell.CellStyle = this._cellStyleDic[key];
                 }
 
                 cell.SetCellValue(dataList[i]);
