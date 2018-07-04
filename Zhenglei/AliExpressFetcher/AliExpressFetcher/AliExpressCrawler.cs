@@ -20,6 +20,7 @@ namespace AliExpressFetcher
         static Regex UnitRegex_Static;
         static List<List<string>> RelatedProductFormatList;
         static int RetryCount_Static;
+        static int TimeInterval_Static;
 
         string mAccount;
         string mPassword;
@@ -53,6 +54,7 @@ namespace AliExpressFetcher
             RelatedProductFormatList = GetRelatedProductFormatList(relatedProductFormatFilePath);
 
             RetryCount_Static = int.Parse(System.Configuration.ConfigurationManager.AppSettings["RetryCount"]);
+            TimeInterval_Static = int.Parse(System.Configuration.ConfigurationManager.AppSettings["TimeInterval"]);
         }
 
         private static List<List<string>> GetRelatedProductFormatList(string relatedProductFormatFilePath)
@@ -193,6 +195,7 @@ namespace AliExpressFetcher
                                 foreach (string pUrl in productUrls)
                                 {
                                     ProductInfo pi = GetProductInfo(pUrl, ci.CategoryName, driver);
+                                    Thread.Sleep(TimeInterval_Static);
                                     if (pi != null)
                                     {
                                         WriteToCsv(pi);
