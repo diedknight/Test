@@ -63,26 +63,29 @@ namespace BaseProductTool
         {
             DateTime dtNow = DateTime.Now;
             string pIdsStr = string.Join(",", list.Select(p => p.ProductId).Distinct());
-            //string deleteSql = @"delete [dbo].[IntraLinkingGenerationAndRelated] where ShowType = '1' and [ProductId] in (" + pIdsStr + ")";
-            string deleteSql = @"delete [dbo].[IntraLinkingGenerationAndRelated] where ShowType = '1' and LinkType = 'Variant'";
+            //string deleteSql = @"delete IntraLinkingGenerationAndRelated where ShowType = '1' and ProductId in (" + pIdsStr + ")";
+            string deleteSql = @"delete IntraLinkingGenerationAndRelated where ShowType = '1' and LinkType = 'Variant'";
             
-            string insertSql = @"INSERT INTO [dbo].[IntraLinkingGenerationAndRelated]
-                               ([ProductID]
-                               ,[LinkType]
-                               ,[ShowType]
-                               ,[LinedPID]
-                               ,[VariableNameOfPID]
-                               ,[LinedPname]
-                               ,[VariableNameOfPN]
-                               ,[AttributeName]
-                               ,[VariableNameOfAN]
-                               ,[AttributeURL]
-                               ,[VariableNameOfAURL]
-                               ,[Text]
-                               ,[CreatedBy]
-                               ,[CreatedOn]
-                               ,[ModifiedBy]
-                               ,[ModifiedOn])";
+            string insertSql = @"INSERT INTO IntraLinkingGenerationAndRelated
+                               (ProductID
+                               ,BaseProductValue
+                               ,LinkType
+                               ,ShowType
+                               ,LinedPID
+                               ,VariantProductValue
+                               ,VariableNameOfPID
+                               ,LinedPname
+                               ,VariableNameOfPN
+                               ,AttributeName
+                               ,VariableNameOfAN
+                               ,AttributeURL
+                               ,VariableNameOfAURL
+                               ,Text
+                               ,VariantTypeID
+                               ,CreatedBy
+                               ,CreatedOn
+                               ,ModifiedBy
+                               ,ModifiedOn)";
             foreach (var prs in list)
             {
                 insertSql += prs.ToSqlString(dtNow) + " union all ";

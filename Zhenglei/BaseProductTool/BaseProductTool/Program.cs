@@ -15,6 +15,8 @@ namespace BaseProductTool
         static List<string> KeywordsList_Static;
         static int MaxCount_Static = int.Parse(ConfigurationManager.AppSettings["MaxCount"]);
         static int Interval_Static = int.Parse(ConfigurationManager.AppSettings["Interval"]);
+        static Dictionary<string, int> VariantTypeUnitDic_Static;
+        static Dictionary<string, int> VariantTypeTitleDic_Static;
 
         static void Main(string[] args)
         {
@@ -59,8 +61,11 @@ namespace BaseProductTool
                 {
                     IntraLinkingGenerationAndRelated ilgr = new IntraLinkingGenerationAndRelated();
                     ilgr.ProductId = list[0].ProductId;
+                    ilgr.BaseProductValue = list[0].VariantValue;
                     ilgr.LinedPID = list[i].ProductId;
+                    ilgr.VariantProductValue = list[i].VariantValue;
                     ilgr.LinedPname = list[i].ProductName.Replace("'", " ");
+                    ilgr.VariantTypeID = list[0].VariantTypeID;
                     ilgrList.Add(ilgr);
                 }
 
@@ -70,11 +75,17 @@ namespace BaseProductTool
 
         private static Dictionary<int, Dictionary<string, List<ProductInfo>>> GetStorageResults(Dictionary<int, List<ProductInfo>> productCategoryDic)
         {
-            List<System.Text.RegularExpressions.Regex> regexList = new List<System.Text.RegularExpressions.Regex>();
+            List<KeywordsInfocs> regexList = new List<KeywordsInfocs>();
             foreach (string kw in KeywordsList_Static)
             {
+                KeywordsInfocs ki = new KeywordsInfocs();
+
                 System.Text.RegularExpressions.Regex storageRegex = new System.Text.RegularExpressions.Regex("(?<data>\\d+(\\.\\d+)?)\\s?" + kw, System.Text.RegularExpressions.RegexOptions.Compiled | System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                regexList.Add(storageRegex);
+
+                ki.Keywords = kw.ToLower();
+                ki.MyRegex = storageRegex;
+
+                regexList.Add(ki);
             }
 
             Dictionary<int, Dictionary<string, List<ProductInfo>>> categoryProductsDic = new Dictionary<int, Dictionary<string, List<ProductInfo>>>();
@@ -89,17 +100,20 @@ namespace BaseProductTool
                         string newName = pi.ProductNameLower;
                         foreach (var regex in regexList)
                         {
-                            newName = regex.Replace(newName, "");
+                            newName = regex.MyRegex.Replace(newName, "");
+                            var match = regex.MyRegex.Match(pi.ProductNameLower);
+                            if (match.Success)
+                            {
+                                pi.VariantValue = match.Groups["data"].Value;
+                                if(VariantTypeUnitDic_Static.ContainsKey(regex.Keywords))
+                                {
+                                    pi.VariantTypeID = VariantTypeUnitDic_Static[regex.Keywords];
+                                }
+                            }
                         }
 
                         if (newName != pi.ProductNameLower)
                         {
-                            //var match = regex.Match(pi.ProductNameLower);
-                            //if (match.Success)
-                            //{
-                            //    pi.AttributeData = float.Parse(match.Groups["data"].Value);
-                            //}
-
                             if (dic.ContainsKey(newName))
                             {
                                 dic[newName].Add(pi);
@@ -115,19 +129,37 @@ namespace BaseProductTool
                 }
                 else
                 {
-                    foreach (var pi in pList)
+                    string titleName = "Lens configurations".ToLower();
+                    if (VariantTypeTitleDic_Static.ContainsKey(titleName))
                     {
-                        string newName = pi.ProductNameLower.Split('+')[0].Trim();
+                        int typeId = VariantTypeTitleDic_Static[titleName];
+  
+                        foreach (var pi in pList)
+                        {
+                            pi.VariantTypeID = typeId;
+                            string newName = pi.ProductNameLower;
 
-                        if (dic.ContainsKey(newName))
-                        {
-                            dic[newName].Add(pi);
-                        }
-                        else
-                        {
-                            List<ProductInfo> list = new List<ProductInfo>();
-                            list.Add(pi);
-                            dic.Add(newName, list);
+                            int plusIndex = pi.ProductNameLower.IndexOf('+');
+                            if (plusIndex > 1)
+                            {
+                                newName = pi.ProductNameLower.Substring(0, plusIndex).Trim();
+                                pi.VariantValue = pi.ProductNameLower.Substring(plusIndex + 1, pi.ProductNameLower.Length - plusIndex - 1).Trim();
+                            }
+                            else
+                            {
+                                pi.VariantValue = "Body";
+                            }
+
+                            if (dic.ContainsKey(newName))
+                            {
+                                dic[newName].Add(pi);
+                            }
+                            else
+                            {
+                                List<ProductInfo> list = new List<ProductInfo>();
+                                list.Add(pi);
+                                dic.Add(newName, list);
+                            }
                         }
                     }
                 }
@@ -169,13 +201,46 @@ namespace BaseProductTool
             {
                 KeywordsList_Static.Add(kw.Trim().ToLower());
             }
+
+            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType";
+            VariantTypeUnitDic_Static = new Dictionary<string, int>();
+            VariantTypeTitleDic_Static = new Dictionary<string, int>();
+            using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
+            {
+                sqlConn.Open();
+                List<int> pidList = new List<int>();
+                using (SqlCommand sqlCmd1 = new SqlCommand(selectVariantTypeSql, sqlConn))
+                {
+                    sqlCmd1.CommandTimeout = 0;
+                    using (SqlDataReader sqlDr = sqlCmd1.ExecuteReader())
+                    {
+                        while (sqlDr.Read())
+                        {
+                            int variantTypeID = sqlDr.GetInt32(0);
+                            string variantTitleName = sqlDr.GetString(1).ToLower();
+                            string unit = sqlDr.GetString(2).ToLower();
+
+                            if (!VariantTypeUnitDic_Static.ContainsKey(unit))
+                            {
+                                VariantTypeUnitDic_Static.Add(unit, variantTypeID);
+                            }
+
+                            if (!VariantTypeTitleDic_Static.ContainsKey(variantTitleName))
+                            {
+                                VariantTypeTitleDic_Static.Add(variantTitleName, variantTypeID);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         static Dictionary<int, List<ProductInfo>> GetProductCategoryDic()
         {
             Dictionary<int, List<ProductInfo>> dic = new Dictionary<int, List<ProductInfo>>();
+
             string selectSql = @"select PT.ProductID, ProductName, PT.CategoryID, clicks from CSK_Store_Product PT
-                                left join (select ProductId, sum(clicks) as clicks from [dbo].[ProductClickTemp] group by ProductId) as TPT
+                                left join (select ProductId, sum(clicks) as clicks from ProductClickTemp group by ProductId) as TPT
                                 on TPT.ProductId = PT.ProductID
                                 where CategoryID in (
                                 select distinct(categoryid) from CSK_Store_Category_AttributeTitle_Map where AttributeTitleID in

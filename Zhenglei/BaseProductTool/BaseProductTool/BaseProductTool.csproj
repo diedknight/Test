@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BaseProductsOperator.cs" />
     <Compile Include="IntraLinkingGenerationAndRelated.cs" />
+    <Compile Include="KeywordsInfocs.cs" />
     <Compile Include="LogWriter.cs" />
     <Compile Include="ProductInfo.cs" />
     <Compile Include="Program.cs" />
