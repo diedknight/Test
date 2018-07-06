@@ -137,13 +137,13 @@ namespace BaseProductTool
                         foreach (var pi in pList)
                         {
                             pi.VariantTypeID = typeId;
-                            string newName = pi.ProductNameLower;
+                            string newName = pi.ProductName;
 
-                            int plusIndex = pi.ProductNameLower.IndexOf('+');
+                            int plusIndex = pi.ProductName.IndexOf('+');
                             if (plusIndex > 1)
                             {
-                                newName = pi.ProductNameLower.Substring(0, plusIndex).Trim();
-                                pi.VariantValue = pi.ProductNameLower.Substring(plusIndex + 1, pi.ProductNameLower.Length - plusIndex - 1).Trim();
+                                newName = pi.ProductName.Substring(0, plusIndex).Trim();
+                                pi.VariantValue = pi.ProductName.Substring(plusIndex + 1, pi.ProductName.Length - plusIndex - 1).Trim();
                             }
                             else
                             {
@@ -202,7 +202,7 @@ namespace BaseProductTool
                 KeywordsList_Static.Add(kw.Trim().ToLower());
             }
 
-            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType";
+            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType order by VariantTypeID desc";
             VariantTypeUnitDic_Static = new Dictionary<string, int>();
             VariantTypeTitleDic_Static = new Dictionary<string, int>();
             using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
