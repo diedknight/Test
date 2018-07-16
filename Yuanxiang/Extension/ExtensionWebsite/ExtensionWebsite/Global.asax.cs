@@ -33,7 +33,11 @@ namespace ExtensionWebsite
 
         protected void Application_Error(object sender, EventArgs e)
         {
+            Exception ex = Server.GetLastError();
 
+            Response.ClearContent();
+            Response.Write("");
+            Server.ClearError();
         }
 
         protected void Session_End(object sender, EventArgs e)
