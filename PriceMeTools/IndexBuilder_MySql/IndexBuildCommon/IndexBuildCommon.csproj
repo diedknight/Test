@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DFCEECA0-8E9B-4ABD-A3D1-9322DDDC6563}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IndexBuildCommon</RootNamespace>
+    <AssemblyName>IndexBuildCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CacheBaseLibrary">
+      <HintPath>..\..\TheThirdPartyDLL\Velocity\CacheBaseLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="CASBase">
+      <HintPath>..\..\TheThirdPartyDLL\Velocity\CASBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientLibrary">
+      <HintPath>..\..\TheThirdPartyDLL\Velocity\ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="FabricCommon">
+      <HintPath>..\..\TheThirdPartyDLL\Velocity\FabricCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="LogWriter">
+      <HintPath>..\..\TheThirdPartyDLL\LogWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\..\PriceMe Website\7.5\DLL\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartThreadPool">
+      <HintPath>..\..\TheThirdPartyDLL\SmartThreadPool.dll</HintPath>
+    </Reference>
+    <Reference Include="SubSonic.Core">
+      <HintPath>..\..\TheThirdPartyDLL\SubSonic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppValue.cs" />
+    <Compile Include="AttributeStringSort.cs" />
+    <Compile Include="CacheBuilder.cs" />
+    <Compile Include="Data\AttributeParameter.cs" />
+    <Compile Include="Data\BaseAttr.cs" />
+    <Compile Include="Data\BulidIndexSpeedInfo.cs" />
+    <Compile Include="Data\CategoryProductIndexParameter.cs" />
+    <Compile Include="Data\ClickData.cs" />
+    <Compile Include="Data\ExpertReview.cs" />
+    <Compile Include="Data\FixPriceInfo.cs" />
+    <Compile Include="Data\FontSize.cs" />
+    <Compile Include="Data\IndexSpeedLog.cs" />
+    <Compile Include="IndexBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlController.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\pricealyser\Tools\CopyFile\CopyFile.csproj">
+      <Project>{e92b2149-21cb-43af-b0b7-7251746e8cf6}</Project>
+      <Name>CopyFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PriceMe Website\7.5\PriceMeCache\PriceMeCache.csproj">
+      <Project>{495480ab-d585-4d6c-b752-c0e51f279e12}</Project>
+      <Name>PriceMeCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PriceMe Website\7.5\PriceMeCommon\PriceMeCommon.csproj">
+      <Project>{2942b9f3-4cdc-4819-b1b3-267b3affd723}</Project>
+      <Name>PriceMeCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PriceMe Website\7.5\PriceMeDBA\PriceMeDBA.csproj">
+      <Project>{a5acfd04-8b70-4a08-a07d-13b35f9b6b63}</Project>
+      <Name>PriceMeDBA</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
