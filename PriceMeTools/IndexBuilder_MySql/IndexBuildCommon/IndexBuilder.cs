@@ -261,7 +261,7 @@ namespace IndexBuildCommon
                 }
                 else
                 {
-                    sql = " Now();";
+                    sql += " Now();";
                 }
 
                 sqlConn.Open();
@@ -282,7 +282,7 @@ namespace IndexBuildCommon
                             ProductCatalog pc = includePidDic[pid];
                             pc.BestPrice = price.ToString("0.00");
                             pc.BestPriceUrl = priceType.Trim();
-                            int parentID = GetParentID(pc.CategoryID);
+                            int parentID = GetRootCategoryID(pc.CategoryID);
                             if (ucpDic.ContainsKey(parentID))
                             {
                                 ucpDic[parentID].Add(pc);
@@ -303,12 +303,12 @@ namespace IndexBuildCommon
             return ucpDic;
         }
 
-        private static int GetParentID(int categoryID)
+        private static int GetRootCategoryID(int categoryID)
         {
             string connectionString2 = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString;
             using (SqlConnection sqlConnection = new SqlConnection(connectionString2))
             {
-                using (SqlCommand sqlCMD = new SqlCommand("select [dbo].[GetParentCategory](" + categoryID + ")", sqlConnection))
+                using (SqlCommand sqlCMD = new SqlCommand("select dbo.GetParentCategory(" + categoryID + ")", sqlConnection))
                 {
                     sqlConnection.Open();
                     sqlCMD.CommandTimeout = 0;
