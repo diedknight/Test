@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportAttrsConsole", "ImportAttrsConsole\ImportAttrsConsole.csproj", "{6386BCBB-F30A-4B29-9742-EE9DABA5D339}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportAttrs", "ImportAttrs\ImportAttrs.csproj", "{BA569F72-9F94-4DC5-8E4B-FDA579CB9A2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExistingAttributes", "ProcessExistingAttributes\ProcessExistingAttributes.csproj", "{3388B56F-6E58-495A-9126-CE1D62DEC801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BA569F72-9F94-4DC5-8E4B-FDA579CB9A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA569F72-9F94-4DC5-8E4B-FDA579CB9A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA569F72-9F94-4DC5-8E4B-FDA579CB9A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3388B56F-6E58-495A-9126-CE1D62DEC801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3388B56F-6E58-495A-9126-CE1D62DEC801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3388B56F-6E58-495A-9126-CE1D62DEC801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3388B56F-6E58-495A-9126-CE1D62DEC801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

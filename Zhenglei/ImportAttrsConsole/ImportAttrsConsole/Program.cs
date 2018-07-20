@@ -20,6 +20,8 @@ namespace ImportAttrsConsole
             {
                 ImportAttrs.ImportController.ImportAttr(importProductInfo);
             }
+
+            Console.ReadLine();
         }
 
         private static List<ImportProductInfo> GetFileText(string filePath)

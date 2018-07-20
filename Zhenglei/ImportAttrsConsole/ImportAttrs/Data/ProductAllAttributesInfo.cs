@@ -9,6 +9,12 @@ namespace ImportAttrs.Data
     public class ProductAllAttributesInfo
     {
         public int ProductId { get; set; }
+
+        public double Weight { get; set; }
+        public double Length { get; set; }
+        public double Height { get; set; }
+        public double Width { get; set; }
+
         public List<ProductAttributeInfo> ProductAttributeList { get; set; }
         public List<ProductCompareAttributeInfo> ProductCompareAttributeList { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImportAttrs.Data;
+using System;
 using System.IO;
 
 namespace ImportAttrs
@@ -22,6 +23,11 @@ namespace ImportAttrs
         public void WriteLine(string line)
         {
             WriteLine(line, false);
+        }
+
+        public void WriteLine(UnmatchReportData data)
+        {
+            WriteLine(" ID : " + data.ID + " RId : " + data.RID + " CId : " + data.CID + " PId : " + data.PID + " AttType : " + data.AttType + " AttTitleID : " + data.AttTitleID + " PM_AttName : " + data.PM_AttName + " DR_AttName : " + data.DR_AttName + " DR_AttValue_Orignal : " + data.DR_AttValue_Orignal + " DR_AttValue_Changed : " + data.DR_AttValue_Changed, false);
         }
 
         public void WriteLine(string line, bool addTime)

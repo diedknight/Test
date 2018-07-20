@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.Common;
+using Dapper;
 
 namespace ImportAttrs
 {
@@ -20,7 +23,7 @@ namespace ImportAttrs
         static Dictionary<int, CompareAttributeInfo> CompareAttributeDic_Static;
         static Dictionary<int, List<CompareAttributeValueMap>> CategoryCompareAttributeValueMapDic_Static;
         static LogWriter MatchLogWriter_Static;
-        static LogWriter UnMatchLogWriter_Static;
+        public static LogWriter UnMatchLogWriter_Static;
         static ImportController()
         {
             DBConnectionStr_Static = System.Configuration.ConfigurationManager.ConnectionStrings["PriceMe_DB"].ConnectionString;
@@ -293,7 +296,8 @@ namespace ImportAttrs
             }
         }
 
-        static SqlConnection GetDBConnection()
+
+        public static SqlConnection GetDBConnection()
         {
             return new SqlConnection(DBConnectionStr_Static);
         }
@@ -349,6 +353,8 @@ namespace ImportAttrs
             {
                 foreach (string attrTitle in attrDic.Keys)
                 {
+                    if (string.IsNullOrWhiteSpace(attrDic[attrTitle])) continue;
+
                     try
                     {
                         AttributeRetailerMap arm = attributeRetailerMapList.Where(a => a.RetailerAttributeName.Equals(attrTitle, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
@@ -380,7 +386,7 @@ namespace ImportAttrs
                             }
 
                             //宽度
-                            if (arm.AttributeType == 99)
+                            if (arm.AttributeType == 99 && productAllAttributesInfo.Width == 0)
                             {
                                 if (!string.IsNullOrEmpty(arm.Unit))
                                 {
@@ -393,7 +399,7 @@ namespace ImportAttrs
                                     widthFloat = ChangeUnit(widthFloat, arm.Unit, lengthUnit);
                                 }
 
-                                UpdateProductWidth(productId, widthFloat);
+                                UpdateProductWidth(productId, widthFloat, lengthUnit);
 
                                 MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Width" + " AttributeName : " + widthFloat.ToString("0.00") + " AttributeValue : " + widthFloat.ToString("0.00"));
 
@@ -401,7 +407,7 @@ namespace ImportAttrs
                                 WriteMatchedReport(attributeMatchedReport);
                             }
                             //高度
-                            else if (arm.AttributeType == 999)
+                            else if (arm.AttributeType == 999 && productAllAttributesInfo.Height == 0)
                             {
                                 if (!string.IsNullOrEmpty(arm.Unit))
                                 {
@@ -414,7 +420,7 @@ namespace ImportAttrs
                                     heightFloat = ChangeUnit(heightFloat, arm.Unit, lengthUnit);
                                 }
 
-                                UpdateProductHeight(productId, heightFloat);
+                                UpdateProductHeight(productId, heightFloat, lengthUnit);
 
                                 MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Height" + " AttributeName : " + heightFloat.ToString("0.00") + " AttributeValue : " + heightFloat.ToString("0.00"));
 
@@ -422,7 +428,7 @@ namespace ImportAttrs
                                 WriteMatchedReport(attributeMatchedReport);
                             }
                             //深度
-                            else if (arm.AttributeType == 9)
+                            else if (arm.AttributeType == 9 && productAllAttributesInfo.Length == 0)
                             {
                                 if (!string.IsNullOrEmpty(arm.Unit))
                                 {
@@ -435,7 +441,7 @@ namespace ImportAttrs
                                     lengthFloat = ChangeUnit(lengthFloat, arm.Unit, lengthUnit);
                                 }
 
-                                UpdateProductLength(productId, lengthFloat);
+                                UpdateProductLength(productId, lengthFloat, lengthUnit);
 
                                 MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Length" + " AttributeName : " + lengthFloat.ToString("0.00") + " AttributeValue : " + lengthFloat.ToString("0.00"));
 
@@ -443,7 +449,7 @@ namespace ImportAttrs
                                 WriteMatchedReport(attributeMatchedReport);
                             }
                             //重量
-                            else if (arm.AttributeType == 1000)
+                            else if (arm.AttributeType == 1000 && productAllAttributesInfo.Weight == 0)
                             {
                                 if (!string.IsNullOrEmpty(arm.Unit))
                                 {
@@ -463,7 +469,7 @@ namespace ImportAttrs
                                 WriteMatchedReport(attributeMatchedReport);
                             }
                             //长宽高在一起
-                            else if (arm.AttributeType == 9999)
+                            else if (arm.AttributeType == 9999 && (productAllAttributesInfo.Length == 0 || productAllAttributesInfo.Width == 0 || productAllAttributesInfo.Height == 0))
                             {
                                 if (!string.IsNullOrEmpty(arm.Unit))
                                 {
@@ -497,7 +503,7 @@ namespace ImportAttrs
                                     length = ChangeUnit(length, arm.Unit, lengthUnit);
                                 }
 
-                                UpdateProductWHL(productId, width, height, length);
+                                UpdateProductWHL(productId, width, height, length, lengthUnit);
 
                                 MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID);
 
@@ -510,7 +516,7 @@ namespace ImportAttrs
                                 if (int.TryParse(arm.PM_AttributeID, out titleId))
                                 {
                                     //一般Attributes
-                                    if (arm.AttributeType == 2)
+                                    if (arm.AttributeType == 2 && productAllAttributesInfo.ProductAttributeList.FirstOrDefault(p => p.AttributeTitleId == titleId) == null)
                                     {
                                         var priceMeAttrTitle = AttributeTitleDic_Static[titleId];
                                         List<AttributeValueInfo> priceMeAttrValues = new List<AttributeValueInfo>();
@@ -519,24 +525,28 @@ namespace ImportAttrs
                                             priceMeAttrValues = AttributeValueListDic_Static[titleId];
                                         }
 
-                                        float floatValue = 0f;
                                         if (!string.IsNullOrEmpty(arm.Unit))
                                         {
                                             attrValue = attrValue.Replace(arm.Unit, "").Trim();
                                             if (priceMeAttrTitle.AttributeTypeID == 6)
                                             {
+                                                float floatValue = 0f;
+                                                attrValue = attrValue.Replace(",", "");
                                                 if (float.TryParse(attrValue, out floatValue))
                                                 {
                                                     if (!string.IsNullOrEmpty(priceMeAttrTitle.Unit))
                                                     {
                                                         floatValue = ChangeUnit(floatValue, arm.Unit, priceMeAttrTitle.Unit);
                                                     }
-                                                    attrValue = floatValue.ToString("0.00");
+
+                                                    int tempValue = Convert.ToInt32(floatValue);
+                                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString();
                                                 }
                                             }
                                             else if (priceMeAttrTitle.AttributeTypeID == 4)
                                             {
                                                 int intValue = 0;
+                                                attrValue = attrValue.Replace(",", "");
                                                 if (int.TryParse(attrValue, out intValue))
                                                 {
                                                     if (!string.IsNullOrEmpty(priceMeAttrTitle.Unit))
@@ -550,11 +560,35 @@ namespace ImportAttrs
 
                                         ProductAttributeInfo productAttributeInfo = productAllAttributesInfo.ProductAttributeList.Where(p => p.AttributeTitleId == titleId).FirstOrDefault();
 
-                                        AttributeValueInfo newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue)).FirstOrDefault();
+                                        AttributeValueInfo newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                                         if (newAttributeValue == null && newAttributeValue == null)
                                         {
-                                            attrValue = floatValue.ToString("0.0");
-                                            newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue)).FirstOrDefault();
+                                            //attrValue = floatValue == 0 ? attrValue : floatValue.ToString("0.0");
+                                            newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+
+                                            //判断attrValue，是否存在priceMeAttrValues里面最小值和最大值之间。存在就往attributevalue里面新增。                                        
+                                            float tempAttrValue = 0f;
+                                            if (float.TryParse(attrValue, out tempAttrValue))
+                                            {
+                                                float min = float.MaxValue;
+                                                float max = 0f;
+
+                                                priceMeAttrValues.ForEach(item =>
+                                                {
+                                                    float itemValue = 0f;
+                                                    if (float.TryParse(item.Value, out itemValue))
+                                                    {
+                                                        if (itemValue > max) max = itemValue;
+                                                        if (itemValue < min) min = itemValue;
+                                                    }
+                                                });
+
+                                                if (tempAttrValue <= max && tempAttrValue >= min)
+                                                {
+                                                    newAttributeValue = InsertAttributeValue(priceMeAttrTitle, attrValue);
+                                                }
+                                            }
+
                                         }
 
                                         //如果Attribute的Value存在
@@ -602,7 +636,7 @@ namespace ImportAttrs
                                         }
                                     }
                                     //比较用的Attributes
-                                    else if (arm.AttributeType == 3)
+                                    else if (arm.AttributeType == 3 && productAllAttributesInfo.ProductCompareAttributeList.FirstOrDefault(pc => pc.CompareAttributeID == titleId) == null)
                                     {
                                         var priceMeCompareAttrTitle = CompareAttributeDic_Static[titleId];
                                         bool isFloatValue = false;
@@ -612,19 +646,24 @@ namespace ImportAttrs
                                             attrValue = attrValue.Replace(arm.Unit, "").Trim();
                                             if (priceMeCompareAttrTitle.AttributeTypeID == 6)
                                             {
+                                                attrValue = attrValue.Replace(",", "");
                                                 if (float.TryParse(attrValue, out floatValue))
                                                 {
                                                     if (!string.IsNullOrEmpty(priceMeCompareAttrTitle.Unit))
                                                     {
                                                         floatValue = ChangeUnit(floatValue, arm.Unit, priceMeCompareAttrTitle.Unit);
                                                     }
-                                                    attrValue = floatValue.ToString("0.00");
+
+                                                    int tempValue = Convert.ToInt32(floatValue);
+                                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString();
+
                                                     isFloatValue = true;
                                                 }
                                             }
                                             else if (priceMeCompareAttrTitle.AttributeTypeID == 4)
                                             {
                                                 int intValue = 0;
+                                                attrValue = attrValue.Replace(",", "");
                                                 if (int.TryParse(attrValue, out intValue))
                                                 {
                                                     if (!string.IsNullOrEmpty(priceMeCompareAttrTitle.Unit))
@@ -657,7 +696,9 @@ namespace ImportAttrs
 
                                             if (isFloatValue && !isValid)
                                             {
-                                                attrValue = floatValue.ToString("0.0");
+                                                int tempValue = Convert.ToInt32(floatValue);
+                                                attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString("0.0");
+
                                                 ccm = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.SkeywordList.Contains(attrValue) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
 
                                                 if (ccm != null)
@@ -670,6 +711,37 @@ namespace ImportAttrs
                                                     var ccm2 = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
                                                     if (ccm2 != null)
                                                     {
+                                                        isValid = true;
+                                                    }
+                                                }
+                                            }
+
+                                            if (!isValid)
+                                            {
+                                                float tempAttrValue = 0f;
+                                                if (float.TryParse(attrValue, out tempAttrValue))
+                                                {
+                                                    float min = float.MaxValue;
+                                                    float max = 0f;
+
+                                                    CategoryCompareAttributeValueMapDic_Static[categoryId].Where(item => item.CompareAttributeID == titleId).ToList().ForEach(item =>
+                                                        {
+                                                            float itemValue = 0f;
+                                                            if (float.TryParse(item.Value, out itemValue))
+                                                            {
+                                                                if (itemValue > max) max = itemValue;
+                                                                if (itemValue < min) min = itemValue;
+                                                            }
+                                                        });
+
+                                                    if (tempAttrValue <= max && tempAttrValue >= min)
+                                                    {
+                                                        string sql = "insert into [AT_CompareAttributeValue_Map] ([CompareAttributeID],[Value],[Skeywords],[CategoryID]) values (@CompareAttributeID,@Value,@Skeywords,@CategoryID)";
+                                                        using (SqlConnection sqlConn = GetDBConnection())
+                                                        {
+                                                            sqlConn.Execute(sql, new { CompareAttributeID = titleId, Value = attrValue, Skeywords = "", CategoryID = categoryId });
+                                                        }
+
                                                         isValid = true;
                                                     }
                                                 }
@@ -740,69 +812,84 @@ namespace ImportAttrs
             }
         }
 
-        private static void UpdateProductWHL(int productId, float width, float height, float length)
+        private static void UpdateProductWHL(int productId, float width, float height, float length, string unit)
         {
-            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Width] = " + width.ToString("0.00") + ",[Height] = " + height.ToString("0.00") + ",[Length] = " + length.ToString("0.00") + " WHERE [ProductID] = " + productId;
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Width] = " + width.ToString("0.00") + ",[Height] = " + height.ToString("0.00") + ",[Length] = " + length.ToString("0.00") + ",[UnitOfMeasure]='" + unit + "' WHERE [ProductID] = " + productId;
+
+            CmdQueue.Instance.Enqueue(new SqlCommand(updateSql));
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
-        private static void UpdateProductWidth(int productId, float widthFloat)
+        private static void UpdateProductWidth(int productId, float widthFloat, string unit)
         {
-            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Width] = " + widthFloat.ToString("0.00") + " WHERE [ProductID] = " + productId;
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Width] = " + widthFloat.ToString("0.00") + ",[UnitOfMeasure]='" + unit + "' WHERE [ProductID] = " + productId;
+
+            CmdQueue.Instance.Enqueue(new SqlCommand(updateSql));
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
-        private static void UpdateProductHeight(int productId, float heightFloat)
+        private static void UpdateProductHeight(int productId, float heightFloat, string unit)
         {
-            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Height] = " + heightFloat.ToString("0.00") + " WHERE [ProductID] = " + productId;
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Height] = " + heightFloat.ToString("0.00") + ",[UnitOfMeasure]='" + unit + "' WHERE [ProductID] = " + productId;
+
+            CmdQueue.Instance.Enqueue(new SqlCommand(updateSql));
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
-        private static void UpdateProductLength(int productId, float lengthFloat)
+        private static void UpdateProductLength(int productId, float lengthFloat, string unit)
         {
-            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Length] = " + lengthFloat.ToString("0.00") + " WHERE [ProductID] = " + productId;
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Length] = " + lengthFloat.ToString("0.00") + ",[UnitOfMeasure]='" + unit + "' WHERE [ProductID] = " + productId;
+
+            CmdQueue.Instance.Enqueue(new SqlCommand(updateSql));
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         private static void UpdateProductWeight(int productId, float weightFloat)
         {
             string updateSql = "UPDATE [dbo].[CSK_Store_Product] SET [Weight] = " + weightFloat.ToString("0.00") + " WHERE [ProductID] = " + productId;
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+
+            CmdQueue.Instance.Enqueue(new SqlCommand(updateSql));
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         private static float ChangeUnit(float weightFloat, string fromUnit, string toUnit)
@@ -870,6 +957,14 @@ namespace ImportAttrs
             else if (fromUnit.Equals("tb", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("gb", StringComparison.InvariantCultureIgnoreCase))
             {
                 return weightFloat * 1024f;
+            }
+            else if (fromUnit.Equals("mins", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("h", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return weightFloat / 60f;
+            }
+            else if (fromUnit.Equals("h", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("mins", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return weightFloat * 60f;
             }
             else
             {
@@ -955,16 +1050,23 @@ namespace ImportAttrs
                                  ,[Modifiedby] = 'ImportAttributeTool'
                                   WHERE [ProductID] = " + productId + " and [CompareAttributeID] = " + priceMeCompareAttrTitle.CompareAttributeId;
 
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.Parameters.Add(new SqlParameter("@valueName", attrValue));
-                    sqlCmd.Parameters.Add(new SqlParameter("@dateNow", DateTime.Now));
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+
+            SqlCommand sqlCmd = new SqlCommand(updateSql);
+            sqlCmd.Parameters.Add(new SqlParameter("@valueName", attrValue));
+            sqlCmd.Parameters.Add(new SqlParameter("@dateNow", DateTime.Now));
+
+            CmdQueue.Instance.Enqueue(sqlCmd);
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.Parameters.Add(new SqlParameter("@valueName", attrValue));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@dateNow", DateTime.Now));
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         private static void InsertProductCompareAttribute(int productId, CompareAttributeInfo priceMeCompareAttrTitle, string attrValue)
@@ -982,18 +1084,26 @@ namespace ImportAttrs
                                    ,@dateNow
                                    ,'ImportAttributeTool')";
 
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
-                {
-                    sqlCmd.Parameters.Add(new SqlParameter("@cAttrId", priceMeCompareAttrTitle.CompareAttributeId));
-                    sqlCmd.Parameters.Add(new SqlParameter("@valueName", attrValue));
-                    sqlCmd.Parameters.Add(new SqlParameter("@productId", productId));
-                    sqlCmd.Parameters.Add(new SqlParameter("@dateNow", DateTime.Now));
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            SqlCommand sqlCmd = new SqlCommand(insertSql);
+            sqlCmd.Parameters.Add(new SqlParameter("@cAttrId", priceMeCompareAttrTitle.CompareAttributeId));
+            sqlCmd.Parameters.Add(new SqlParameter("@valueName", attrValue));
+            sqlCmd.Parameters.Add(new SqlParameter("@productId", productId));
+            sqlCmd.Parameters.Add(new SqlParameter("@dateNow", DateTime.Now));
+
+            CmdQueue.Instance.Enqueue(sqlCmd);
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
+            //    {
+            //        sqlCmd.Parameters.Add(new SqlParameter("@cAttrId", priceMeCompareAttrTitle.CompareAttributeId));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@valueName", attrValue));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@productId", productId));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@dateNow", DateTime.Now));
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         private static AttributeValueInfo InsertAttributeValue(AttributeTitleInfo priceMeAttrTitle, string attrValue)
@@ -1090,20 +1200,29 @@ namespace ImportAttrs
                                 ,@valueId
                                 ,'ImportAttributeTool')";
 
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
+            SqlCommand sqlCmd = new SqlCommand(insertSql);
+            sqlCmd.Parameters.Add(new SqlParameter("@productId", productId));
+            sqlCmd.Parameters.Add(new SqlParameter("@titleName", priceMeAttrTitle.Title));
+            sqlCmd.Parameters.Add(new SqlParameter("@valueName", newAttributeValue.Value));
+            sqlCmd.Parameters.Add(new SqlParameter("@titleId", priceMeAttrTitle.TitleId));
+            sqlCmd.Parameters.Add(new SqlParameter("@valueId", newAttributeValue.AttributeValueId));
 
-                using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
-                {
-                    sqlCmd.Parameters.Add(new SqlParameter("@productId", productId));
-                    sqlCmd.Parameters.Add(new SqlParameter("@titleName", priceMeAttrTitle.Title));
-                    sqlCmd.Parameters.Add(new SqlParameter("@valueName", newAttributeValue.Value));
-                    sqlCmd.Parameters.Add(new SqlParameter("@titleId", priceMeAttrTitle.TitleId));
-                    sqlCmd.Parameters.Add(new SqlParameter("@valueId", newAttributeValue.AttributeValueId));
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            CmdQueue.Instance.Enqueue(sqlCmd);
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+
+            //    using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
+            //    {
+            //        sqlCmd.Parameters.Add(new SqlParameter("@productId", productId));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@titleName", priceMeAttrTitle.Title));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@valueName", newAttributeValue.Value));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@titleId", priceMeAttrTitle.TitleId));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@valueId", newAttributeValue.AttributeValueId));
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         private static void UpdateProductAttribute(int productId, ProductAttributeInfo productAttributeInfo, AttributeValueInfo newAttributeValue)
@@ -1113,16 +1232,22 @@ namespace ImportAttrs
                                     ,[AttributeValueID] = @valueId
                                     ,[ModifiedBy] = 'ImportAttributeTool' WHERE ProductID = " + productId + " and ProductDescriptorID = " + productAttributeInfo.Id;
 
-            using (SqlConnection sqlConn = GetDBConnection())
-            {
-                sqlConn.Open();
-                using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                {
-                    sqlCmd.Parameters.Add(new SqlParameter("@valueName", newAttributeValue.Value));
-                    sqlCmd.Parameters.Add(new SqlParameter("@valueId", newAttributeValue.AttributeValueId));
-                    sqlCmd.ExecuteNonQuery();
-                }
-            }
+            SqlCommand sqlCmd = new SqlCommand(updateSql);
+            sqlCmd.Parameters.Add(new SqlParameter("@valueName", newAttributeValue.Value));
+            sqlCmd.Parameters.Add(new SqlParameter("@valueId", newAttributeValue.AttributeValueId));
+
+            CmdQueue.Instance.Enqueue(sqlCmd);
+
+            //using (SqlConnection sqlConn = GetDBConnection())
+            //{
+            //    sqlConn.Open();
+            //    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+            //    {
+            //        sqlCmd.Parameters.Add(new SqlParameter("@valueName", newAttributeValue.Value));
+            //        sqlCmd.Parameters.Add(new SqlParameter("@valueId", newAttributeValue.AttributeValueId));
+            //        sqlCmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         private static ProductAllAttributesInfo GetProductAllAttributesInfo(int productId)
@@ -1169,8 +1294,22 @@ namespace ImportAttrs
                     }
                     paai.ProductCompareAttributeList = list2;
                 }
-            }
 
+                string productSql = "select top 1 Weight,Length,Height,Width from CSK_Store_Product where ProductID=" + productId;
+                using (SqlCommand sqlCmd = new SqlCommand(productSql, sqlConn))
+                {
+                    using (SqlDataReader sqlDr = sqlCmd.ExecuteReader())
+                    {
+                        while (sqlDr.Read())
+                        {
+                            paai.Weight = sqlDr.IsDBNull(0) ? 0d : Convert.ToDouble(sqlDr[0]);
+                            paai.Length = sqlDr.IsDBNull(1) ? 0d : Convert.ToDouble(sqlDr[1]);
+                            paai.Height = sqlDr.IsDBNull(2) ? 0d : Convert.ToDouble(sqlDr[2]);
+                            paai.Width = sqlDr.IsDBNull(3) ? 0d : Convert.ToDouble(sqlDr[3]);
+                        }
+                    }
+                }
+            }
 
             return paai;
         }
@@ -1227,23 +1366,38 @@ namespace ImportAttrs
                                ,'ImportAttributeTool'
                                ,@createdOn)";
 
+                    SqlCommand sqlCmd = new SqlCommand(insertSql);
+                    sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeMatchedReport.RID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeMatchedReport.CID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeMatchedReport.PID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeMatchedReport.AttType));
+                    sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeMatchedReport.AttTitleID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeMatchedReport.PM_AttName));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
+                    sqlCmd.Parameters.Add(new SqlParameter("@autoImport", attributeMatchedReport.AutoImport));
+                    sqlCmd.Parameters.Add(new SqlParameter("@saveToDB", attributeMatchedReport.SaveToDB));
+                    sqlCmd.Parameters.Add(new SqlParameter("@createdOn", DateTime.Now));
 
-                    using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
-                    {
-                        sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeMatchedReport.RID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeMatchedReport.CID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeMatchedReport.PID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeMatchedReport.AttType));
-                        sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeMatchedReport.AttTitleID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeMatchedReport.PM_AttName));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
-                        sqlCmd.Parameters.Add(new SqlParameter("@autoImport", attributeMatchedReport.AutoImport));
-                        sqlCmd.Parameters.Add(new SqlParameter("@saveToDB", attributeMatchedReport.SaveToDB));
-                        sqlCmd.Parameters.Add(new SqlParameter("@createdOn", DateTime.Now));
-                        sqlCmd.ExecuteNonQuery();
-                    }
+                    CmdQueue.Instance.Enqueue(sqlCmd);
+
+                    //using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
+                    //{
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeMatchedReport.RID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeMatchedReport.CID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeMatchedReport.PID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeMatchedReport.AttType));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeMatchedReport.AttTitleID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeMatchedReport.PM_AttName));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@autoImport", attributeMatchedReport.AutoImport));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@saveToDB", attributeMatchedReport.SaveToDB));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@createdOn", DateTime.Now));
+                    //    sqlCmd.ExecuteNonQuery();
+                    //}
                 }
                 else
                 {
@@ -1253,19 +1407,62 @@ namespace ImportAttrs
                                             ,[DR_AttValue_Changed] = @drAttValueChanged
                                             where RID = " + attributeMatchedReport.RID + " and PID = " + attributeMatchedReport.PID + " and CID = " + attributeMatchedReport.CID + " and AttType = " + attributeMatchedReport.AttType + " and AttTitleID = " + attributeMatchedReport.AttTitleID;
 
-                    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                    {
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
-                        sqlCmd.ExecuteNonQuery();
-                    }
+                    SqlCommand sqlCmd = new SqlCommand(updateSql);
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
+
+                    CmdQueue.Instance.Enqueue(sqlCmd);
+
+
+                    //using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+                    //{
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeMatchedReport.DR_AttName));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeMatchedReport.DR_AttValue_Orignal));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeMatchedReport.DR_AttValue_Changed));
+                    //    sqlCmd.ExecuteNonQuery();
+                    //}
+
                 }
             }
         }
 
         static void WriteUnMatchedReport(AttributeUnmatchedReport attributeUnmatchedReport)
         {
+            if (string.IsNullOrEmpty(attributeUnmatchedReport.DR_AttValue_Changed)) return;
+            if (string.IsNullOrEmpty(attributeUnmatchedReport.DR_AttValue_Orignal)) return;
+
+            if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower().Contains("value missing")) return;
+            if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower().Contains("value missing")) return;
+            
+            if (attributeUnmatchedReport.DR_AttValue_Changed.Contains("$.extend({}, pjYesNoOptions)")) return;
+            if (attributeUnmatchedReport.DR_AttValue_Orignal.Contains("$.extend({}, pjYesNoOptions)")) return;
+
+            if (attributeUnmatchedReport.AttType == 2)
+            {
+                var priceMeAttrTitle = AttributeTitleDic_Static[attributeUnmatchedReport.AttTitleID];
+                if (priceMeAttrTitle.AttributeTypeID == 4 || priceMeAttrTitle.AttributeTypeID == 6 || priceMeAttrTitle.AttributeTypeID == 5)
+                {
+                    if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower() == "yes") return;
+                    if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower() == "yes") return;
+                    if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower() == "no") return;
+                    if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower() == "no") return;
+                }
+            }
+
+            if (attributeUnmatchedReport.AttType == 3)
+            {
+                var priceMeCompareAttrTitle = CompareAttributeDic_Static[attributeUnmatchedReport.AttTitleID];
+                if (priceMeCompareAttrTitle.AttributeTypeID == 4 || priceMeCompareAttrTitle.AttributeTypeID == 6 || priceMeCompareAttrTitle.AttributeTypeID == 5)
+                {
+                    if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower() == "yes") return;
+                    if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower() == "yes") return;
+                    if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower() == "no") return;
+                    if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower() == "no") return;
+                }
+            }
+
+
             string selectSql = @"SELECT [ID] FROM [dbo].[AttributeUnmatchedReport]
                                  where RID = " + attributeUnmatchedReport.RID + " and PID = " + attributeUnmatchedReport.PID + " and CID = " + attributeUnmatchedReport.CID + " and AttType = " + attributeUnmatchedReport.AttType + " and AttTitleID = " + attributeUnmatchedReport.AttTitleID;
 
@@ -1278,7 +1475,7 @@ namespace ImportAttrs
                 {
                     using (SqlDataReader sqlDr = sqlCmd.ExecuteReader())
                     {
-                        if(sqlDr.Read())
+                        if (sqlDr.Read())
                         {
                             exist = true;
                         }
@@ -1310,21 +1507,34 @@ namespace ImportAttrs
                                ,@drAttValueChanged
                                ,@status)";
 
+                    SqlCommand sqlCmd = new SqlCommand(insertSql);
+                    sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeUnmatchedReport.RID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeUnmatchedReport.CID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeUnmatchedReport.PID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeUnmatchedReport.AttType));
+                    sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeUnmatchedReport.AttTitleID));
+                    sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeUnmatchedReport.PM_AttName));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeUnmatchedReport.DR_AttName));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeUnmatchedReport.DR_AttValue_Orignal));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeUnmatchedReport.DR_AttValue_Changed));
+                    sqlCmd.Parameters.Add(new SqlParameter("@status", attributeUnmatchedReport.Status));
 
-                    using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
-                    {
-                        sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeUnmatchedReport.RID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeUnmatchedReport.CID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeUnmatchedReport.PID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeUnmatchedReport.AttType));
-                        sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeUnmatchedReport.AttTitleID));
-                        sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeUnmatchedReport.PM_AttName));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeUnmatchedReport.DR_AttName));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeUnmatchedReport.DR_AttValue_Orignal));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeUnmatchedReport.DR_AttValue_Changed));
-                        sqlCmd.Parameters.Add(new SqlParameter("@status", attributeUnmatchedReport.Status));
-                        sqlCmd.ExecuteNonQuery();
-                    }
+                    CmdQueue.Instance.Enqueue(sqlCmd);
+
+                    //using (SqlCommand sqlCmd = new SqlCommand(insertSql, sqlConn))
+                    //{
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@rId", attributeUnmatchedReport.RID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@cId", attributeUnmatchedReport.CID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@pId", attributeUnmatchedReport.PID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@attType", attributeUnmatchedReport.AttType));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@attTitleId", attributeUnmatchedReport.AttTitleID));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@pmAttName", attributeUnmatchedReport.PM_AttName));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeUnmatchedReport.DR_AttName));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeUnmatchedReport.DR_AttValue_Orignal));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeUnmatchedReport.DR_AttValue_Changed));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@status", attributeUnmatchedReport.Status));
+                    //    sqlCmd.ExecuteNonQuery();
+                    //}
                 }
                 else
                 {
@@ -1334,16 +1544,24 @@ namespace ImportAttrs
                                             ,[DR_AttValue_Changed] = @drAttValueChanged
                                             where RID = " + attributeUnmatchedReport.RID + " and PID = " + attributeUnmatchedReport.PID + " and CID = " + attributeUnmatchedReport.CID + " and AttType = " + attributeUnmatchedReport.AttType + " and AttTitleID = " + attributeUnmatchedReport.AttTitleID;
 
-                    using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
-                    {
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeUnmatchedReport.DR_AttName));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeUnmatchedReport.DR_AttValue_Orignal));
-                        sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeUnmatchedReport.DR_AttValue_Changed));
-                        sqlCmd.ExecuteNonQuery();
-                    }
+                    SqlCommand sqlCmd = new SqlCommand(updateSql);
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeUnmatchedReport.DR_AttName));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeUnmatchedReport.DR_AttValue_Orignal));
+                    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeUnmatchedReport.DR_AttValue_Changed));
+
+                    CmdQueue.Instance.Enqueue(sqlCmd);
+
+                    //using (SqlCommand sqlCmd = new SqlCommand(updateSql, sqlConn))
+                    //{                        
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttName", attributeUnmatchedReport.DR_AttName));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueOrignal", attributeUnmatchedReport.DR_AttValue_Orignal));
+                    //    sqlCmd.Parameters.Add(new SqlParameter("@drAttValueChanged", attributeUnmatchedReport.DR_AttValue_Changed));
+                    //    sqlCmd.ExecuteNonQuery();
+                    //}
                 }
             }
         }
-    
+
     }
+
 }

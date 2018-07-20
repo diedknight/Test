@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Priceme.Infrastructure.DB.Dapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Priceme.Infrastructure.DB.Dapper.1.0.0\lib\Priceme.Infrastructure.DB.Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -43,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeRetailerGeneralHelper.cs" />
+    <Compile Include="CmdQueue.cs" />
+    <Compile Include="CmdNoneQueryWorker.cs" />
     <Compile Include="Data\AttributeMatchedReport.cs" />
     <Compile Include="Data\AttributeRetailerGeneralMap.cs" />
     <Compile Include="Data\AttributeRetailerMap.cs" />
@@ -54,10 +60,16 @@
     <Compile Include="Data\ImportProductInfo.cs" />
     <Compile Include="Data\ProductAllAttributesInfo.cs" />
     <Compile Include="Data\ProductCompareAttributeInfo.cs" />
+    <Compile Include="Data\UnmatchReportData.cs" />
     <Compile Include="ImportController.cs" />
     <Compile Include="Data\ProductAttributeInfo.cs" />
+    <Compile Include="ImportController1.cs" />
     <Compile Include="LogWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XbaiLog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
