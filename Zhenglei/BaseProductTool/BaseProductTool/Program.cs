@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
+
 
 namespace BaseProductTool
 {
@@ -13,10 +15,13 @@ namespace BaseProductTool
         static string ConnStr_Static = ConfigurationManager.ConnectionStrings["PriceMe_PM"].ConnectionString;
         static LogWriter LogWriter_Static;
         static List<string> KeywordsList_Static;
+        static Dictionary<int, string> ExclusiveKeywordsList_Static;
         static int MaxCount_Static = int.Parse(ConfigurationManager.AppSettings["MaxCount"]);
         static int Interval_Static = int.Parse(ConfigurationManager.AppSettings["Interval"]);
         static Dictionary<string, int> VariantTypeUnitDic_Static;
         static Dictionary<string, int> VariantTypeTitleDic_Static;
+
+        static List<int> CategoryIds_Static;
 
         static void Main(string[] args)
         {
@@ -56,7 +61,7 @@ namespace BaseProductTool
                 {
                     list = list.OrderBy(l => l.ProductName.Length).ToList();
                 }
-                
+
                 for (int i = 1; i < list.Count; i++)
                 {
                     IntraLinkingGenerationAndRelated ilgr = new IntraLinkingGenerationAndRelated();
@@ -97,32 +102,61 @@ namespace BaseProductTool
                 {
                     foreach (var pi in pList)
                     {
-                        string newName = pi.ProductNameLower;
-                        foreach (var regex in regexList)
+                        string origName = pi.ProductNameLower;
+                        //ExclusiveKeywordsList_Static.ForEach(kw => origName = origName.Replace(kw, ""));
+
+                        var extractedKeyword = ExtractKeyword(origName);
+
+                        if (extractedKeyword.keywordId != 0)
                         {
-                            newName = regex.MyRegex.Replace(newName, "");
-                            var match = regex.MyRegex.Match(pi.ProductNameLower);
-                            if (match.Success)
+                            pi.VariantValue = extractedKeyword.keyword;
+                            pi.VariantTypeID = extractedKeyword.keywordId;
+
+                            string newName = extractedKeyword.str;
+
+                            if (newName != origName)
                             {
-                                pi.VariantValue = match.Groups["data"].Value;
-                                if(VariantTypeUnitDic_Static.ContainsKey(regex.Keywords))
+                                if (dic.ContainsKey(newName))
                                 {
-                                    pi.VariantTypeID = VariantTypeUnitDic_Static[regex.Keywords];
+                                    dic[newName].Add(pi);
+                                }
+                                else
+                                {
+                                    List<ProductInfo> list = new List<ProductInfo>();
+                                    list.Add(pi);
+                                    dic.Add(newName, list);
                                 }
                             }
                         }
-
-                        if (newName != pi.ProductNameLower)
+                        else
                         {
-                            if (dic.ContainsKey(newName))
+                            string newName = origName;
+                            foreach (var regex in regexList)
                             {
-                                dic[newName].Add(pi);
+                                newName = regex.MyRegex.Replace(newName, "");
+                                var match = regex.MyRegex.Match(pi.ProductNameLower);
+                                if (match.Success)
+                                {
+                                    pi.VariantValue = match.Groups["data"].Value;
+                                    if (VariantTypeUnitDic_Static.ContainsKey(regex.Keywords))
+                                    {
+                                        pi.VariantTypeID = VariantTypeUnitDic_Static[regex.Keywords];
+                                    }
+                                }
                             }
-                            else
+
+                            if (newName != origName)
                             {
-                                List<ProductInfo> list = new List<ProductInfo>();
-                                list.Add(pi);
-                                dic.Add(newName, list);
+                                if (dic.ContainsKey(newName))
+                                {
+                                    dic[newName].Add(pi);
+                                }
+                                else
+                                {
+                                    List<ProductInfo> list = new List<ProductInfo>();
+                                    list.Add(pi);
+                                    dic.Add(newName, list);
+                                }
                             }
                         }
                     }
@@ -133,7 +167,7 @@ namespace BaseProductTool
                     if (VariantTypeTitleDic_Static.ContainsKey(titleName))
                     {
                         int typeId = VariantTypeTitleDic_Static[titleName];
-  
+
                         foreach (var pi in pList)
                         {
                             pi.VariantTypeID = typeId;
@@ -194,15 +228,34 @@ namespace BaseProductTool
             string logFilePath = System.IO.Path.Combine(logPath, "Log_" + DateTime.Now.ToString("HH_mm") + ".txt");
             LogWriter_Static = new LogWriter(logFilePath);
 
-            string kwStr = ConfigurationManager.AppSettings["Keywords"];
-            KeywordsList_Static = new List<string>();
-            string[] kws = kwStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string kw in kws)
+
+
+            ExclusiveKeywordsList_Static = new Dictionary<int, string>();
+            using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
             {
-                KeywordsList_Static.Add(kw.Trim().ToLower());
+                string sql = "select VariantTypeID,keyword from VariantType where isUnit=0 and isnull(keyword,'')<>''";
+                using (var sqlDr = sqlConn.ExecuteReader(sql))
+                {
+                    while (sqlDr.Read())
+                    {
+                        int variantTypeID = sqlDr.GetInt32(0);
+                        string keyword = sqlDr.GetString(1).ToLower();
+
+                        if (ExclusiveKeywordsList_Static.ContainsKey(variantTypeID))
+                        {
+                            ExclusiveKeywordsList_Static[variantTypeID] = keyword;
+                        }
+                        else
+                        {
+                            ExclusiveKeywordsList_Static.Add(variantTypeID, keyword);
+                        }
+                    }
+                }
             }
 
-            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType order by VariantTypeID desc";
+
+            KeywordsList_Static = new List<string>();
+            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType where isUnit=1 order by VariantTypeID desc";
             VariantTypeUnitDic_Static = new Dictionary<string, int>();
             VariantTypeTitleDic_Static = new Dictionary<string, int>();
             using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
@@ -220,6 +273,9 @@ namespace BaseProductTool
                             string variantTitleName = sqlDr.GetString(1).ToLower();
                             string unit = sqlDr.GetString(2).ToLower();
 
+                            //Initialization keyword 
+                            KeywordsList_Static.Add(unit);
+
                             if (!VariantTypeUnitDic_Static.ContainsKey(unit))
                             {
                                 VariantTypeUnitDic_Static.Add(unit, variantTypeID);
@@ -233,6 +289,14 @@ namespace BaseProductTool
                     }
                 }
             }
+
+            CategoryIds_Static = new List<int>();
+            string sqlStr = ConfigurationManager.AppSettings["Categories"];
+            using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
+            {
+                CategoryIds_Static = sqlConn.Query<int>(sqlStr).ToList();
+            }
+
         }
 
         static Dictionary<int, List<ProductInfo>> GetProductCategoryDic()
@@ -248,7 +312,11 @@ namespace BaseProductTool
                                 (select CategoryID from CSK_Store_Category where IsActive = 1 and IsDisplayIsMerged = 0 and isSearchOnly = 0))
                                 and IsMerge=1 and PT.ProductId in(
                                 select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
-                                (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))";
+                                (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))                               
+                                
+                                
+                                
+                                and CategoryID in (" + string.Join(",", CategoryIds_Static) + ")";
 
             //string selectSql = @"select PT.ProductID, ProductName, PT.CategoryID, 0 from CSK_Store_Product PT where CategoryID in (459,2)
             //                    and CategoryID in (
@@ -280,7 +348,7 @@ namespace BaseProductTool
                             pi.ProductName = pName;
                             pi.ProductNameLower = pi.ProductName.ToLower();
                             pi.Clicks = 0;
-                            if(!sqlDr.IsDBNull(3))
+                            if (!sqlDr.IsDBNull(3))
                             {
                                 pi.Clicks = sqlDr.GetInt32(3);
                             }
@@ -302,5 +370,37 @@ namespace BaseProductTool
 
             return dic;
         }
+
+        private static (string str, int keywordId, string keyword) ExtractKeyword(string str)
+        {
+            var pairList = ExclusiveKeywordsList_Static.ToList();
+
+            for (int i = 0; i < pairList.Count; i++)
+            {
+                var pair = pairList[i];
+                var keywordId = pair.Key;
+                var keyword = pair.Value;
+
+                var str1 = str.Replace(keyword, "");
+
+                if (str1 != str)
+                {
+                    return (str1.TrimA(), keywordId, keyword);
+                }
+
+
+                //var terms = str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                //var terms1 = terms.Where(term => term != keyword).ToArray();
+
+                //if (terms.Length != terms1.Length)
+                //{
+                //    return (string.Join(" ", terms1), keywordId, keyword);
+                //}                
+            }
+
+            return ("", 0, "");
+        }
+
+
     }
 }

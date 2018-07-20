@@ -4,6 +4,8 @@ namespace BaseProductTool
 {
     public class IntraLinkingGenerationAndRelated
     {
+        public int ID { get; set; }
+
         public int ProductId { get; set; } = 0;
         public string BaseProductValue { get; set; } = "";
         public string LinkType { get; set; } = "Variant";
