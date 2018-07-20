@@ -138,7 +138,7 @@ namespace IndexBuildCommon
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString1))
             {
-                using (SqlCommand sqlCMD = new SqlCommand("SELECT [ProductID], count([ProductID]) c FROM [dbo].[CSK_Store_ExpertReviewAU] where SourceID = 156 group by ProductID", sqlConnection))
+                using (SqlCommand sqlCMD = new SqlCommand("SELECT ProductID, count(ProductID) c FROM CSK_Store_ExpertReviewAU where SourceID = 156 group by ProductID", sqlConnection))
                 {
                     sqlConnection.Open();
                     sqlCMD.CommandTimeout = 0;
@@ -162,7 +162,7 @@ namespace IndexBuildCommon
 
             string connectionString1 = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString;
 
-            string sqlStr = "select ProductId, min(price) as MinPrice from [dbo].[CSK_Store_PriceHistory] where createdon >= dateadd(day, -" + prevPriceDay + ", getdate()) and RetailerID in (select retailerid from CSK_Store_Retailer where RetailerCountry = " + AppValue.CountryId + ") group by ProductId";
+            string sqlStr = "select ProductId, min(price) as MinPrice from CSK_Store_PriceHistory where createdon >= dateadd(day, -" + prevPriceDay + ", getdate()) and RetailerID in (select retailerid from CSK_Store_Retailer where RetailerCountry = " + AppValue.CountryId + ") group by ProductId";
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString1))
             {
@@ -204,7 +204,7 @@ namespace IndexBuildCommon
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString1))
             {
-                using (SqlCommand sqlCMD = new SqlCommand("SELECT distinct [ProductID] from [CSK_Store_ProductIsMerged]", sqlConnection))
+                using (SqlCommand sqlCMD = new SqlCommand("SELECT distinct ProductID from CSK_Store_ProductIsMerged", sqlConnection))
                 {
                     sqlConnection.Open();
                     sqlCMD.CommandTimeout = 0;
@@ -218,15 +218,15 @@ namespace IndexBuildCommon
                     }
                 }
 
-                using (SqlCommand sqlCMD = new SqlCommand(@"SELECT [ProductID]
-                                                            ,[ProductName]
-                                                            ,CSK_Store_Manufacturer.[ManufacturerID]
+                using (SqlCommand sqlCMD = new SqlCommand(@"SELECT ProductID
+                                                            ,ProductName
+                                                            ,CSK_Store_Manufacturer.ManufacturerID
                                                             ,CSK_Store_Manufacturer.ManufacturerName
-                                                            ,[CategoryID]
-                                                            ,[CatalogDescription]
+                                                            ,CategoryID
+                                                            ,CatalogDescription
                                                             ,DefaultImage
-                                                            FROM [dbo].[CSK_Store_Product]
-                                                            left join CSK_Store_Manufacturer on CSK_Store_Manufacturer.ManufacturerID = [CSK_Store_Product].ManufacturerID
+                                                            FROM CSK_Store_Product
+                                                            left join CSK_Store_Manufacturer on CSK_Store_Manufacturer.ManufacturerID = CSK_Store_Product.ManufacturerID
                                                             where ProductID not in 
                                                             (select ProductID from CSK_Store_RetailerProduct where retailerId in (select retailerId from CSK_Store_Retailer where RetailerCountry = " + AppValue.CountryId + "))", sqlConnection))
                 {
@@ -251,23 +251,33 @@ namespace IndexBuildCommon
             }
 
             int upcomingProductCount = 0;
-            string connectionString2 = System.Configuration.ConfigurationManager.ConnectionStrings["PriceMeDB_Common"].ConnectionString;
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString2))
+            string sql = "select productid, PriceNZ, PriceType from UpcomingProduct where ReleaseDate >";
+
+            using (var sqlConn = DBController.CreateDBConnection(MultiCountryController.CommonConnectionStringSettings_Static))
             {
-                using (SqlCommand sqlCMD = new SqlCommand("select productid, PriceNZ, PriceType from [UpcomingProduct] where ReleaseDate > GETDATE()", sqlConnection))
+                if (sqlConn is System.Data.SqlClient.SqlConnection)
                 {
-                    sqlConnection.Open();
-                    sqlCMD.CommandTimeout = 0;
-                    using (SqlDataReader sdr = sqlCMD.ExecuteReader())
+                    sql += " GETDATE()";
+                }
+                else
+                {
+                    sql = " Now();";
+                }
+
+                sqlConn.Open();
+
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
                     {
-                        while (sdr.Read())
+                        while (sqlDR.Read())
                         {
-                            int pid = sdr.GetInt32(0);
+                            int pid = sqlDR.GetInt32(0);
                             if (excludePidDic.ContainsKey(pid) || !includePidDic.ContainsKey(pid))
                                 continue;
 
-                            decimal price = sdr.GetDecimal(1);
-                            string priceType = sdr.GetString(2);
+                            decimal price = sqlDR.GetDecimal(1);
+                            string priceType = sqlDR.GetString(2);
 
                             ProductCatalog pc = includePidDic[pid];
                             pc.BestPrice = price.ToString("0.00");
@@ -1968,21 +1978,6 @@ namespace IndexBuildCommon
             indexSpeedLog.RetailerProductsBulidIndexSpeedInfo = bulidIndexSpeedInfo;
 
             return count;
-        }
-
-        private static Dictionary<int, PriceMeCache.RetailerCache> GetAllRetailerDictionary()
-        {
-            List<CSK_Store_Retailer> allRetailer = CSK_Store_Retailer.All().ToList();
-            List<PriceMeCache.RetailerCache> retailerCacheList = ConvertController<PriceMeCache.RetailerCache, CSK_Store_Retailer>.ConvertData(allRetailer);
-            Dictionary<int, PriceMeCache.RetailerCache> retailerDictionary = retailerCacheList.ToDictionary(rc => rc.RetailerId);
-
-            return retailerDictionary;
-        }
-
-        public static List<int> GetAllSubCategoryId()
-        {
-            return CSK_Store_Category.Find(c => !CSK_Store_Category.All().Where(_cat => _cat.IsActive == true).Select(_c => _c.ParentID).Contains(c.CategoryID)).
-                Select(cat => cat.CategoryID).ToList();
         }
 
         public static void DeleteDirectory(string dir)
