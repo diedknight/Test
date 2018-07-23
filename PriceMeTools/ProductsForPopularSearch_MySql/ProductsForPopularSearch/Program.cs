@@ -146,12 +146,15 @@ namespace ProductsForPopularSearch
                     int rid = idr.GetInt32(2);
                     decimal minPrice = idr.GetDecimal(3);
 
-                    RPInfo rpInfo = new RPInfo();
-                    rpInfo.ProductID = pid;
-                    rpInfo.RetailerProductID = rpid;
-                    rpInfo.RetailerID = rid;
-                    rpInfo.MinPrice = minPrice;
-                    rpInfoDic.Add(pid, rpInfo);
+                    if (!rpInfoDic.ContainsKey(pid))
+                    {
+                        RPInfo rpInfo = new RPInfo();
+                        rpInfo.ProductID = pid;
+                        rpInfo.RetailerProductID = rpid;
+                        rpInfo.RetailerID = rid;
+                        rpInfo.MinPrice = minPrice;
+                        rpInfoDic.Add(pid, rpInfo);
+                    }
                 }
                 idr.Close();
 
