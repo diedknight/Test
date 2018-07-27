@@ -23,6 +23,13 @@ namespace DataAnalyze
             }
         }
 
+        public int ManId { get; set; }
+        public string Img { get; set; }
+        public int CId { get; set; }
+
+        public string ProductName { get; set; }
+
+
         public double AverageScore { get { return _score / _times; } }
         
     }

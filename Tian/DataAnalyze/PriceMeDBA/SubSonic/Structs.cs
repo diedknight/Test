@@ -296,7 +296,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -676,6 +676,176 @@ namespace PriceMeDBA {
    			public static string ModifiedByColumn{
 			      get{
         			return "ModifiedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: Deals_VoucherStatus
+        /// Primary Key: Id
+        /// </summary>
+
+        public class Deals_VoucherStatusTable: DatabaseTable {
+            
+            public Deals_VoucherStatusTable(IDataProvider provider):base("Deals_VoucherStatus",provider){
+                ClassName = "Deals_VoucherStatus";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Description", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn Description{
+                get{
+                    return this.GetColumn("Description");
+                }
+            }
+				
+   			public static string DescriptionColumn{
+			      get{
+        			return "Description";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: RetailerDataReview
+        /// Primary Key: Id
+        /// </summary>
+
+        public class RetailerDataReviewTable: DatabaseTable {
+            
+            public RetailerDataReviewTable(IDataProvider provider):base("RetailerDataReview",provider){
+                ClassName = "RetailerDataReview";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsCorrect", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn RetailerId{
+                get{
+                    return this.GetColumn("RetailerId");
+                }
+            }
+				
+   			public static string RetailerIdColumn{
+			      get{
+        			return "RetailerId";
+      			}
+		    }
+            
+            public IColumn IsCorrect{
+                get{
+                    return this.GetColumn("IsCorrect");
+                }
+            }
+				
+   			public static string IsCorrectColumn{
+			      get{
+        			return "IsCorrect";
       			}
 		    }
             
@@ -1199,6 +1369,113 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: CreateImageForS3_RecordHandledPIDAndRPID
+        /// Primary Key: ID
+        /// </summary>
+
+        public class CreateImageForS3_RecordHandledPIDAndRPIDTable: DatabaseTable {
+            
+            public CreateImageForS3_RecordHandledPIDAndRPIDTable(IDataProvider provider):base("CreateImageForS3_RecordHandledPIDAndRPID",provider){
+                ClassName = "CreateImageForS3_RecordHandledPIDAndRPID";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RPID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ImagePath", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn PID{
+                get{
+                    return this.GetColumn("PID");
+                }
+            }
+				
+   			public static string PIDColumn{
+			      get{
+        			return "PID";
+      			}
+		    }
+            
+            public IColumn RPID{
+                get{
+                    return this.GetColumn("RPID");
+                }
+            }
+				
+   			public static string RPIDColumn{
+			      get{
+        			return "RPID";
+      			}
+		    }
+            
+            public IColumn ImagePath{
+                get{
+                    return this.GetColumn("ImagePath");
+                }
+            }
+				
+   			public static string ImagePathColumn{
+			      get{
+        			return "ImagePath";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: ShortCutCategory_Map
         /// Primary Key: ShortCutMapID
         /// </summary>
@@ -1277,6 +1554,289 @@ namespace PriceMeDBA {
    			public static string ShortCutCategoryIDColumn{
 			      get{
         			return "ShortCutCategoryID";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: UpcomingProduct
+        /// Primary Key: ID
+        /// </summary>
+
+        public class UpcomingProductTable: DatabaseTable {
+            
+            public UpcomingProductTable(IDataProvider provider):base("UpcomingProduct",provider){
+                ClassName = "UpcomingProduct";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PriceNZ", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Currency,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PriceType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("ReleaseDate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ReleaseDateIsEstimated", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Description", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 10
+                });
+
+                Columns.Add(new DatabaseColumn("ConsumerLink", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn ProductID{
+                get{
+                    return this.GetColumn("ProductID");
+                }
+            }
+				
+   			public static string ProductIDColumn{
+			      get{
+        			return "ProductID";
+      			}
+		    }
+            
+            public IColumn PriceNZ{
+                get{
+                    return this.GetColumn("PriceNZ");
+                }
+            }
+				
+   			public static string PriceNZColumn{
+			      get{
+        			return "PriceNZ";
+      			}
+		    }
+            
+            public IColumn PriceType{
+                get{
+                    return this.GetColumn("PriceType");
+                }
+            }
+				
+   			public static string PriceTypeColumn{
+			      get{
+        			return "PriceType";
+      			}
+		    }
+            
+            public IColumn ReleaseDate{
+                get{
+                    return this.GetColumn("ReleaseDate");
+                }
+            }
+				
+   			public static string ReleaseDateColumn{
+			      get{
+        			return "ReleaseDate";
+      			}
+		    }
+            
+            public IColumn ReleaseDateIsEstimated{
+                get{
+                    return this.GetColumn("ReleaseDateIsEstimated");
+                }
+            }
+				
+   			public static string ReleaseDateIsEstimatedColumn{
+			      get{
+        			return "ReleaseDateIsEstimated";
+      			}
+		    }
+            
+            public IColumn Description{
+                get{
+                    return this.GetColumn("Description");
+                }
+            }
+				
+   			public static string DescriptionColumn{
+			      get{
+        			return "Description";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedBy{
+                get{
+                    return this.GetColumn("ModifiedBy");
+                }
+            }
+				
+   			public static string ModifiedByColumn{
+			      get{
+        			return "ModifiedBy";
+      			}
+		    }
+            
+            public IColumn ConsumerLink{
+                get{
+                    return this.GetColumn("ConsumerLink");
+                }
+            }
+				
+   			public static string ConsumerLinkColumn{
+			      get{
+        			return "ConsumerLink";
       			}
 		    }
             
@@ -1819,6 +2379,157 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: HWDSliderAttribute
+        /// Primary Key: ID
+        /// </summary>
+
+        public class HWDSliderAttributeTable: DatabaseTable {
+            
+            public HWDSliderAttributeTable(IDataProvider provider):base("HWDSliderAttribute",provider){
+                ClassName = "HWDSliderAttribute";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Heightslider", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Widthslider", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Depthslider", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Weightslider", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn Heightslider{
+                get{
+                    return this.GetColumn("Heightslider");
+                }
+            }
+				
+   			public static string HeightsliderColumn{
+			      get{
+        			return "Heightslider";
+      			}
+		    }
+            
+            public IColumn Widthslider{
+                get{
+                    return this.GetColumn("Widthslider");
+                }
+            }
+				
+   			public static string WidthsliderColumn{
+			      get{
+        			return "Widthslider";
+      			}
+		    }
+            
+            public IColumn Depthslider{
+                get{
+                    return this.GetColumn("Depthslider");
+                }
+            }
+				
+   			public static string DepthsliderColumn{
+			      get{
+        			return "Depthslider";
+      			}
+		    }
+            
+            public IColumn Weightslider{
+                get{
+                    return this.GetColumn("Weightslider");
+                }
+            }
+				
+   			public static string WeightsliderColumn{
+			      get{
+        			return "Weightslider";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_RetailerOperatingHours
         /// Primary Key: OperatingId
         /// </summary>
@@ -1846,7 +2557,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -2766,6 +3477,179 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: CSK_Store_ProductIsMerged_Temp2
+        /// Primary Key: 
+        /// </summary>
+
+        public class CSK_Store_ProductIsMerged_Temp2Table: DatabaseTable {
+            
+            public CSK_Store_ProductIsMerged_Temp2Table(IDataProvider provider):base("CSK_Store_ProductIsMerged_Temp2",provider){
+                ClassName = "CSK_Store_ProductIsMerged_Temp2";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("MID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("NewProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 4000
+                });
+
+                Columns.Add(new DatabaseColumn("NewProductImage", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 4000
+                });
+                    
+                
+                
+            }
+
+            public IColumn MID{
+                get{
+                    return this.GetColumn("MID");
+                }
+            }
+				
+   			public static string MIDColumn{
+			      get{
+        			return "MID";
+      			}
+		    }
+            
+            public IColumn ProductID{
+                get{
+                    return this.GetColumn("ProductID");
+                }
+            }
+				
+   			public static string ProductIDColumn{
+			      get{
+        			return "ProductID";
+      			}
+		    }
+            
+            public IColumn ToProductID{
+                get{
+                    return this.GetColumn("ToProductID");
+                }
+            }
+				
+   			public static string ToProductIDColumn{
+			      get{
+        			return "ToProductID";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn NewProductName{
+                get{
+                    return this.GetColumn("NewProductName");
+                }
+            }
+				
+   			public static string NewProductNameColumn{
+			      get{
+        			return "NewProductName";
+      			}
+		    }
+            
+            public IColumn NewProductImage{
+                get{
+                    return this.GetColumn("NewProductImage");
+                }
+            }
+				
+   			public static string NewProductImageColumn{
+			      get{
+        			return "NewProductImage";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_Category
         /// Primary Key: CategoryID
         /// </summary>
@@ -3103,7 +3987,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -3165,6 +4049,56 @@ namespace PriceMeDBA {
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("isSearchOnly", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryViewType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("WeightUnit", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("categoryicon", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 150
+                });
+
+                Columns.Add(new DatabaseColumn("iconcode", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = -1
                 });
                     
                 
@@ -3639,6 +4573,66 @@ namespace PriceMeDBA {
       			}
 		    }
             
+            public IColumn isSearchOnly{
+                get{
+                    return this.GetColumn("isSearchOnly");
+                }
+            }
+				
+   			public static string isSearchOnlyColumn{
+			      get{
+        			return "isSearchOnly";
+      			}
+		    }
+            
+            public IColumn CategoryViewType{
+                get{
+                    return this.GetColumn("CategoryViewType");
+                }
+            }
+				
+   			public static string CategoryViewTypeColumn{
+			      get{
+        			return "CategoryViewType";
+      			}
+		    }
+            
+            public IColumn WeightUnit{
+                get{
+                    return this.GetColumn("WeightUnit");
+                }
+            }
+				
+   			public static string WeightUnitColumn{
+			      get{
+        			return "WeightUnit";
+      			}
+		    }
+            
+            public IColumn categoryicon{
+                get{
+                    return this.GetColumn("categoryicon");
+                }
+            }
+				
+   			public static string categoryiconColumn{
+			      get{
+        			return "categoryicon";
+      			}
+		    }
+            
+            public IColumn iconcode{
+                get{
+                    return this.GetColumn("iconcode");
+                }
+            }
+				
+   			public static string iconcodeColumn{
+			      get{
+        			return "iconcode";
+      			}
+		    }
+            
                     
         }
         
@@ -3766,7 +4760,7 @@ namespace PriceMeDBA {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 50
+	                MaxLength = 150
                 });
 
                 Columns.Add(new DatabaseColumn("ProductGUID", this)
@@ -4115,7 +5109,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -5308,7 +6302,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -5885,6 +6879,113 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: MoneyPlan
+        /// Primary Key: Id
+        /// </summary>
+
+        public class MoneyPlanTable: DatabaseTable {
+            
+            public MoneyPlanTable(IDataProvider provider):base("MoneyPlan",provider){
+                ClassName = "MoneyPlan";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Name", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 60
+                });
+
+                Columns.Add(new DatabaseColumn("url", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 300
+                });
+
+                Columns.Add(new DatabaseColumn("IconUrl", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = -1
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn Name{
+                get{
+                    return this.GetColumn("Name");
+                }
+            }
+				
+   			public static string NameColumn{
+			      get{
+        			return "Name";
+      			}
+		    }
+            
+            public IColumn url{
+                get{
+                    return this.GetColumn("url");
+                }
+            }
+				
+   			public static string urlColumn{
+			      get{
+        			return "url";
+      			}
+		    }
+            
+            public IColumn IconUrl{
+                get{
+                    return this.GetColumn("IconUrl");
+                }
+            }
+				
+   			public static string IconUrlColumn{
+			      get{
+        			return "IconUrl";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_ShoppingTracker
         /// Primary Key: ID
         /// </summary>
@@ -5912,7 +7013,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -6148,7 +7249,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -6578,7 +7679,7 @@ namespace PriceMeDBA {
         
         /// <summary>
         /// Table: CSK_Store_RetailerProductAlert
-        /// Primary Key: AlertId
+        /// Primary Key: 
         /// </summary>
 
         public class CSK_Store_RetailerProductAlertTable: DatabaseTable {
@@ -6590,7 +7691,7 @@ namespace PriceMeDBA {
 
                 Columns.Add(new DatabaseColumn("AlertId", this)
                 {
-	                IsPrimaryKey = true,
+	                IsPrimaryKey = false,
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = true,
@@ -6614,7 +7715,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -6816,6 +7917,91 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: Category301Redirect
+        /// Primary Key: id
+        /// </summary>
+
+        public class Category301RedirectTable: DatabaseTable {
+            
+            public Category301RedirectTable(IDataProvider provider):base("Category301Redirect",provider){
+                ClassName = "Category301Redirect";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("FromCategoryid", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToCategoryid", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn id{
+                get{
+                    return this.GetColumn("id");
+                }
+            }
+				
+   			public static string idColumn{
+			      get{
+        			return "id";
+      			}
+		    }
+            
+            public IColumn FromCategoryid{
+                get{
+                    return this.GetColumn("FromCategoryid");
+                }
+            }
+				
+   			public static string FromCategoryidColumn{
+			      get{
+        			return "FromCategoryid";
+      			}
+		    }
+            
+            public IColumn ToCategoryid{
+                get{
+                    return this.GetColumn("ToCategoryid");
+                }
+            }
+				
+   			public static string ToCategoryidColumn{
+			      get{
+        			return "ToCategoryid";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_AutomaticMergingForRetailers
         /// Primary Key: Id
         /// </summary>
@@ -6843,7 +8029,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -6928,7 +8114,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -7369,6 +8555,374 @@ namespace PriceMeDBA {
    			public static string ModifiedByColumn{
 			      get{
         			return "ModifiedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: NotCrawlandImportChecked
+        /// Primary Key: ID
+        /// </summary>
+
+        public class NotCrawlandImportCheckedTable: DatabaseTable {
+            
+            public NotCrawlandImportCheckedTable(IDataProvider provider):base("NotCrawlandImportChecked",provider){
+                ClassName = "NotCrawlandImportChecked";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Date", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("NoImportDays", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CrawlError", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Action", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Createdon", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn Date{
+                get{
+                    return this.GetColumn("Date");
+                }
+            }
+				
+   			public static string DateColumn{
+			      get{
+        			return "Date";
+      			}
+		    }
+            
+            public IColumn RetailerID{
+                get{
+                    return this.GetColumn("RetailerID");
+                }
+            }
+				
+   			public static string RetailerIDColumn{
+			      get{
+        			return "RetailerID";
+      			}
+		    }
+            
+            public IColumn NoImportDays{
+                get{
+                    return this.GetColumn("NoImportDays");
+                }
+            }
+				
+   			public static string NoImportDaysColumn{
+			      get{
+        			return "NoImportDays";
+      			}
+		    }
+            
+            public IColumn CrawlError{
+                get{
+                    return this.GetColumn("CrawlError");
+                }
+            }
+				
+   			public static string CrawlErrorColumn{
+			      get{
+        			return "CrawlError";
+      			}
+		    }
+            
+            public IColumn Action{
+                get{
+                    return this.GetColumn("Action");
+                }
+            }
+				
+   			public static string ActionColumn{
+			      get{
+        			return "Action";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn Createdon{
+                get{
+                    return this.GetColumn("Createdon");
+                }
+            }
+				
+   			public static string CreatedonColumn{
+			      get{
+        			return "Createdon";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CategorySynonym_New
+        /// Primary Key: SynonymID
+        /// </summary>
+
+        public class CategorySynonym_NewTable: DatabaseTable {
+            
+            public CategorySynonym_NewTable(IDataProvider provider):base("CategorySynonym_New",provider){
+                ClassName = "CategorySynonym_New";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("SynonymID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CountryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Synonym", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 2000
+                });
+
+                Columns.Add(new DatabaseColumn("LocalName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 2000
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn SynonymID{
+                get{
+                    return this.GetColumn("SynonymID");
+                }
+            }
+				
+   			public static string SynonymIDColumn{
+			      get{
+        			return "SynonymID";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn CountryID{
+                get{
+                    return this.GetColumn("CountryID");
+                }
+            }
+				
+   			public static string CountryIDColumn{
+			      get{
+        			return "CountryID";
+      			}
+		    }
+            
+            public IColumn Synonym{
+                get{
+                    return this.GetColumn("Synonym");
+                }
+            }
+				
+   			public static string SynonymColumn{
+			      get{
+        			return "Synonym";
+      			}
+		    }
+            
+            public IColumn LocalName{
+                get{
+                    return this.GetColumn("LocalName");
+                }
+            }
+				
+   			public static string LocalNameColumn{
+			      get{
+        			return "LocalName";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
       			}
 		    }
             
@@ -8092,7 +9646,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -8165,6 +9719,135 @@ namespace PriceMeDBA {
    			public static string DescriptionColumn{
 			      get{
         			return "Description";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: RetailerExtension
+        /// Primary Key: ID
+        /// </summary>
+
+        public class RetailerExtensionTable: DatabaseTable {
+            
+            public RetailerExtensionTable(IDataProvider provider):base("RetailerExtension",provider){
+                ClassName = "RetailerExtension";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerURLExtension", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("TypeID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ConvertTxT", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn RetailerID{
+                get{
+                    return this.GetColumn("RetailerID");
+                }
+            }
+				
+   			public static string RetailerIDColumn{
+			      get{
+        			return "RetailerID";
+      			}
+		    }
+            
+            public IColumn RetailerURLExtension{
+                get{
+                    return this.GetColumn("RetailerURLExtension");
+                }
+            }
+				
+   			public static string RetailerURLExtensionColumn{
+			      get{
+        			return "RetailerURLExtension";
+      			}
+		    }
+            
+            public IColumn TypeID{
+                get{
+                    return this.GetColumn("TypeID");
+                }
+            }
+				
+   			public static string TypeIDColumn{
+			      get{
+        			return "TypeID";
+      			}
+		    }
+            
+            public IColumn ConvertTxT{
+                get{
+                    return this.GetColumn("ConvertTxT");
+                }
+            }
+				
+   			public static string ConvertTxTColumn{
+			      get{
+        			return "ConvertTxT";
       			}
 		    }
             
@@ -9040,7 +10723,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.String,
-	                IsNullable = true,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 100
@@ -9050,7 +10733,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.String,
-	                IsNullable = true,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 100
@@ -9300,7 +10983,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -9751,7 +11434,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Int32,
-	                IsNullable = false,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -9761,7 +11444,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Int32,
-	                IsNullable = false,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -9805,6 +11488,26 @@ namespace PriceMeDBA {
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 4000
+                });
+
+                Columns.Add(new DatabaseColumn("OfferId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToOfferId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
                 });
                     
                 
@@ -9892,6 +11595,30 @@ namespace PriceMeDBA {
    			public static string NewProductImageColumn{
 			      get{
         			return "NewProductImage";
+      			}
+		    }
+            
+            public IColumn OfferId{
+                get{
+                    return this.GetColumn("OfferId");
+                }
+            }
+				
+   			public static string OfferIdColumn{
+			      get{
+        			return "OfferId";
+      			}
+		    }
+            
+            public IColumn ToOfferId{
+                get{
+                    return this.GetColumn("ToOfferId");
+                }
+            }
+				
+   			public static string ToOfferIdColumn{
+			      get{
+        			return "ToOfferId";
       			}
 		    }
             
@@ -10023,7 +11750,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -11019,7 +12746,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
                     
@@ -11178,7 +12905,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -11188,7 +12915,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -11519,6 +13246,157 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: BuyingWizard
+        /// Primary Key: Id
+        /// </summary>
+
+        public class BuyingWizardTable: DatabaseTable {
+            
+            public BuyingWizardTable(IDataProvider provider):base("BuyingWizard",provider){
+                ClassName = "BuyingWizard";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ShortDescription", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 2000
+                });
+
+                Columns.Add(new DatabaseColumn("isDisplay", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Title", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("CreateOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn CategoryId{
+                get{
+                    return this.GetColumn("CategoryId");
+                }
+            }
+				
+   			public static string CategoryIdColumn{
+			      get{
+        			return "CategoryId";
+      			}
+		    }
+            
+            public IColumn ShortDescription{
+                get{
+                    return this.GetColumn("ShortDescription");
+                }
+            }
+				
+   			public static string ShortDescriptionColumn{
+			      get{
+        			return "ShortDescription";
+      			}
+		    }
+            
+            public IColumn isDisplay{
+                get{
+                    return this.GetColumn("isDisplay");
+                }
+            }
+				
+   			public static string isDisplayColumn{
+			      get{
+        			return "isDisplay";
+      			}
+		    }
+            
+            public IColumn Title{
+                get{
+                    return this.GetColumn("Title");
+                }
+            }
+				
+   			public static string TitleColumn{
+			      get{
+        			return "Title";
+      			}
+		    }
+            
+            public IColumn CreateOn{
+                get{
+                    return this.GetColumn("CreateOn");
+                }
+            }
+				
+   			public static string CreateOnColumn{
+			      get{
+        			return "CreateOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_AffiliateReportType
         /// Primary Key: AffiliateID
         /// </summary>
@@ -11672,6 +13550,16 @@ namespace PriceMeDBA {
 	                IsForeignKey = false,
 	                MaxLength = 50
                 });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
                     
                 
                 
@@ -11773,6 +13661,18 @@ namespace PriceMeDBA {
       			}
 		    }
             
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
                     
         }
         
@@ -11832,7 +13732,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Boolean,
-	                IsNullable = true,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -11893,6 +13793,16 @@ namespace PriceMeDBA {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Boolean,
 	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MainCategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -12034,6 +13944,18 @@ namespace PriceMeDBA {
       			}
 		    }
             
+            public IColumn MainCategoryID{
+                get{
+                    return this.GetColumn("MainCategoryID");
+                }
+            }
+				
+   			public static string MainCategoryIDColumn{
+			      get{
+        			return "MainCategoryID";
+      			}
+		    }
+            
                     
         }
         
@@ -12075,7 +13997,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -12160,6 +14082,69 @@ namespace PriceMeDBA {
    			public static string ModifiedOnColumn{
 			      get{
         			return "ModifiedOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CSK_Store_CategoryViewType
+        /// Primary Key: CategoryViewType
+        /// </summary>
+
+        public class CSK_Store_CategoryViewTypeTable: DatabaseTable {
+            
+            public CSK_Store_CategoryViewTypeTable(IDataProvider provider):base("CSK_Store_CategoryViewType",provider){
+                ClassName = "CSK_Store_CategoryViewType";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("CategoryViewType", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ViewType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn CategoryViewType{
+                get{
+                    return this.GetColumn("CategoryViewType");
+                }
+            }
+				
+   			public static string CategoryViewTypeColumn{
+			      get{
+        			return "CategoryViewType";
+      			}
+		    }
+            
+            public IColumn ViewType{
+                get{
+                    return this.GetColumn("ViewType");
+                }
+            }
+				
+   			public static string ViewTypeColumn{
+			      get{
+        			return "ViewType";
       			}
 		    }
             
@@ -12535,6 +14520,157 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: BuyingWizardQuestions
+        /// Primary Key: Id
+        /// </summary>
+
+        public class BuyingWizardQuestionsTable: DatabaseTable {
+            
+            public BuyingWizardQuestionsTable(IDataProvider provider):base("BuyingWizardQuestions",provider){
+                ClassName = "BuyingWizardQuestion";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BuyingWizardId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AttributeId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("QuestionTitle", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("QuestionDescription", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 2000
+                });
+
+                Columns.Add(new DatabaseColumn("CreateOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn BuyingWizardId{
+                get{
+                    return this.GetColumn("BuyingWizardId");
+                }
+            }
+				
+   			public static string BuyingWizardIdColumn{
+			      get{
+        			return "BuyingWizardId";
+      			}
+		    }
+            
+            public IColumn AttributeId{
+                get{
+                    return this.GetColumn("AttributeId");
+                }
+            }
+				
+   			public static string AttributeIdColumn{
+			      get{
+        			return "AttributeId";
+      			}
+		    }
+            
+            public IColumn QuestionTitle{
+                get{
+                    return this.GetColumn("QuestionTitle");
+                }
+            }
+				
+   			public static string QuestionTitleColumn{
+			      get{
+        			return "QuestionTitle";
+      			}
+		    }
+            
+            public IColumn QuestionDescription{
+                get{
+                    return this.GetColumn("QuestionDescription");
+                }
+            }
+				
+   			public static string QuestionDescriptionColumn{
+			      get{
+        			return "QuestionDescription";
+      			}
+		    }
+            
+            public IColumn CreateOn{
+                get{
+                    return this.GetColumn("CreateOn");
+                }
+            }
+				
+   			public static string CreateOnColumn{
+			      get{
+        			return "CreateOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_ExpertReviewAU
         /// Primary Key: ReviewID
         /// </summary>
@@ -12562,7 +14698,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 
@@ -12751,6 +14887,146 @@ namespace PriceMeDBA {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Boolean,
 	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("NZReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AUReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PHReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SGReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("HKReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MYReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("YPReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IDReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("THReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("VNReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("DReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -13012,6 +15288,174 @@ namespace PriceMeDBA {
       			}
 		    }
             
+            public IColumn NZReplication{
+                get{
+                    return this.GetColumn("NZReplication");
+                }
+            }
+				
+   			public static string NZReplicationColumn{
+			      get{
+        			return "NZReplication";
+      			}
+		    }
+            
+            public IColumn AUReplication{
+                get{
+                    return this.GetColumn("AUReplication");
+                }
+            }
+				
+   			public static string AUReplicationColumn{
+			      get{
+        			return "AUReplication";
+      			}
+		    }
+            
+            public IColumn PHReplication{
+                get{
+                    return this.GetColumn("PHReplication");
+                }
+            }
+				
+   			public static string PHReplicationColumn{
+			      get{
+        			return "PHReplication";
+      			}
+		    }
+            
+            public IColumn SGReplication{
+                get{
+                    return this.GetColumn("SGReplication");
+                }
+            }
+				
+   			public static string SGReplicationColumn{
+			      get{
+        			return "SGReplication";
+      			}
+		    }
+            
+            public IColumn HKReplication{
+                get{
+                    return this.GetColumn("HKReplication");
+                }
+            }
+				
+   			public static string HKReplicationColumn{
+			      get{
+        			return "HKReplication";
+      			}
+		    }
+            
+            public IColumn MYReplication{
+                get{
+                    return this.GetColumn("MYReplication");
+                }
+            }
+				
+   			public static string MYReplicationColumn{
+			      get{
+        			return "MYReplication";
+      			}
+		    }
+            
+            public IColumn YPReplication{
+                get{
+                    return this.GetColumn("YPReplication");
+                }
+            }
+				
+   			public static string YPReplicationColumn{
+			      get{
+        			return "YPReplication";
+      			}
+		    }
+            
+            public IColumn IDReplication{
+                get{
+                    return this.GetColumn("IDReplication");
+                }
+            }
+				
+   			public static string IDReplicationColumn{
+			      get{
+        			return "IDReplication";
+      			}
+		    }
+            
+            public IColumn THReplication{
+                get{
+                    return this.GetColumn("THReplication");
+                }
+            }
+				
+   			public static string THReplicationColumn{
+			      get{
+        			return "THReplication";
+      			}
+		    }
+            
+            public IColumn VNReplication{
+                get{
+                    return this.GetColumn("VNReplication");
+                }
+            }
+				
+   			public static string VNReplicationColumn{
+			      get{
+        			return "VNReplication";
+      			}
+		    }
+            
+            public IColumn AReplication{
+                get{
+                    return this.GetColumn("AReplication");
+                }
+            }
+				
+   			public static string AReplicationColumn{
+			      get{
+        			return "AReplication";
+      			}
+		    }
+            
+            public IColumn BReplication{
+                get{
+                    return this.GetColumn("BReplication");
+                }
+            }
+				
+   			public static string BReplicationColumn{
+			      get{
+        			return "BReplication";
+      			}
+		    }
+            
+            public IColumn CReplication{
+                get{
+                    return this.GetColumn("CReplication");
+                }
+            }
+				
+   			public static string CReplicationColumn{
+			      get{
+        			return "CReplication";
+      			}
+		    }
+            
+            public IColumn DReplication{
+                get{
+                    return this.GetColumn("DReplication");
+                }
+            }
+				
+   			public static string DReplicationColumn{
+			      get{
+        			return "DReplication";
+      			}
+		    }
+            
                     
         }
         
@@ -13043,7 +15487,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -13194,7 +15638,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -13499,7 +15943,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -13572,6 +16016,91 @@ namespace PriceMeDBA {
    			public static string RetailerTotalRatingVotesColumn{
 			      get{
         			return "RetailerTotalRatingVotes";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CategoryExtend
+        /// Primary Key: CategoryID
+        /// </summary>
+
+        public class CategoryExtendTable: DatabaseTable {
+            
+            public CategoryExtendTable(IDataProvider provider):base("CategoryExtend",provider){
+                ClassName = "CategoryExtend";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsCompareTop3", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryImageURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+                    
+                
+                
+            }
+
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn IsCompareTop3{
+                get{
+                    return this.GetColumn("IsCompareTop3");
+                }
+            }
+				
+   			public static string IsCompareTop3Column{
+			      get{
+        			return "IsCompareTop3";
+      			}
+		    }
+            
+            public IColumn CategoryImageURL{
+                get{
+                    return this.GetColumn("CategoryImageURL");
+                }
+            }
+				
+   			public static string CategoryImageURLColumn{
+			      get{
+        			return "CategoryImageURL";
       			}
 		    }
             
@@ -14120,6 +16649,91 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: a
+        /// Primary Key: 
+        /// </summary>
+
+        public class aTable: DatabaseTable {
+            
+            public aTable(IDataProvider provider):base("a",provider){
+                ClassName = "a";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("categoryid", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("iconcode", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1073741823
+                });
+
+                Columns.Add(new DatabaseColumn("iconcodeold", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1073741823
+                });
+                    
+                
+                
+            }
+
+            public IColumn categoryid{
+                get{
+                    return this.GetColumn("categoryid");
+                }
+            }
+				
+   			public static string categoryidColumn{
+			      get{
+        			return "categoryid";
+      			}
+		    }
+            
+            public IColumn iconcode{
+                get{
+                    return this.GetColumn("iconcode");
+                }
+            }
+				
+   			public static string iconcodeColumn{
+			      get{
+        			return "iconcode";
+      			}
+		    }
+            
+            public IColumn iconcodeold{
+                get{
+                    return this.GetColumn("iconcodeold");
+                }
+            }
+				
+   			public static string iconcodeoldColumn{
+			      get{
+        			return "iconcodeold";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_RetailerReview
         /// Primary Key: RetailerReviewId
         /// </summary>
@@ -14147,7 +16761,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -14691,7 +17305,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -14701,7 +17315,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -16431,7 +19045,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 
@@ -16473,6 +19087,146 @@ namespace PriceMeDBA {
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("NZReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AUReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PHReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SGReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("HKReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MYReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("YPReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IDReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("THReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("VNReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("DReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
                 });
                     
                 
@@ -16572,6 +19326,174 @@ namespace PriceMeDBA {
    			public static string ModifiedbyColumn{
 			      get{
         			return "Modifiedby";
+      			}
+		    }
+            
+            public IColumn NZReplication{
+                get{
+                    return this.GetColumn("NZReplication");
+                }
+            }
+				
+   			public static string NZReplicationColumn{
+			      get{
+        			return "NZReplication";
+      			}
+		    }
+            
+            public IColumn AUReplication{
+                get{
+                    return this.GetColumn("AUReplication");
+                }
+            }
+				
+   			public static string AUReplicationColumn{
+			      get{
+        			return "AUReplication";
+      			}
+		    }
+            
+            public IColumn PHReplication{
+                get{
+                    return this.GetColumn("PHReplication");
+                }
+            }
+				
+   			public static string PHReplicationColumn{
+			      get{
+        			return "PHReplication";
+      			}
+		    }
+            
+            public IColumn SGReplication{
+                get{
+                    return this.GetColumn("SGReplication");
+                }
+            }
+				
+   			public static string SGReplicationColumn{
+			      get{
+        			return "SGReplication";
+      			}
+		    }
+            
+            public IColumn HKReplication{
+                get{
+                    return this.GetColumn("HKReplication");
+                }
+            }
+				
+   			public static string HKReplicationColumn{
+			      get{
+        			return "HKReplication";
+      			}
+		    }
+            
+            public IColumn MYReplication{
+                get{
+                    return this.GetColumn("MYReplication");
+                }
+            }
+				
+   			public static string MYReplicationColumn{
+			      get{
+        			return "MYReplication";
+      			}
+		    }
+            
+            public IColumn YPReplication{
+                get{
+                    return this.GetColumn("YPReplication");
+                }
+            }
+				
+   			public static string YPReplicationColumn{
+			      get{
+        			return "YPReplication";
+      			}
+		    }
+            
+            public IColumn IDReplication{
+                get{
+                    return this.GetColumn("IDReplication");
+                }
+            }
+				
+   			public static string IDReplicationColumn{
+			      get{
+        			return "IDReplication";
+      			}
+		    }
+            
+            public IColumn THReplication{
+                get{
+                    return this.GetColumn("THReplication");
+                }
+            }
+				
+   			public static string THReplicationColumn{
+			      get{
+        			return "THReplication";
+      			}
+		    }
+            
+            public IColumn VNReplication{
+                get{
+                    return this.GetColumn("VNReplication");
+                }
+            }
+				
+   			public static string VNReplicationColumn{
+			      get{
+        			return "VNReplication";
+      			}
+		    }
+            
+            public IColumn AReplication{
+                get{
+                    return this.GetColumn("AReplication");
+                }
+            }
+				
+   			public static string AReplicationColumn{
+			      get{
+        			return "AReplication";
+      			}
+		    }
+            
+            public IColumn BReplication{
+                get{
+                    return this.GetColumn("BReplication");
+                }
+            }
+				
+   			public static string BReplicationColumn{
+			      get{
+        			return "BReplication";
+      			}
+		    }
+            
+            public IColumn CReplication{
+                get{
+                    return this.GetColumn("CReplication");
+                }
+            }
+				
+   			public static string CReplicationColumn{
+			      get{
+        			return "CReplication";
+      			}
+		    }
+            
+            public IColumn DReplication{
+                get{
+                    return this.GetColumn("DReplication");
+                }
+            }
+				
+   			public static string DReplicationColumn{
+			      get{
+        			return "DReplication";
       			}
 		    }
             
@@ -18479,6 +21401,113 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: SimilarityScoreBlackWhiteList
+        /// Primary Key: 
+        /// </summary>
+
+        public class SimilarityScoreBlackWhiteListTable: DatabaseTable {
+            
+            public SimilarityScoreBlackWhiteListTable(IDataProvider provider):base("SimilarityScoreBlackWhiteList",provider){
+                ClassName = "SimilarityScoreBlackWhiteList";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("TargetCategory", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BlackCategory", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("WhiteCategory", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn TargetCategory{
+                get{
+                    return this.GetColumn("TargetCategory");
+                }
+            }
+				
+   			public static string TargetCategoryColumn{
+			      get{
+        			return "TargetCategory";
+      			}
+		    }
+            
+            public IColumn BlackCategory{
+                get{
+                    return this.GetColumn("BlackCategory");
+                }
+            }
+				
+   			public static string BlackCategoryColumn{
+			      get{
+        			return "BlackCategory";
+      			}
+		    }
+            
+            public IColumn WhiteCategory{
+                get{
+                    return this.GetColumn("WhiteCategory");
+                }
+            }
+				
+   			public static string WhiteCategoryColumn{
+			      get{
+        			return "WhiteCategory";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_FeaturedProducts
         /// Primary Key: Id
         /// </summary>
@@ -18674,6 +21703,91 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: RelatedProduct_ShowType
+        /// Primary Key: ID
+        /// </summary>
+
+        public class RelatedProduct_ShowTypeTable: DatabaseTable {
+            
+            public RelatedProduct_ShowTypeTable(IDataProvider provider):base("RelatedProduct_ShowType",provider){
+                ClassName = "RelatedProduct_ShowType";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("TypeID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("TypeName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn TypeID{
+                get{
+                    return this.GetColumn("TypeID");
+                }
+            }
+				
+   			public static string TypeIDColumn{
+			      get{
+        			return "TypeID";
+      			}
+		    }
+            
+            public IColumn TypeName{
+                get{
+                    return this.GetColumn("TypeName");
+                }
+            }
+				
+   			public static string TypeNameColumn{
+			      get{
+        			return "TypeName";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Util_Country
         /// Primary Key: countryID
         /// </summary>
@@ -18750,6 +21864,16 @@ namespace PriceMeDBA {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Double,
 	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsUsed", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -18840,6 +21964,18 @@ namespace PriceMeDBA {
    			public static string PriceMeExchangeRateColumn{
 			      get{
         			return "PriceMeExchangeRate";
+      			}
+		    }
+            
+            public IColumn IsUsed{
+                get{
+                    return this.GetColumn("IsUsed");
+                }
+            }
+				
+   			public static string IsUsedColumn{
+			      get{
+        			return "IsUsed";
       			}
 		    }
             
@@ -18985,6 +22121,26 @@ namespace PriceMeDBA {
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SimilarUnit", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("MultipleValues", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
                     
@@ -19145,6 +22301,30 @@ namespace PriceMeDBA {
    			public static string AttributeTypeIDColumn{
 			      get{
         			return "AttributeTypeID";
+      			}
+		    }
+            
+            public IColumn SimilarUnit{
+                get{
+                    return this.GetColumn("SimilarUnit");
+                }
+            }
+				
+   			public static string SimilarUnitColumn{
+			      get{
+        			return "SimilarUnit";
+      			}
+		    }
+            
+            public IColumn MultipleValues{
+                get{
+                    return this.GetColumn("MultipleValues");
+                }
+            }
+				
+   			public static string MultipleValuesColumn{
+			      get{
+        			return "MultipleValues";
       			}
 		    }
             
@@ -19944,7 +23124,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -20898,6 +24078,572 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: CSK_Store_IP_Address
+        /// Primary Key: ID
+        /// </summary>
+
+        public class CSK_Store_IP_AddressTable: DatabaseTable {
+            
+            public CSK_Store_IP_AddressTable(IDataProvider provider):base("CSK_Store_IP_Address",provider){
+                ClassName = "CSK_Store_IP_Address";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IPAddress", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IPInt", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn IPAddress{
+                get{
+                    return this.GetColumn("IPAddress");
+                }
+            }
+				
+   			public static string IPAddressColumn{
+			      get{
+        			return "IPAddress";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn IPInt{
+                get{
+                    return this.GetColumn("IPInt");
+                }
+            }
+				
+   			public static string IPIntColumn{
+			      get{
+        			return "IPInt";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: IntraLinkingGenerationAndRelated
+        /// Primary Key: ID
+        /// </summary>
+
+        public class IntraLinkingGenerationAndRelatedTable: DatabaseTable {
+            
+            public IntraLinkingGenerationAndRelatedTable(IDataProvider provider):base("IntraLinkingGenerationAndRelated",provider){
+                ClassName = "IntraLinkingGenerationAndRelated";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BaseProductValue", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("LinkType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("ShowType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("LinedPID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("VariantProductValue", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("VariableNameOfPID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("LinedPname", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("VariableNameOfPN", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("AttributeName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("VariableNameOfAN", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("AttributeURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("VariableNameOfAURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Text", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("VariantTypeID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn ProductID{
+                get{
+                    return this.GetColumn("ProductID");
+                }
+            }
+				
+   			public static string ProductIDColumn{
+			      get{
+        			return "ProductID";
+      			}
+		    }
+            
+            public IColumn BaseProductValue{
+                get{
+                    return this.GetColumn("BaseProductValue");
+                }
+            }
+				
+   			public static string BaseProductValueColumn{
+			      get{
+        			return "BaseProductValue";
+      			}
+		    }
+            
+            public IColumn LinkType{
+                get{
+                    return this.GetColumn("LinkType");
+                }
+            }
+				
+   			public static string LinkTypeColumn{
+			      get{
+        			return "LinkType";
+      			}
+		    }
+            
+            public IColumn ShowType{
+                get{
+                    return this.GetColumn("ShowType");
+                }
+            }
+				
+   			public static string ShowTypeColumn{
+			      get{
+        			return "ShowType";
+      			}
+		    }
+            
+            public IColumn LinedPID{
+                get{
+                    return this.GetColumn("LinedPID");
+                }
+            }
+				
+   			public static string LinedPIDColumn{
+			      get{
+        			return "LinedPID";
+      			}
+		    }
+            
+            public IColumn VariantProductValue{
+                get{
+                    return this.GetColumn("VariantProductValue");
+                }
+            }
+				
+   			public static string VariantProductValueColumn{
+			      get{
+        			return "VariantProductValue";
+      			}
+		    }
+            
+            public IColumn VariableNameOfPID{
+                get{
+                    return this.GetColumn("VariableNameOfPID");
+                }
+            }
+				
+   			public static string VariableNameOfPIDColumn{
+			      get{
+        			return "VariableNameOfPID";
+      			}
+		    }
+            
+            public IColumn LinedPname{
+                get{
+                    return this.GetColumn("LinedPname");
+                }
+            }
+				
+   			public static string LinedPnameColumn{
+			      get{
+        			return "LinedPname";
+      			}
+		    }
+            
+            public IColumn VariableNameOfPN{
+                get{
+                    return this.GetColumn("VariableNameOfPN");
+                }
+            }
+				
+   			public static string VariableNameOfPNColumn{
+			      get{
+        			return "VariableNameOfPN";
+      			}
+		    }
+            
+            public IColumn AttributeName{
+                get{
+                    return this.GetColumn("AttributeName");
+                }
+            }
+				
+   			public static string AttributeNameColumn{
+			      get{
+        			return "AttributeName";
+      			}
+		    }
+            
+            public IColumn VariableNameOfAN{
+                get{
+                    return this.GetColumn("VariableNameOfAN");
+                }
+            }
+				
+   			public static string VariableNameOfANColumn{
+			      get{
+        			return "VariableNameOfAN";
+      			}
+		    }
+            
+            public IColumn AttributeURL{
+                get{
+                    return this.GetColumn("AttributeURL");
+                }
+            }
+				
+   			public static string AttributeURLColumn{
+			      get{
+        			return "AttributeURL";
+      			}
+		    }
+            
+            public IColumn VariableNameOfAURL{
+                get{
+                    return this.GetColumn("VariableNameOfAURL");
+                }
+            }
+				
+   			public static string VariableNameOfAURLColumn{
+			      get{
+        			return "VariableNameOfAURL";
+      			}
+		    }
+            
+            public IColumn Text{
+                get{
+                    return this.GetColumn("Text");
+                }
+            }
+				
+   			public static string TextColumn{
+			      get{
+        			return "Text";
+      			}
+		    }
+            
+            public IColumn VariantTypeID{
+                get{
+                    return this.GetColumn("VariantTypeID");
+                }
+            }
+				
+   			public static string VariantTypeIDColumn{
+			      get{
+        			return "VariantTypeID";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedBy{
+                get{
+                    return this.GetColumn("ModifiedBy");
+                }
+            }
+				
+   			public static string ModifiedByColumn{
+			      get{
+        			return "ModifiedBy";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: TradeMeCategoryMap
         /// Primary Key: Id
         /// </summary>
@@ -21120,7 +24866,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 
@@ -21138,10 +24884,10 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.String,
-	                IsNullable = false,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 1073741823
+	                MaxLength = 4000
                 });
 
                 Columns.Add(new DatabaseColumn("IsBulletedList", this)
@@ -21192,6 +24938,156 @@ namespace PriceMeDBA {
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Createdon", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("NZReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AUReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PHReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SGReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("HKReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MYReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("YPReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IDReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("THReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("VNReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("DReplication", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
                 });
                     
                 
@@ -21303,6 +25199,186 @@ namespace PriceMeDBA {
    			public static string ModifiedByColumn{
 			      get{
         			return "ModifiedBy";
+      			}
+		    }
+            
+            public IColumn Createdon{
+                get{
+                    return this.GetColumn("Createdon");
+                }
+            }
+				
+   			public static string CreatedonColumn{
+			      get{
+        			return "Createdon";
+      			}
+		    }
+            
+            public IColumn NZReplication{
+                get{
+                    return this.GetColumn("NZReplication");
+                }
+            }
+				
+   			public static string NZReplicationColumn{
+			      get{
+        			return "NZReplication";
+      			}
+		    }
+            
+            public IColumn AUReplication{
+                get{
+                    return this.GetColumn("AUReplication");
+                }
+            }
+				
+   			public static string AUReplicationColumn{
+			      get{
+        			return "AUReplication";
+      			}
+		    }
+            
+            public IColumn PHReplication{
+                get{
+                    return this.GetColumn("PHReplication");
+                }
+            }
+				
+   			public static string PHReplicationColumn{
+			      get{
+        			return "PHReplication";
+      			}
+		    }
+            
+            public IColumn SGReplication{
+                get{
+                    return this.GetColumn("SGReplication");
+                }
+            }
+				
+   			public static string SGReplicationColumn{
+			      get{
+        			return "SGReplication";
+      			}
+		    }
+            
+            public IColumn HKReplication{
+                get{
+                    return this.GetColumn("HKReplication");
+                }
+            }
+				
+   			public static string HKReplicationColumn{
+			      get{
+        			return "HKReplication";
+      			}
+		    }
+            
+            public IColumn MYReplication{
+                get{
+                    return this.GetColumn("MYReplication");
+                }
+            }
+				
+   			public static string MYReplicationColumn{
+			      get{
+        			return "MYReplication";
+      			}
+		    }
+            
+            public IColumn YPReplication{
+                get{
+                    return this.GetColumn("YPReplication");
+                }
+            }
+				
+   			public static string YPReplicationColumn{
+			      get{
+        			return "YPReplication";
+      			}
+		    }
+            
+            public IColumn IDReplication{
+                get{
+                    return this.GetColumn("IDReplication");
+                }
+            }
+				
+   			public static string IDReplicationColumn{
+			      get{
+        			return "IDReplication";
+      			}
+		    }
+            
+            public IColumn THReplication{
+                get{
+                    return this.GetColumn("THReplication");
+                }
+            }
+				
+   			public static string THReplicationColumn{
+			      get{
+        			return "THReplication";
+      			}
+		    }
+            
+            public IColumn VNReplication{
+                get{
+                    return this.GetColumn("VNReplication");
+                }
+            }
+				
+   			public static string VNReplicationColumn{
+			      get{
+        			return "VNReplication";
+      			}
+		    }
+            
+            public IColumn AReplication{
+                get{
+                    return this.GetColumn("AReplication");
+                }
+            }
+				
+   			public static string AReplicationColumn{
+			      get{
+        			return "AReplication";
+      			}
+		    }
+            
+            public IColumn BReplication{
+                get{
+                    return this.GetColumn("BReplication");
+                }
+            }
+				
+   			public static string BReplicationColumn{
+			      get{
+        			return "BReplication";
+      			}
+		    }
+            
+            public IColumn CReplication{
+                get{
+                    return this.GetColumn("CReplication");
+                }
+            }
+				
+   			public static string CReplicationColumn{
+			      get{
+        			return "CReplication";
+      			}
+		    }
+            
+            public IColumn DReplication{
+                get{
+                    return this.GetColumn("DReplication");
+                }
+            }
+				
+   			public static string DReplicationColumn{
+			      get{
+        			return "DReplication";
       			}
 		    }
             
@@ -21954,6 +26030,16 @@ namespace PriceMeDBA {
 	                IsForeignKey = true,
 	                MaxLength = 0
                 });
+
+                Columns.Add(new DatabaseColumn("CatelogAttributes", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
                     
                 
                 
@@ -22064,6 +26150,18 @@ namespace PriceMeDBA {
    			public static string AttributeTypeIDColumn{
 			      get{
         			return "AttributeTypeID";
+      			}
+		    }
+            
+            public IColumn CatelogAttributes{
+                get{
+                    return this.GetColumn("CatelogAttributes");
+                }
+            }
+				
+   			public static string CatelogAttributesColumn{
+			      get{
+        			return "CatelogAttributes";
       			}
 		    }
             
@@ -22894,7 +26992,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -23937,10 +28035,10 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.String,
-	                IsNullable = false,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 50
+	                MaxLength = 200
                 });
 
                 Columns.Add(new DatabaseColumn("CreatedOn", this)
@@ -24748,6 +28846,355 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: ReviewMerging
+        /// Primary Key: Id
+        /// </summary>
+
+        public class ReviewMergingTable: DatabaseTable {
+            
+            public ReviewMergingTable(IDataProvider provider):base("ReviewMerging",provider){
+                ClassName = "ReviewMerging";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("ToProductId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("OfferId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("OfferName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("ToOfferId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToOfferName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("NewProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("NewProductImage", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("IsBigPrice", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PriceRate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Double,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn ProductId{
+                get{
+                    return this.GetColumn("ProductId");
+                }
+            }
+				
+   			public static string ProductIdColumn{
+			      get{
+        			return "ProductId";
+      			}
+		    }
+            
+            public IColumn ProductName{
+                get{
+                    return this.GetColumn("ProductName");
+                }
+            }
+				
+   			public static string ProductNameColumn{
+			      get{
+        			return "ProductName";
+      			}
+		    }
+            
+            public IColumn ToProductId{
+                get{
+                    return this.GetColumn("ToProductId");
+                }
+            }
+				
+   			public static string ToProductIdColumn{
+			      get{
+        			return "ToProductId";
+      			}
+		    }
+            
+            public IColumn ToProductName{
+                get{
+                    return this.GetColumn("ToProductName");
+                }
+            }
+				
+   			public static string ToProductNameColumn{
+			      get{
+        			return "ToProductName";
+      			}
+		    }
+            
+            public IColumn OfferId{
+                get{
+                    return this.GetColumn("OfferId");
+                }
+            }
+				
+   			public static string OfferIdColumn{
+			      get{
+        			return "OfferId";
+      			}
+		    }
+            
+            public IColumn OfferName{
+                get{
+                    return this.GetColumn("OfferName");
+                }
+            }
+				
+   			public static string OfferNameColumn{
+			      get{
+        			return "OfferName";
+      			}
+		    }
+            
+            public IColumn ToOfferId{
+                get{
+                    return this.GetColumn("ToOfferId");
+                }
+            }
+				
+   			public static string ToOfferIdColumn{
+			      get{
+        			return "ToOfferId";
+      			}
+		    }
+            
+            public IColumn ToOfferName{
+                get{
+                    return this.GetColumn("ToOfferName");
+                }
+            }
+				
+   			public static string ToOfferNameColumn{
+			      get{
+        			return "ToOfferName";
+      			}
+		    }
+            
+            public IColumn NewProductName{
+                get{
+                    return this.GetColumn("NewProductName");
+                }
+            }
+				
+   			public static string NewProductNameColumn{
+			      get{
+        			return "NewProductName";
+      			}
+		    }
+            
+            public IColumn NewProductImage{
+                get{
+                    return this.GetColumn("NewProductImage");
+                }
+            }
+				
+   			public static string NewProductImageColumn{
+			      get{
+        			return "NewProductImage";
+      			}
+		    }
+            
+            public IColumn IsBigPrice{
+                get{
+                    return this.GetColumn("IsBigPrice");
+                }
+            }
+				
+   			public static string IsBigPriceColumn{
+			      get{
+        			return "IsBigPrice";
+      			}
+		    }
+            
+            public IColumn PriceRate{
+                get{
+                    return this.GetColumn("PriceRate");
+                }
+            }
+				
+   			public static string PriceRateColumn{
+			      get{
+        			return "PriceRate";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Messaging_Mailer
         /// Primary Key: mailerID
         /// </summary>
@@ -25248,6 +29695,179 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: AT_CompareAttributeValue_Map
+        /// Primary Key: 
+        /// </summary>
+
+        public class AT_CompareAttributeValue_MapTable: DatabaseTable {
+            
+            public AT_CompareAttributeValue_MapTable(IDataProvider provider):base("AT_CompareAttributeValue_Map",provider){
+                ClassName = "AT_CompareAttributeValue_Map";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CompareAttributeID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Value", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Skeywords", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 20
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn CompareAttributeID{
+                get{
+                    return this.GetColumn("CompareAttributeID");
+                }
+            }
+				
+   			public static string CompareAttributeIDColumn{
+			      get{
+        			return "CompareAttributeID";
+      			}
+		    }
+            
+            public IColumn Value{
+                get{
+                    return this.GetColumn("Value");
+                }
+            }
+				
+   			public static string ValueColumn{
+			      get{
+        			return "Value";
+      			}
+		    }
+            
+            public IColumn Skeywords{
+                get{
+                    return this.GetColumn("Skeywords");
+                }
+            }
+				
+   			public static string SkeywordsColumn{
+			      get{
+        			return "Skeywords";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_Advertising_Banner
         /// Primary Key: AdBannerID
         /// </summary>
@@ -25509,6 +30129,223 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: CategoryFilter
+        /// Primary Key: Id
+        /// </summary>
+
+        public class CategoryFilterTable: DatabaseTable {
+            
+            public CategoryFilterTable(IDataProvider provider):base("CategoryFilter",provider){
+                ClassName = "CategoryFilter";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("FilterURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("FilterName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 150
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CountryId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn FilterURL{
+                get{
+                    return this.GetColumn("FilterURL");
+                }
+            }
+				
+   			public static string FilterURLColumn{
+			      get{
+        			return "FilterURL";
+      			}
+		    }
+            
+            public IColumn FilterName{
+                get{
+                    return this.GetColumn("FilterName");
+                }
+            }
+				
+   			public static string FilterNameColumn{
+			      get{
+        			return "FilterName";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedBy{
+                get{
+                    return this.GetColumn("ModifiedBy");
+                }
+            }
+				
+   			public static string ModifiedByColumn{
+			      get{
+        			return "ModifiedBy";
+      			}
+		    }
+            
+            public IColumn CountryId{
+                get{
+                    return this.GetColumn("CountryId");
+                }
+            }
+				
+   			public static string CountryIdColumn{
+			      get{
+        			return "CountryId";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_RetailerEmailStatus
         /// Primary Key: ID
         /// </summary>
@@ -25687,7 +30524,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -27758,6 +32595,157 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: SimilarityMatchSuggestion
+        /// Primary Key: ID
+        /// </summary>
+
+        public class SimilarityMatchSuggestionTable: DatabaseTable {
+            
+            public SimilarityMatchSuggestionTable(IDataProvider provider):base("SimilarityMatchSuggestion",provider){
+                ClassName = "SimilarityMatchSuggestion";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToPID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Suggestion", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn CID{
+                get{
+                    return this.GetColumn("CID");
+                }
+            }
+				
+   			public static string CIDColumn{
+			      get{
+        			return "CID";
+      			}
+		    }
+            
+            public IColumn PID{
+                get{
+                    return this.GetColumn("PID");
+                }
+            }
+				
+   			public static string PIDColumn{
+			      get{
+        			return "PID";
+      			}
+		    }
+            
+            public IColumn ToPID{
+                get{
+                    return this.GetColumn("ToPID");
+                }
+            }
+				
+   			public static string ToPIDColumn{
+			      get{
+        			return "ToPID";
+      			}
+		    }
+            
+            public IColumn Suggestion{
+                get{
+                    return this.GetColumn("Suggestion");
+                }
+            }
+				
+   			public static string SuggestionColumn{
+			      get{
+        			return "Suggestion";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_MergeErrorReport
         /// Primary Key: 
         /// </summary>
@@ -28233,6 +33221,748 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: CSK_Store_AttributeRetailerGeneralMap
+        /// Primary Key: ID
+        /// </summary>
+
+        public class CSK_Store_AttributeRetailerGeneralMapTable: DatabaseTable {
+            
+            public CSK_Store_AttributeRetailerGeneralMapTable(IDataProvider provider):base("CSK_Store_AttributeRetailerGeneralMap",provider){
+                ClassName = "CSK_Store_AttributeRetailerGeneralMap";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsRemoveKeyword", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Keyword", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn RetailerID{
+                get{
+                    return this.GetColumn("RetailerID");
+                }
+            }
+				
+   			public static string RetailerIDColumn{
+			      get{
+        			return "RetailerID";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn IsRemoveKeyword{
+                get{
+                    return this.GetColumn("IsRemoveKeyword");
+                }
+            }
+				
+   			public static string IsRemoveKeywordColumn{
+			      get{
+        			return "IsRemoveKeyword";
+      			}
+		    }
+            
+            public IColumn Keyword{
+                get{
+                    return this.GetColumn("Keyword");
+                }
+            }
+				
+   			public static string KeywordColumn{
+			      get{
+        			return "Keyword";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CSK_Store_RetailerOffer
+        /// Primary Key: OfferId
+        /// </summary>
+
+        public class CSK_Store_RetailerOfferTable: DatabaseTable {
+            
+            public CSK_Store_RetailerOfferTable(IDataProvider provider):base("CSK_Store_RetailerOffer",provider){
+                ClassName = "CSK_Store_RetailerOffer";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("OfferId", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("OfferName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 800
+                });
+
+                Columns.Add(new DatabaseColumn("Price", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Currency,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("OriginalPrice", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Currency,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PurchaseURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 4000
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MainCategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Stock", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("StockStatus", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Condition", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Freight", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Currency,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("DefaultImage", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("UIC", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("SKU", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("ExpirationDate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PriceLocalCurrency", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Decimal,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("TradeMeSellerId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Modifiedon", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ManufacturerID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("productid", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn OfferId{
+                get{
+                    return this.GetColumn("OfferId");
+                }
+            }
+				
+   			public static string OfferIdColumn{
+			      get{
+        			return "OfferId";
+      			}
+		    }
+            
+            public IColumn RetailerId{
+                get{
+                    return this.GetColumn("RetailerId");
+                }
+            }
+				
+   			public static string RetailerIdColumn{
+			      get{
+        			return "RetailerId";
+      			}
+		    }
+            
+            public IColumn OfferName{
+                get{
+                    return this.GetColumn("OfferName");
+                }
+            }
+				
+   			public static string OfferNameColumn{
+			      get{
+        			return "OfferName";
+      			}
+		    }
+            
+            public IColumn Price{
+                get{
+                    return this.GetColumn("Price");
+                }
+            }
+				
+   			public static string PriceColumn{
+			      get{
+        			return "Price";
+      			}
+		    }
+            
+            public IColumn OriginalPrice{
+                get{
+                    return this.GetColumn("OriginalPrice");
+                }
+            }
+				
+   			public static string OriginalPriceColumn{
+			      get{
+        			return "OriginalPrice";
+      			}
+		    }
+            
+            public IColumn PurchaseURL{
+                get{
+                    return this.GetColumn("PurchaseURL");
+                }
+            }
+				
+   			public static string PurchaseURLColumn{
+			      get{
+        			return "PurchaseURL";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn MainCategoryID{
+                get{
+                    return this.GetColumn("MainCategoryID");
+                }
+            }
+				
+   			public static string MainCategoryIDColumn{
+			      get{
+        			return "MainCategoryID";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn Stock{
+                get{
+                    return this.GetColumn("Stock");
+                }
+            }
+				
+   			public static string StockColumn{
+			      get{
+        			return "Stock";
+      			}
+		    }
+            
+            public IColumn StockStatus{
+                get{
+                    return this.GetColumn("StockStatus");
+                }
+            }
+				
+   			public static string StockStatusColumn{
+			      get{
+        			return "StockStatus";
+      			}
+		    }
+            
+            public IColumn Condition{
+                get{
+                    return this.GetColumn("Condition");
+                }
+            }
+				
+   			public static string ConditionColumn{
+			      get{
+        			return "Condition";
+      			}
+		    }
+            
+            public IColumn Freight{
+                get{
+                    return this.GetColumn("Freight");
+                }
+            }
+				
+   			public static string FreightColumn{
+			      get{
+        			return "Freight";
+      			}
+		    }
+            
+            public IColumn DefaultImage{
+                get{
+                    return this.GetColumn("DefaultImage");
+                }
+            }
+				
+   			public static string DefaultImageColumn{
+			      get{
+        			return "DefaultImage";
+      			}
+		    }
+            
+            public IColumn UIC{
+                get{
+                    return this.GetColumn("UIC");
+                }
+            }
+				
+   			public static string UICColumn{
+			      get{
+        			return "UIC";
+      			}
+		    }
+            
+            public IColumn SKU{
+                get{
+                    return this.GetColumn("SKU");
+                }
+            }
+				
+   			public static string SKUColumn{
+			      get{
+        			return "SKU";
+      			}
+		    }
+            
+            public IColumn ExpirationDate{
+                get{
+                    return this.GetColumn("ExpirationDate");
+                }
+            }
+				
+   			public static string ExpirationDateColumn{
+			      get{
+        			return "ExpirationDate";
+      			}
+		    }
+            
+            public IColumn PriceLocalCurrency{
+                get{
+                    return this.GetColumn("PriceLocalCurrency");
+                }
+            }
+				
+   			public static string PriceLocalCurrencyColumn{
+			      get{
+        			return "PriceLocalCurrency";
+      			}
+		    }
+            
+            public IColumn TradeMeSellerId{
+                get{
+                    return this.GetColumn("TradeMeSellerId");
+                }
+            }
+				
+   			public static string TradeMeSellerIdColumn{
+			      get{
+        			return "TradeMeSellerId";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedBy{
+                get{
+                    return this.GetColumn("ModifiedBy");
+                }
+            }
+				
+   			public static string ModifiedByColumn{
+			      get{
+        			return "ModifiedBy";
+      			}
+		    }
+            
+            public IColumn Modifiedon{
+                get{
+                    return this.GetColumn("Modifiedon");
+                }
+            }
+				
+   			public static string ModifiedonColumn{
+			      get{
+        			return "Modifiedon";
+      			}
+		    }
+            
+            public IColumn ManufacturerID{
+                get{
+                    return this.GetColumn("ManufacturerID");
+                }
+            }
+				
+   			public static string ManufacturerIDColumn{
+			      get{
+        			return "ManufacturerID";
+      			}
+		    }
+            
+            public IColumn productid{
+                get{
+                    return this.GetColumn("productid");
+                }
+            }
+				
+   			public static string productidColumn{
+			      get{
+        			return "productid";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_RetailerErrorAction
         /// Primary Key: ID
         /// </summary>
@@ -28399,6 +34129,201 @@ namespace PriceMeDBA {
    			public static string ReasonIDColumn{
 			      get{
         			return "ReasonID";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: RelatedProductWithScore
+        /// Primary Key: ID
+        /// </summary>
+
+        public class RelatedProductWithScoreTable: DatabaseTable {
+            
+            public RelatedProductWithScoreTable(IDataProvider provider):base("RelatedProductWithScore",provider){
+                ClassName = "RelatedProductWithScore";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CountryId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RelatedProductId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Score", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Double,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn ProductId{
+                get{
+                    return this.GetColumn("ProductId");
+                }
+            }
+				
+   			public static string ProductIdColumn{
+			      get{
+        			return "ProductId";
+      			}
+		    }
+            
+            public IColumn CountryId{
+                get{
+                    return this.GetColumn("CountryId");
+                }
+            }
+				
+   			public static string CountryIdColumn{
+			      get{
+        			return "CountryId";
+      			}
+		    }
+            
+            public IColumn RelatedProductId{
+                get{
+                    return this.GetColumn("RelatedProductId");
+                }
+            }
+				
+   			public static string RelatedProductIdColumn{
+			      get{
+        			return "RelatedProductId";
+      			}
+		    }
+            
+            public IColumn Score{
+                get{
+                    return this.GetColumn("Score");
+                }
+            }
+				
+   			public static string ScoreColumn{
+			      get{
+        			return "Score";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+            public IColumn CategoryId{
+                get{
+                    return this.GetColumn("CategoryId");
+                }
+            }
+				
+   			public static string CategoryIdColumn{
+			      get{
+        			return "CategoryId";
       			}
 		    }
             
@@ -29869,6 +35794,26 @@ namespace PriceMeDBA {
 	                IsForeignKey = false,
 	                MaxLength = 0
                 });
+
+                Columns.Add(new DatabaseColumn("ReviewRating", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PPCforInStockOnly", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
                     
                 
                 
@@ -30342,6 +36287,30 @@ namespace PriceMeDBA {
       			}
 		    }
             
+            public IColumn ReviewRating{
+                get{
+                    return this.GetColumn("ReviewRating");
+                }
+            }
+				
+   			public static string ReviewRatingColumn{
+			      get{
+        			return "ReviewRating";
+      			}
+		    }
+            
+            public IColumn PPCforInStockOnly{
+                get{
+                    return this.GetColumn("PPCforInStockOnly");
+                }
+            }
+				
+   			public static string PPCforInStockOnlyColumn{
+			      get{
+        			return "PPCforInStockOnly";
+      			}
+		    }
+            
                     
         }
         
@@ -30490,308 +36459,6 @@ namespace PriceMeDBA {
    			public static string ModifiedOnColumn{
 			      get{
         			return "ModifiedOn";
-      			}
-		    }
-            
-                    
-        }
-        
-        /// <summary>
-        /// Table: CSK_Store_ManufacturerBlackList
-        /// Primary Key: 
-        /// </summary>
-
-        public class CSK_Store_ManufacturerBlackListTable: DatabaseTable {
-            
-            public CSK_Store_ManufacturerBlackListTable(IDataProvider provider):base("CSK_Store_ManufacturerBlackList",provider){
-                ClassName = "CSK_Store_ManufacturerBlackList";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ID", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("BlackBrand", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 150
-                });
-                    
-                
-                
-            }
-
-            public IColumn ID{
-                get{
-                    return this.GetColumn("ID");
-                }
-            }
-				
-   			public static string IDColumn{
-			      get{
-        			return "ID";
-      			}
-		    }
-            
-            public IColumn BlackBrand{
-                get{
-                    return this.GetColumn("BlackBrand");
-                }
-            }
-				
-   			public static string BlackBrandColumn{
-			      get{
-        			return "BlackBrand";
-      			}
-		    }
-            
-                    
-        }
-        
-        /// <summary>
-        /// Table: TempDataClassificationResult
-        /// Primary Key: Id
-        /// </summary>
-
-        public class TempDataClassificationResultTable: DatabaseTable {
-            
-            public TempDataClassificationResultTable(IDataProvider provider):base("TempDataClassificationResult",provider){
-                ClassName = "TempDataClassificationResult";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("Id", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Sample_ProductId", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Sample_RetailerProductName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 1000
-                });
-
-                Columns.Add(new DatabaseColumn("Sample_Price", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Decimal,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Sample_CategoryId", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Result_ProductId", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Result_ProductName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 1000
-                });
-
-                Columns.Add(new DatabaseColumn("Score", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Double,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Correct", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Boolean,
-	                IsNullable = true,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("CreatedOn", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.DateTime,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-                    
-                
-                
-            }
-
-            public IColumn Id{
-                get{
-                    return this.GetColumn("Id");
-                }
-            }
-				
-   			public static string IdColumn{
-			      get{
-        			return "Id";
-      			}
-		    }
-            
-            public IColumn Sample_ProductId{
-                get{
-                    return this.GetColumn("Sample_ProductId");
-                }
-            }
-				
-   			public static string Sample_ProductIdColumn{
-			      get{
-        			return "Sample_ProductId";
-      			}
-		    }
-            
-            public IColumn Sample_RetailerProductName{
-                get{
-                    return this.GetColumn("Sample_RetailerProductName");
-                }
-            }
-				
-   			public static string Sample_RetailerProductNameColumn{
-			      get{
-        			return "Sample_RetailerProductName";
-      			}
-		    }
-            
-            public IColumn Sample_Price{
-                get{
-                    return this.GetColumn("Sample_Price");
-                }
-            }
-				
-   			public static string Sample_PriceColumn{
-			      get{
-        			return "Sample_Price";
-      			}
-		    }
-            
-            public IColumn Sample_CategoryId{
-                get{
-                    return this.GetColumn("Sample_CategoryId");
-                }
-            }
-				
-   			public static string Sample_CategoryIdColumn{
-			      get{
-        			return "Sample_CategoryId";
-      			}
-		    }
-            
-            public IColumn Result_ProductId{
-                get{
-                    return this.GetColumn("Result_ProductId");
-                }
-            }
-				
-   			public static string Result_ProductIdColumn{
-			      get{
-        			return "Result_ProductId";
-      			}
-		    }
-            
-            public IColumn Result_ProductName{
-                get{
-                    return this.GetColumn("Result_ProductName");
-                }
-            }
-				
-   			public static string Result_ProductNameColumn{
-			      get{
-        			return "Result_ProductName";
-      			}
-		    }
-            
-            public IColumn Score{
-                get{
-                    return this.GetColumn("Score");
-                }
-            }
-				
-   			public static string ScoreColumn{
-			      get{
-        			return "Score";
-      			}
-		    }
-            
-            public IColumn Correct{
-                get{
-                    return this.GetColumn("Correct");
-                }
-            }
-				
-   			public static string CorrectColumn{
-			      get{
-        			return "Correct";
-      			}
-		    }
-            
-            public IColumn CreatedOn{
-                get{
-                    return this.GetColumn("CreatedOn");
-                }
-            }
-				
-   			public static string CreatedOnColumn{
-			      get{
-        			return "CreatedOn";
       			}
 		    }
             
@@ -31172,7 +36839,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -31739,6 +37406,333 @@ namespace PriceMeDBA {
    			public static string CountryIDColumn{
 			      get{
         			return "CountryID";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: AttributeMatchedReport
+        /// Primary Key: ID
+        /// </summary>
+
+        public class AttributeMatchedReportTable: DatabaseTable {
+            
+            public AttributeMatchedReportTable(IDataProvider provider):base("AttributeMatchedReport",provider){
+                ClassName = "AttributeMatchedReport";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AttType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AttTitleID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PM_AttName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("DR_AttName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("DR_AttValue_Orignal", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("DR_AttValue_Changed", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("AutoImport", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SaveToDB", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn RID{
+                get{
+                    return this.GetColumn("RID");
+                }
+            }
+				
+   			public static string RIDColumn{
+			      get{
+        			return "RID";
+      			}
+		    }
+            
+            public IColumn CID{
+                get{
+                    return this.GetColumn("CID");
+                }
+            }
+				
+   			public static string CIDColumn{
+			      get{
+        			return "CID";
+      			}
+		    }
+            
+            public IColumn PID{
+                get{
+                    return this.GetColumn("PID");
+                }
+            }
+				
+   			public static string PIDColumn{
+			      get{
+        			return "PID";
+      			}
+		    }
+            
+            public IColumn AttType{
+                get{
+                    return this.GetColumn("AttType");
+                }
+            }
+				
+   			public static string AttTypeColumn{
+			      get{
+        			return "AttType";
+      			}
+		    }
+            
+            public IColumn AttTitleID{
+                get{
+                    return this.GetColumn("AttTitleID");
+                }
+            }
+				
+   			public static string AttTitleIDColumn{
+			      get{
+        			return "AttTitleID";
+      			}
+		    }
+            
+            public IColumn PM_AttName{
+                get{
+                    return this.GetColumn("PM_AttName");
+                }
+            }
+				
+   			public static string PM_AttNameColumn{
+			      get{
+        			return "PM_AttName";
+      			}
+		    }
+            
+            public IColumn DR_AttName{
+                get{
+                    return this.GetColumn("DR_AttName");
+                }
+            }
+				
+   			public static string DR_AttNameColumn{
+			      get{
+        			return "DR_AttName";
+      			}
+		    }
+            
+            public IColumn DR_AttValue_Orignal{
+                get{
+                    return this.GetColumn("DR_AttValue_Orignal");
+                }
+            }
+				
+   			public static string DR_AttValue_OrignalColumn{
+			      get{
+        			return "DR_AttValue_Orignal";
+      			}
+		    }
+            
+            public IColumn DR_AttValue_Changed{
+                get{
+                    return this.GetColumn("DR_AttValue_Changed");
+                }
+            }
+				
+   			public static string DR_AttValue_ChangedColumn{
+			      get{
+        			return "DR_AttValue_Changed";
+      			}
+		    }
+            
+            public IColumn AutoImport{
+                get{
+                    return this.GetColumn("AutoImport");
+                }
+            }
+				
+   			public static string AutoImportColumn{
+			      get{
+        			return "AutoImport";
+      			}
+		    }
+            
+            public IColumn SaveToDB{
+                get{
+                    return this.GetColumn("SaveToDB");
+                }
+            }
+				
+   			public static string SaveToDBColumn{
+			      get{
+        			return "SaveToDB";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
       			}
 		    }
             
@@ -32792,7 +38786,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -33109,7 +39103,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -33233,6 +39227,198 @@ namespace PriceMeDBA {
    			public static string TypeNameColumn{
 			      get{
         			return "TypeName";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: VariantType
+        /// Primary Key: VariantTypeID
+        /// </summary>
+
+        public class VariantTypeTable: DatabaseTable {
+            
+            public VariantTypeTable(IDataProvider provider):base("VariantType",provider){
+                ClassName = "VariantType";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("VariantTypeID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("VariantTitleName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("IsUnit", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Unit", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Keyword", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn VariantTypeID{
+                get{
+                    return this.GetColumn("VariantTypeID");
+                }
+            }
+				
+   			public static string VariantTypeIDColumn{
+			      get{
+        			return "VariantTypeID";
+      			}
+		    }
+            
+            public IColumn VariantTitleName{
+                get{
+                    return this.GetColumn("VariantTitleName");
+                }
+            }
+				
+   			public static string VariantTitleNameColumn{
+			      get{
+        			return "VariantTitleName";
+      			}
+		    }
+            
+            public IColumn IsUnit{
+                get{
+                    return this.GetColumn("IsUnit");
+                }
+            }
+				
+   			public static string IsUnitColumn{
+			      get{
+        			return "IsUnit";
+      			}
+		    }
+            
+            public IColumn Unit{
+                get{
+                    return this.GetColumn("Unit");
+                }
+            }
+				
+   			public static string UnitColumn{
+			      get{
+        			return "Unit";
+      			}
+		    }
+            
+            public IColumn Keyword{
+                get{
+                    return this.GetColumn("Keyword");
+                }
+            }
+				
+   			public static string KeywordColumn{
+			      get{
+        			return "Keyword";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CSK_Store_ManufacturerBlackList
+        /// Primary Key: 
+        /// </summary>
+
+        public class CSK_Store_ManufacturerBlackListTable: DatabaseTable {
+            
+            public CSK_Store_ManufacturerBlackListTable(IDataProvider provider):base("CSK_Store_ManufacturerBlackList",provider){
+                ClassName = "CSK_Store_ManufacturerBlackList";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BlackBrand", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 150
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn BlackBrand{
+                get{
+                    return this.GetColumn("BlackBrand");
+                }
+            }
+				
+   			public static string BlackBrandColumn{
+			      get{
+        			return "BlackBrand";
       			}
 		    }
             
@@ -33523,6 +39709,682 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: AttributeUnmatchedReport
+        /// Primary Key: ID
+        /// </summary>
+
+        public class AttributeUnmatchedReportTable: DatabaseTable {
+            
+            public AttributeUnmatchedReportTable(IDataProvider provider):base("AttributeUnmatchedReport",provider){
+                ClassName = "AttributeUnmatchedReport";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AttType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("AttTitleID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PM_AttName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("DR_AttName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("DR_AttValue_Orignal", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("DR_AttValue_Changed", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Createdon", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn RID{
+                get{
+                    return this.GetColumn("RID");
+                }
+            }
+				
+   			public static string RIDColumn{
+			      get{
+        			return "RID";
+      			}
+		    }
+            
+            public IColumn CID{
+                get{
+                    return this.GetColumn("CID");
+                }
+            }
+				
+   			public static string CIDColumn{
+			      get{
+        			return "CID";
+      			}
+		    }
+            
+            public IColumn PID{
+                get{
+                    return this.GetColumn("PID");
+                }
+            }
+				
+   			public static string PIDColumn{
+			      get{
+        			return "PID";
+      			}
+		    }
+            
+            public IColumn AttType{
+                get{
+                    return this.GetColumn("AttType");
+                }
+            }
+				
+   			public static string AttTypeColumn{
+			      get{
+        			return "AttType";
+      			}
+		    }
+            
+            public IColumn AttTitleID{
+                get{
+                    return this.GetColumn("AttTitleID");
+                }
+            }
+				
+   			public static string AttTitleIDColumn{
+			      get{
+        			return "AttTitleID";
+      			}
+		    }
+            
+            public IColumn PM_AttName{
+                get{
+                    return this.GetColumn("PM_AttName");
+                }
+            }
+				
+   			public static string PM_AttNameColumn{
+			      get{
+        			return "PM_AttName";
+      			}
+		    }
+            
+            public IColumn DR_AttName{
+                get{
+                    return this.GetColumn("DR_AttName");
+                }
+            }
+				
+   			public static string DR_AttNameColumn{
+			      get{
+        			return "DR_AttName";
+      			}
+		    }
+            
+            public IColumn DR_AttValue_Orignal{
+                get{
+                    return this.GetColumn("DR_AttValue_Orignal");
+                }
+            }
+				
+   			public static string DR_AttValue_OrignalColumn{
+			      get{
+        			return "DR_AttValue_Orignal";
+      			}
+		    }
+            
+            public IColumn DR_AttValue_Changed{
+                get{
+                    return this.GetColumn("DR_AttValue_Changed");
+                }
+            }
+				
+   			public static string DR_AttValue_ChangedColumn{
+			      get{
+        			return "DR_AttValue_Changed";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn Createdon{
+                get{
+                    return this.GetColumn("Createdon");
+                }
+            }
+				
+   			public static string CreatedonColumn{
+			      get{
+        			return "Createdon";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CSK_Store_MatchHistory
+        /// Primary Key: Id
+        /// </summary>
+
+        public class CSK_Store_MatchHistoryTable: DatabaseTable {
+            
+            public CSK_Store_MatchHistoryTable(IDataProvider provider):base("CSK_Store_MatchHistory",provider){
+                ClassName = "CSK_Store_MatchHistory";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RPId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RPNameDB", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("RPName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("PNameDB", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("PName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("PriceDB", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Decimal,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Price", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Decimal,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MatchTypeId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MatchValue", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn PId{
+                get{
+                    return this.GetColumn("PId");
+                }
+            }
+				
+   			public static string PIdColumn{
+			      get{
+        			return "PId";
+      			}
+		    }
+            
+            public IColumn RPId{
+                get{
+                    return this.GetColumn("RPId");
+                }
+            }
+				
+   			public static string RPIdColumn{
+			      get{
+        			return "RPId";
+      			}
+		    }
+            
+            public IColumn RId{
+                get{
+                    return this.GetColumn("RId");
+                }
+            }
+				
+   			public static string RIdColumn{
+			      get{
+        			return "RId";
+      			}
+		    }
+            
+            public IColumn CId{
+                get{
+                    return this.GetColumn("CId");
+                }
+            }
+				
+   			public static string CIdColumn{
+			      get{
+        			return "CId";
+      			}
+		    }
+            
+            public IColumn RPNameDB{
+                get{
+                    return this.GetColumn("RPNameDB");
+                }
+            }
+				
+   			public static string RPNameDBColumn{
+			      get{
+        			return "RPNameDB";
+      			}
+		    }
+            
+            public IColumn RPName{
+                get{
+                    return this.GetColumn("RPName");
+                }
+            }
+				
+   			public static string RPNameColumn{
+			      get{
+        			return "RPName";
+      			}
+		    }
+            
+            public IColumn PNameDB{
+                get{
+                    return this.GetColumn("PNameDB");
+                }
+            }
+				
+   			public static string PNameDBColumn{
+			      get{
+        			return "PNameDB";
+      			}
+		    }
+            
+            public IColumn PName{
+                get{
+                    return this.GetColumn("PName");
+                }
+            }
+				
+   			public static string PNameColumn{
+			      get{
+        			return "PName";
+      			}
+		    }
+            
+            public IColumn PriceDB{
+                get{
+                    return this.GetColumn("PriceDB");
+                }
+            }
+				
+   			public static string PriceDBColumn{
+			      get{
+        			return "PriceDB";
+      			}
+		    }
+            
+            public IColumn Price{
+                get{
+                    return this.GetColumn("Price");
+                }
+            }
+				
+   			public static string PriceColumn{
+			      get{
+        			return "Price";
+      			}
+		    }
+            
+            public IColumn MatchTypeId{
+                get{
+                    return this.GetColumn("MatchTypeId");
+                }
+            }
+				
+   			public static string MatchTypeIdColumn{
+			      get{
+        			return "MatchTypeId";
+      			}
+		    }
+            
+            public IColumn MatchValue{
+                get{
+                    return this.GetColumn("MatchValue");
+                }
+            }
+				
+   			public static string MatchValueColumn{
+			      get{
+        			return "MatchValue";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedBy{
+                get{
+                    return this.GetColumn("ModifiedBy");
+                }
+            }
+				
+   			public static string ModifiedByColumn{
+			      get{
+        			return "ModifiedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_ProductVotesSumVN
         /// Primary Key: Id
         /// </summary>
@@ -33657,7 +40519,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -34050,7 +40912,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -34060,7 +40922,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -34070,7 +40932,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -34090,7 +40952,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -34701,7 +41563,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
                     
@@ -34730,6 +41592,69 @@ namespace PriceMeDBA {
    			public static string RetaileridColumn{
 			      get{
         			return "Retailerid";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: CSK_Store_MatchType
+        /// Primary Key: Id
+        /// </summary>
+
+        public class CSK_Store_MatchTypeTable: DatabaseTable {
+            
+            public CSK_Store_MatchTypeTable(IDataProvider provider):base("CSK_Store_MatchType",provider){
+                ClassName = "CSK_Store_MatchType";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MatchType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn MatchType{
+                get{
+                    return this.GetColumn("MatchType");
+                }
+            }
+				
+   			public static string MatchTypeColumn{
+			      get{
+        			return "MatchType";
       			}
 		    }
             
@@ -35393,11 +42318,11 @@ namespace PriceMeDBA {
                 Columns.Add(new DatabaseColumn("IPAddress", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.AnsiString,
+	                DataType = DbType.String,
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 20
+	                MaxLength = 100
                 });
 
                 Columns.Add(new DatabaseColumn("CreatedOn", this)
@@ -36716,7 +43641,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Boolean,
-	                IsNullable = true,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -36726,7 +43651,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Double,
-	                IsNullable = true,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -36736,7 +43661,7 @@ namespace PriceMeDBA {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Int32,
-	                IsNullable = true,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -36757,6 +43682,26 @@ namespace PriceMeDBA {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Int32,
 	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("step3", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MultipleValues", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
 	                MaxLength = 0
@@ -36931,6 +43876,30 @@ namespace PriceMeDBA {
    			public static string MaxValueColumn{
 			      get{
         			return "MaxValue";
+      			}
+		    }
+            
+            public IColumn step3{
+                get{
+                    return this.GetColumn("step3");
+                }
+            }
+				
+   			public static string step3Column{
+			      get{
+        			return "step3";
+      			}
+		    }
+            
+            public IColumn MultipleValues{
+                get{
+                    return this.GetColumn("MultipleValues");
+                }
+            }
+				
+   			public static string MultipleValuesColumn{
+			      get{
+        			return "MultipleValues";
       			}
 		    }
             
@@ -37138,7 +44107,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -37148,7 +44117,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -37767,7 +44736,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -38233,6 +45202,157 @@ namespace PriceMeDBA {
    			public static string RetailerIDColumn{
 			      get{
         			return "RetailerID";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: RetailerMappingWithDR
+        /// Primary Key: Id
+        /// </summary>
+
+        public class RetailerMappingWithDRTable: DatabaseTable {
+            
+            public RetailerMappingWithDRTable(IDataProvider provider):base("RetailerMappingWithDR",provider){
+                ClassName = "RetailerMappingWithDR";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PM_RetailerID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PM_RetailerName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("DR_RetailerName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn PM_RetailerID{
+                get{
+                    return this.GetColumn("PM_RetailerID");
+                }
+            }
+				
+   			public static string PM_RetailerIDColumn{
+			      get{
+        			return "PM_RetailerID";
+      			}
+		    }
+            
+            public IColumn PM_RetailerName{
+                get{
+                    return this.GetColumn("PM_RetailerName");
+                }
+            }
+				
+   			public static string PM_RetailerNameColumn{
+			      get{
+        			return "PM_RetailerName";
+      			}
+		    }
+            
+            public IColumn DR_RetailerName{
+                get{
+                    return this.GetColumn("DR_RetailerName");
+                }
+            }
+				
+   			public static string DR_RetailerNameColumn{
+			      get{
+        			return "DR_RetailerName";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
       			}
 		    }
             
@@ -40918,7 +48038,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -42768,7 +49888,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -43079,7 +50199,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -43230,7 +50350,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -47459,7 +54579,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -47620,6 +54740,201 @@ namespace PriceMeDBA {
    			public static string ModifiedByColumn{
 			      get{
         			return "ModifiedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: OfferProductIsMerged
+        /// Primary Key: ID
+        /// </summary>
+
+        public class OfferProductIsMergedTable: DatabaseTable {
+            
+            public OfferProductIsMergedTable(IDataProvider provider):base("OfferProductIsMerged",provider){
+                ClassName = "OfferProductIsMerged";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("OfferID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToOfferID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 10
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("NewProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("NewProductImage", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn OfferID{
+                get{
+                    return this.GetColumn("OfferID");
+                }
+            }
+				
+   			public static string OfferIDColumn{
+			      get{
+        			return "OfferID";
+      			}
+		    }
+            
+            public IColumn ToOfferID{
+                get{
+                    return this.GetColumn("ToOfferID");
+                }
+            }
+				
+   			public static string ToOfferIDColumn{
+			      get{
+        			return "ToOfferID";
+      			}
+		    }
+            
+            public IColumn ToProductID{
+                get{
+                    return this.GetColumn("ToProductID");
+                }
+            }
+				
+   			public static string ToProductIDColumn{
+			      get{
+        			return "ToProductID";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn NewProductName{
+                get{
+                    return this.GetColumn("NewProductName");
+                }
+            }
+				
+   			public static string NewProductNameColumn{
+			      get{
+        			return "NewProductName";
+      			}
+		    }
+            
+            public IColumn NewProductImage{
+                get{
+                    return this.GetColumn("NewProductImage");
+                }
+            }
+				
+   			public static string NewProductImageColumn{
+			      get{
+        			return "NewProductImage";
       			}
 		    }
             
@@ -47878,6 +55193,399 @@ namespace PriceMeDBA {
    			public static string ModifiedByColumn{
 			      get{
         			return "ModifiedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: RetailerProductIndex
+        /// Primary Key: Id
+        /// </summary>
+
+        public class RetailerProductIndexTable: DatabaseTable {
+            
+            public RetailerProductIndexTable(IDataProvider provider):base("RetailerProductIndex",provider){
+                ClassName = "RetailerProductIndex";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 600
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductNameMatch", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 600
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerPrice", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Currency,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Stock", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PurchaseURLOrg", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 4000
+                });
+
+                Columns.Add(new DatabaseColumn("PurchaseURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 4000
+                });
+
+                Columns.Add(new DatabaseColumn("ProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsDeleted", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductSKU", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 600
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductUIC", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 600
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn RetailerProductID{
+                get{
+                    return this.GetColumn("RetailerProductID");
+                }
+            }
+				
+   			public static string RetailerProductIDColumn{
+			      get{
+        			return "RetailerProductID";
+      			}
+		    }
+            
+            public IColumn RetailerProductName{
+                get{
+                    return this.GetColumn("RetailerProductName");
+                }
+            }
+				
+   			public static string RetailerProductNameColumn{
+			      get{
+        			return "RetailerProductName";
+      			}
+		    }
+            
+            public IColumn RetailerProductNameMatch{
+                get{
+                    return this.GetColumn("RetailerProductNameMatch");
+                }
+            }
+				
+   			public static string RetailerProductNameMatchColumn{
+			      get{
+        			return "RetailerProductNameMatch";
+      			}
+		    }
+            
+            public IColumn RetailerPrice{
+                get{
+                    return this.GetColumn("RetailerPrice");
+                }
+            }
+				
+   			public static string RetailerPriceColumn{
+			      get{
+        			return "RetailerPrice";
+      			}
+		    }
+            
+            public IColumn Stock{
+                get{
+                    return this.GetColumn("Stock");
+                }
+            }
+				
+   			public static string StockColumn{
+			      get{
+        			return "Stock";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+            public IColumn CreatedOn{
+                get{
+                    return this.GetColumn("CreatedOn");
+                }
+            }
+				
+   			public static string CreatedOnColumn{
+			      get{
+        			return "CreatedOn";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn RetailerID{
+                get{
+                    return this.GetColumn("RetailerID");
+                }
+            }
+				
+   			public static string RetailerIDColumn{
+			      get{
+        			return "RetailerID";
+      			}
+		    }
+            
+            public IColumn PurchaseURLOrg{
+                get{
+                    return this.GetColumn("PurchaseURLOrg");
+                }
+            }
+				
+   			public static string PurchaseURLOrgColumn{
+			      get{
+        			return "PurchaseURLOrg";
+      			}
+		    }
+            
+            public IColumn PurchaseURL{
+                get{
+                    return this.GetColumn("PurchaseURL");
+                }
+            }
+				
+   			public static string PurchaseURLColumn{
+			      get{
+        			return "PurchaseURL";
+      			}
+		    }
+            
+            public IColumn ProductID{
+                get{
+                    return this.GetColumn("ProductID");
+                }
+            }
+				
+   			public static string ProductIDColumn{
+			      get{
+        			return "ProductID";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn IsDeleted{
+                get{
+                    return this.GetColumn("IsDeleted");
+                }
+            }
+				
+   			public static string IsDeletedColumn{
+			      get{
+        			return "IsDeleted";
+      			}
+		    }
+            
+            public IColumn RetailerProductSKU{
+                get{
+                    return this.GetColumn("RetailerProductSKU");
+                }
+            }
+				
+   			public static string RetailerProductSKUColumn{
+			      get{
+        			return "RetailerProductSKU";
+      			}
+		    }
+            
+            public IColumn RetailerProductUIC{
+                get{
+                    return this.GetColumn("RetailerProductUIC");
+                }
+            }
+				
+   			public static string RetailerProductUICColumn{
+			      get{
+        			return "RetailerProductUIC";
       			}
 		    }
             
@@ -48629,7 +56337,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -49341,6 +57049,245 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: RP_ExistingMatchReport
+        /// Primary Key: ID
+        /// </summary>
+
+        public class RP_ExistingMatchReportTable: DatabaseTable {
+            
+            public RP_ExistingMatchReportTable(IDataProvider provider):base("RP_ExistingMatchReport",provider){
+                ClassName = "RP_ExistingMatchReport";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 600
+                });
+
+                Columns.Add(new DatabaseColumn("CID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 600
+                });
+
+                Columns.Add(new DatabaseColumn("ToCID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreateOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn RetailerId{
+                get{
+                    return this.GetColumn("RetailerId");
+                }
+            }
+				
+   			public static string RetailerIdColumn{
+			      get{
+        			return "RetailerId";
+      			}
+		    }
+            
+            public IColumn RetailerProductName{
+                get{
+                    return this.GetColumn("RetailerProductName");
+                }
+            }
+				
+   			public static string RetailerProductNameColumn{
+			      get{
+        			return "RetailerProductName";
+      			}
+		    }
+            
+            public IColumn CID{
+                get{
+                    return this.GetColumn("CID");
+                }
+            }
+				
+   			public static string CIDColumn{
+			      get{
+        			return "CID";
+      			}
+		    }
+            
+            public IColumn ToProductID{
+                get{
+                    return this.GetColumn("ToProductID");
+                }
+            }
+				
+   			public static string ToProductIDColumn{
+			      get{
+        			return "ToProductID";
+      			}
+		    }
+            
+            public IColumn ToProductName{
+                get{
+                    return this.GetColumn("ToProductName");
+                }
+            }
+				
+   			public static string ToProductNameColumn{
+			      get{
+        			return "ToProductName";
+      			}
+		    }
+            
+            public IColumn ToCID{
+                get{
+                    return this.GetColumn("ToCID");
+                }
+            }
+				
+   			public static string ToCIDColumn{
+			      get{
+        			return "ToCID";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn CreateOn{
+                get{
+                    return this.GetColumn("CreateOn");
+                }
+            }
+				
+   			public static string CreateOnColumn{
+			      get{
+        			return "CreateOn";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CrawlingAndImportVisualisation
         /// Primary Key: ID
         /// </summary>
@@ -49368,7 +57315,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -50045,6 +57992,289 @@ namespace PriceMeDBA {
    			public static string RemoveSpaceColumn{
 			      get{
         			return "RemoveSpace";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: SimilarityMatchReport
+        /// Primary Key: ID
+        /// </summary>
+
+        public class SimilarityMatchReportTable: DatabaseTable {
+            
+            public SimilarityMatchReportTable(IDataProvider provider):base("SimilarityMatchReport",provider){
+                ClassName = "SimilarityMatchReport";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("PName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Price", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Decimal,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToPID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ToPName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("ToPrice", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Decimal,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Score", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Double,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CreatedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("Createdon", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn CID{
+                get{
+                    return this.GetColumn("CID");
+                }
+            }
+				
+   			public static string CIDColumn{
+			      get{
+        			return "CID";
+      			}
+		    }
+            
+            public IColumn PID{
+                get{
+                    return this.GetColumn("PID");
+                }
+            }
+				
+   			public static string PIDColumn{
+			      get{
+        			return "PID";
+      			}
+		    }
+            
+            public IColumn PName{
+                get{
+                    return this.GetColumn("PName");
+                }
+            }
+				
+   			public static string PNameColumn{
+			      get{
+        			return "PName";
+      			}
+		    }
+            
+            public IColumn Price{
+                get{
+                    return this.GetColumn("Price");
+                }
+            }
+				
+   			public static string PriceColumn{
+			      get{
+        			return "Price";
+      			}
+		    }
+            
+            public IColumn ToPID{
+                get{
+                    return this.GetColumn("ToPID");
+                }
+            }
+				
+   			public static string ToPIDColumn{
+			      get{
+        			return "ToPID";
+      			}
+		    }
+            
+            public IColumn ToPName{
+                get{
+                    return this.GetColumn("ToPName");
+                }
+            }
+				
+   			public static string ToPNameColumn{
+			      get{
+        			return "ToPName";
+      			}
+		    }
+            
+            public IColumn ToPrice{
+                get{
+                    return this.GetColumn("ToPrice");
+                }
+            }
+				
+   			public static string ToPriceColumn{
+			      get{
+        			return "ToPrice";
+      			}
+		    }
+            
+            public IColumn Score{
+                get{
+                    return this.GetColumn("Score");
+                }
+            }
+				
+   			public static string ScoreColumn{
+			      get{
+        			return "Score";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn CreatedBy{
+                get{
+                    return this.GetColumn("CreatedBy");
+                }
+            }
+				
+   			public static string CreatedByColumn{
+			      get{
+        			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn Createdon{
+                get{
+                    return this.GetColumn("Createdon");
+                }
+            }
+				
+   			public static string CreatedonColumn{
+			      get{
+        			return "Createdon";
       			}
 		    }
             
@@ -51120,7 +59350,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -51675,6 +59905,91 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: SimilarityBlackKeywords
+        /// Primary Key: ID
+        /// </summary>
+
+        public class SimilarityBlackKeywordsTable: DatabaseTable {
+            
+            public SimilarityBlackKeywordsTable(IDataProvider provider):base("SimilarityBlackKeywords",provider){
+                ClassName = "SimilarityBlackKeyword";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CategoryID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BlackKeyword", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn CategoryID{
+                get{
+                    return this.GetColumn("CategoryID");
+                }
+            }
+				
+   			public static string CategoryIDColumn{
+			      get{
+        			return "CategoryID";
+      			}
+		    }
+            
+            public IColumn BlackKeyword{
+                get{
+                    return this.GetColumn("BlackKeyword");
+                }
+            }
+				
+   			public static string BlackKeywordColumn{
+			      get{
+        			return "BlackKeyword";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_ClickStatistics
         /// Primary Key: Id
         /// </summary>
@@ -51702,7 +60017,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -52814,6 +61129,91 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: HelpCenterKeywords
+        /// Primary Key: ID
+        /// </summary>
+
+        public class HelpCenterKeywordsTable: DatabaseTable {
+            
+            public HelpCenterKeywordsTable(IDataProvider provider):base("HelpCenterKeywords",provider){
+                ClassName = "HelpCenterKeyword";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MerchantURL", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("Keywords", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn ID{
+                get{
+                    return this.GetColumn("ID");
+                }
+            }
+				
+   			public static string IDColumn{
+			      get{
+        			return "ID";
+      			}
+		    }
+            
+            public IColumn MerchantURL{
+                get{
+                    return this.GetColumn("MerchantURL");
+                }
+            }
+				
+   			public static string MerchantURLColumn{
+			      get{
+        			return "MerchantURL";
+      			}
+		    }
+            
+            public IColumn Keywords{
+                get{
+                    return this.GetColumn("Keywords");
+                }
+            }
+				
+   			public static string KeywordsColumn{
+			      get{
+        			return "Keywords";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: CSK_Store_OMGRetailers_Affiliate
         /// Primary Key: ID
         /// </summary>
@@ -52841,7 +61241,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -54017,6 +62417,16 @@ namespace PriceMeDBA {
 	                IsForeignKey = false,
 	                MaxLength = 50
                 });
+
+                Columns.Add(new DatabaseColumn("PlaceID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
                     
                 
                 
@@ -54238,6 +62648,18 @@ namespace PriceMeDBA {
       			}
 		    }
             
+            public IColumn PlaceID{
+                get{
+                    return this.GetColumn("PlaceID");
+                }
+            }
+				
+   			public static string PlaceIDColumn{
+			      get{
+        			return "PlaceID";
+      			}
+		    }
+            
                     
         }
         
@@ -54442,7 +62864,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -54559,6 +62981,399 @@ namespace PriceMeDBA {
    			public static string CreatedOnColumn{
 			      get{
         			return "CreatedOn";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
+        /// Table: ImportToolPerformance
+        /// Primary Key: Id
+        /// </summary>
+
+        public class ImportToolPerformanceTable: DatabaseTable {
+            
+            public ImportToolPerformanceTable(IDataProvider provider):base("ImportToolPerformance",provider){
+                ClassName = "ImportToolPerformance";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerProductName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 2000
+                });
+
+                Columns.Add(new DatabaseColumn("StartTime", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Elapse", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Double,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Year", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Month", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Day", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Hour", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Minute", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Second", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("MinuteOfDay", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("DayOfWeek", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("WeekOfYear", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ParentId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Depth", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn RetailerId{
+                get{
+                    return this.GetColumn("RetailerId");
+                }
+            }
+				
+   			public static string RetailerIdColumn{
+			      get{
+        			return "RetailerId";
+      			}
+		    }
+            
+            public IColumn RetailerName{
+                get{
+                    return this.GetColumn("RetailerName");
+                }
+            }
+				
+   			public static string RetailerNameColumn{
+			      get{
+        			return "RetailerName";
+      			}
+		    }
+            
+            public IColumn RetailerProductName{
+                get{
+                    return this.GetColumn("RetailerProductName");
+                }
+            }
+				
+   			public static string RetailerProductNameColumn{
+			      get{
+        			return "RetailerProductName";
+      			}
+		    }
+            
+            public IColumn StartTime{
+                get{
+                    return this.GetColumn("StartTime");
+                }
+            }
+				
+   			public static string StartTimeColumn{
+			      get{
+        			return "StartTime";
+      			}
+		    }
+            
+            public IColumn Elapse{
+                get{
+                    return this.GetColumn("Elapse");
+                }
+            }
+				
+   			public static string ElapseColumn{
+			      get{
+        			return "Elapse";
+      			}
+		    }
+            
+            public IColumn Year{
+                get{
+                    return this.GetColumn("Year");
+                }
+            }
+				
+   			public static string YearColumn{
+			      get{
+        			return "Year";
+      			}
+		    }
+            
+            public IColumn Month{
+                get{
+                    return this.GetColumn("Month");
+                }
+            }
+				
+   			public static string MonthColumn{
+			      get{
+        			return "Month";
+      			}
+		    }
+            
+            public IColumn Day{
+                get{
+                    return this.GetColumn("Day");
+                }
+            }
+				
+   			public static string DayColumn{
+			      get{
+        			return "Day";
+      			}
+		    }
+            
+            public IColumn Hour{
+                get{
+                    return this.GetColumn("Hour");
+                }
+            }
+				
+   			public static string HourColumn{
+			      get{
+        			return "Hour";
+      			}
+		    }
+            
+            public IColumn Minute{
+                get{
+                    return this.GetColumn("Minute");
+                }
+            }
+				
+   			public static string MinuteColumn{
+			      get{
+        			return "Minute";
+      			}
+		    }
+            
+            public IColumn Second{
+                get{
+                    return this.GetColumn("Second");
+                }
+            }
+				
+   			public static string SecondColumn{
+			      get{
+        			return "Second";
+      			}
+		    }
+            
+            public IColumn MinuteOfDay{
+                get{
+                    return this.GetColumn("MinuteOfDay");
+                }
+            }
+				
+   			public static string MinuteOfDayColumn{
+			      get{
+        			return "MinuteOfDay";
+      			}
+		    }
+            
+            public IColumn DayOfWeek{
+                get{
+                    return this.GetColumn("DayOfWeek");
+                }
+            }
+				
+   			public static string DayOfWeekColumn{
+			      get{
+        			return "DayOfWeek";
+      			}
+		    }
+            
+            public IColumn WeekOfYear{
+                get{
+                    return this.GetColumn("WeekOfYear");
+                }
+            }
+				
+   			public static string WeekOfYearColumn{
+			      get{
+        			return "WeekOfYear";
+      			}
+		    }
+            
+            public IColumn ParentId{
+                get{
+                    return this.GetColumn("ParentId");
+                }
+            }
+				
+   			public static string ParentIdColumn{
+			      get{
+        			return "ParentId";
+      			}
+		    }
+            
+            public IColumn Depth{
+                get{
+                    return this.GetColumn("Depth");
+                }
+            }
+				
+   			public static string DepthColumn{
+			      get{
+        			return "Depth";
       			}
 		    }
             
@@ -54870,7 +63685,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -56294,7 +65109,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -56879,7 +65694,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -57110,7 +65925,7 @@ namespace PriceMeDBA {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 100
+	                MaxLength = 1000
                 });
 
                 Columns.Add(new DatabaseColumn("ConditionDescription", this)
@@ -57298,7 +66113,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -57678,7 +66493,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -57958,7 +66773,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
                     
@@ -58488,6 +67303,16 @@ namespace PriceMeDBA {
 	                IsForeignKey = false,
 	                MaxLength = 500
                 });
+
+                Columns.Add(new DatabaseColumn("ShortDescription", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 320
+                });
                     
                 
                 
@@ -58550,6 +67375,18 @@ namespace PriceMeDBA {
    			public static string DescriptionColumn{
 			      get{
         			return "Description";
+      			}
+		    }
+            
+            public IColumn ShortDescription{
+                get{
+                    return this.GetColumn("ShortDescription");
+                }
+            }
+				
+   			public static string ShortDescriptionColumn{
+			      get{
+        			return "ShortDescription";
       			}
 		    }
             
@@ -58669,7 +67506,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
                     
@@ -59268,6 +68105,56 @@ namespace PriceMeDBA {
 	                IsForeignKey = false,
 	                MaxLength = 10
                 });
+
+                Columns.Add(new DatabaseColumn("NewCategory", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsSetIsmerge", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsChangeCategory", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsDeleted", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsUnknow", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
                     
                 
                 
@@ -59318,6 +68205,66 @@ namespace PriceMeDBA {
    			public static string CreatedByColumn{
 			      get{
         			return "CreatedBy";
+      			}
+		    }
+            
+            public IColumn NewCategory{
+                get{
+                    return this.GetColumn("NewCategory");
+                }
+            }
+				
+   			public static string NewCategoryColumn{
+			      get{
+        			return "NewCategory";
+      			}
+		    }
+            
+            public IColumn IsSetIsmerge{
+                get{
+                    return this.GetColumn("IsSetIsmerge");
+                }
+            }
+				
+   			public static string IsSetIsmergeColumn{
+			      get{
+        			return "IsSetIsmerge";
+      			}
+		    }
+            
+            public IColumn IsChangeCategory{
+                get{
+                    return this.GetColumn("IsChangeCategory");
+                }
+            }
+				
+   			public static string IsChangeCategoryColumn{
+			      get{
+        			return "IsChangeCategory";
+      			}
+		    }
+            
+            public IColumn IsDeleted{
+                get{
+                    return this.GetColumn("IsDeleted");
+                }
+            }
+				
+   			public static string IsDeletedColumn{
+			      get{
+        			return "IsDeleted";
+      			}
+		    }
+            
+            public IColumn IsUnknow{
+                get{
+                    return this.GetColumn("IsUnknow");
+                }
+            }
+				
+   			public static string IsUnknowColumn{
+			      get{
+        			return "IsUnknow";
       			}
 		    }
             
@@ -61171,6 +70118,421 @@ namespace PriceMeDBA {
         }
         
         /// <summary>
+        /// Table: Deals_Voucher
+        /// Primary Key: Id
+        /// </summary>
+
+        public class Deals_VoucherTable: DatabaseTable {
+            
+            public Deals_VoucherTable(IDataProvider provider):base("Deals_Voucher",provider){
+                ClassName = "Deals_Voucher";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("Id", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("VoucherName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("VoucherUrl", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 1000
+                });
+
+                Columns.Add(new DatabaseColumn("Image", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 200
+                });
+
+                Columns.Add(new DatabaseColumn("StoreName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("RetailerId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Value", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CouponCode", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Description", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = -1
+                });
+
+                Columns.Add(new DatabaseColumn("MainCategoryId", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ValidStartDate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ValidUntilDate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Status", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SuggestedByUserEmail", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("SuggestOnDate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SuggestByRetailer", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedOn", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ModifiedBy", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+                    
+                
+                
+            }
+
+            public IColumn Id{
+                get{
+                    return this.GetColumn("Id");
+                }
+            }
+				
+   			public static string IdColumn{
+			      get{
+        			return "Id";
+      			}
+		    }
+            
+            public IColumn VoucherName{
+                get{
+                    return this.GetColumn("VoucherName");
+                }
+            }
+				
+   			public static string VoucherNameColumn{
+			      get{
+        			return "VoucherName";
+      			}
+		    }
+            
+            public IColumn VoucherUrl{
+                get{
+                    return this.GetColumn("VoucherUrl");
+                }
+            }
+				
+   			public static string VoucherUrlColumn{
+			      get{
+        			return "VoucherUrl";
+      			}
+		    }
+            
+            public IColumn Image{
+                get{
+                    return this.GetColumn("Image");
+                }
+            }
+				
+   			public static string ImageColumn{
+			      get{
+        			return "Image";
+      			}
+		    }
+            
+            public IColumn StoreName{
+                get{
+                    return this.GetColumn("StoreName");
+                }
+            }
+				
+   			public static string StoreNameColumn{
+			      get{
+        			return "StoreName";
+      			}
+		    }
+            
+            public IColumn RetailerId{
+                get{
+                    return this.GetColumn("RetailerId");
+                }
+            }
+				
+   			public static string RetailerIdColumn{
+			      get{
+        			return "RetailerId";
+      			}
+		    }
+            
+            public IColumn Value{
+                get{
+                    return this.GetColumn("Value");
+                }
+            }
+				
+   			public static string ValueColumn{
+			      get{
+        			return "Value";
+      			}
+		    }
+            
+            public IColumn CouponCode{
+                get{
+                    return this.GetColumn("CouponCode");
+                }
+            }
+				
+   			public static string CouponCodeColumn{
+			      get{
+        			return "CouponCode";
+      			}
+		    }
+            
+            public IColumn Description{
+                get{
+                    return this.GetColumn("Description");
+                }
+            }
+				
+   			public static string DescriptionColumn{
+			      get{
+        			return "Description";
+      			}
+		    }
+            
+            public IColumn MainCategoryId{
+                get{
+                    return this.GetColumn("MainCategoryId");
+                }
+            }
+				
+   			public static string MainCategoryIdColumn{
+			      get{
+        			return "MainCategoryId";
+      			}
+		    }
+            
+            public IColumn ValidStartDate{
+                get{
+                    return this.GetColumn("ValidStartDate");
+                }
+            }
+				
+   			public static string ValidStartDateColumn{
+			      get{
+        			return "ValidStartDate";
+      			}
+		    }
+            
+            public IColumn ValidUntilDate{
+                get{
+                    return this.GetColumn("ValidUntilDate");
+                }
+            }
+				
+   			public static string ValidUntilDateColumn{
+			      get{
+        			return "ValidUntilDate";
+      			}
+		    }
+            
+            public IColumn Status{
+                get{
+                    return this.GetColumn("Status");
+                }
+            }
+				
+   			public static string StatusColumn{
+			      get{
+        			return "Status";
+      			}
+		    }
+            
+            public IColumn SuggestedByUserEmail{
+                get{
+                    return this.GetColumn("SuggestedByUserEmail");
+                }
+            }
+				
+   			public static string SuggestedByUserEmailColumn{
+			      get{
+        			return "SuggestedByUserEmail";
+      			}
+		    }
+            
+            public IColumn SuggestOnDate{
+                get{
+                    return this.GetColumn("SuggestOnDate");
+                }
+            }
+				
+   			public static string SuggestOnDateColumn{
+			      get{
+        			return "SuggestOnDate";
+      			}
+		    }
+            
+            public IColumn SuggestByRetailer{
+                get{
+                    return this.GetColumn("SuggestByRetailer");
+                }
+            }
+				
+   			public static string SuggestByRetailerColumn{
+			      get{
+        			return "SuggestByRetailer";
+      			}
+		    }
+            
+            public IColumn ModifiedOn{
+                get{
+                    return this.GetColumn("ModifiedOn");
+                }
+            }
+				
+   			public static string ModifiedOnColumn{
+			      get{
+        			return "ModifiedOn";
+      			}
+		    }
+            
+            public IColumn ModifiedBy{
+                get{
+                    return this.GetColumn("ModifiedBy");
+                }
+            }
+				
+   			public static string ModifiedByColumn{
+			      get{
+        			return "ModifiedBy";
+      			}
+		    }
+            
+                    
+        }
+        
+        /// <summary>
         /// Table: Dragon_MatchAttributeTitle
         /// Primary Key: ID
         /// </summary>
@@ -61487,7 +70849,7 @@ namespace PriceMeDBA {
 	                DataType = DbType.Int32,
 	                IsNullable = true,
 	                AutoIncrement = false,
-	                IsForeignKey = true,
+	                IsForeignKey = false,
 	                MaxLength = 0
                 });
 
@@ -61899,6 +71261,76 @@ namespace PriceMeDBA {
 	                IsForeignKey = false,
 	                MaxLength = 100
                 });
+
+                Columns.Add(new DatabaseColumn("IsRemove", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsSplit", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("SplitKeyword", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
+
+                Columns.Add(new DatabaseColumn("KeepBefore", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsCombine", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CombineAttribute", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("KeepCombineAttributeBefore", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
                     
                 
                 
@@ -62057,6 +71489,90 @@ namespace PriceMeDBA {
    			public static string RemoveKewordColumn{
 			      get{
         			return "RemoveKeword";
+      			}
+		    }
+            
+            public IColumn IsRemove{
+                get{
+                    return this.GetColumn("IsRemove");
+                }
+            }
+				
+   			public static string IsRemoveColumn{
+			      get{
+        			return "IsRemove";
+      			}
+		    }
+            
+            public IColumn IsSplit{
+                get{
+                    return this.GetColumn("IsSplit");
+                }
+            }
+				
+   			public static string IsSplitColumn{
+			      get{
+        			return "IsSplit";
+      			}
+		    }
+            
+            public IColumn SplitKeyword{
+                get{
+                    return this.GetColumn("SplitKeyword");
+                }
+            }
+				
+   			public static string SplitKeywordColumn{
+			      get{
+        			return "SplitKeyword";
+      			}
+		    }
+            
+            public IColumn KeepBefore{
+                get{
+                    return this.GetColumn("KeepBefore");
+                }
+            }
+				
+   			public static string KeepBeforeColumn{
+			      get{
+        			return "KeepBefore";
+      			}
+		    }
+            
+            public IColumn IsCombine{
+                get{
+                    return this.GetColumn("IsCombine");
+                }
+            }
+				
+   			public static string IsCombineColumn{
+			      get{
+        			return "IsCombine";
+      			}
+		    }
+            
+            public IColumn CombineAttribute{
+                get{
+                    return this.GetColumn("CombineAttribute");
+                }
+            }
+				
+   			public static string CombineAttributeColumn{
+			      get{
+        			return "CombineAttribute";
+      			}
+		    }
+            
+            public IColumn KeepCombineAttributeBefore{
+                get{
+                    return this.GetColumn("KeepCombineAttributeBefore");
+                }
+            }
+				
+   			public static string KeepCombineAttributeBeforeColumn{
+			      get{
+        			return "KeepCombineAttributeBefore";
       			}
 		    }
             

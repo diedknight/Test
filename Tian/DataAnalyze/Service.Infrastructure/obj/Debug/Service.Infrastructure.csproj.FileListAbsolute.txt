@@ -59,3 +59,16 @@ F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bi
 F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache
 F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
 F:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Service.Infrastructure.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Service.Infrastructure.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.xml
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.dll
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.pdb
+H:\XbaiTwoV_Project\priceme_minitools\Tian\DataAnalyze\Service.Infrastructure\obj\Debug\Service.Infrastructure.csprojResolveAssemblyReference.cache

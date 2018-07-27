@@ -35,10 +35,15 @@
     <Reference Include="Lucene.Net">
       <HintPath>..\lib\Lucene.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Priceme.Infrastructure.DB.Dapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Priceme.Infrastructure.DB.Dapper.1.0.0\lib\Priceme.Infrastructure.DB.Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SubSonic.Core">
       <HintPath>..\lib\SubSonic.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,7 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllProductIndex.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="Entity\BlackWhiteList.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\Product.cs" />
     <Compile Include="PIdIndex.cs" />
     <Compile Include="ProductCountIndex.cs" />
     <Compile Include="Term2.cs" />
@@ -62,11 +71,16 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PriceMeDBA\PriceMeDBA.csproj">
       <Project>{a5acfd04-8b70-4a08-a07d-13b35f9b6b63}</Project>
       <Name>PriceMeDBA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailerProductsIndexController\RetailerProductsIndexController.csproj">
+      <Project>{d8f6f1e3-d139-4b8e-83f1-44790e435313}</Project>
+      <Name>RetailerProductsIndexController</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service.Infrastructure\Service.Infrastructure.csproj">
       <Project>{d718d727-11d0-4626-a428-153309f1ca32}</Project>

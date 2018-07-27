@@ -19,7 +19,7 @@ namespace DataAnalyze
             if (!Directory.Exists(_indexPath))
             {
                 Directory.CreateDirectory(_indexPath);
-            }            
+            }
         }
 
         private static Lucene.Net.Index.IndexWriter CreateIndexWriter(string indexPath)
@@ -41,7 +41,7 @@ namespace DataAnalyze
             return indexWriter;
         }
 
-        public static void Add(string words, int pId)
+        public static void Add(string words, Tuple<int, int, string,int,string> pItem)
         {
             if (_indexWriter == null)
             {
@@ -50,8 +50,12 @@ namespace DataAnalyze
 
             Lucene.Net.Documents.Document document = new Lucene.Net.Documents.Document();
             document.Add(new Lucene.Net.Documents.Field("Words", words, Lucene.Net.Documents.Field.Store.NO, Lucene.Net.Documents.Field.Index.ANALYZED));
-            document.Add(new Lucene.Net.Documents.Field("PId", pId.ToString(), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
-            
+            document.Add(new Lucene.Net.Documents.Field("PId", pItem.Item1.ToString(), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
+            document.Add(new Lucene.Net.Documents.Field("ManufacturerID", pItem.Item2.ToString(), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
+            document.Add(new Lucene.Net.Documents.Field("DefaultImage", pItem.Item3.ToString(), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
+            document.Add(new Lucene.Net.Documents.Field("CategoryID", pItem.Item4.ToString(), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
+            document.Add(new Lucene.Net.Documents.Field("ProductName", pItem.Item5, Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
+
             _indexWriter.AddDocument(document);
         }
 
@@ -72,9 +76,9 @@ namespace DataAnalyze
             }
         }
 
-        public static Dictionary<int, double> GetPIdScore(List<string> words)
+        public static Dictionary<int, string> GetPIdScore(List<string> words)
         {
-            Dictionary<int, double> dic = new Dictionary<int, double>();
+            Dictionary<int, string> dic = new Dictionary<int, string>();
 
             if (_indexSearcher == null)
             {
@@ -91,7 +95,24 @@ namespace DataAnalyze
 
             for (int i = 0; i < doc.ScoreDocs.Length; i++)
             {
-                dic.Add(Convert.ToInt32(_indexSearcher.Doc(doc.ScoreDocs[i].Doc).Get("PId")), doc.ScoreDocs[i].Score);
+                double score = 1 / (1 + Math.Pow(Math.E, -0.3 * doc.ScoreDocs[i].Score));
+
+                int pid = Convert.ToInt32(_indexSearcher.Doc(doc.ScoreDocs[i].Doc).Get("PId"));
+                string manId = _indexSearcher.Doc(doc.ScoreDocs[i].Doc).Get("ManufacturerID");
+                string img = _indexSearcher.Doc(doc.ScoreDocs[i].Doc).Get("DefaultImage");
+                string cid = _indexSearcher.Doc(doc.ScoreDocs[i].Doc).Get("CategoryID");
+                string pName = _indexSearcher.Doc(doc.ScoreDocs[i].Doc).Get("ProductName");
+
+                string value = pid + "|,|" + manId + "|,|" + score.ToString() + "|,|" + img + "|,|" + cid + "|,|" + pName;
+
+                if (dic.ContainsKey(pid))
+                {
+                    dic[pid] = value;
+                }
+                else
+                {
+                    dic.Add(pid, value);
+                }
             }
 
             return dic;

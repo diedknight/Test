@@ -287,6 +287,10 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("CalculateRetailerStatus",this.Provider);
             return sp;
         }
+        public StoredProcedure ChangeOfferToOtherCategory(){
+            StoredProcedure sp=new StoredProcedure("ChangeOfferToOtherCategory",this.Provider);
+            return sp;
+        }
         public StoredProcedure ChangeProductCategory(){
             StoredProcedure sp=new StoredProcedure("ChangeProductCategory",this.Provider);
             return sp;
@@ -615,6 +619,10 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_GetRetailerProductCount",this.Provider);
             return sp;
         }
+        public StoredProcedure CSK_Store_12RMB_Product_MergeOfferProducts(){
+            StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeOfferProducts",this.Provider);
+            return sp;
+        }
         public StoredProcedure CSK_Store_12RMB_Product_MergeProducts(){
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeProducts",this.Provider);
             return sp;
@@ -627,12 +635,20 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeProducts123",this.Provider);
             return sp;
         }
+        public StoredProcedure CSK_Store_12RMB_Product_MergeProducts2(){
+            StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeProducts2",this.Provider);
+            return sp;
+        }
         public StoredProcedure CSK_Store_12RMB_Product_MergeTempProducts(){
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeTempProducts",this.Provider);
             return sp;
         }
         public StoredProcedure CSK_Store_12RMB_Product_MergeTempProducts_ExIsmerge(){
             StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeTempProducts_ExIsmerge",this.Provider);
+            return sp;
+        }
+        public StoredProcedure CSK_Store_12RMB_Product_MergeTempProducts2(){
+            StoredProcedure sp=new StoredProcedure("CSK_Store_12RMB_Product_MergeTempProducts2",this.Provider);
             return sp;
         }
         public StoredProcedure CSK_Store_12RMB_Retailer_GetByProductId(){
@@ -1219,6 +1235,10 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("CSK_Store_SearchProductByCategoryIDAndKeywords",this.Provider);
             return sp;
         }
+        public StoredProcedure CSK_Store_SearchRetailerOffer(){
+            StoredProcedure sp=new StoredProcedure("CSK_Store_SearchRetailerOffer",this.Provider);
+            return sp;
+        }
         public StoredProcedure CSK_Store_TopNRetailerTrackProducts(){
             StoredProcedure sp=new StoredProcedure("CSK_Store_TopNRetailerTrackProducts",this.Provider);
             return sp;
@@ -1273,6 +1293,10 @@ namespace PriceMeDBA{
         }
         public StoredProcedure DeleteHelpSetIsMergeHistory(){
             StoredProcedure sp=new StoredProcedure("DeleteHelpSetIsMergeHistory",this.Provider);
+            return sp;
+        }
+        public StoredProcedure DeleteOfferProduct(){
+            StoredProcedure sp=new StoredProcedure("DeleteOfferProduct",this.Provider);
             return sp;
         }
         public StoredProcedure DeleteProductByID(){
@@ -2071,6 +2095,10 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("TestDuplicateProNameInSameCate",this.Provider);
             return sp;
         }
+        public StoredProcedure ToOffer(){
+            StoredProcedure sp=new StoredProcedure("ToOffer",this.Provider);
+            return sp;
+        }
         public StoredProcedure Update_Buildinginde_needdata(){
             StoredProcedure sp=new StoredProcedure("Update_Buildinginde_needdata",this.Provider);
             return sp;
@@ -2095,6 +2123,10 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("Update_Product_DescAndAttr",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateAUISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateAUISMERGEReplication",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdateAUReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateAUReplication",this.Provider);
             return sp;
@@ -2103,24 +2135,68 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("UpdateGlatLngByCountry",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateHKISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateHKISMERGEReplication",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdateHKReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateHKReplication",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateHotterwindISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateHotterwindISMERGEReplication",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateHotterwindReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateHotterwindReplication",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateIDISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateIDISMERGEReplication",this.Provider);
             return sp;
         }
         public StoredProcedure UpdateIDReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateIDReplication",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateIDReplicationO(){
+            StoredProcedure sp=new StoredProcedure("UpdateIDReplicationO",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateMYISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateMYISMERGEReplication",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdateMYReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateMYReplication",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateMYReplication0(){
+            StoredProcedure sp=new StoredProcedure("UpdateMYReplication0",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateNZISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateNZISMERGEReplication",this.Provider);
             return sp;
         }
         public StoredProcedure UpdateNZReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateNZReplication",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateNZReplicationO(){
+            StoredProcedure sp=new StoredProcedure("UpdateNZReplicationO",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdatePHISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdatePHISMERGEReplication",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdatePHReplication(){
             StoredProcedure sp=new StoredProcedure("UpdatePHReplication",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdatePHReplicationO(){
+            StoredProcedure sp=new StoredProcedure("UpdatePHReplicationO",this.Provider);
             return sp;
         }
         public StoredProcedure UpdateProductCategory(){
@@ -2131,20 +2207,92 @@ namespace PriceMeDBA{
             StoredProcedure sp=new StoredProcedure("UpdateProductClickTemp",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateReplicationAU(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationAU",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationFORnull(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationFORnull",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationHK(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationHK",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationHW(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationHW",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationID(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationID",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationMY(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationMY",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationNZ(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationNZ",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationPH(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationPH",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationSG(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationSG",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationTH(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationTH",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateReplicationVN(){
+            StoredProcedure sp=new StoredProcedure("UpdateReplicationVN",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdateRetailerProductCategory(){
             StoredProcedure sp=new StoredProcedure("UpdateRetailerProductCategory",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateSGISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateSGISMERGEReplication",this.Provider);
             return sp;
         }
         public StoredProcedure UpdateSGReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateSGReplication",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateSGReplicationO(){
+            StoredProcedure sp=new StoredProcedure("UpdateSGReplicationO",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateTHISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateTHISMERGEReplication",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdateTHReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateTHReplication",this.Provider);
             return sp;
         }
+        public StoredProcedure UpdateTHReplicationO(){
+            StoredProcedure sp=new StoredProcedure("UpdateTHReplicationO",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateUserReview(){
+            StoredProcedure sp=new StoredProcedure("UpdateUserReview",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateVNISMERGEReplication(){
+            StoredProcedure sp=new StoredProcedure("UpdateVNISMERGEReplication",this.Provider);
+            return sp;
+        }
         public StoredProcedure UpdateVNReplication(){
             StoredProcedure sp=new StoredProcedure("UpdateVNReplication",this.Provider);
+            return sp;
+        }
+        public StoredProcedure UpdateVNReplicationO(){
+            StoredProcedure sp=new StoredProcedure("UpdateVNReplicationO",this.Provider);
             return sp;
         }
         public StoredProcedure WriteLog(){

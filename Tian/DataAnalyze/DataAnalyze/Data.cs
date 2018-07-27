@@ -6,16 +6,19 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace DataAnalyze
 {
     public class Data
     {
-        private static List<int> GetIsMergeProducts()
+        private static List<Tuple<int, int, string, int, string>> GetIsMergeProducts()
         {
-            List<int> list = new List<int>();
+            List<Tuple<int, int, string, int, string>> list = new List<Tuple<int, int, string, int, string>>();
 
-            string sql = "select ProductId from CSK_Store_Product where IsMerge=1";
+            string cids = string.Join(",", Config.Categories.Select(item => item.CategoryID));
+
+            string sql = "select ProductId,ManufacturerID,DefaultImage,CategoryID,ProductName from CSK_Store_Product where IsMerge=1 and CategoryID in (" + cids + ")";
             StoredProcedure sp = new StoredProcedure("");
             sp.Command.CommandSql = sql;
             sp.Command.CommandTimeout = 0;
@@ -25,9 +28,14 @@ namespace DataAnalyze
             while (dr.Read())
             {
                 int pId = dr["ProductId"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ProductId"]);
+                int manId = dr["ManufacturerID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ManufacturerID"]);
+                string img = dr["DefaultImage"] == DBNull.Value ? "" : dr["DefaultImage"].ToString();
+                int CategoryID = dr["CategoryID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CategoryID"]);
+                string ProductName = dr["ProductName"] == DBNull.Value ? "" : dr["ProductName"].ToString();
+
                 if (pId == 0) continue;
 
-                list.Add(pId);
+                list.Add(new Tuple<int, int, string, int, string>(pId, manId, img, CategoryID, ProductName));
             }
 
             dr.Close();
@@ -68,97 +76,119 @@ namespace DataAnalyze
             return set;
         }
 
-        public static void EachInput(Action<string, int> action)
+        //public static void EachInput(Action<string, int> action)
+        //{
+        //    var PIdList = GetIsMergeProducts();
+        //    //var rIdSet = GetNZRetailers();
+
+        //    StoredProcedure sp = new StoredProcedure("");
+        //    sp.Command.CommandTimeout = 0;
+        //    sp.Command.CommandType = CommandType.Text;
+
+        //    PIdList.ForEach(pId =>
+        //    {
+        //        sp.Command.CommandSql = "select RetailerProductName,RetailerPrice from CSK_Store_RetailerProduct where ProductId=" + pId;
+        //        IDataReader dr = sp.ExecuteReader();
+
+        //        while (dr.Read())
+        //        {
+        //            string retailerProductName = dr["RetailerProductName"].ToString();
+        //            decimal price = dr["RetailerPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["RetailerPrice"]);
+        //            string val = string.Format("{0} Price_{1}", retailerProductName, price.ToString("0.00"));
+
+        //            action(val, pId);
+        //        }
+
+        //        dr.Close();
+        //    });
+
+
+        //    //int pageIndex = 1;
+        //    //int pageSize = 50000;
+        //    //while (true)
+        //    //{
+        //    //    bool isOver = true;
+        //    //    string sql = " select RetailerProductName,ProductId,RetailerPrice from";
+        //    //    sql += " (";
+        //    //    sql += " select ROW_NUMBER() over(ORDER BY RetailerProductId asc) as xbai_num, a.RetailerProductName, a.ProductId, a.RetailerPrice from CSK_Store_RetailerProduct as a";
+        //    //    sql += " ) as x";
+        //    //    sql += " where xbai_num BETWEEN " + ((pageIndex - 1) * pageSize + 1) + " AND " + pageIndex * pageSize;
+
+        //    //    sp.Command.CommandSql = sql;
+        //    //    IDataReader dr = sp.ExecuteReader();
+
+        //    //    while (dr.Read())
+        //    //    {
+        //    //        isOver = false;
+
+        //    //        int pId = dr["ProductId"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ProductId"]);
+        //    //        if (pId == 0) continue;
+
+        //    //        string retailerProductName = dr["RetailerProductName"].ToString();
+        //    //        decimal price = dr["RetailerPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["RetailerPrice"]);
+        //    //        string val = string.Format("{0} Price_{1}", retailerProductName, price.ToString("0.00"));
+
+        //    //        action(retailerProductName, pId);
+        //    //    }
+
+        //    //    dr.Close();
+
+        //    //    pageIndex++;
+        //    //    if (isOver) break;
+        //    //}
+        //}
+
+        public static void EachInput2(Action<string, Tuple<int, int, string, int, string>> action)
         {
-            var PIdList = GetIsMergeProducts();
-            //var rIdSet = GetNZRetailers();
-
-            StoredProcedure sp = new StoredProcedure("");
-            sp.Command.CommandTimeout = 0;
-            sp.Command.CommandType = CommandType.Text;
-
-            PIdList.ForEach(pId =>
+            if (Config.UseProduct)
             {
-                sp.Command.CommandSql = "select RetailerProductName,RetailerPrice from CSK_Store_RetailerProduct where ProductId=" + pId;
-                IDataReader dr = sp.ExecuteReader();
+                var PIdList = GetIsMergeProducts();
 
-                while (dr.Read())
+                PIdList.ForEach(pItem =>
                 {
-                    string retailerProductName = dr["RetailerProductName"].ToString();
-                    decimal price = dr["RetailerPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["RetailerPrice"]);
-                    string val = string.Format("{0} Price_{1}", retailerProductName, price.ToString("0.00"));
 
-                    action(val, pId);
-                }
+                    string name = "";
 
-                dr.Close();
-            });
+                    string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CommerceTemplate"].ConnectionString;
+                    using (var con = new SqlConnection(conStr))
+                    {
+                        string sql = "select ProductName from CSK_Store_Product where ProductId=" + pItem.Item1;
+                        name = con.ExecuteScalar<string>(sql);
+                    }
 
-
-            //int pageIndex = 1;
-            //int pageSize = 50000;
-            //while (true)
-            //{
-            //    bool isOver = true;
-            //    string sql = " select RetailerProductName,ProductId,RetailerPrice from";
-            //    sql += " (";
-            //    sql += " select ROW_NUMBER() over(ORDER BY RetailerProductId asc) as xbai_num, a.RetailerProductName, a.ProductId, a.RetailerPrice from CSK_Store_RetailerProduct as a";
-            //    sql += " ) as x";
-            //    sql += " where xbai_num BETWEEN " + ((pageIndex - 1) * pageSize + 1) + " AND " + pageIndex * pageSize;
-
-            //    sp.Command.CommandSql = sql;
-            //    IDataReader dr = sp.ExecuteReader();
-
-            //    while (dr.Read())
-            //    {
-            //        isOver = false;
-
-            //        int pId = dr["ProductId"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ProductId"]);
-            //        if (pId == 0) continue;
-
-            //        string retailerProductName = dr["RetailerProductName"].ToString();
-            //        decimal price = dr["RetailerPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["RetailerPrice"]);
-            //        string val = string.Format("{0} Price_{1}", retailerProductName, price.ToString("0.00"));
-
-            //        action(retailerProductName, pId);
-            //    }
-
-            //    dr.Close();
-
-            //    pageIndex++;
-            //    if (isOver) break;
-            //}
-        }
-
-        public static void EachInput2(Action<string, int> action)
-        {
-            var PIdList = GetIsMergeProducts();
-            //var rIdSet = GetNZRetailers();
-
-            StoredProcedure sp = new StoredProcedure("");
-            sp.Command.CommandTimeout = 0;
-            sp.Command.CommandType = CommandType.Text;
-
-            PIdList.ForEach(pId =>
+                    action(name, pItem);
+                });
+            }
+            else
             {
-                sp.Command.CommandSql = "select RetailerProductName,RetailerPrice from CSK_Store_RetailerProduct where ProductId=" + pId;
-                IDataReader dr = sp.ExecuteReader();
+                var PIdList = GetIsMergeProducts();
+                //var rIdSet = GetNZRetailers();
 
-                StringBuilder sb = new StringBuilder();
+                StoredProcedure sp = new StoredProcedure("");
+                sp.Command.CommandTimeout = 0;
+                sp.Command.CommandType = CommandType.Text;
 
-                while (dr.Read())
+                PIdList.ForEach(pId =>
                 {
-                    string retailerProductName = dr["RetailerProductName"].ToString();
-                    decimal price = dr["RetailerPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["RetailerPrice"]);
-                    string val = string.Format("{0} Price_{1} ", retailerProductName, price.ToString("0.00"));
+                    sp.Command.CommandSql = "select RetailerProductName,RetailerPrice from CSK_Store_RetailerProduct where ProductId=" + pId.Item1;
+                    IDataReader dr = sp.ExecuteReader();
 
-                    sb.Append(val);
-                }
+                    StringBuilder sb = new StringBuilder();
 
-                action(sb.ToString(), pId);
+                    while (dr.Read())
+                    {
+                        string retailerProductName = dr["RetailerProductName"].ToString();
+                        decimal price = dr["RetailerPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["RetailerPrice"]);
+                        string val = string.Format("{0} Price_{1} ", retailerProductName, price.ToString("0.00"));
 
-                dr.Close();
-            });
+                        sb.Append(val);
+                    }
+
+                    action(sb.ToString(), pId);
+
+                    dr.Close();
+                });
+            }
         }
 
         //public static void EachOutputRPNameCount(Action<int, int> action)
@@ -178,7 +208,7 @@ namespace DataAnalyze
         //        sql += " select ROW_NUMBER() over(ORDER BY Id asc) as xbai_num, TotalWord,PId from RPNameWordCount";
         //        sql += " ) as a";
         //        sql += " where xbai_num BETWEEN " + ((pageIndex - 1) * pageSize + 1) + " AND " + pageIndex * pageSize;
-                
+
         //        sp.Command.CommandSql = sql;                
         //        IDataReader dr = sp.ExecuteReader();
 
@@ -216,7 +246,7 @@ namespace DataAnalyze
         //        sql += " ) as a";
         //        sql += " where xbai_num BETWEEN " + ((pageIndex - 1) * pageSize + 1) + " AND " + pageIndex * pageSize;
 
-                
+
         //        sp.Command.CommandSql = sql;                
         //        IDataReader dr = sp.ExecuteReader();
 

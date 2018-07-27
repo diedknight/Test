@@ -9,9 +9,9 @@ namespace DataAnalyze
 {
     public class Term2
     {
-        public static void Add(string words, int pId)
+        public static void Add(string words, Tuple<int, int, string,int,string> pItem)
         {
-            AllProductIndex.Add(words, pId);
+            AllProductIndex.Add(words, pItem);
         }
 
 
@@ -51,22 +51,20 @@ namespace DataAnalyze
 
             AllProductIndex.GetPIdScore(GetTerms(str)).ToList().ForEach(item =>
             {
+                var strs = item.Value.Split(new string[] { "|,|" }, StringSplitOptions.None);
+                int pid = Convert.ToInt32(strs[0]);
+                int manId = Convert.ToInt32(strs[1]);
+                double score = Convert.ToDouble(strs[2]);
+                string img = strs[3];
+                int cid = Convert.ToInt32(strs[4]);
+                string pName = strs[5];
+
                 if (dic.ContainsKey(item.Key))
-                    dic[item.Key].Score += item.Value;
+                    dic[item.Key].Score += score;
                 else
-                    dic.Add(item.Key, new WordScore() { PId = item.Key, Score = item.Value });
+                    dic.Add(item.Key, new WordScore() { PId = item.Key, Score = score, ManId = manId, Img = img, CId = cid, ProductName = pName });
             });
-
-            //GetTerms(str).ForEach(word =>
-            //{
-            //    AllProductIndex.GetPIdScore(word).ToList().ForEach(item => {
-            //        if (dic.ContainsKey(item.Key))
-            //            dic[item.Key].Score += item.Value;
-            //        else
-            //            dic.Add(item.Key, new WordScore() { PId = item.Key, Score = item.Value });
-            //    });
-            //});
-
+            
             return dic.OrderByDescending(item => item.Value.Score).Take(top).Select(item => item.Value).ToList();
         }
 
