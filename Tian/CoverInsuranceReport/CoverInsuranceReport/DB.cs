@@ -169,6 +169,29 @@ namespace CoverInsuranceReport
 
                         info.medianPrice_180 = (val1 + val2) / 2;
                     }
+
+                    List<decimal> dayMedianPriceList = new List<decimal>();
+                    for (int i = 0; i < 180; i++)
+                    {
+                        DateTime start = Convert.ToDateTime(DateTime.Now.AddDays(-i).ToString("yyyy-MM-dd") + " 00:00:00");
+                        DateTime end = Convert.ToDateTime(DateTime.Now.AddDays(-i).ToString("yyyy-MM-dd") + " 23:59:59");
+                        var rollingList = tempList.Where(item => item.CreatedOn >= start && item.CreatedOn <= end).OrderBy(item => item.NewPrice).Select(item => item.NewPrice).ToList();
+
+                        if (rollingList.Count != 0)
+                        {
+                            var val1 = rollingList[(rollingList.Count + 1) / 2 - 1];
+                            var val2 = rollingList[(rollingList.Count + 2) / 2 - 1];
+                            var median = (val1 + val2) / 2;
+
+                            dayMedianPriceList.Add(median);
+                        }
+                    }
+
+                    if (dayMedianPriceList.Count != 0)
+                    {
+                        info.rollingMedianPrice_180 = dayMedianPriceList.Sum() / dayMedianPriceList.Count;
+                    }
+
                     list.Add(info);
                 }
             });

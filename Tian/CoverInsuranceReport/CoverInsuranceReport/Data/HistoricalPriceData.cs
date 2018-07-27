@@ -17,6 +17,8 @@ namespace CoverInsuranceReport.Data
         public decimal medianPrice_180 { get; set; }
         public decimal avgPrice_180 { get; set; }
 
+        public decimal rollingMedianPrice_180 { get; set; }
+
         public int PId { get; set; }
     }
 }

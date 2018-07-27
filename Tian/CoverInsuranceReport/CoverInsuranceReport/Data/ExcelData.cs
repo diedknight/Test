@@ -34,7 +34,7 @@ namespace CoverInsuranceReport.Data
         public decimal _180DaysMinPriceDiff { get; set; }
         public decimal _180DaysMaxPriceDiff { get; set; }
         public decimal _180DaysMedianPriceDiff { get; set; }
-        public decimal _180DaysAvgPriceDiff { get; set; }
-
+        public decimal _180DaysAvgPrice { get; set; }
+        public decimal _180DaysRollingMedianPrice { get; set; }
     }
 }

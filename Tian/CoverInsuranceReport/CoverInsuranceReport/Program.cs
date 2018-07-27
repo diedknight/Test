@@ -79,11 +79,13 @@ namespace CoverInsuranceReport
                     item._180DaysMaxPriceDiff = hPriceItem.maxPrice_180 == 0 ? 0 : Math.Abs(item.MaxPrice - hPriceItem.maxPrice_180);
                     item._180DaysMedianPriceDiff = hPriceItem.medianPrice_180 == 0 ? 0 : Math.Abs(item.MedianPrice - hPriceItem.medianPrice_180);
 
-                    item._180DaysAvgPriceDiff = hPriceItem.avgPrice_180 == 0 ? item.AveragePrice : hPriceItem.avgPrice_180;
+                    item._180DaysAvgPrice = hPriceItem.avgPrice_180 == 0 ? item.AveragePrice : hPriceItem.avgPrice_180;
+                    item._180DaysRollingMedianPrice = hPriceItem.rollingMedianPrice_180 == 0 ? item.MedianPrice : hPriceItem.rollingMedianPrice_180;
                 }
                 else
                 {
-                    item._180DaysAvgPriceDiff = item.AveragePrice;
+                    item._180DaysAvgPrice = item.AveragePrice;
+                    item._180DaysRollingMedianPrice = item.MedianPrice;
                 }
 
                 //Image
@@ -161,11 +163,13 @@ namespace CoverInsuranceReport
                     item._180DaysMaxPriceDiff = hPriceItem.maxPrice_180 == 0 ? 0 : Math.Abs(item.MaxPrice - hPriceItem.maxPrice_180);
                     item._180DaysMedianPriceDiff = hPriceItem.medianPrice_180 == 0 ? 0 : Math.Abs(item.MedianPrice - hPriceItem.medianPrice_180);
 
-                    item._180DaysAvgPriceDiff = hPriceItem.avgPrice_180 == 0 ? item.AveragePrice : hPriceItem.avgPrice_180;
+                    item._180DaysAvgPrice = hPriceItem.avgPrice_180 == 0 ? item.AveragePrice : hPriceItem.avgPrice_180;
+                    item._180DaysRollingMedianPrice = hPriceItem.rollingMedianPrice_180 == 0 ? item.MedianPrice : hPriceItem.rollingMedianPrice_180;
                 }
                 else
                 {
-                    item._180DaysAvgPriceDiff = item.AveragePrice;
+                    item._180DaysAvgPrice = item.AveragePrice;
+                    item._180DaysRollingMedianPrice = item.MedianPrice;
                 }
 
 
@@ -218,7 +222,8 @@ namespace CoverInsuranceReport
                 "180 days min price diff",
                 "180 days max price diff",
                 "180 days median price diff",
-                "180 days average price"
+                "180 days average price",
+                "180 days rolling median price"
                 );
 
             outputList.ForEach(item => WriteLine(excelHelper, item));
@@ -345,7 +350,8 @@ namespace CoverInsuranceReport
                 data._180DaysMinPriceDiff.ToString("0.00"),
                 data._180DaysMaxPriceDiff.ToString("0.00"),
                 data._180DaysMedianPriceDiff.ToString("0.00"),
-                data._180DaysAvgPriceDiff.ToString("0.00")
+                data._180DaysAvgPrice.ToString("0.00"),
+                data._180DaysRollingMedianPrice.ToString("0.00")
                 );
         }
 
