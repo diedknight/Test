@@ -46,6 +46,7 @@ namespace CheckInvalidImageUrl
 
                     try
                     {
+                        
                         using (Bitmap bitmap = new Bitmap(imgFile))
                         {
                             var border = GetBorder1(bitmap);
