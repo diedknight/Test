@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="CateCtrl.cs" />
     <Compile Include="Data\ActiveData.cs" />
     <Compile Include="Data\ActiveHistoricalPriceData.cs" />

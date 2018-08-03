@@ -36,17 +36,17 @@ namespace CoverInsuranceReport
                 data.ProductFamily = row.Count > 3 ? row[3] : "";
                 data.Series = row.Count > 4 ? row[4] : "";
                 data.Model = row.Count > 5 ? row[5] : "";
-                data.ProductName = row.Count > 6 ? row[6] : "";
-                data.MinPrice = row.Count > 7 ? Convert.ToDecimal(row[7]) : 0;
-                data.AveragePrice = row.Count > 8 ? Convert.ToDecimal(row[8]) : 0;
-                data.MedianPrice = row.Count > 9 ? Convert.ToDecimal(row[9]) : 0;
-                data.MaxPrice = row.Count > 10 ? Convert.ToDecimal(row[10]) : 0;
-                data.NumberOfPrices = row.Count > 11 ? Convert.ToInt32(row[11]) : 0;
-                data.ProductImageUrl = row.Count > 12 ? row[12] : "";
-                data.Upcoming = row.Count > 13 ? row[13] : "";
-                data.CreatedOn = row.Count > 14 ? row[14] : "";
-                data.UpdateOn = row.Count > 15 ? row[15] : "";
-                data.ForSale = row.Count > 16 ? row[16] : "";
+                //data.ProductName = row.Count > 6 ? row[6] : "";
+                //data.MinPrice = row.Count > 7 ? Convert.ToDecimal(row[7]) : 0;
+                //data.AveragePrice = row.Count > 8 ? Convert.ToDecimal(row[8]) : 0;
+                //data.MedianPrice = row.Count > 9 ? Convert.ToDecimal(row[9]) : 0;
+                //data.MaxPrice = row.Count > 10 ? Convert.ToDecimal(row[10]) : 0;
+                //data.NumberOfPrices = row.Count > 11 ? Convert.ToInt32(row[11]) : 0;
+                //data.ProductImageUrl = row.Count > 12 ? row[12] : "";
+                //data.Upcoming = row.Count > 13 ? row[13] : "";
+                //data.CreatedOn = row.Count > 14 ? row[14] : "";
+                //data.UpdateOn = row.Count > 15 ? row[15] : "";
+                //data.ForSale = row.Count > 16 ? row[16] : "";
 
                 this._dataList.Add(data);
             }

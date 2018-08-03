@@ -36,6 +36,9 @@ namespace CoverInsuranceReport
 
             activeList.ForEach(item =>
             {
+                //Months old
+                item.MonthsOld = (DateTime.Now - Convert.ToDateTime(item.CreatedOn)).Days % 30;
+
                 //category
                 item.CategoryName = cateCtrl.GetData().FirstOrDefault(c => c.CId == Convert.ToInt32(item.CategoryName)).CategoryName;
 
@@ -62,11 +65,7 @@ namespace CoverInsuranceReport
                     item.NumberOfPrices = priceItem.Num;
                     item.MedianPrice = priceItem.Median;
                 }
-                else
-                {
-
-                }
-
+                                
                 //historical price
                 var hPriceItem = ActiveHistoricalPriceList.FirstOrDefault(p => p.PId == item.PId);
                 if (hPriceItem != null)
@@ -80,13 +79,17 @@ namespace CoverInsuranceReport
                     item._180DaysMedianPriceDiff = hPriceItem.medianPrice_180 == 0 ? 0 : Math.Abs(item.MedianPrice - hPriceItem.medianPrice_180);
 
                     item._180DaysAvgPrice = hPriceItem.avgPrice_180 == 0 ? item.AveragePrice : hPriceItem.avgPrice_180;
-                    item._180DaysRollingMedianPrice = hPriceItem.rollingMedianPrice_180 == 0 ? item.MedianPrice : hPriceItem.rollingMedianPrice_180;
+                    //item._180DaysRollingMedianPrice = hPriceItem.rollingMedianPrice_180 == 0 ? item.MedianPrice : hPriceItem.rollingMedianPrice_180;
+                    item._180DaysRollingMedianPrice = hPriceItem.medianPrice_180 == 0 ? item.MedianPrice : hPriceItem.medianPrice_180;
                 }
                 else
                 {
                     item._180DaysAvgPrice = item.AveragePrice;
                     item._180DaysRollingMedianPrice = item.MedianPrice;
                 }
+
+                //Diff median 180/current %
+                item._180MedianPriceDivideCurrent = Math.Abs(item.MedianPrice - item._180DaysRollingMedianPrice) / item._180DaysRollingMedianPrice * 100;
 
                 //Image
                 var imgItem = activeImageList.FirstOrDefault(p => p.PId == item.PId);
@@ -124,6 +127,9 @@ namespace CoverInsuranceReport
 
             inactiveList.ForEach(item =>
             {
+                //Months old
+                item.MonthsOld = (DateTime.Now - Convert.ToDateTime(item.CreatedOn)).Days % 30;
+
                 //category
                 item.CategoryName = cateCtrl.GetData().FirstOrDefault(c => c.CId == Convert.ToInt32(item.CategoryName)).CategoryName;
 
@@ -164,7 +170,8 @@ namespace CoverInsuranceReport
                     item._180DaysMedianPriceDiff = hPriceItem.medianPrice_180 == 0 ? 0 : Math.Abs(item.MedianPrice - hPriceItem.medianPrice_180);
 
                     item._180DaysAvgPrice = hPriceItem.avgPrice_180 == 0 ? item.AveragePrice : hPriceItem.avgPrice_180;
-                    item._180DaysRollingMedianPrice = hPriceItem.rollingMedianPrice_180 == 0 ? item.MedianPrice : hPriceItem.rollingMedianPrice_180;
+                    //item._180DaysRollingMedianPrice = hPriceItem.rollingMedianPrice_180 == 0 ? item.MedianPrice : hPriceItem.rollingMedianPrice_180;
+                    item._180DaysRollingMedianPrice = hPriceItem.medianPrice_180 == 0 ? item.MedianPrice : hPriceItem.medianPrice_180;
                 }
                 else
                 {
@@ -172,6 +179,9 @@ namespace CoverInsuranceReport
                     item._180DaysRollingMedianPrice = item.MedianPrice;
                 }
 
+
+                //Diff median 180/current %
+                item._180MedianPriceDivideCurrent = Math.Abs(item.MedianPrice - item._180DaysRollingMedianPrice) / item._180DaysRollingMedianPrice * 100;
 
                 //Image
                 var imgItem = inactiveImageList.FirstOrDefault(p => p.PId == item.PId);
@@ -198,44 +208,13 @@ namespace CoverInsuranceReport
             });
 
             //output to excel
-            excelHelper.WriteLine(
-                "pid",
-                "category name",
-                "manufacturer",
-                "product family",
-                "series",
-                "model",
-                "product name",
-                "min price",
-                "average price",
-                "median price",
-                "max price",
-                "number of prices",
-                "productimageurl",
-                "upcoming",
-                "createdon",
-                "UpdateOn",
-                "For sale",
-                "30 days min price diff",
-                "30 days max price diff",
-                "30 days median price diff",
-                "180 days min price diff",
-                "180 days max price diff",
-                "180 days median price diff",
-                "180 days average price",
-                "180 days rolling median price"
-                );
-
-            outputList.ForEach(item => WriteLine(excelHelper, item));
-            outputNewItemList.ForEach(item => WriteLine(excelHelper, item, true));
+            WriteHead(excelHelper);
+            outputList.ForEach(item => WriteBody(excelHelper, item));
+            outputNewItemList.ForEach(item => WriteBody(excelHelper, item, true));
 
             //clear output list
             outputList = new List<ExcelData>();
             outputNewItemList = new List<ExcelData>();
-
-
-
-
 
             //upcoming
             var upComingList = DB.GetUpComing();
@@ -324,9 +303,38 @@ namespace CoverInsuranceReport
             excelHelper.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Report_" + DateTime.Now.ToString("yyyy-MM-dd") + ".xls"));
         }
 
-        public static void WriteLine(Priceme.Infrastructure.Excel.ExcelSimpleHelper helper, ExcelData data, bool isRed = false)
+
+        public static void WriteHead(Priceme.Infrastructure.Excel.ExcelSimpleHelper excelHelper)
         {
-            helper.WriteLine(false, isRed,
+            List<string> list = new List<string>() {
+                "pid",
+                "category name",
+                "manufacturer",
+                "product family",
+                "series",
+                "model",
+                "product name",
+                "min price",
+                "average price",
+                "median price",
+                "max price",
+                "number of prices",
+                "productimageurl",
+                "upcoming",
+                "createdon",
+                "UpdateOn",
+                "Months old",
+                "For sale"
+            };
+
+            list.AddRange(AppConfig.PricesDisplay);
+
+            excelHelper.WriteLine(list.ToArray());
+        }
+
+        public static void WriteBody(Priceme.Infrastructure.Excel.ExcelSimpleHelper helper, ExcelData data, bool isRed = false)
+        {
+            List<string> list = new List<string>() {
                 data.PId.ToString(),
                 data.CategoryName,
                 data.Manufacturer,
@@ -343,16 +351,26 @@ namespace CoverInsuranceReport
                 data.Upcoming,
                 data.CreatedOn,
                 data.UpdateOn,
-                data.ForSale,
-                data._30DaysMinPriceDiff.ToString("0.00"),
-                data._30DaysMaxPriceDiff.ToString("0.00"),
-                data._30DaysMedianPriceDiff.ToString("0.00"),
-                data._180DaysMinPriceDiff.ToString("0.00"),
-                data._180DaysMaxPriceDiff.ToString("0.00"),
-                data._180DaysMedianPriceDiff.ToString("0.00"),
-                data._180DaysAvgPrice.ToString("0.00"),
-                data._180DaysRollingMedianPrice.ToString("0.00")
-                );
+                data.MonthsOld.ToString(),
+                data.ForSale
+            };
+
+            AppConfig.PricesDisplay.ForEach(display => {
+                switch (display)
+                {
+                    case "30 days min price diff": list.Add(data._30DaysMinPriceDiff.ToString("0.00")); break;
+                    case "30 days max price diff": list.Add(data._30DaysMaxPriceDiff.ToString("0.00")); break;
+                    case "30 days median price diff": list.Add(data._30DaysMedianPriceDiff.ToString("0.00")); break;
+                    case "180 days min price diff": list.Add(data._180DaysMinPriceDiff.ToString("0.00")); break;
+                    case "180 days max price diff": list.Add(data._180DaysMaxPriceDiff.ToString("0.00")); break;
+                    case "Diff median 180/current $": list.Add(data._180DaysMedianPriceDiff.ToString("0.00")); break;
+                    case "180 days average price": list.Add(data._180DaysAvgPrice.ToString("0.00")); break;
+                    case "180 days rolling median price": list.Add(data._180DaysRollingMedianPrice.ToString("0.00")); break;
+                    case "Diff median 180/current %": list.Add(data._180MedianPriceDivideCurrent.ToString("0.00") + "%"); break;
+                }
+            });
+
+            helper.WriteLine(false, isRed, list.ToArray());
         }
 
         public static void WriteLine1(Priceme.Infrastructure.Excel.ExcelSimpleHelper helper, ExcelData data, bool isRed = false)

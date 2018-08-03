@@ -3,14 +3,14 @@ declare @tempRP table (
 	RetailerProductStatus bit
 )
 
-insert into @tempRP(productid) 
+insert into @tempRP(productid,RetailerProductStatus) 
 (
 	select Productid,RetailerProductStatus from CSK_Store_RetailerProduct where RetailerId in (
 		select RetailerId from CSK_Store_Retailer where RetailerStatus = 1 and RetailerCountry = 3
 	)	
 )
 
-insert into @tempRP(productid) 
+insert into @tempRP(productid,RetailerProductStatus) 
 (
 	select Productid,RetailerProductStatus from PriceMe_D.dbo.Priceme_CSK_Store_RetailerProduct where RetailerId in (
 		select RetailerId from CSK_Store_Retailer where RetailerStatus = 1 and RetailerCountry = 3

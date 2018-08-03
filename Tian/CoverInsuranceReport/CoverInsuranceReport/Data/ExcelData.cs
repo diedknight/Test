@@ -25,6 +25,8 @@ namespace CoverInsuranceReport.Data
         public string Upcoming { get; set; }
         public string CreatedOn { get; set; }
         public string UpdateOn { get; set; }
+
+        public int MonthsOld { get; set; }
         public string ForSale { get; set; }
 
         public decimal _30DaysMinPriceDiff { get; set; }
@@ -36,5 +38,7 @@ namespace CoverInsuranceReport.Data
         public decimal _180DaysMedianPriceDiff { get; set; }
         public decimal _180DaysAvgPrice { get; set; }
         public decimal _180DaysRollingMedianPrice { get; set; }
+
+        public decimal _180MedianPriceDivideCurrent { get; set; }
     }
 }
