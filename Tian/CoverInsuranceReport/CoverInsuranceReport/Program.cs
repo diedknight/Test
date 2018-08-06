@@ -89,7 +89,7 @@ namespace CoverInsuranceReport
                 }
 
                 //Diff median 180/current %
-                item._180MedianPriceDivideCurrent = Math.Abs(item.MedianPrice - item._180DaysRollingMedianPrice) / item._180DaysRollingMedianPrice * 100;
+                item._180MedianPriceDivideCurrent = Math.Abs(item.MedianPrice - item._180DaysRollingMedianPrice) / (item._180DaysRollingMedianPrice == 0 ? 1 : item._180DaysRollingMedianPrice) * 100;
 
                 //Image
                 var imgItem = activeImageList.FirstOrDefault(p => p.PId == item.PId);
@@ -181,7 +181,7 @@ namespace CoverInsuranceReport
 
 
                 //Diff median 180/current %
-                item._180MedianPriceDivideCurrent = Math.Abs(item.MedianPrice - item._180DaysRollingMedianPrice) / item._180DaysRollingMedianPrice * 100;
+                item._180MedianPriceDivideCurrent = Math.Abs(item.MedianPrice - item._180DaysRollingMedianPrice) / (item._180DaysRollingMedianPrice == 0 ? 1 : item._180DaysRollingMedianPrice) * 100;
 
                 //Image
                 var imgItem = inactiveImageList.FirstOrDefault(p => p.PId == item.PId);
