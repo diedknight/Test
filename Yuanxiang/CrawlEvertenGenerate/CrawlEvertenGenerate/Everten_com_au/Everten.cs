@@ -32,13 +32,22 @@ namespace CrawlEvertenGenerate.Everten_com_au
                 EvertenFetcher ef = new EvertenFetcher();
                 ps = ef.GetProducts();
 
+                file = ef.InfoFile;
+
+                if (File.Exists(file))
+                {
+                    long lSize = new FileInfo(file).Length;
+                    CountSize(lSize);
+                }
+
                 msg += "get " + ps.Count + " EvertenFetcher......" + DateTime.Now + "<br/>";
                 System.Console.WriteLine("get " + ps.Count + " EvertenFetcher......" + DateTime.Now);
 
-                msg += "Create csv......" + DateTime.Now + "<br/>";
-                System.Console.WriteLine("Create csv......" + DateTime.Now);
+                //msg += "Create csv......" + DateTime.Now + "<br/>";
+                //System.Console.WriteLine("Create csv......" + DateTime.Now);
                 //Create csv
-                CreateCsv(ps);
+                //CreateCsv(ps);
+
                 msg += "Create "+ filelength + "KB csv successful......" + DateTime.Now + "<br/>";
                 System.Console.WriteLine("Create " + filelength + "KB csv successful......" + DateTime.Now);
 
@@ -64,39 +73,6 @@ namespace CrawlEvertenGenerate.Everten_com_au
             AmazonEmail(msg, stringSubject);
 
             System.Console.WriteLine("End......" + DateTime.Now);
-        }
-
-        private static void CreateCsv(List<ProductItem> ps)
-        {
-            string filepath = System.Configuration.ConfigurationManager.AppSettings["FilePath"].ToString();
-            if (!Directory.Exists(filepath))
-                Directory.CreateDirectory(filepath);
-
-            file = filepath + DateTime.Now.ToString("yyyy-MM-dd HH") + ".csv";
-            FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-
-            string title = "Category,Brand,Product name,Product URL,Price,SKU,Visibility,In stock,Number in stock";
-            sw.WriteLine(title);
-            sw.Flush();
-
-            foreach (ProductItem p in ps)
-            {
-                string content = p.CategoryName + "," + p.ManufacturerName + "," + p.ProductName + "," + p.PurchaseUrl + ","
-                    + p.ProductPrice + "," + p.ProductSku + "," + p.Visibility + "," + p.InStock + "," + p.NumberStock;
-
-                sw.WriteLine(content);
-                sw.Flush();
-            }
-
-            sw.Close();
-            fs.Close();
-
-            if (File.Exists(file))
-            {
-                long lSize = new FileInfo(file).Length;
-                CountSize(lSize);
-            }
         }
 
         private static void CountSize(long Size)

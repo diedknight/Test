@@ -8,15 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace CrawlEvertenGenerate.Everten_com_au
 {
     public class EvertenFetcher
     {
-        string CrawleraKey = System.Configuration.ConfigurationManager.AppSettings["CrawleraKey"].ToString();
+        object lockObj = new object();
+        string CrawleraKey = System.Configuration.ConfigurationManager.AppSettings["CrawleraKey"];
+        int MaxThread = int.Parse(System.Configuration.ConfigurationManager.AppSettings["MaxThread"]);
         bool IsContinue = false;
         List<string> listContinue = new List<string>();
         StreamWriter sw;
+        public string InfoFile { get; set; }
 
         public List<ProductItem> GetProducts()
         {
@@ -34,21 +38,48 @@ namespace CrawlEvertenGenerate.Everten_com_au
 
             try
             {
-                foreach (ProductCategory pc in pcs)
-                {
-                    if (listContinue.Contains(pc.CategoryName))
-                        continue;
-                    
-                    if (!IsContinue)
-                        ContinueWriter(pc.CategoryName);
+                string filepath = System.Configuration.ConfigurationManager.AppSettings["FilePath"].ToString();
+                if (!Directory.Exists(filepath))
+                    Directory.CreateDirectory(filepath);
 
-                    List<ProductItem> items = GetProductItemList(pc);
-                    System.Console.WriteLine("Get " + pc.CategoryName + " " + items.Count + "......" + DateTime.Now);
-                    ps.AddRange(items);
+                InfoFile = filepath + DateTime.Now.ToString("yyyy-MM-dd HH") + ".csv";
+                using (FileStream fs = new FileStream(InfoFile, FileMode.Create, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    string title = "Category,Brand,Product name,Product URL,Price,SKU,Visibility,In stock,Number in stock";
+                    sw.WriteLine(title);
+                    sw.Flush();
+
+                    var b1 = ThreadPool.SetMinThreads(1, 5);
+                    var b2 = ThreadPool.SetMaxThreads(MaxThread, 5);
+                    List<Task> taskList = new List<Task>();
+
+                    foreach (ProductCategory pc in pcs)
+                    {
+                        if (listContinue.Contains(pc.CategoryName))
+                            continue;
+
+                        ProductCategory myPC = pc;
+
+                        Task task = new Task(() =>
+                        {
+                            List<ProductItem> items = GetProductItemList(myPC);
+                            System.Console.WriteLine("Get " + myPC.CategoryName + " " + items.Count + "......" + DateTime.Now);
+                            ps.AddRange(items);
+
+                            WriteToFile(items, sw);
+
+                            ContinueWriter(myPC.CategoryName);
+                        });
+
+                        taskList.Add(task);
+                        task.Start();
+                    }
+
+                    Task.WaitAll(taskList.ToArray());
                 }
 
-                if (!IsContinue)
-                    sw.Close();
+                
             }
             catch (Exception ex)
             {
@@ -56,6 +87,21 @@ namespace CrawlEvertenGenerate.Everten_com_au
             }
 
             return ps;
+        }
+
+        private void WriteToFile(List<ProductItem> items, StreamWriter sw)
+        {
+            lock (lockObj)
+            {
+                foreach (ProductItem p in items)
+                {
+                    string content = p.CategoryName + "," + p.ManufacturerName + "," + p.ProductName + "," + p.PurchaseUrl + ","
+                        + p.ProductPrice + "," + p.ProductSku + "," + p.Visibility + "," + p.InStock + "," + p.NumberStock;
+
+                    sw.WriteLine(content);
+                    sw.Flush();
+                }
+            }
         }
 
         private void BindContinueWriter()
@@ -81,13 +127,18 @@ namespace CrawlEvertenGenerate.Everten_com_au
             string file = filepath + DateTime.Now.ToString("yyyy-MM-dd") + "_continue.txt";
             if (File.Exists(file))
             {
-                StreamReader sr = new StreamReader(file, Encoding.Default);
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                using (StreamReader sr = new StreamReader(file, Encoding.Default))
                 {
-                    listContinue.Add(line);
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        listContinue.Add(line);
+                    }
                 }
             }
+
+            FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write);
+            sw = new StreamWriter(fs, Encoding.UTF8);
         }
 
         public List<ProductCategory> GetProductCategoryList()
@@ -96,7 +147,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
 
             List<ProductCategory> list = new List<ProductCategory>();
 
-            JQuery doc = new JQuery(GetHttpContent("https://www.everten.com.au/sitemap"), "https://www.everten.com.au/sitemap");
+            JQuery doc = new JQuery(GetHttpContent("https://www.everten.com.au/sitemap", false), "https://www.everten.com.au/sitemap");
 
             doc.find(".sitelink > ul > li > a").each(item =>
             {
@@ -107,7 +158,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
                 if (string.IsNullOrEmpty(surl) && node.attr("rel") != null)
                     surl = "https://www.everten.com.au" + node.attr("rel").ToString();
 
-                JQuery sdoc = new JQuery(GetHttpContent(surl), surl);
+                JQuery sdoc = new JQuery(GetHttpContent(surl, false), surl);
                 sdoc.find(".category-list > .list-items ul > li.item").each(sitem =>
                 {
                     var snode = sitem.ToJQuery();
@@ -137,7 +188,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
 
         private bool GetProducts(ProductCategory productCategory, List<ProductItem> ps)
         {
-            JQuery doc = new JQuery(GetHttpContent(productCategory.CategoryUrl), productCategory.CategoryUrl);
+            JQuery doc = new JQuery(GetHttpContent(productCategory.CategoryUrl, false), productCategory.CategoryUrl);
 
             doc.find(".category-prods-list > li.list-items").each(item =>
             {
@@ -164,7 +215,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
 
         private void GetProduct(ProductItem item)
         {
-            string stringHtml = GetHttpContent(item.PurchaseUrl);
+            string stringHtml = GetHttpContent(item.PurchaseUrl, false);
             if (stringHtml.Contains("productObject = {"))
             {
                 string[] temps = stringHtml.Split(new string[] { "productObject = {" }, StringSplitOptions.None);
@@ -187,7 +238,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
             }
         }
 
-        public string GetHttpContent(string url)
+        public string GetHttpContent(string url, bool reTry)
         {
             try
             {
@@ -218,7 +269,14 @@ namespace CrawlEvertenGenerate.Everten_com_au
 
                 return httpString;
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                if(!reTry && !ex.Message.Contains("404"))
+                {
+                    return GetHttpContent(url, true);
+                }
+            }
 
             return "";
         }

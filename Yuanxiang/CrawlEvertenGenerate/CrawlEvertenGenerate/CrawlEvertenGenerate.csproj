@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AWSSDK">
-      <HintPath>..\..\..\..\Pam\PriceMePam3.7\PamIndex\DLL\AWSSDK.dll</HintPath>
+      <HintPath>..\DLL\AWSSDK.dll</HintPath>
     </Reference>
     <Reference Include="CopyFile">
       <HintPath>..\DLL\CopyFile.dll</HintPath>
