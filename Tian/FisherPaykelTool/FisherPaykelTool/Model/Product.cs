@@ -103,7 +103,7 @@ namespace FisherPaykelTool.Model
             //+ " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3";
             sql.AppendLine(" order by CategoryId,ProductName");
 
-            //string ab = sql.ToString();
+            string ab = sql.ToString();
 
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -120,6 +120,63 @@ namespace FisherPaykelTool.Model
 
                 list = tempList;
             }
+
+
+            sql.Clear();
+
+            sql.AppendLine(" select TT.Modifiedon as RetailerProductModifiedOn,TT.RetailerProductStatus,TT.RetailerProductId,TT.RetailerId,R.RetailerName,R.StoreType,ProductId,TT.ManufacturerId,TT.CategoryId,ProductName,RetailerProductName,RetailerPrice,PurchaseURL");
+            sql.AppendLine(" ,RetailerType = (select top 1 StoreTypeName from CSK_Store_RetailerStoreType where RetailerStoreTypeID = R.StoreType)");
+            sql.AppendLine(" ,Brand = (select top 1 ManufacturerName from CSK_Store_Manufacturer where ManufacturerID=TT.ManufacturerId)");
+            sql.AppendLine(" ,ProductCategory = (select top 1 CategoryName from CSK_Store_Category where CategoryID=TT.CategoryID)");
+
+            sql.AppendLine(" from csk_store_retailer R");
+            sql.AppendLine(" inner join");
+            sql.AppendLine(" (");
+            sql.AppendLine("	select RetailerProductId,RetailerId,P.ProductID,P.ManufacturerID,categoryid,ProductName,RetailerProductName,RetailerPrice,PurchaseURL,RetailerProductStatus,RP.Modifiedon from PriceMe_D.dbo.Priceme_CSK_Store_RetailerProduct RP");
+            sql.AppendLine("	inner join CSK_Store_Product P on RP.ProductId = P.ProductID");
+            //+ "	where Rp.RetailerProductStatus=1";
+            sql.AppendLine("	where 1=1");
+            sql.AppendLine("	and RP.IsDeleted=0");
+            sql.AppendLine("	and IsMerge=1");
+            sql.AppendLine("	and retailerid<>1979");
+            sql.AppendLine("	and CategoryID in @CIds");
+            sql.AppendLine("	and ManufacturerID in @MIds");
+            sql.AppendLine(" ) TT");
+            sql.AppendLine(" on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3");
+            if (rIds.Count != 0)
+            {
+                sql.AppendLine(" and R.RetailerId in @RIds");
+            }
+            else
+            {
+                sql.AppendLine(" and R.RetailerId not in @exceptRIds");
+            }
+            //+ " on R.RetailerId=TT.retailerid where RetailerStatus=1 and RetailerCountry=3";
+            sql.AppendLine(" order by CategoryId,ProductName");
+
+            //string ab = sql.ToString();
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                List<Product> tempList = new List<Product>();
+                List<Product> tempList1 = new List<Product>();
+                DateTime lastYear = DateTime.Now.AddYears(-1);
+
+                tempList = con.Query<Product>(sql.ToString(), new { CIds = cIds, MIds = mIds, RIds = rIds, exceptRIds = exceptRIds }, null, true, 3000).ToList();
+                tempList.ForEach(item =>
+                {
+                    if (item.RetailerProductStatus == false && item.RetailerProductModifiedOn < lastYear) return;
+
+                    tempList1.Add(item);
+                });
+
+                list.AddRange(tempList1);
+            }
+
+
+
+
+
 
             //group
             Dictionary<string, decimal> dic = new Dictionary<string, decimal>();

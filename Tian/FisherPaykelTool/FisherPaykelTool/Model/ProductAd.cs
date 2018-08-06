@@ -133,6 +133,7 @@ namespace FisherPaykelTool.Model
 
                 string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["EDW"].ConnectionString;
                 string sql = "select RPID,NewPrice,CreatedOn from CSK_Store_RetailerProductHistory where RID in @RIds order by CreatedOn asc";
+                string sql1 = "select RPID,NewPrice,CreatedOn from PriceMe_D.dbo.EDW_CSK_Store_RetailerProductHistory where RID in @RIds order by CreatedOn asc";
 
                 //string sql = "";
                 //sql += " select * from(";
@@ -146,6 +147,12 @@ namespace FisherPaykelTool.Model
                 {
                     this._list = con.Query<CacheData>(sql, new { RIds = ridList }, null, true, 3000).ToList();
                 }
+
+                using (SqlConnection con = new SqlConnection(conStr))
+                {
+                    this._list.AddRange(con.Query<CacheData>(sql1, new { RIds = ridList }, null, true, 3000).ToList());
+                }
+
 
                 for (int i = 0; i < this._list.Count; i++)
                 {
