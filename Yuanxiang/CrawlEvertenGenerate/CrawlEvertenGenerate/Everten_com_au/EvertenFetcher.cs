@@ -95,8 +95,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
             {
                 foreach (ProductItem p in items)
                 {
-                    string content = p.CategoryName + "," + p.ManufacturerName + "," + p.ProductName + "," + p.PurchaseUrl + ","
-                        + p.ProductPrice + "," + p.ProductSku + "," + p.Visibility + "," + p.InStock + "," + p.NumberStock;
+                    string content = p.ToCSVString();
 
                     sw.WriteLine(content);
                     sw.Flush();
@@ -250,29 +249,32 @@ namespace CrawlEvertenGenerate.Everten_com_au
                 var myProxy = new WebProxy("http://proxy.crawlera.com:8010");
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                var encodedApiKey = Base64Encode(apiKey);
-                request.Headers.Add("Proxy-Authorization", "Basic " + encodedApiKey);
-                request.Proxy = myProxy;
-                request.PreAuthenticate = true;
-                request.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
-                
-                WebResponse response = request.GetResponse();
 
-                System.IO.StreamReader streamReader = new System.IO.StreamReader(response.GetResponseStream());
+                    var encodedApiKey = Base64Encode(apiKey);
+                    request.Headers.Add("Proxy-Authorization", "Basic " + encodedApiKey);
+                    request.Proxy = myProxy;
+                    request.PreAuthenticate = true;
+                    request.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
 
-                string httpString = streamReader.ReadToEnd();
+                using (WebResponse response = request.GetResponse())
+                {
 
-                streamReader.Close();
-                response.Close();
+                    System.IO.StreamReader streamReader = new System.IO.StreamReader(response.GetResponseStream());
+
+                    string httpString = streamReader.ReadToEnd();
+
+                    streamReader.Close();
+
+                    return httpString;
+                }
 
                 //System.Threading.Thread.Sleep(1000 * ran);
 
-                return httpString;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                if(!reTry && !ex.Message.Contains("404"))
+                if(!reTry && !ex.Message.Contains("404") && !ex.Message.Contains("406") && !ex.Message.Contains("407"))
                 {
                     return GetHttpContent(url, true);
                 }
