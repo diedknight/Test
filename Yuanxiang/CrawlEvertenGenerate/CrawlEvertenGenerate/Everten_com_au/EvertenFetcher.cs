@@ -153,7 +153,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
                 var node = item.ToJQuery();
                 string name = node.val().Trim();
                 
-                if (!name.Equals("home", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Competitions", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Tips & Techniques", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Customer Care", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Delivery Info", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("About Us", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Testimonials", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Terms & Conditions", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Contact Us", StringComparison.CurrentCultureIgnoreCase))
+                if (!name.Equals("home", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Competitions", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Tips & Techniques", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Customer Care", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Delivery Info", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("About Us", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Testimonials", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Terms & Conditions", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Contact Us", StringComparison.InvariantCultureIgnoreCase) && !name.Equals("Brands", StringComparison.InvariantCultureIgnoreCase))
                 {
                     string surl = node.getLink().Trim();
                     if (string.IsNullOrEmpty(surl) && node.attr("rel") != null)
@@ -201,6 +201,17 @@ namespace CrawlEvertenGenerate.Everten_com_au
                 info.PurchaseUrl = node.find("> a").getLink();
 
                 GetProduct(info);
+                if(string.IsNullOrEmpty(info.CategoryName) || string.IsNullOrEmpty(info.ProductName))
+                {
+                    for(int i = 0; i < 3; i++)
+                    {
+                        GetProduct(info);
+                        if(!string.IsNullOrEmpty(info.CategoryName) && !string.IsNullOrEmpty(info.ProductName))
+                        {
+                            break;
+                        }
+                    }
+                }
 
                 ps.Add(info);
             });
