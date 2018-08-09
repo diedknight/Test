@@ -152,25 +152,28 @@ namespace CrawlEvertenGenerate.Everten_com_au
             {
                 var node = item.ToJQuery();
                 string name = node.val().Trim();
-
-                string surl = node.getLink().Trim();
-                if (string.IsNullOrEmpty(surl) && node.attr("rel") != null)
-                    surl = "https://www.everten.com.au" + node.attr("rel").ToString();
-
-                JQuery sdoc = new JQuery(GetHttpContent(surl, false), surl);
-                sdoc.find(".category-list > .list-items ul > li.item").each(sitem =>
+                
+                if (!name.Equals("home", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Competitions", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Tips & Techniques", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Customer Care", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Delivery Info", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("About Us", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Testimonials", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Terms & Conditions", StringComparison.CurrentCultureIgnoreCase) && !name.Equals("Contact Us", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    var snode = sitem.ToJQuery();
+                    string surl = node.getLink().Trim();
+                    if (string.IsNullOrEmpty(surl) && node.attr("rel") != null)
+                        surl = "https://www.everten.com.au" + node.attr("rel").ToString();
 
-                    string sname = snode.find(".product-name a").val().Trim();
-                    string url = snode.find(".product-name a").getLink().Trim();
+                    JQuery sdoc = new JQuery(GetHttpContent(surl, false), surl);
+                    sdoc.find(".category-list > .list-items ul > li.item").each(sitem =>
+                    {
+                        var snode = sitem.ToJQuery();
 
-                    var cate = new ProductCategory();
-                    cate.CategoryName = name + "->" + sname;
-                    cate.CategoryUrl = url;
+                        string sname = snode.find(".product-name a").val().Trim();
+                        string url = snode.find(".product-name a").getLink().Trim();
 
-                    list.Add(cate);
-                });
+                        var cate = new ProductCategory();
+                        cate.CategoryName = name + "->" + sname;
+                        cate.CategoryUrl = url;
+
+                        list.Add(cate);
+                    });
+                }
             });
 
             return list;
@@ -221,6 +224,7 @@ namespace CrawlEvertenGenerate.Everten_com_au
                 string products = temps[2].Split('}')[0];
                 products = "{" + products.Replace("\r\n", "") + "}";
                 var obj = JsonConvert.DeserializeObject<JObject>(products);
+
                 item.CategoryName = obj["categories"].ToString().Replace(",", " -> ");
                 item.ProductName = obj["Name"].ToString();
                 item.ProductSku = obj["sku"].ToString();
@@ -234,6 +238,11 @@ namespace CrawlEvertenGenerate.Everten_com_au
 
                 item.NumberStock = obj["stock"].ToString();
                 item.ProductPrice = obj["Price"].ToString();
+
+                if(string.IsNullOrEmpty(item.CategoryName))
+                {
+                    Console.WriteLine(products);
+                }
             }
         }
 
