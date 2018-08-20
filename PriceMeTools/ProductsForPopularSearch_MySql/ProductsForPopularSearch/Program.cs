@@ -88,8 +88,8 @@ namespace ProductsForPopularSearch
 
             IndexWriter idw = new IndexWriter(ramDir, analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
 
-            float categoryBoost = float.Parse(ConfigurationManager.AppSettings.Get("CategoryBoost"));
-            float manufacturerBoost = float.Parse(ConfigurationManager.AppSettings.Get("ManufacturerBoost"));
+            //float categoryBoost = float.Parse(ConfigurationManager.AppSettings.Get("CategoryBoost"));
+            //float manufacturerBoost = float.Parse(ConfigurationManager.AppSettings.Get("ManufacturerBoost"));
 
             List<string> isSearchOnlyCategories = new List<string>();
 
@@ -243,45 +243,6 @@ namespace ProductsForPopularSearch
                 {
                     selectC = "";
                 }
-                //            query = @"
-                // WITH RC AS(
-                //	SELECT DISTINCT ProductID FROM CSK_Store_RetailerProduct 
-                //	WHERE RetailerProductStatus = 1 and IsDeleted = 0 and RetailerPrice > 0.2 and RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerStatus <> 99)
-                //            ),
-                //RP as (select pr.pid as rppid,min(pr.mprice) rpminprice from 
-                //            (select pp.ProductID as pid, RPp.RetailerPrice as mprice from CSK_Store_Product pp left join CSK_Store_RetailerProduct RPp on pp.ProductID=RPp.ProductId
-                //            where RetailerId in (select RetailerId from CSK_Store_Retailer r where RetailerStatus=1 and IsSetupComplete=1) and RetailerProductStatus =1 and rpp.IsDeleted=0) as pr
-                //            group by pr.pid),
-                //            PPCRC AS(
-                //            SELECT DISTINCT ProductID, 1 as PPC FROM CSK_Store_RetailerProduct 
-                //            WHERE RetailerProductStatus = 1 and IsDeleted = 0 and RetailerPrice > 0.2 and RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerStatus <> 99)
-                //            and RetailerId in (select RetailerId from CSK_Store_PPCMember where PPCMemberTypeID = 2)
-                //            ),
-                //PC as(
-                //SELECT E.productid,Temp.TotalClicks from 
-                //CSK_Store_Product E,
-                //   (select D.ProductID ,count(D.ProductID) as TotalClicks from CSK_Store_Product D, 
-                //		(SELECT  A.ProductID  ,A.PurchaseURL,a.RetailerPrice From CSK_Store_RetailerProduct A," + ClickDBInfo + @" B 
-                //		where A.RetailerProductID=B.RetailerProductID and B.RetailerProductID in (select RetailerProductId from CSK_Store_RetailerProduct where RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerStatus = 1 and IsSetupComplete = 1) and IsDeleted = 0)
-                //		and  B.CreatedOn between CONVERT(varchar(100), dateadd(day,-" + ClickDays + @",GETDATE()), 23) and CONVERT(varchar(100), GETDATE(), 23)  and UserIP COLLATE DATABASE_DEFAULT not in(select IpAddress COLLATE DATABASE_DEFAULT as IpAddress from CSK_Store_IP_Blacklist
-                //	)
-
-                //) as C where D.ProductID = C.ProductID group by D.ProductID 
-                //   ) as Temp
-                //where E.ProductID =Temp.ProductID
-                //            )
-
-                //SELECT
-                //	P.ProductID, P.ProductName COLLATE DATABASE_DEFAULT as ProductName, P.DefaultImage COLLATE DATABASE_DEFAULT as DefaultImage, C.CategoryName COLLATE DATABASE_DEFAULT as CategoryName, P.ManufacturerID, P.CategoryID, P.Keywords COLLATE DATABASE_DEFAULT as Keywords, PC.TotalClicks, M.ManufacturerName COLLATE DATABASE_DEFAULT as ManufacturerName, C.IsAccessories,PPCRC.PPC,RP.rpminprice
-                //FROM
-                //	CSK_Store_Product P
-                //	LEFT JOIN CSK_Store_Category C ON P.CategoryID = C.CategoryID 
-                //	LEFT JOIN PC ON PC.ProductID = P.ProductID
-                //	INNER JOIN RC ON P.ProductID = RC.ProductId
-                //	INNER JOIN CSK_Store_Manufacturer M on P.ManufacturerID = M.ManufacturerID
-                //                Left join PPCRC on PPCRC.ProductId = p.ProductID
-                //                left join RP on RP.rppid =p.ProductID
-                //WHERE " + selectC + " C.IsActive = 1 and C.IsSiteMap = 0 and C.IsSiteMapDetail = 0";
 
                 query = @"SELECT
 	                        P.ProductID, P.ProductName, P.DefaultImage, C.CategoryName, P.ManufacturerID, P.CategoryID, P.Keywords, M.ManufacturerName, C.IsAccessories, RP.rpminprice

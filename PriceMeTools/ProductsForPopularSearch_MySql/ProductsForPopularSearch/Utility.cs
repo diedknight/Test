@@ -28,21 +28,11 @@ namespace ProductsForPopularSearch
             }
             return newPN;
         }
-        //static System.Text.RegularExpressions.Regex seachKeywordsRegex = new System.Text.RegularExpressions.Regex(@"(?<kwGroup>[^\s]+-[^\s]+)");
+        
         public static string GetKeywords(string categoryName, string manufacturerName, string keywords, string productName, string otherKeywords)
         {
             string pN = productName.Replace("&", " ").Replace(",", " ").Replace("_", " ").ToLower();
             pN = FixKeywords(pN);
-            //System.Text.RegularExpressions.MatchCollection matches = seachKeywordsRegex.Matches(productName);
-            //if (matches.Count > 0)
-            //{
-            //    string newKw = "";
-            //    foreach (System.Text.RegularExpressions.Match m in matches)
-            //    {
-            //        newKw += m.Groups["kwGroup"].Value.Replace("-", "") + " ";
-            //    }
-            //    pN = pN + " " + newKw.Trim().ToLower();
-            //}
 
             string[] mN = manufacturerName.Replace("&", " ").ToLower().Split(' ');
             string[] others = otherKeywords.Replace("&", " ").Replace(",", " ").Replace("-", " ").ToLower().Split(' ');
