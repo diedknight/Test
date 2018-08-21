@@ -71,27 +71,13 @@ namespace PopualerSearchIndexBuilder
             bool.TryParse(configuration["PPCOnly"], out ppcOnly);
             string rootCategoryIds = configuration["RootCategoryIds"];
 
-            //BuildPopularSearchIndex(idxDir, pamUserDbInfo, subDbInfo, priceme205DbInfo, ppcOnly, rootCategoryIds);
+            BuildPopularSearchIndex(idxDir, pamUserDbInfo, subDbInfo, priceme205DbInfo, ppcOnly, rootCategoryIds);
 
-            idxDir = "E:\\PopularSearchIndex\\2018082109";
+            //idxDir = "E:\\PopularSearchIndex\\2018082109";
 
             string luceneConfigFilePath = configuration["LuceneConfigPath"];
             if (File.Exists(luceneConfigFilePath))
                 UpDateWebConfig(luceneConfigFilePath, "PopularSearchIndexPath2", idxDir);
-
-            //if (bool.Parse(configuration["byShare"]))
-            //{
-            //    bool success = CopyF(idxDir);
-            //    if (success)
-            //    {
-            //        string targetPath = configuration["targetPath"];
-            //        string targetIP = configuration["targetIP"];
-            //        string userID = configuration["userid"];
-            //        string password = configuration["password"];
-
-            //        UpdateConfigFile(userID, targetIP, password, luceneConfigFilePath2, "PopularSearchIndexPath2", idexDir2);
-            //    }
-            //}
 
             if (bool.Parse(configuration["byFTP"]))
             {
@@ -1475,7 +1461,7 @@ namespace PopualerSearchIndexBuilder
                 string luceneConfigFileCopyDir = configuration["LuceneConfigFileCopyDir"];
 
                 string luceneConfigFileName = configuration["TargetLuceneConfigName"];
-                string luceneConfigFilePath = targetLuceneConfigPath + luceneConfigFileName;
+                string luceneConfigFilePath = Path.Combine(targetLuceneConfigPath, luceneConfigFileName);
 
                 CopyFile.FtpCopy.Download(luceneConfigFileCopyDir, luceneConfigFilePath, luceneConfigFileName, targetIP, userID, password);
 
