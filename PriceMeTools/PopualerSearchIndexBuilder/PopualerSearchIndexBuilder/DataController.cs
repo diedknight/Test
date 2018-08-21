@@ -25,7 +25,7 @@ namespace PopualerSearchIndexBuilder
         {
             List<CategoryCache> categoryOrderByName = new List<CategoryCache>();
             string selectSql = "select CT.*,LCT.CategoryName as LocalName,LCT.Description as LocalDesc,LCT.ShortDescription as LocalShortDesc from CSK_Store_Category as CT left join Local_CategoryName as LCT on CT.CategoryID = LCT.CategoryID and LCT.CountryID = " + dbInfo.CountryId + " where CT.IsActive = 1 order by CT.CategoryName";
-            ;
+            
             using (var sqlConn = DBController.CreateDBConnection(dbInfo))
             {
                 using (var sqlCMD = DBController.CreateDbCommand(selectSql, sqlConn))

@@ -133,6 +133,9 @@ namespace PopualerSearchIndexBuilder
 
             IndexWriterConfig iwc = new IndexWriterConfig(LuceneVersion.LUCENE_48, analyzer);
             iwc.OpenMode = OpenMode.CREATE;
+            iwc.RAMBufferSizeMB = 300;
+            iwc.MaxBufferedDocs = 2000;
+            iwc.MaxThreadStates = IndexWriterConfig.DEFAULT_MAX_THREAD_STATES;
             using (IndexWriter idw = new IndexWriter(ramDir, iwc))
             {
                 using (var sqlConn = DBController.CreateDBConnection(subDbInfo))
