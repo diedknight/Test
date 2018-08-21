@@ -75,9 +75,16 @@ namespace PopualerSearchIndexBuilder
 
             //idxDir = "E:\\PopularSearchIndex\\2018082109";
 
-            string luceneConfigFilePath = configuration["LuceneConfigPath"];
-            if (File.Exists(luceneConfigFilePath))
-                UpDateWebConfig(luceneConfigFilePath, "PopularSearchIndexPath2", idxDir);
+            string luceneConfigFilePathStr = configuration["LocalLuceneConfigPath"];
+            string[] luceneConfigFilePathArray = luceneConfigFilePathStr.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var lcPath in luceneConfigFilePathArray)
+            {
+                if (File.Exists(lcPath))
+                    UpDateWebConfig(lcPath, "PopularSearchIndexPath2", idxDir);
+                else
+                    LogController.WriteException("LuceneConfigPath : " + lcPath + " file not exists.");
+            }
 
             if (bool.Parse(configuration["byFTP"]))
             {
