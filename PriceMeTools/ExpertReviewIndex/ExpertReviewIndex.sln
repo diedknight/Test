@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpertReviewIndex", "ExpertReviewIndex\ExpertReviewIndex.csproj", "{936E33DF-B118-442C-A9CC-06D73ED1490A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopyFile", "..\..\Minitools\PriceMeTools\PopualerSearchIndexBuilder\CopyFile\CopyFile.csproj", "{0D2DA599-1C30-493B-86F3-C18FBF978CDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{936E33DF-B118-442C-A9CC-06D73ED1490A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{936E33DF-B118-442C-A9CC-06D73ED1490A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{936E33DF-B118-442C-A9CC-06D73ED1490A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{936E33DF-B118-442C-A9CC-06D73ED1490A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D2DA599-1C30-493B-86F3-C18FBF978CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D2DA599-1C30-493B-86F3-C18FBF978CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D2DA599-1C30-493B-86F3-C18FBF978CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D2DA599-1C30-493B-86F3-C18FBF978CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5536CDC6-8E65-4C9B-AED4-646E23380EF2}
+	EndGlobalSection
+EndGlobal
