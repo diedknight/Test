@@ -119,7 +119,7 @@ namespace ProductsForPopularSearch
                             where RetailerId in (select RetailerId from CSK_Store_PPCMember where PPCMemberTypeID = 2)
                             and ProductId in (
                             Select ProductId from CSK_Store_Product where CategoryID in (select CategoryID from CSK_Store_Category where isSearchOnly = 1))
-                            and(select count(*) from CSK_Store_RetailerProductNew b where a.ProductId = b.ProductId and a.RetailerPrice < b.RetailerPrice) = 0";
+                            and (select count(*) from CSK_Store_RetailerProductNew b where a.ProductId = b.ProductId and a.RetailerPrice < b.RetailerPrice) = 0";
                 }
                 else
                 {
