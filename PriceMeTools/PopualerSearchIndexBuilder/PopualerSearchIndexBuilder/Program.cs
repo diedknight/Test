@@ -477,23 +477,6 @@ namespace PopualerSearchIndexBuilder
                                 doc.Add(new Int32Field("Clicks", 0, Field.Store.YES));
                                 doc.Add(new SingleField("Order", 4, Field.Store.NO));
 
-                                //doc.Add(new Field("ID", pc.ProductID, Field.Store.YES, Field.Index.NO));
-                                //doc.Add(new Field("Name", kw, Field.Store.NO, Field.Index.ANALYZED));
-                                //doc.Add(new Field("DisplayValue", pc.ProductName, Field.Store.YES, Field.Index.NO));
-                                //doc.Add(new Field("Type", "UCP", Field.Store.YES, Field.Index.NO));
-                                //doc.Add(new Field("Other", localName, Field.Store.YES, Field.Index.NO));
-                                //doc.Add(new Field("ListOrder", "3", Field.Store.YES, Field.Index.NO));
-                                //doc.Add(new Field("CategoryID", pc.CategoryID.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                                //doc.Add(new Field("DefaultImage", pc.DefaultImage, Field.Store.YES, Field.Index.NO));
-                                //NumericField clicksField = new NumericField("Clicks", Field.Store.YES, true);
-                                //clicksField.SetIntValue(0);
-                                //doc.Add(clicksField);
-
-                                //float orderScroe = 4;
-                                //NumericField orderField = new NumericField("Order", Field.Store.NO, true);
-                                //orderField.SetFloatValue(orderScroe);
-                                //doc.Add(orderField);
-
                                 idw.AddDocument(doc);
                                 indexUpComingProductCount++;
                             }
@@ -527,25 +510,6 @@ namespace PopualerSearchIndexBuilder
                         string minPriceString = PriceIntCultureString(double.Parse(pc.BestPrice, System.Globalization.NumberStyles.Any, Provider_Static), subDbInfo.CountryId, CurrentCulture_Static);
                         doc.Add(new StoredField("MinPrice", minPriceString));
                         doc.Add(new SingleField("Order", 4, Field.Store.NO));
-
-                        //doc.Add(new Field("ID", pc.ProductID, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Name", kw, Field.Store.NO, Field.Index.ANALYZED));
-                        //doc.Add(new Field("DisplayValue", pc.ProductName, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Type", "Offer", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Other", localName, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("ListOrder", "3", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("CategoryID", pc.CategoryID.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("DefaultImage", pc.DefaultImage, Field.Store.YES, Field.Index.NO));
-                        //NumericField clicksField = new NumericField("Clicks", Field.Store.YES, true);
-                        //clicksField.SetIntValue(-1);
-                        //doc.Add(clicksField);
-                        //string minPriceString = PriceIntCultureString(double.Parse(pc.BestPrice, System.Globalization.NumberStyles.Any, Provider_Static), subDbInfo.CountryId, CurrentCulture_Static);
-                        //doc.Add(new Field("MinPrice", minPriceString, Field.Store.YES, Field.Index.NO));
-
-                        //float orderScroe = 4;
-                        //NumericField orderField = new NumericField("Order", Field.Store.NO, true);
-                        //orderField.SetFloatValue(orderScroe);
-                        //doc.Add(orderField);
 
                         idw.AddDocument(doc);
                         indexOfferProductCount++;
@@ -599,37 +563,6 @@ namespace PopualerSearchIndexBuilder
                             }
                             doc.Add(new SingleField("Order", orderScroe, Field.Store.NO));
 
-                            //doc.Add(new Field("ID", data.Id, Field.Store.YES, Field.Index.NO));
-                            //doc.Add(new Field("Name", keyword, Field.Store.NO, Field.Index.ANALYZED));
-                            //doc.Add(new Field("DisplayValue", data.Value, Field.Store.YES, Field.Index.NO));
-                            //doc.Add(new Field("Type", "C", Field.Store.YES, Field.Index.NO));
-                            //doc.Add(new Field("Other", "", Field.Store.YES, Field.Index.NO));
-                            //doc.Add(new Field("ListOrder", "1", Field.Store.YES, Field.Index.NO));
-                            //doc.Add(new Field("CategoryID", data.Id, Field.Store.YES, Field.Index.NOT_ANALYZED));
-                            //doc.Add(new Field("DefaultImage", "", Field.Store.YES, Field.Index.NO));
-                            //NumericField clicksField = new NumericField("Clicks", Field.Store.YES, true);
-                            //clicksField.SetIntValue(int.MaxValue);
-                            //doc.Add(clicksField);
-                            //string ppcStr = "0";
-                            //if (categoryDataInfoDictionary.ContainsKey(data.Id) && categoryDataInfoDictionary[data.Id].PPCProductCount > 0)
-                            //{
-                            //    ppcStr = "1";
-                            //}
-                            //doc.Add(new Field("IncludePPC", ppcStr, Field.Store.YES, Field.Index.NOT_ANALYZED));
-
-                            //float orderScroe = 0;
-                            //if (isSearchOnlyCategories.Contains(categoryID.ToString()))
-                            //{
-                            //    orderScroe = 4.5f;
-                            //}
-                            //else
-                            //{
-                            //    orderScroe = 5;
-                            //}
-                            //NumericField orderField = new NumericField("Order", Field.Store.NO, true);
-                            //orderField.SetFloatValue(orderScroe);
-                            //doc.Add(orderField);
-
                             idw.AddDocument(doc);
                             indexCategoryCount++;
                         }
@@ -679,29 +612,6 @@ namespace PopualerSearchIndexBuilder
                         doc.Add(new StoredField("ListOrder", listOrderStr));
                         doc.Add(new SingleField("Order", 4, Field.Store.NO));
 
-                        //doc.Add(new Field("ID", retailer.RetailerId.ToString(), Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Name", FixKeywords(keyword), Field.Store.NO, Field.Index.ANALYZED));
-                        //doc.Add(new Field("DisplayValue", retailer.RetailerName, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Type", "R", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Other", ratingImageUrl, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("IncludePPC", "1", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("CategoryID", "-1", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("DefaultImage", "", Field.Store.YES, Field.Index.NO));
-                        //NumericField clicksField = new NumericField("Clicks", Field.Store.YES, true);
-                        //clicksField.SetIntValue(1000000);
-                        //doc.Add(clicksField);
-                        //string listOrderStr = "1";
-                        //if (retailer.RetailerStatus == 99)
-                        //{
-                        //    listOrderStr = "-1";
-                        //}
-                        //doc.Add(new Field("ListOrder", listOrderStr, Field.Store.YES, Field.Index.NO));
-
-                        //float orderScroe = 4;
-                        //NumericField orderField = new NumericField("Order", Field.Store.NO, true);
-                        //orderField.SetFloatValue(orderScroe);
-                        //doc.Add(orderField);
-
                         idw.AddDocument(doc);
                         indexRetailerCount++;
                     }
@@ -738,23 +648,6 @@ namespace PopualerSearchIndexBuilder
                         doc.Add(new Int32Field("Clicks", 1000000, Field.Store.YES));
                         doc.Add(new SingleField("Order", 3, Field.Store.NO));
 
-                        //doc.Add(new Field("ID", mid, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Name", FixKeywords(keyword), Field.Store.NO, Field.Index.ANALYZED));
-                        //doc.Add(new Field("DisplayValue", idr["ManufacturerName"].ToString(), Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Type", "M", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Other", idr["IsPopular"].ToString(), Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("ListOrder", "2", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("IncludePPC", "1", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("CategoryID", "-1", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("DefaultImage", "", Field.Store.YES, Field.Index.NO));
-                        //NumericField clicksField = new NumericField("Clicks", Field.Store.YES, true);
-                        //clicksField.SetIntValue(1000000);
-                        //doc.Add(clicksField);
-                        //float orderScroe = 3;
-                        //NumericField orderField = new NumericField("Order", Field.Store.NO, true);
-                        //orderField.SetFloatValue(orderScroe);
-                        //doc.Add(orderField);
-
                         if (dictionary.ContainsKey(mid))
                         {
                             int midInt = 0;
@@ -789,11 +682,18 @@ namespace PopualerSearchIndexBuilder
                                         categorySynonym = categorySynonymDic[_cid];
                                     }
 
-                                    int pCount = 0;
-                                    //ProductSearcher productSearcher = new ProductSearcher("", _cid, brandList, null, null, null, "", null, 10000, CountryId_Static, false, true, true, true, null, "", null);
-                                    //int pCount = productSearcher.GetProductCount();
-                                    //if (pCount == 0)
-                                    //    continue;
+                                    bool hasP = false;
+                                    var cidList = DataController.GetAllSubCategoryId(_cid);
+                                    foreach(var cid in cidList)
+                                    {
+                                        if(hasProductCategoryList.Contains(cid.ToString()))
+                                        {
+                                            hasP = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (!hasP) continue;
 
                                     string brandsAndCategoryName = idr["ManufacturerName"].ToString().Trim() + " " + cdi.CategoryName.Trim();
                                     Document docBaC = new Document();
@@ -808,6 +708,12 @@ namespace PopualerSearchIndexBuilder
                                         orderScroe = 4.5f;
                                     }
 
+                                    int clicks = 0;
+                                    if(categoryClicksDic.ContainsKey(_cid.ToString()))
+                                    {
+                                        clicks = categoryClicksDic[_cid.ToString()];
+                                    }
+
                                     docBaC.Add(new StoredField("ID", mid + "," + _cid));
                                     docBaC.Add(new TextField("Name", FixKeywords(brandsAndCategoryName.ToLower() + " " + categorySynonym), Field.Store.NO));
                                     docBaC.Add(new StoredField("DisplayValue", brandsAndCategoryName));
@@ -817,28 +723,9 @@ namespace PopualerSearchIndexBuilder
                                     docBaC.Add(new StringField("IncludePPC", "1", Field.Store.YES));
                                     docBaC.Add(new StringField("CategoryID", _cid.ToString(), Field.Store.YES));
                                     docBaC.Add(new StoredField("DefaultImage", ""));
-                                    docBaC.Add(new StoredField("IndexProductCount", pCount));
-                                    //docBaC.Add(new Int32Field("Clicks", productSearcher.GetClickCount(), Field.Store.YES));
-                                    docBaC.Add(new Int32Field("Clicks", 10, Field.Store.YES));
+                                    docBaC.Add(new StoredField("IndexProductCount", 1));
+                                    docBaC.Add(new Int32Field("Clicks", clicks, Field.Store.YES));
                                     doc.Add(new SingleField("Order", orderScroe, Field.Store.NO));
-
-                                    //docBaC.Add(new Field("ID", mid + "," + _cid, Field.Store.YES, Field.Index.NO));
-                                    //docBaC.Add(new Field("Name", FixKeywords(brandsAndCategoryName.ToLower() + " " + categorySynonym), Field.Store.NO, Field.Index.ANALYZED));
-                                    //docBaC.Add(new Field("DisplayValue", brandsAndCategoryName, Field.Store.YES, Field.Index.NO));
-                                    //docBaC.Add(new Field("Type", "BAC", Field.Store.YES, Field.Index.NO));
-                                    //docBaC.Add(new Field("Other", cdi.ProductCount.ToString(), Field.Store.YES, Field.Index.NO));
-                                    //docBaC.Add(new Field("ListOrder", "5", Field.Store.YES, Field.Index.NO));
-                                    //docBaC.Add(new Field("IncludePPC", "1", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                                    //docBaC.Add(new Field("CategoryID", _cid.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                                    //docBaC.Add(new Field("DefaultImage", "", Field.Store.YES, Field.Index.NO));
-                                    //docBaC.Add(new Field("IndexProductCount", pCount.ToString(), Field.Store.YES, Field.Index.NO));
-                                    //NumericField bacClicksField = new NumericField("Clicks", Field.Store.YES, true);
-                                    //bacClicksField.SetIntValue(productSearcher.GetClickCount());
-                                    //docBaC.Add(bacClicksField);
-
-                                    //orderField = new NumericField("Order", Field.Store.NO, true);
-                                    //orderField.SetFloatValue(orderScroe);
-                                    //doc.Add(orderField);
 
                                     idw.AddDocument(docBaC);
                                     indexindexBrandAndCategoryCount++;
@@ -877,24 +764,6 @@ namespace PopualerSearchIndexBuilder
                         doc.Add(new StoredField("DefaultImage", ""));
                         doc.Add(new Int32Field("Clicks", int.MaxValue, Field.Store.YES));
                         doc.Add(new SingleField("Order", 3, Field.Store.NO));
-
-                        //doc.Add(new Field("ID", "0", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Name", keyword, Field.Store.NO, Field.Index.ANALYZED));
-                        //doc.Add(new Field("DisplayValue", name, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Type", "C1", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("Other", url, Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("ListOrder", "1", Field.Store.YES, Field.Index.NO));
-                        //doc.Add(new Field("IncludePPC", "1", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("CategoryID", "0", Field.Store.YES, Field.Index.NOT_ANALYZED));
-                        //doc.Add(new Field("DefaultImage", "", Field.Store.YES, Field.Index.NO));
-                        //NumericField clicksField = new NumericField("Clicks", Field.Store.YES, true);
-                        //clicksField.SetIntValue(int.MaxValue);
-                        //doc.Add(clicksField);
-
-                        //float orderScroe = 3;
-                        //NumericField orderField = new NumericField("Order", Field.Store.NO, true);
-                        //orderField.SetFloatValue(orderScroe);
-                        //doc.Add(orderField);
 
                         idw.AddDocument(doc);
                         indexPopularSearchCount++;
