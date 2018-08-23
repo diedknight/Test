@@ -1,4 +1,4 @@
-<#@ include file="SQLServer.ttinclude" #>
+<#@ include file="MySQL.ttinclude" #>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -282,10 +282,17 @@ namespace <#=Namespace #>
 <#      if(tbl.PK.SysType=="int"){#>
         
         public override int GetHashCode() {
+			
+		<# if(tbl.PK.IsNullable){ #>	
+			return this.<#=tbl.PK.CleanName #>??0;
+		<# } else { #>				
             return this.<#=tbl.PK.CleanName #>;
+		<# } #>
+
         }
         
 <#      }#>
+
         public string DescriptorValue()
         {
             <# if (tbl.ClassName == tbl.Descriptor.CleanName){ #>

@@ -14,7 +14,7 @@
         <div class="ctcTitleTd page-header">
             <h1 class="productInfo">Vouchers</h1>
             <div class="categoryDec">
-                We collect  vouchers and coupons that help you save. Missing a voucher? <a href="recommend_voucher">Recommend voucher!</a>
+                We collect  vouchers and coupons that help you save. Missing a voucher? <%--<a href="recommend_voucher">Recommend voucher!</a>--%>
             </div>
         </div>
 

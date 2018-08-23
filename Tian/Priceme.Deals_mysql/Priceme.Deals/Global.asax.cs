@@ -15,7 +15,8 @@ namespace Priceme.Deals
     public class Global : System.Web.HttpApplication
     {
         protected void Application_Start(object sender, EventArgs e)
-        {
+        {            
+
             MultiCountryController.LoadWithCheckIndexPath();
 #if (NoDebug)
             CategoryController.Load(null);

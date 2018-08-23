@@ -60,10 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dynamic.cs" />
-    <Compile Include="Extend\CSK_Store_PPCMember.cs" />
-    <Compile Include="Extend\CSK_Store_Retailer.cs" />
-    <Compile Include="Extend\CSK_Store_RetailerProduct.cs" />
-    <Compile Include="Extend\CSK_Store_RetailerProductNew.cs" />
     <Compile Include="Extend\PriceMe.cs" />
     <Compile Include="LinqBllBase.cs" />
     <Compile Include="LinqEntity\CSK_Store_List.designer.cs">
@@ -91,11 +87,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubSonic\StoredProcedures.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoredProcedures.tt</DependentUpon>
     </Compile>
     <Compile Include="SubSonic\Structs.cs">
       <AutoGen>True</AutoGen>
@@ -129,12 +120,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Context.cs</LastGenOutput>
     </None>
+    <None Include="SubSonic\MySQL.ttinclude" />
     <None Include="SubSonic\Settings.ttinclude" />
+    <None Include="SubSonic\Settings1.ttinclude" />
     <None Include="SubSonic\SQLServer.ttinclude" />
-    <None Include="SubSonic\StoredProcedures.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StoredProcedures.cs</LastGenOutput>
-    </None>
     <None Include="SubSonic\Structs.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Structs.cs</LastGenOutput>
@@ -154,6 +143,17 @@
     <None Include="LinqEntity\CSK_Store_ProductAlert.dbml.layout">
       <DependentUpon>CSK_Store_ProductAlert.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SubSonic\TableMap.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TableMap.txt</LastGenOutput>
+    </Content>
+    <Content Include="SubSonic\TableMap.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TableMap.tt</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

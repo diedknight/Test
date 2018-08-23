@@ -40,12 +40,12 @@ namespace Priceme.Deals.Code.BusinessLogic
                 minimunPrice = 0.01d;
             }
 
-            var hitInfo = SearchController.SearchProducts("", cids.ToList(), null, new PriceRange(minimunPrice, 0d), null, null, orderBy, null, 100000, PriceMe.WebConfig.CountryId, false, true, false, null, true, null, "", true, saleRate);
+            var hitInfo = SearchController1.SearchProducts("", cids.ToList(), null, new PriceRange(minimunPrice, 0d), null, null, orderBy, null, 100000, PriceMe.WebConfig.CountryId, false, true, false, null, true, null, "", true, saleRate);
 
             List<PriceMeCommon.Data.ProductCatalog> templist = new List<PriceMeCommon.Data.ProductCatalog>();
             for (int i = 0; i < hitInfo.ResultCount; i++)
             {
-                var info = SearchController.GetProductCatalog(hitInfo, i);
+                var info = SearchController1.GetProductCatalog(hitInfo, i);
 
                 templist.Add(info);
             }
@@ -74,7 +74,7 @@ namespace Priceme.Deals.Code.BusinessLogic
 
                 for (int i = 0; i < amount; i++)
                 {
-                    var product = SearchController.GetProductCatalog(hitInfo, i);
+                    var product = SearchController1.GetProductCatalog(hitInfo, i);
 
                     if (recentViewCids.Contains(product.CategoryID))
                         tempResultList.Add(product);

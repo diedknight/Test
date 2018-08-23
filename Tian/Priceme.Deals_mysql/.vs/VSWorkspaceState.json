@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Priceme.Deals",
+    "\\Priceme.Deals\\Code",
+    "\\Priceme.Deals\\Code\\BusinessLogic",
+    "\\Priceme.Deals\\Code\\Data",
+    "\\PriceMeCommon",
+    "\\PriceMeCommon\\BusinessLogic",
+    "\\PriceMeDBA",
+    "\\PriceMeDBA\\SubSonic"
+  ],
+  "SelectedNode": "\\Priceme.Deals\\Web.config",
+  "PreviewInSolutionExplorer": false
+}

@@ -903,179 +903,179 @@ namespace PriceMeCommon.BusinessLogic
             return null;
         }
 
-        public static void GetRetailerProducts(int productId, out decimal bestPrice, out decimal maxPrice, out int count, out int RetailerId, out int RetailerProductId, out CSK_Store_RetailerProductNew lowestrp, int countryId)
-        {
-            bestPrice = 0;
-            maxPrice = 0;
-            count = 0;
-            RetailerId = 0;
-            RetailerProductId = 0;
-            lowestrp = null;
+        //public static void GetRetailerProducts(int productId, out decimal bestPrice, out decimal maxPrice, out int count, out int RetailerId, out int RetailerProductId, out CSK_Store_RetailerProductNew lowestrp, int countryId)
+        //{
+        //    bestPrice = 0;
+        //    maxPrice = 0;
+        //    count = 0;
+        //    RetailerId = 0;
+        //    RetailerProductId = 0;
+        //    lowestrp = null;
 
-            List<CSK_Store_RetailerProductNew> rps = GetRetailerProductsByProductId(productId, countryId);
-            if (rps == null || rps.Count == 0) return;
+        //    List<CSK_Store_RetailerProductNew> rps = GetRetailerProductsByProductId(productId, countryId);
+        //    if (rps == null || rps.Count == 0) return;
 
-            for (int i = 0; i < rps.Count; i++)
-            {
-                CSK_Store_RetailerProductNew rp = rps[i];
+        //    for (int i = 0; i < rps.Count; i++)
+        //    {
+        //        CSK_Store_RetailerProductNew rp = rps[i];
 
-                if (RetailerController.IsPPcRetailer(rp.RetailerId, countryId))
-                {
-                    rp.IsNoLink = false;
-                }
-                else
-                {
-                    rp.PPCMemberType = 5;
-                    rp.IsNoLink = true;
-                }
-            }
+        //        if (RetailerController.IsPPcRetailer(rp.RetailerId, countryId))
+        //        {
+        //            rp.IsNoLink = false;
+        //        }
+        //        else
+        //        {
+        //            rp.PPCMemberType = 5;
+        //            rp.IsNoLink = true;
+        //        }
+        //    }
 
-            rps = rps.OrderBy(rp => rp.RetailerPrice).ToList();
-            List<CSK_Store_RetailerProductNew> ppclowestrps = rps.Where(rp => !rp.IsNoLink).OrderBy(rp => rp.RetailerPrice).ToList();
-            if (ppclowestrps != null && ppclowestrps.Count > 0 && ppclowestrps[0].RetailerPrice == rps[0].RetailerPrice)
-                lowestrp = ppclowestrps[0];
-            else
-                lowestrp = rps[0];
+        //    rps = rps.OrderBy(rp => rp.RetailerPrice).ToList();
+        //    List<CSK_Store_RetailerProductNew> ppclowestrps = rps.Where(rp => !rp.IsNoLink).OrderBy(rp => rp.RetailerPrice).ToList();
+        //    if (ppclowestrps != null && ppclowestrps.Count > 0 && ppclowestrps[0].RetailerPrice == rps[0].RetailerPrice)
+        //        lowestrp = ppclowestrps[0];
+        //    else
+        //        lowestrp = rps[0];
 
-            bestPrice = rps.First().RetailerPrice;
-            maxPrice = rps.Last().RetailerPrice;
-            count = rps.Select(rp => rp.RetailerId).Distinct().Count();
-            if (count == 1)
-            {
-                RetailerId = rps[0].RetailerId;
-                RetailerProductId = rps[0].RetailerProductId;
-            }
-        }
+        //    bestPrice = rps.First().RetailerPrice;
+        //    maxPrice = rps.Last().RetailerPrice;
+        //    count = rps.Select(rp => rp.RetailerId).Distinct().Count();
+        //    if (count == 1)
+        //    {
+        //        RetailerId = rps[0].RetailerId;
+        //        RetailerProductId = rps[0].RetailerProductId;
+        //    }
+        //}
 
-        public static void GetRetailerProducts(int productID, out decimal bestPrice, out decimal maxPrice, out bool singlePrice, out bool showFeatured, out List<CSK_Store_RetailerProductNew> retailerProducts, out int allprice, int flag, out bool isInternational, out decimal overseasPices, int countryId)
-        {
-            bestPrice = 0;
-            maxPrice = 0;
-            singlePrice = false;
-            showFeatured = false;
+        //public static void GetRetailerProducts(int productID, out decimal bestPrice, out decimal maxPrice, out bool singlePrice, out bool showFeatured, out List<CSK_Store_RetailerProductNew> retailerProducts, out int allprice, int flag, out bool isInternational, out decimal overseasPices, int countryId)
+        //{
+        //    bestPrice = 0;
+        //    maxPrice = 0;
+        //    singlePrice = false;
+        //    showFeatured = false;
 
-            retailerProducts = new List<CSK_Store_RetailerProductNew>();
+        //    retailerProducts = new List<CSK_Store_RetailerProductNew>();
 
-            List<CSK_Store_RetailerProductNew> rps = GetRetailerProductsByProductId(productID, countryId);
+        //    List<CSK_Store_RetailerProductNew> rps = GetRetailerProductsByProductId(productID, countryId);
 
-            isInternational = CheckInternationalRetailerProducts(rps, out overseasPices, countryId);
+        //    isInternational = CheckInternationalRetailerProducts(rps, out overseasPices, countryId);
 
-            List<int> restrictedRetailer = new List<int>();
+        //    List<int> restrictedRetailer = new List<int>();
 
-            int hour = DateTime.Now.Hour;
-            for (int i = 0; i < rps.Count; i++)
-            {
-                CSK_Store_RetailerProductNew rp = rps[i];
+        //    int hour = DateTime.Now.Hour;
+        //    for (int i = 0; i < rps.Count; i++)
+        //    {
+        //        CSK_Store_RetailerProductNew rp = rps[i];
 
-                if (rp.RetailerId == 531 && rp.ExpirationDate < DateTime.Now)
-                {
-                    rps.RemoveAt(i);
-                    i--;
-                    continue;
-                }
+        //        if (rp.RetailerId == 531 && rp.ExpirationDate < DateTime.Now)
+        //        {
+        //            rps.RemoveAt(i);
+        //            i--;
+        //            continue;
+        //        }
 
-                rp.ProductId = productID;
-                rp.IsFeaturedProduct = false;
+        //        rp.ProductId = productID;
+        //        rp.IsFeaturedProduct = false;
 
-                if (RetailerController.IsPPcRetailer(rp.RetailerId, countryId))
-                {
-                    rp.PPCMemberType = 2;
-                    rp.IsNoLink = false;
-                }
-                else
-                {
-                    rp.PPCMemberType = 5;
-                    rp.IsNoLink = true;
-                }
-                //如果价格相同PPCMemberType = 2的在前面
-                if (!rp.IsNoLink)
-                {
-                    rp.OrderbyProduct = rp.RetailerPrice - 0.01m;
-                    rp.PPCOrderbyProduct = rp.RetailerPrice - 0.01m;
-                }
-                else
-                {
-                    rp.OrderbyProduct = rp.RetailerPrice;
-                    rp.PPCOrderbyProduct = rp.RetailerPrice;
-                }
-            }
+        //        if (RetailerController.IsPPcRetailer(rp.RetailerId, countryId))
+        //        {
+        //            rp.PPCMemberType = 2;
+        //            rp.IsNoLink = false;
+        //        }
+        //        else
+        //        {
+        //            rp.PPCMemberType = 5;
+        //            rp.IsNoLink = true;
+        //        }
+        //        //如果价格相同PPCMemberType = 2的在前面
+        //        if (!rp.IsNoLink)
+        //        {
+        //            rp.OrderbyProduct = rp.RetailerPrice - 0.01m;
+        //            rp.PPCOrderbyProduct = rp.RetailerPrice - 0.01m;
+        //        }
+        //        else
+        //        {
+        //            rp.OrderbyProduct = rp.RetailerPrice;
+        //            rp.PPCOrderbyProduct = rp.RetailerPrice;
+        //        }
+        //    }
 
-            rps = rps.OrderBy(rp => rp.OrderbyProduct).ToList();
+        //    rps = rps.OrderBy(rp => rp.OrderbyProduct).ToList();
 
-            //rps = rps.OrderByDescending(rp => rp.IsFeaturedProduct)//临时推广合作
-            //    .ToList();
+        //    //rps = rps.OrderByDescending(rp => rp.IsFeaturedProduct)//临时推广合作
+        //    //    .ToList();
 
-            allprice = rps.Count;
+        //    allprice = rps.Count;
 
-            if (rps.Count > 0)
-            {
-                singlePrice = rps.Count == 1;
+        //    if (rps.Count > 0)
+        //    {
+        //        singlePrice = rps.Count == 1;
 
-                bestPrice = rps.First().RetailerPrice;
-                if (!singlePrice && rps[1].RetailerPrice < bestPrice)
-                    bestPrice = rps[1].RetailerPrice;
+        //        bestPrice = rps.First().RetailerPrice;
+        //        if (!singlePrice && rps[1].RetailerPrice < bestPrice)
+        //            bestPrice = rps[1].RetailerPrice;
 
-                maxPrice = rps.Last().RetailerPrice;
-                if (!singlePrice && rps[0].RetailerPrice > maxPrice)
-                    maxPrice = rps[0].RetailerPrice;
-            }
+        //        maxPrice = rps.Last().RetailerPrice;
+        //        if (!singlePrice && rps[0].RetailerPrice > maxPrice)
+        //            maxPrice = rps[0].RetailerPrice;
+        //    }
 
-            retailerProducts = rps;
-        }
+        //    retailerProducts = rps;
+        //}
 
-        public static void GetRetailerProductItems(int productID, out decimal bestPrice, out decimal maxPrice, out bool singlePrice, out bool showFeatured, out List<RetailerProductItem> rpis, out int allprice, int flag, out bool isInternational, out decimal overseasPices, int countryId)
-        {
-            List<CSK_Store_RetailerProductNew> rps;
-            GetRetailerProducts(productID, out bestPrice, out maxPrice, out singlePrice, out showFeatured, out rps, out allprice, flag, out isInternational, out overseasPices, countryId);
-            if (isInternational)
-            {
-                List<CSK_Store_RetailerProductNew> priceRps = rps.Where(r => !RetailerController.IsInternationalRetailer(r.RetailerId, countryId)).ToList();
-                singlePrice = priceRps.Count == 1;
+        //public static void GetRetailerProductItems(int productID, out decimal bestPrice, out decimal maxPrice, out bool singlePrice, out bool showFeatured, out List<RetailerProductItem> rpis, out int allprice, int flag, out bool isInternational, out decimal overseasPices, int countryId)
+        //{
+        //    List<CSK_Store_RetailerProductNew> rps;
+        //    GetRetailerProducts(productID, out bestPrice, out maxPrice, out singlePrice, out showFeatured, out rps, out allprice, flag, out isInternational, out overseasPices, countryId);
+        //    if (isInternational)
+        //    {
+        //        List<CSK_Store_RetailerProductNew> priceRps = rps.Where(r => !RetailerController.IsInternationalRetailer(r.RetailerId, countryId)).ToList();
+        //        singlePrice = priceRps.Count == 1;
 
-                if (priceRps.Count > 0)
-                {
-                    bestPrice = priceRps.First().RetailerPrice;
-                    if (priceRps.Count > 1)
-                    {
-                        if (!singlePrice && priceRps[1].RetailerPrice < bestPrice)
-                            bestPrice = priceRps[1].RetailerPrice;
-                    }
+        //        if (priceRps.Count > 0)
+        //        {
+        //            bestPrice = priceRps.First().RetailerPrice;
+        //            if (priceRps.Count > 1)
+        //            {
+        //                if (!singlePrice && priceRps[1].RetailerPrice < bestPrice)
+        //                    bestPrice = priceRps[1].RetailerPrice;
+        //            }
 
-                    maxPrice = priceRps.Last().RetailerPrice;
-                    if (!singlePrice && priceRps[0].RetailerPrice > maxPrice)
-                        maxPrice = priceRps[0].RetailerPrice;
-                }
-            }
+        //            maxPrice = priceRps.Last().RetailerPrice;
+        //            if (!singlePrice && priceRps[0].RetailerPrice > maxPrice)
+        //                maxPrice = priceRps[0].RetailerPrice;
+        //        }
+        //    }
 
-            rpis = new List<RetailerProductItem>();
-            Dictionary<int, List<CSK_Store_RetailerProductNew>> rpDic = new Dictionary<int, List<CSK_Store_RetailerProductNew>>();
+        //    rpis = new List<RetailerProductItem>();
+        //    Dictionary<int, List<CSK_Store_RetailerProductNew>> rpDic = new Dictionary<int, List<CSK_Store_RetailerProductNew>>();
 
-            foreach (CSK_Store_RetailerProductNew rp in rps)
-            {
-                List<CSK_Store_RetailerProductNew> temps = new List<CSK_Store_RetailerProductNew>();
+        //    foreach (CSK_Store_RetailerProductNew rp in rps)
+        //    {
+        //        List<CSK_Store_RetailerProductNew> temps = new List<CSK_Store_RetailerProductNew>();
 
-                if (rpDic.ContainsKey(rp.RetailerId))
-                {
-                    temps = rpDic[rp.RetailerId];
-                    temps.Add(rp);
-                    rpDic[rp.RetailerId] = temps;
-                }
-                else
-                {
-                    temps.Add(rp);
-                    rpDic.Add(rp.RetailerId, temps);
-                }
-            }
+        //        if (rpDic.ContainsKey(rp.RetailerId))
+        //        {
+        //            temps = rpDic[rp.RetailerId];
+        //            temps.Add(rp);
+        //            rpDic[rp.RetailerId] = temps;
+        //        }
+        //        else
+        //        {
+        //            temps.Add(rp);
+        //            rpDic.Add(rp.RetailerId, temps);
+        //        }
+        //    }
 
-            foreach (KeyValuePair<int, List<CSK_Store_RetailerProductNew>> pair in rpDic)
-            {
-                RetailerProductItem rpi = new RetailerProductItem();
-                rpi.RetailerId = pair.Key;
-                rpi.RpList = pair.Value;
+        //    foreach (KeyValuePair<int, List<CSK_Store_RetailerProductNew>> pair in rpDic)
+        //    {
+        //        RetailerProductItem rpi = new RetailerProductItem();
+        //        rpi.RetailerId = pair.Key;
+        //        rpi.RpList = pair.Value;
 
-                rpis.Add(rpi);
-            }
-        }
+        //        rpis.Add(rpi);
+        //    }
+        //}
 
         /// <summary>
         /// 获取所有的网店价格
@@ -1091,86 +1091,86 @@ namespace PriceMeCommon.BusinessLogic
         /// <param name="lowestrp"></param>
         /// <param name="isInternational"></param>
         /// <param name="overseasPices"></param>
-        public static void GetRetailerProductItems(int productID, out decimal bestPrice, out decimal maxPrice, out bool singlePrice, out bool showFeatured, out List<RetailerProductItem> rpis, out int allprice, int flag, out bool isInternational, out decimal overseasPices, List<RetailerProductItem> rpisInt, out List<int> retailerids, out List<CSK_Store_RetailerProductNew> rps, int countryId)
-        {
-            rps = new List<CSK_Store_RetailerProductNew>();
-            retailerids = new List<int>();
+        //public static void GetRetailerProductItems(int productID, out decimal bestPrice, out decimal maxPrice, out bool singlePrice, out bool showFeatured, out List<RetailerProductItem> rpis, out int allprice, int flag, out bool isInternational, out decimal overseasPices, List<RetailerProductItem> rpisInt, out List<int> retailerids, out List<CSK_Store_RetailerProductNew> rps, int countryId)
+        //{
+        //    rps = new List<CSK_Store_RetailerProductNew>();
+        //    retailerids = new List<int>();
 
-            ProductController.GetRetailerProducts(productID, out bestPrice, out maxPrice, out singlePrice, out showFeatured, out rps, out allprice, flag, out isInternational, out overseasPices, countryId);
+        //    ProductController.GetRetailerProducts(productID, out bestPrice, out maxPrice, out singlePrice, out showFeatured, out rps, out allprice, flag, out isInternational, out overseasPices, countryId);
 
-            //if (isInternational)
-            //{
-            //    List<CSK_Store_RetailerProductNew> priceRps = rps.Where(r => !RetailerController.IsInternationalRetailer(r.RetailerId, countryId)).ToList();
-            //    if (priceRps.Count > 0)
-            //    {
-            //        singlePrice = priceRps.Count == 1;
+        //    //if (isInternational)
+        //    //{
+        //    //    List<CSK_Store_RetailerProductNew> priceRps = rps.Where(r => !RetailerController.IsInternationalRetailer(r.RetailerId, countryId)).ToList();
+        //    //    if (priceRps.Count > 0)
+        //    //    {
+        //    //        singlePrice = priceRps.Count == 1;
 
-            //        bestPrice = priceRps.First().RetailerPrice;
-            //        if (!singlePrice && priceRps[1].RetailerPrice < bestPrice)
-            //            bestPrice = priceRps[1].RetailerPrice;
+        //    //        bestPrice = priceRps.First().RetailerPrice;
+        //    //        if (!singlePrice && priceRps[1].RetailerPrice < bestPrice)
+        //    //            bestPrice = priceRps[1].RetailerPrice;
 
-            //        maxPrice = priceRps.Last().RetailerPrice;
-            //        if (!singlePrice && priceRps[0].RetailerPrice > maxPrice)
-            //            maxPrice = priceRps[0].RetailerPrice;
-            //    }
-            //}
+        //    //        maxPrice = priceRps.Last().RetailerPrice;
+        //    //        if (!singlePrice && priceRps[0].RetailerPrice > maxPrice)
+        //    //            maxPrice = priceRps[0].RetailerPrice;
+        //    //    }
+        //    //}
 
-            var count531 = rps.Where(w => w.RetailerId == 531).ToList();
-            if (count531.Count() > 1)
-            {
-                rps.RemoveAll(r => r.RetailerId == 531);
-                rps.Add(count531.FirstOrDefault());
-                rps = rps.OrderBy(o => o.RetailerPrice).ToList();
-            }
+        //    var count531 = rps.Where(w => w.RetailerId == 531).ToList();
+        //    if (count531.Count() > 1)
+        //    {
+        //        rps.RemoveAll(r => r.RetailerId == 531);
+        //        rps.Add(count531.FirstOrDefault());
+        //        rps = rps.OrderBy(o => o.RetailerPrice).ToList();
+        //    }
 
-            rpis = new List<RetailerProductItem>();
-            Dictionary<string, List<CSK_Store_RetailerProductNew>> rpDic = new Dictionary<string, List<CSK_Store_RetailerProductNew>>();
+        //    rpis = new List<RetailerProductItem>();
+        //    Dictionary<string, List<CSK_Store_RetailerProductNew>> rpDic = new Dictionary<string, List<CSK_Store_RetailerProductNew>>();
 
-            int i = 0;
-            foreach (CSK_Store_RetailerProductNew rp in rps)
-            {
-                List<CSK_Store_RetailerProductNew> temps = new List<CSK_Store_RetailerProductNew>();
-                string key = rp.RetailerId.ToString();
-                if (rp.RetailerId == 344)
-                {
-                    key = rp.RetailerId + "_" + i;
-                    i++;
-                }
+        //    int i = 0;
+        //    foreach (CSK_Store_RetailerProductNew rp in rps)
+        //    {
+        //        List<CSK_Store_RetailerProductNew> temps = new List<CSK_Store_RetailerProductNew>();
+        //        string key = rp.RetailerId.ToString();
+        //        if (rp.RetailerId == 344)
+        //        {
+        //            key = rp.RetailerId + "_" + i;
+        //            i++;
+        //        }
 
-                if (rpDic.ContainsKey(key))
-                {
-                    temps = rpDic[key];
-                    temps.Add(rp);
-                    rpDic[key] = temps;
-                }
-                else
-                {
-                    temps.Add(rp);
-                    rpDic.Add(key, temps);
-                }
-            }
+        //        if (rpDic.ContainsKey(key))
+        //        {
+        //            temps = rpDic[key];
+        //            temps.Add(rp);
+        //            rpDic[key] = temps;
+        //        }
+        //        else
+        //        {
+        //            temps.Add(rp);
+        //            rpDic.Add(key, temps);
+        //        }
+        //    }
 
-            foreach (KeyValuePair<string, List<CSK_Store_RetailerProductNew>> pair in rpDic)
-            {
-                int rid = 0;
-                if (pair.Key.Contains("_"))
-                    int.TryParse(pair.Key.Split('_')[0], out rid);
-                else
-                    int.TryParse(pair.Key, out rid);
+        //    foreach (KeyValuePair<string, List<CSK_Store_RetailerProductNew>> pair in rpDic)
+        //    {
+        //        int rid = 0;
+        //        if (pair.Key.Contains("_"))
+        //            int.TryParse(pair.Key.Split('_')[0], out rid);
+        //        else
+        //            int.TryParse(pair.Key, out rid);
 
-                RetailerProductItem rpi = new RetailerProductItem();
-                rpi.RetailerId = rid;
-                rpi.RpList = pair.Value;
+        //        RetailerProductItem rpi = new RetailerProductItem();
+        //        rpi.RetailerId = rid;
+        //        rpi.RpList = pair.Value;
 
-                if (isInternational && RetailerController.IsInternationalRetailer(rid, countryId))
-                    rpisInt.Add(rpi);
-                else
-                {
-                    rpis.Add(rpi);
-                    retailerids.Add(rid);
-                }
-            }
-        }
+        //        if (isInternational && RetailerController.IsInternationalRetailer(rid, countryId))
+        //            rpisInt.Add(rpi);
+        //        else
+        //        {
+        //            rpis.Add(rpi);
+        //            retailerids.Add(rid);
+        //        }
+        //    }
+        //}
 
         public static ReviewAverage GetReviewAverage(int productId, int countryId)
         {
@@ -1421,103 +1421,103 @@ namespace PriceMeCommon.BusinessLogic
             return priceDropItems;
         }
 
-        public static void GetTop5PPCRetailerProducts(int productID, out List<CSK_Store_RetailerProductNew> retailerProducts, out decimal bestPrice, out decimal maxPrice, out int retailerCount, out int RetailerId, out int RetailerProductId, out CSK_Store_RetailerProductNew lowestrp, out bool isInternational, out decimal overseasPices, int countryId)
-        {
-            bestPrice = 0;
-            maxPrice = 0;
-            retailerCount = 0;
-            RetailerId = 0;
-            RetailerProductId = 0;
-            lowestrp = null;
-            isInternational = false;
-            overseasPices = 0;
+        //public static void GetTop5PPCRetailerProducts(int productID, out List<CSK_Store_RetailerProductNew> retailerProducts, out decimal bestPrice, out decimal maxPrice, out int retailerCount, out int RetailerId, out int RetailerProductId, out CSK_Store_RetailerProductNew lowestrp, out bool isInternational, out decimal overseasPices, int countryId)
+        //{
+        //    bestPrice = 0;
+        //    maxPrice = 0;
+        //    retailerCount = 0;
+        //    RetailerId = 0;
+        //    RetailerProductId = 0;
+        //    lowestrp = null;
+        //    isInternational = false;
+        //    overseasPices = 0;
 
-            retailerProducts = new List<CSK_Store_RetailerProductNew>();
+        //    retailerProducts = new List<CSK_Store_RetailerProductNew>();
 
-            List<CSK_Store_RetailerProductNew> rps = GetRetailerProductsByProductId(productID, countryId);
+        //    List<CSK_Store_RetailerProductNew> rps = GetRetailerProductsByProductId(productID, countryId);
 
-            if (rps != null && rps.Count > 0)
-            {
-                isInternational = CheckInternationalRetailerProducts(rps, out overseasPices, countryId);
+        //    if (rps != null && rps.Count > 0)
+        //    {
+        //        isInternational = CheckInternationalRetailerProducts(rps, out overseasPices, countryId);
 
-                List<int> restrictedRetailer = new List<int>();
+        //        List<int> restrictedRetailer = new List<int>();
 
-                int hour = DateTime.Now.Hour;
-                for (int i = 0; i < rps.Count; i++)
-                {
-                    CSK_Store_RetailerProductNew rp = rps[i];
+        //        int hour = DateTime.Now.Hour;
+        //        for (int i = 0; i < rps.Count; i++)
+        //        {
+        //            CSK_Store_RetailerProductNew rp = rps[i];
 
-                    rp.ProductId = productID;
-                    rp.IsFeaturedProduct = false;
-                    if (RetailerController.IsPPcRetailer(rp.RetailerId, countryId))
-                    {
-                        rp.PPCMemberType = 2;
-                        rp.IsNoLink = false;
-                    }
-                    else
-                    {
-                        rp.PPCMemberType = 5;
-                        rp.IsNoLink = true;
-                    }
+        //            rp.ProductId = productID;
+        //            rp.IsFeaturedProduct = false;
+        //            if (RetailerController.IsPPcRetailer(rp.RetailerId, countryId))
+        //            {
+        //                rp.PPCMemberType = 2;
+        //                rp.IsNoLink = false;
+        //            }
+        //            else
+        //            {
+        //                rp.PPCMemberType = 5;
+        //                rp.IsNoLink = true;
+        //            }
 
-                    if (rp.PPCMemberType == 2)
-                        rp.OrderbyProduct = rp.RetailerPrice - 0.01m;
-                    else
-                        rp.OrderbyProduct = rp.RetailerPrice;
-                }
+        //            if (rp.PPCMemberType == 2)
+        //                rp.OrderbyProduct = rp.RetailerPrice - 0.01m;
+        //            else
+        //                rp.OrderbyProduct = rp.RetailerPrice;
+        //        }
 
-                if (isInternational)
-                    rps = rps.Where(rp => !RetailerController.IsInternationalRetailer(rp.RetailerId, countryId)).ToList();
+        //        if (isInternational)
+        //            rps = rps.Where(rp => !RetailerController.IsInternationalRetailer(rp.RetailerId, countryId)).ToList();
 
-                rps = rps.OrderBy(rp => rp.RetailerPrice).ToList();
-                List<CSK_Store_RetailerProductNew> ppclowestrps = rps.Where(rp => !rp.IsNoLink).OrderBy(rp => rp.RetailerPrice).ToList();
-                if (ppclowestrps != null && ppclowestrps.Count > 0 && ppclowestrps[0].RetailerPrice == rps[0].RetailerPrice)
-                    lowestrp = ppclowestrps[0];
-                else
-                    lowestrp = rps[0];
+        //        rps = rps.OrderBy(rp => rp.RetailerPrice).ToList();
+        //        List<CSK_Store_RetailerProductNew> ppclowestrps = rps.Where(rp => !rp.IsNoLink).OrderBy(rp => rp.RetailerPrice).ToList();
+        //        if (ppclowestrps != null && ppclowestrps.Count > 0 && ppclowestrps[0].RetailerPrice == rps[0].RetailerPrice)
+        //            lowestrp = ppclowestrps[0];
+        //        else
+        //            lowestrp = rps[0];
 
-                bestPrice = rps.First().RetailerPrice;
-                maxPrice = rps.Last().RetailerPrice;
-                retailerCount = rps.Select(rp => rp.RetailerId).Distinct().Count();
-                if (retailerCount == 1)
-                {
-                    RetailerId = rps[0].RetailerId;
-                    RetailerProductId = rps[0].RetailerProductId;
-                }
+        //        bestPrice = rps.First().RetailerPrice;
+        //        maxPrice = rps.Last().RetailerPrice;
+        //        retailerCount = rps.Select(rp => rp.RetailerId).Distinct().Count();
+        //        if (retailerCount == 1)
+        //        {
+        //            RetailerId = rps[0].RetailerId;
+        //            RetailerProductId = rps[0].RetailerProductId;
+        //        }
 
-                rps = rps.OrderBy(rp => rp.OrderbyProduct).Where(rp => rp.IsNoLink == false).Take(5).ToList();
-            }
+        //        rps = rps.OrderBy(rp => rp.OrderbyProduct).Where(rp => rp.IsNoLink == false).Take(5).ToList();
+        //    }
 
-            retailerProducts = rps;
-        }
+        //    retailerProducts = rps;
+        //}
 
-        public static bool HaveProductMap(int productId, int countryId)
-        {
-            int count = 0;
+        //public static bool HaveProductMap(int productId, int countryId)
+        //{
+        //    int count = 0;
 
-            List<RetailerProductItem> rpis = new List<RetailerProductItem>();
-            decimal bestPrice, maxPrice; bool singlePrice, featuredProduct; int allprice; bool isInternational; decimal overseasPices;
-            GetRetailerProductItems(productId, out bestPrice, out maxPrice, out singlePrice, out featuredProduct, out rpis, out allprice, 0, out isInternational, out overseasPices, countryId);
+        //    List<RetailerProductItem> rpis = new List<RetailerProductItem>();
+        //    decimal bestPrice, maxPrice; bool singlePrice, featuredProduct; int allprice; bool isInternational; decimal overseasPices;
+        //    GetRetailerProductItems(productId, out bestPrice, out maxPrice, out singlePrice, out featuredProduct, out rpis, out allprice, 0, out isInternational, out overseasPices, countryId);
 
-            foreach (RetailerProductItem rp in rpis)
-            {
-                if (rp.RetailerId == 0) continue;
+        //    foreach (RetailerProductItem rp in rpis)
+        //    {
+        //        if (rp.RetailerId == 0) continue;
 
 
-                RetailerCache retailer = RetailerController.GetRetailerDeep(rp.RetailerId, countryId);
-                if (retailer == null || retailer.RetailerId == 0) continue;
-                bool isShow = true;
+        //        RetailerCache retailer = RetailerController.GetRetailerDeep(rp.RetailerId, countryId);
+        //        if (retailer == null || retailer.RetailerId == 0) continue;
+        //        bool isShow = true;
 
-                if (isShow == false) continue;
+        //        if (isShow == false) continue;
 
-                var glats = RetailerController.GetRetailerGLatLng(rp.RetailerId, countryId);
-                if (glats == null || glats.Count == 0) continue;
-                count++;
-            }
+        //        var glats = RetailerController.GetRetailerGLatLng(rp.RetailerId, countryId);
+        //        if (glats == null || glats.Count == 0) continue;
+        //        count++;
+        //    }
 
-            if (count > 0) return true;
-            else return false;
-        }
+        //    if (count > 0) return true;
+        //    else return false;
+        //}
 
         public static bool HaveProductMap(int productid, List<RetailerProductItem> rpis, int countryId)
         {

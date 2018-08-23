@@ -435,35 +435,35 @@ namespace PriceMe
             }
         }
 
-        private static string GetUserEmail(int id)
-        {
-            string email = string.Empty;
-            SubSonic.Schema.StoredProcedure sp = PriceMeDBStatic.PriceMeDB.aspnet_Users_GetEmail();
-            sp.Command.AddParameter("@reviewId", id, DbType.Int32);
-            IDataReader dr = sp.ExecuteReader();
-            while (dr.Read())
-            {
-                email = dr["Email"].ToString();
-            }
-            dr.Close();
+        //private static string GetUserEmail(int id)
+        //{
+        //    string email = string.Empty;
+        //    SubSonic.Schema.StoredProcedure sp = PriceMeDBStatic.PriceMeDB.aspnet_Users_GetEmail();
+        //    sp.Command.AddParameter("@reviewId", id, DbType.Int32);
+        //    IDataReader dr = sp.ExecuteReader();
+        //    while (dr.Read())
+        //    {
+        //        email = dr["Email"].ToString();
+        //    }
+        //    dr.Close();
 
-            return email;
-        }
+        //    return email;
+        //}
 
-        private static string GetOtherUserEmail(int id)
-        {
-            string email = string.Empty;
-            SubSonic.Schema.StoredProcedure sp = PriceMeDBStatic.PriceMeDB.aspnet_OtherUsers_GetEmail();
-            sp.Command.AddParameter("@reviewId", id, DbType.Int32);
-            IDataReader dr = sp.ExecuteReader();
-            while (dr.Read())
-            {
-                email = dr["Email"].ToString();
-            }
-            dr.Close();
+        //private static string GetOtherUserEmail(int id)
+        //{
+        //    string email = string.Empty;
+        //    SubSonic.Schema.StoredProcedure sp = PriceMeDBStatic.PriceMeDB.aspnet_OtherUsers_GetEmail();
+        //    sp.Command.AddParameter("@reviewId", id, DbType.Int32);
+        //    IDataReader dr = sp.ExecuteReader();
+        //    while (dr.Read())
+        //    {
+        //        email = dr["Email"].ToString();
+        //    }
+        //    dr.Close();
 
-            return email;
-        }
+        //    return email;
+        //}
 
         public static bool ReportAbuseCommentEmail(string youremail, string subject, string body)
         {
@@ -671,24 +671,24 @@ namespace PriceMe
             return userName;
         }
 
-        public static aspnet_MembershipInfo GetUserMembershipInfo()
-        {
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                string sUserName = HttpContext.Current.User.Identity.Name;
+        //public static aspnet_MembershipInfo GetUserMembershipInfo()
+        //{
+        //    if (HttpContext.Current.User.Identity.IsAuthenticated)
+        //    {
+        //        string sUserName = HttpContext.Current.User.Identity.Name;
 
-                return GetUserMembershipInfo(sUserName);
-            }
+        //        return GetUserMembershipInfo(sUserName);
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        public static aspnet_MembershipInfo GetUserMembershipInfo(string userName)
-        {
-            aspnet_User user = aspnet_User.SingleOrDefault(u => u.UserName == userName);
-            aspnet_MembershipInfo info = aspnet_MembershipInfo.SingleOrDefault(m => m.UserID == user.UserId.ToString());
-            return info;
-        }
+        //public static aspnet_MembershipInfo GetUserMembershipInfo(string userName)
+        //{
+        //    aspnet_User user = aspnet_User.SingleOrDefault(u => u.UserName == userName);
+        //    aspnet_MembershipInfo info = aspnet_MembershipInfo.SingleOrDefault(m => m.UserID == user.UserId.ToString());
+        //    return info;
+        //}
 
         public static string GetStarImage(decimal score)
         {

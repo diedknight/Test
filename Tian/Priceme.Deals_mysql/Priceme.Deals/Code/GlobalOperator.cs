@@ -156,43 +156,43 @@ public class GlobalOperator
         }
     }
 
-    public static void SaveRetailerTrack(CSK_Store_RetailerTracker retailerTracker, HttpApplicationState Application)
-    {
+    //public static void SaveRetailerTrack(CSK_Store_RetailerTracker retailerTracker, HttpApplicationState Application)
+    //{
 
-        if (Application["RetailerTrackerCollection"] == null)
-            Application["RetailerTrackerCollection"] = new List<CSK_Store_RetailerTracker>();
+    //    if (Application["RetailerTrackerCollection"] == null)
+    //        Application["RetailerTrackerCollection"] = new List<CSK_Store_RetailerTracker>();
 
-        List<CSK_Store_RetailerTracker> retailerTrackerCollection = Application["RetailerTrackerCollection"] as List<CSK_Store_RetailerTracker>;
-        retailerTrackerCollection.Add(retailerTracker);
+    //    List<CSK_Store_RetailerTracker> retailerTrackerCollection = Application["RetailerTrackerCollection"] as List<CSK_Store_RetailerTracker>;
+    //    retailerTrackerCollection.Add(retailerTracker);
 
-        if (retailerTrackerCollection.Count >= clickMax)
-        {
-            Thread t = new Thread(new ThreadStart(SaveRetailerTrackerToDB));
-            t.Start();
-        }
-    }
+    //    if (retailerTrackerCollection.Count >= clickMax)
+    //    {
+    //        Thread t = new Thread(new ThreadStart(SaveRetailerTrackerToDB));
+    //        t.Start();
+    //    }
+    //}
 
-    public static void SaveRetailerTrackerToDB()
-    {
-        List<CSK_Store_RetailerTracker> retailerTrackerCollection = app["RetailerTrackerCollection"] as List<CSK_Store_RetailerTracker>;
-        if (retailerTrackerCollection != null && retailerTrackerCollection.Count > 0)
-        {
-            CSK_Store_RetailerTracker[] rts = retailerTrackerCollection.ToArray();
-            retailerTrackerCollection.Clear();
-            foreach (CSK_Store_RetailerTracker rt in rts)
-            {
-                try
-                {
-                    rt.Save();
-                    GetRetailerIdByRetailerProductId(rt.RetailerProductID);
-                }
-                catch
-                {
-                    continue;
-                }
-            }
-        }
-    }
+    //public static void SaveRetailerTrackerToDB()
+    //{
+    //    List<CSK_Store_RetailerTracker> retailerTrackerCollection = app["RetailerTrackerCollection"] as List<CSK_Store_RetailerTracker>;
+    //    if (retailerTrackerCollection != null && retailerTrackerCollection.Count > 0)
+    //    {
+    //        CSK_Store_RetailerTracker[] rts = retailerTrackerCollection.ToArray();
+    //        retailerTrackerCollection.Clear();
+    //        foreach (CSK_Store_RetailerTracker rt in rts)
+    //        {
+    //            try
+    //            {
+    //                rt.Save();
+    //                GetRetailerIdByRetailerProductId(rt.RetailerProductID);
+    //            }
+    //            catch
+    //            {
+    //                continue;
+    //            }
+    //        }
+    //    }
+    //}
 
     public static void GetRetailerIdByRetailerProductId(int retailerProductId)
     {

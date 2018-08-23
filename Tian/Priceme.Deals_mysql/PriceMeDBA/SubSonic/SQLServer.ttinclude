@@ -1,4 +1,4 @@
-<#@ include file="Settings.ttinclude" #>
+<#@ include file="Settings1.ttinclude" #>
 <#+
 
 IDataReader GetReader(string sql){
