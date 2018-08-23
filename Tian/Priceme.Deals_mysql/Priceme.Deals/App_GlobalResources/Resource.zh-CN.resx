@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutPriceme" xml:space="preserve">
+    <value>&lt;p&gt;无论您想在网上购买 &lt;a href="http://www.priceme.co.nz/Cameras/c-189.aspx" &gt;相机&lt;/a&gt;, &lt;a href="http://www.priceme.co.nz/Mobile-Phones/c-11.aspx" &gt;手机&lt;/a&gt;, &lt;a href="http://www.priceme.co.nz/LCD-Monitors/c-37.aspx" &gt;液晶显示器&lt;/a&gt;, 或者只是想查找新产品,PriceMe都可以为您提供快速、便捷的服务.&lt;/p&gt;
+
+&lt;P&gt;我们和中国大陆很多 &lt;a href="../RetailerList.aspx" &gt; 网店&lt;/a&gt;有合作， 这些网店提供近 &lt;strong&gt;十万的产品&lt;/strong&gt; 供我们的消费者在线购买！&lt;/p&gt;</value>
+  </data>
+  <data name="Brandbuilding" xml:space="preserve">
+    <value>合作伙伴可以在自己的产品上显示公司的LOGO图片，也可以在LOGO旁边提供一个销售口号，让您的产品与值得信赖的购物搜索引擎PriceMe联系在一起，共同得到消费者的认可和信任。详细信息，请和我们联系。</value>
+  </data>
+  <data name="BuyingGuides" xml:space="preserve">
+    <value>我们的购物指南是由{0}提供。</value>
+  </data>
+  <data name="CompanyInfo" xml:space="preserve">
+    <value>PriceMe是一个快速成长的公司，总部在香港。本公司提供网上购物信息，如价格和产品比较、评论等。我们的目标是让消费者以最低的价格从网店购买到最可靠的产品。如有问题请 &lt;a href="ContactUs.aspx" rel="nofollow"&gt;联系&lt;/a&gt; 我们。</value>
+  </data>
+  <data name="CompetitionAveragePosition" xml:space="preserve">
+    <value>产品在分类中的排序是每天都在变化的，如果想要有一个好的排序，此产品必须有4个网店提供价格。</value>
+  </data>
+  <data name="CompetitionDeatiledPositioning" xml:space="preserve">
+    <value>定位您的产品在分类中的位置。该图显示了产品在4个价格段中所占的比例（前面25％是最便宜的，其次是25-50％，等等）。这个定位的前提是此产品必须有4个网店提供价格。</value>
+  </data>
+  <data name="CompetitionLowestPrice" xml:space="preserve">
+    <value>您的产品在分类中有着最低价格的数量。请点击链接查看详细的信息和价格区別。 </value>
+  </data>
+  <data name="CompetitionMostExpensive" xml:space="preserve">
+    <value>您的产品在分类中有着最高价格的数量。请点击链接查看详细的信息和价格区別。</value>
+  </data>
+  <data name="CompetitionPositioningTopProductsInCategory" xml:space="preserve">
+    <value>显示的是最近30天点击数最多的产品，至少有4个网店的产品我们才考虑。不同的产品，尤其是热的产品才会显示在上面？</value>
+  </data>
+  <data name="CompetitionShareClickInCategory" xml:space="preserve">
+    <value>过去30天，产品在选中的分类中的点击数的情況。例如，10％意味着我的产品在此分类中有10％的人感兴趣。</value>
+  </data>
+  <data name="CompetitionTopProductByClicks" xml:space="preserve">
+    <value>从今天的点击数来确定前5名的产品。例如八分之二表示在8家网店中，我的产品是第二便宜的。这个排名的基础是一个网店至少有一个价格。那怎样定位产品的排名？</value>
+  </data>
+  <data name="ControlPanel_ProductDisplayed" xml:space="preserve">
+    <value>此分类中目前列出的所有的产品数目。注意，这个总数包括所有的网店提供的所有的产品。</value>
+  </data>
+  <data name="ControlPanel_Top5ProByClicks" xml:space="preserve">
+    <value>以上个月的点击数来确定前5个产品，其中括号內表示的是点击数。</value>
+  </data>
+  <data name="ControlPanel_Top5useripsbyclick" xml:space="preserve">
+    <value>以上个月的点击数来确认前5个的IP地址。由于隐私的原因实际的的IP地址将被屏蔽。</value>
+  </data>
+  <data name="ControlPanel_TotalProducts" xml:space="preserve">
+    <value>在PriceMe上列出的所有的产品数目。这个数目是每天更新一次。</value>
+  </data>
+  <data name="Default_MostPopuler_Help" xml:space="preserve">
+    <value>我们以过去30天浏览次数最多的产品作为最受欢迎的产品。</value>
+  </data>
+  <data name="Default_NewProducts_Help" xml:space="preserve">
+    <value>这里展示的新产品既包括最新生产的产品，又包括第一次在PriceMe上出現的已经存在的产品。</value>
+  </data>
+  <data name="Default_PopulerSearch_Help" xml:space="preserve">
+    <value>以过去20天以內用戶搜索最多的关鍵字作为最受欢迎的关鍵字。</value>
+  </data>
+  <data name="FindOnPriceMe" xml:space="preserve">
+    <value>
+PriceMe提供着比较广泛的产品分类，大部分是消费类的产品（电视机，数码相机，家用电器等等），同时我们也提供一些服务，例如带宽。如果想了解更多请点击我们的 &lt;a href="../SiteMap.aspx" rel="nofollow"&gt;网站地图&lt;/a&gt; 页面。PriceMe目前正在扩大产品的覆蓋面，如果您不能够很快的找到您需要的产品，请 &lt;a href="ContactUs.aspx" rel="nofollow"&gt;联系&lt;/a&gt;我们， 给我们一些好的建议，以便我们更好为消费者服务。</value>
+  </data>
+  <data name="Global_HomePageName" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Global_HomePageUrl" xml:space="preserve">
+    <value>http://www.priceme.com.hk</value>
+  </data>
+  <data name="HowToUse" xml:space="preserve">
+    <value>PriceMe让消费者自己比较来自各个网店的数以万计的商品的价格、评论、详细说明。您仅需要浏览我们网站几分钟，就能做出明确的购买判断，您可以迅速的知道哪个型号是最适合您的、并且可以在哪里以最低的价格买到。不管您是在线购买，还是去实体店购买，PriceMe都能给您一个最佳的参考。</value>
+  </data>
+  <data name="InformationOnPriceMe" xml:space="preserve">
+    <value>当然，我们始终沒有任何偏见的以最低的价格为第一位。网站上的评论是由消费者或相关专家提供。PriceMe不依赖于任何供应商，网店或在网站上提供信息的其他机构。我们也为一些付费客戶提供一些广告，但是并不会影响我们的公平性。PriceMe的首要目标为您的购物提供有效的信息来源。</value>
+  </data>
+  <data name="Newsletterhighlights" xml:space="preserve">
+    <value>&lt;ul&gt; 
+           &lt;li&gt;新产品发布 &lt;/li&gt;
+           &lt;li&gt;热门产品 &lt;/li&gt;
+           &lt;li&gt;产品评论 &lt;/li&gt;
+           &lt;li&gt;用戶优惠 &lt;/li&gt;
+           &lt;li&gt;其他“网上购物“信息... &lt;/li&gt;&lt;/ul&gt;
+           &lt;h2 style="padding-top: 10px"&gt;常见问題：&lt;/h2&gt; 
+&lt;ul&gt;</value>
+  </data>
+  <data name="PriceMeNewsletter" xml:space="preserve">
+    <value>PriceMe通过搜索几十家的网店的产品，为您提供最优惠的价格，因此，无论您正在寻找一台洗衣机，还是最新的MP3播放器或是其他网上热销的产品，我们都能为您快速的提供。</value>
+  </data>
+  <data name="Product_MostPopuler_Help" xml:space="preserve">
+    <value>我们以过去30天浏览次数最多的{0}作为最受欢迎的{0}。</value>
+  </data>
+  <data name="RetailerCenter" xml:space="preserve">
+    <value>把您网店的产品 &lt;a href="ListYourProducts.aspx" rel="nofollow"&gt;显示&lt;/a&gt; 到PriceMe上。</value>
+  </data>
+  <data name="RetailerFAQsWhatIsPriceMe" xml:space="preserve">
+    <value>PriceMe是一个快速成长的公司，总部在香港。我们的目标是让消费者以最低的价格从网店购买到最可靠的产品。
+作为网店的合作者，PriceMe是一个比较购物搜索引擎。我们为用戶提供价格和产品的比较。消费者来我们网站只需要比较产品，并且去网店购买。</value>
+  </data>
+  <data name="RetailerListOnPriceMe" xml:space="preserve">
+    <value>PriceMe上列出的所有网店，都是有一个网店可以供消费者购买产品，并且被认为是信誉良好的，有着竞争性价格的产品的网店。PriceMe上的网店有付费和免费的两种。PriceMe上的网店都必须接受我们的一些条款和协议，如果我们收到了网店的大量投诉信息，我们将会去掉此网店。</value>
+  </data>
+  <data name="RetailersList" xml:space="preserve">
+    <value>浏览以下网店名或点击左侧的网店类別导航，以便找到合适的网店。</value>
+  </data>
+  <data name="RetailerStoreInfoList" xml:space="preserve">
+    <value>&lt;p class="normalText"&gt;网店信息和产品价格都有网店自己提供，产品的一些参数都是从网店或是第三方机构获得，PriceMe不承担任何的报价错误等责任，我们将尽我们最大的努力为消费者提供准确的信息。请您在线购买前准确核对价格和产品规格。&lt;/p&gt;
+
+                        &lt;p class="normalText"&gt;
+网店评分和评论都由PriceMe的消费者填写，这些评论并不代表我们的意见，PriceMe不承担任何的责任。&lt;/p&gt;
+
+                        &lt;p class="normalText"&gt;PriceMe是一个在线比较购物网站，通过各网店提供的价格来帮您找到最优惠的产品。您能从PriceMe上找到中国大陆各地区的许多网店，甚至是中国香港的一些网店。&lt;/p&gt;</value>
+  </data>
+  <data name="SearchPanel" xml:space="preserve">
+    <value>总点击数和选定的分类产品的相关费用（加入选择了分类）。这些费用是基于分类的PPC的价格，请参考账户的付费部分。</value>
+  </data>
+  <data name="StatusBarText" xml:space="preserve">
+    <value>网上购物</value>
+  </data>
+  <data name="TrafficPriceMe" xml:space="preserve">
+    <value>您可以通过Pam来获取用户数目。 PriceMe团队有着丰富的工作经验，与很多大型企业有着合作关系，因此，预计未来PriceMe的访问人数会越来越多。此外，比较购物在中国有着很大的影响力，在不久的将来，越来越多的消费者会喜欢这种购物服务。</value>
+  </data>
+  <data name="WhatIsPriceMe" xml:space="preserve">
+    <value>PriceMe是一个快速成长的在线比较购物网站。我们的目标是为香港消费者实现“聪明购物“，这意味着消费者可以找到一个可靠的网店，以尽可能低的价格找到合适的产品。</value>
+  </data>
+  <data name="GTSInfo" xml:space="preserve">
+    <value>所有的价格显示的都是人民币，价格都包括服务税。</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>中国</value>
+  </data>
+  <data name="LocationCity" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Blog_URL" xml:space="preserve">
+    <value>http://blog.priceme.com.hk</value>
+  </data>
+  <data name="Mobile_URL" xml:space="preserve">
+    <value>http://m.priceme.com.hk</value>
+  </data>
+  <data name="Widget_URL" xml:space="preserve">
+    <value>http://widget.priceme.com.hk</value>
+  </data>
+  <data name="Product_ComparePrices" xml:space="preserve">
+    <value>比较价格</value>
+  </data>
+  <data name="Product_Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="Product_ExpertReviews" xml:space="preserve">
+    <value>专家评论</value>
+  </data>
+  <data name="Product_Header_Compare" xml:space="preserve">
+    <value>比较{0}价格{1}从{2}网店{3} </value>
+  </data>
+  <data name="Product_Locations" xml:space="preserve">
+    <value>地图</value>
+  </data>
+  <data name="Product_PriceHistory" xml:space="preserve">
+    <value>价格历史</value>
+  </data>
+  <data name="Product_RatingControl_ExpertReview" xml:space="preserve">
+    <value>专家评论</value>
+  </data>
+  <data name="Product_RatingControl_Rating" xml:space="preserve">
+    <value>评分</value>
+  </data>
+  <data name="Product_RatingControl_UserReview" xml:space="preserve">
+    <value>用戶评论</value>
+  </data>
+  <data name="Product_RatingControl_WriteReview" xml:space="preserve">
+    <value>寫评论</value>
+  </data>
+  <data name="Product_Title" xml:space="preserve">
+    <value>比较价格</value>
+  </data>
+  <data name="Product_TopDisplay_Alert" xml:space="preserve">
+    <value>降价提醒</value>
+  </data>
+  <data name="Product_TopDisplay_FromRetailer" xml:space="preserve">
+    <value>从{0}网店</value>
+  </data>
+  <data name="Product_Header_PriceCount" xml:space="preserve">
+    <value>所有{0}价格</value>
+  </data>
+  <data name="Product_Compare_DeliveryDetails" xml:space="preserve">
+    <value>货运细节</value>
+  </data>
+  <data name="Product_Compare_MoreInfo" xml:space="preserve">
+    <value>更多信息</value>
+  </data>
+  <data name="Product_Featured" xml:space="preserve">
+    <value>精选</value>
+  </data>
+  <data name="Product_FeaturedContent" xml:space="preserve">
+    <value>精选产品是以网店的等级，价格和产品的知名度来选择。另外的产品是以价格来排序。</value>
+  </data>
+  <data name="Product_FeaturedProduct" xml:space="preserve">
+    <value>精选产品</value>
+  </data>
+  <data name="Product_FooterProductDescription_Listed" xml:space="preserve">
+    <value>自上到PriceMe</value>
+  </data>
+  <data name="Product_Header_PriceOne" xml:space="preserve">
+    <value>1 offer for 1 retailer</value>
+  </data>
+  <data name="Product_NoProduct" xml:space="preserve">
+    <value>目前沒有任何网店在PriceMe上提供该产品，请浏览&lt;a href="{0}"&gt;相关产品&lt;/a&gt;。</value>
+  </data>
+  <data name="Product_ProductDescription" xml:space="preserve">
+    <value>产品描述</value>
+  </data>
+  <data name="Product_RightMostPopular_More" xml:space="preserve">
+    <value>更多受欢迎的。。。</value>
+  </data>
+  <data name="Product_RightMostPopular_MostPopular" xml:space="preserve">
+    <value>最热的{0}</value>
+  </data>
+  <data name="Product_SimilarLinks_Checkup" xml:space="preserve">
+    <value>选择两种产品比较</value>
+  </data>
+  <data name="Product_SimilarLinks_PriceRange" xml:space="preserve">
+    <value>价格范围</value>
+  </data>
+  <data name="Product_SimilarLinks_Related" xml:space="preserve">
+    <value>相关</value>
+  </data>
+  <data name="Product_SimilarLinks_Similar" xml:space="preserve">
+    <value>类似</value>
+  </data>
+  <data name="Product_UserReviews" xml:space="preserve">
+    <value>用戶评论</value>
+  </data>
+  <data name="Product_What" xml:space="preserve">
+    <value>这是什么</value>
+  </data>
+  <data name="RetailerInfo" xml:space="preserve">
+    <value>网店信息</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="ShoppingInformation" xml:space="preserve">
+    <value>购物信息</value>
+  </data>
+  <data name="VisitShop" xml:space="preserve">
+    <value>去逛逛</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>细节</value>
+  </data>
+  <data name="RatingControl_AddRating" xml:space="preserve">
+    <value>您的评分</value>
+  </data>
+  <data name="RatingControl_CurrentRating" xml:space="preserve">
+    <value>目前评分</value>
+  </data>
+  <data name="RatingControl_Excellent" xml:space="preserve">
+    <value>优秀</value>
+  </data>
+  <data name="RatingControl_FooterReview_Bought" xml:space="preserve">
+    <value>请注明你买了什麼</value>
+  </data>
+  <data name="RatingControl_FooterReview_Rating" xml:space="preserve">
+    <value>请说明您的评分</value>
+  </data>
+  <data name="RatingControl_Good" xml:space="preserve">
+    <value>很好</value>
+  </data>
+  <data name="RatingControl_ListDate" xml:space="preserve">
+    <value>显示日期</value>
+  </data>
+  <data name="RatingControl_OK" xml:space="preserve">
+    <value>好</value>
+  </data>
+  <data name="RatingControl_Poor" xml:space="preserve">
+    <value>差</value>
+  </data>
+  <data name="RatingControl_Verypoor" xml:space="preserve">
+    <value>很差</value>
+  </data>
+  <data name="RetailerInformation" xml:space="preserve">
+    <value>网店信息</value>
+  </data>
+  <data name="RetailerInfo_General" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="RetailerInfo_HomePage" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="RetailerInfo_ReportRetailer" xml:space="preserve">
+    <value>报告网店错误</value>
+  </data>
+  <data name="RetailerInfo_ReviewsRatings" xml:space="preserve">
+    <value>Reviews &amp; Ratings</value>
+  </data>
+  <data name="RetailerInfo_StoreCategories" xml:space="preserve">
+    <value>网店分类</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo" xml:space="preserve">
+    <value>网店信息</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Address" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardInfo" xml:space="preserve">
+    <value>信用卡信息</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_CreditCardNot" xml:space="preserve">
+    <value>不支持信用卡</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_DeliveryInfo" xml:space="preserve">
+    <value>货运信息</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Friday" xml:space="preserve">
+    <value>星期五</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_FullCompanyName" xml:space="preserve">
+    <value>公司全名</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_GSTNumber" xml:space="preserve">
+    <value>发票号码</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Monday" xml:space="preserve">
+    <value>星期一</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_MoreInfo" xml:space="preserve">
+    <value>从消费者购买产品处获取更多信息</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NoCreditCard" xml:space="preserve">
+    <value>沒有信用卡费用</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_NumberEmployees" xml:space="preserve">
+    <value>雇员人数</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_OpeningHours" xml:space="preserve">
+    <value>营业时间</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ParallelImported" xml:space="preserve">
+    <value>Parallel Imported</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_PaymentMethods" xml:space="preserve">
+    <value>付费方式</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_RegistrationNumber" xml:space="preserve">
+    <value>注册号码</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_ReturnPolicy" xml:space="preserve">
+    <value>返回策略</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Saturday" xml:space="preserve">
+    <value>星期六</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_SeeWebsite" xml:space="preserve">
+    <value>见网站。Products that are parallel imported are indicated as such.</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_StoreType" xml:space="preserve">
+    <value>网店类型</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Sunday" xml:space="preserve">
+    <value>星期日</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Thursday" xml:space="preserve">
+    <value>星期四</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_TradingName" xml:space="preserve">
+    <value>商号</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Tuesday" xml:space="preserve">
+    <value>星期二</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_Wednesday" xml:space="preserve">
+    <value>星期三</value>
+  </data>
+  <data name="RetailerInfo_StoreInfo_YearEstablished" xml:space="preserve">
+    <value>公司成立</value>
+  </data>
+  <data name="RetailerInfo_StoreProducts" xml:space="preserve">
+    <value>网店产品</value>
+  </data>
+  <data name="RetailerInfo_StoreReviews" xml:space="preserve">
+    <value>网店评论</value>
+  </data>
+  <data name="RetailerList_AvrRating" xml:space="preserve">
+    <value>平均评分</value>
+  </data>
+  <data name="RetailerList_RetailerStoreInfoList" xml:space="preserve">
+    <value>网店信息列表</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_CreditCard" xml:space="preserve">
+    <value>信用卡</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Delivery" xml:space="preserve">
+    <value>交货</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Freeshipping" xml:space="preserve">
+    <value>免运费</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Nofee" xml:space="preserve">
+    <value>不收费</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Notsupported" xml:space="preserve">
+    <value>不支持</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Only" xml:space="preserve">
+    <value>仅仅</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_Providedby" xml:space="preserve">
+    <value>提供</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="RetailerProduct_TopDisplay_UIC" xml:space="preserve">
+    <value>UIC</value>
+  </data>
+  <data name="Global_SearchButtonImageUrl" xml:space="preserve">
+    <value>http://images.pricemestatic.com/images/css/search.png</value>
+  </data>
+  <data name="Module_CompareBaske_EmptyInfo" xml:space="preserve">
+    <value>您的比较列表是空的</value>
+  </data>
+  <data name="Module_CompareBaske_Title" xml:space="preserve">
+    <value>比较列表</value>
+  </data>
+  <data name="Module_InfoATagText" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="Module_MostPopularProduct_Tilte" xml:space="preserve">
+    <value>最热的</value>
+  </data>
+  <data name="Module_MyHistory_Title" xml:space="preserve">
+    <value>我的历史</value>
+  </data>
+  <data name="Module_NewsletterSignUp_Content" xml:space="preserve">
+    <value>注冊并且赢得100元</value>
+  </data>
+  <data name="Module_NewsletterSignUp_Title" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="Module_News_Title" xml:space="preserve">
+    <value>新闻</value>
+  </data>
+  <data name="Module_PopularBrands_Tilte" xml:space="preserve">
+    <value>热品牌</value>
+  </data>
+  <data name="Module_StatusBar_PricesCompared" xml:space="preserve">
+    <value>价格比较:</value>
+  </data>
+  <data name="Module_StatusBar_PricesReviews" xml:space="preserve">
+    <value>产品评论:</value>
+  </data>
+  <data name="Module_StatusBar_RetailersOnline" xml:space="preserve">
+    <value>在线网店:</value>
+  </data>
+  <data name="TextString_Compare" xml:space="preserve">
+    <value>比较</value>
+  </data>
+  <data name="TextString_Managelist" xml:space="preserve">
+    <value>列表管理</value>
+  </data>
+  <data name="Default_HotSearch_Title" xml:space="preserve">
+    <value>热门搜索</value>
+  </data>
+  <data name="Default_MostPopularCategories_Title" xml:space="preserve">
+    <value>热门分类</value>
+  </data>
+  <data name="Default_NewExpertReview_Tilte" xml:space="preserve">
+    <value>最新专家评论</value>
+  </data>
+  <data name="Module_CatalogShoppingInformation_Title" xml:space="preserve">
+    <value>在线 {0} 购物信息</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_OtherTitle" xml:space="preserve">
+    <value>別的 {0} 分类</value>
+  </data>
+  <data name="Module_CatalogSiteMapDetail_SeeMore" xml:space="preserve">
+    <value>查看更多 {0}</value>
+  </data>
+  <data name="Module_CatalogSiteMap_Title" xml:space="preserve">
+    <value>最热门 {0} 分类</value>
+  </data>
+  <data name="Module_FooterBuyingGuides_Content" xml:space="preserve">
+    <value>购买{0}时您最关注什么。</value>
+  </data>
+  <data name="Module_MyRecentlySearch_Tilte" xml:space="preserve">
+    <value>最近搜索</value>
+  </data>
+  <data name="Module_MyRecentlyViewed_Tilte" xml:space="preserve">
+    <value>查看更多</value>
+  </data>
+  <data name="TextString_Brands" xml:space="preserve">
+    <value>品牌 </value>
+  </data>
+  <data name="TextString_CatalogSelection" xml:space="preserve">
+    <value>选择：</value>
+  </data>
+  <data name="TextString_CatalogSortby" xml:space="preserve">
+    <value>排序：</value>
+  </data>
+  <data name="TextString_CatalogView" xml:space="preserve">
+    <value>查看：</value>
+  </data>
+  <data name="TextString_CompareButtonDescription" xml:space="preserve">
+    <value>查看4个您选择的产品，点击比较按钮进行比较</value>
+  </data>
+  <data name="TextString_DeleteAll" xml:space="preserve">
+    <value>刪除所有</value>
+  </data>
+  <data name="TextString_Gallery" xml:space="preserve">
+    <value>表格</value>
+  </data>
+  <data name="TextString_Guides" xml:space="preserve">
+    <value>指南</value>
+  </data>
+  <data name="TextString_JoinPriceMe" xml:space="preserve">
+    <value>加入 PriceMe</value>
+  </data>
+  <data name="TextString_List" xml:space="preserve">
+    <value>列表</value>
+  </data>
+  <data name="TextString_LogIn" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="TextString_LogOut" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="TextString_MyAccount" xml:space="preserve">
+    <value>我的账户</value>
+  </data>
+  <data name="TextString_Narrowby" xml:space="preserve">
+    <value>范围</value>
+  </data>
+  <data name="TextString_Price" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="TextString_Quick" xml:space="preserve">
+    <value>快速</value>
+  </data>
+  <data name="TextString_RelatedCategories" xml:space="preserve">
+    <value>相关分类</value>
+  </data>
+  <data name="TextString_Retailers" xml:space="preserve">
+    <value>网店</value>
+  </data>
+  <data name="TextString_Searchwithin" xml:space="preserve">
+    <value>內搜索</value>
+  </data>
+  <data name="TextString_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="TextString_AboutUs" xml:space="preserve">
+    <value>关于我们</value>
+  </data>
+  <data name="TextString_AddToMyCompareList" xml:space="preserve">
+    <value>添加到我的比较列表中</value>
+  </data>
+  <data name="TextString_BestPrice" xml:space="preserve">
+    <value>最低价格</value>
+  </data>
+  <data name="TextString_BrowseAllCategories" xml:space="preserve">
+    <value>浏览所有分类</value>
+  </data>
+  <data name="TextString_Community" xml:space="preserve">
+    <value>社区</value>
+  </data>
+  <data name="TextString_Contact" xml:space="preserve">
+    <value>联系</value>
+  </data>
+  <data name="TextString_ContactUs" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+  <data name="TextString_ContactUsError1" xml:space="preserve">
+    <value>请输入您的名字</value>
+  </data>
+  <data name="TextString_ContactUsError2" xml:space="preserve">
+    <value>请输入您的E- mail地址</value>
+  </data>
+  <data name="TextString_ContactUsError3" xml:space="preserve">
+    <value>请输入留言</value>
+  </data>
+  <data name="TextString_ContactUsMessage" xml:space="preserve">
+    <value>您的留言：</value>
+  </data>
+  <data name="TextString_ContactUsMSG1" xml:space="preserve">
+    <value>看不清？点击应征码图片获得新的！不考虑大小写。</value>
+  </data>
+  <data name="TextString_ContactUsMSG2" xml:space="preserve">
+    <value>看不清？点击获取新的！</value>
+  </data>
+  <data name="TextString_ContactUsSuccess" xml:space="preserve">
+    <value>联系成功</value>
+  </data>
+  <data name="TextString_ContactUsSuccess_Text1" xml:space="preserve">
+    <value>谢谢您联系我们。&lt;br /&gt;已经收到您的留言，我们会尽快回复！</value>
+  </data>
+  <data name="TextString_ContactUsTopic" xml:space="preserve">
+    <value>话题：</value>
+  </data>
+  <data name="TextString_ContactUsYourEmail" xml:space="preserve">
+    <value>您的 E-mail 地址：</value>
+  </data>
+  <data name="TextString_ContactUsYourFullName" xml:space="preserve">
+    <value>您的名字：</value>
+  </data>
+  <data name="TextString_ContactUs_Text1" xml:space="preserve">
+    <value>如果您有任何的关于PriceMe的意见或是建议请联系我们。</value>
+  </data>
+  <data name="TextString_ContactUs_Text2" xml:space="preserve">
+    <value>PriceMe只是一个比较购物网站,不是零售商或商家。
+                    &lt;br /&gt;
+                    请使用"Visit Shop"按钮转到出售商品的零售商或商家。</value>
+  </data>
+  <data name="TextString_NextPrice" xml:space="preserve">
+    <value>下一价格</value>
+  </data>
+  <data name="TextString_PopularBrands" xml:space="preserve">
+    <value>热门供应商</value>
+  </data>
+  <data name="TextString_PopularBrandsSiteMap" xml:space="preserve">
+    <value>流行品牌地图</value>
+  </data>
+  <data name="TextString_PriceCount" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="TextString_Prices" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="TextString_ProductName" xml:space="preserve">
+    <value>产品名</value>
+  </data>
+  <data name="TextString_Retailer" xml:space="preserve">
+    <value>网店</value>
+  </data>
+  <data name="TextString_RetailerCentre" xml:space="preserve">
+    <value>网店中心</value>
+  </data>
+  <data name="TextString_SeeAll" xml:space="preserve">
+    <value>查看全部</value>
+  </data>
+  <data name="TextString_SeeProductAt" xml:space="preserve">
+    <value>查看以</value>
+  </data>
+  <data name="TextString_SiteMap" xml:space="preserve">
+    <value>网站地图</value>
+  </data>
+  <data name="TextString_TopBrands" xml:space="preserve">
+    <value>热门供应商</value>
+  </data>
+  <data name="TextString_VisitShop" xml:space="preserve">
+    <value>去看看</value>
+  </data>
+  <data name="TextString_AdvancedFeatures" xml:space="preserve">
+    <value>高级功能</value>
+  </data>
+  <data name="TextString_FAQs" xml:space="preserve">
+    <value>常见问題</value>
+  </data>
+  <data name="TextString_HowThisWorks" xml:space="preserve">
+    <value>如何工作</value>
+  </data>
+  <data name="TextString_HowToUsePriceMe" xml:space="preserve">
+    <value>如何使用PriceMe</value>
+  </data>
+  <data name="TextString_MediaCentre" xml:space="preserve">
+    <value>媒体中心</value>
+  </data>
+  <data name="TextString_NewsArticles" xml:space="preserve">
+    <value>新文章</value>
+  </data>
+  <data name="TextString_Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="TextString_PreviousNewsletters" xml:space="preserve">
+    <value>以前的Newsletters</value>
+  </data>
+  <data name="TextString_PriceMeBlog" xml:space="preserve">
+    <value>博客</value>
+  </data>
+  <data name="TextString_PriceMeCommunity" xml:space="preserve">
+    <value>PriceMe社区</value>
+  </data>
+  <data name="Product_PriceCompare_Fees" xml:space="preserve">
+    <value>费用</value>
+  </data>
+  <data name="Product_PriceCompare_FeesSee" xml:space="preserve">
+    <value>费用: 去网店查看</value>
+  </data>
+  <data name="Product_PriceCompare_NoFees" xml:space="preserve">
+    <value>免费</value>
+  </data>
+  <data name="Product_PriceCompare_PriceMeCertified" xml:space="preserve">
+    <value>PriceMe认证</value>
+  </data>
+  <data name="TextString_BasePrice" xml:space="preserve">
+    <value>基本价</value>
+  </data>
+  <data name="TextString_CreditCard" xml:space="preserve">
+    <value>信用卡</value>
+  </data>
+  <data name="TextString_Delivery" xml:space="preserve">
+    <value>送货&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="TextString_DeliveryTime" xml:space="preserve">
+    <value>送货时间</value>
+  </data>
+  <data name="TextString_FreeShipping" xml:space="preserve">
+    <value>免费送货</value>
+  </data>
+  <data name="TextString_Nofee" xml:space="preserve">
+    <value>免费</value>
+  </data>
+  <data name="TextString_Notsupported" xml:space="preserve">
+    <value>不支持</value>
+  </data>
+  <data name="TextString_Stock" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="TextString_Total" xml:space="preserve">
+    <value>总数&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="Product_Maps" xml:space="preserve">
+    <value>地图</value>
+  </data>
+  <data name="TextString_CompareProducts" xml:space="preserve">
+    <value>比较产品</value>
+  </data>
+  <data name="TextString_Popularity" xml:space="preserve">
+    <value>受欢迎</value>
+  </data>
+  <data name="TextString_PricesAndReviews" xml:space="preserve">
+    <value>价格与评论</value>
+  </data>
+  <data name="TextString_ReviewRating" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="TextString_ProductName" xml:space="preserve">
+    <value>产品名</value>
+  </data>
+  <data name="ClassName_CompareImage" xml:space="preserve">
+    <value>CHCompareImage</value>
+  </data>
+  <data name="TextString_404PageContent" xml:space="preserve">
+    <value>&lt;p&gt;我们已经记录此错误！&lt;/p&gt;&lt;ul id="reasons"&gt;
+					&lt;li&gt;如果是您手动输入的网站那么请确认输入是否正确。&lt;/li&gt;
+					&lt;li&gt;如果是从收藏夹点击访问那么该页面已经过期了。&lt;/li&gt;
+					&lt;li&gt;如果我们自己的服务器问题，我们会尽快修复此错误，请稍后再访问&lt;/li&gt;
+&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;如果还遇到问题请&lt;a href="/About/contactUs.aspx"&gt;联系我们&lt;/a&gt;。&lt;/p&gt;</value>
+  </data>
+  <data name="TextString_404PageH1" xml:space="preserve">
+    <value>对不起，该页面不存在！</value>
+  </data>
+  <data name="TextString_AllBrands" xml:space="preserve">
+    <value>全部供应商</value>
+  </data>
+  <data name="TextString_EmailATagTitle" xml:space="preserve">
+    <value>点击共享本页面用e-mail</value>
+  </data>
+  <data name="TextString_FacebookATagTitle" xml:space="preserve">
+    <value>点击共享本页面到Facebook</value>
+  </data>
+  <data name="TextString_LessFilters" xml:space="preserve">
+    <value>显示更少选择</value>
+  </data>
+  <data name="TextString_Manu_BrowseAll" xml:space="preserve">
+    <value>浏览所有...</value>
+  </data>
+  <data name="TextString_OnPriceMe" xml:space="preserve">
+    <value>在Price Me上</value>
+  </data>
+  <data name="TextString_PageNext" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="TextString_PagePrev" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="TextString_PriceMeLogoATagTitle" xml:space="preserve">
+    <value>在线购物与比较价格</value>
+  </data>
+  <data name="TextString_PriceMeLogoTitle" xml:space="preserve">
+    <value>PriceMe - 比較與網購</value>
+  </data>
+  <data name="TextString_PrintATagTitle" xml:space="preserve">
+    <value>点击打印本页面</value>
+  </data>
+  <data name="TextString_Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="TextString_SearchButtonAlter" xml:space="preserve">
+    <value>搜索网店产品</value>
+  </data>
+  <data name="TextString_SeeAllBrands" xml:space="preserve">
+    <value>查看所有的供应商</value>
+  </data>
+  <data name="TextString_ShowMoreFilters" xml:space="preserve">
+    <value>显示更多选择</value>
+  </data>
+  <data name="TextString_TwitterATagTitle" xml:space="preserve">
+    <value>点击共享本页面到Twitter</value>
+  </data>
+  <data name="URL_ImageGo" xml:space="preserve">
+    <value>http://images.pricemestatic.com/images/css/go1.png</value>
+  </data>
+  <data name="URL_ImageSearch" xml:space="preserve">
+    <value>http://images.pricemestatic.com/images/css/search1.png</value>
+  </data>
+  <data name="ClassName_categorySitemapTd" xml:space="preserve">
+    <value>categorySitemapTdCN</value>
+  </data>
+  <data name="ClassName_SingUpImg" xml:space="preserve">
+    <value>SingUpImgCN</value>
+  </data>
+  <data name="TextString_BrowseAll" xml:space="preserve">
+    <value>浏览所有......</value>
+  </data>
+  <data name="TextString_YourDetails" xml:space="preserve">
+    <value>个人信息</value>
+  </data>
+  <data name="TextString_Categories" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="TextString_FirstName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="TextString_RetailerList" xml:space="preserve">
+    <value>网店中心</value>
+  </data>
+  <data name="TextString_YourEmail" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="URL_ImagesCompare" xml:space="preserve">
+    <value>http://images.pricemestatic.com/images/css/comparez.png</value>
+  </data>
+  <data name="URL_ImageSubmite" xml:space="preserve">
+    <value>http://images.pricemestatic.com/images/css/submitz.png</value>
+  </data>
+  <data name="TextString_Reviews" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="TextString_Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="TextString_Continue" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful" xml:space="preserve">
+    <value>注册成功</value>
+  </data>
+  <data name="TextString_RegistrationSuccessful_Text1" xml:space="preserve">
+    <value>感谢您的注册. PriceMe已经发了一封包含账户详细信息的电子邮件给您。开始比较购物吧！</value>
+  </data>
+  <data name="TextString_LikeUs" xml:space="preserve">
+    <value>喜欢我们</value>
+  </data>
+  <data name="TextString_Brand" xml:space="preserve">
+    <value>品牌</value>
+  </data>
+  <data name="TextString_RetailerProductView" xml:space="preserve">
+    <value>查看其它信息</value>
+  </data>
+  <data name="Module_MyWishlist_EmptyInfo" xml:space="preserve">
+    <value>您的愿望列表是空的</value>
+  </data>
+  <data name="Module_MyWishlist_Title" xml:space="preserve">
+    <value>愿望列表</value>
+  </data>
+  <data name="TextString_SearchNoResultTitle" xml:space="preserve">
+    <value>没有搜索结果！</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_1" xml:space="preserve">
+    <value>请确认输入的信息是否有错字。</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_2" xml:space="preserve">
+    <value>试试不同的关键字。</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_3" xml:space="preserve">
+    <value>试试用更常用的关键字代替 （例子： "Panasonic cameras" 代替"Panasonic FT-2 Kit Stabiliser"）。</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTipContent_4" xml:space="preserve">
+    <value>另外，还可以通过分类或品牌查找您所需要的产品！</value>
+  </data>
+  <data name="TextString_SearchNoResultTitleTips" xml:space="preserve">
+    <value>搜索提示：</value>
+  </data>
+  <data name="PriceCurrency" xml:space="preserve">
+    <value>CNY</value>
+  </data>
+  <data name="DomainName" xml:space="preserve">
+    <value>priceme.com.cn</value>
+  </data>
+  <data name="GoogleMapUrl" xml:space="preserve">
+    <value>http://maps.google.com.hk</value>
+  </data>
+  <data name="LocationLat" xml:space="preserve">
+    <value>22.3</value>
+  </data>
+  <data name="LocationLng" xml:space="preserve">
+    <value>114.2</value>
+  </data>
+  <data name="TextString_Culture" xml:space="preserve">
+    <value>zh-CN</value>
+  </data>
+  <data name="Module_HotProduct_Tilte" xml:space="preserve">
+    <value>最热的产品</value>
+  </data>
+  <data name="ShortCountryName" xml:space="preserve">
+    <value>CN</value>
+  </data>
+  <data name="TextString_MerchantLogin" xml:space="preserve">
+    <value>Merchant Login</value>
+  </data>
+</root>

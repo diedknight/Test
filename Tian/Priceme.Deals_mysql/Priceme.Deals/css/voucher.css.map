@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "file": "voucher.css",
+  "sources": ["voucher.scss"],
+  "names": [],
+  "mappings": "AAAA,cAAc,YAEN,aAAc,KACtB,cAAc,aAGN,cAAe,gBACf,WAAY,gBACZ,eAAgB,IAChB,OAAQ,aAChB,cAAc,aAGN,UAAW,KACX,YAAa,IACb,YAAa,KACb,MAAO,SAIf,gBAAgB,UAER,OAAQ,QACR,MAAO,OACf,gBAAgB,aAGR,MAAO,MACP,OAAO"
+}
