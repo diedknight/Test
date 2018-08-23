@@ -81,17 +81,17 @@ namespace PopualerSearchIndexBuilder
             foreach (var lcPath in luceneConfigFilePathArray)
             {
                 if (File.Exists(lcPath))
-                    UpDateWebConfig(lcPath, "PopularSearchIndexPath2", idxDir);
+                    UpDateWebConfig(lcPath, configuration["LuceneKey"], idxDir);
                 else
                     LogController.WriteException("LuceneConfigPath : " + lcPath + " file not exists.");
             }
 
-            if (bool.Parse(configuration["byFTP"]))
+            if (bool.Parse(configuration["ToFTP"]))
             {
-                string userID = configuration["userid_FTP"];
-                string password = configuration["password_FTP"];
-                string targetIP = configuration["targetIP_FTP"];
-                string targetPath = configuration["targetPath_FTP"];
+                string userID = configuration["FtpUserId"];
+                string password = configuration["FtpPassword"];
+                string targetIP = configuration["FtpTargetIP"];
+                string targetPath = configuration["FtpTargetPath"];
                 try
                 {
                     CopyFile.FtpCopy.UploadDirectorySmall(idxDir, targetPath, targetIP, userID, password, "-no");
@@ -1330,23 +1330,23 @@ namespace PopualerSearchIndexBuilder
         {
             try
             {
-                string userID = configuration["userid_FTP"];
-                string password = configuration["password_FTP"];
-                string targetIP = configuration["targetIP_FTP"];
-                string targetPath = configuration["targetPath_FTP"];
+                string userID = configuration["FtpUserId"];
+                string password = configuration["FtpPassword"];
+                string targetIP = configuration["FtpTargetIP"];
+                string targetPath = configuration["FtpTargetPath"];
 
-                string targetLuceneConfigPath = configuration["TargetLuceneConfigPath_FTP"];
-                string targetLuceneIndexRootPath = configuration["TargetLuceneIndexRootPath_FTP"];
-                string luceneConfigFileCopyDir = configuration["LuceneConfigFileCopyDir"];
+                string targetLuceneConfigPath = configuration["FtpTargetLuceneConfigPath"];
+                string targetLuceneIndexRootPath = configuration["FtpTargetLuceneIndexRootPath"];
+                string luceneConfigFileCopyDir = configuration["FtpLuceneConfigFileCopyDir"];
 
-                string luceneConfigFileName = configuration["TargetLuceneConfigName"];
+                string luceneConfigFileName = configuration["FtpTargetLuceneConfigName"];
                 string luceneConfigFilePath = Path.Combine(targetLuceneConfigPath, luceneConfigFileName);
 
                 CopyFile.FtpCopy.Download(luceneConfigFileCopyDir, luceneConfigFilePath, luceneConfigFileName, targetIP, userID, password);
 
                 string localluceneConfigFilePath = Path.Combine(luceneConfigFileCopyDir, luceneConfigFileName);
 
-                string appKey = "PopularSearchIndexPath2";
+                string appKey = configuration["LuceneKey"];
                 path = path.TrimEnd('\\');
 
                 string updateLucenePath = Path.Combine(targetLuceneIndexRootPath, path + "\\");
