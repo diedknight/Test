@@ -73,8 +73,8 @@ namespace Priceme.Deals.Code.Data
             string sql1 = @"
                 select * from (
                     select 
-	                TIMESTAMPDIFF(day,ValidUntilDate,now()) as willExpire,
-	                (case when TIMESTAMPDIFF(HOUR,ValidUntilDate,now())<=24 and TIMESTAMPDIFF(HOUR,ValidUntilDate,now())>=0 then 1 else 0 end) as expireSoon,
+	                TIMESTAMPDIFF(day,now(),ValidUntilDate) as willExpire,
+	                (case when TIMESTAMPDIFF(HOUR,now(),ValidUntilDate)<=24 and TIMESTAMPDIFF(HOUR,now(),ValidUntilDate)>=0 then 1 else 0 end) as expireSoon,
 	                v.*,r.LogoFile as RetailerLogo 
 	                from Deals_Voucher as v left join CSK_Store_Retailer as r on v.RetailerId=r.RetailerId
                 ) as a
