@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteMap", "SiteMap\SiteMap.csproj", "{96405B3D-E924-4901-A9A6-B8C4C315B90A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopyFile", "..\..\Minitools\PriceMeTools\PopualerSearchIndexBuilder\CopyFile\CopyFile.csproj", "{C85871D5-B8B6-4197-9543-F37A3383B98E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96405B3D-E924-4901-A9A6-B8C4C315B90A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96405B3D-E924-4901-A9A6-B8C4C315B90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96405B3D-E924-4901-A9A6-B8C4C315B90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96405B3D-E924-4901-A9A6-B8C4C315B90A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85871D5-B8B6-4197-9543-F37A3383B98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85871D5-B8B6-4197-9543-F37A3383B98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85871D5-B8B6-4197-9543-F37A3383B98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85871D5-B8B6-4197-9543-F37A3383B98E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63E4C4A5-1C8B-4487-B739-E08E3391311F}
+	EndGlobalSection
+EndGlobal
