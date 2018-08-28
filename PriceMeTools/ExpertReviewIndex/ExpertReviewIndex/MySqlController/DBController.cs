@@ -15,36 +15,29 @@ namespace ExpertReviewIndex.MySqlController
             pvsList = new List<int>();
 
             string sql = "Select ProductID, ProductRatingVotes, ProductRatingSum From CSK_Store_ProductVotesSum";
-            using (var idr = ExecuteDataReader(sql, null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_mysql")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    ProductVotesSum er = new ProductVotesSum();
-                    er.ProductID = int.Parse(idr["ProductID"].ToString());
-                    er.ProductRatingVotes = int.Parse(idr["ProductRatingVotes"].ToString());
-                    er.ProductRatingSum = int.Parse(idr["ProductRatingSum"].ToString());
+                    using (var idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            ProductVotesSum er = new ProductVotesSum();
+                            er.ProductID = int.Parse(idr["ProductID"].ToString());
+                            er.ProductRatingVotes = int.Parse(idr["ProductRatingVotes"].ToString());
+                            er.ProductRatingSum = int.Parse(idr["ProductRatingSum"].ToString());
 
-                    if (!pvsDic.ContainsKey(er.ProductID))
-                        pvsDic.Add(er.ProductID, er);
+                            if (!pvsDic.ContainsKey(er.ProductID))
+                                pvsDic.Add(er.ProductID, er);
 
-                    if (!pvsList.Contains(er.ProductID))
-                        pvsList.Add(er.ProductID);
+                            if (!pvsList.Contains(er.ProductID))
+                                pvsList.Add(er.ProductID);
+                        }
+                    }
                 }
             }
-        }
-
-        public static IDataReader ExecuteDataReader(string sqltext, MySqlParameter[] param)
-        {
-            MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_mysql"));
-
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(sqltext, conn);
-            if (param != null && param.Length > 0)
-                comm.Parameters.AddRange(param);
-
-            IDataReader idr = comm.ExecuteReader();
-
-            return idr;
         }
     }
 }

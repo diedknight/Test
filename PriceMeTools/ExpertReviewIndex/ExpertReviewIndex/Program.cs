@@ -41,7 +41,7 @@ namespace ExpertReviewIndex
                 {
                     BuildIndexLog.WriterLog("Copy Index...    at: " + DateTime.Now);
 
-                    string indexPath = SiteConfig.AppSettings("IndexRootPath") + @"\" + date;
+                    string indexPath = SiteConfig.AppSettings("IndexRootPath") + date;
                     
                     ModifyLuceneConfig(indexPath);
                     
@@ -94,7 +94,7 @@ namespace ExpertReviewIndex
             
             try
             {
-                string[] lucenepaths = SiteConfig.AppSettings("LocalLuceneConfigPath").Split(';');
+                string[] lucenepaths = SiteConfig.AppSettings("LocalLuceneConfigPath").Split(',');
                 foreach (string lucenepath in lucenepaths)
                 {
                     string appKey = "ExpertReviewIndexPath";

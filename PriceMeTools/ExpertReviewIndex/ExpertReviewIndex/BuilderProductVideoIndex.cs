@@ -48,19 +48,13 @@ namespace ExpertReviewIndex
         {
             BuildIndexLog.WriterLog("Get Product Video and writer index...   at: " + DateTime.Now);
 
-            using (IDataReader dr = SqlServerController.DBController.GetProductVideo())
-            {
-                int i = 0;
+            List<ProductVideo> datas = SqlServerController.DBController.GetProductVideo();
 
-                while (dr.Read())
-                {
-                    ProductVideo video = new ProductVideo();
-                    video.ProductID = int.Parse(dr["ProductID"].ToString());
-                    video.Url = dr["Url"].ToString();
-                    video.Thumbnail = dr["Thumbnail"].ToString();
-                    WriterIndex(video, i);
-                    i++;
-                }
+            int i = 0;
+            foreach (ProductVideo video in datas)
+            {
+                WriterIndex(video, i);
+                i++;
             }
         }
 

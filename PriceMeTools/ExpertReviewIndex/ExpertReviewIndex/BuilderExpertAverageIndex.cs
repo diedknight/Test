@@ -103,7 +103,7 @@ namespace ExpertReviewIndex
                 if (ra.ExpertReviewCount > 0 || ra.UserReviewCount > 0 || userVotes > 0)
                     ra.ProductRating = GetAverageRating(userRatingSum, userRatingVotes, priceMeScore, votesHasScore, userAverageRating, userVotes);
 
-                BuildIndexLog.WriterLog("PID:" + ra.ProductID + "\tExpertReviewCount:" + ra.ExpertReviewCount + "\tPriceMeScore:" + priceMeScore + "\tVotesHasScore:" + votesHasScore + "\tUserAverageRating:" + userAverageRating + "\tUserVotes:" + userVotes + "\tUserReviewCount:" + ra.UserReviewCount + "\tUserRatingVotes:" + userRatingVotes + "\tUserRatingSum:" + userRatingSum);
+                //BuildIndexLog.WriterLog("PID:" + ra.ProductID + "\tExpertReviewCount:" + ra.ExpertReviewCount + "\tPriceMeScore:" + priceMeScore + "\tVotesHasScore:" + votesHasScore + "\tUserAverageRating:" + userAverageRating + "\tUserVotes:" + userVotes + "\tUserReviewCount:" + ra.UserReviewCount + "\tUserRatingVotes:" + userRatingVotes + "\tUserRatingSum:" + userRatingSum);
 
                 //userVotes + ra.ExpertReviewCount = ExpertReviewCount
                 ra.ExpertReviewCount = userVotes + ra.ExpertReviewCount;
@@ -134,7 +134,7 @@ namespace ExpertReviewIndex
 
         private void WriterIndex(ReviewAverage ra)
         {
-            BuildIndexLog.WriterLog("WriterIndex...");
+            //BuildIndexLog.WriterLog("WriterIndex...");
             Document doc = new Document();
 
             doc.Add(new Int32Field("ProductID", ra.ProductID, Field.Store.YES));
