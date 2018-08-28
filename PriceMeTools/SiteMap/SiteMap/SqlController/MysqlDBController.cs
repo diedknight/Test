@@ -13,14 +13,21 @@ namespace SiteMap.SqlController
             categorys = new Dictionary<int, string>();
 
             string sql = "select CategoryID,CategoryName from CSK_Store_Category where ParentID = 0";
-            using (IDataReader idr = ExecuteDataReader(sql, "conn_NZ", null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_NZ")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    int cid = int.Parse(idr["CategoryId"].ToString());
-                    string cname = idr["CategoryName"].ToString();
-                    if (!categorys.ContainsKey(cid))
-                        categorys.Add(cid, cname);
+                    using (IDataReader idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            int cid = int.Parse(idr["CategoryId"].ToString());
+                            string cname = idr["CategoryName"].ToString();
+                            if (!categorys.ContainsKey(cid))
+                                categorys.Add(cid, cname);
+                        }
+                    }
                 }
             }
         }
@@ -31,11 +38,18 @@ namespace SiteMap.SqlController
             int parentid = 0;
 
             string sql = "select ParentID From CSK_Store_Category where CategoryID = " + cid;
-            using (IDataReader idr = ExecuteDataReader(sql, "conn_NZ", null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_NZ")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    int.TryParse(idr["ParentID"].ToString(), out parentid);
+                    using (IDataReader idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            int.TryParse(idr["ParentID"].ToString(), out parentid);
+                        }
+                    }
                 }
             }
 
@@ -53,14 +67,21 @@ namespace SiteMap.SqlController
 
             string sql = "select CategoryID,CategoryName from CSK_Store_Category where CategoryID in ( "
                      + "select ParentID from CSK_Store_Category where categoryid in (select categoryid from CSK_Store_ProductNew)) and ParentID = 0";
-            using (IDataReader idr = ExecuteDataReader(sql, "conn_NZ", null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_NZ")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    int cid = int.Parse(idr["CategoryId"].ToString());
-                    string cname = idr["CategoryName"].ToString();
-                    if (!subCategoryDic.ContainsKey(cid))
-                        categorys.Add(cid, cname);
+                    using (IDataReader idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            int cid = int.Parse(idr["CategoryId"].ToString());
+                            string cname = idr["CategoryName"].ToString();
+                            if (!subCategoryDic.ContainsKey(cid))
+                                categorys.Add(cid, cname);
+                        }
+                    }
                 }
             }
         }
@@ -70,14 +91,21 @@ namespace SiteMap.SqlController
             subCategoryDic = new Dictionary<int, string>();
 
             string sql = "select * from csk_store_category where isSearchOnly = 0 and categoryId not in (select parentId from csk_store_category) and CategoryID in (select CategoryID from CSK_Store_ProductNew)";
-            using (IDataReader idr = ExecuteDataReader(sql, "conn_NZ", null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_NZ")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    int cid = int.Parse(idr["CategoryId"].ToString());
-                    string cname = idr["CategoryName"].ToString();
-                    if (!subCategoryDic.ContainsKey(cid))
-                        subCategoryDic.Add(cid, cname);
+                    using (IDataReader idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            int cid = int.Parse(idr["CategoryId"].ToString());
+                            string cname = idr["CategoryName"].ToString();
+                            if (!subCategoryDic.ContainsKey(cid))
+                                subCategoryDic.Add(cid, cname);
+                        }
+                    }
                 }
             }
         }
@@ -87,11 +115,18 @@ namespace SiteMap.SqlController
             List<string>  VariantProductIds = new List<string>();
 
             string sql = "select LinedPID from IntraLinkingGenerationAndRelated where LinkType = 'Variant'";
-            using (IDataReader idr = ExecuteDataReader(sql, "conn_Common", null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_Common")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    VariantProductIds.Add(idr.GetInt32(0).ToString());
+                    using (IDataReader idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            VariantProductIds.Add(idr.GetInt32(0).ToString());
+                        }
+                    }
                 }
             }
 
@@ -103,29 +138,22 @@ namespace SiteMap.SqlController
             List<int> isSearchOnlyList = new List<int>();
 
             string sql = "select CategoryID from CSK_Store_Category where isSearchOnly = 1";
-            using (IDataReader idr = ExecuteDataReader(sql, "conn_Common", null))
+            using (MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings("conn_Common")))
             {
-                while (idr.Read())
+                conn.Open();
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
-                    isSearchOnlyList.Add(idr.GetInt32(0));
+                    using (IDataReader idr = comm.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            isSearchOnlyList.Add(idr.GetInt32(0));
+                        }
+                    }
                 }
             }
 
             return isSearchOnlyList;
-        }
-
-        public static IDataReader ExecuteDataReader(string sqltext, string connerctionname, MySqlParameter[] param)
-        {
-            MySqlConnection conn = new MySqlConnection(SiteConfig.ConnectionStrings(connerctionname));
-
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(sqltext, conn);
-            if (param != null && param.Length > 0)
-                comm.Parameters.AddRange(param);
-
-            IDataReader idr = comm.ExecuteReader();
-
-            return idr;
         }
     }
 }

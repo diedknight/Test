@@ -72,16 +72,17 @@ namespace SiteMap
             List<ProductCatalog> pcs = new List<ProductCatalog>();
 
             IndexSearcher indexSearcher = GetSearcherByCategoryID(cid);
+            if (indexSearcher == null) return pcs;
 
             Sort sort = new Sort();
 
             TopFieldDocs topFieldDocs = null;
             BooleanQuery booleanQuery = new BooleanQuery();
 
-            var nquery = NumericRangeQuery.NewInt32Range("CategoryID", cid, cid, true, true);
-            booleanQuery.Add(nquery, Occur.MUST);
-            //TermQuery cQuery = new TermQuery(new Term("CategoryID", cid.ToString()));
-            //booleanQuery.Add(cQuery, Occur.MUST);
+            Lucene.Net.Util.BytesRef btRef = new Lucene.Net.Util.BytesRef(Lucene.Net.Util.NumericUtils.BUF_SIZE_INT32);
+            Lucene.Net.Util.NumericUtils.Int32ToPrefixCoded(cid, 0, btRef);
+            TermQuery termQuery = new TermQuery(new Term("CategoryID", btRef));
+            booleanQuery.Add(termQuery, Occur.MUST);
 
             topFieldDocs = indexSearcher.Search(booleanQuery, null, int.MaxValue, sort);
 

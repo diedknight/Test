@@ -34,6 +34,7 @@ namespace SiteMap
         string financeSiteMapPath = SiteConfig.AppSettings("FinanceSiteMapPath").ToString();
         string plansSiteMapPath = SiteConfig.AppSettings("PlansSiteMapPath").ToString();
         string blogSiteMapPath = SiteConfig.AppSettings("BlogSiteMapPath").ToString();
+        string consumerSiteMapPath = SiteConfig.AppSettings("ConsumerSiteMapPath").ToString();
 
         public void CreateSiteMap()
         {
@@ -264,6 +265,7 @@ namespace SiteMap
                 categoryUrlList.Add(financeSiteMapPath);
                 categoryUrlList.Add(plansSiteMapPath);
                 categoryUrlList.Add(blogSiteMapPath);
+                categoryUrlList.Add(consumerSiteMapPath);
             }
         }
 
