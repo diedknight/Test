@@ -158,8 +158,8 @@ namespace IndexBuildCommon
 
             //ProductVariants
             LogController.WriteLog("Start Build All ProductVariants Cache At :" + DateTime.Now.ToString());
-            ProductController.LoadVariants();
-            Dictionary<int, List<ProductVariants>> pvs = ProductController.dicVariants;
+            ProductController.LoadVariants(null, AppValue.CountryId);
+            Dictionary<int, Dictionary<string, List<ProductVariants>>> pvs = ProductController.dicVariants;
             LogController.WriteLog("ProductVariants count : " + pvs.Count);
             PutCache(VelocityCacheKey.ProductVariants, pvs);
             LogController.WriteLog("End Build All ProductVariants!");
