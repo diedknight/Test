@@ -62,6 +62,7 @@ namespace ImportAttribute
                         attrTitle.AttributeTypeID = valueTypeId;
                     }
 
+                    attrTitle.CatelogAttributes = false;
                     attrTitle.Save();
 
                     CSK_Store_Category_AttributeTitle_Map map = new CSK_Store_Category_AttributeTitle_Map();
