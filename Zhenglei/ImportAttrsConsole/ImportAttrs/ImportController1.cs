@@ -11,7 +11,7 @@ using Dapper;
 
 namespace ImportAttrs
 {
-    public static class ImportController
+    public static class ImportController1
     {
         static readonly string DefaultCategoryUnit = "cm";
         static string DBConnectionStr_Static;
@@ -24,7 +24,7 @@ namespace ImportAttrs
         static Dictionary<int, List<CompareAttributeValueMap>> CategoryCompareAttributeValueMapDic_Static;
         static LogWriter MatchLogWriter_Static;
         public static LogWriter UnMatchLogWriter_Static;
-        static ImportController()
+        static ImportController1()
         {
             DBConnectionStr_Static = System.Configuration.ConfigurationManager.ConnectionStrings["PriceMe_DB"].ConnectionString;
             string importAttrLogDir = System.Configuration.ConfigurationManager.AppSettings["ImportAttrLogDir"];
@@ -296,7 +296,6 @@ namespace ImportAttrs
             }
         }
 
-
         public static SqlConnection GetDBConnection()
         {
             return new SqlConnection(DBConnectionStr_Static);
@@ -324,7 +323,7 @@ namespace ImportAttrs
             return DefaultCategoryUnit;
         }
 
-        public static void ImportAttr(ImportProductInfo importProductInfo)
+        public static void ImportAttr(ImportProductInfo importProductInfo, UnmatchReportData unmatchData)
         {
             int productId = importProductInfo.ProductId;
             int categoryId = importProductInfo.CategoryId;
@@ -357,447 +356,267 @@ namespace ImportAttrs
 
                     try
                     {
-                        AttributeRetailerMap arm = attributeRetailerMapList.Where(a => a.RetailerAttributeName.Equals(attrTitle, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                        if (arm != null)
+                        //AttributeRetailerMap arm = attributeRetailerMapList.Where(a => a.RetailerAttributeName.Equals(attrTitle, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                        //AttributeRetailerMap arm = attributeRetailerMapList.Where(a => a.Id == Convert.ToInt32(attrDic[attrTitle])).FirstOrDefault();
+
+                        var attrValue = attrDic[attrTitle];
+                        //attrValue = FixValue(attrValue, arm, retailerId, categoryId, attrDic);
+
+                        if (string.IsNullOrEmpty(attrValue)) continue;
+
+                        int titleId = unmatchData.AttTitleID;
+                        //一般Attributes
+                        if (unmatchData.AttType == 2 && productAllAttributesInfo.ProductAttributeList.FirstOrDefault(p => p.AttributeTitleId == titleId) == null)
                         {
-                            var attrValue = attrDic[attrTitle];
-                            attrValue = FixValue(attrValue, arm, retailerId, categoryId, attrDic);
-
-                            if (string.IsNullOrEmpty(attrValue))
+                            var priceMeAttrTitle = AttributeTitleDic_Static[titleId];
+                            List<AttributeValueInfo> priceMeAttrValues = new List<AttributeValueInfo>();
+                            if (AttributeValueListDic_Static.ContainsKey(titleId))
                             {
-                                UnMatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrDic[attrTitle] + " AttributeValue(Fixed) : null.");
-                                int titleId = 0;
-                                string titleName = "";
-                                if (int.TryParse(arm.PM_AttributeID, out titleId))
-                                {
-                                    if (arm.AttributeType == 2)
-                                    {
-                                        titleName = AttributeTitleDic_Static[titleId].Title;
-                                    }
-                                    else
-                                    {
-                                        titleName = CompareAttributeDic_Static[titleId].Name;
-                                    }
-
-                                }
-                                AttributeUnmatchedReport attributeUnmatchedReport = new AttributeUnmatchedReport(retailerId, categoryId, productId, arm.AttributeType, titleId, titleName, arm.RetailerAttributeName, attrDic[attrTitle], "", true);
-                                WriteUnMatchedReport(attributeUnmatchedReport);
-                                continue;
+                                priceMeAttrValues = AttributeValueListDic_Static[titleId];
                             }
 
-                            //宽度
-                            if (arm.AttributeType == 99 && productAllAttributesInfo.Width == 0)
+                            if (priceMeAttrTitle.AttributeTypeID == 6)
                             {
-                                if (!string.IsNullOrEmpty(arm.Unit))
+                                float floatValue = 0f;
+                                attrValue = attrValue.Replace(",", "");
+                                if (float.TryParse(attrValue, out floatValue))
                                 {
-                                    attrValue = attrValue.Replace(arm.Unit, "").Trim();
+                                    int tempValue = Convert.ToInt32(floatValue);
+                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString();
                                 }
-                                float widthFloat = float.Parse(attrValue);
-
-                                if (!string.IsNullOrEmpty(arm.Unit) && !arm.Unit.Equals(lengthUnit, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    widthFloat = ChangeUnit(widthFloat, arm.Unit, lengthUnit);
-                                }
-
-                                UpdateProductWidth(productId, widthFloat, lengthUnit);
-
-                                MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Width" + " AttributeName : " + widthFloat.ToString("0.00") + " AttributeValue : " + widthFloat.ToString("0.00"));
-
-                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, arm.AttributeType, "Width", arm.RetailerAttributeName, attrDic[attrTitle], widthFloat.ToString("0.00"), true, true);
-                                WriteMatchedReport(attributeMatchedReport);
                             }
-                            //高度
-                            else if (arm.AttributeType == 999 && productAllAttributesInfo.Height == 0)
+                            else if (priceMeAttrTitle.AttributeTypeID == 4)
                             {
-                                if (!string.IsNullOrEmpty(arm.Unit))
+                                int intValue = 0;
+                                attrValue = attrValue.Replace(",", "");
+                                if (int.TryParse(attrValue, out intValue))
                                 {
-                                    attrValue = attrValue.Replace(arm.Unit, "").Trim();
+                                    attrValue = intValue.ToString();
                                 }
-                                float heightFloat = float.Parse(attrValue);
-
-                                if (!string.IsNullOrEmpty(arm.Unit) && !arm.Unit.Equals(lengthUnit, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    heightFloat = ChangeUnit(heightFloat, arm.Unit, lengthUnit);
-                                }
-
-                                UpdateProductHeight(productId, heightFloat, lengthUnit);
-
-                                MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Height" + " AttributeName : " + heightFloat.ToString("0.00") + " AttributeValue : " + heightFloat.ToString("0.00"));
-
-                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, arm.AttributeType, "Height", arm.RetailerAttributeName, attrDic[attrTitle], heightFloat.ToString("0.00"), true, true);
-                                WriteMatchedReport(attributeMatchedReport);
                             }
-                            //深度
-                            else if (arm.AttributeType == 9 && productAllAttributesInfo.Length == 0)
+
+
+                            ProductAttributeInfo productAttributeInfo = productAllAttributesInfo.ProductAttributeList.Where(p => p.AttributeTitleId == titleId).FirstOrDefault();
+
+                            AttributeValueInfo newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue)).FirstOrDefault();
+                            if (newAttributeValue == null && newAttributeValue == null)
                             {
-                                if (!string.IsNullOrEmpty(arm.Unit))
+                                //attrValue = floatValue == 0 ? attrValue : floatValue.ToString("0.0");
+                                newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue)).FirstOrDefault();
+
+                                //判断attrValue，是否存在priceMeAttrValues里面最小值和最大值之间。存在就往attributevalue里面新增。                                        
+                                float tempAttrValue = 0f;
+                                if (float.TryParse(attrValue, out tempAttrValue))
                                 {
-                                    attrValue = attrValue.Replace(arm.Unit, "").Trim();
+                                    float min = float.MaxValue;
+                                    float max = 0f;
+
+                                    priceMeAttrValues.ForEach(item =>
+                                    {
+                                        float itemValue = 0f;
+                                        if (float.TryParse(item.Value, out itemValue))
+                                        {
+                                            if (itemValue > max) max = itemValue;
+                                            if (itemValue < min) min = itemValue;
+                                        }
+                                    });
+
+                                    if (tempAttrValue <= max && tempAttrValue >= min)
+                                    {
+                                        newAttributeValue = InsertAttributeValue(priceMeAttrTitle, attrValue);
+                                    }
                                 }
-                                float lengthFloat = float.Parse(attrValue);
-
-                                if (!string.IsNullOrEmpty(arm.Unit) && !arm.Unit.Equals(lengthUnit, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    lengthFloat = ChangeUnit(lengthFloat, arm.Unit, lengthUnit);
-                                }
-
-                                UpdateProductLength(productId, lengthFloat, lengthUnit);
-
-                                MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Length" + " AttributeName : " + lengthFloat.ToString("0.00") + " AttributeValue : " + lengthFloat.ToString("0.00"));
-
-                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, arm.AttributeType, "Length", arm.RetailerAttributeName, attrDic[attrTitle], lengthFloat.ToString("0.00"), true, true);
-                                WriteMatchedReport(attributeMatchedReport);
                             }
-                            //重量
-                            else if (arm.AttributeType == 1000 && productAllAttributesInfo.Weight == 0)
+
+                            //更新值
+                            unmatchData.Update(1, attrValue);
+
+                            //如果Attribute的Value存在
+                            if (newAttributeValue != null)
                             {
-                                if (!string.IsNullOrEmpty(arm.Unit))
+                                //如果产品未加该Attribute
+                                if (productAttributeInfo == null)
                                 {
-                                    attrValue = attrValue.Replace(arm.Unit, "").Trim();
-                                }
-                                float weightFloat = float.Parse(attrValue);
-                                if (!string.IsNullOrEmpty(arm.Unit) && !arm.Unit.Equals("kg", StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    weightFloat = ChangeUnit(weightFloat, arm.Unit, "kg");
-                                }
+                                    InsertProductAttribute(productId, priceMeAttrTitle, newAttributeValue);
 
-                                UpdateProductWeight(productId, weightFloat);
+                                    unmatchData.Update(0, attrValue);
 
-                                MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + "Weight" + " AttributeName : " + weightFloat.ToString("0.00") + " AttributeValue : " + weightFloat.ToString("0.00"));
+                                    AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, unmatchData.AttType, priceMeAttrTitle.TitleId, priceMeAttrTitle.Title, attrTitle, attrDic[attrTitle], attrValue, true, true);
+                                    WriteMatchedReport(attributeMatchedReport);
 
-                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, arm.AttributeType, "Weight", arm.RetailerAttributeName, attrDic[attrTitle], weightFloat.ToString("0.00"), true, true);
-                                WriteMatchedReport(attributeMatchedReport);
-                            }
-                            //长宽高在一起
-                            else if (arm.AttributeType == 9999 && (productAllAttributesInfo.Length == 0 || productAllAttributesInfo.Width == 0 || productAllAttributesInfo.Height == 0))
-                            {
-                                if (!string.IsNullOrEmpty(arm.Unit))
-                                {
-                                    attrValue = attrValue.Replace(arm.Unit, "").Trim();
-                                }
-                                string[] valueFormatStrs = arm.PM_AttributeID.ToLower().Split(new string[] { "x" }, StringSplitOptions.RemoveEmptyEntries);
-                                string[] valueStrs = attrValue.ToLower().Split(new string[] { "x", "×" }, StringSplitOptions.RemoveEmptyEntries);
-
-                                float width = 0, height = 0, length = 0;
-                                for (int i = 0; i < 3; i++)
-                                {
-                                    string format = valueFormatStrs[i];
-                                    float value = float.Parse(valueStrs[i].Trim());
-                                    if (format.Equals("h"))
-                                    {
-                                        height = value;
-                                    }
-                                    else if (format.Equals("w"))
-                                    {
-                                        width = value;
-                                    }
-                                    else if (format.Equals("l"))
-                                    {
-                                        length = value;
-                                    }
-                                }
-                                if (!string.IsNullOrEmpty(arm.Unit) && !arm.Unit.Equals(lengthUnit, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    width = ChangeUnit(width, arm.Unit, lengthUnit);
-                                    height = ChangeUnit(height, arm.Unit, lengthUnit);
-                                    length = ChangeUnit(length, arm.Unit, lengthUnit);
-                                }
-
-                                UpdateProductWHL(productId, width, height, length, lengthUnit);
-
-                                MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID);
-
-                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, arm.AttributeType, "WHL", arm.RetailerAttributeName, attrDic[attrTitle], "W:" + width.ToString("0.00") + " H:" + height.ToString("0.00") + " L:" + length.ToString("0.00"), true, true);
-                                WriteMatchedReport(attributeMatchedReport);
-                            }
-                            else
-                            {
-                                int titleId = 0;
-                                if (int.TryParse(arm.PM_AttributeID, out titleId))
-                                {
-                                    //一般Attributes
-                                    if (arm.AttributeType == 2 && productAllAttributesInfo.ProductAttributeList.FirstOrDefault(p => p.AttributeTitleId == titleId) == null)
-                                    {
-                                        var priceMeAttrTitle = AttributeTitleDic_Static[titleId];
-                                        List<AttributeValueInfo> priceMeAttrValues = new List<AttributeValueInfo>();
-                                        if (AttributeValueListDic_Static.ContainsKey(titleId))
-                                        {
-                                            priceMeAttrValues = AttributeValueListDic_Static[titleId];
-                                        }
-
-                                        if (!string.IsNullOrEmpty(arm.Unit))
-                                        {
-                                            attrValue = attrValue.Replace(arm.Unit, "").Trim();
-                                            if (priceMeAttrTitle.AttributeTypeID == 6)
-                                            {
-                                                float floatValue = 0f;
-                                                attrValue = attrValue.Replace(",", "");
-                                                if (float.TryParse(attrValue, out floatValue))
-                                                {
-                                                    if (!string.IsNullOrEmpty(priceMeAttrTitle.Unit))
-                                                    {
-                                                        floatValue = ChangeUnit(floatValue, arm.Unit, priceMeAttrTitle.Unit);
-                                                    }
-
-                                                    int tempValue = Convert.ToInt32(floatValue);
-                                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString();
-                                                }
-                                            }
-                                            else if (priceMeAttrTitle.AttributeTypeID == 4)
-                                            {
-                                                int intValue = 0;
-                                                attrValue = attrValue.Replace(",", "");
-                                                if (int.TryParse(attrValue, out intValue))
-                                                {
-                                                    if (!string.IsNullOrEmpty(priceMeAttrTitle.Unit))
-                                                    {
-                                                        intValue = (int)ChangeUnit((float)intValue, arm.Unit, priceMeAttrTitle.Unit);
-                                                    }
-                                                    attrValue = intValue.ToString();
-                                                }
-                                            }
-                                        }
-
-                                        ProductAttributeInfo productAttributeInfo = productAllAttributesInfo.ProductAttributeList.Where(p => p.AttributeTitleId == titleId).FirstOrDefault();
-
-                                        AttributeValueInfo newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                                        if (newAttributeValue == null && newAttributeValue == null)
-                                        {
-                                            //attrValue = floatValue == 0 ? attrValue : floatValue.ToString("0.0");
-                                            newAttributeValue = priceMeAttrValues.Where(av => av.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-
-                                            //判断attrValue，是否存在priceMeAttrValues里面最小值和最大值之间。存在就往attributevalue里面新增。                                        
-                                            float tempAttrValue = 0f;
-                                            if (float.TryParse(attrValue, out tempAttrValue))
-                                            {
-                                                float min = float.MaxValue;
-                                                float max = 0f;
-
-                                                priceMeAttrValues.ForEach(item =>
-                                                {
-                                                    float itemValue = 0f;
-                                                    if (float.TryParse(item.Value, out itemValue))
-                                                    {
-                                                        if (itemValue > max) max = itemValue;
-                                                        if (itemValue < min) min = itemValue;
-                                                    }
-                                                });
-
-                                                if (tempAttrValue <= max && tempAttrValue >= min)
-                                                {
-                                                    newAttributeValue = InsertAttributeValue(priceMeAttrTitle, attrValue);
-                                                }
-                                            }
-
-                                        }
-
-                                        //如果Attribute的Value存在
-                                        if (newAttributeValue != null)
-                                        {
-                                            //如果产品未加该Attribute
-                                            if (productAttributeInfo == null)
-                                            {
-                                                InsertProductAttribute(productId, priceMeAttrTitle, newAttributeValue);
-
-                                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, priceMeAttrTitle.TitleId, priceMeAttrTitle.Title, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true, true);
-                                                WriteMatchedReport(attributeMatchedReport);
-                                            }
-                                            else
-                                            {
-                                                //如果产品的Attribute和新跑到的Attribute不一致
-                                                //if (newAttributeValue.AttributeValueId != productAttributeInfo.AttributeValueId)
-                                                //{
-                                                //    UpdateProductAttribute(productId, productAttributeInfo, newAttributeValue);
-                                                //}
-
-                                                AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, priceMeAttrTitle.TitleId, priceMeAttrTitle.Title, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, false, true);
-                                                WriteMatchedReport(attributeMatchedReport);
-                                            }
-
-                                            MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + newAttributeValue.Value);
-                                        }
-                                        //如果Attribute的Value不存在
-                                        else
-                                        {
-                                            //newAttributeValue = InsertAttributeValue(priceMeAttrTitle, attrValue);
-                                            //if (productAttributeInfo == null)
-                                            //{
-                                            //    InsertProductAttribute(productId, priceMeAttrTitle, newAttributeValue);
-                                            //}
-                                            //else
-                                            //{
-                                            //    UpdateProductAttribute(productId, productAttributeInfo, newAttributeValue);
-                                            //}
-
-                                            UnMatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrDic[attrTitle] + " AttributeValue(Fixed) : " + attrValue);
-
-                                            AttributeUnmatchedReport attributeUnmatchedReport = new AttributeUnmatchedReport(retailerId, categoryId, productId, arm.AttributeType, titleId, priceMeAttrTitle.Title, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true);
-                                            WriteUnMatchedReport(attributeUnmatchedReport);
-                                        }
-                                    }
-                                    //比较用的Attributes
-                                    else if (arm.AttributeType == 3 && productAllAttributesInfo.ProductCompareAttributeList.FirstOrDefault(pc => pc.CompareAttributeID == titleId) == null)
-                                    {
-                                        var priceMeCompareAttrTitle = CompareAttributeDic_Static[titleId];
-                                        bool isFloatValue = false;
-                                        float floatValue = 0f;
-                                        if (!string.IsNullOrEmpty(arm.Unit))
-                                        {
-                                            attrValue = attrValue.Replace(arm.Unit, "").Trim();
-                                            if (priceMeCompareAttrTitle.AttributeTypeID == 6)
-                                            {
-                                                attrValue = attrValue.Replace(",", "");
-                                                if (float.TryParse(attrValue, out floatValue))
-                                                {
-                                                    if (!string.IsNullOrEmpty(priceMeCompareAttrTitle.Unit))
-                                                    {
-                                                        floatValue = ChangeUnit(floatValue, arm.Unit, priceMeCompareAttrTitle.Unit);
-                                                    }
-
-                                                    int tempValue = Convert.ToInt32(floatValue);
-                                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString();
-
-                                                    isFloatValue = true;
-                                                }
-                                            }
-                                            else if (priceMeCompareAttrTitle.AttributeTypeID == 4)
-                                            {
-                                                int intValue = 0;
-                                                attrValue = attrValue.Replace(",", "");
-                                                if (int.TryParse(attrValue, out intValue))
-                                                {
-                                                    if (!string.IsNullOrEmpty(priceMeCompareAttrTitle.Unit))
-                                                    {
-                                                        intValue = (int)ChangeUnit((float)intValue, arm.Unit, priceMeCompareAttrTitle.Unit);
-                                                    }
-                                                    attrValue = intValue.ToString();
-                                                }
-                                            }
-                                        }
-
-                                        if (CategoryCompareAttributeValueMapDic_Static.ContainsKey(categoryId))
-                                        {
-                                            bool isValid = false;
-                                            var ccm = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.SkeywordList.Contains(attrValue) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
-
-                                            if (ccm != null)
-                                            {
-                                                attrValue = ccm.Value;
-                                                isValid = true;
-                                            }
-                                            else
-                                            {
-                                                var ccm2 = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
-                                                if (ccm2 != null)
-                                                {
-                                                    isValid = true;
-                                                }
-                                            }
-
-                                            if (isFloatValue && !isValid)
-                                            {
-                                                int tempValue = Convert.ToInt32(floatValue);
-                                                attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString("0.0");
-
-                                                ccm = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.SkeywordList.Contains(attrValue) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
-
-                                                if (ccm != null)
-                                                {
-                                                    attrValue = ccm.Value;
-                                                    isValid = true;
-                                                }
-                                                else
-                                                {
-                                                    var ccm2 = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
-                                                    if (ccm2 != null)
-                                                    {
-                                                        isValid = true;
-                                                    }
-                                                }
-                                            }
-
-                                            if (!isValid)
-                                            {
-                                                float tempAttrValue = 0f;
-                                                if (float.TryParse(attrValue, out tempAttrValue))
-                                                {
-                                                    float min = float.MaxValue;
-                                                    float max = 0f;
-
-                                                    CategoryCompareAttributeValueMapDic_Static[categoryId].Where(item => item.CompareAttributeID == titleId).ToList().ForEach(item =>
-                                                        {
-                                                            float itemValue = 0f;
-                                                            if (float.TryParse(item.Value, out itemValue))
-                                                            {
-                                                                if (itemValue > max) max = itemValue;
-                                                                if (itemValue < min) min = itemValue;
-                                                            }
-                                                        });
-
-                                                    if (tempAttrValue <= max && tempAttrValue >= min)
-                                                    {
-                                                        string sql = "insert into [AT_CompareAttributeValue_Map] ([CompareAttributeID],[Value],[Skeywords],[CategoryID]) values (@CompareAttributeID,@Value,@Skeywords,@CategoryID)";
-                                                        using (SqlConnection sqlConn = GetDBConnection())
-                                                        {
-                                                            sqlConn.Execute(sql, new { CompareAttributeID = titleId, Value = attrValue, Skeywords = "", CategoryID = categoryId });
-                                                        }
-
-                                                        isValid = true;
-                                                    }
-                                                }
-                                            }
-
-                                            if (isValid)
-                                            {
-                                                ProductCompareAttributeInfo productCompareAttributeInfo = productAllAttributesInfo.ProductCompareAttributeList.Where(pc => pc.CompareAttributeID == titleId).FirstOrDefault();
-                                                if (productCompareAttributeInfo == null)
-                                                {
-                                                    InsertProductCompareAttribute(productId, priceMeCompareAttrTitle, attrValue);
-
-                                                    AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, priceMeCompareAttrTitle.CompareAttributeId, priceMeCompareAttrTitle.Name, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true, true);
-                                                    WriteMatchedReport(attributeMatchedReport);
-                                                }
-                                                else
-                                                {
-                                                    //UpdateProductCompareAttribute(productId, priceMeCompareAttrTitle, attrValue);
-
-                                                    AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, arm.AttributeType, priceMeCompareAttrTitle.CompareAttributeId, priceMeCompareAttrTitle.Name, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, false, true);
-                                                    WriteMatchedReport(attributeMatchedReport);
-                                                }
-
-                                                MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrValue);
-                                            }
-                                            else
-                                            {
-                                                UnMatchLogWriter_Static.WriteLine("Not in CompareAttributeValueMap. PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrDic[attrTitle] + " AttributeValue(Fixed) : " + attrValue);
-
-                                                AttributeUnmatchedReport attributeUnmatchedReport = new AttributeUnmatchedReport(retailerId, categoryId, productId, arm.AttributeType, titleId, priceMeCompareAttrTitle.Name, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true);
-                                                WriteUnMatchedReport(attributeUnmatchedReport);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            UnMatchLogWriter_Static.WriteLine("Not in CompareAttributeValueMap. PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrDic[attrTitle] + " AttributeValue(Fixed) : " + attrValue);
-
-                                            AttributeUnmatchedReport attributeUnmatchedReport = new AttributeUnmatchedReport(retailerId, categoryId, productId, arm.AttributeType, titleId, priceMeCompareAttrTitle.Name, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true);
-                                            WriteUnMatchedReport(attributeUnmatchedReport);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        UnMatchLogWriter_Static.WriteLine("Unknow attribute type : " + arm.AttributeType + " ProductId : " + productId);
-                                    }
+                                    UnMatchLogWriter_Static.WriteLine(unmatchData);
                                 }
                                 else
                                 {
-                                    UnMatchLogWriter_Static.WriteLine("Invalid is PM_AttributeID. PM_AttributeID : " + arm.PM_AttributeID + " ProductId : " + productId);
+                                    //如果产品的Attribute和新跑到的Attribute不一致
+                                    //if (newAttributeValue.AttributeValueId != productAttributeInfo.AttributeValueId)
+                                    //{
+                                    //    UpdateProductAttribute(productId, productAttributeInfo, newAttributeValue);
+                                    //}
+
+                                    AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, unmatchData.AttType, priceMeAttrTitle.TitleId, priceMeAttrTitle.Title, attrTitle, attrDic[attrTitle], attrValue, false, true);
+                                    WriteMatchedReport(attributeMatchedReport);
                                 }
+
+                                //MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + newAttributeValue.Value);
+                            }
+
+                        }
+
+                        //比较用的Attributes
+                        else if (unmatchData.AttType == 3 && productAllAttributesInfo.ProductCompareAttributeList.FirstOrDefault(pc => pc.CompareAttributeID == titleId) == null)
+                        {
+                            var priceMeCompareAttrTitle = CompareAttributeDic_Static[titleId];
+                            bool isFloatValue = false;
+                            float floatValue = 0f;
+
+                            if (priceMeCompareAttrTitle.AttributeTypeID == 6)
+                            {
+                                attrValue = attrValue.Replace(",", "");
+                                if (float.TryParse(attrValue, out floatValue))
+                                {
+                                    int tempValue = Convert.ToInt32(floatValue);
+                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString();
+
+                                    isFloatValue = true;
+                                }
+                            }
+                            else if (priceMeCompareAttrTitle.AttributeTypeID == 4)
+                            {
+                                int intValue = 0;
+                                attrValue = attrValue.Replace(",", "");
+                                if (int.TryParse(attrValue, out intValue))
+                                {
+                                    attrValue = intValue.ToString();
+                                }
+                            }
+
+
+                            //更新值
+                            unmatchData.Update(1, attrValue);
+
+                            if (CategoryCompareAttributeValueMapDic_Static.ContainsKey(categoryId))
+                            {
+                                bool isValid = false;
+                                var ccm = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.SkeywordList.Contains(attrValue) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
+
+                                if (ccm != null)
+                                {
+                                    attrValue = ccm.Value;
+                                    isValid = true;
+                                }
+                                else
+                                {
+                                    var ccm2 = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
+                                    if (ccm2 != null)
+                                    {
+                                        isValid = true;
+                                    }
+                                }
+
+                                if (isFloatValue && !isValid)
+                                {
+                                    int tempValue = Convert.ToInt32(floatValue);
+                                    attrValue = tempValue == floatValue ? tempValue.ToString() : floatValue.ToString("0.0");
+
+                                    ccm = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.SkeywordList.Contains(attrValue) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
+
+                                    if (ccm != null)
+                                    {
+                                        attrValue = ccm.Value;
+                                        isValid = true;
+                                    }
+                                    else
+                                    {
+                                        var ccm2 = CategoryCompareAttributeValueMapDic_Static[categoryId].Where(ccvm => ccvm.Value.Equals(attrValue, StringComparison.InvariantCultureIgnoreCase) && ccvm.CompareAttributeID == titleId).FirstOrDefault();
+                                        if (ccm2 != null)
+                                        {
+                                            isValid = true;
+                                        }
+                                    }
+                                }
+
+                                if (!isValid)
+                                {
+                                    float tempAttrValue = 0f;
+                                    if (float.TryParse(attrValue, out tempAttrValue))
+                                    {
+                                        float min = float.MaxValue;
+                                        float max = 0f;
+
+                                        CategoryCompareAttributeValueMapDic_Static[categoryId].Where(item => item.CompareAttributeID == titleId).ToList().ForEach(item =>
+                                            {
+                                                float itemValue = 0f;
+                                                if (float.TryParse(item.Value, out itemValue))
+                                                {
+                                                    if (itemValue > max) max = itemValue;
+                                                    if (itemValue < min) min = itemValue;
+                                                }
+                                            });
+
+                                        if (tempAttrValue <= max && tempAttrValue >= min)
+                                        {
+                                            string sql = "insert into [AT_CompareAttributeValue_Map] ([CompareAttributeID],[Value],[Skeywords],[CategoryID]) values (@CompareAttributeID,@Value,@Skeywords,@CategoryID)";
+                                            using (SqlConnection sqlConn = GetDBConnection())
+                                            {
+                                                sqlConn.Execute(sql, new { CompareAttributeID = titleId, Value = attrValue, Skeywords = "", CategoryID = categoryId });
+                                            }
+
+                                            isValid = true;
+
+                                            //更新值
+                                            unmatchData.Update(0, attrValue);
+                                        }
+                                        else
+                                        {
+                                            //更新值
+                                            unmatchData.Update(1, attrValue);
+                                        }
+                                    }
+                                }
+
+                                if (isValid)
+                                {
+                                    ProductCompareAttributeInfo productCompareAttributeInfo = productAllAttributesInfo.ProductCompareAttributeList.Where(pc => pc.CompareAttributeID == titleId).FirstOrDefault();
+                                    if (productCompareAttributeInfo == null)
+                                    {
+                                        InsertProductCompareAttribute(productId, priceMeCompareAttrTitle, attrValue);
+
+                                        AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, unmatchData.AttType, priceMeCompareAttrTitle.CompareAttributeId, priceMeCompareAttrTitle.Name, attrTitle, attrDic[attrTitle], attrValue, true, true);
+                                        WriteMatchedReport(attributeMatchedReport);
+                                    }
+                                    else
+                                    {
+                                        //UpdateProductCompareAttribute(productId, priceMeCompareAttrTitle, attrValue);
+
+                                        AttributeMatchedReport attributeMatchedReport = new AttributeMatchedReport(retailerId, categoryId, productId, unmatchData.AttType, priceMeCompareAttrTitle.CompareAttributeId, priceMeCompareAttrTitle.Name, attrTitle, attrDic[attrTitle], attrValue, false, true);
+                                        WriteMatchedReport(attributeMatchedReport);
+                                    }
+
+                                    UnMatchLogWriter_Static.WriteLine(unmatchData);
+                                    //MatchLogWriter_Static.WriteLine("PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrValue);
+                                }
+                                else
+                                {
+                                    //UnMatchLogWriter_Static.WriteLine("Not in CompareAttributeValueMap. PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrDic[attrTitle] + " AttributeValue(Fixed) : " + attrValue);
+
+                                    //AttributeUnmatchedReport attributeUnmatchedReport = new AttributeUnmatchedReport(retailerId, categoryId, productId, arm.AttributeType, titleId, priceMeCompareAttrTitle.Name, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true);
+                                    //WriteUnMatchedReport(attributeUnmatchedReport);
+                                }
+                            }
+                            else
+                            {
+                                //UnMatchLogWriter_Static.WriteLine("Not in CompareAttributeValueMap. PId : " + productId + " CId : " + categoryId + " RId : " + retailerId + " AttributeType : " + arm.AttributeType + " AttributeTitle : " + arm.PM_AttributeID + " AttributeName : " + arm.RetailerAttributeName + " AttributeValue : " + attrDic[attrTitle] + " AttributeValue(Fixed) : " + attrValue);
+
+                                //AttributeUnmatchedReport attributeUnmatchedReport = new AttributeUnmatchedReport(retailerId, categoryId, productId, arm.AttributeType, titleId, priceMeCompareAttrTitle.Name, arm.RetailerAttributeName, attrDic[attrTitle], attrValue, true);
+                                //WriteUnMatchedReport(attributeUnmatchedReport);
                             }
                         }
                         else
                         {
-                            UnMatchLogWriter_Static.WriteLine("AttributeRetailerMap is null. Tilte : " + attrTitle + " ProductId : " + productId);
+                            //UnMatchLogWriter_Static.WriteLine("Unknow attribute type : " + arm.AttributeType + " ProductId : " + productId);
                         }
+
                     }
                     catch (Exception ex)
                     {
@@ -808,7 +627,7 @@ namespace ImportAttrs
             }
             else
             {
-                UnMatchLogWriter_Static.WriteLine("AttributeRetailerMap is null. RetailerId : " + retailerId + " ProductId : " + productId);
+                //UnMatchLogWriter_Static.WriteLine("AttributeRetailerMap is null. RetailerId : " + retailerId + " ProductId : " + productId);
             }
         }
 
@@ -965,22 +784,6 @@ namespace ImportAttrs
             else if (fromUnit.Equals("h", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("mins", StringComparison.InvariantCultureIgnoreCase))
             {
                 return weightFloat * 60f;
-            }
-            else if (fromUnit.Equals("cm", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("in", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return weightFloat / 2.54f;
-            }
-            else if (fromUnit.Equals("in", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("cm", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return weightFloat * 2.54f;
-            }
-            else if (fromUnit.Equals("kg", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("lb", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return weightFloat / 0.45f;
-            }
-            else if (fromUnit.Equals("lb", StringComparison.InvariantCultureIgnoreCase) && toUnit.Equals("kg", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return weightFloat * 0.45f;
             }
             else
             {
@@ -1450,14 +1253,14 @@ namespace ImportAttrs
 
             if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower().Contains("value missing")) return;
             if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower().Contains("value missing")) return;
-            
+
             if (attributeUnmatchedReport.DR_AttValue_Changed.Contains("$.extend({}, pjYesNoOptions)")) return;
             if (attributeUnmatchedReport.DR_AttValue_Orignal.Contains("$.extend({}, pjYesNoOptions)")) return;
 
             if (attributeUnmatchedReport.AttType == 2)
             {
                 var priceMeAttrTitle = AttributeTitleDic_Static[attributeUnmatchedReport.AttTitleID];
-                if (priceMeAttrTitle.AttributeTypeID == 4 || priceMeAttrTitle.AttributeTypeID == 6 || priceMeAttrTitle.AttributeTypeID == 5)
+                if (priceMeAttrTitle.AttributeTypeID == 4 || priceMeAttrTitle.AttributeTypeID == 6)
                 {
                     if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower() == "yes") return;
                     if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower() == "yes") return;
@@ -1469,7 +1272,7 @@ namespace ImportAttrs
             if (attributeUnmatchedReport.AttType == 3)
             {
                 var priceMeCompareAttrTitle = CompareAttributeDic_Static[attributeUnmatchedReport.AttTitleID];
-                if (priceMeCompareAttrTitle.AttributeTypeID == 4 || priceMeCompareAttrTitle.AttributeTypeID == 6 || priceMeCompareAttrTitle.AttributeTypeID == 5)
+                if (priceMeCompareAttrTitle.AttributeTypeID == 4 || priceMeCompareAttrTitle.AttributeTypeID == 6)
                 {
                     if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower() == "yes") return;
                     if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower() == "yes") return;
@@ -1577,6 +1380,9 @@ namespace ImportAttrs
                 }
             }
         }
+
+
+
 
     }
 
