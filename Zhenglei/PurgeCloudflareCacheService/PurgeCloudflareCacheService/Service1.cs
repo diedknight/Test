@@ -31,7 +31,7 @@ namespace PurgeCloudflareCacheService
                                                 left join CSK_Store_Category as CT on PT.CategoryID = CT.CategoryID
                                                 where PT.ProductId in ({0})";
         string myUpdateSqlFormat = "Update PurgedProduct set ProductChecked = 1 where ProductId in ({0})";
-        string myDeleteSqlFormat = "Delete PurgedProduct where IndexChecked = 1 and ProductChecked = 1";
+        string myDeleteSqlFormat = "Delete from PurgedProduct where ProductChecked = 1";
 
         string myApiUrlPathFormat = "zones/{0}/purge_cache";
 
