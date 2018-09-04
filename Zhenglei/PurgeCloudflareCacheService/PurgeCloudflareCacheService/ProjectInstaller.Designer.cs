@@ -40,8 +40,8 @@
             // serviceInstaller1
             // 
             this.serviceInstaller1.Description = "Purge Cloudflare cache after retailer product price changes";
-            this.serviceInstaller1.DisplayName = "Purge Cloudflare Cache";
-            this.serviceInstaller1.ServiceName = "PM_Service";
+            this.serviceInstaller1.DisplayName = "Purge Cloudflare Cache(Mysql)";
+            this.serviceInstaller1.ServiceName = "PM_Service(Mysql)";
             // 
             // ProjectInstaller
             // 

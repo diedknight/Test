@@ -34,11 +34,11 @@
             // eventLog1
             // 
             this.eventLog1.Log = "Application";
-            this.eventLog1.Source = "Service1";
+            this.eventLog1.Source = "PurgeCloudflareCacheService.Mysql";
             // 
             // Service1
             // 
-            this.ServiceName = "Service1";
+            this.ServiceName = "PurgeCloudflareCacheService.Mysql";
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
 
         }
