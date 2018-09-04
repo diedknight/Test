@@ -27,10 +27,10 @@ namespace PurgeCloudflareCacheService
         bool isDebug = false;
         bool myWorking = false;
         string mySelectSql;
-        string mySelectProductInfoSqlFormat = @"SELECT [ProductID],[ProductName],PT.CategoryID,CT.CategoryName FROM [CSK_Store_ProductNew] as PT
+        string mySelectProductInfoSqlFormat = @"SELECT ProductID,ProductName,PT.CategoryID,CT.CategoryName FROM CSK_Store_ProductNew as PT
                                                 left join CSK_Store_Category as CT on PT.CategoryID = CT.CategoryID
-                                                where PT.[ProductId] in ({0})";
-        string myUpdateSqlFormat = "Update PurgedProduct set ProductChecked = 1 where [ProductId] in ({0})";
+                                                where PT.ProductId in ({0})";
+        string myUpdateSqlFormat = "Update PurgedProduct set ProductChecked = 1 where ProductId in ({0})";
         string myDeleteSqlFormat = "Delete PurgedProduct where IndexChecked = 1 and ProductChecked = 1";
 
         string myApiUrlPathFormat = "zones/{0}/purge_cache";
@@ -45,9 +45,9 @@ namespace PurgeCloudflareCacheService
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             string sourceName = "PriceMeLog";
-            if (!System.Diagnostics.EventLog.SourceExists(sourceName))
+            if (!EventLog.SourceExists(sourceName))
             {
-                System.Diagnostics.EventLog.CreateEventSource(sourceName, "PurgeCloudflareCacheService");
+                EventLog.CreateEventSource(sourceName, "PurgeCloudflareCacheService");
             }
             this.eventLog1.Source = sourceName;
             this.eventLog1.Log = "PurgeCloudflareCacheService";
@@ -61,7 +61,7 @@ namespace PurgeCloudflareCacheService
             myApiEmail = ConfigurationManager.AppSettings["ApiEmail"];
             myMaxCount = int.Parse(ConfigurationManager.AppSettings["MaxCount"]);
 
-            string selectSqlFormat = "SELECT top {0} [ProductId] FROM [PurgedProduct] where ProductChecked = 0";
+            string selectSqlFormat = "SELECT top {0} ProductId FROM PurgedProduct where ProductChecked = 0";
             mySelectSql = string.Format(selectSqlFormat, myMaxCount);
         }
 
@@ -91,7 +91,7 @@ namespace PurgeCloudflareCacheService
             myWorkThread.Start();
         }
 
-        private void DoWork()
+        public void DoWork()
         {
             while (myWorking)
             {
@@ -114,13 +114,13 @@ namespace PurgeCloudflareCacheService
 
         private void PurgeCaches(CountryInfo ci)
         {
-            using (SqlConnection sqlConn = new SqlConnection(ci.MyConnectionStringSettings.ConnectionString))
+            using (var sqlConn = DBController.CreateDBConnection(ci.MyDbInfo))
             {
                 sqlConn.Open();
                 List<int> pidList = new List<int>();
-                using (SqlCommand sqlCmd1 = new SqlCommand(mySelectSql, sqlConn))
+                using (var sqlCmd1 = DBController.CreateDbCommand(mySelectSql, sqlConn))
                 {
-                    using (SqlDataReader sqlDr = sqlCmd1.ExecuteReader())
+                    using (var sqlDr = sqlCmd1.ExecuteReader())
                     {
                         while (sqlDr.Read())
                         {
@@ -143,14 +143,14 @@ namespace PurgeCloudflareCacheService
                     }
 
                     string updateSql = string.Format(myUpdateSqlFormat, idString);
-                    using (SqlCommand updateSqlCmd = new SqlCommand(updateSql, sqlConn))
+                    using (var updateSqlCmd = DBController.CreateDbCommand(updateSql, sqlConn))
                     {
                         updateSqlCmd.ExecuteNonQuery();
                     }
 
-                    using (SqlCommand sqlCmd2 = new SqlCommand(selectProductInfoSql, sqlConn))
+                    using (var sqlCmd2 = DBController.CreateDbCommand(selectProductInfoSql, sqlConn))
                     {
-                        using (SqlDataReader sqlDr = sqlCmd2.ExecuteReader())
+                        using (var sqlDr = sqlCmd2.ExecuteReader())
                         {
                             while (sqlDr.Read())
                             {
@@ -161,7 +161,7 @@ namespace PurgeCloudflareCacheService
 
                                 int categoryId = sqlDr.GetInt32(2);
                                 string categoryName = sqlDr.GetString(3);
-                                if(!categoryDic.ContainsKey(categoryId))
+                                if (!categoryDic.ContainsKey(categoryId))
                                 {
                                     categoryDic.Add(categoryId, categoryName);
                                 }
@@ -187,7 +187,7 @@ namespace PurgeCloudflareCacheService
                     {
                         eventLog1.WriteEntry("Country " + ci.CountryId + " deleteSql : " + deleteSql);
                     }
-                    using (SqlCommand sqlCmd = new SqlCommand(deleteSql, sqlConn))
+                    using (var sqlCmd = DBController.CreateDbCommand(deleteSql, sqlConn))
                     {
                         sqlCmd.ExecuteNonQuery();
                     }
