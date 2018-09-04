@@ -20,6 +20,9 @@ namespace PurgeCloudflareCacheService
                 new Service1()
             };
             ServiceBase.Run(ServicesToRun);
+
+            //var sv = new Service1();
+            //sv.DoWork();
         }
     }
 }

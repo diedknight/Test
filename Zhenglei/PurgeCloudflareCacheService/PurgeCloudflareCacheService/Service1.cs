@@ -26,7 +26,7 @@ namespace PurgeCloudflareCacheService
 
         bool isDebug = false;
         bool myWorking = false;
-        string mySelectSql;
+        
         string mySelectProductInfoSqlFormat = @"SELECT ProductID,ProductName,PT.CategoryID,CT.CategoryName FROM CSK_Store_ProductNew as PT
                                                 left join CSK_Store_Category as CT on PT.CategoryID = CT.CategoryID
                                                 where PT.ProductId in ({0})";
@@ -60,9 +60,6 @@ namespace PurgeCloudflareCacheService
             myApiKey = ConfigurationManager.AppSettings["ApiKey"];
             myApiEmail = ConfigurationManager.AppSettings["ApiEmail"];
             myMaxCount = int.Parse(ConfigurationManager.AppSettings["MaxCount"]);
-
-            string selectSqlFormat = "SELECT top {0} ProductId FROM PurgedProduct where ProductChecked = 0";
-            mySelectSql = string.Format(selectSqlFormat, myMaxCount);
         }
 
         protected override void OnStart(string[] args)
@@ -117,6 +114,18 @@ namespace PurgeCloudflareCacheService
             using (var sqlConn = DBController.CreateDBConnection(ci.MyDbInfo))
             {
                 sqlConn.Open();
+
+                string mySelectSql = "";
+
+                if (ci.MyDbInfo.ProviderName.Equals("MySql.Data.MySqlClient", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    mySelectSql = "SELECT ProductId FROM PurgedProduct where ProductChecked = 0 limit " + myMaxCount;
+                }
+                else
+                {
+                    mySelectSql = "SELECT top " + myMaxCount + " ProductId FROM PurgedProduct where ProductChecked = 0";
+                }
+
                 List<int> pidList = new List<int>();
                 using (var sqlCmd1 = DBController.CreateDbCommand(mySelectSql, sqlConn))
                 {
