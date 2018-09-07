@@ -85,7 +85,7 @@ namespace BaseProductTool
             {
                 KeywordsInfocs ki = new KeywordsInfocs();
 
-                System.Text.RegularExpressions.Regex storageRegex = new System.Text.RegularExpressions.Regex("(?<data>\\d+(\\.\\d+)?)\\s?" + kw, System.Text.RegularExpressions.RegexOptions.Compiled | System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                System.Text.RegularExpressions.Regex storageRegex = new System.Text.RegularExpressions.Regex("\\s+(?<data>\\d+(\\.\\d+)?)\\s?" + kw + "\\s+", System.Text.RegularExpressions.RegexOptions.Compiled | System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 
                 ki.Keywords = kw.ToLower();
                 ki.MyRegex = storageRegex;
@@ -130,7 +130,7 @@ namespace BaseProductTool
                         }
                         else
                         {
-                            string newName = origName;
+                            string newName = " " + origName + " ";
                             foreach (var regex in regexList)
                             {
                                 newName = regex.MyRegex.Replace(newName, "");
@@ -144,6 +144,9 @@ namespace BaseProductTool
                                     }
                                 }
                             }
+
+                            newName = newName.Substring(1);
+                            newName = newName.Substring(0, newName.Length - 1);
 
                             if (newName != origName)
                             {
