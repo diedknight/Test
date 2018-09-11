@@ -1029,8 +1029,6 @@ namespace ProductSearchIndexBuilder
                     clicksDic.TryGetValue(item.RetailerId, out clicks);
                     item.Clicks = clicks;
                 }
-
-                LogController.WriteLog("CountryId: " + AppValue.CountryId + " RetailerListOrderByName no velocity");
             }
             catch (Exception ex)
             {
@@ -1446,8 +1444,6 @@ namespace ProductSearchIndexBuilder
                         }
                     }
                 }
-
-                LogController.WriteLog("Country: " + countryId + " FeaturedProducts no velocity");
             }
             catch (Exception ex)
             {

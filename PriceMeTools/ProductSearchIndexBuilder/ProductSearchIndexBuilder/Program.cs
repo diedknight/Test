@@ -30,10 +30,11 @@ namespace ProductSearchIndexBuilder
             subDbInfo.ConnectionString = configuration.GetConnectionString("SubDb");
             subDbInfo.ProviderName = configuration["SubDb_ProviderName"];
 
+            LogController.WriteLog("Init data --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
+            Console.WriteLine("Please wait......");
+
             CachBuilder.Init(AppValue.RedisHost, AppValue.RedisName);
             DataController.Init(priceme205DbInfo, pamUserDbInfo, subDbInfo);
-
-            LogController.WriteLog("Init data --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
 
             if (args.Length == 0)
             {
@@ -53,7 +54,7 @@ namespace ProductSearchIndexBuilder
 
             int startHours = DateTime.Now.Hour;
             bool needReBuildCache = true;
-            //如果当前时间大于指定时间则不造velocity
+            //如果当前时间大于指定时间则不造Cache
             if (startHours > AppValue.FlagVelocityHour)
             {
                 needReBuildCache = false;

@@ -15,7 +15,7 @@ namespace ProductSearchIndexBuilder
         public BulidIndexSpeedInfo UpdateRetailerTrackerSpeedInfo;
         public BulidIndexSpeedInfo UpdateProductRatingSpeedInfo;
         public BulidIndexSpeedInfo UpdateProductCategorySpeedInfo;
-        public BulidIndexSpeedInfo BuildVelocitySpeedInfo;
+        public BulidIndexSpeedInfo BuildCacheSpeedInfo;
         public BulidIndexSpeedInfo UpdateRelatedManufacturerCategoriesSpeedInfo;
 
         public override string ToString()
@@ -142,12 +142,12 @@ namespace ProductSearchIndexBuilder
                 strBuilder.AppendLine("Index : " + indexSpan.ToString());
             }
 
-            if (BuildVelocitySpeedInfo != null)
+            if (BuildCacheSpeedInfo != null)
             {
-                strBuilder.AppendLine("--- BuildVelocitySpeedInfo ---");
-                strBuilder.AppendLine("start : " + BuildVelocitySpeedInfo.StartReadDBTime.ToString("HH:mm:ss"));
-                strBuilder.AppendLine("end : " + BuildVelocitySpeedInfo.EndReadDBTime.ToString("HH:mm:ss"));
-                var span = BuildVelocitySpeedInfo.EndReadDBTime - BuildVelocitySpeedInfo.StartReadDBTime;
+                strBuilder.AppendLine("--- BuildCacheSpeedInfo ---");
+                strBuilder.AppendLine("start : " + BuildCacheSpeedInfo.StartReadDBTime.ToString("HH:mm:ss"));
+                strBuilder.AppendLine("end : " + BuildCacheSpeedInfo.EndReadDBTime.ToString("HH:mm:ss"));
+                var span = BuildCacheSpeedInfo.EndReadDBTime - BuildCacheSpeedInfo.StartReadDBTime;
                 strBuilder.AppendLine(span.ToString());
             }
 
