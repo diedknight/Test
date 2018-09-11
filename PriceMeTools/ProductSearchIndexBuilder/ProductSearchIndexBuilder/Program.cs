@@ -32,10 +32,12 @@ namespace ProductSearchIndexBuilder
 
             CachBuilder.Init(AppValue.RedisHost, AppValue.RedisName);
             DataController.Init(priceme205DbInfo, pamUserDbInfo, subDbInfo);
-            
+
+            LogController.WriteLog("Init data --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
+
             if (args.Length == 0)
             {
-                BuildIndexByHand();
+                BuildIndexByHand(priceme205DbInfo, pamUserDbInfo);
             }
             else
             {
@@ -47,7 +49,7 @@ namespace ProductSearchIndexBuilder
         {
             LogController.WriteLog("Build Index Auto --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
             
-            string todayIndexPathIndexPath = GetTodayIndexPath(false);
+            string indexPath = GetTodayIndexPath(false);
 
             int startHours = DateTime.Now.Hour;
             bool needReBuildCache = true;
@@ -57,7 +59,7 @@ namespace ProductSearchIndexBuilder
                 needReBuildCache = false;
             }
 
-            LogController.WriteLog("Current Index Save To:" + todayIndexPathIndexPath);
+            LogController.WriteLog("Current Index Save To:" + indexPath);
 
             IndexSpeedLog indexSpeedLog = new IndexSpeedLog();
 
@@ -69,12 +71,13 @@ namespace ProductSearchIndexBuilder
             }
             else
             {
-                bool successful = BuildAllIndex(todayIndexPathIndexPath, priceme205DbInfo, pamUserbInfo);
+                bool successful = BuildAllIndex(indexPath, priceme205DbInfo, pamUserbInfo);
 
                 if (successful)
                 {
                     if (needReBuildCache)
                     {
+                        LogController.WriteLog("Build cache --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
                         CachBuilder.BuildCache();
                     }
 
@@ -83,7 +86,7 @@ namespace ProductSearchIndexBuilder
                     foreach (var lcPath in luceneConfigFilePathArray)
                     {
                         if (File.Exists(lcPath))
-                            UpDateWebConfig(lcPath, AppValue.LuceneKey, todayIndexPathIndexPath);
+                            UpDateWebConfig(lcPath, AppValue.LuceneKey, indexPath);
                         else
                             LogController.WriteException("LuceneConfigPath : " + lcPath + " file not exists.");
                     }
@@ -93,9 +96,9 @@ namespace ProductSearchIndexBuilder
                 {
                     try
                     {
-                        FtpCopy.UploadDirectorySmall(todayIndexPathIndexPath, AppValue.FtpTargetPath, AppValue.FtpTargetIP, AppValue.FtpUserID, AppValue.FtpPassword, "-no");
+                        FtpCopy.UploadDirectorySmall(indexPath, AppValue.FtpTargetPath, AppValue.FtpTargetIP, AppValue.FtpUserID, AppValue.FtpPassword, "-no");
 
-                        DirectoryInfo dirInfo = new DirectoryInfo(todayIndexPathIndexPath);
+                        DirectoryInfo dirInfo = new DirectoryInfo(indexPath);
 
                         ModifyLuceneConfigFTP(dirInfo.FullName);
                     }
@@ -289,10 +292,57 @@ namespace ProductSearchIndexBuilder
             return flag;
         }
 
-        private static void BuildIndexByHand()
+        private static void BuildIndexByHand(DbInfo priceme205DbInfo, DbInfo pamUserbInfo)
         {
-            throw new NotImplementedException();
+            int MaxNumber = 2;
+
+            while (true)
+            {
+                string inputString = "";
+                Console.WriteLine("----------------------------------------------------------------------");
+                Console.WriteLine("---------------------------Building Index-----------------------------");
+                Console.WriteLine("----------------------------------------------------------------------");
+                Console.WriteLine();
+                Console.WriteLine("Select <1> Building All Index");
+                Console.WriteLine("Select <2> Building Cache");
+                Console.WriteLine("Select <0> Exit");
+                Console.WriteLine();
+                Console.Write("Select number : ");
+
+                inputString = Console.ReadLine();
+
+                int selectedIndex = 0;
+
+                while (!int.TryParse(inputString, out selectedIndex) || selectedIndex < 0 || selectedIndex > MaxNumber)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Input Fromat Error Please retype again! (Between 0 and " + MaxNumber + ")");
+                    Console.Write("Select number : ");
+                    inputString = Console.ReadLine();
+                }
+
+                Console.Clear();
+
+                switch (selectedIndex)
+                {
+                    case 0:
+                        return;
+
+                    case 1:
+                        string todayIndexPathIndexPath = GetTodayIndexPath(true);
+                        LogController.WriteLog("Build Index by hand --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
+                        LogController.WriteLog("Current Index Save To:" + todayIndexPathIndexPath);
+                        BuildAllIndex(todayIndexPathIndexPath, priceme205DbInfo, pamUserbInfo);
+                        break;
+                           
+                    case 2:
+                        LogController.WriteLog("Build cache --- at : " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss"));
+                        CachBuilder.BuildCache();
+                        break;
+                }
+            }
         }
+         
 
         /// <summary>
         /// 获取造index的目录
