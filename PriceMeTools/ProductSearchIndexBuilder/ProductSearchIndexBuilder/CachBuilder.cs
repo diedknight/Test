@@ -67,14 +67,6 @@ namespace ProductSearchIndexBuilder
             }
             LogController.WriteLog(CacheKey.FeaturedProducts + " count :" + featuredTabCaches.Count);
 
-            Dictionary<int, string> energyImgs = DataController.GetEnergyImgs();
-            if (energyImgs.Count > 0)
-            {
-                RedisManager_Static.Set<Dictionary<int, string>>(CacheKey.EnergyImgs, energyImgs);
-                var r = RedisManager_Static.Get<Dictionary<int, string>>(CacheKey.EnergyImgs);
-            }
-            LogController.WriteLog(CacheKey.EnergyImgs + " count :" + energyImgs.Count);
-
             Dictionary<int, Dictionary<string, List<ProductVariants>>> variantsInfo = DataController.GetVariants();
             if (variantsInfo.Count > 0)
             {

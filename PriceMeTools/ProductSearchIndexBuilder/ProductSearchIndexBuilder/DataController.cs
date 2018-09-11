@@ -1453,54 +1453,54 @@ namespace ProductSearchIndexBuilder
             return featuredProducts;
         }
 
-        public static Dictionary<int, string> GetEnergyImgs()
-        {
-            Dictionary<int, string> energyImgsDic = new Dictionary<int, string>();
+        //public static Dictionary<int, string> GetEnergyImgs()
+        //{
+        //    Dictionary<int, string> energyImgsDic = new Dictionary<int, string>();
 
-            try
-            {
-                string sql = "select ProductId, EnergyImage from CSK_Store_Energy where ProductId is not null And ProductId != ''";
-                using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
-                {
-                    sqlConn.Open();
-                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
-                    {
-                        using (var sqlDR = sqlCMD.ExecuteReader())
-                        {
-                            while (sqlDR.Read())
-                            {
-                                string pidString = sqlDR["ProductId"].ToString();
-                                string image = sqlDR["EnergyImage"].ToString();
-                                if (pidString.Contains(","))
-                                {
-                                    string[] temps = pidString.Split(',');
-                                    for (int i = 0; i < temps.Length; i++)
-                                    {
-                                        int pid = 0;
-                                        int.TryParse(temps[i], out pid);
-                                        if (!energyImgsDic.ContainsKey(pid))
-                                            energyImgsDic.Add(pid, image);
-                                    }
-                                }
-                                else
-                                {
-                                    int pid = 0;
-                                    int.TryParse(pidString, out pid);
-                                    if (!energyImgsDic.ContainsKey(pid))
-                                        energyImgsDic.Add(pid, image);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
-            }
+        //    try
+        //    {
+        //        string sql = "select ProductId, EnergyImage from CSK_Store_Energy where ProductId is not null And ProductId != ''";
+        //        using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
+        //        {
+        //            sqlConn.Open();
+        //            using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+        //            {
+        //                using (var sqlDR = sqlCMD.ExecuteReader())
+        //                {
+        //                    while (sqlDR.Read())
+        //                    {
+        //                        string pidString = sqlDR["ProductId"].ToString();
+        //                        string image = sqlDR["EnergyImage"].ToString();
+        //                        if (pidString.Contains(","))
+        //                        {
+        //                            string[] temps = pidString.Split(',');
+        //                            for (int i = 0; i < temps.Length; i++)
+        //                            {
+        //                                int pid = 0;
+        //                                int.TryParse(temps[i], out pid);
+        //                                if (!energyImgsDic.ContainsKey(pid))
+        //                                    energyImgsDic.Add(pid, image);
+        //                            }
+        //                        }
+        //                        else
+        //                        {
+        //                            int pid = 0;
+        //                            int.TryParse(pidString, out pid);
+        //                            if (!energyImgsDic.ContainsKey(pid))
+        //                                energyImgsDic.Add(pid, image);
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+        //    }
 
-            return energyImgsDic;
-        }
+        //    return energyImgsDic;
+        //}
 
         private static List<ProductVariants> GetProductVariants()
         {
