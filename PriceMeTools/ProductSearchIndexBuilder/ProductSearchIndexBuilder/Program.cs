@@ -22,11 +22,16 @@ namespace ProductSearchIndexBuilder
             priceme205DbInfo.ConnectionString = configuration.GetConnectionString("205Db");
             priceme205DbInfo.ProviderName = configuration["205Db_ProviderName"];
 
-            DbInfo pamUserbInfo = new DbInfo();
-            pamUserbInfo.ConnectionString = configuration.GetConnectionString("PamUser");
-            pamUserbInfo.ProviderName = configuration["PamUser_ProviderName"];
+            DbInfo pamUserDbInfo = new DbInfo();
+            pamUserDbInfo.ConnectionString = configuration.GetConnectionString("PamUser");
+            pamUserDbInfo.ProviderName = configuration["PamUser_ProviderName"];
 
-            DataController.Init(priceme205DbInfo, pamUserbInfo, AppValue.CountryId);
+            DbInfo subDbInfo = new DbInfo();
+            subDbInfo.ConnectionString = configuration.GetConnectionString("SubDb");
+            subDbInfo.ProviderName = configuration["SubDb_ProviderName"];
+
+            CachBuilder.Init(AppValue.RedisHost, AppValue.RedisName);
+            DataController.Init(priceme205DbInfo, pamUserDbInfo, subDbInfo);
             
             if (args.Length == 0)
             {
@@ -34,7 +39,7 @@ namespace ProductSearchIndexBuilder
             }
             else
             {
-                BuildIndexAuto(priceme205DbInfo, pamUserbInfo);
+                BuildIndexAuto(priceme205DbInfo, pamUserDbInfo);
             }
         }
 
@@ -45,11 +50,11 @@ namespace ProductSearchIndexBuilder
             string todayIndexPathIndexPath = GetTodayIndexPath(false);
 
             int startHours = DateTime.Now.Hour;
-            bool needReBuildVelocity = true;
+            bool needReBuildCache = true;
             //如果当前时间大于指定时间则不造velocity
             if (startHours > AppValue.FlagVelocityHour)
             {
-                needReBuildVelocity = false;
+                needReBuildCache = false;
             }
 
             LogController.WriteLog("Current Index Save To:" + todayIndexPathIndexPath);
@@ -65,10 +70,14 @@ namespace ProductSearchIndexBuilder
             else
             {
                 bool successful = BuildAllIndex(todayIndexPathIndexPath, priceme205DbInfo, pamUserbInfo);
-                //bool successful = true;
 
                 if (successful)
                 {
+                    if (needReBuildCache)
+                    {
+                        CachBuilder.BuildCache();
+                    }
+
                     string[] luceneConfigFilePathArray = AppValue.LocalLuceneConfigPath.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (var lcPath in luceneConfigFilePathArray)

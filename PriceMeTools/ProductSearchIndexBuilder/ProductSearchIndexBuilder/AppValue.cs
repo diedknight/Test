@@ -41,24 +41,45 @@ namespace ProductSearchIndexBuilder
             FtpTargetLuceneIndexRootPath = configuration["FtpTargetLuceneIndexRootPath"];
             FtpLuceneConfigFileCopyDir = configuration["FtpLuceneConfigFileCopyDir"];
             FtpLuceneConfigFileName = configuration["FtpTargetLuceneConfigName"];
-        }
-        public static string FtpTargetLuceneConfigPath { get; set; }
-        public static string FtpTargetLuceneIndexRootPath { get; set; }
-        public static string FtpLuceneConfigFileCopyDir { get; set; }
-        public static string FtpLuceneConfigFileName { get; set; }
+            RedisHost = configuration["RedisHost"];
+            RedisName = configuration["RedisName"];
 
-        public static string FtpUserID { get; set; }
-        public static string FtpPassword { get; set; }
-        public static string FtpTargetIP { get; set; }
-        public static string FtpTargetPath { get; set; }
-        public static bool ToFTP { get; set; }
-        public static string LocalLuceneConfigPath { get; set; }
-        public static string LuceneKey { get; set; }
-        public static int PrevPriceDay { get; set; }
-        public static string HiddenManufacturerCategoryIDs { get; set; }
-        public static int ThreadCount { get; set; }
-        public static string Currencies { get; set; }
-        public static bool OnlyPPC { get; set; }
+            string VersionNoEnglishCountryidString = configuration["VersionNoEnglishCountryid"];
+            if (!String.IsNullOrEmpty(VersionNoEnglishCountryidString))
+            {
+                string[] versionNoEnglishCountryid = VersionNoEnglishCountryidString.Split(',');
+
+                foreach (string countryId in versionNoEnglishCountryid)
+                {
+                    int cid = 0;
+                    int.TryParse(countryId, out cid);
+                    if (cid != 0)
+                        ListVersionNoEnglishCountryId.Add(cid);
+                }
+            }
+
+            ReviewStr = configuration["ReviewStr"];
+        }
+
+        public static string ReviewStr { get; private set; }
+        public static List<int> ListVersionNoEnglishCountryId = new List<int>();
+        public static string FtpTargetLuceneConfigPath { get; private set; }
+        public static string FtpTargetLuceneIndexRootPath { get; private set; }
+        public static string FtpLuceneConfigFileCopyDir { get; private set; }
+        public static string FtpLuceneConfigFileName { get; private set; }
+
+        public static string FtpUserID { get; private set; }
+        public static string FtpPassword { get; private set; }
+        public static string FtpTargetIP { get; private set; }
+        public static string FtpTargetPath { get; private set; }
+        public static bool ToFTP { get; private set; }
+        public static string LocalLuceneConfigPath { get; private set; }
+        public static string LuceneKey { get; private set; }
+        public static int PrevPriceDay { get; private set; }
+        public static string HiddenManufacturerCategoryIDs { get; private set; }
+        public static int ThreadCount { get; private set; }
+        public static string Currencies { get; private set; }
+        public static bool OnlyPPC { get; private set; }
         public static int WebsiteID { get; private set; }
         public static string IndexRootPath { get; private set; }
         public static string NotCopy { get; private set; }
@@ -77,5 +98,7 @@ namespace ProductSearchIndexBuilder
         public static int FixPriceFlag { get; private set; }
         public static string Email { get; private set; }
         public static string InfoEmail { get; private set; }
+        public static string RedisHost { get; private set; }
+        public static string RedisName { get; private set; }
     }
 }

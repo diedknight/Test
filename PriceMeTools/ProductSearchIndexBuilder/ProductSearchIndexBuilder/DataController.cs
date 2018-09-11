@@ -1,6 +1,7 @@
 ﻿using ProductSearchIndexBuilder.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace ProductSearchIndexBuilder
@@ -16,14 +17,51 @@ namespace ProductSearchIndexBuilder
         static Dictionary<int, CategoryHWDInfo> CategoryHWDInfoDic_Static;
         static List<CategoryAttributeTitleMapCache> CategoryAttributeTitleMapList_Static;
         static Dictionary<int, List<AttributeTitleCache>> CategoryAttributeTitleDic_Static;
-        static List<CategoryCache> CategoryListOrderByName_Static;
         static Dictionary<int, List<CategoryExtend>> CategoryExtendListDic_Static;
         static List<int> IsSearchOnlyCategoryIdList_Static;
         static List<int> NotOverseasRetailer_Static;
 
-        public static void Init(DbInfo priceme205DbInfo, DbInfo pamUserbInfo, int countryId)
+        static List<CategoryCache> CategoryListOrderByName_Static;
+        static Dictionary<int, int> CategoryClicksDic_Static;
+        static Dictionary<int, int> CategoryProductsCountDic_Static;
+
+        static DbInfo Priceme205DbInfo_Static;
+        static DbInfo PamUserDbInfo_Static;
+        static DbInfo SubDbInfo_Static;
+
+        public static List<CategoryCache> CategoryListOrderByName
         {
-            CategoryListOrderByName_Static = GetCatOrderByNameOrderByName(priceme205DbInfo, countryId);
+            get
+            {
+                return CategoryListOrderByName_Static;
+            }
+        }
+
+        public static Dictionary<int, int> CategoryClicksDic
+        {
+            get
+            {
+                return CategoryClicksDic_Static;
+            }
+        }
+
+        public static Dictionary<int, int> CategoryProductsCountDic
+        {
+            get
+            {
+                return CategoryProductsCountDic_Static;
+            }
+        }
+
+        public static void Init(DbInfo priceme205DbInfo, DbInfo pamUserDbInfo, DbInfo subDbInfo)
+        {
+            Priceme205DbInfo_Static = priceme205DbInfo;
+            PamUserDbInfo_Static = pamUserDbInfo;
+            SubDbInfo_Static = subDbInfo;
+
+            CategoryListOrderByName_Static = GetCatOrderByNameOrderByName(priceme205DbInfo, AppValue.CountryId);
+            CategoryClicksDic_Static = GetCategoryClicksDic(priceme205DbInfo, AppValue.CountryId);
+            CategoryProductsCountDic_Static = GetCategoryProductsCountDicDic(priceme205DbInfo, AppValue.CountryId);
             CategoryDic_Static = CategoryListOrderByName_Static.ToDictionary(c => c.CategoryID, c => c);
             IsSearchOnlyCategoryIdList_Static = CategoryListOrderByName_Static.FindAll(c => c.IsSearchOnly).Select(c => c.CategoryID).ToList();
             NextLevelActiveCategories_Static = new Dictionary<int, List<CategoryCache>>();
@@ -33,18 +71,70 @@ namespace ProductSearchIndexBuilder
                 NextLevelActiveCategories_Static.Add(c.CategoryID, categories);
             }
 
-            CategoryExtendListDic_Static = GetCategoryExtendDic(pamUserbInfo, countryId);
+            CategoryExtendListDic_Static = GetCategoryExtendDic(pamUserDbInfo, AppValue.CountryId);
 
             AttributeTitleDic_Static = GetAttributeTitleDicFromDB(priceme205DbInfo);
             AttributeValueRangeList_Static = GetAttributeValueRangeCacheListFromDB(priceme205DbInfo);
             AttributeValueList_Static = GetAttributeValuesCacheListFromDB(priceme205DbInfo);
             AttributeTitleIDAndListOrderDic_Static = GetAttributeTitleIDAndListOrderDic(AttributeValueList_Static, AttributeValueRangeList_Static);
 
-            CategoryHWDInfoDic_Static = GetCategoryHWDInfoDicFromDB(pamUserbInfo);
+            CategoryHWDInfoDic_Static = GetCategoryHWDInfoDicFromDB(pamUserDbInfo);
             CategoryAttributeTitleMapList_Static = GetCategoryAttributeTilteMapsFromDB(CategoryHWDInfoDic_Static, priceme205DbInfo);
             CategoryAttributeTitleDic_Static = GetCategoryAttributeTitleDic(CategoryAttributeTitleMapList_Static);
 
-            NotOverseasRetailer_Static = LoadNotOverseasRetailer(priceme205DbInfo, countryId);
+            NotOverseasRetailer_Static = LoadNotOverseasRetailer(priceme205DbInfo, AppValue.CountryId);
+        }
+
+        private static Dictionary<int, int> GetCategoryProductsCountDicDic(DbInfo priceme205DbInfo, int countryId)
+        {
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+            string sqlString = @"select CategoryID, count(productId) as ps from CSK_Store_Product
+                                  where ProductID in 
+                                  (select ProductID from CSK_Store_RetailerProduct where RetailerProductStatus = 1 and RetailerId in (
+                                  select RetailerId from CSK_Store_Retailer where RetailerCountry = " + countryId + " and RetailerStatus <> 99))group by CategoryID";
+
+            using (var sqlConn = DBController.CreateDBConnection(priceme205DbInfo))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sqlString, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            dic.Add(sqlDR.GetInt32(0), sqlDR.GetInt32(1));
+                        }
+                    }
+                }
+            }
+
+            return dic;
+        }
+
+        private static Dictionary<int, int> GetCategoryClicksDic(DbInfo priceme205DbInfo, int countryId)
+        {
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+            string sqlString = @"SELECT CSK_Store_Product.CategoryID, count(Clicks) as clicks
+                                  FROM ProductClickTemp
+                                  inner join CSK_Store_Product on ProductClickTemp.ProductId = CSK_Store_Product.ProductID
+                                  where ProductClickTemp.CountryID = " + countryId + " group by CSK_Store_Product.CategoryID";
+
+            using (var sqlConn = DBController.CreateDBConnection(priceme205DbInfo))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sqlString, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            dic.Add(sqlDR.GetInt32(0), sqlDR.GetInt32(1));
+                        }
+                    }
+                }
+            }
+
+            return dic;
         }
 
         private static List<int> LoadNotOverseasRetailer(DbInfo priceme205DbInfo, int countryId)
@@ -621,11 +711,11 @@ namespace ProductSearchIndexBuilder
             return null;
         }
 
-        private static Dictionary<int, List<CategoryExtend>> GetCategoryExtendDic(DbInfo pamUserbInfo, int countryId)
+        private static Dictionary<int, List<CategoryExtend>> GetCategoryExtendDic(DbInfo pamUserDbInfo, int countryId)
         {
             Dictionary<int, List<CategoryExtend>> listDic = new Dictionary<int, List<CategoryExtend>>();
             string selectCategorySynonymSql = "SELECT CategoryID,Synonym,LocalName, CountryID FROM CategorySynonym_New where CountryID = " + countryId;
-            using (var sqlConn = DBController.CreateDBConnection(pamUserbInfo))
+            using (var sqlConn = DBController.CreateDBConnection(pamUserDbInfo))
             {
                 sqlConn.Open();
                 using (var sqlCMD = DBController.CreateDbCommand(selectCategorySynonymSql, sqlConn))
@@ -676,6 +766,950 @@ namespace ProductSearchIndexBuilder
                 return category.CategoryName;
             }
             return "";
+        }
+
+        public static List<int> GetAllCategoryAttribute()
+        {
+            List<int> cidList = new List<int>();
+
+            string sql = "select distinct(CID) from product_descandattr";
+
+            using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
+            {
+                sqlConn.Open();
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int cid = sqlDR.GetInt32(0);
+                            cidList.Add(cid);
+                        }
+                    }
+                }
+            }
+
+            return cidList;
+        }
+
+        public static void SetAllAttributeByCategoryId(int cId, Dictionary<int, AttributeGroup> groupDic, Dictionary<int, AttributeGroup> attributeGroupDic)
+        {
+
+            string sql = "select m.AttributeTitleID, t.Title, t.AttributeGroupID, t.ShortDescription, t.AttributeTypeID from CSK_Store_Category_AttributeTitle_Map m "
+                        + "inner join CSK_Store_ProductDescriptorTitle t on m.AttributeTitleID = t.TypeID where m.CategoryID = " + cId
+                        + " order by m.AttributeOrder";
+
+            using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+            {
+                sqlConn.Open();
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            string groupid = sqlDR["AttributeGroupID"].ToString();
+                            int gid = 0;
+                            int.TryParse(groupid, out gid);
+                            int titleId = int.Parse(sqlDR["AttributeTitleID"].ToString());
+                            string title = sqlDR["Title"].ToString();
+                            string des = sqlDR["ShortDescription"].ToString();
+                            string typeId = sqlDR["AttributeTypeID"].ToString();
+                            int tid = 0;
+                            int.TryParse(typeId, out tid);
+
+                            if (groupDic.ContainsKey(gid))
+                            {
+                                List<AttributeGroupList> glistList = groupDic[gid].AttributeGroupList;
+                                AttributeGroupList glist = new AttributeGroupList();
+                                glist.AttributeId = titleId;
+                                glist.AttributeName = title;
+                                glist.ShortDescription = des;
+                                glist.T = 1;
+                                glist.AttributeTypeID = tid;
+                                glist.IsCategoryAttribute = true;
+                                glistList.Add(glist);
+                                groupDic[gid].AttributeGroupList = glistList;
+                            }
+                            else
+                            {
+                                AttributeGroupList glist = new AttributeGroupList();
+                                glist.AttributeId = titleId;
+                                glist.AttributeName = title;
+                                glist.ShortDescription = des;
+                                glist.T = 1;
+                                glist.IsCategoryAttribute = true;
+                                glist.AttributeTypeID = tid;
+                                List<AttributeGroupList> glistList = new List<AttributeGroupList>();
+                                glistList.Add(glist);
+
+                                AttributeGroup group = new AttributeGroup();
+                                if(attributeGroupDic.ContainsKey(gid))
+                                {
+                                    group.AttributeGroupName = attributeGroupDic[gid].AttributeGroupName;
+                                    group.OrderID = attributeGroupDic[gid].OrderID;
+                                    group.AttributeGroupList = glistList;
+                                    groupDic.Add(gid, group);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///  组名翻译过
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <returns></returns>
+        public static Dictionary<int, AttributeGroup> GetAllAttributeGroupDic(int countryId)
+        {
+            Dictionary<int, AttributeGroup> dic = new Dictionary<int, AttributeGroup>();
+            string sql = @"select ag.AttributeGroupID, ag.AttributeGroupName, OrderID, agt.AttributeGroupName from CSK_Store_AttributeGroup ag
+                           left join CSK_Store_AttributeGroupTranslation agt on ag.AttributeGroupID = agt.AttributeGroupId and agt.CountryId = " + countryId;
+            using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
+            {
+                sqlConn.Open();
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int agId = sqlDR.GetInt32(0);
+                            string agName = sqlDR.GetString(1);
+                            int agOrderId = sqlDR.GetInt32(2);
+                            if (!sqlDR.IsDBNull(3))
+                            {
+                                agName = sqlDR.GetString(3);
+                            }
+                            AttributeGroup attributeGroup = new AttributeGroup();
+                            attributeGroup.AttributeGroupName = agName;
+                            attributeGroup.OrderID = agOrderId;
+                            attributeGroup.AttributeGroupId = agId;
+                            dic.Add(agId, attributeGroup);
+                        }
+                    }
+                }
+            }
+
+            return dic;
+        }
+
+        public static void SetAllCompareAttributeByCategoryId(int cId, Dictionary<int, AttributeGroup> groupDic, Dictionary<int, AttributeGroup> attributeGroupDic)
+        {
+            string sql = "select CompareAttributeID, Name, AttributeGroupID, ShortDescription, AttributeTypeID from Store_Compare_Attributes where CategoryID = " + cId;
+            using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+            {
+                sqlConn.Open();
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            string groupid = sqlDR["AttributeGroupID"].ToString();
+                            int gid = 0;
+                            int.TryParse(groupid, out gid);
+                            int titleId = int.Parse(sqlDR["CompareAttributeID"].ToString());
+                            string title = sqlDR["Name"].ToString();
+                            string des = sqlDR["ShortDescription"].ToString();
+                            string typeid = sqlDR["AttributeTypeID"].ToString();
+                            int tid = 0;
+                            int.TryParse(typeid, out tid);
+
+                            if (groupDic.ContainsKey(gid))
+                            {
+                                List<AttributeGroupList> glistList = groupDic[gid].AttributeGroupList;
+                                AttributeGroupList glist = new AttributeGroupList();
+                                glist.AttributeId = titleId;
+                                glist.AttributeName = title;
+                                glist.ShortDescription = des;
+                                glist.AttributeTypeID = tid;
+                                glist.IsCategoryAttribute = false;
+                                glistList.Add(glist);
+                                groupDic[gid].AttributeGroupList = glistList;
+                            }
+                            else
+                            {
+                                AttributeGroupList glist = new AttributeGroupList();
+                                glist.AttributeId = titleId;
+                                glist.AttributeName = title;
+                                glist.ShortDescription = des;
+                                glist.AttributeTypeID = tid;
+                                glist.IsCategoryAttribute = false;
+                                List<AttributeGroupList> glistList = new List<AttributeGroupList>();
+                                glistList.Add(glist);
+
+                                AttributeGroup group = new AttributeGroup();
+                                if (attributeGroupDic.ContainsKey(gid))
+                                {
+                                    group.AttributeGroupName = attributeGroupDic[gid].AttributeGroupName;
+                                    group.OrderID = attributeGroupDic[gid].OrderID;
+                                    group.AttributeGroupList = glistList;
+                                    groupDic.Add(gid, group);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static List<RetailerCache> GetRetailersWithVotesSumOrderByClicksFromDB()
+        {
+            List<RetailerCache> list = new List<RetailerCache>();
+
+            try
+            {
+                string sql = "select * from CSK_Store_Retailer where IsSetupComplete = 1 and RetailerCountry = " + AppValue.CountryId + " and RetailerStatus <> 99 order by RetailerName";
+
+                using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
+                {
+                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                    {
+                        sqlConn.Open();
+                        using (var sqlDR = sqlCMD.ExecuteReader())
+                        {
+                            while (sqlDR.Read())
+                            {
+                                var rs = DbConvertController<RetailerCache>.ReadDataFromDataReader(sqlDR);
+                                if (rs.RetailerId > 0)
+                                {
+                                    list.Add(rs);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                List<RetailerVotesSum> retailerVotes = GetRetailerVotesSums(AppValue.CountryId);
+                Dictionary<int, string> retailerStoreTypeDic = GetRetailerStroeType(AppValue.CountryId);
+                Dictionary<int, int> clicksDic = GetRetailerClicks(AppValue.CountryId);
+
+                foreach (var item in list)
+                {
+                    var vote = retailerVotes.FirstOrDefault(v => v.RetailerID == item.RetailerId);
+                    if (vote != null)
+                    {
+                        item.RetailerRatingSum = vote.RetailerRatingSum;
+                        item.RetailerTotalRatingVotes = vote.RetailerTotalRatingVotes;
+                    }
+                    else
+                    {
+                        item.RetailerRatingSum = 3;
+                        item.RetailerTotalRatingVotes = 1;
+                    }
+
+                    if (retailerStoreTypeDic.ContainsKey(item.StoreType))
+                    {
+                        item.StoreTypeName = retailerStoreTypeDic[item.StoreType];
+                    }
+
+                    item.AvRating = 0;
+                    if (item.RetailerTotalRatingVotes > 1)
+                    {
+                        int totalReviews = (item.RetailerTotalRatingVotes == 0 ? 2 : item.RetailerTotalRatingVotes) - 1;
+                        string reviewStr = "";
+                        if (AppValue.ListVersionNoEnglishCountryId.Contains(item.RetailerCountry))
+                            reviewStr = string.Format("{0} " + AppValue.ReviewStr, totalReviews);
+                        else
+                            reviewStr = string.Format("{0} " + AppValue.ReviewStr + "{1}", totalReviews, totalReviews > 1 ? "s" : "");
+
+                        item.ReviewString = reviewStr;
+
+                        decimal avRating = decimal.Round(((item.RetailerRatingSum - 3m) / ((item.RetailerTotalRatingVotes == 0 ? 2 : item.RetailerTotalRatingVotes) - 1m)), 1);
+                        avRating = avRating.ToString().Length > 3 ? decimal.Parse(avRating.ToString().Substring(0, 3)) : avRating;
+                        item.AvRating = avRating;
+                    }
+
+                    int clicks = 0;
+                    clicksDic.TryGetValue(item.RetailerId, out clicks);
+                    item.Clicks = clicks;
+                }
+
+                LogController.WriteLog("CountryId: " + AppValue.CountryId + " RetailerListOrderByName no velocity");
+            }
+            catch (Exception ex)
+            {
+                LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+            }
+
+            return list.OrderByDescending(r => r.Clicks).ToList();
+        }
+
+        public static List<RetailerVotesSum> GetRetailerVotesSums(int countryId)
+        {
+            List<RetailerVotesSum> votes = new List<RetailerVotesSum>();
+
+            string sql = @"select retailerid as ID,RetailerId ,SUM(OverallRating)+3 as RetailerRatingSum,COUNT(RetailerId)+1 as RetailerTotalRatingVotes from Merchant_Reviews
+                            where RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerCountry = " + countryId + @")
+                            and ReviewStatus in (4, 5)
+                            group by RetailerId";
+
+            using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
+            {
+                sqlConn.Open();
+
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            RetailerVotesSum vote = new RetailerVotesSum();
+                            vote.ID = int.Parse(sqlDR["ID"].ToString());
+                            vote.RetailerID = int.Parse(sqlDR["RetailerID"].ToString());
+                            vote.RetailerRatingSum = int.Parse(sqlDR["RetailerRatingSum"].ToString());
+                            vote.RetailerTotalRatingVotes = int.Parse(sqlDR["RetailerTotalRatingVotes"].ToString());
+
+                            votes.Add(vote);
+                        }
+                    }
+                }
+            }
+
+            return votes;
+        }
+
+        private static Dictionary<int, string> GetRetailerStroeType(int countryId)
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            string sql = "SELECT * FROM CSK_Store_RetailerStoreType";
+            using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            var retailerStoreType = DbConvertController<RetailerStoreType>.ReadDataFromDataReader(sqlDR);
+                            if (retailerStoreType != null)
+                            {
+                                dic.Add(retailerStoreType.RetailerStoreTypeID, retailerStoreType.StoreTypeName);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return dic;
+        }
+
+        private static Dictionary<int, int> GetRetailerClicks(int countryId)
+        {
+            Dictionary<int, int> retailerClicks = new Dictionary<int, int>();
+
+            string sql = "CSK_Store_12RMB_Index_GetRetailerClicks";
+
+            using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    sqlCMD.CommandType = CommandType.StoredProcedure;
+                    sqlCMD.CommandTimeout = 0;
+
+                    var countryIdParam = sqlCMD.CreateParameter();
+                    countryIdParam.ParameterName = "@country";
+                    countryIdParam.DbType = DbType.Int32;
+                    countryIdParam.Value = countryId;
+                    sqlCMD.Parameters.Add(countryIdParam);
+
+                    using (IDataReader idr = sqlCMD.ExecuteReader())
+                    {
+                        while (idr.Read())
+                        {
+                            retailerClicks.Add(int.Parse(idr["RetailerId"].ToString()), int.Parse(idr["clicks"].ToString()));
+                        }
+                    }
+                }
+            }
+
+            return retailerClicks;
+        }
+
+        public static Dictionary<string, string> GetStatusBarData()
+        {
+            var dic = new Dictionary<string, string>();
+
+            try
+            {
+                string sql = @"select @ur :=(SUM(ProductRatingVotes) - count(*)) from CSK_Store_ProductVotesSum;
+                            select @er := count(*) from CSK_Store_ExpertReviewAU;
+
+                            set @ur = IFNULL(@ur,0);
+
+                            select @rc := count(*) from CSK_Store_Retailer where CSK_Store_Retailer.RetailerStatus = 1 and IsSetupComplete = 1;
+
+                            select count(DISTINCT CSK_Store_RetailerProductNew.productid) as productNum,count(CSK_Store_RetailerProductNew.RetailerProductID) as totalnum,@rc as retailerNum, @er + @ur as reviewNum from CSK_Store_RetailerProductNew
+                            inner join CSK_Store_ProductNew on CSK_Store_ProductNew.productid = CSK_Store_RetailerProductNew.productid
+                            inner join CSK_Store_Retailer on CSK_Store_Retailer.retailerid = CSK_Store_RetailerProductNew.retailerid
+                            where CSK_Store_ProductNew.ProductStatus = 1 and CSK_Store_Retailer.RetailerStatus = 1 and CSK_Store_Retailer.IsSetupComplete = 1;";
+
+                using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+                {
+                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                    {
+                        sqlConn.Open();
+                        using (var sqlDR = sqlCMD.ExecuteReader())
+                        {
+                            sqlDR.NextResult();
+                            sqlDR.NextResult();
+                            sqlDR.NextResult();
+
+                            if (sqlDR.Read())
+                            {
+                                string name = sqlDR.GetName(0);
+                                string num = sqlDR[0].ToString();
+
+                                string numString = GetNumberString(num);
+                                dic.Add(name, numString);
+
+                                name = sqlDR.GetName(1);
+                                num = sqlDR[1].ToString();
+
+                                numString = GetNumberString(num);
+                                dic.Add(name, numString);
+
+                                name = sqlDR.GetName(2);
+                                num = sqlDR[2].ToString();
+
+                                numString = GetNumberString(num);
+                                dic.Add(name, numString);
+
+                                name = sqlDR.GetName(3);
+                                num = sqlDR[3].ToString();
+
+                                numString = GetNumberString(num);
+                                dic.Add(name, numString);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+            }
+
+            return dic;
+        }
+
+        private static string GetNumberString(string num)
+        {
+            string numberString = "";
+            int count = 0;
+            if (int.TryParse(num, out count))
+            {
+                numberString = count.ToString("N0");
+            }
+            return numberString;
+        }
+
+        public static List<RetailerReviewCache> GetAllRetailerReviewList(int countryId)
+        {
+            List<RetailerReviewCache> _retailerReviewList = new List<RetailerReviewCache>();
+
+            try
+            {
+                int ii = 0;
+                using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
+                {
+                    sqlConn.Open();
+
+                    string sql = "GetRetailerReviewByCountryID";
+                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                    {
+                        sqlCMD.CommandType = CommandType.StoredProcedure;
+
+                        var countryIdParam = sqlCMD.CreateParameter();
+                        countryIdParam.ParameterName = "@countryID";
+                        countryIdParam.DbType = DbType.Int32;
+                        countryIdParam.Value = countryId;
+                        sqlCMD.Parameters.Add(countryIdParam);
+
+                        using (var sqlDR = sqlCMD.ExecuteReader())
+                        {
+                            while (sqlDR.Read())
+                            {
+                                RetailerReviewCache rrc = new RetailerReviewCache();
+
+                                int.TryParse(sqlDR["RetailerReviewId"].ToString(), out ii);
+                                rrc.ReviewID = ii;
+
+                                int.TryParse(sqlDR["RetailerId"].ToString(), out ii);
+                                rrc.RetailerID = ii;
+
+                                int.TryParse(sqlDR["EasyOfOrdering"].ToString(), out ii);
+                                rrc.EasyOfOrdering = ii;
+
+                                int.TryParse(sqlDR["OnTimeDelivery"].ToString(), out ii);
+                                rrc.OnTimeDelivery = ii;
+
+                                int.TryParse(sqlDR["CustomerCare"].ToString(), out ii);
+                                rrc.CustomerCare = ii;
+
+                                int.TryParse(sqlDR["Availability"].ToString(), out ii);
+                                rrc.Availability = ii;
+
+                                int.TryParse(sqlDR["OverallStoreRating"].ToString(), out ii);
+                                rrc.OverallStoreRating = ii;
+                                rrc.OverallRating = ii;
+
+                                rrc.Goods = sqlDR["Goods"].ToString();
+                                rrc.Title = sqlDR["Title"].ToString();
+                                rrc.Body = sqlDR["Body"].ToString();
+                                rrc.IsApproved = bool.Parse(sqlDR["IsApproved"].ToString());
+                                rrc.AdminComments = sqlDR["AdminComments"].ToString();
+                                rrc.UserIP = sqlDR["UserIP"].ToString();
+                                int totalComment = 0;
+                                int.TryParse(sqlDR["TotalComment"].ToString(), out totalComment);
+                                rrc.TotalComment = totalComment;
+                                rrc.CreatedBy = sqlDR["CreatedBy"].ToString();
+                                DateTime dt = DateTime.Now;
+                                DateTime.TryParse(sqlDR["CreatedOn"].ToString(), out dt);
+                                rrc.CreatedOn = dt;
+
+                                _retailerReviewList.Add(rrc);
+                            }
+                        }
+                        _retailerReviewList.ForEach(r => r.SourceType = "web");
+                    }
+
+
+                    List<RetailerReviewCache> rrcList = new List<RetailerReviewCache>();
+
+                    sql = "GetRetailerReviewDetailByCountryID";
+                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                    {
+                        sqlCMD.CommandType = CommandType.StoredProcedure;
+
+                        sqlCMD.CommandType = CommandType.StoredProcedure;
+
+                        var countryIdParam = sqlCMD.CreateParameter();
+                        countryIdParam.ParameterName = "@countryID";
+                        countryIdParam.DbType = DbType.Int32;
+                        countryIdParam.Value = countryId;
+                        sqlCMD.Parameters.Add(countryIdParam);
+
+                        using (var sqlDR = sqlCMD.ExecuteReader())
+                        {
+                            while (sqlDR.Read())
+                            {
+                                RetailerReviewCache rrc = new RetailerReviewCache();
+
+                                int.TryParse(sqlDR["ReviewID"].ToString(), out ii);
+                                rrc.ReviewID = ii;
+
+                                int.TryParse(sqlDR["RetailerID"].ToString(), out ii);
+                                rrc.RetailerID = ii;
+
+                                float ff = 0;
+                                float.TryParse(sqlDR["Delivery"].ToString(), out ff);
+                                rrc.Delivery = ff;
+
+                                float.TryParse(sqlDR["Service"].ToString(), out ff);
+                                rrc.Service = ff;
+
+                                float.TryParse(sqlDR["EaseOfPurchase"].ToString(), out ff);
+                                rrc.EaseOfPurchase = ff;
+
+                                float.TryParse(sqlDR["OverallRating"].ToString(), out ff);
+                                rrc.OverallRating = ff;
+
+                                float.TryParse(sqlDR["ProductInfo"].ToString(), out ff);
+                                rrc.ProductInfo = ff;
+
+                                bool boo = true;
+                                bool.TryParse(sqlDR["PurchaseAgain"].ToString(), out boo);
+                                rrc.PurchaseAgain = boo;
+                                rrc.Email = sqlDR["Email"].ToString();
+                                rrc.Descriptive = sqlDR["Descriptive"].ToString();
+                                rrc.UserIP = sqlDR["UserIP"].ToString();
+                                rrc.CreatedBy = sqlDR["CreatedBy"].ToString();
+
+                                DateTime dt = DateTime.Now;
+                                DateTime.TryParse(sqlDR["CreatedOn"].ToString(), out dt);
+                                rrc.CreatedOn = dt;
+                                rrcList.Add(rrc);
+                            }
+                        }
+                        rrcList.ForEach(r => r.SourceType = "review-system");
+                    }
+
+                    _retailerReviewList.AddRange(rrcList);
+                }
+
+
+                _retailerReviewList = _retailerReviewList.OrderByDescending(r => r.CreatedOn).ToList();
+            }
+            catch (Exception ex)
+            {
+                LogController.WriteException(ex.Message + ex.StackTrace);
+            }
+
+            return _retailerReviewList;
+        }
+
+        public static List<FeaturedTabCache> GetAllFeaturedProducts(int countryId)
+        {
+            List<FeaturedTabCache> featuredProducts = new List<FeaturedTabCache>();
+
+            try
+            {
+                string sql = "SELECT CategoryID,Label,Title,ListOrder FROM CSK_Store_FeaturedTab order by ListOrder";
+                using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+                {
+                    sqlConn.Open();
+                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                    {
+                        using (var sqlDR = sqlCMD.ExecuteReader())
+                        {
+                            while (sqlDR.Read())
+                            {
+                                FeaturedTabCache ftc = new FeaturedTabCache();
+                                ftc.CategoryID = sqlDR.GetInt32(0);
+                                ftc.Label = sqlDR.GetString(1);
+                                ftc.Title = sqlDR.GetString(2);
+                                ftc.ListOrder = sqlDR.GetInt16(3);
+
+                                featuredProducts.Add(ftc);
+                            }
+                        }
+                    }
+
+                    foreach (var ft in featuredProducts)
+                    {
+                        string selectFeaturedProductsSql = "";
+                        if (sqlConn is MySql.Data.MySqlClient.MySqlConnection)
+                        {
+                            selectFeaturedProductsSql = @"SELECT  P.ProductID,P.ProductName,P.DefaultImage,P.CategoryID,RPP.MinPrice FROM CSK_Store_ProductNew P 
+                                                            INNER JOIN
+                                                            (SELECT RP.ProductID, MIN(RP.RetailerPrice) AS MinPrice FROM CSK_Store_RetailerProductNew RP 
+                                                                LEFT JOIN
+                                                                CSK_Store_Retailer R ON RP.RetailerID = R.RetailerID 
+                                                                LEFT JOIN
+                                                                CSK_Store_PPCMember PPC ON R.RetailerId = PPC.RetailerId
+                                                                WHERE R.RetailerCountry= " + countryId + " AND PPC.RetailerCountry= " + countryId + @" AND R.RetailerStatus = 1
+                                                                GROUP BY ProductID) as RPP ON RPP.ProductID = P.ProductID
+                                                                WHERE P.CategoryID = " + ft.CategoryID + @" AND P.IsMerge = 1 AND P.DefaultImage is not null ORDER BY P.CreatedOn DESC
+                                                                limit 10";
+
+                        }
+                        else
+                        {
+                            selectFeaturedProductsSql = @"SELECT top 10 P.ProductID,P.ProductName,P.DefaultImage,P.CategoryID,RPP.MinPrice FROM CSK_Store_ProductNew P 
+                                                            INNER JOIN
+                                                            (SELECT RP.ProductID, MIN(RP.RetailerPrice) AS MinPrice FROM CSK_Store_RetailerProductNew RP 
+                                                                LEFT JOIN
+                                                                CSK_Store_Retailer R ON RP.RetailerID = R.RetailerID 
+                                                                LEFT JOIN
+                                                                CSK_Store_PPCMember PPC ON R.RetailerId = PPC.RetailerId
+                                                                WHERE R.RetailerCountry= " + countryId + " AND PPC.RetailerCountry= " + countryId + @" AND R.RetailerStatus = 1
+                                                                GROUP BY ProductID) as RPP ON RPP.ProductID = P.ProductID
+                                                                WHERE P.CategoryID = " + ft.CategoryID + @" AND P.IsMerge = 1 AND P.DefaultImage is not null ORDER BY P.CreatedOn DESC";
+
+                        }
+
+
+                        List<FeaturedProduct> featuredProductList = new List<FeaturedProduct>();
+
+                        using (var sqlCMD = DBController.CreateDbCommand(selectFeaturedProductsSql, sqlConn))
+                        {
+                            using (var sqlDR = sqlCMD.ExecuteReader())
+                            {
+                                while (sqlDR.Read())
+                                {
+                                    FeaturedProduct featuredProduct = new FeaturedProduct();
+                                    featuredProduct.ProductID = int.Parse(sqlDR["ProductID"].ToString());
+                                    featuredProduct.ProductName = sqlDR["ProductName"].ToString();
+                                    featuredProduct.DefaultImage = sqlDR["DefaultImage"].ToString();
+                                    featuredProduct.CategoryID = int.Parse(sqlDR["CategoryID"].ToString());
+                                    featuredProduct.RootID = 0;
+                                    featuredProduct.MinPrice = double.Parse(sqlDR["MinPrice"].ToString());
+                                    featuredProductList.Add(featuredProduct);
+                                }
+                            }
+
+                            var cate = GetCategoryById(ft.CategoryID);
+                            if (cate != null)
+                            {
+                                ft.Label = cate.CategoryName;
+                            }
+
+                            ft.FeaturedProductList = featuredProductList.Take(3).ToList();
+                        }
+                    }
+                }
+
+                LogController.WriteLog("Country: " + countryId + " FeaturedProducts no velocity");
+            }
+            catch (Exception ex)
+            {
+                LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+            }
+
+            return featuredProducts;
+        }
+
+        public static Dictionary<int, string> GetEnergyImgs()
+        {
+            Dictionary<int, string> energyImgsDic = new Dictionary<int, string>();
+
+            try
+            {
+                string sql = "select ProductId, EnergyImage from CSK_Store_Energy where ProductId is not null And ProductId != ''";
+                using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
+                {
+                    sqlConn.Open();
+                    using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                    {
+                        using (var sqlDR = sqlCMD.ExecuteReader())
+                        {
+                            while (sqlDR.Read())
+                            {
+                                string pidString = sqlDR["ProductId"].ToString();
+                                string image = sqlDR["EnergyImage"].ToString();
+                                if (pidString.Contains(","))
+                                {
+                                    string[] temps = pidString.Split(',');
+                                    for (int i = 0; i < temps.Length; i++)
+                                    {
+                                        int pid = 0;
+                                        int.TryParse(temps[i], out pid);
+                                        if (!energyImgsDic.ContainsKey(pid))
+                                            energyImgsDic.Add(pid, image);
+                                    }
+                                }
+                                else
+                                {
+                                    int pid = 0;
+                                    int.TryParse(pidString, out pid);
+                                    if (!energyImgsDic.ContainsKey(pid))
+                                        energyImgsDic.Add(pid, image);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+            }
+
+            return energyImgsDic;
+        }
+
+        private static List<ProductVariants> GetProductVariants()
+        {
+            List<ProductVariants> datas = new List<ProductVariants>();
+
+            var sql = "select i.ProductID, i.LinedPID, i.VariantProductValue, i.BaseProductValue, i.VariantTypeID, t.VariantTitleName, t.Unit "
+                    + "from IntraLinkingGenerationAndRelated i inner join VariantType t On i.VariantTypeID = t.VariantTypeID where LinkType = 'Variant'";
+            using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
+            {
+                sqlConn.Open();
+
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int pid = 0, lpid = 0, tid = 0;
+                            int.TryParse(sqlDR["ProductID"].ToString(), out pid);
+                            int.TryParse(sqlDR["LinedPID"].ToString(), out lpid);
+                            int.TryParse(sqlDR["VariantTypeID"].ToString(), out tid);
+
+                            ProductVariants pv = new ProductVariants();
+                            pv.ProductId = pid;
+                            pv.LinedPID = lpid;
+                            pv.VariantType = tid;
+                            pv.VariantProductValue = sqlDR["VariantProductValue"].ToString();
+                            pv.BaseProductValue = sqlDR["BaseProductValue"].ToString();
+                            pv.Unit = sqlDR["Unit"].ToString();
+                            if (!string.IsNullOrEmpty(pv.Unit))
+                                pv.DisplayName = pv.VariantProductValue + " " + pv.Unit;
+                            else
+                                pv.DisplayName = pv.VariantProductValue;
+
+                            datas.Add(pv);
+                        }
+                    }
+                }
+            }
+
+            return datas;
+        }
+
+        private static List<ProductVariants> GetVariantTpey()
+        {
+            List<ProductVariants> list = new List<ProductVariants>();
+
+            var sql = "select * from VariantType";
+            using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
+            {
+                sqlConn.Open();
+
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int tid = 0;
+                            int.TryParse(sqlDR["VariantTypeID"].ToString(), out tid);
+
+                            ProductVariants pv = new ProductVariants();
+                            pv.VariantType = tid;
+                            pv.VariantTitleName = sqlDR["VariantTitleName"].ToString();
+
+                            list.Add(pv);
+                        }
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public static Dictionary<int, Dictionary<string, List<ProductVariants>>> GetVariants()
+        {
+            var dicVariants = new Dictionary<int, Dictionary<string, List<ProductVariants>>>();
+
+            try
+            {
+                List<ProductVariants> listPv = GetProductVariants();
+                List<ProductVariants> listVariantsType = GetVariantTpey();
+
+                List<int> listPid = new List<int>();
+                foreach (ProductVariants pv in listPv)
+                {
+                    if (!listPid.Contains(pv.ProductId))
+                    {
+                        listPid.Add(pv.ProductId);
+                        List<ProductVariants> temps = listPv.Where(p => p.ProductId == pv.ProductId).ToList();
+                        ProductVariants(temps, listVariantsType, dicVariants);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogController.WriteException(ex.Message + "\t" + ex.StackTrace);
+            }
+
+            return dicVariants;
+        }
+
+        private static void ProductVariants(List<ProductVariants> temps, List<ProductVariants> listVariantsType, Dictionary<int, Dictionary<string, List<ProductVariants>>> dicVariants)
+        {
+            string pids = temps[0].ProductId.ToString();
+            foreach (ProductVariants pv in temps)
+            {
+                pids += "," + pv.LinedPID.ToString();
+            }
+            Dictionary<int, string> dicProduct = GetProductNames(pids);
+            if (dicProduct.Count == 0)
+                return;
+
+            List<ProductVariants> datas = new List<ProductVariants>();
+            foreach (ProductVariants pv in temps)
+            {
+                if (dicProduct.ContainsKey(pv.LinedPID))
+                {
+                    pv.ProductName = dicProduct[pv.LinedPID];
+                    datas.Add(pv);
+                }
+            }
+
+            List<int> listType = datas.Select(t => t.VariantType).Distinct().ToList();
+
+            if (listVariantsType.Count > 0)
+            {
+                foreach (int t in listType)
+                {
+                    ProductVariants type = listVariantsType.FirstOrDefault(lt => lt.VariantType == t);
+                    if (type == null || type.VariantType == 0)
+                        continue;
+
+                    string titlename = type.VariantTitleName;
+
+                    List<ProductVariants> listVt = datas.Where(p => p.VariantType == t).ToList();
+                    if (listVt != null && listVt.Count > 0)
+                    {
+                        if (dicProduct.ContainsKey(listVt[0].ProductId))
+                        {
+                            ProductVariants basepv = new ProductVariants();
+                            basepv.LinedPID = listVt[0].ProductId;
+                            basepv.VariantProductValue = listVt[0].BaseProductValue;
+                            basepv.VariantType = listVt[0].VariantType;
+                            if (dicProduct.ContainsKey(listVt[0].ProductId))
+                                basepv.ProductName = dicProduct[listVt[0].ProductId];
+                            basepv.Unit = listVt[0].Unit;
+                            if (!string.IsNullOrEmpty(listVt[0].Unit))
+                                basepv.DisplayName = basepv.VariantProductValue + " " + listVt[0].Unit;
+                            else
+                                basepv.DisplayName = basepv.VariantProductValue;
+                            listVt.Add(basepv);
+                        }
+
+                        foreach (ProductVariants pv in listVt)
+                        {
+                            List<ProductVariants> pvs = listVt.Where(p => p.LinedPID != pv.LinedPID).ToList();
+                            if (pvs.Count > 0)
+                            {
+                                Dictionary<string, List<ProductVariants>> dicVt = new Dictionary<string, List<ProductVariants>>();
+
+                                if (!dicVariants.ContainsKey(pv.LinedPID))
+                                {
+                                    dicVt.Add(titlename, pvs);
+                                    dicVariants.Add(pv.LinedPID, dicVt);
+                                }
+                                else
+                                {
+                                    dicVt = dicVariants[pv.LinedPID];
+                                    if (!dicVt.ContainsKey(titlename))
+                                        dicVt.Add(titlename, pvs);
+                                    dicVariants[pv.LinedPID] = dicVt;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static Dictionary<int, string> GetProductNames(string pids)
+        {
+            Dictionary<int, string> dicProduct = new Dictionary<int, string>();
+
+            var sql = "Select ProductID, ProductName from CSK_Store_ProductNew Where ProductID in (" + pids + ")";
+            using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int pid = 0;
+                            int.TryParse(sqlDR["ProductID"].ToString(), out pid);
+
+                            if (!dicProduct.ContainsKey(pid))
+                                dicProduct.Add(pid, sqlDR["ProductName"].ToString());
+                        }
+                    }
+                }
+            }
+
+            return dicProduct;
         }
     }
 }
