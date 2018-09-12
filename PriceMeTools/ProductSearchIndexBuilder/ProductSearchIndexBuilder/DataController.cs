@@ -1221,7 +1221,7 @@ namespace ProductSearchIndexBuilder
             try
             {
                 int ii = 0;
-                using (var sqlConn = DBController.CreateDBConnection(Priceme205DbInfo_Static))
+                using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
                 {
                     sqlConn.Open();
 
