@@ -59,8 +59,13 @@ namespace ProductSearchIndexBuilder
             }
 
             ReviewStr = configuration["ReviewStr"];
+
+            bool _isDebug;
+            if (bool.TryParse(configuration["IsDebug"], out _isDebug))
+                IsDebug = _isDebug;
         }
 
+        public static bool IsDebug { get; private set; }
         public static string ReviewStr { get; private set; }
         public static List<int> ListVersionNoEnglishCountryId = new List<int>();
         public static string FtpTargetLuceneConfigPath { get; private set; }

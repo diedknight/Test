@@ -266,6 +266,16 @@ namespace ProductSearchIndexBuilder
             return successful;
         }
 
+        public static bool IsDev()
+        {
+            var envs = Environment.GetEnvironmentVariables();
+            if (envs.Contains("DEV_ENVIRONMENT") && envs["DEV_ENVIRONMENT"].ToString().Equals("1") || AppValue.IsDebug)
+            {
+                return true;
+            }
+            return false;
+        }
+
         //public static bool CopyIndex(string todayIndexPathIndexPath)
         //{
         //    try

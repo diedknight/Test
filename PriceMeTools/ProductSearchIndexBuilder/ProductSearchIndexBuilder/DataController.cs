@@ -1149,6 +1149,11 @@ namespace ProductSearchIndexBuilder
                             inner join CSK_Store_Retailer on CSK_Store_Retailer.retailerid = CSK_Store_RetailerProductNew.retailerid
                             where CSK_Store_ProductNew.ProductStatus = 1 and CSK_Store_Retailer.RetailerStatus = 1 and CSK_Store_Retailer.IsSetupComplete = 1;";
 
+                if (Utility.IsDev())
+                {
+                    sql = @"select 9;select 9;select 9;select 9999999 as productNum,9999999 as totalnum, 9999999 as retailerNum, 9999999 reviewNum";
+                }
+
                 using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
                 {
                     using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
@@ -1397,7 +1402,10 @@ namespace ProductSearchIndexBuilder
                                                                 GROUP BY ProductID) as RPP ON RPP.ProductID = P.ProductID
                                                                 WHERE P.CategoryID = " + ft.CategoryID + @" AND P.IsMerge = 1 AND P.DefaultImage is not null ORDER BY P.CreatedOn DESC
                                                                 limit 10";
-
+                            if (Utility.IsDev())
+                            {
+                                selectFeaturedProductsSql = "SELECT ProductID,ProductName,DefaultImage,CategoryID,999 as MinPrice FROM CSK_Store_Product WHERE CategoryID = " + ft.CategoryID + " limit 10";
+                            }
                         }
                         else
                         {
@@ -1412,6 +1420,10 @@ namespace ProductSearchIndexBuilder
                                                                 GROUP BY ProductID) as RPP ON RPP.ProductID = P.ProductID
                                                                 WHERE P.CategoryID = " + ft.CategoryID + @" AND P.IsMerge = 1 AND P.DefaultImage is not null ORDER BY P.CreatedOn DESC";
 
+                            if (Utility.IsDev())
+                            {
+                                selectFeaturedProductsSql = "SELECT top 10 ProductID,ProductName,DefaultImage,CategoryID,999 as MinPrice FROM CSK_Store_Product WHERE CategoryID = " + ft.CategoryID;
+                            }
                         }
 
 
