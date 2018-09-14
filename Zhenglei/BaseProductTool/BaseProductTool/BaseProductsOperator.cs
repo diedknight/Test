@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using Dapper;
+using Newtonsoft.Json;
 
 namespace BaseProductTool
 {
@@ -65,17 +68,19 @@ namespace BaseProductTool
             foreach (var info in list)
             {
 
-                using (SqlConnection sqlConn = new SqlConnection(connStr))
+                try
                 {
-                    var id1 = sqlConn.ExecuteScalar<int>("select top 1 ID from IntraLinkingGenerationAndRelated where LinedPID=@ProductID and VariantTypeID=@VariantTypeID and LinkType=@LinkType", new { ProductID = info.ProductId, VariantTypeID = info.VariantTypeID, LinkType = info.LinkType });
-
-                    if (id1 == 0)
+                    using (SqlConnection sqlConn = new SqlConnection(connStr))
                     {
-                        var id = sqlConn.ExecuteScalar<int>("select top 1 ID from IntraLinkingGenerationAndRelated where ProductID=@ProductID and LinedPID=@LinedPID and LinkType='Variant'", new { ProductID = info.ProductId, LinedPID = info.LinedPID });
+                        var id1 = sqlConn.ExecuteScalar<int>("select top 1 ID from IntraLinkingGenerationAndRelated where LinedPID=@ProductID and VariantTypeID=@VariantTypeID and LinkType=@LinkType", new { ProductID = info.ProductId, VariantTypeID = info.VariantTypeID, LinkType = info.LinkType });
 
-                        if (id > 0)
+                        if (id1 == 0)
                         {
-                            string updateStr = @"UPDATE [IntraLinkingGenerationAndRelated]
+                            var id = sqlConn.ExecuteScalar<int>("select top 1 ID from IntraLinkingGenerationAndRelated where ProductID=@ProductID and LinedPID=@LinedPID and LinkType='Variant'", new { ProductID = info.ProductId, LinedPID = info.LinedPID });
+
+                            if (id > 0)
+                            {
+                                string updateStr = @"UPDATE [IntraLinkingGenerationAndRelated]
                                            SET [ProductID] = @ProductID
                                               ,[BaseProductValue] = @BaseProductValue
                                               ,[LinkType] = @LinkType
@@ -95,11 +100,11 @@ namespace BaseProductTool
                                               ,[ModifiedOn] = @ModifiedOn
                                          WHERE ID=@ID";
 
-                            sqlConn.Execute(updateStr, info);
-                        }
-                        else
-                        {
-                            string insertStr = @" INSERT  INTO [IntraLinkingGenerationAndRelated]
+                                sqlConn.Execute(updateStr, info);
+                            }
+                            else
+                            {
+                                string insertStr = @" INSERT  INTO [IntraLinkingGenerationAndRelated]
                                            ([ProductID]
                                            ,[BaseProductValue]
                                            ,[LinkType]
@@ -140,10 +145,23 @@ namespace BaseProductTool
                                            , @ModifiedBy
                                            , @ModifiedOn)";
 
-                            sqlConn.Execute(insertStr, info);
+                                sqlConn.Execute(insertStr, info);
 
+                            }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    string logDir = ConfigurationManager.AppSettings["LogDir"];
+                    string logPath = System.IO.Path.Combine(logDir, DateTime.Now.ToString("yyyy-MM-dd"));
+                    string logFilePath = System.IO.Path.Combine(logPath, "errorLog_" + DateTime.Now.ToString("HH_mm") + ".txt");
+
+                    XbaiLog.WriteLog(logFilePath, ex.Message);
+                    XbaiLog.WriteLog(logFilePath, ex.StackTrace);
+                    XbaiLog.WriteLog(logFilePath, JsonConvert.SerializeObject(info));
+
+                    throw ex;
                 }
             }
 

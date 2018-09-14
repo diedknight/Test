@@ -134,7 +134,7 @@ namespace BaseProductTool
                             foreach (var regex in regexList)
                             {
                                 newName = regex.MyRegex.Replace(newName, "");
-                                var match = regex.MyRegex.Match(pi.ProductNameLower);
+                                var match = regex.MyRegex.Match(" " + pi.ProductNameLower + " ");
                                 if (match.Success)
                                 {
                                     pi.VariantValue = match.Groups["data"].Value;
@@ -145,8 +145,8 @@ namespace BaseProductTool
                                 }
                             }
 
-                            newName = newName.Substring(1);
-                            newName = newName.Substring(0, newName.Length - 1);
+                            if (newName.StartsWith(" ")) newName = newName.Substring(1);
+                            if (newName.EndsWith(" ")) newName = newName.Substring(0, newName.Length - 1);
 
                             if (newName != origName)
                             {
@@ -258,7 +258,7 @@ namespace BaseProductTool
 
 
             KeywordsList_Static = new List<string>();
-            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType where isUnit=1 order by VariantTypeID desc";
+            string selectVariantTypeSql = "SELECT VariantTypeID,VariantTitleName,Unit FROM VariantType where isUnit=1 order by VariantTitleName desc";
             VariantTypeUnitDic_Static = new Dictionary<string, int>();
             VariantTypeTitleDic_Static = new Dictionary<string, int>();
             using (SqlConnection sqlConn = new SqlConnection(ConnStr_Static))
@@ -312,6 +312,7 @@ namespace BaseProductTool
                                 where IsMerge=1 and PT.ProductId in(
                                 select distinct(ProductId) from csk_store_retailerproduct where RetailerProductStatus=1 and IsDeleted=0 and RetailerId in
                                 (select RetailerId from CSK_Store_Retailer where RetailerStatus=1))                            
+                                
                                 
                                 
                                 and CategoryID in (" + string.Join(",", CategoryIds_Static) + ")";
