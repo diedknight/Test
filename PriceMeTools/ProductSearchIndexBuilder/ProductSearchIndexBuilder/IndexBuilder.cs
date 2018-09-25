@@ -1721,7 +1721,7 @@ namespace ProductSearchIndexBuilder
                                         avRating = 0;
                                     }
 
-                                    doc.Add(new SingleField("AvRating", clicks, Field.Store.YES));
+                                    doc.Add(new SingleField("AvRating", avRating, Field.Store.YES));
                                     doc.Add(new StoredField("ReviewCount", reviewCount.ToString()));
 
                                     while (true)
