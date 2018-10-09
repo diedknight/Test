@@ -1,4 +1,5 @@
 ﻿using ImportAttrs.Data;
+using PriceMeCrawlerTask.Common.Log;
 using System;
 using System.IO;
 
@@ -12,12 +13,17 @@ namespace ImportAttrs
             private set;
         }
 
-        StreamWriter sw;
+        private Log _log = null;
+
+        //StreamWriter sw;
         public LogWriter(string filePath)
         {
             FilePath = filePath;
 
-            sw = new StreamWriter(filePath, true);
+            this._log = new Log(filePath);
+            
+
+            //sw = new StreamWriter(filePath, true);
         }
 
         public void WriteLine(string line)
@@ -37,8 +43,10 @@ namespace ImportAttrs
                 line += " --- at : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             }
             Console.WriteLine(line);
-            sw.WriteLine(line);
-            sw.Flush();
+
+            this._log.WriteLine(line);
+            //sw.WriteLine(line);
+            //sw.Flush();
         }
 
         bool isDispose = false;
@@ -46,7 +54,7 @@ namespace ImportAttrs
         {
             if (!isDispose)
             {
-                sw.Close();
+                //sw.Close();
                 isDispose = true;
             }
         }
