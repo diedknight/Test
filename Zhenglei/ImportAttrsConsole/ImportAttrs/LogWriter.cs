@@ -1,5 +1,4 @@
 ﻿using ImportAttrs.Data;
-using PriceMeCrawlerTask.Common.Log;
 using System;
 using System.IO;
 

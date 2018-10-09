@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace PriceMeCrawlerTask.Common.Log
+namespace ImportAttrs
 {
     public class XbaiLog
     {
