@@ -17,8 +17,9 @@ namespace RelatedProductsTool
                                                         ,Min([CategoryID]) as CategoryId
 	                                                    ,Min(RPT.RetailerPrice) as BestPrice
 	                                                    ,count(distinct PPCT.RetailerId) as PPCCount
-                                                        FROM [dbo].[CSK_Store_ProductNew] as PT
-                                                        inner join CSK_Store_RetailerProductNew as RPT on PT.ProductID = RPT.ProductId
+                                                        FROM CSK_Store_Product as PT
+                                                        inner join CSK_Store_RetailerProduct as RPT on PT.ProductID = RPT.ProductId
+                                                        inner join CSK_Store_Retailer as RT on RT.RetailerId = RPT.RetailerId
                                                         left join CSK_Store_PPCMember as PPCT on PPCT.RetailerId = RPT.RetailerId and PPCT.PPCMemberTypeID = 2";
 
         //使用RelatedProductsController前一定要先执行
@@ -226,12 +227,12 @@ namespace RelatedProductsTool
             }
         }
 
-        public static List<ProductInfo> GetProductInfosByProductIds(List<int> pids, string connStr)
+        public static List<ProductInfo> GetProductInfosByProductIds(List<int> pids, int countryId, string condition, string connStr)
         {
             List<ProductInfo> pList = new List<ProductInfo>();
 
             string pidsString = string.Join(",", pids);
-            string selectSql = string.Format(mSelectProductsSqlFormat_Static + " group by PT.ProductID having PT.ProductID in ({0})", pidsString);
+            string selectSql = string.Format(mSelectProductsSqlFormat_Static + " where RT.RetailerCountry = " + countryId  + " and RPT." + condition + " = 1 group by PT.ProductID having PT.ProductID in ({0})", pidsString);
 
             using (SqlConnection sqlConn = new SqlConnection(connStr))
             {
@@ -259,19 +260,19 @@ namespace RelatedProductsTool
             return pList;
         }
 
-        public static Dictionary<int, List<ProductInfo>> GetProductInfosByCategoryIds(List<int> cids, string connStr, int countryId)
+        public static Dictionary<int, List<ProductInfo>> GetProductInfosByCategoryIds(List<int> cids, string connStr, int countryId, string condition)
         {
             Dictionary<int, List<ProductInfo>> dic = new Dictionary<int, List<ProductInfo>>();
 
             string selectSql = "";
             if (cids.Count == 1 && cids[0] == 0)
             {
-                selectSql = string.Format(mSelectProductsSqlFormat_Static + " group by PT.ProductID");
+                selectSql = string.Format(mSelectProductsSqlFormat_Static + " where RT.RetailerCountry = " + countryId + " and RPT." + condition + " = 1 group by PT.ProductID");
             }
             else
             {
                 string cidsString = string.Join(",", cids);
-                selectSql = string.Format(mSelectProductsSqlFormat_Static + " where PT.CategoryId in ({0}) group by PT.ProductID", cidsString);
+                selectSql = string.Format(mSelectProductsSqlFormat_Static + " where RT.RetailerCountry = " + countryId + " and RPT." + condition + " = 1 and PT.CategoryId in ({0}) group by PT.ProductID", cidsString);
             }
 
             Dictionary<int, int> clicksDic;

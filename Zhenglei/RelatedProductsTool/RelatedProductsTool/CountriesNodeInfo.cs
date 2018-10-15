@@ -45,19 +45,21 @@ namespace RelatedProductsTool
         public int CountryId { get; private set; }
         public List<int> CategoryIds { get; private set; }
         public List<int> ProductIds { get; private set; }
+        public string Condition { get; private set; }
         public ConnectionStringSettings MyConnectionStringSettings { get; private set; }
 
-        public CountryInfo(int countryId, string dbConnectionKey, List<int> categoryIds, List<int> productIds)
+        public CountryInfo(int countryId, string dbConnectionKey, List<int> categoryIds, List<int> productIds, string condition)
         {
             CountryId = countryId;
             MyConnectionStringSettings = ConfigurationManager.ConnectionStrings[dbConnectionKey];
             CategoryIds = categoryIds;
             ProductIds = productIds;
+            Condition = condition;
         }
 
         public override string ToString()
         {
-            return "CountryId: " + CountryId + "\t ConnectionString: " + MyConnectionStringSettings.ConnectionString + "\t CategoryIds: " + string.Join(",", CategoryIds) + "\t ProductIds: " + string.Join(",", ProductIds);
+            return "CountryId: " + CountryId + "\t ConnectionString: " + MyConnectionStringSettings.ConnectionString + "\t CategoryIds: " + string.Join(",", CategoryIds) + "\t ProductIds: " + string.Join(",", ProductIds) + "\t Condition: " + Condition;
         }
     }
 }

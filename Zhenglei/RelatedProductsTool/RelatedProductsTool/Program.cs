@@ -57,9 +57,9 @@ namespace RelatedProductsTool
                     //如果配置了ProductIds，则只计算配置的ProductIds，不管配置的CategoryIds
                     if (ci.ProductIds.Count > 0)
                     {
-                        List<ProductInfo> pList = RelatedProductsController.GetProductInfosByProductIds(ci.ProductIds, ci.MyConnectionStringSettings.ConnectionString);
+                        List<ProductInfo> pList = RelatedProductsController.GetProductInfosByProductIds(ci.ProductIds, ci.CountryId, ci.Condition, ConfigurationManager.ConnectionStrings["PriceMe_PM"].ConnectionString);
                         List<int> cidsList = pList.Select(p => p.CategoryId).ToList();
-                        Dictionary<int, List<ProductInfo>> cProductDic = RelatedProductsController.GetProductInfosByCategoryIds(cidsList, ci.MyConnectionStringSettings.ConnectionString, ci.CountryId);
+                        Dictionary<int, List<ProductInfo>> cProductDic = RelatedProductsController.GetProductInfosByCategoryIds(cidsList, ConfigurationManager.ConnectionStrings["PriceMe_PM"].ConnectionString, ci.CountryId, ci.Condition);
 
                         WriteDicLog(cProductDic);
 
@@ -72,7 +72,7 @@ namespace RelatedProductsTool
                     }
                     else
                     {
-                        Dictionary<int, List<ProductInfo>> cProductDic = RelatedProductsController.GetProductInfosByCategoryIds(ci.CategoryIds, ci.MyConnectionStringSettings.ConnectionString, ci.CountryId);
+                        Dictionary<int, List<ProductInfo>> cProductDic = RelatedProductsController.GetProductInfosByCategoryIds(ci.CategoryIds, ConfigurationManager.ConnectionStrings["PriceMe_PM"].ConnectionString, ci.CountryId, ci.Condition);
                         WriteDicLog(cProductDic);
                         LogWriter_Static.WriteLine("Start process related product score.");
                         FindAndWriteRelatedProductScore(cProductDic, retedCount, detailLog, ci.CountryId);

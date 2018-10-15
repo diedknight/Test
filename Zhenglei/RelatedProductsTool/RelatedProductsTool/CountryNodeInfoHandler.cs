@@ -47,12 +47,16 @@ namespace RelatedProductsTool
                     throw new Exception("no productIds.");
                 List<int> pids = Utility.GetIntList(productIdsAttr.Value, ",");
 
-                if(cids.Count == 0 && pids.Count == 0)
+                var conditionAttr = node.Attributes["condition"];
+                if (conditionAttr == null || string.IsNullOrEmpty(conditionAttr.Value))
+                    throw new Exception("no condition.");
+
+                if (cids.Count == 0 && pids.Count == 0)
                 {
                     throw new Exception("no productIds and no categoryIds.");
                 }
 
-                CountryInfo ci = new CountryInfo(id, dbConnectionKeyAttr.Value, cids, pids);
+                CountryInfo ci = new CountryInfo(id, dbConnectionKeyAttr.Value, cids, pids, conditionAttr.Value);
                 countryInfoList.Add(ci);
             }
 
