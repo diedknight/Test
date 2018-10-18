@@ -878,6 +878,7 @@ namespace LuceneIndexBuild
                         return;
 
                     case 1:
+                        SearchController.Load();
                         PriceMeCommon.BusinessLogic.MultiCountryController.LoadWithoutCheckIndexPath();
                         BuildingProductsDescriptorIndex(todayIndexPathIndexPath);
                         BuildAllCategoriesProductIndex(todayIndexPathIndexPath);
@@ -887,17 +888,20 @@ namespace LuceneIndexBuild
                         break;
 
                     case 2:
+                        SearchController.Load();
                         PriceMeCommon.BusinessLogic.MultiCountryController.LoadWithoutCheckIndexPath();
                         BuildingProductsDescriptorIndex(todayIndexPathIndexPath);
                         BuildAllCategoriesProductIndex(todayIndexPathIndexPath);
                         break;
 
                     case 3:
+                        SearchController.Load();
                         PriceMeCommon.BusinessLogic.MultiCountryController.LoadWithoutCheckIndexPath();
                         BuildingCategoriesIndex(todayIndexPathIndexPath);
                         break;
 
                     case 4:
+                        SearchController.Load();
                         PriceMeCommon.BusinessLogic.MultiCountryController.LoadWithoutCheckIndexPath();
                         BuildingProductsDescriptorIndex(todayIndexPathIndexPath);
                         break;
@@ -907,11 +911,13 @@ namespace LuceneIndexBuild
                         BuildingProductRetailerMapIndex(todayIndexPathIndexPath);
                         break;
                     case 6:
+                        SearchController.Load();
                         PriceMeCommon.BusinessLogic.MultiCountryController.LoadWithoutCheckIndexPath();
                         PriceMeCommon.BusinessLogic.ManufacturerController.LoadForBuildIndex();
                         CacheBuilder.BuildCache();
                         break;
                     case 7:
+                        SearchController.Load();
                         PriceMeCommon.BusinessLogic.MultiCountryController.LoadWithoutCheckIndexPath();
                         BuildingRetailerProductsIndex(todayIndexPathIndexPath);
                         break;
