@@ -77,6 +77,7 @@ namespace LuceneIndexBuild
             //    indexSpeedLog.UpdateProductCategorySpeedInfo = updateProductCategorySpeedInfo;
             //}
 
+            SearchController.Load();
             ManufacturerController.LoadForBuildIndex();
 
             IndexBuilder.indexSpeedLog = indexSpeedLog;
