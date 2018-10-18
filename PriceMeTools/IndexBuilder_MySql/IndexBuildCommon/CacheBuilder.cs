@@ -159,10 +159,17 @@ namespace IndexBuildCommon
             //ProductVariants
             LogController.WriteLog("Start Build All ProductVariants Cache At :" + DateTime.Now.ToString());
             ProductController.LoadVariants(null, AppValue.CountryId);
-            Dictionary<int, Dictionary<string, List<ProductVariants>>> pvs = ProductController.dicVariants;
-            LogController.WriteLog("ProductVariants count : " + pvs.Count);
-            PutCache(VelocityCacheKey.ProductVariants, pvs);
-            LogController.WriteLog("End Build All ProductVariants!");
+            Dictionary<string, List<ProductVariants>> pvs = null;
+            if (ProductController.dicVariants.TryGetValue(AppValue.CountryId, out pvs))
+            {
+                LogController.WriteLog("ProductVariants count : " + pvs.Count);
+                PutCache(VelocityCacheKey.ProductVariants, pvs);
+                LogController.WriteLog("End Build All ProductVariants!");
+            }
+            else
+            {
+                LogController.WriteLog("ProductVariants count : 0.");
+            }
         }
 
         public static Dictionary<int, string> GetEnergyImgs()
