@@ -353,15 +353,25 @@ namespace ImportAttrs
             {
                 foreach (string attrTitle in attrDic.Keys)
                 {
-                    if (string.IsNullOrWhiteSpace(attrDic[attrTitle])) continue;
+                    var attrValue = attrDic[attrTitle];
+                    attrValue = attrValue.Replace(" ", " ");
+
+                    if (string.IsNullOrEmpty(attrValue)) continue;
+                    if (string.IsNullOrWhiteSpace(attrValue)) continue;
+                    if (attrValue == "​") continue;
+                    if (attrValue.Equals("None", StringComparison.InvariantCultureIgnoreCase)) continue;
+                    if (attrValue.Equals("NA", StringComparison.InvariantCultureIgnoreCase)) continue;
+                    if (attrValue.Equals("N/A", StringComparison.InvariantCultureIgnoreCase)) continue;
+                    if (attrValue.Contains("$") || attrValue.Contains("==") || attrValue.Contains("()")) continue;
 
                     try
                     {
                         AttributeRetailerMap arm = attributeRetailerMapList.Where(a => a.RetailerAttributeName.Equals(attrTitle, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                         if (arm != null)
                         {
-                            var attrValue = attrDic[attrTitle];
+                            attrValue = TrimA(attrValue);
                             attrValue = FixValue(attrValue, arm, retailerId, categoryId, attrDic);
+                            
 
                             if (string.IsNullOrEmpty(attrValue))
                             {
@@ -745,6 +755,11 @@ namespace ImportAttrs
                                                         isValid = true;
                                                     }
                                                 }
+                                            }
+
+                                            if (attrValue.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || attrValue.Equals("no", StringComparison.InvariantCultureIgnoreCase))
+                                            {
+                                                isValid = true;
                                             }
 
                                             if (isValid)
@@ -1577,6 +1592,43 @@ namespace ImportAttrs
                 }
             }
         }
+
+        public static string TrimA(string str)
+        {
+            str = str.Replace(Environment.NewLine, " ").Replace("\n", " ").Replace("\r", " ").Trim();
+            str = str.Replace(" ", " ");
+
+            StringBuilder sb = new StringBuilder();
+            bool isRepeatWhiteSpace = false;
+
+            foreach (char c in str)
+            {
+                if (!char.IsWhiteSpace(c))
+                {
+                    isRepeatWhiteSpace = false;
+                    sb.Append(c);
+                }
+                else if (!isRepeatWhiteSpace)
+                {
+                    isRepeatWhiteSpace = true;
+                    sb.Append(c);
+                }
+            }
+
+            if (sb.ToString().StartsWith(" "))
+            {
+                sb.Remove(0, 1);
+            }
+
+            if (sb.ToString().EndsWith(" "))
+            {
+                sb.Remove(sb.Length - 1, 1);
+            }
+
+
+            return sb.ToString();
+        }
+
 
     }
 
