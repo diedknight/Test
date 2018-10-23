@@ -90,10 +90,10 @@ namespace IpAnalytics
                         else
                         {
 
-                            CSK_Store_IP_Address ipAddrInfo = new CSK_Store_IP_Address();
-                            ipAddrInfo.IPAddress = ip;
-                            ipAddrInfo.IPInt = (int)IpToInt(ip);
-                            ipAddrInfo.Save();
+                            //CSK_Store_IP_Address ipAddrInfo = new CSK_Store_IP_Address();
+                            //ipAddrInfo.IPAddress = ip;
+                            //ipAddrInfo.IPInt = (int)IpToInt(ip);
+                            //ipAddrInfo.Save();
                         }
                     }
 
