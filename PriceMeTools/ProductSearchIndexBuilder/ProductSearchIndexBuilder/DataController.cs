@@ -1207,7 +1207,7 @@ namespace ProductSearchIndexBuilder
         {
             string numberString = "";
             int count = 0;
-            if (int.TryParse(num, out count))
+            if (int.TryParse(num.Split('.')[0], out count))
             {
                 numberString = count.ToString("N0");
             }
