@@ -365,7 +365,7 @@
 
                 <h2 class="semi-bold">Sign Up Today to List Your Products</h2>
                 <ul class="list-unstyled list-benefits">
-                    <li><i class="glyphicon glyphicon-ok pm-button-blue"></i> Drive high quality to your site.</li>
+                    <li><i class="glyphicon glyphicon-ok pm-button-blue"></i> Drive high quality traffic to your site.</li>
                     <li><i class="glyphicon glyphicon-ok pm-button-blue"></i> Increase your conversion rates and ROI.</li>
                     <li><i class="glyphicon glyphicon-ok pm-button-blue"></i> Pay-for-performance (PPC model).</li>
                     <li><i class="glyphicon glyphicon-ok pm-button-blue"></i> No contract required. Pause and stop anytime!</li>
