@@ -349,6 +349,29 @@ namespace ImportAttrs
                 }
             }
 
+            //replace specific char
+            var tempAttrDic = new Dictionary<string, string>();
+            foreach (string attrTitle in attrDic.Keys)
+            {
+                var attrValue = attrDic[attrTitle];
+                attrValue = attrValue.Replace(" ", " ");
+                attrValue = attrValue.Replace(" ​", " ");
+                attrValue = TrimA(attrValue);
+
+
+                if (tempAttrDic.ContainsKey(attrTitle))
+                {
+                    tempAttrDic[attrTitle] = attrValue;
+                }
+                else
+                {
+                    tempAttrDic.Add(attrTitle, attrValue);
+                }
+            }
+            attrDic = tempAttrDic;
+
+
+
             if (attributeRetailerMapList != null)
             {
                 foreach (string attrTitle in attrDic.Keys)
@@ -361,6 +384,7 @@ namespace ImportAttrs
                     if (attrValue == "​") continue;
                     if (attrValue.Equals("None", StringComparison.InvariantCultureIgnoreCase)) continue;
                     if (attrValue.Equals("NA", StringComparison.InvariantCultureIgnoreCase)) continue;
+                    if (attrValue.Equals("​NA", StringComparison.InvariantCultureIgnoreCase)) continue;
                     if (attrValue.Equals("N/A", StringComparison.InvariantCultureIgnoreCase)) continue;
                     if (attrValue.Contains("$") || attrValue.Contains("==") || attrValue.Contains("()")) continue;
 
@@ -371,7 +395,7 @@ namespace ImportAttrs
                         {
                             attrValue = TrimA(attrValue);
                             attrValue = FixValue(attrValue, arm, retailerId, categoryId, attrDic);
-                            
+                            attrValue = TrimA(attrValue);
 
                             if (string.IsNullOrEmpty(attrValue))
                             {
@@ -538,6 +562,7 @@ namespace ImportAttrs
                                         if (!string.IsNullOrEmpty(arm.Unit))
                                         {
                                             attrValue = attrValue.Replace(arm.Unit, "").Trim();
+                                            attrValue = attrValue.Replace(arm.Unit.ToUpper(), "").Trim();
                                             if (priceMeAttrTitle.AttributeTypeID == 6)
                                             {
                                                 float floatValue = 0f;
@@ -654,6 +679,7 @@ namespace ImportAttrs
                                         if (!string.IsNullOrEmpty(arm.Unit))
                                         {
                                             attrValue = attrValue.Replace(arm.Unit, "").Trim();
+                                            attrValue = attrValue.Replace(arm.Unit.ToUpper(), "").Trim();
                                             if (priceMeCompareAttrTitle.AttributeTypeID == 6)
                                             {
                                                 attrValue = attrValue.Replace(",", "");
@@ -759,6 +785,12 @@ namespace ImportAttrs
 
                                             if (attrValue.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || attrValue.Equals("no", StringComparison.InvariantCultureIgnoreCase))
                                             {
+                                                string sql = "insert into [AT_CompareAttributeValue_Map] ([CompareAttributeID],[Value],[Skeywords],[CategoryID]) values (@CompareAttributeID,@Value,@Skeywords,@CategoryID)";
+                                                using (SqlConnection sqlConn = GetDBConnection())
+                                                {
+                                                    sqlConn.Execute(sql, new { CompareAttributeID = titleId, Value = attrValue, Skeywords = "", CategoryID = categoryId });
+                                                }
+
                                                 isValid = true;
                                             }
 
@@ -1465,7 +1497,7 @@ namespace ImportAttrs
 
             if (attributeUnmatchedReport.DR_AttValue_Changed.ToLower().Contains("value missing")) return;
             if (attributeUnmatchedReport.DR_AttValue_Orignal.ToLower().Contains("value missing")) return;
-            
+
             if (attributeUnmatchedReport.DR_AttValue_Changed.Contains("$.extend({}, pjYesNoOptions)")) return;
             if (attributeUnmatchedReport.DR_AttValue_Orignal.Contains("$.extend({}, pjYesNoOptions)")) return;
 
