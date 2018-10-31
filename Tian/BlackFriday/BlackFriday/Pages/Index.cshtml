@@ -1,16 +1,13 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
 <style type="text/css">
     .row {
         padding: 10px 0;
     }
 
-    h1, h4 {
-        font-weight:bold;
+    h1, h4, h2 {
+        font-weight: bold;
     }
 </style>
 
@@ -29,7 +26,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h4>Black Friday kick off in</h4>
+        <h4 style="font-size:16px;">Black Friday kick off in</h4>
         <div class="clock" style="margin:2em 2em 2em 0;"></div>
 
         <script type="text/javascript">
@@ -67,19 +64,19 @@
     <form method="post" action="">
 
 
-        <div class="col-md-3">
-            <label for="txtEmail">Newsletter sign-up:</label>
-            <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email" required />
+        <div class="col-md-4">
+            <label for="txtEmail" style="font-size:14px;">Newsletter sign-up:</label>
+            <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email" required style="width:310px; height:50px;" />
         </div>
-        <div class="col-md-9">
-            <button type="submit" class="btn btn-primary" style="margin-top:25px;">Sign Up</button>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" style="margin-top:25px; width:135px; height:50px; text-align:center; margin-left: -60px">Sign Up</button>
         </div>
     </form>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <h4>Black Friday Infomation</h4>
+        <h2>Black Friday Infomation</h2>
         <div>
             @Html.Raw(Model.Description)
         </div>
