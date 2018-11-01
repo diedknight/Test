@@ -382,7 +382,7 @@ namespace PopualerSearchIndexBuilder
                             Document doc = new Document();
 
                             doc.Add(new StoredField("ID", productID));//doc.Add(new Field("ID", productID.ToString(), Field.Store.YES, Field.Index.NO));
-                            doc.Add(new TextField("Name", keyword, Field.Store.NO));//doc.Add(new Field("Name", keyword, Field.Store.NO, Field.Index.ANALYZED));
+                            doc.Add(new TextField("Name", keyword.ToLower().Trim(), Field.Store.NO));//doc.Add(new Field("Name", keyword, Field.Store.NO, Field.Index.ANALYZED));
                             doc.Add(new StoredField("DisplayValue", productName));//doc.Add(new Field("DisplayValue", productName, Field.Store.YES, Field.Index.NO));
                             doc.Add(new StoredField("Type", "P"));//doc.Add(new Field("Type", "P", Field.Store.YES, Field.Index.NO));
                             doc.Add(new StoredField("Other", categoryName));//doc.Add(new Field("Other", categoryName, Field.Store.YES, Field.Index.NO));
@@ -467,7 +467,7 @@ namespace PopualerSearchIndexBuilder
 
                                 Document doc = new Document();
                                 doc.Add(new StoredField("ID", pc.ProductID));
-                                doc.Add(new TextField("Name", kw, Field.Store.NO));
+                                doc.Add(new TextField("Name", kw.ToLower().Trim(), Field.Store.NO));
                                 doc.Add(new StoredField("DisplayValue", pc.ProductName));
                                 doc.Add(new StoredField("Type", "UCP"));
                                 doc.Add(new StoredField("Other", localName));
@@ -498,7 +498,7 @@ namespace PopualerSearchIndexBuilder
                         Document doc = new Document();
 
                         doc.Add(new StoredField("ID", pc.ProductID));
-                        doc.Add(new TextField("Name", kw, Field.Store.NO));
+                        doc.Add(new TextField("Name", kw.ToLower().Trim(), Field.Store.NO));
                         doc.Add(new StoredField("DisplayValue", pc.ProductName));
                         doc.Add(new StoredField("Type", "Offer"));
                         doc.Add(new StoredField("Other", localName));
@@ -534,10 +534,10 @@ namespace PopualerSearchIndexBuilder
                                 categorySynonym = categorySynonymDic[categoryID];
                             }
 
-                            keyword = data.Value.ToLower().Trim() + " " + categorySynonym;
+                            keyword = data.Value.Trim() + " " + categorySynonym;
 
                             doc.Add(new StoredField("ID", data.Id));
-                            doc.Add(new TextField("Name", keyword, Field.Store.NO));
+                            doc.Add(new TextField("Name", keyword.ToLower().Trim(), Field.Store.NO));
                             doc.Add(new StoredField("DisplayValue", data.Value));
                             doc.Add(new StoredField("Type", "C"));
                             doc.Add(new StoredField("Other", ""));
@@ -596,7 +596,7 @@ namespace PopualerSearchIndexBuilder
                         string ratingImageUrl = GetStarImageUrl(avRating);
 
                         doc.Add(new StoredField("ID", retailer.RetailerId));
-                        doc.Add(new TextField("Name", FixKeywords(keyword), Field.Store.NO));
+                        doc.Add(new TextField("Name", FixKeywords(keyword).ToLower().Trim(), Field.Store.NO));
                         doc.Add(new StoredField("DisplayValue", retailer.RetailerName));
                         doc.Add(new StoredField("Type", "R"));
                         doc.Add(new StoredField("Other", ratingImageUrl));
@@ -637,7 +637,7 @@ namespace PopualerSearchIndexBuilder
                         }
 
                         doc.Add(new StoredField("ID", mid));
-                        doc.Add(new TextField("Name", FixKeywords(keyword), Field.Store.NO));
+                        doc.Add(new TextField("Name", FixKeywords(keyword).ToLower().Trim(), Field.Store.NO));
                         doc.Add(new StoredField("DisplayValue", idr["ManufacturerName"].ToString()));
                         doc.Add(new StoredField("Type", "M"));
                         doc.Add(new StoredField("Other", idr["IsPopular"].ToString()));
@@ -684,7 +684,8 @@ namespace PopualerSearchIndexBuilder
 
                                     bool hasP = false;
                                     var cidList = DataController.GetAllSubCategoryId(_cid);
-                                    foreach(var cid in cidList)
+                                    cidList.Add(_cid);
+                                    foreach (var cid in cidList)
                                     {
                                         if(hasProductCategoryList.Contains(cid.ToString()))
                                         {
@@ -714,8 +715,13 @@ namespace PopualerSearchIndexBuilder
                                         clicks = categoryClicksDic[_cid.ToString()];
                                     }
 
+                                    //if(clicks == 0)
+                                    //{
+                                    //    clicks = 10000000;
+                                    //}
+
                                     docBaC.Add(new StoredField("ID", mid + "," + _cid));
-                                    docBaC.Add(new TextField("Name", FixKeywords(brandsAndCategoryName.ToLower() + " " + categorySynonym), Field.Store.NO));
+                                    docBaC.Add(new TextField("Name", FixKeywords(brandsAndCategoryName + " " + categorySynonym).ToLower().Trim(), Field.Store.NO));
                                     docBaC.Add(new StoredField("DisplayValue", brandsAndCategoryName));
                                     docBaC.Add(new StoredField("Type", "BAC"));
                                     docBaC.Add(new StoredField("Other", cdi.ProductCount.ToString()));
@@ -725,7 +731,7 @@ namespace PopualerSearchIndexBuilder
                                     docBaC.Add(new StoredField("DefaultImage", ""));
                                     docBaC.Add(new StoredField("IndexProductCount", 1));
                                     docBaC.Add(new Int32Field("Clicks", clicks, Field.Store.YES));
-                                    doc.Add(new SingleField("Order", orderScroe, Field.Store.NO));
+                                    docBaC.Add(new SingleField("Order", orderScroe, Field.Store.NO));
 
                                     idw.AddDocument(docBaC);
                                     indexindexBrandAndCategoryCount++;
@@ -754,7 +760,7 @@ namespace PopualerSearchIndexBuilder
                         int type = int.Parse(idr["Type"].ToString().Trim());
 
                         doc.Add(new StoredField("ID", "0"));
-                        doc.Add(new TextField("Name", keyword, Field.Store.NO));
+                        doc.Add(new TextField("Name", keyword.ToLower().Trim(), Field.Store.NO));
                         doc.Add(new StoredField("DisplayValue", name));
                         doc.Add(new StoredField("Type", "C1"));
                         doc.Add(new StoredField("Other", url));
