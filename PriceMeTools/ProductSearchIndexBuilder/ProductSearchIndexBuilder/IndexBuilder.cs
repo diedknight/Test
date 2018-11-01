@@ -1108,6 +1108,15 @@ namespace ProductSearchIndexBuilder
                                             {
                                                 continue;
                                             }
+
+                                            bool isDisplayIsMerged = bool.Parse(idr["IsDisplayIsMerged"].ToString());
+                                            string isMerge = idr["IsMerge"].ToString();//Ture Or False
+                                            string IsDisplay = "true";
+                                            if (isDisplayIsMerged && AppValue.CountryId != 25 && !isMerge.Equals("true", StringComparison.InvariantCultureIgnoreCase))
+                                            {
+                                                continue;
+                                            }
+
                                             string productName = idr["ProductName"].ToString().Trim();
                                             string manufacturerName = idr["ManufacturerName"].ToString();
                                             string manufacturerID = idr["ManufacturerID"].ToString();
@@ -1127,7 +1136,7 @@ namespace ProductSearchIndexBuilder
                                             }
 
                                             string retailerCount = idr["RetailerCount"].ToString();
-                                            string isMerge = idr["IsMerge"].ToString();//Ture Or False
+                                            
                                             double BestPrice = double.Parse(idr["BestPrice"].ToString());
                                             double MaxPrice = double.Parse(idr["MaxPrice"].ToString());
                                             string defaultImage = idr["DefaultImage"].ToString();
@@ -1194,7 +1203,6 @@ namespace ProductSearchIndexBuilder
                                             string bestPPCLogo = idr["BestPPCLogo"].ToString();
 
                                             string catalogDescription = idr["CatalogDescription"].ToString();
-                                            bool isDisplayIsMerged = bool.Parse(idr["IsDisplayIsMerged"].ToString());
 
                                             string keywords = idr["keywords"].ToString();
                                             float bestPricePPCIndex = 0;
@@ -1226,30 +1234,6 @@ namespace ProductSearchIndexBuilder
                                             int bestPriceRetailerId = GetBestPriceRetailerId(RetailerProductList);
 
                                             int dayCount = int.Parse(idr["DayCount"].ToString());
-
-                                            string IsDisplay = "";
-                                            if (!isDisplayIsMerged)
-                                            {
-                                                if (AppValue.CountryId == 25)
-                                                {
-                                                    IsDisplay = "true";
-                                                }
-                                                else
-                                                {
-                                                    if (isMerge.Equals("true", StringComparison.InvariantCultureIgnoreCase))
-                                                    {
-                                                        IsDisplay = "true";
-                                                    }
-                                                    else
-                                                    {
-                                                        IsDisplay = "false";
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                IsDisplay = "true";
-                                            }
 
                                             if (avRating >= 0f && avRating <= 5f)
                                             {
