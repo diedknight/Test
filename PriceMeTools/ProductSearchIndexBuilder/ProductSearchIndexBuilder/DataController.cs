@@ -11,7 +11,6 @@ namespace ProductSearchIndexBuilder
         static Dictionary<int, CategoryCache> CategoryDic_Static;
         static Dictionary<int, List<CategoryCache>> NextLevelActiveCategories_Static;
         static Dictionary<int, AttributeTitleCache> AttributeTitleDic_Static;
-        static List<AttributeValueRangeCache> AttributeValueRangeList_Static;
         static List<AttributeValueCache> AttributeValueList_Static;
         static Dictionary<string, AttributeValueCache> AttributeTitleIDAndListOrderDic_Static;
         static Dictionary<int, CategoryHWDInfo> CategoryHWDInfoDic_Static;
@@ -74,9 +73,9 @@ namespace ProductSearchIndexBuilder
             CategoryExtendListDic_Static = GetCategoryExtendDic(pamUserDbInfo, AppValue.CountryId);
 
             AttributeTitleDic_Static = GetAttributeTitleDicFromDB(priceme205DbInfo);
-            AttributeValueRangeList_Static = GetAttributeValueRangeCacheListFromDB(priceme205DbInfo);
+
             AttributeValueList_Static = GetAttributeValuesCacheListFromDB(priceme205DbInfo);
-            AttributeTitleIDAndListOrderDic_Static = GetAttributeTitleIDAndListOrderDic(AttributeValueList_Static, AttributeValueRangeList_Static);
+            AttributeTitleIDAndListOrderDic_Static = GetAttributeTitleIDAndListOrderDic(AttributeValueList_Static);
 
             CategoryHWDInfoDic_Static = GetCategoryHWDInfoDicFromDB(pamUserDbInfo);
             CategoryAttributeTitleMapList_Static = GetCategoryAttributeTilteMapsFromDB(CategoryHWDInfoDic_Static, priceme205DbInfo);
@@ -334,40 +333,6 @@ namespace ProductSearchIndexBuilder
             return null;
         }
 
-        private static List<AttributeValueRangeCache> GetAttributeValueRangeCacheListFromDB(DbInfo priceme205DbInfo)
-        {
-            List<AttributeValueRangeCache> list = new List<AttributeValueRangeCache>();
-            string sql = "SELECT * FROM CSK_Store_AttributeValueRange";
-            using (var sqlConn = DBController.CreateDBConnection(priceme205DbInfo))
-            {
-                sqlConn.Open();
-
-                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
-                {
-                    using (var sqlDR = sqlCMD.ExecuteReader())
-                    {
-                        while (sqlDR.Read())
-                        {
-                            var rs = DbConvertController<AttributeValueRangeCache>.ReadDataFromDataReader(sqlDR);
-                            if (rs != null)
-                            {
-                                list.Add(rs);
-                            }
-                        }
-                    }
-                }
-            }
-
-            return list;
-        }
-
-        public static List<AttributeValueRangeCache> GetAttributeValueRangesByTitleIdAndCategoryId(int attributeTitleId, int categoryId)
-        {
-            List<AttributeValueRangeCache> attributeValueRangeCollection = AttributeValueRangeList_Static.FindAll(avr => avr.AttributeTitleID == attributeTitleId && avr.CategoryID == categoryId).ToList();
-
-            return attributeValueRangeCollection;
-        }
-
         private static List<AttributeValueCache> GetAttributeValuesCacheListFromDB(DbInfo priceme205DbInfo)
         {
             List<AttributeValueCache> attributeValues = new List<AttributeValueCache>();
@@ -395,91 +360,21 @@ namespace ProductSearchIndexBuilder
             return attributeValues;
         }
 
-        private static Dictionary<string, AttributeValueCache> GetAttributeTitleIDAndListOrderDic(List<AttributeValueCache> attributeValues, List<AttributeValueRangeCache> attributeValueRangeList)
+        private static Dictionary<string, AttributeValueCache> GetAttributeTitleIDAndListOrderDic(List<AttributeValueCache> attributeValues)
         {
             Dictionary<string, AttributeValueCache> attributeTitleIDAndListOrderDictionary = new Dictionary<string, AttributeValueCache>();
             foreach (AttributeValueCache attributeValue in attributeValues)
             {
                 if (attributeValue.ListOrder > 0)
                 {
-                    foreach (AttributeValueRangeCache attributeValueRange in attributeValueRangeList)
+                    string key = attributeValue.AttributeTitleID + "," + attributeValue.ListOrder;
+                    if (!attributeTitleIDAndListOrderDictionary.ContainsKey(key))
                     {
-                        if (attributeValueRange.AttributeTitleID == attributeValue.AttributeTitleID)
-                        {
-                            string key = attributeValue.AttributeTitleID + "," + attributeValue.ListOrder;
-                            if (!attributeTitleIDAndListOrderDictionary.ContainsKey(key))
-                            {
-                                attributeTitleIDAndListOrderDictionary.Add(key, attributeValue);
-                            }
-                            break;
-                        }
+                        attributeTitleIDAndListOrderDictionary.Add(key, attributeValue);
                     }
                 }
             }
             return attributeTitleIDAndListOrderDictionary;
-        }
-
-        public static string GetAttributeValueString(AttributeValueRangeCache avr, string unit)
-        {
-            string avString = "";
-            int minValue = avr.MinValue;
-            int maxValue = avr.MaxValue;
-
-            if (minValue == 0 && maxValue == 0)
-            {
-                return avString;
-            }
-
-            string minString = "";
-            string maxString = "";
-
-            if (avr.MinValue == -1)
-            {
-                minString = "Below ";
-                string key = avr.AttributeTitleID + "," + (avr.MaxValue + 1);
-                if (AttributeTitleIDAndListOrderDic_Static.ContainsKey(key))
-                {
-                    maxString = AttributeTitleIDAndListOrderDic_Static[key].Value + " " + unit;
-                }
-            }
-            else if (avr.MaxValue == -1)
-            {
-                minString = "Above ";
-                string key = avr.AttributeTitleID + "," + (avr.MinValue - 1);
-                if (AttributeTitleIDAndListOrderDic_Static.ContainsKey(key))
-                {
-                    maxString = AttributeTitleIDAndListOrderDic_Static[key].Value + " " + unit;
-                }
-            }
-            else if (avr.MaxValue == 0)
-            {
-                minString = "";
-                string key = avr.AttributeTitleID + "," + avr.MinValue;
-                if (AttributeTitleIDAndListOrderDic_Static.ContainsKey(key))
-                {
-                    maxString = AttributeTitleIDAndListOrderDic_Static[key].Value + " " + unit;
-                }
-            }
-            else
-            {
-                List<AttributeValueCache> attributeValues = GetAttributeValuesByTitleId(avr.AttributeTitleID);
-                if (attributeValues != null)
-                {
-                    foreach (AttributeValueCache av in attributeValues)
-                    {
-                        if (av.ListOrder == minValue)
-                        {
-                            minString = av.Value + " " + unit + "-";
-                        }
-                        else if (av.ListOrder == maxValue)
-                        {
-                            maxString = av.Value + " " + unit;
-                        }
-                    }
-                }
-
-            }
-            return minString + maxString;
         }
 
         private static List<AttributeValueCache> GetAttributeValuesByTitleId(int attributeTitleId)

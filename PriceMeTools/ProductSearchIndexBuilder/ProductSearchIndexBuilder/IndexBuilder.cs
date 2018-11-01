@@ -14,7 +14,7 @@ namespace ProductSearchIndexBuilder
     public static class IndexBuilder
     {
         static bool AllProductCategoryIndexIsOk = true;
-        static List<string> manufacturerHasProduct = null;
+        static Dictionary<int, int> manufacturerHasProductDic = null;
         static List<string> hiddenManufacturerCategoryIDList = null;
 
         static Dictionary<int, float> CurrenciesInfo = new Dictionary<int, float>();
@@ -63,7 +63,8 @@ namespace ProductSearchIndexBuilder
                     }
                 }
             }
-            manufacturerHasProduct = new List<string>();
+            //manufacturerHasProduct = new List<string>();
+            manufacturerHasProductDic = new Dictionary<int, int>();
 
             Dictionary<int, List<ProductCatalog>> upComingProductDic;
             if (countryId == 25)
@@ -326,13 +327,15 @@ namespace ProductSearchIndexBuilder
             {
                 try
                 {
-                    foreach (string mid in manufacturerHasProduct)
+                    foreach (int mid in manufacturerHasProductDic.Keys)
                     {
                         Document doc = new Document();
 
-                        var midField = new Int32Field("ManufacturerID", int.Parse(mid), Field.Store.YES);
+                        var midField = new Int32Field("ManufacturerID", mid, Field.Store.YES);
+                        var midProductCountField = new Int32Field("ProductCount", manufacturerHasProductDic[mid], Field.Store.YES);
 
                         doc.Add(midField);
+                        doc.Add(midProductCountField);
 
                         while (true)
                         {
@@ -628,8 +631,7 @@ namespace ProductSearchIndexBuilder
                                     bool isSlider = bool.Parse(sqlDR["IsSlider"].ToString());
                                     string attributeValueName = "";
                                     string productAttrValue = "";
-                                    string isRange = "";
-                                    int attributesRangeID = 0;
+
                                     int attrTitleId = int.Parse(typeID);
                                     float numericValue = 0;
                                     try
@@ -642,53 +644,36 @@ namespace ProductSearchIndexBuilder
 
                                         string mapKey = cid + "," + typeID;
 
-                                        var attributeValueRange = DataController.GetAttributeValueRangesByTitleIdAndCategoryId(attrTitleId, cid);
+                                        
                                         string key = productID + "," + typeID;
-                                        if (attributeValueRange.Count == 0)
+
+                                        string tagTitle = "";
+                                        productDescriptorDictionary.TryGetValue(key, out tagTitle);
+                                        if (string.IsNullOrEmpty(tagTitle))
                                         {
-                                            string tagTitle = "";
-                                            productDescriptorDictionary.TryGetValue(key, out tagTitle);
-                                            if (string.IsNullOrEmpty(tagTitle))
-                                            {
-                                                tagTitle = attrValue + " " + attrUnit;
-                                            }
-                                            List<int> _avids = new List<int>();
-                                            _avids.Add(avid);
-
-                                            attributeValueName = tagTitle.Trim();
-                                            isRange = "0";
-
-                                            if (isSlider)
-                                            {
-                                                float val = 0;
-                                                if (float.TryParse(attrValue, out val))
-                                                {
-                                                    numericValue = float.Parse(attrValue);
-                                                }
-                                                else
-                                                {
-                                                    LogController.WriteException("Map : " + mapKey + " is slider but value is " + attrValue);
-                                                }
-                                            }
-
-                                            productAttrValue = attributeValueName;
+                                            tagTitle = attrValue + " " + attrUnit;
                                         }
-                                        else
+                                        List<int> _avids = new List<int>();
+                                        _avids.Add(avid);
+
+                                        attributeValueName = tagTitle.Trim();
+
+                                        if (isSlider)
                                         {
-                                            string tagTitle = "";
-                                            productDescriptorDictionary.TryGetValue(key, out tagTitle);
-                                            if (string.IsNullOrEmpty(tagTitle))
+                                            float val = 0;
+                                            if (float.TryParse(attrValue, out val))
                                             {
-                                                tagTitle = DataController.GetAttributeValueString(attributeValueRange[0], attrUnit);
+                                                numericValue = float.Parse(attrValue);
                                             }
-                                            List<int> args = new List<int>();
-                                            args.Add(attributeValueRange[0].ValueRangeID);
-                                            attributesRangeID = attributeValueRange[0].ValueRangeID;
-                                            attributeValueName = tagTitle.Trim();
-                                            isRange = "1";
-
-                                            productAttrValue = attributeValueName;
+                                            else
+                                            {
+                                                LogController.WriteException("Map : " + mapKey + " is slider but value is " + attrValue);
+                                            }
                                         }
+
+                                        productAttrValue = attributeValueName;
+
+  
                                         if (typeID == "249")
                                         {
                                             productAttrValue = "Energy Star";
@@ -701,7 +686,7 @@ namespace ProductSearchIndexBuilder
                                         doc.Add(new Int32Field("TypeID", attrTitleId, Field.Store.YES));
                                         doc.Add(new Int32Field("CategoryID", int.Parse(categoryID), Field.Store.YES));
                                         doc.Add(new StoredField("AttributeValueName", attributeValueName));
-                                        doc.Add(new StoredField("IsRange", isRange));
+                                        doc.Add(new StoredField("IsRange", "0"));
                                         doc.Add(new SingleField("AttributeValue", numericValue, Field.Store.YES));
 
 
@@ -1128,11 +1113,16 @@ namespace ProductSearchIndexBuilder
                                             string manufacturerID = idr["ManufacturerID"].ToString();
                                             string categoryId = idr["CategoryID"].ToString();
                                             int cid = int.Parse(categoryId);
-                                            if (!hiddenManufacturerCategoryIDList.Contains(categoryId))
+                                            if (!hiddenManufacturerCategoryIDList.Contains(categoryId) && !DataController.IsSearchOnly(cid))
                                             {
-                                                if (!manufacturerHasProduct.Contains(manufacturerID))
+                                                int mid = int.Parse(manufacturerID);
+                                                if (!manufacturerHasProductDic.ContainsKey(mid))
                                                 {
-                                                    manufacturerHasProduct.Add(manufacturerID);
+                                                    manufacturerHasProductDic.Add(mid, 1);
+                                                }
+                                                else
+                                                {
+                                                    manufacturerHasProductDic[mid]++;
                                                 }
                                             }
 
