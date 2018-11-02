@@ -1117,11 +1117,25 @@ namespace ProductSearchIndexBuilder
                                                 continue;
                                             }
 
+                                            string categoryId = idr["CategoryID"].ToString();
+                                            int cid = int.Parse(categoryId);
+
+                                            string bestPPCRetailerID = idr["BestPPCRetailerID"].ToString();
+                                            string includePPC = "1";
+                                            if (string.IsNullOrEmpty(bestPPCRetailerID))
+                                            {
+                                                includePPC = "0";
+
+                                                if (AppValue.CountryId != 25 && DataController.IsSearchOnly(cid))
+                                                {
+                                                    continue;
+                                                }
+                                            }
+
                                             string productName = idr["ProductName"].ToString().Trim();
                                             string manufacturerName = idr["ManufacturerName"].ToString();
                                             string manufacturerID = idr["ManufacturerID"].ToString();
-                                            string categoryId = idr["CategoryID"].ToString();
-                                            int cid = int.Parse(categoryId);
+                                            
                                             if (!hiddenManufacturerCategoryIDList.Contains(categoryId) && !DataController.IsSearchOnly(cid))
                                             {
                                                 int mid = int.Parse(manufacturerID);
@@ -1187,17 +1201,7 @@ namespace ProductSearchIndexBuilder
                                             int.TryParse(idr["Clicks"].ToString(), out clicks);
 
                                             string bestPPCRetailerName = idr["BestPPCRetailerName"].ToString();
-                                            string bestPPCRetailerID = idr["BestPPCRetailerID"].ToString();
-                                            string includePPC = "1";
-                                            if (string.IsNullOrEmpty(bestPPCRetailerID))
-                                            {
-                                                includePPC = "0";
-
-                                                if (AppValue.CountryId != 25 && DataController.IsSearchOnly(cid))
-                                                {
-                                                    continue;
-                                                }
-                                            }
+                                            
                                             string bestPPCRetailerProductID = idr["BestPPCRetailerProductID"].ToString();
                                             int priceCount = int.Parse(idr["PriceCount"].ToString());
                                             string bestPPCLogo = idr["BestPPCLogo"].ToString();
