@@ -261,15 +261,16 @@ namespace ProductSearchIndexBuilder
                                 continue;
 
                             ProductCatalog pc = includePidDic[pid];
-                            if (ucpDic.ContainsKey(pc.CategoryID))
+                            int parentID = GetRootCategoryID(pc.CategoryID, priceme205DbInfo);
+                            if (ucpDic.ContainsKey(parentID))
                             {
-                                ucpDic[pc.CategoryID].Add(pc);
+                                ucpDic[parentID].Add(pc);
                             }
                             else
                             {
                                 List<ProductCatalog> pcList = new List<ProductCatalog>();
                                 pcList.Add(pc);
-                                ucpDic.Add(pc.CategoryID, pcList);
+                                ucpDic.Add(parentID, pcList);
                             }
 
                         }
@@ -278,6 +279,29 @@ namespace ProductSearchIndexBuilder
             }
 
             return ucpDic;
+        }
+
+        private static int GetRootCategoryID(int categoryId, DbInfo priceme205DbInfo)
+        {
+            using (var sqlConn = DBController.CreateDBConnection(priceme205DbInfo))
+            {
+                string sql = "select dbo.GetParentCategory(" + categoryId + ")";
+
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sdr = sqlCMD.ExecuteReader())
+                    {
+                        if (sdr.Read())
+                        {
+                            int prantID = sdr.GetInt32(0);
+                            return prantID;
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
 
         //private static int GetParentID(int categoryID)
