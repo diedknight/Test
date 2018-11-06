@@ -214,7 +214,8 @@ namespace ProductSearchIndexBuilder
                         ,DefaultImage
                         FROM CSK_Store_Product
                         inner join CSK_Store_Manufacturer on CSK_Store_Manufacturer.ManufacturerID = CSK_Store_Product.ManufacturerID
-                        where ProductID not in (select ProductID from CSK_Store_RetailerProduct)";
+                        where ProductID not in 
+                        (select ProductID from CSK_Store_RetailerProduct where retailerId in (select retailerId from CSK_Store_Retailer where RetailerCountry = " + AppValue.CountryId + "))";
 
                 using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
                 {
@@ -1133,10 +1134,17 @@ namespace ProductSearchIndexBuilder
                                                 continue;
                                             }
 
+                                            //为false，则需要合并，为ture，则不需要合并
                                             bool isDisplayIsMerged = bool.Parse(idr["IsDisplayIsMerged"].ToString());
                                             string isMerge = idr["IsMerge"].ToString();//Ture Or False
                                             string IsDisplay = "true";
-                                            if (isDisplayIsMerged && AppValue.CountryId != 25 && !isMerge.Equals("true", StringComparison.InvariantCultureIgnoreCase))
+
+                                            //if(!isDisplayIsMerged && isMerge.Equals("false", StringComparison.InvariantCultureIgnoreCase))
+                                            //{
+                                            //    Console.WriteLine(pidInt);
+                                            //}
+
+                                            if (!isDisplayIsMerged && isMerge.Equals("false", StringComparison.InvariantCultureIgnoreCase) && AppValue.CountryId != 25)
                                             {
                                                 continue;
                                             }
