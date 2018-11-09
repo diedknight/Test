@@ -244,11 +244,11 @@ namespace ProductSearchIndexBuilder
                 string sql = "";
                 if (sqlConn is MySql.Data.MySqlClient.MySqlConnection)
                 {
-                    sql = "select productid from UpcomingProduct where ReleaseDate > Now()";
+                    sql = "select productid,PriceNZ from UpcomingProduct where ReleaseDate > Now()";
                 }
                 else
                 {
-                    sql = "select productid from UpcomingProduct where ReleaseDate > GETDATE()";
+                    sql = "select productid,PriceNZ from UpcomingProduct where ReleaseDate > GETDATE()";
                 }
                 using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
                 {
@@ -258,10 +258,13 @@ namespace ProductSearchIndexBuilder
                         while (sdr.Read())
                         {
                             int pid = sdr.GetInt32(0);
+                            decimal price = sdr.GetDecimal(1);
+
                             if (excludePidDic.ContainsKey(pid) || !includePidDic.ContainsKey(pid))
                                 continue;
 
                             ProductCatalog pc = includePidDic[pid];
+                            pc.BestPrice = price.ToString("0.00");
                             int parentID = GetRootCategoryID(pc.CategoryID, priceme205DbInfo);
                             if (ucpDic.ContainsKey(parentID))
                             {
