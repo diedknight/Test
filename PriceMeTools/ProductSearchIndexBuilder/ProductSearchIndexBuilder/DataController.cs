@@ -939,7 +939,7 @@ namespace ProductSearchIndexBuilder
 
             string sql = @"select retailerid as ID,RetailerId ,SUM(OverallRating)+3 as RetailerRatingSum,COUNT(RetailerId)+1 as RetailerTotalRatingVotes from Merchant_Reviews
                             where RetailerId in (select RetailerId from CSK_Store_Retailer where RetailerCountry = " + countryId + @")
-                            and ReviewStatus in (4, 5)
+                            and ReviewStatus in (2, 4, 5)
                             group by RetailerId";
 
             using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
