@@ -1,0 +1,157 @@
+﻿@page
+@model IndexModel
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css" /><link href="//images.pricemestatic.com/pricemeico.ico" rel="shortcut icon" />
+<link href="~/css/default.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
+<link href="~/css/site.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
+<link href="~/css/main.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
+<link href="~/css/Header.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
+<link href="~/css/Footer.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
+
+<link href="https://www.priceme.co.nz/holidays/blackfriday" rel="canonical" />
+
+<style type="text/css">
+    .row {
+        padding: 10px 0;
+    }
+
+    h1, h4, h2 {
+        font-weight: bold;
+    }
+
+    form::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>
+
+<partial name="HeaderView" />
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Black Friday @Html.Raw(SiteConfig.Year)</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <img style="float:left;" src="https://s3.pricemestatic.com/Images/PriceMeVersion/black-friday-128.png" />
+        <p style="padding:10px 0 0 150px;">All "Black Friday" @Html.Raw(SiteConfig.Year) deals in one place. On Friday the @Html.Raw(SiteConfig.FridayDay)rd of November shopping mania breaks out in New Zealand with the arrival of Black Friday.</p>
+    </div>
+</div>
+
+<div class="row default_page">
+    @if (SiteConfig.IsDispaly)
+    {
+        <partial name="DealsProducts" model="Model.data" />
+    }
+    else
+    {
+        <div class="col-md-12">
+            <h4 style="font-size:16px;">Black Friday kick off in</h4>
+            <div class="clock" style="margin:2em 2em 2em 0;"></div>
+
+            <script type="text/javascript">
+                var clock;
+                
+                $(document).ready(function () {
+                    var digits = 8;
+
+                    var currentDate = new Date();
+                    var blackFridayDate = new Date(@Html.Raw(SiteConfig.Year), 10, @Html.Raw(SiteConfig.FridayDay));
+
+                    var dateDiff = blackFridayDate.getTime() - currentDate.getTime();
+                    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000))
+
+                    if (dayDiff >= 100)
+                        digits = 9;
+
+                    var clock;
+
+                    clock = $('.clock').FlipClock({
+                        clockFace: 'DailyCounter',
+                        autoStart: false,
+                        minimumDigits: digits,
+                        callbacks: {
+                            stop: function () {
+                                $('.message').html('The clock has stopped!');
+                            }
+                        }
+                    });
+                    
+                    var timespan = blackFridayDate / 1000 - currentDate / 1000;
+
+                    clock.setTime(timespan);
+                    clock.setCountdown(true);
+                    clock.start();
+
+                });
+            </script>
+        </div>
+
+        <div class="col-md-12">
+            <form method="post" action="">
+                <label for="txtEmail" style="font-size:14px; margin-bottom:5px; font-weight: bold;">Newsletter sign-up:</label><br />
+                <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email" required style="width:310px; height:50px;display: initial;" />
+                <button type="submit" class="btn btn-primary SignUp">Sign Up</button>
+            </form>
+        </div>
+
+        @if (ViewData["signup"] != null)
+        {
+            <script type="text/javascript">
+                alert('@ViewData["signup"]');
+            </script>
+        }
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Black Friday Information</h2>
+        <div>
+            @Html.Raw(Model.Description)
+        </div>
+    </div>
+</div>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AMP Product Page Down Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6992217816861590"
+     data-ad-slot="5537944557"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script type="text/javascript">
+    function GlobalAjax(controller, action, param_json, callback_func) {
+        var url = "@Html.Raw(SiteConfig.BlackFridayUrl)" + "AjaxPage";
+        var data = {
+            "controller": controller,
+            "action": action,
+            "url": location.href,
+            "param": JSON.stringify(param_json)
+        };
+
+        $.ajax({
+            url: url,
+            method: "Get",
+            data: data,
+            dataType: "html",
+            success: function (msg) { callback_func(msg); },
+            error: function () { callback_func("0"); }
+        });
+    }
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-Z7H3"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->

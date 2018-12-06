@@ -1,0 +1,22 @@
+﻿@using ChristmasSite
+
+<header id="headerV1">
+    <div class="container topContainer">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+
+        <a id="homeUrl" itemprop="url" href="/" title="@Html.Raw(SiteConfig.LogTitle)">
+            <img id="logoImg" height="32" width="120" alt="@Html.Raw(SiteConfig.LogTitle)" src="@Html.Raw(SiteConfig.LogUrl)" />
+        </a>
+
+        <input type="search" autocomplete="off" name="q" id="searchTextBox" placeholder="Search for products & categories" value="" />
+
+        <span class="btn btn-info search-btn" onclick="OnSearch();"><span class="glyphicon glyphicon-search"></span></span>
+    </div>
+
+    <script type="text/javascript">
+        function OnSearch() {
+            var keyword = $('#searchTextBox').val();
+            location.href = "https://priceme.co.nz/search.aspx?q=" + keyword;
+        }
+    </script>
+</header>

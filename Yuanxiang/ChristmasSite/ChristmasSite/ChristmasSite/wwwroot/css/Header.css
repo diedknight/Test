@@ -1,0 +1,155 @@
+﻿#headerV1 .topContainer {
+  position: relative;
+  height: 50px; }
+
+#headerV1 .container {
+  z-index: 999; }
+
+#headerV1 .glyphicon-menu-hamburger {
+  position: absolute;
+  top: 10px;
+  font-size: 30px;
+  color: #888; }
+
+#headerV1 .search-btn, #searchTextBox {
+  position: absolute;
+  top: 6px;
+  font-size: 18px; }
+
+.glyphicon-menu-hamburger:before {
+  content: '\e236'; }
+
+#headerV1 .search-btn {
+  right: 0;
+  border-radius: 0 4px 4px 0;
+  background-color: #3399f3;
+  color: #fff;
+  background-image: -webkit-linear-gradient(#7bbdf7, #3399f3 50%, #208ff2);
+  background-image: -o-linear-gradient(#7bbdf7, #3399f3 50%, #208ff2);
+  background-image: linear-gradient(#7bbdf7, #3399f3 50%, #208ff2); }
+
+#homeUrl {
+  position: absolute;
+  left: 38px;
+  top: 6px; }
+
+#logoImg {
+  margin-top: 3px; }
+
+#searchTextBox {
+  right: 43px;
+  height: 39px;
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 3px 8px;
+  border-radius: 4px 0 0 4px; }
+
+#searchTextBox:focus {
+  animation-duration: .5s; }
+
+@media (min-width: 360px), (max-width: 360px) {
+  #searchTextBox {
+    width: 90px; }
+  #searchTextBox:focus {
+    width: 220px;
+    animation-name: stbAnimation360; }
+  .autosuggest-container .pName {
+    width: 180px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle; } }
+
+@media (min-width: 400px) {
+  #searchTextBox {
+    width: 145px; }
+  #searchTextBox:focus {
+    width: 280px;
+    animation-name: stbAnimation400; }
+  .autosuggest-container .pName {
+    width: 240px; } }
+
+@media (min-width: 768px) {
+  #searchTextBox {
+    width: 300px; }
+  #searchTextBox:focus {
+    width: 670px;
+    animation-name: stbAnimation768; }
+  .autosuggest-container .pName {
+    width: 600px; } }
+
+@media (min-width: 1200px) {
+  #searchTextBox {
+    width: 950px; }
+  #searchTextBox:focus {
+    width: 950px;
+    animation-name: none; } }
+
+@keyframes stbAnimation360 {
+  0% {
+    width: 90px; }
+  100% {
+    width: 220px; } }
+
+@keyframes stbAnimation400 {
+  0% {
+    width: 145px; }
+  100% {
+    width: 280px; } }
+
+@keyframes stbAnimation768 {
+  0% {
+    width: 300px; }
+  100% {
+    width: 670px; } }
+
+.autosuggest-container div, .suggestDiv {
+  background-color: #fff; }
+
+.autosuggest-container .countSpan {
+  color: grey;
+  padding-left: 5px; }
+
+.autosuggest-container .popularSearchPrice {
+  float: right;
+  color: #2a1051;
+  font-weight: 700;
+  line-height: 30px; }
+
+.autosuggest-container a {
+  padding: 5px;
+  display: block; }
+
+.autosuggest-container a div {
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px; }
+
+.autosuggest-container amp-img {
+  margin-right: 8px; }
+
+.btn-info {
+  color: #fff;
+  background-color: #3399f3; }
+
+.btn-info:active, .btn-info:focus, .btn-info:hover {
+  color: #fff;
+  background-color: #0e80e5;
+  border-color: #0d7bdc; }
+
+.btn-info {
+  background-image: -webkit-linear-gradient(#7bbdf7, #3399f3 50%, #208ff2);
+  background-image: -o-linear-gradient(#7bbdf7, #3399f3 50%, #208ff2);
+  background-image: linear-gradient(#7bbdf7, #3399f3 50%, #208ff2);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff7bbdf7', endColorstr='#ff208ff2', GradientType=0);
+  filter: none;
+  border: 1px solid #0e80e5; }
+
+.btn-info:hover {
+  background-image: -webkit-linear-gradient(#68b3f6, #208ff2 50%, #0e86ef);
+  background-image: -o-linear-gradient(#68b3f6, #208ff2 50%, #0e86ef);
+  background-image: linear-gradient(#68b3f6, #208ff2 50%, #0e86ef);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff68b3f6', endColorstr='#ff0e86ef', GradientType=0);
+  filter: none;
+  border: 1px solid #0c75d2; }

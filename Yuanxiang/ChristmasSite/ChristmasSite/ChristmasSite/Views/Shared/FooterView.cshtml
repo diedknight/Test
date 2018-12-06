@@ -1,0 +1,42 @@
+﻿@using ChristmasSite
+
+<div id="newFooterNavDiv">
+
+    <div class="container">
+
+        <ul class="footerTopItems footerItems">
+            <li><a href="@Html.Raw(SiteConfig.PriceMeUrl)About/AboutUs.aspx">About</a></li>
+            <li>|</li>
+            <li><a href="@Html.Raw(SiteConfig.PriceMeUrl)About/contactUs.aspx" rel="nofollow">Contact</a></li>
+            <li>|</li>
+            <li><a href="//www.priceme.co.nz/consumer/">News</a></li>
+            <li>|</li>
+            <li>
+                <a href="https://promote.priceme.co.nz">List Your Store</a>
+            </li>
+        </ul>
+
+        <div class="footerMiddleItems">
+            <p class="regular-bold">Compare products and prices in New Zealand, and shop online.</p>
+        </div>
+
+        <ul class="footerBottomItems footerItems">
+            <li><a href="@Html.Raw(SiteConfig.PriceMeUrl)About/TermsOfService.aspx" rel="nofollow">Terms & Conditions</a></li>
+            <li>|</li>
+            <li><a href="@Html.Raw(SiteConfig.PriceMeUrl)About/PrivacyPolicy.aspx" rel="nofollow">Privacy Policy</a></li>
+        </ul>
+
+    </div>
+
+    <div class="copyright-div">
+        <div class="container">
+            <label>Copyright © PriceMe @Html.Raw(DateTime.Now.Year)</label>
+
+            <div class="backToTopSpan">
+                <a href="#headerV1">Back to top <span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
