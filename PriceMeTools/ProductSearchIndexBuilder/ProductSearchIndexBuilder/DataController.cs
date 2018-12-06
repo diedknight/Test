@@ -880,23 +880,31 @@ namespace ProductSearchIndexBuilder
                     }
                 }
 
-                List<RetailerVotesSum> retailerVotes = GetRetailerVotesSums(AppValue.CountryId);
+                List<RetailerReviewCache> AllReviewList = GetAllRetailerReviewList(AppValue.CountryId);
+
                 Dictionary<int, string> retailerStoreTypeDic = GetRetailerStroeType(AppValue.CountryId);
                 Dictionary<int, int> clicksDic = GetRetailerClicks(AppValue.CountryId);
 
                 foreach (var item in list)
                 {
-                    var vote = retailerVotes.FirstOrDefault(v => v.RetailerID == item.RetailerId);
-                    if (vote != null)
+                    decimal totalrating = 0m;
+                    decimal avgrating = 0m;
+                    int totalcount = 0;
+                    List<RetailerReviewCache> ReviewList = AllReviewList.Where(r => r.RetailerId == item.RetailerId).ToList();
+                    foreach (RetailerReviewCache re in ReviewList)
                     {
-                        item.RetailerRatingSum = vote.RetailerRatingSum;
-                        item.RetailerTotalRatingVotes = vote.RetailerTotalRatingVotes;
+                        decimal rating = decimal.Parse(re.OverallStoreRating.ToString());
+                        if (re.SourceType != "web")
+                            rating = decimal.Parse(re.OverallRating.ToString());
+
+                        totalrating += rating;
+                        totalcount++;
                     }
-                    else
-                    {
-                        item.RetailerRatingSum = 3;
-                        item.RetailerTotalRatingVotes = 1;
-                    }
+                    if (totalcount > 0)
+                        avgrating = decimal.Round(totalrating / totalcount, 1);
+
+                    item.RetailerRatingSum = (int)avgrating;
+                    item.RetailerTotalRatingVotes = totalcount;
 
                     if (retailerStoreTypeDic.ContainsKey(item.StoreType))
                     {
@@ -906,18 +914,15 @@ namespace ProductSearchIndexBuilder
                     item.AvRating = 0;
                     if (item.RetailerTotalRatingVotes > 1)
                     {
-                        int totalReviews = (item.RetailerTotalRatingVotes == 0 ? 2 : item.RetailerTotalRatingVotes) - 1;
                         string reviewStr = "";
                         if (AppValue.ListVersionNoEnglishCountryId.Contains(item.RetailerCountry))
-                            reviewStr = string.Format("{0} " + AppValue.ReviewStr, totalReviews);
+                            reviewStr = string.Format("{0} " + AppValue.ReviewStr, item.RetailerTotalRatingVotes);
                         else
-                            reviewStr = string.Format("{0} " + AppValue.ReviewStr + "{1}", totalReviews, totalReviews > 1 ? "s" : "");
+                            reviewStr = string.Format("{0} " + AppValue.ReviewStr + "{1}", item.RetailerTotalRatingVotes, item.RetailerTotalRatingVotes > 1 ? "s" : "");
 
                         item.ReviewString = reviewStr;
 
-                        decimal avRating = decimal.Round(((item.RetailerRatingSum - 3m) / ((item.RetailerTotalRatingVotes == 0 ? 2 : item.RetailerTotalRatingVotes) - 1m)), 1);
-                        avRating = avRating.ToString().Length > 3 ? decimal.Parse(avRating.ToString().Substring(0, 3)) : avRating;
-                        item.AvRating = avRating;
+                        item.AvRating = item.RetailerRatingSum;
                     }
 
                     int clicks = 0;
