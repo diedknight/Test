@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using ChristmasSite.Logic;
 using ChristmasSite.Data;
 using ChristmasSite.Code;
+using PriceMeCommon.BusinessLogic;
 
 namespace ChristmasSite.Pages
 {
@@ -26,6 +27,11 @@ namespace ChristmasSite.Pages
 
         public void OnGet()
         {
+            List<int> cidList = new List<int>();
+            cidList.Add(11);
+            ProductSearcher productSearcher = new ProductSearcher("", cidList, null, null, null, "Sale", null, 10, 3, false, true, false, true, null, "", null, false);
+            int pCount = productSearcher.GetProductCount();
+
             if (SiteConfig.IsDispaly)
             {
                 cid = Utility.GetIntParameter("cid", this.Request);

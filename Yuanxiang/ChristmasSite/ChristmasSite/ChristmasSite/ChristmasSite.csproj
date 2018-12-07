@@ -9,11 +9,58 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="compilerconfig.json" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <Reference Include="AWSSDK.Core">
+      <HintPath>..\Dll\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.SimpleEmail">
+      <HintPath>..\Dll\AWSSDK.SimpleEmail.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper">
+      <HintPath>..\Dll\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DbEntity">
+      <HintPath>..\Dll\DbEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\Dll\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Analysis.Common">
+      <HintPath>..\Dll\Lucene.Net.Analysis.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\Dll\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational">
+      <HintPath>..\Dll\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer">
+      <HintPath>..\Dll\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.PlatformAbstractions">
+      <HintPath>..\Dll\Microsoft.Extensions.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlConnector">
+      <HintPath>..\Dll\MySqlConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Pipelines.Sockets.Unofficial">
+      <HintPath>..\Dll\Pipelines.Sockets.Unofficial.dll</HintPath>
+    </Reference>
+    <Reference Include="Pomelo.EntityFrameworkCore.MySql">
+      <HintPath>..\Dll\Pomelo.EntityFrameworkCore.MySql.dll</HintPath>
+    </Reference>
+    <Reference Include="Pomelo.JsonObject">
+      <HintPath>..\Dll\Pomelo.JsonObject.dll</HintPath>
+    </Reference>
+    <Reference Include="PriceMeCommon">
+      <HintPath>..\Dll\PriceMeCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\Dll\StackExchange.Redis.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
