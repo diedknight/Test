@@ -912,7 +912,7 @@ namespace ProductSearchIndexBuilder
                     }
 
                     item.AvRating = 0;
-                    if (item.RetailerTotalRatingVotes > 1)
+                    if (item.RetailerTotalRatingVotes > 0)
                     {
                         string reviewStr = "";
                         if (AppValue.ListVersionNoEnglishCountryId.Contains(item.RetailerCountry))
@@ -1120,132 +1120,44 @@ namespace ProductSearchIndexBuilder
 
             try
             {
-                int ii = 0;
-                using (var sqlConn = DBController.CreateDBConnection(PamUserDbInfo_Static))
+                using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
                 {
                     sqlConn.Open();
-
-                    string sql = "GetRetailerReviewByCountryID";
+                    string sql = "SELECT * FROM CSK_Store_RetailerReview";
                     using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
                     {
-                        sqlCMD.CommandType = CommandType.StoredProcedure;
-
-                        var countryIdParam = sqlCMD.CreateParameter();
-                        countryIdParam.ParameterName = "@countryID";
-                        countryIdParam.DbType = DbType.Int32;
-                        countryIdParam.Value = countryId;
-                        sqlCMD.Parameters.Add(countryIdParam);
-
                         using (var sqlDR = sqlCMD.ExecuteReader())
                         {
                             while (sqlDR.Read())
                             {
-                                RetailerReviewCache rrc = new RetailerReviewCache();
-
-                                int.TryParse(sqlDR["RetailerReviewId"].ToString(), out ii);
-                                rrc.ReviewID = ii;
-
-                                int.TryParse(sqlDR["RetailerId"].ToString(), out ii);
-                                rrc.RetailerID = ii;
-
-                                int.TryParse(sqlDR["EasyOfOrdering"].ToString(), out ii);
-                                rrc.EasyOfOrdering = ii;
-
-                                int.TryParse(sqlDR["OnTimeDelivery"].ToString(), out ii);
-                                rrc.OnTimeDelivery = ii;
-
-                                int.TryParse(sqlDR["CustomerCare"].ToString(), out ii);
-                                rrc.CustomerCare = ii;
-
-                                int.TryParse(sqlDR["Availability"].ToString(), out ii);
-                                rrc.Availability = ii;
-
-                                int.TryParse(sqlDR["OverallStoreRating"].ToString(), out ii);
-                                rrc.OverallStoreRating = ii;
-                                rrc.OverallRating = ii;
-
-                                rrc.Goods = sqlDR["Goods"].ToString();
-                                rrc.Title = sqlDR["Title"].ToString();
-                                rrc.Body = sqlDR["Body"].ToString();
-                                rrc.IsApproved = bool.Parse(sqlDR["IsApproved"].ToString());
-                                rrc.AdminComments = sqlDR["AdminComments"].ToString();
-                                rrc.UserIP = sqlDR["UserIP"].ToString();
-                                int totalComment = 0;
-                                int.TryParse(sqlDR["TotalComment"].ToString(), out totalComment);
-                                rrc.TotalComment = totalComment;
-                                rrc.CreatedBy = sqlDR["CreatedBy"].ToString();
-                                DateTime dt = DateTime.Now;
-                                DateTime.TryParse(sqlDR["CreatedOn"].ToString(), out dt);
-                                rrc.CreatedOn = dt;
-
-                                _retailerReviewList.Add(rrc);
+                                var retailerReviewCache = DbConvertController<RetailerReviewCache>.ReadDataFromDataReader(sqlDR);
+                                retailerReviewCache.SourceType = "web";
+                                retailerReviewCache.RetailerID = retailerReviewCache.RetailerId;
+                                retailerReviewCache.ReviewID = retailerReviewCache.RetailerReviewId;
+                                retailerReviewCache.OverallRating = retailerReviewCache.OverallStoreRating;
+                                _retailerReviewList.Add(retailerReviewCache);
                             }
                         }
-                        _retailerReviewList.ForEach(r => r.SourceType = "web");
                     }
+                }
 
-
-                    List<RetailerReviewCache> rrcList = new List<RetailerReviewCache>();
-
-                    sql = "GetRetailerReviewDetailByCountryID";
+                using (var sqlConn = DBController.CreateDBConnection(SubDbInfo_Static))
+                {
+                    //读取不到数据？
+                    sqlConn.Open();
+                    string sql = "SELECT * FROM retailerreviewdetail";
                     using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
                     {
-                        sqlCMD.CommandType = CommandType.StoredProcedure;
-
-                        sqlCMD.CommandType = CommandType.StoredProcedure;
-
-                        var countryIdParam = sqlCMD.CreateParameter();
-                        countryIdParam.ParameterName = "@countryID";
-                        countryIdParam.DbType = DbType.Int32;
-                        countryIdParam.Value = countryId;
-                        sqlCMD.Parameters.Add(countryIdParam);
-
                         using (var sqlDR = sqlCMD.ExecuteReader())
                         {
                             while (sqlDR.Read())
                             {
-                                RetailerReviewCache rrc = new RetailerReviewCache();
-
-                                int.TryParse(sqlDR["ReviewID"].ToString(), out ii);
-                                rrc.ReviewID = ii;
-
-                                int.TryParse(sqlDR["RetailerID"].ToString(), out ii);
-                                rrc.RetailerID = ii;
-
-                                float ff = 0;
-                                float.TryParse(sqlDR["Delivery"].ToString(), out ff);
-                                rrc.Delivery = ff;
-
-                                float.TryParse(sqlDR["Service"].ToString(), out ff);
-                                rrc.Service = ff;
-
-                                float.TryParse(sqlDR["EaseOfPurchase"].ToString(), out ff);
-                                rrc.EaseOfPurchase = ff;
-
-                                float.TryParse(sqlDR["OverallRating"].ToString(), out ff);
-                                rrc.OverallRating = ff;
-
-                                float.TryParse(sqlDR["ProductInfo"].ToString(), out ff);
-                                rrc.ProductInfo = ff;
-
-                                bool boo = true;
-                                bool.TryParse(sqlDR["PurchaseAgain"].ToString(), out boo);
-                                rrc.PurchaseAgain = boo;
-                                rrc.Email = sqlDR["Email"].ToString();
-                                rrc.Descriptive = sqlDR["Descriptive"].ToString();
-                                rrc.UserIP = sqlDR["UserIP"].ToString();
-                                rrc.CreatedBy = sqlDR["CreatedBy"].ToString();
-
-                                DateTime dt = DateTime.Now;
-                                DateTime.TryParse(sqlDR["CreatedOn"].ToString(), out dt);
-                                rrc.CreatedOn = dt;
-                                rrcList.Add(rrc);
+                                var retailerReviewCache = DbConvertController<RetailerReviewCache>.ReadDataFromDataReader(sqlDR);
+                                retailerReviewCache.SourceType = "review-system";
+                                _retailerReviewList.Add(retailerReviewCache);
                             }
                         }
-                        rrcList.ForEach(r => r.SourceType = "review-system");
                     }
-
-                    _retailerReviewList.AddRange(rrcList);
                 }
 
 
