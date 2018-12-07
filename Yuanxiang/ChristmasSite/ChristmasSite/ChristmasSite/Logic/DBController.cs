@@ -103,10 +103,10 @@ namespace ChristmasSite.Logic
             return total;
         }
 
-        public static string GetBlackInfomation()
+        public static string GetChristmasInfomation()
         {
             string info = string.Empty;
-            string sql = "select Ctx from CSK_Content where PageId='Black Friday information'";
+            string sql = "select Ctx from CSK_Content where PageId = 'Christmas information'";
 
             using (SqlConnection conn = new SqlConnection(SiteConfig.ConnectionStrings("conn_EDW")))
             {

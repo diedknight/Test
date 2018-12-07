@@ -38,7 +38,7 @@ namespace ChristmasSite.Pages
                 BindData();
             }
             else
-                Description = DBController.GetBlackInfomation();
+                Description = DBController.GetChristmasInfomation();
         }
 
         private void BindData()
@@ -81,7 +81,7 @@ namespace ChristmasSite.Pages
                 data.Pagination = ltPagination;
                 data.SortByItems = ltSortByItems;
                 data.CategoreSelect = categorySelect;
-                data.Description = DBController.GetBlackInfomation();
+                data.Description = DBController.GetChristmasInfomation();
 
                 MemoryCacheController.Set<DealsProductsModelData>(key, data, CacheTimeSpan_Static);
             }

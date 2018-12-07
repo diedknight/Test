@@ -38,8 +38,6 @@
                 ProductCatalog pc = data.datas[i];
 
                 <div class="product-grid-item">
-                    <div class="sale_info"><span>@Html.Raw(Convert.ToInt32(Math.Abs(pc.rate * 100)))% Off</span></div>
-
                     <a href="@Html.Raw(pc.trackURL)" rel="nofollow" target="_blank">
                         <img src="@Html.Raw(ChristmasSiteController.GetImage(pc.productimages, "ms"))" alt="@Html.Raw(pc.productname)" title="@Html.Raw(pc.productname)" />
                     </a>
@@ -48,7 +46,6 @@
                         <a class="productNameLink" href="@Html.Raw(pc.trackURL)" rel="nofollow" target="_blank">@Html.Raw(pc.productname)</a>
 
                         <div class="bestPPCDiv">
-                            <div class="old_price"><span class="priceSymbol">$</span><span class="priceSpan">@Html.Raw(string.Format("{0:n}", Convert.ToDecimal(pc.oldprice)))</span></div>
                             <div class="new_price"><span class="priceSymbol">$</span><span class="priceSpan">@Html.Raw(string.Format("{0:n}", Convert.ToDecimal(pc.newprice)))</span></div>
                         </div>
                     </div>

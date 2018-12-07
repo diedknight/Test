@@ -49,7 +49,9 @@
 
 @media (min-width: 360px), (max-width: 360px) {
   #searchTextBox {
-    width: 90px; }
+    width: 90px;
+    right: 43px;
+    height: 39px; }
   #searchTextBox:focus {
     width: 220px;
     animation-name: stbAnimation360; }
@@ -59,11 +61,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    vertical-align: middle; } }
+    vertical-align: middle; }
+  #headerV1 .glyphicon-menu-hamburger {
+    top: 13px;
+    font-size: 26px; }
+  #homeUrl {
+    left: 35px;
+    top: 6px; }
+  #homeUrl img {
+    width: 120px;
+    height: 35px; }
+  #headerV1 .search-btn, #searchTextBox {
+    top: 6px;
+    font-size: 18px; } }
 
 @media (min-width: 400px) {
   #searchTextBox {
-    width: 145px; }
+    width: 155px; }
   #searchTextBox:focus {
     width: 280px;
     animation-name: stbAnimation400; }
@@ -77,13 +91,30 @@
     width: 670px;
     animation-name: stbAnimation768; }
   .autosuggest-container .pName {
-    width: 600px; } }
+    width: 600px; }
+  #headerV1 .glyphicon-menu-hamburger {
+    top: 16px;
+    font-size: 40px; }
+  #homeUrl img {
+    width: 220px;
+    height: 64px; }
+  #homeUrl {
+    left: 54px;
+    top: 0; }
+  #headerV1 .search-btn {
+    top: 9px;
+    font-size: 25px; }
+  #searchTextBox {
+    top: 9px;
+    width: 410px;
+    right: 51px;
+    height: 49px; } }
 
 @media (min-width: 1200px) {
   #searchTextBox {
-    width: 950px; }
+    width: 830px; }
   #searchTextBox:focus {
-    width: 950px;
+    width: 830px;
     animation-name: none; } }
 
 @keyframes stbAnimation360 {
