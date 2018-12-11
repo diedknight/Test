@@ -53,48 +53,53 @@ namespace Fetcher
                 XbaiRequest req = new XbaiRequest(plansUrl);
                 JQuery doc = new JQuery(req.Get(), url);
 
-                doc.find(".plan-tbl__info").each(item => {
+                string json = doc.find("._bundles-carousel").attr("data-json");
+
+                var jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JObject;
+                var plansObj = jsonObj["assets"] as JArray;
+
+                for(int i = 0; i < plansObj.Count; i++)
+                {
+                    var plan = plansObj[i]["vfoPlanSku"] as JObject;
 
                     var info = new MobilePlanInfo();
                     info.CarrierName = this.ProviderName;
-                    info.MobilePlanName = item.Find(".plan-tbl__name__title").InnerText.Trim() + " " + item.Find(".plan-tbl__price__sum").InnerText.Trim();
-                    var infos = item.Find(".plan-tbl__feature__title");
-                    info.DataMB = infos.Item(0).InnerText.Trim();
-                    var talk = infos.Item(1).InnerText.Trim(); 
+                    info.MobilePlanName = plan.Value<string>("vfoPlanDisplayName") + " " + plan.Value<string>("vfoMonthlyPrice");
+
+                    var items = plan["vfoCorePlanItems"] as JArray;
+
+                    info.DataMB = items[0].Value<string>("vfoValue") + " " + items[0].Value<string>("vfoUnits");
+                    var talk = items[1].Value<string>("vfoValue");
                     talk = talk.Contains("Unlimited") ? "-1" : talk.Replace(" mins", "");
                     info.Minutes = int.Parse(talk);
-                    info.Price = item.Find(".plan-tbl__price__sum").InnerText.Trim().ToDecimal();
-                    info.MobilePlanURL = item.Find(".plan-tbl__cta.plan-tbl__cta--buy").First.GetLink();
+
                     info.Texts = -1;
                     info.plus = 0;
 
-                    string termInfo = item.Find(".plan-tbl__price__term").InnerText.Trim();
-                    if(termInfo.Contains("1 month"))
-                    {
-                        info.ContractTypeId = 1;
-                    }
-                    else if (termInfo.Contains("12 month"))
-                    {
-                        info.ContractTypeId = 2;
-                    }
-                    else if (termInfo.Contains("24 month"))
-                    {
-                        info.ContractTypeId = 3;
-                    }
+                    info.ContractTypeId = 1;
 
-                    string realPlanName = item.Find(".plan-tbl__name__title").InnerText.Trim();
+                    //string termInfo = item.Find(".plan-tbl__price__term").InnerText.Trim();
+                    //if (termInfo.Contains("1 month"))
+                    //{
+                    //    info.ContractTypeId = 1;
+                    //}
+                    //else if (termInfo.Contains("12 month"))
+                    //{
+                    //    info.ContractTypeId = 2;
+                    //}
+                    //else if (termInfo.Contains("24 month"))
+                    //{
+                    //    info.ContractTypeId = 3;
+                    //}
 
                     var PhoneList = new List<MobilePhoneInfo>();
                     foreach (var pi in pInfos)
                     {
-                        if (pi.PlanName.Contains(realPlanName) && pi.PlanName.Contains(info.Price.ToString("0.00")))
-                        {
-                            PhoneList.Add(pi);
-                        }
+                        PhoneList.Add(pi);
                     }
                     info.Phones = PhoneList;
                     mobilePlanList.Add(info);
-                });
+                }
             }
             catch (Exception ex)
             {
