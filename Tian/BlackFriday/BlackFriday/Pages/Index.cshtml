@@ -54,23 +54,32 @@
 
             <script type="text/javascript">
                 var clock;
-
+                
                 $(document).ready(function () {
+                    var digits = 8;
+
+                    var currentDate = new Date();
+                    var blackFridayDate = new Date(@Html.Raw(SiteConfig.Year), 10, @Html.Raw(SiteConfig.FridayDay));
+
+                    var dateDiff = blackFridayDate.getTime() - currentDate.getTime();
+                    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000))
+
+                    if (dayDiff >= 100)
+                        digits = 9;
+
                     var clock;
 
                     clock = $('.clock').FlipClock({
                         clockFace: 'DailyCounter',
                         autoStart: false,
+                        minimumDigits: digits,
                         callbacks: {
                             stop: function () {
                                 $('.message').html('The clock has stopped!');
                             }
                         }
                     });
-
-                    var currentDate = new Date();
-                    var blackFridayDate = new Date(2019, 10, 29);
-
+                    
                     var timespan = blackFridayDate / 1000 - currentDate / 1000;
 
                     clock.setTime(timespan);
