@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Header.css",
+    "inputFile": "wwwroot/css/Header.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/default.css",
+    "inputFile": "wwwroot/css/default.scss"
+  },
+  {
+    "outputFile": "wwwroot/js/Slider.es5.js",
+    "inputFile": "wwwroot/js/Slider.js"
+  },
+  {
+    "outputFile": "wwwroot/css/Slider.css",
+    "inputFile": "wwwroot/css/Slider.scss"
+  }
+]

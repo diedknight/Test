@@ -1,4 +1,50 @@
-﻿.default_page .ctcTitleTd {
+﻿@charset "UTF-8";
+.glyphicon-star {
+  font-size: 16px;
+  color: #ffd800;
+  width: 16px; }
+
+.glyphicon_star .empty::after, .glyphicon_star .half::after {
+  content: '';
+  color: #bdc3c7;
+  top: 0;
+  left: 0; }
+
+.glyphicon_star {
+  padding-top: 2px;
+  text-align: left;
+  width: 80px;
+  display: inline-flex; }
+
+.glyphicon_star .half {
+  position: relative; }
+
+.glyphicon_star .half::before {
+  position: relative;
+  z-index: 9;
+  width: 47%;
+  display: block;
+  overflow: hidden; }
+
+.glyphicon_star .half::after {
+  position: absolute;
+  z-index: 8; }
+
+.glyphicon_star .empty {
+  position: relative; }
+
+.glyphicon_star .empty::before {
+  position: relative;
+  z-index: 9;
+  width: 0%;
+  display: block;
+  overflow: hidden; }
+
+.glyphicon_star .empty::after {
+  position: absolute;
+  z-index: 8; }
+
+.default_page .ctcTitleTd {
   padding-left: 7px; }
 
 .default_page .page-header {
@@ -17,14 +63,14 @@
   font-size: 20px; }
 
 .default_page #filters {
-  padding: 5px 17px 5px 13px;
-  border: 2px solid #ececec;
-  border-radius: 5px;
   margin: 6px 0 24px 0; }
   .default_page #filters:after {
     content: "";
     display: block;
     clear: both; }
+  .default_page #filters .priceSlider {
+    width: 300px;
+    margin-bottom: 10px; }
 
 .default_page .popular_category:after {
   content: "";
@@ -34,7 +80,9 @@
 .default_page .popular_category a {
   margin: 15px 15px 15px 0;
   float: left;
-  width: 165px; }
+  width: 115px;
+  padding: 5px;
+  font-size: 16px; }
 
 .default_page .popular_category a:hover {
   background-color: #428bca !important;
@@ -48,12 +96,15 @@
   color: #3d3f3f; }
 
 .default_page .popular_category .btnClass {
-  /*margin-top: 5px;
-            background-color: #e0e0e0;
-            color: #3d3f3f !important;*/
+  background-color: #eee;
+  color: #000;
+  position: relative;
+  border-color: #ccc;
+  border-radius: 6px; }
+
+.default_page .popular_category .active {
   background-color: #428bca;
-  color: white;
-  position: relative; }
+  color: white; }
 
 .default_page .search {
   width: 610px;
@@ -161,7 +212,7 @@
     border: solid #ccc;
     border-width: 1px 1px 1px 0;
     position: relative;
-    height: 325px;
+    height: 300px;
     overflow: visible; }
     @media screen and (max-width: 768px) {
       .default_page .products #product-grid-view .product-grid-item {
@@ -190,67 +241,24 @@
       padding: 0 10px;
       overflow: hidden;
       font-weight: bold; }
+    .default_page .products #product-grid-view .product-grid-item .productReviewDiv {
+      margin: 5px auto;
+      width: 74px;
+      height: 15px; }
     .default_page .products #product-grid-view .product-grid-item .bestPPCDiv {
-      padding: 3px 10px; }
+      padding: 3px 10px;
+      width: auto; }
       .default_page .products #product-grid-view .product-grid-item .bestPPCDiv:after {
         clear: both;
         content: "";
         display: block; }
-      .default_page .products #product-grid-view .product-grid-item .bestPPCDiv .old_price {
-        float: left;
-        font-weight: normal;
-        color: lightgray;
-        text-decoration: line-through; }
-      .default_page .products #product-grid-view .product-grid-item .bestPPCDiv .new_price {
-        float: right;
-        color: #2a1051; }
-        .default_page .products #product-grid-view .product-grid-item .bestPPCDiv .new_price .priceSpan {
+      .default_page .products #product-grid-view .product-grid-item .bestPPCDiv .price {
+        width: 100%;
+        color: #2a1051;
+        text-align: center; }
+        .default_page .products #product-grid-view .product-grid-item .bestPPCDiv .price .priceSpan {
           font-size: 17px; }
       .default_page .products #product-grid-view .product-grid-item .bestPPCDiv .priceCountDiv {
         font-size: 14px;
         text-align: center;
         color: gray; }
-    .default_page .products #product-grid-view .product-grid-item .retailer_logo {
-      padding: 0 10px;
-      text-align: right; }
-      .default_page .products #product-grid-view .product-grid-item .retailer_logo img {
-        display: inline;
-        width: 100px;
-        height: 40px; }
-      .default_page .products #product-grid-view .product-grid-item .retailer_logo label {
-        height: 40px;
-        line-height: 40px;
-        color: gray; }
-    .default_page .products #product-grid-view .product-grid-item .sale_info, .default_page .products #product-grid-view .product-grid-item .sale_info_right, .default_page .products #product-grid-view .product-grid-item .sale_info_right_green {
-      padding: 4px 14px;
-      position: absolute;
-      top: 0px;
-      left: 0px; }
-      .default_page .products #product-grid-view .product-grid-item .sale_info span, .default_page .products #product-grid-view .product-grid-item .sale_info_right span, .default_page .products #product-grid-view .product-grid-item .sale_info_right_green span {
-        color: white;
-        font-weight: bold;
-        z-index: 90;
-        position: relative; }
-      .default_page .products #product-grid-view .product-grid-item .sale_info:after, .default_page .products #product-grid-view .product-grid-item .sale_info_right:after, .default_page .products #product-grid-view .product-grid-item .sale_info_right_green:after {
-        content: "";
-        /* display: inline-block; */
-        border-top: solid 28px #f8484a;
-        border-left: 0;
-        border-right: 14px solid transparent;
-        height: 0;
-        min-width: 68px;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0; }
-    .default_page .products #product-grid-view .product-grid-item .sale_info_right, .default_page .products #product-grid-view .product-grid-item .sale_info_right_green {
-      position: relative;
-      padding: 4px 10px 4px 16px;
-      float: right;
-      height: 1px; }
-      .default_page .products #product-grid-view .product-grid-item .sale_info_right:after, .default_page .products #product-grid-view .product-grid-item .sale_info_right_green:after {
-        border-right: 0px;
-        border-left: 14px solid transparent; }
-    .default_page .products #product-grid-view .product-grid-item .sale_info_right_green:after {
-      border-top: 28px solid #59b210; }

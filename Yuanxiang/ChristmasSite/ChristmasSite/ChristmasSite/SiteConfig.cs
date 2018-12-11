@@ -14,14 +14,14 @@ namespace ChristmasSite
     {
         private static IConfigurationRoot _configRoot = null;
 
-        public static string BlackFridayUrl { get; set; }
-        public static bool IsDispaly { get; set; }
+        public static string ChristmasUrl { get; set; }
         public static string LogTitle { get; set; }
         public static string LogUrl { get; set; }
         public static string PriceMeUrl { get; set; }
         public static string CssVersion { get; set; }
-        public static string Year { get; set; }
-        public static string FridayDay { get; set; }
+        public static List<int> Forher { get; set; }
+        public static List<int> Forhim { get; set; }
+        public static List<int> Forkids { get; set; }
         static SiteConfig()
         {
             var builder = new ConfigurationBuilder()
@@ -56,16 +56,36 @@ namespace ChristmasSite
         {
             bool _IsDispaly = false;
             bool.TryParse(AppSettings("IsDisplay"), out _IsDispaly);
-            IsDispaly = _IsDispaly;
 
-            BlackFridayUrl = AppSettings("BlackFridayUrl");
+            ChristmasUrl = AppSettings("ChristmasUrl");
             LogTitle = AppSettings("LogTitle");
             LogUrl = AppSettings("LogUrl");
             PriceMeUrl = AppSettings("PriceMeUrl");
             CssVersion = AppSettings("CssVersion");
-            Year = AppSettings("Year");
-            FridayDay = AppSettings("FridayDay");
 
+            Forher = new List<int>();
+            foreach (string temp in AppSettings("Forher").Split(','))
+            {
+                int cid = 0;
+                int.TryParse(temp, out cid);
+                Forher.Add(cid);
+            }
+
+            Forhim = new List<int>();
+            foreach (string temp in AppSettings("Forhim").Split(','))
+            {
+                int cid = 0;
+                int.TryParse(temp, out cid);
+                Forhim.Add(cid);
+            }
+
+            Forkids = new List<int>();
+            foreach (string temp in AppSettings("Forkids").Split(','))
+            {
+                int cid = 0;
+                int.TryParse(temp, out cid);
+                Forkids.Add(cid);
+            }
             ConfigAppString.Init(_configRoot);
             LogController.Init(_configRoot["LogDirectory"]);
 

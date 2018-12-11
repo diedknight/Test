@@ -8,50 +8,140 @@
 }
 
 <div id="filters">
+    <div class="priceSlider">
+        @{
+            long min = 0;
+            long max = long.Parse(data.Nb.NarrowItemList.Last().Value);
+            long fromIndex = min;
+            long toIndex = max;
+            if (data.PriceRange != null)
+            {
+                fromIndex = (long)data.PriceRange.MinPrice;
+                toIndex = (long)data.PriceRange.MaxPrice;
+            }
+            
+            List<int> countList = data.Nb.NarrowItemList.Select(p => p.ProductCount).ToList();
+            int maxCountWithoutP = data.Nb.ProductCountListWithoutP.Max();
+            double av = data.Nb.ProductCountListWithoutP.Average();
+            List<int> heightList = new List<int>();
+            foreach (int c in countList)
+            {
+                int h = ChristmasSiteController.GetIconHeight(c, av, maxCountWithoutP);
+                heightList.Add(h);
+            }
+
+            string homeurl = ChristmasSite.SiteConfig.ChristmasUrl;
+            if (data.Type > 0)
+            {
+                if (data.PageIndex > 1)
+                {
+                    homeurl += "?tp=" + data.Type + "&pg=" + data.PageIndex + "&";
+                }
+                else
+                {
+                    homeurl += "?tp=" + data.Type + "&";
+                }
+            }
+            else
+            {
+                if (data.PageIndex > 1)
+                {
+                    homeurl += "?pg=" + data.PageIndex + "&";
+                }
+                else
+                {
+                    homeurl += "?";
+                }
+            }
+        }
+        <div class="slider_parent">
+            <div id="slider_Price"></div>
+            @Html.Raw(ChristmasSiteController.CreateHeightBarHtml("slider_Price", heightList))
+        </div>
+        <div id="pricerange_input">
+            <input id="minPrice" class="form-control" type="number" min="0" max="@Html.Raw(max)" value="@Html.Raw(fromIndex)" />
+            <input id="maxPrice" class="form-control" type="number" min="@Html.Raw(min)" max="@Html.Raw(max)" value="@Html.Raw(toIndex)" />
+        </div>
+
+        <script>
+            var SliderDatastore = new Array();
+            var slider = createFilterSlider("#slider_Price", "#pr", "int", @Html.Raw(min), @Html.Raw(max), @Html.Raw(fromIndex), @Html.Raw(toIndex), "$", 1, "@Html.Raw(homeurl)");
+            SliderDatastore[@Html.Raw(data.Nb.ID)] = slider;
+
+            $('#minPrice,#maxPrice').on("blur", function () {
+                priceChanged();
+            });
+
+            $('#minPrice,#maxPrice').on("keydown", function (event) {
+                if (event.keyCode == 13) {
+                    priceChanged();
+                }
+            });
+
+            function priceChanged() {
+                var min = parseInt($('#minPrice').val());
+                var max = parseInt($('#maxPrice').val());
+
+                if (min < slider.result.min) {
+                    min = slider.result.min;
+                    $('#minPrice').val(min);
+                }
+
+                if (max > slider.result.max) {
+                    max = slider.result.max;
+                    $('#maxPrice').val(max);
+                }
+
+                if (slider.result.from != min || slider.result.to != max) {
+                    slider.update({
+                        from: min,
+                        to: max
+                    });
+                    var prInput = $("#pr");
+                    var pr = slider.result.from + "-" + slider.result.to;
+                    if (slider.result.from == slider.result.min && slider.result.to == slider.result.max)//当选中min-max时，去掉参数
+                        prInput.val(' ');
+                    else
+                        prInput.val(pr);
+
+                    location.href = '@Html.Raw(homeurl)pr=' + pr;
+                }
+            }
+        </script>
+    </div>
+
     <div class="popular_category">
         @Html.Raw(data.CategoreSelect)
     </div>
-
-    <div class="input-group inputBox search" id="home-searchbar2" style="position: relative; margin-left: 0px;">
-        <input class="form-control home-search-textbox homeBG" type="search" id="SearchTextBox2" placeholder="Search for categories" autocomplete="off" />
-        <div class="drop">
-            <ul id="categoryDrop" class="list"></ul>
-        </div>
-    </div>
-
 </div>
 
 <div class="products">
-    <div id="catalogBar">
-        <div id="sortByDiv" class="sortByDiv">
-            <label title="Sort :"><span class="glyphicon glyphicon-sort"></span>&nbsp;</label>
-            <select id="sortBySelect">
-                @Html.Raw(data.SortByItems)
-            </select>
-        </div>
-    </div>
-
     <div id="product-grid-view">
         @{
             for (int i = 0; i < data.datas.Count; i++)
             {
-                ProductCatalog pc = data.datas[i];
+                DbEntity.ProductCatalog pc = data.datas[i];
+                string purl = ChristmasSite.SiteConfig.PriceMeUrl + Utility.GetProductUrl(pc.ProductID, pc.ProductName);
+                string ratingTitle = string.Format("{0} out of 5 rating", pc.Rating).Replace(",", ".");
 
                 <div class="product-grid-item">
-                    <a href="@Html.Raw(pc.trackURL)" rel="nofollow" target="_blank">
-                        <img src="@Html.Raw(ChristmasSiteController.GetImage(pc.productimages, "ms"))" alt="@Html.Raw(pc.productname)" title="@Html.Raw(pc.productname)" />
+                    <a href="@Html.Raw(purl)">
+                        <img src="@Html.Raw(ChristmasSiteController.GetImage(pc.DefaultImage, "ms"))" alt="@Html.Raw(pc.ProductName)" title="@Html.Raw(pc.ProductName)" />
                     </a>
 
                     <div class="middle-div">
-                        <a class="productNameLink" href="@Html.Raw(pc.trackURL)" rel="nofollow" target="_blank">@Html.Raw(pc.productname)</a>
+                        <a class="productNameLink" href="@Html.Raw(purl)">@Html.Raw(pc.ProductName)</a>
+
+                        <div class="productReviewDiv">
+                            <div class="glyphicon_star" title="@ratingTitle">
+                                @Html.Raw(Utility.GetNewRating(pc.Rating))
+                            </div>
+                        </div>
 
                         <div class="bestPPCDiv">
-                            <div class="new_price"><span class="priceSymbol">$</span><span class="priceSpan">@Html.Raw(string.Format("{0:n}", Convert.ToDecimal(pc.newprice)))</span></div>
+                            <div class="price"><span class="priceSymbol">$</span><span class="priceSpan">@Html.Raw(string.Format("{0:n}", Convert.ToDecimal(pc.BestPrice)))</span></div>
+                            <div class="priceCountDiv">@Html.Raw(pc.RetailerCount) <span class="glyphicon glyphicon-shopping-cart"></span></div>
                         </div>
-                    </div>
-
-                    <div class="retailer_logo">
-                        <img alt="@Html.Raw(pc.retailername)" src="@Html.Raw(ChristmasSiteController.GetImage(pc.retailerlogo, "ms"))" />
                     </div>
                 </div>
             }
@@ -62,44 +152,3 @@
         @Html.Raw(data.Pagination)
     </div>
 </div>
-
-<script type="text/javascript">
-
-    (function () {
-        var searchTextNode = $("#SearchTextBox2");
-        var dropNode = $("#home-searchbar2 .drop");
-
-
-        searchTextNode.on("keyup", function () {
-            var str = searchTextNode.val().toLowerCase();
-
-            if (str == "") {
-                dropNode.css("display", "none");
-                return;
-            }
-
-            GlobalAjax("AjaxController", "LoadCategory", { input: str }, function (msg) {
-
-                dropNode.find("#categoryDrop").html(msg);
-
-                dropNode.find("li").each(function () {
-                    var node = $(this);
-                    node.on("click", function () { document.location.href = node.attr("value"); });
-                });
-
-                if (msg != "") dropNode.css("display", "block");
-                else dropNode.css("display", "none");
-            });
-
-        });
-
-        $("#sortBySelect").on("change", function () {
-
-            var url = $(this).val();
-
-            document.location.href = url;
-        });
-
-    })();
-
-</script>

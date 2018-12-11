@@ -8,7 +8,7 @@
 <link href="~/css/Header.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
 <link href="~/css/Footer.min.css?v=@Html.Raw(SiteConfig.CssVersion)" rel="stylesheet" />
 
-<link href="https://www.priceme.co.nz/holidays/blackfriday" rel="canonical" />
+<link href="@Html.Raw(SiteConfig.ChristmasUrl)" rel="canonical" />
 
 <style type="text/css">
     .row {
@@ -29,89 +29,27 @@
 <partial name="HeaderView" />
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="margin-top: 15px;">
         <h1>Christmas Gift Ideas</h1>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <img style="float:left;" src="https://s3.pricemestatic.com/Images/PriceMeVersion/black-friday-128.png" />
-        <p style="padding:10px 0 0 150px;">Find Christmas gifts for your friends and family. Save time and money by comparing deals online.</p>
+        <img style="float:left;" width="64" height="64" src="https://s3.pricemestatic.com/Images/PriceMeVersion/christmas-bell-64.png" />
+        <p style="padding:10px 0 0 80px;">Find Christmas gifts for your friends and family. Save time and money by comparing deals online.</p>
     </div>
 </div>
 
 <div class="row default_page">
-    @if (SiteConfig.IsDispaly)
-    {
-        <partial name="DealsProducts" model="Model.data" />
-    }
-    else
-    {
-        <div class="col-md-12">
-            <h4 style="font-size:16px;">Black Friday kick off in</h4>
-            <div class="clock" style="margin:2em 2em 2em 0;"></div>
-
-            <script type="text/javascript">
-                var clock;
-                
-                $(document).ready(function () {
-                    var digits = 8;
-
-                    var currentDate = new Date();
-                    var blackFridayDate = new Date(@Html.Raw(SiteConfig.Year), 10, @Html.Raw(SiteConfig.FridayDay));
-
-                    var dateDiff = blackFridayDate.getTime() - currentDate.getTime();
-                    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000))
-
-                    if (dayDiff >= 100)
-                        digits = 9;
-
-                    var clock;
-
-                    clock = $('.clock').FlipClock({
-                        clockFace: 'DailyCounter',
-                        autoStart: false,
-                        minimumDigits: digits,
-                        callbacks: {
-                            stop: function () {
-                                $('.message').html('The clock has stopped!');
-                            }
-                        }
-                    });
-                    
-                    var timespan = blackFridayDate / 1000 - currentDate / 1000;
-
-                    clock.setTime(timespan);
-                    clock.setCountdown(true);
-                    clock.start();
-
-                });
-            </script>
-        </div>
-
-        <div class="col-md-12">
-            <form method="post" action="">
-                <label for="txtEmail" style="font-size:14px; margin-bottom:5px; font-weight: bold;">Newsletter sign-up:</label><br />
-                <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email" required style="width:310px; height:50px;display: initial;" />
-                <button type="submit" class="btn btn-primary SignUp">Sign Up</button>
-            </form>
-        </div>
-
-        @if (ViewData["signup"] != null)
-        {
-            <script type="text/javascript">
-                alert('@ViewData["signup"]');
-            </script>
-        }
-    }
+    <partial name="DealsProducts" model="Model.data" />
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div>
         <h2>Christmas shopping resources</h2>
         <div>
-            @Html.Raw(Model.Description)
+            <a style="font-size:14px;" href="https://www.priceme.co.nz/consumer/christmas-deals-advice/">Christmas shopping deals and advice</a>
         </div>
     </div>
 </div>
@@ -130,7 +68,7 @@
 
 <script type="text/javascript">
     function GlobalAjax(controller, action, param_json, callback_func) {
-        var url = "@Html.Raw(SiteConfig.BlackFridayUrl)" + "AjaxPage";
+        var url = "@Html.Raw(SiteConfig.ChristmasUrl)" + "AjaxPage";
         var data = {
             "controller": controller,
             "action": action,

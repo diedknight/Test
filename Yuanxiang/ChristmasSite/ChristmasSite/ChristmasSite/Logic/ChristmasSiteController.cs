@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ChristmasSite.Logic
@@ -41,6 +42,56 @@ namespace ChristmasSite.Logic
                 str = "/" + str;
             }
             return str;
+        }
+
+        public static int GetIconHeight(int count, double av, int maxCount)
+        {
+            if (av == 0d || count == 0)
+            {
+                return 0;
+            }
+
+            if (maxCount < 31)
+            {
+                return count;
+            }
+
+            int max = 31;
+            int min = 2;
+
+            var hh = (int)(decimal.Round((decimal)(count * max / maxCount)));
+
+            if (hh > max)
+            {
+                return max;
+            }
+            else if (hh < min)
+            {
+                return min;
+            }
+            else
+            {
+                return hh;
+            }
+        }
+
+        public static string CreateHeightBarHtml(string barId, List<int> countList)
+        {
+            if (countList.Count == 0)
+                return "";
+
+            System.Text.StringBuilder htmlSB = new System.Text.StringBuilder("<ul id='heightBar_" + barId + "' class='heightBar ajRefreshUL'>");
+
+            float withP = 90f / countList.Count;
+            for (int i = 0; i < countList.Count; i++)
+            {
+                int height = countList[i];
+                htmlSB.Append("<li id='" + barId + '_' + i + "' class='ajRefreshLI' style='" + "height:" + height + "px" + ";" + "width:" + withP + "%" + "'></li>");
+            }
+
+            htmlSB.Append("</ul>");
+
+            return htmlSB.ToString();
         }
     }
 }

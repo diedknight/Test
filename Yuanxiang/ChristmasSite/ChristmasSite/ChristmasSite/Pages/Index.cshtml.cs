@@ -10,46 +10,37 @@ using ChristmasSite.Logic;
 using ChristmasSite.Data;
 using ChristmasSite.Code;
 using PriceMeCommon.BusinessLogic;
+using PriceMeCommon.Data;
 
 namespace ChristmasSite.Pages
 {
     public class IndexModel : PageModel
     {
         static TimeSpan CacheTimeSpan_Static = new TimeSpan(0, 10, 0);
+        static int maxValue = 10000;
 
-        public int cid;
-        public string Description { get; set; }
         public DealsProductsModelData data;
 
+        public int type;
         public int pagesize = 50;
         public int pageindex;
-        public string sb;
+        public string pricerange;
 
         public void OnGet()
         {
-            List<int> cidList = new List<int>();
-            cidList.Add(11);
-            ProductSearcher productSearcher = new ProductSearcher("", cidList, null, null, null, "Sale", null, 10, 3, false, true, false, true, null, "", null, false);
-            int pCount = productSearcher.GetProductCount();
+            type = Utility.GetIntParameter("tp", this.Request);
+            pageindex = Utility.GetIntParameter("pg", this.Request);
+            pricerange = Utility.GetParameter("pr", this.Request);
 
-            if (SiteConfig.IsDispaly)
-            {
-                cid = Utility.GetIntParameter("cid", this.Request);
-                pageindex = Utility.GetIntParameter("pg", this.Request);
-                sb = Utility.GetParameter("sb", this.Request);
+            if (pageindex == 0)
+                pageindex = 1;
 
-                if (pageindex == 0)
-                    pageindex = 1;
-
-                BindData();
-            }
-            else
-                Description = DBController.GetChristmasInfomation();
+            BindData();
         }
 
         private void BindData()
         {
-            string key = "cid=" + cid + "&sb=" + sb + "&pg=" + pageindex;
+            string key = "tp=" + type + "&pr=" + pricerange + "&pg=" + pageindex;
 
             DealsProductsModelData cmd = MemoryCacheController.Get<DealsProductsModelData>(key);
             if (cmd != null)
@@ -58,83 +49,93 @@ namespace ChristmasSite.Pages
             }
             else
             {
-                DBController.LoadCategory();
-
-                int total = DBController.GetBlackProductsCount(cid);
-                List<ProductCatalog> datas = DBController.GetBlackProducts(cid, pageindex, pagesize, sb);
-
-                string pageUrl = SiteConfig.BlackFridayUrl;
-                if (!string.IsNullOrEmpty(sb))
+                List<int> cidList = new List<int>();
+                if(type == 1)
+                    cidList.AddRange(SiteConfig.Forher);
+                else if(type == 2)
+                    cidList.AddRange(SiteConfig.Forhim);
+                else if(type == 3)
+                    cidList.AddRange(SiteConfig.Forkids);
+                else
                 {
-                    if (cid > 0)
-                        pageUrl += "?cid=" + cid + "&sb=" + sb;
-                    else
-                        pageUrl += "?sb=" + sb;
+                    cidList.AddRange(SiteConfig.Forher);
+                    cidList.AddRange(SiteConfig.Forhim);
+                    cidList.AddRange(SiteConfig.Forkids);
                 }
-                else if (cid > 0)
-                    pageUrl += "?cid=" + cid;
 
-                var pagination = PageExtension.CreatePagination(pageUrl, pageindex, pagesize);
+                PriceRange pr = null;
+                if (!string.IsNullOrEmpty(pricerange))
+                {
+                    string[] temps = pricerange.Split('-');
+                    double minp = 0, maxp = 0;
+                    double.TryParse(temps[0], out minp);
+                    double.TryParse(temps[1], out maxp);
+                    pr = new PriceRange(minp, maxp);
+                }
+                else
+                    pr = new PriceRange(0, 800);
+
+                PriceRange prinfo = new PriceRange(0, 800);
+                ProductSearcher pSearcher = new ProductSearcher("", cidList, null, prinfo, null, "bestprice", null, maxValue, 3, false, true, false, true, null, "", null, false);
+                NarrowByInfo info = pSearcher.GetCatalogPriceRangeResulte_New(new System.Globalization.CultureInfo("en-nz"), "$", 10, -1);
+                info.ProductCountListWithoutP = info.NarrowItemList.Select(ni => ni.ProductCount).ToList();
+
+                ProductSearcher productSearcher = new ProductSearcher("", cidList, null, pr, null, "clicks", null, maxValue, 3, false, true, false, true, null, "", null, false);
+                int total = productSearcher.GetProductCount();
+                SearchResult result = productSearcher.GetSearchResult(pageindex, pagesize);
+                List<DbEntity.ProductCatalog> datas = result.ProductCatalogList;
+
+                string homeurl = SiteConfig.ChristmasUrl;
+                if (type > 0)
+                {
+                    if (!string.IsNullOrEmpty(pricerange))
+                        homeurl += "?tp=" + type + "&pr=" + pricerange;
+                    else
+                        homeurl += "?tp=" + type;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(pricerange))
+                        homeurl += "?pr=" + pricerange;
+                }
+
+                var pagination = PageExtension.CreatePagination(homeurl, pageindex, pagesize);
                 pagination.Init(total);
                 string ltPagination = pagination.Render();
-
-                string ltSortByItems = BindOrderBy();
-
+                
                 string categorySelect = BindCategorySelect();
 
                 data = new DealsProductsModelData();
                 data.datas = datas;
+                data.Nb = info;
                 data.Pagination = ltPagination;
-                data.SortByItems = ltSortByItems;
                 data.CategoreSelect = categorySelect;
-                data.Description = DBController.GetChristmasInfomation();
+                data.PriceRange = pr;
+                data.PageIndex = pageindex;
+                data.Type = type;
 
                 MemoryCacheController.Set<DealsProductsModelData>(key, data, CacheTimeSpan_Static);
             }
-
-            Description = data.Description;
-        }
-
-        private string BindOrderBy()
-        {
-            string html = "";
-            string rooturl = SiteConfig.BlackFridayUrl;
-            if (pageindex > 1)
-                rooturl += "?pg=" + pageindex + "&";
-            else
-                rooturl += "?";
-
-            if (sb == "" || sb == "sale") html += $"<option value=\"{rooturl + "sb=sale"}\" selected=\"selected\" v=\"Sale\">Largest discount</option>";
-            else html += $"<option value=\"{rooturl + "sb=sale"}\" v=\"Sale\">Largest discount</option>";
-            
-            if (sb == "Clicks") html += $"<option value=\"{rooturl + "sb=Clicks"}\" selected=\"selected\" v=\"Clicks\">Most popular</option>";
-            else html += $"<option value=\"{rooturl + "sb=Clicks"}\" v=\"Clicks\">Most popular</option>";
-            
-            if (sb == "BestPrice") html += $"<option value=\"{rooturl + "sb=BestPrice"}\" selected=\"selected\" v=\"BestPrice\">Lowest prices</option>";
-            else html += $"<option value=\"{rooturl + "sb=BestPrice"}\" v=\"BestPrice\">Lowest prices</option>";
-
-            return html;
         }
 
         private string BindCategorySelect()
         {
             string html = string.Empty;
-            if (cid > 0)
-            {
-                string categroyname = DBController.listCates.SingleOrDefault(c => c.CategoryId == cid).CategoryName;
-                html = "<a class=\"btn btn-xs btnShowDiff btnClass\" href=\"" + SiteConfig.BlackFridayUrl + "\">" + categroyname
-                    + " <span class=\"glyphicon glyphicon-remove\" style=\"color: #f00;right: 0px;position: absolute;\"></span></a>";
-            }
+            string clsHer = string.Empty;
+            string clsHim = string.Empty;
+            string clsKids = string.Empty;
+            if (type == 1)
+                clsHer = " active";
+            else if (type == 2)
+                clsHim = " active";
+            else if (type == 3)
+                clsKids = " active";
+
+            html = "<a class=\"btn btn-xs btnClass" + clsHer + "\" href=\"" + SiteConfig.ChristmasUrl + "?tp=1\">For her</a>";
+            html += "<a class=\"btn btn-xs btnClass" + clsHim + "\" href=\"" + SiteConfig.ChristmasUrl + "?tp=2\">For him</a>";
+            html += "<a class=\"btn btn-xs btnClass" + clsKids + "\" href=\"" + SiteConfig.ChristmasUrl + "?tp=3\">For kids</a>";
 
             return html;
         }
-
-        public void OnPost(string txtEmail)
-        {
-            DBController.NewsletterSignup(txtEmail);
-
-            this.ViewData["signup"] = "Thank you for signing up";
-            OnGet();
-        }   
     }
 }
