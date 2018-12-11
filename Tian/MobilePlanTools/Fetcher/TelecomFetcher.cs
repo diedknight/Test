@@ -11,6 +11,7 @@ using Common;
 using System.Text.RegularExpressions;
 using Pricealyser.Crawler.HtmlParser.Query;
 using Pricealyser.Crawler.Request;
+using System.Net;
 
 namespace Fetcher
 {
@@ -23,19 +24,21 @@ namespace Fetcher
 
         public override List<MobilePlanInfo> GetMobilePlanInfoList()
         {
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
             StartCrawlingLog();
             List<MobilePlanInfo> mobilePlanList = new List<MobilePlanInfo>();
 
             string url = "https://www.spark.co.nz/shop/mobile-plans/paymonthly.html";
-            string phone_url = "https://www.spark.co.nz/shop/mobile/phones.html";
-            GetData(mobilePlanList, url, phone_url, true);
+            //string phone_url = "https://www.spark.co.nz/shop/mobile/phones.html";
+            GetData(mobilePlanList, url, true);
 
             FinishCrawlingLog();
 
             return mobilePlanList;
         }
 
-        private void GetData(List<MobilePlanInfo> mobilePlanList, string url, string phone_url, bool isPlan)
+        private void GetData(List<MobilePlanInfo> mobilePlanList, string url, bool isPlan)
         {
             StarlCrawlPlansLinkLog(url);
 
@@ -74,8 +77,8 @@ namespace Fetcher
 
             GetMobilePlan(mobilePlanList, url);
 
-            url = "https://www.spark.co.nz/shop/mobile-plans/prepaid.html";
-            GetPrepaidMobilePlan(mobilePlanList, url);
+            //url = "https://www.spark.co.nz/shop/mobile-plans/prepaid.html";
+            //GetPrepaidMobilePlan(mobilePlanList, url);
         }
 
         private void GetPrepaidMobilePlan(List<MobilePlanInfo> mobilePlanList, string url)
@@ -83,7 +86,7 @@ namespace Fetcher
             string phonesUrlBase = "https://www.spark.co.nz/shop/mobile/phones.html?contr=phones&tab=-1&source=SOPO_ServicePlan&servicePlanId=";
 
             JQuery doc = new JQuery(this.GetHttpContent(url), url);
-            doc.find(".clearfix.device-carousel-card").each(item =>
+            doc.find(".device-carousel-card").each(item =>
             {
                 var node = item.ToJQuery();
 
@@ -123,7 +126,7 @@ namespace Fetcher
                 info.CarrierName = this.ProviderName;
                 info.DataMB = dataMB;
                 info.Minutes = min.Contains("Unlimited") ? -1 : Convert.ToInt32(min.ToDecimal());
-                info.MobilePlanName = "$" + node.find(".service-price").text().Trim().Replace("\r\n", "").Replace("\t", "").Replace("/MTH", "");
+                info.MobilePlanName = "$" + node.find(".service-price .number").text().Trim().Replace("\r\n", "").Replace("\t", "").Replace("/MTH", "");
 
                 info.MobilePlanURL = url;
                 info.Price = node.find(".service-price .number").text().ToDecimal();
