@@ -52,9 +52,9 @@ namespace Fetcher
                 info.DataMB = node.find(".c-inclusion__number").first().text().Trim() + " GB";
                 var minStr = node.find(".c-inclusion__number").last().text().Trim();
                 info.Minutes = minStr.Contains("Unlimited") ? -1 : Convert.ToInt32(minStr.ToDecimal());
-                info.MobilePlanName = node.find(".c-price-spot__dollars").text().Trim();
+                info.MobilePlanName = "Pay monthly " + info.DataMB + " $" + node.find(".c-price-spot__dollars").text().Trim();
                 info.MobilePlanURL = planUrl;
-                info.Price = info.MobilePlanName.ToDecimal();
+                info.Price = node.find(".c-price-spot__dollars").text().ToDecimal();
                 info.Texts = -1;
                 info.plus = 0;
                 info.Phones = new List<MobilePhoneInfo>();
@@ -108,6 +108,29 @@ namespace Fetcher
             //        });
             //    });
             //});
+
+            string planUrl2 = "https://www.2degreesmobile.co.nz/mobile/prepay/";
+
+            req.Uri = new Uri(planUrl2);
+            JQuery doc2 = new JQuery(req.Get(), planUrl2);
+
+            doc2.find("#js-pack-list-192 .c-pack-list__item").each(item =>
+            {
+                var node = item.ToJQuery();
+                MobilePlanInfo info = new MobilePlanInfo();
+                info.CarrierName = this.ProviderName;
+                info.DataMB = node.find(".c-inclusion__number").first().text().Trim() + " GB";
+                var minStr = node.find(".c-inclusion__number").last().text().Trim();
+                info.Minutes = minStr.Contains("Unlimited") ? -1 : Convert.ToInt32(minStr.ToDecimal());
+                info.MobilePlanName = "Prepay " + info.DataMB + " $" + node.find(".c-price-spot__dollars").text().Trim();
+                info.MobilePlanURL = planUrl2;
+                info.Price = node.find(".c-price-spot__dollars").text().ToDecimal();
+                info.Texts = -1;
+                info.plus = 0;
+                info.Phones = new List<MobilePhoneInfo>();
+
+                list.Add(info);
+            });
 
             FinishCrawlingLog();
             return list;
