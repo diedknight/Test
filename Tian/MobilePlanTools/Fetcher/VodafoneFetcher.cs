@@ -77,6 +77,8 @@ namespace Fetcher
                     talk = talk.Contains("Unlimited") ? "-1" : talk.Replace(" mins", "");
                     info.Minutes = int.Parse(talk);
 
+                    info.Price = plan.Value<string>("vfoMonthlyPrice").ToDecimal();
+
                     info.Texts = -1;
                     info.plus = 0;
 
@@ -137,23 +139,30 @@ namespace Fetcher
 
                     foreach(var p in products)
                     {
-                        string productUrl = p["mobileDetailsURI"].Value<string>();
-                        var infos = new MobilePhoneInfo();
+                        try
+                        {
+                            string productUrl = p["mobileDetailsURI"].Value<string>();
+                            var infos = new MobilePhoneInfo();
 
-                        XbaiRequest productReq = new XbaiRequest(productUrl);
-                        JQuery doc = new JQuery(productReq.Get(), url);
-                        infos.PhoneName = doc.find(".productTitle h1").text().Trim();
-                        infos.phoneURL = productUrl;
-                        Uri imgAbsoluteUri = new Uri(new Uri("https://www.vodafone.co.nz/"), doc.find(".productPic1 img").attr("src"));
-                        infos.PhoneImage = imgAbsoluteUri.ToString();
-                        infos.PlanName = doc.find(".withPlanName").text().Trim();
-                        infos.UpfrontPrice = doc.find(".price-container").text().Trim().Replace("\t", "").Replace("\n", "").ToDecimal();
-                        infos.ContractTypeID = 3;
+                            XbaiRequest productReq = new XbaiRequest(productUrl);
+                            JQuery doc = new JQuery(productReq.Get(), url);
+                            infos.PhoneName = doc.find(".productTitle h1").text().Trim();
+                            infos.phoneURL = productUrl;
+                            Uri imgAbsoluteUri = new Uri(new Uri("https://www.vodafone.co.nz/"), doc.find(".productPic1 img").attr("src"));
+                            infos.PhoneImage = imgAbsoluteUri.ToString();
+                            infos.PlanName = doc.find(".withPlanName").text().Trim();
+                            infos.UpfrontPrice = doc.find(".price-container").text().Trim().Replace("\t", "").Replace("\n", "").ToDecimal();
+                            infos.ContractTypeID = 3;
 
-                        //infos.PhoneName = p["displayName"].Value<string>();
-                        //infos.phoneURL = productUrl;
+                            //infos.PhoneName = p["displayName"].Value<string>();
+                            //infos.phoneURL = productUrl;
 
-                        pInfos.Add(infos);
+                            pInfos.Add(infos);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
                     }
 
                     url = string.Format(urlFormat, pageIndex);
