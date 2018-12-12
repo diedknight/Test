@@ -66,6 +66,10 @@ namespace Fetcher
                     info.CarrierName = this.ProviderName;
                     info.MobilePlanName = plan.Value<string>("vfoPlanDisplayName") + " " + plan.Value<string>("vfoMonthlyPrice");
 
+                    var urlInfos = plansObj[i]["vfoCallToActionLinks"] as JArray;
+                    string mobilePlanURL = "https://www.vodafone.co.nz" + urlInfos[0].Value<string>("vfoUrl");
+                    info.MobilePlanURL = mobilePlanURL;
+
                     var items = plan["vfoCorePlanItems"] as JArray;
 
                     info.DataMB = items[0].Value<string>("vfoValue") + " " + items[0].Value<string>("vfoUnits");
