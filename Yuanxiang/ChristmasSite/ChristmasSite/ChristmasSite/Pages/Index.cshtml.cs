@@ -73,10 +73,10 @@ namespace ChristmasSite.Pages
                     pr = new PriceRange(minp, maxp);
                 }
                 else
-                    pr = new PriceRange(0, 800);
+                    pr = new PriceRange(0, 300);
 
-                PriceRange prinfo = new PriceRange(0, 800);
-                ProductSearcher pSearcher = new ProductSearcher("", cidList, null, prinfo, null, "bestprice", null, maxValue, 3, false, true, false, true, null, "", null, false);
+                PriceRange prinfo = new PriceRange(0, 300);
+                ProductSearcher pSearcher = new ProductSearcher("", cidList, null, prinfo, null, "clicks", null, maxValue, 3, false, true, false, true, null, "", null, false);
                 NarrowByInfo info = pSearcher.GetCatalogPriceRangeResulte_New(new System.Globalization.CultureInfo("en-nz"), "$", 10, -1);
                 info.ProductCountListWithoutP = info.NarrowItemList.Select(ni => ni.ProductCount).ToList();
 

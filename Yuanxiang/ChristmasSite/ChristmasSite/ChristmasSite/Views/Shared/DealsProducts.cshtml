@@ -12,6 +12,11 @@
         @{
             long min = 0;
             long max = long.Parse(data.Nb.NarrowItemList.Last().Value);
+            if (max > 300)
+            {
+                max = 300;
+            }
+
             long fromIndex = min;
             long toIndex = max;
             if (data.PriceRange != null)
@@ -19,7 +24,7 @@
                 fromIndex = (long)data.PriceRange.MinPrice;
                 toIndex = (long)data.PriceRange.MaxPrice;
             }
-            
+
             List<int> countList = data.Nb.NarrowItemList.Select(p => p.ProductCount).ToList();
             int maxCountWithoutP = data.Nb.ProductCountListWithoutP.Max();
             double av = data.Nb.ProductCountListWithoutP.Average();
