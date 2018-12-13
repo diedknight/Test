@@ -50,7 +50,11 @@ namespace Fetcher
                 MobilePlanInfo info = new MobilePlanInfo();
                 info.CarrierName = this.ProviderName;
                 info.DataMB = node.find(".c-inclusion__number").first().text().Trim() + " GB";
-                var minStr = node.find(".c-inclusion__number").last().text().Trim();
+                var minStr = "Unlimited";
+                if (node.find(".c-inclusion__number").length > 1)
+                {
+                    minStr = node.find(".c-inclusion__number").last().text().Trim();
+                }
                 info.Minutes = minStr.Contains("Unlimited") ? -1 : Convert.ToInt32(minStr.ToDecimal());
                 info.MobilePlanName = "Pay monthly " + info.DataMB + " $" + node.find(".c-price-spot__dollars").text().Trim();
                 info.MobilePlanURL = planUrl;
@@ -120,7 +124,11 @@ namespace Fetcher
                 MobilePlanInfo info = new MobilePlanInfo();
                 info.CarrierName = this.ProviderName;
                 info.DataMB = node.find(".c-inclusion__number").first().text().Trim() + " GB";
-                var minStr = node.find(".c-inclusion__number").last().text().Trim();
+                var minStr = "Unlimited";
+                if (node.find(".c-inclusion__number").length > 1)
+                {
+                    minStr = node.find(".c-inclusion__number").last().text().Trim();
+                }
                 info.Minutes = minStr.Contains("Unlimited") ? -1 : Convert.ToInt32(minStr.ToDecimal());
                 info.MobilePlanName = "Prepay " + info.DataMB + " $" + node.find(".c-price-spot__dollars").text().Trim();
                 info.MobilePlanURL = planUrl2;
