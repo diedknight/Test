@@ -1433,6 +1433,19 @@ namespace ProductSearchIndexBuilder
                                                 categorySynonym = string.Join(" ", categorySynonyms);
                                             }
 
+                                            if (!hiddenManufacturerCategoryIDList.Contains(pc.CategoryID.ToString()) && !DataController.IsSearchOnly(pc.CategoryID))
+                                            {
+                                                int mid = int.Parse(pc.ManufacturerID);
+                                                if (!manufacturerHasProductDic.ContainsKey(mid))
+                                                {
+                                                    manufacturerHasProductDic.Add(mid, 1);
+                                                }
+                                                else
+                                                {
+                                                    manufacturerHasProductDic[mid]++;
+                                                }
+                                            }
+
                                             string searchFieldString = Utility.GetKeywords(pCategoryName, pc.RetailerProductInfoString, "", pc.ProductName, categorySynonym).Trim();
                                             string searchFieldString2 = Utility.FixKeywords(searchFieldString);
                                             double bp;
