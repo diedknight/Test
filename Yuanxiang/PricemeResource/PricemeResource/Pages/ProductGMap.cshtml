@@ -1,0 +1,80 @@
+﻿@page
+@model PricemeResource.Pages.ProductGMapModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductGMap</title>
+    <link href="@Html.Raw(WebSiteConfig.CssJsPath)/Content/new_common.min.css?ver=@Html.Raw(WebSiteConfig.WEB_cssVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Html.Raw(WebSiteConfig.CssJsPath)/content/new_product.min.css?ver=@Html.Raw(WebSiteConfig.WEB_cssVersion)" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="@Html.Raw(WebSiteConfig.CssJsPath)/Scripts/new_common.js?ver=@Html.Raw(WebSiteConfig.WEB_cssVersion)"></script>
+    <script src="@Html.Raw(WebSiteConfig.CssJsPath)/Scripts/new_product.js?ver=@Html.Raw(WebSiteConfig.WEB_cssVersion)"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyD9xTvTaug4QCYLjw0A-a-YBPme8wuQJws"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server" style="background-color:White;">
+        <div>
+            @if (Model.IsExit)
+            {
+                <div id="map_canvas"></div>
+            }
+            else
+            {
+                <div class="clr"></div>
+                <div class="noRetailerMap">
+                    <div class="alert alert-warning" role="alert">
+                        There is no retailer listed on PriceMe selling this product.
+                    </div>
+                </div>
+            }
+
+            @if (Model.IsExit)
+            {
+                @Html.Raw(Model.scriptString)
+
+                <script>
+                    @Html.Raw(Model.scriptOnclick)
+                </script>
+
+                <script>
+                    /* <![CDATA[ */
+                    goog_snippet_vars = function () {
+                        var w = window;
+                        w.google_conversion_id = 1058386615;
+                        w.google_conversion_label = "kviSCLmOlG8Qt-XW-AM";
+                        w.google_remarketing_only = false;
+                    }
+                    // DO NOT CHANGE THE CODE BELOW.
+                    goog_report_conversion = function (url) {
+                        goog_snippet_vars();
+                        window.google_conversion_format = "3";
+                        var opt = new Object();
+                        opt.onload_callback = function () {
+                            if (typeof (url) != 'undefined') {
+                                window.location = url;
+                            }
+                        }
+                        var conv_handler = window['google_trackConversion'];
+                        if (typeof (conv_handler) == 'function') {
+                            conv_handler(opt);
+                        }
+                    }
+/* ]]> */
+                </script>
+            }
+        </div>
+    </form>
+</body>
+</html>

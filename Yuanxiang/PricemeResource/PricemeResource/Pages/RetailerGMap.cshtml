@@ -1,0 +1,42 @@
+﻿@page
+@model PricemeResource.Pages.RetailerGMapModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RetailerGMap</title>
+    <link href="@Html.Raw(WebSiteConfig.CssJsPath)/Content/new_common.min.css?ver=@Html.Raw(WebSiteConfig.WEB_cssVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Html.Raw(WebSiteConfig.CssJsPath)/content/new_retailer.min.css?ver=@Html.Raw(WebSiteConfig.WEB_cssVersion)" rel="stylesheet" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyD9xTvTaug4QCYLjw0A-a-YBPme8wuQJws"></script>
+</head>
+<body>
+    <form id="form1" runat="server" style="background-color:White;">
+        <div>
+            @if (Model.IsExist)
+            {
+                @if (Model.isDes)
+                {
+                    <p class="padding-top5">
+                        @Html.Raw(Model.resData.RetailerMapDes)
+                    </p>}
+
+                <div id="map_canvas" class="mapDiv"></div>
+                
+                @Html.Raw(Model.scriptString)
+            }
+            else
+            {
+                <div class="noRetailerMap alert alert-warning">
+                    @Html.Raw(Model.resData.RetailerMapNo)
+                </div>
+            }
+        </div>
+    </form>
+</body>
+</html>
