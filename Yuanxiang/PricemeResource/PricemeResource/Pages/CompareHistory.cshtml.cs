@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace PricemeResource.Pages
 {
-    public class GetCompareModel : PageModel
+    public class CompareHistoryModel : PageModel
     {
         public void OnGet()
         {
