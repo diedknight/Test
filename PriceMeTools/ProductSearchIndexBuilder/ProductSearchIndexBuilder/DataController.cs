@@ -90,11 +90,37 @@ namespace ProductSearchIndexBuilder
             string sqlString = @"select CategoryID, count(productId) as ps from CSK_Store_Product
                                   where ProductID in 
                                   (select ProductID from CSK_Store_RetailerProduct where RetailerProductStatus = 1 and RetailerId in (
-                                  select RetailerId from CSK_Store_Retailer where RetailerCountry = " + countryId + " and RetailerStatus <> 99))group by CategoryID";
+                                  select RetailerId from CSK_Store_Retailer where RetailerCountry = " + countryId + " and RetailerStatus <> 99)) " +
+                                  @"and IsMerge = 1 and CategoryID in (
+                                    select CategoryID from CSK_Store_Category where IsDisplayIsMerged = 0
+                                    ) group by CategoryID";
 
             using (var sqlConn = DBController.CreateDBConnection(priceme205DbInfo))
             {
                 using (var sqlCMD = DBController.CreateDbCommand(sqlString, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            dic.Add(sqlDR.GetInt32(0), sqlDR.GetInt32(1));
+                        }
+                    }
+                }
+            }
+
+            string sqlString2 = @"select CategoryID, count(productId) as ps from CSK_Store_Product
+                                  where ProductID in 
+                                  (select ProductID from CSK_Store_RetailerProduct where RetailerProductStatus = 1 and RetailerId in (
+                                  select RetailerId from CSK_Store_Retailer where RetailerCountry = " + countryId + " and RetailerStatus <> 99)) " +
+                                  @"and CategoryID in (
+                                    select CategoryID from CSK_Store_Category where IsDisplayIsMerged = 1
+                                    ) group by CategoryID";
+
+            using (var sqlConn = DBController.CreateDBConnection(priceme205DbInfo))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sqlString2, sqlConn))
                 {
                     sqlConn.Open();
                     using (var sqlDR = sqlCMD.ExecuteReader())
