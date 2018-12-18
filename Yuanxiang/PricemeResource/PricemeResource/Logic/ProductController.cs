@@ -107,6 +107,47 @@ namespace PricemeResource.Logic
             return pro;
         }
 
+        public static List<ProductNewData> GetRealProductSimplified(List<int> pids, DbInfo dbInfo)
+        {
+            List<ProductNewData> products = new List<ProductNewData>();
+
+            string sql = string.Empty;
+            foreach (int pid in pids)
+            {
+                sql += string.Format("SELECT p.ProductId, p.ProductName, rp.RetailerPrice as BestPrice FROM CSK_Store_ProductNew p inner join CSK_Store_RetailerProductNew rp On p.ProductID = rp.ProductId where p.ProductID = " + pid + " order by rp.RetailerPrice limit 1;");
+            }
+
+            using (var sqlConn = DBController.CreateDBConnection(dbInfo))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            ProductNewData pro = DbConvertController<ProductNewData>.ReadDataFromDataReader(sqlDR);
+                            products.Add(pro);
+                        }
+                        sqlDR.NextResult();
+                        while (sqlDR.Read())
+                        {
+                            ProductNewData pro = DbConvertController<ProductNewData>.ReadDataFromDataReader(sqlDR);
+                            products.Add(pro);
+                        }
+                        sqlDR.NextResult();
+                        while (sqlDR.Read())
+                        {
+                            ProductNewData pro = DbConvertController<ProductNewData>.ReadDataFromDataReader(sqlDR);
+                            products.Add(pro);
+                        }
+                    }
+                }
+            }
+
+            return products;
+        }
+        
         public static List<PriceHistory> GetPriceHistory(int productId, DbInfo dbInfo)
         {
             List<PriceHistory> phs = new List<PriceHistory>();
@@ -232,6 +273,88 @@ namespace PricemeResource.Logic
             }
 
             return rpis;
+        }
+
+        public static List<PriceHistory> GetPriceHistoryData(List<int> listpId, DbInfo dbInfo)
+        {
+            List<PriceHistory> phs = new List<PriceHistory>();
+            string pids = string.Empty;
+            foreach (int pid in listpId)
+            {
+                pids += pid + ",";
+            }
+            pids = pids.Substring(0, pids.LastIndexOf(','));
+
+            var sql = "select ProductID, PriceDate, Price, CreatedOn from CSK_Store_PriceHistory where productid in (" + pids + ")";
+            using (var sqlConn = DBController.CreateDBConnection(dbInfo))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int pid = 0;
+                            decimal Price = 0;
+                            DateTime PriceDate = DateTime.Now;
+                            DateTime CreatedOn = DateTime.Now;
+                            int.TryParse(sqlDR["ProductID"].ToString(), out pid);
+                            decimal.TryParse(sqlDR["Price"].ToString(), out Price);
+                            DateTime.TryParse(sqlDR["PriceDate"].ToString(), out PriceDate);
+                            DateTime.TryParse(sqlDR["CreatedOn"].ToString(), out CreatedOn);
+
+                            PriceHistory ph = new PriceHistory();
+                            ph.ProductID = pid;
+                            ph.Price = Price;
+                            ph.PriceDate = PriceDate;
+                            ph.CreatedOn = CreatedOn;
+                            phs.Add(ph);
+                        }
+                    }
+                }
+            }
+
+            return phs;
+        }
+
+        public static List<ExpertReview> GetExpertReviewResult(List<int> listpId, DbInfo dbInfo)
+        {
+            List<ExpertReview> ers = new List<ExpertReview>();
+            string pids = string.Empty;
+            foreach (int pid in listpId)
+            {
+                pids += pid + ",";
+            }
+            pids = pids.Substring(0, pids.LastIndexOf(','));
+
+            var sql = "Select ProductID, PriceMeScore, SourceID from CSK_Store_ExpertReviewAU Where productId in (" + pids + ")";
+            using (var sqlConn = DBController.CreateDBConnection(dbInfo))
+            {
+                using (var sqlCMD = DBController.CreateDbCommand(sql, sqlConn))
+                {
+                    sqlConn.Open();
+                    using (var sqlDR = sqlCMD.ExecuteReader())
+                    {
+                        while (sqlDR.Read())
+                        {
+                            int pid = 0, sourceid = 0;
+                            decimal PriceMeScore = 0;
+                            int.TryParse(sqlDR["ProductID"].ToString(), out pid);
+                            int.TryParse(sqlDR["SourceID"].ToString(), out sourceid);
+                            decimal.TryParse(sqlDR["PriceMeScore"].ToString(), out PriceMeScore);
+
+                            ExpertReview er = new ExpertReview();
+                            er.ProductId = pid;
+                            er.SourceID = sourceid;
+                            er.PriceMeScore = PriceMeScore;
+                            ers.Add(er);
+                        }
+                    }
+                }
+            }
+
+            return ers;
         }
     }
 }

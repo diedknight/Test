@@ -9,8 +9,131 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CompareHistory</title>
+    <title>Compare History</title>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//images.pricemestatic.com/Images/PriceMeNewDesign/amcharts/amcharts.js"></script>
+    <script src="//images.pricemestatic.com/Images/PriceMeNewDesign/amcharts/serial.js"></script>
+    <script src="//images.pricemestatic.com/Images/PriceMeNewDesign/amcharts/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="//images.pricemestatic.com/Images/PriceMeNewDesign/amcharts/plugins/export/export.css" type="text/css" media="all" />
+    <script src="//images.pricemestatic.com/Images/PriceMeNewDesign/amcharts/themes/light.js"></script>
 </head>
 <body>
+    <div class="chart">
+        <div id="chartdiv" style="height:450px;width:100%;"></div>
+    </div>
+
+    <script>
+        var colors = ["#3c8dbc", "#cb4b4b", "#64c800"];
+        var historyDataJson = @Html.Raw(Model.json);
+
+        var chartData = generateChartData();
+
+        var chart = AmCharts.makeChart("chartdiv", {
+            "type": "serial",
+            "theme": "light",
+            "legend": {
+                "useGraphSettings": true
+            },
+            "dataProvider": chartData,
+            "synchronizeGrid": true,
+            "valueAxes": [{
+                "id": "v1",
+                "axisColor": "#d7d7d7",
+                "axisThickness": 2,
+                "axisAlpha": 1,
+                "position": "left",
+                "unit": "@Html.Raw(Model.resData.PriceSymbol)",
+        "unitPosition": "left"
+        }],
+        "chartScrollbar": {
+            "oppositeAxis": false,
+            "offset": 30,
+            "scrollbarHeight": 40,
+            "backgroundAlpha": 0,
+            "selectedBackgroundAlpha": 0.1,
+            "selectedBackgroundColor": "#888888",
+            "graphFillAlpha": 0,
+            "graphLineAlpha": 0.5,
+            "selectedGraphFillAlpha": 0,
+            "selectedGraphLineAlpha": 1,
+            "autoGridCount": true,
+            "color": "#AAAAAA"
+        },
+        "chartCursor": {
+            "cursorPosition": "mouse"
+        },
+        "categoryField": "date",
+        "categoryAxis": {
+            "parseDates": true,
+            "axisColor": "#DADADA",
+            "minorGridEnabled": true
+        },
+        "export": {
+            "enabled": true,
+            "fileName":"ComparePriceHistory_PriceMe"
+        }
+        });
+
+        generateChartInfo();
+        chart.addListener("dataUpdated", zoomChart);
+        zoomChart();
+
+        // generate some random data, quite different range
+        function generateChartData() {
+            var chartData = [];
+
+            for (var i = 0; i < historyDataJson[0].Data.length; i++) {
+
+                var newDate = historyDataJson[0].Data[i].DT;
+                var price1 = historyDataJson[0].Data[i].Price;
+                var price2 = 0;
+                var price3 = 0;
+
+                if (historyDataJson.length > 1) {
+                    price2 = historyDataJson[1].Data[i].Price;
+                }
+
+                if (historyDataJson.length > 2) {
+                    price3 = historyDataJson[2].Data[i].Price;
+                }
+
+                chartData.push({
+                    date: newDate,
+                    price1: price1,
+                    price2: price2,
+                    price3: price3
+                });
+            }
+            return chartData;
+        }
+
+        function generateChartInfo() {
+            for (var i = 0; i < historyDataJson.length; i++) {
+                var graph = new AmCharts.AmGraph();
+                graph.title = historyDataJson[i].ProductName;
+                graph.valueAxis = "v1";
+                graph.valueField = "price" + (i + 1);
+                graph.bullet = "round";
+                graph.bulletBorderColor = "#FFFFFF";
+                graph.bulletBorderThickness = 2;
+                graph.bulletBorderAlpha = 1;
+                graph.lineThickness = 2;
+                graph.lineColor = colors[i];
+                graph.negativeLineColor = "#efcc26";
+                graph.hideBulletsCount = 50;
+                graph.balloonText = "<b>@{@Html.Raw(Model.resData.PriceSymbol)}[[value]]</b>";
+                chart.addGraph(graph);
+            }
+        }
+
+        function zoomChart() {
+            chart.zoomToIndexes(0, chart.dataProvider.length - 1);
+        }
+
+    </script>
 </body>
 </html>

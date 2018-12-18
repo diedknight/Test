@@ -1,0 +1,55 @@
+﻿@page
+@model PricemeResource.Pages.CompareReviewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CompareReview</title>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="~/js/Chart.min.js"></script>
+</head>
+<body>
+    <div style="text-align:center;">
+        @Html.Raw(Model.tip)
+    </div>
+    <div class="chart">
+        <canvas id="barChart" height="250"></canvas>
+    </div>
+
+    <script>
+        var barChartOptions = {
+            scaleShowLabels: true,
+            scaleBeginAtZero: true,
+            scaleShowGridLines: false,
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleGridLineWidth: 1,
+            scaleShowHorizontalLines: true,
+            scaleShowVerticalLines: true,
+            barShowStroke: true,
+            barStrokeWidth: 2,
+            barValueSpacing: 5,
+            barDatasetSpacing: 1,
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+        var areaChartDatas = {
+            labels: ["1 star", "2 stars", "3 stars", "4 stars", "5 stars"],
+            datasets: [@Html.Raw(Model.datasets.TrimEnd(','))]
+        };
+        
+        @if(Model.filterCount > 3)
+        {
+            @Html.Raw(Model.stringjs)
+        }
+    </script>
+</body>
+</html>
