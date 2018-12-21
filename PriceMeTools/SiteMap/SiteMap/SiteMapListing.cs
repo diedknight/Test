@@ -18,7 +18,7 @@ namespace SiteMap
         string sitemappath = SiteConfig.AppSettings("SiteMapPath");
         string siteMapUrl = SiteConfig.AppSettings("SiteMapUrl");
         string siteMapWebUrl = SiteConfig.AppSettings("SiteMapWebUrl");
-        string siteMapFileName = SiteConfig.AppSettings("SiteMapFileName");
+        //string siteMapFileName = SiteConfig.AppSettings("SiteMapFileName");
 
         int countryId = int.Parse(SiteConfig.AppSettings("CountryID"));
         int PageSize = int.Parse(SiteConfig.AppSettings("PageSize"));
@@ -31,10 +31,12 @@ namespace SiteMap
         List<string> categoryUrlList = new List<string>();
         List<int> isSearchOnlyList;
 
-        string financeSiteMapPath = SiteConfig.AppSettings("FinanceSiteMapPath").ToString();
-        string plansSiteMapPath = SiteConfig.AppSettings("PlansSiteMapPath").ToString();
-        string blogSiteMapPath = SiteConfig.AppSettings("BlogSiteMapPath").ToString();
-        string consumerSiteMapPath = SiteConfig.AppSettings("ConsumerSiteMapPath").ToString();
+        //string financeSiteMapPath = SiteConfig.AppSettings("FinanceSiteMapPath").ToString();
+        //string plansSiteMapPath = SiteConfig.AppSettings("PlansSiteMapPath").ToString();
+        //string blogSiteMapPath = SiteConfig.AppSettings("BlogSiteMapPath").ToString();
+        //string consumerSiteMapPath = SiteConfig.AppSettings("ConsumerSiteMapPath").ToString();
+
+        string allOtherSiteMaps = SiteConfig.AppSettings("AllOtherSiteMaps").ToString();
 
         public void CreateSiteMap()
         {
@@ -172,7 +174,8 @@ namespace SiteMap
 
             for (int j = 0; j < categoryUrlList.Count; j++)
             {
-                string categoryUrl = siteMapWebUrl + siteMapFileName + "/" + categoryUrlList[j];
+                //string categoryUrl = siteMapWebUrl + siteMapFileName + "/" + categoryUrlList[j];
+                string categoryUrl = siteMapWebUrl + categoryUrlList[j];
                 if (categoryUrlList[j].Contains("priceme.co.nz/money/") || categoryUrlList[j].Contains("priceme.co.nz/plans/") || categoryUrlList[j].Contains("blog.priceme.co.nz"))
                     categoryUrl = categoryUrlList[j];
 
@@ -260,12 +263,10 @@ namespace SiteMap
                     categoryUrlList.Insert(0, fileInfo[i].Name);
             }
 
-            if (countryId == 3)
+            string[] otherSiteMaps = allOtherSiteMaps.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var sm in otherSiteMaps)
             {
-                categoryUrlList.Add(financeSiteMapPath);
-                categoryUrlList.Add(plansSiteMapPath);
-                categoryUrlList.Add(blogSiteMapPath);
-                categoryUrlList.Add(consumerSiteMapPath);
+                categoryUrlList.Add(sm);
             }
         }
 

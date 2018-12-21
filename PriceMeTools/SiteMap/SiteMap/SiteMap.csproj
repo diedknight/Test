@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Minitools\PriceMeTools\PopualerSearchIndexBuilder\CopyFile\CopyFile.csproj" />
+    <ProjectReference Include="..\..\PopualerSearchIndexBuilder\CopyFile\CopyFile.csproj" />
   </ItemGroup>
 
   <ItemGroup>
