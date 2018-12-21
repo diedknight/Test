@@ -176,7 +176,7 @@ namespace SiteMap
             {
                 //string categoryUrl = siteMapWebUrl + siteMapFileName + "/" + categoryUrlList[j];
                 string categoryUrl = siteMapWebUrl + categoryUrlList[j];
-                if (categoryUrlList[j].Contains("priceme.co.nz/money/") || categoryUrlList[j].Contains("priceme.co.nz/plans/") || categoryUrlList[j].Contains("blog.priceme.co.nz"))
+                if (categoryUrlList[j].StartsWith("https://"))
                     categoryUrl = categoryUrlList[j];
 
                 SetIndexXml(xmlDoc, xmlRoot, categoryUrl);
