@@ -37,6 +37,7 @@ namespace SiteMap
         //string consumerSiteMapPath = SiteConfig.AppSettings("ConsumerSiteMapPath").ToString();
 
         string allOtherSiteMaps = SiteConfig.AppSettings("AllOtherSiteMaps").ToString();
+        string allOtherSiteMaps2 = SiteConfig.AppSettings("AllOtherSiteMaps2").ToString();
 
         public void CreateSiteMap()
         {
@@ -244,6 +245,12 @@ namespace SiteMap
                     categoryUrl = siteMapUrl + "/c-" + pari.Key + ".aspx";
 
                 SetXml(xmlDoc, xmlRoot, categoryUrl);
+            }
+
+            string[] otherSiteMaps2 = allOtherSiteMaps2.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var sm in otherSiteMaps2)
+            {
+                SetXml(xmlDoc, xmlRoot, sm);
             }
 
             string xmlFileName = sitemappath + "SiteMap-20081021-priceme.xml";
